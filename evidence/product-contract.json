@@ -1,55 +1,130 @@
 {
-  "contract_version": "0.1",
-  "status": "INITIAL EVIDENCE-DERIVED BASELINE — NOT HUMAN-APPROVED",
+  "contract_version": "0.2",
+  "status": "ACTIVE EVIDENCE-DERIVED CHANGE BASELINE — NOT HUMAN-APPROVED",
+  "change_request": "CR-001",
+  "supersedes": "0.1",
   "project": "La Bulle Bleue — Chalon-sur-Saône",
-  "business_objective": "Create a clear, welcoming public information website explaining La Bulle Bleue and helping visitors contact APAiL to ask about attendance or volunteering.",
-  "target_audience": ["children from age 6 and families", "teenagers", "adults", "relatives/supporters", "prospective volunteers"],
-  "primary_user_intent": "Understand the initiative, who it welcomes and how to make first contact.",
-  "critical_journeys": [
-    "Homepage → audience → activity examples → email contact",
-    "Homepage → association → volunteering interest → email contact"
+  "business_objective": "Create an informative, welcoming and visually distinctive website explaining La Bulle Bleue and APAiL, representing publicly reported activities without overpromising and helping visitors contact the association.",
+  "target_audience": [
+    "children from age 6 and families",
+    "teenagers",
+    "adults",
+    "relatives and supporters",
+    "prospective volunteers"
+  ],
+  "primary_user_intent": "Understand La Bulle Bleue, its relationship with APAiL, activity examples and how to make first contact.",
+  "critical_user_journeys": [
+    "Homepage → audience → activities → dated examples → email contact",
+    "Homepage → APAiL history/solidarity mission → volunteer interest → email contact"
   ],
   "functional_requirements": [
-    "Single-page information architecture with anchor navigation",
-    "Responsive keyboard-operable mobile navigation",
-    "Visible mailto contact links using publicly published email",
-    "No sensitive personal-data form",
-    "No disputed address or stale weekly schedule"
+    "Responsive one-page information site with anchor navigation",
+    "Keyboard-operable mobile navigation; Escape closes only an open menu and restores focus",
+    "Visible mailto links using publicly published apail@live.fr",
+    "No sensitive-data intake form or diagnosis request",
+    "No disputed activity venue or unverified weekly schedule",
+    "Recent activity stories dated and presented as examples, not promised sessions",
+    "Informative images have alt text, dimensions and local source paths",
+    "Below-fold images lazy-loaded",
+    "Motion respects prefers-reduced-motion and never hides essential content when JS/IntersectionObserver is unavailable"
   ],
   "content_requirements": [
-    "Identify APAiL and Chalon-sur-Saône",
-    "Describe reported audience and activity examples without overpromising",
-    "Explain first contact and volunteer interest",
-    "Direct visitors to confirm current venue, dates and hours"
+    "Identify La Bulle Bleue as a local APAiL initiative in Chalon-sur-Saône",
+    "Explain La Bulle Bleue began in 2021 and APAiL was created in 1995",
+    "Describe audience without diagnosis-based eligibility or clinical claims",
+    "Represent games, garden/outdoors, discovery/workshops, culture/music and outings",
+    "Date recent examples and mark mirror-derived activity information as public-post highlights, not a recurring programme",
+    "Explain APAiL's reported solidarity work without implying all projects remain active",
+    "Ask visitors to contact APAiL for current venue, dates and times",
+    "Do not publish participant names, diagnoses or medical outcomes"
   ],
   "brand": {
     "official_assets_supplied": false,
-    "direction": "Warm, calm, reassuring, modern and inclusive across ages; not clinical or infantilizing",
-    "provisional_system": "Deep/soft blues, muted yellow, peach, sage and lilac; typographic wordmark and CSS illustration",
-    "replacement": "Use official identity if later provided"
+    "direction": "Warm, authentic, editorial, friendly and inclusive; not clinical or infantilizing",
+    "provisional_system": "Blue bubble motif, deep/soft blues, warm off-white, muted yellow, peach, sage and lilac",
+    "logo_status": "Current mark is provisional, not official master artwork"
+  },
+  "visual_requirements": {
+    "hero": "Image-led hero with a large local illustration and layered bubble motifs",
+    "activities": "Illustrated cards for games, garden, discovery/workshops and culture/outings",
+    "stories": "Editorial dated activity-story mosaic",
+    "parent_association": "Distinct APAiL history and wider solidarity section",
+    "asset_policy": "Original local SVG illustrations only until documentary photo rights are cleared",
+    "images": [
+      "assets/illustrations/hero-community.svg",
+      "assets/illustrations/games.svg",
+      "assets/illustrations/garden.svg",
+      "assets/illustrations/discovery.svg",
+      "assets/illustrations/culture.svg",
+      "assets/illustrations/solidarity.svg"
+    ]
+  },
+  "motion": {
+    "effects": [
+      "subtle hero illustration float",
+      "floating decorative bubbles",
+      "scroll reveals",
+      "subtle image hover zoom"
+    ],
+    "implementation": "CSS and vanilla JavaScript IntersectionObserver",
+    "reduced_motion_required": true,
+    "essential_content_must_not_depend_on_motion": true,
+    "fallback": "Content is visible by default; reveal enhancement runs only when observer is supported and reduced motion is off."
   },
   "technical": {
     "architecture": "Static HTML, CSS and vanilla JavaScript",
     "dependencies": [],
     "paid_services": [],
-    "forms_backend": false,
+    "external_fonts": false,
+    "tracking": false,
     "analytics": false,
-    "third_party_embeds": false,
+    "forms_backend": false,
+    "image_hosting": "Local SVG assets",
     "run": "python3 -m http.server 8080"
   },
-  "accessibility_target": "WCAG 2.2 AA; candidate evidence covers structural checks, keyboard navigation and selected contrast pairs only. Manual screen-reader assessment remains outstanding.",
-  "responsive_viewports": [320, 360, 390, 430, 760, 761, 768, 1024, 1440, 1920],
-  "seo": ["French lang", "title", "description", "Open Graph metadata", "Organization JSON-LD", "robots.txt"],
-  "seo_pending": ["canonical URL", "absolute OG image", "sitemap.xml", "live crawl/indexability; requires confirmed domain"],
-  "performance": "No external runtime requests. Hosted performance metrics and budgets remain unmeasured.",
+  "accessibility_target": "WCAG 2.2 AA; foundation includes semantics, alt text, dimensions, keyboard navigation, reduced-motion fallback and progressive reveal. Manual screen-reader testing remains outstanding.",
+  "responsive_viewports": [
+    320,
+    360,
+    390,
+    430,
+    760,
+    761,
+    768,
+    1024,
+    1440,
+    1920
+  ],
+  "performance": {
+    "no_external_runtime_dependencies": true,
+    "lazy_load_below_fold": true,
+    "intrinsic_dimensions": true,
+    "hosted_metrics": "NOT YET MEASURED"
+  },
   "security": {
     "level": "W0 static informational site",
     "personal_data_collected": false,
     "auth": false,
     "payments": false,
-    "server_api": false,
+    "api": false,
     "third_party_scripts": false,
-    "security_headers": "NOT CONFIGURED — deployment target unknown"
+    "security_headers": "NOT CONFIGURED"
+  },
+  "seo": {
+    "baseline": [
+      "French lang",
+      "title",
+      "description",
+      "Open Graph metadata",
+      "Organization JSON-LD",
+      "robots.txt"
+    ],
+    "pending": [
+      "canonical URL",
+      "absolute OG image",
+      "sitemap.xml",
+      "live crawl/indexability; requires domain"
+    ]
   },
   "deployment": {
     "provider": "UNKNOWN",
@@ -59,12 +134,20 @@
     "branch": "main"
   },
   "success_criteria": [
-    "Visitors understand purpose and audience",
-    "Visitors discover representative activities",
+    "Visitors understand the relationship between La Bulle Bleue and APAiL",
+    "Visitors see activity examples without interpreting them as a fixed schedule",
     "Visitors can initiate email contact",
-    "Mobile menu works by pointer and keyboard",
-    "No horizontal overflow at tested widths",
-    "No unverified address, schedule, health claim or sensitive-data collection"
+    "Local illustrations have alt text and dimensions",
+    "Mobile navigation is keyboard-operable",
+    "Reduced-motion users never receive essential hidden content",
+    "No overflow at tested viewports",
+    "No unverified address, schedule, health claim or sensitive data",
+    "No participant/press photo without permission"
   ],
-  "loop_001_definition_of_done": "Responsive static candidate, evidence records and tests committed to main; candidate checks pass; remote checkpoint verified; certification and deployment remain deferred."
+  "business_outcome_hypotheses": [
+    "Specific activity stories may help families understand the initiative",
+    "A richer editorial visual system may feel more approachable",
+    "Outcomes require visitor feedback/measurement and are not proven by implementation"
+  ],
+  "definition_of_done_loop_003": "Adopt contract 0.2; deliver local SVG illustrations, activity stories and reduced-motion-aware motion; update tests/evidence; checkpoint to main and verify remote; no deployment."
 }

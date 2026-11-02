@@ -1,13 +1,75 @@
 {
-  "test_run":"loop-001-static",
-  "observed_at":"2026-11-02",
-  "status":"PASS",
-  "checks":[
-    {"name":"Structural validator","result":"PASS","detail":"French language, one h1, one main landmark, description, in-page anchors and local assets."},
-    {"name":"Content guardrails","result":"PASS","detail":"Required identity/contact content present; conflicting street address and historical opening hours absent."},
-    {"name":"Accessibility foundation","result":"PASS WITH LIMITS","detail":"Skip link, named navigation, focus-visible styles, reduced-motion support, Escape key behavior and selected 4.5:1 contrast pairs."},
-    {"name":"HTMLParser","result":"PASS","detail":"Parsed 294 opening tags."},
-    {"name":"JavaScript syntax","result":"PASS","detail":"node --check script.js; Node 22.16.0."},
-    {"name":"Secrets scan","result":"PASS — BASIC PATTERN SCAN","detail":"No common token/private-key patterns in tracked source. Gitleaks unavailable; this is not a complete secret audit."}
-  ]
+  "test_run": "loop-001-static",
+  "observed_at": "2026-11-02",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "Structural validator",
+      "result": "PASS",
+      "detail": "French language, one h1, one main landmark, description, in-page anchors and local assets."
+    },
+    {
+      "name": "Content guardrails",
+      "result": "PASS",
+      "detail": "Required identity/contact content present; conflicting street address and historical opening hours absent."
+    },
+    {
+      "name": "Accessibility foundation",
+      "result": "PASS WITH LIMITS",
+      "detail": "Skip link, named navigation, focus-visible styles, reduced-motion support, Escape key behavior and selected 4.5:1 contrast pairs."
+    },
+    {
+      "name": "HTMLParser",
+      "result": "PASS",
+      "detail": "Parsed 294 opening tags."
+    },
+    {
+      "name": "JavaScript syntax",
+      "result": "PASS",
+      "detail": "node --check script.js; Node 22.16.0."
+    },
+    {
+      "name": "Secrets scan",
+      "result": "PASS — BASIC PATTERN SCAN",
+      "detail": "No common token/private-key patterns in tracked source. Gitleaks unavailable; this is not a complete secret audit."
+    }
+  ],
+  "loop_003": {
+    "test_run": "loop-003-static-structure",
+    "runner": "In-turn structural inspection of fetched Git blob using deterministic HTML/source checks",
+    "status": "PASS",
+    "checks": [
+      {
+        "name": "Document structure",
+        "result": "PASS",
+        "detail": "One h1, one main landmark and nine content sections."
+      },
+      {
+        "name": "Navigation anchors",
+        "result": "PASS",
+        "detail": "All in-page fragment links resolve to an element ID."
+      },
+      {
+        "name": "Image inventory",
+        "result": "PASS",
+        "detail": "Ten informative images; all have non-empty alt text, intrinsic width/height and local root-relative source paths."
+      },
+      {
+        "name": "External image requests",
+        "result": "PASS",
+        "detail": "No remote image hotlinks."
+      },
+      {
+        "name": "Content safeguards",
+        "result": "PASS",
+        "detail": "No disputed Rempart address, administrative address or historical 14h30 schedule."
+      },
+      {
+        "name": "Dated stories",
+        "result": "PASS",
+        "detail": "2025 and 2026 examples are dated and explicitly described as examples, not recurring programme."
+      }
+    ],
+    "limitation": "Repository Python validator has been updated but was not executed against a mounted working tree in this environment. This result records direct source inspection, not a claim that python3 tests/validate_site.py was executed."
+  }
 }

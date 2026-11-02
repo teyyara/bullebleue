@@ -3,41 +3,46 @@
 **Active keyphrase:** `make a full website for: Bulle Bleue à Chalon-sur-Saône`  
 **Run ID:** `bullebleue-20261102-001`  
 **Rulebook:** AEOS v3  
-**Current loop:** LOOP 002  
-**Candidate:** `bullebleue-loop-002-menu-accessibility-v1`  
+**Current loop:** LOOP 003  
+**Candidate:** `bullebleue-loop-003-illustrated-story-redesign-v1`  
 **Repository:** `teyyara/bullebleue`  
 **Branch:** `main` (single-branch progression)  
-**Previous verified remote head:** `d05ed5b6163019033130dd83d9be633acadee53b`  
-**Loop 002 implementation checkpoint:** `998ae654471a71c9ce11aa48e1951764fe72e517`  
-**Evidence manifest reconciliation commit:** `62348c46a35547bbcea414e8250ebdc31218b693`  
-**State:** `WAITING_FOR_CONTINUE`
+**Previous verified remote head:** `6358d1d425ede2316a65662e7e55c487a5f1c2c7`  
+**Implementation checkpoint commit:** pending creation / remote verification  
+**State:** `LOOP 003 — IMPLEMENTED; CHECKPOINT PENDING`
 
-## Loop 002 objective
+## Loop 003 objective
 
-Correct keyboard focus behavior for Escape in the mobile navigation and add a durable, dependency-free regression test.
+Adopt CR-001 / Product Contract 0.2; expand factual storytelling; add local original visual assets and reduced-motion-aware animation.
 
 ## Changes
 
-- Escape is now ignored when `aria-expanded` is not `true`.
-- When the menu is actually open, Escape closes it and restores focus to the menu trigger.
-- Selecting a navigation link and clicking outside continue to close the menu without unexpected focus movement.
-- Added `tests/test_menu.js`, a Node.js VM-based regression test using deterministic DOM interaction doubles.
-- Updated README test instructions, structural validator, requirements, risk, decision, learning and evidence records.
+- Refreshed and extended the research dossier using the municipal magazine, JOAFE statutory notice, 2025 anniversary reporting and current association registry data; social mirror activity details remain medium-confidence.
+- Activated Product Contract 0.2 as an evidence-derived, versioned baseline; Contract 0.1 remains in Git history.
+- Redesigned the hero around an original illustrated scene.
+- Added four richer activity cards, a dated “La vie à la Bulle” story mosaic and a distinct APAiL history/solidarity section.
+- Added six original local SVG illustrations. They are explicitly labelled as illustrations, not photographs of real participants/events.
+- Added subtle hero/bubble motion and progressive scroll reveals. Essential content remains visible by default; reveal enhancement is enabled only when IntersectionObserver exists and reduced motion is not requested.
+- Preserved omitted visitor address and unverified schedule.
 
 ## Validation
 
-- `python3 tests/validate_site.py`: PASS.
-- `node --check script.js`: PASS.
-- `node --check tests/test_menu.js`: PASS.
-- `node tests/test_menu.js`: PASS; closed Escape inert, open Escape closes/restores focus, repeated Escape inert, nav selection closes, outside click closes.
-- The previous Chromium and responsive checks remain evidence from Loop 001; no new browser-engine claim is made in this loop.
+- Direct structural inspection of fetched HTML source: PASS — one h1, one main, nine sections, no broken anchor fragments.
+- Image inventory: PASS — 10 informative image placements, each with alt text and intrinsic width/height; all use local paths, none hotlink external photos.
+- Content guardrails: PASS — no disputed street address or historical times in the page; dated examples are qualified as examples, not a regular calendar.
+- Local Node 22.16.0 menu/reveal regression suite: PASS — menu keyboard behavior, reveal observer lifecycle and reduced-motion fallback.
+- `node --check script.js` and `node --check tests/test_menu.js`: PASS.
+- Python structural validator updated; not executed against a mounted worktree this loop. Direct source inspection checks are recorded separately.
+- Actual Chromium visual/animation capture for the new layout: NOT RUN.
+- Firefox, WebKit, Safari, screen-reader testing, Lighthouse, ZAP and production checks remain unavailable/not configured.
 
-## Limitations / open items
+## Open items
 
-- Firefox, WebKit, actual Safari and screen-reader environments are unavailable.
-- Current APAiL venue and weekly hours remain unverified and omitted.
-- Domain/host is not configured; no production deployment or smoke test.
-- Candidate is not release-certified.
+- Actual association and participant photo permissions remain unknown; only original illustrations are used.
+- Confirm current public activity venue, opening schedule and contact mailbox deliverability.
+- Obtain official logo/brand files if available.
+- Configure host/domain, canonical URL, sitemap and security headers.
+- Perform actual browser visual review, cross-browser checks, manual accessibility and hosted performance/security validation.
 
 ## Run locally
 
@@ -48,17 +53,10 @@ node --check script.js
 node tests/test_menu.js
 ```
 
+## Deployment
+
+No production deployment has been performed or authorized. The candidate is not release-certified.
+
 ## Progression control
 
-Loop 002 is complete. The remote checkpoint is verified and the system is now `WAITING_FOR_CONTINUE`. Exactly one standalone `CONTINUE` authorizes Loop 003.
-
-
-## Change Request CR-001 recorded
-
-On 2026-11-02, a request was received to expand association research and make the website more photographic, asset-rich and animated. Additional public activity evidence from September–October 2026 was found through a FindGlocal mirror of the Bulle Bleue - APAiL Facebook page. The research addendum, formal CR-001 and proposed Product Contract 0.2 are stored under `evidence/`.
-
-**CR-001 status:** FORMALLY RECORDED — proposed Product Contract 0.2 not yet active.  
-**CR-001 administrative checkpoint:** `9a4f551387d27bd3f559aec11f5057e52a7d791a`.  
-**No implementation loop started from this message.** The project remains `WAITING_FOR_CONTINUE` pending the exact standalone control command.
-
-Design/asset safety: use actual participant photos only after rights/consent confirmation; otherwise use original illustrative assets. Current address and current schedule remain unpublished pending confirmation.
+Loop 003 is bounded to this redesign slice. After checkpoint and remote verification the system will enter `WAITING_FOR_CONTINUE`. Exactly one standalone `CONTINUE` authorizes Loop 004.

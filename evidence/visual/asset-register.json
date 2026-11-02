@@ -1,0 +1,60 @@
+{
+  "version": "1.0",
+  "policy": "Original locally authored SVG illustrations; no participant or press photography used.",
+  "assets": [
+    {
+      "path": "assets/illustrations/hero-community.svg",
+      "use": "Hero illustration",
+      "description": "Illustrative community-room scene with table games, plants and stylized non-identifiable silhouettes.",
+      "width": 1000,
+      "height": 760,
+      "documentary": false
+    },
+    {
+      "path": "assets/illustrations/games.svg",
+      "use": "Games activity card and story",
+      "description": "Board-game cards, dice and table illustration.",
+      "width": 640,
+      "height": 480,
+      "documentary": false
+    },
+    {
+      "path": "assets/illustrations/garden.svg",
+      "use": "Garden activity card and story",
+      "description": "Garden plants, planter boxes and a small shared game table.",
+      "width": 640,
+      "height": 480,
+      "documentary": false
+    },
+    {
+      "path": "assets/illustrations/discovery.svg",
+      "use": "Discovery workshop story",
+      "description": "Tactile activity and raised-dot discovery illustration.",
+      "width": 640,
+      "height": 480,
+      "documentary": false
+    },
+    {
+      "path": "assets/illustrations/culture.svg",
+      "use": "Culture/music activity card and 2025 story",
+      "description": "Small stage with percussion drum, microphone and musical notes.",
+      "width": 640,
+      "height": 480,
+      "documentary": false
+    },
+    {
+      "path": "assets/illustrations/solidarity.svg",
+      "use": "APAiL parent-association story",
+      "description": "Stylized globe and hands as a solidarity metaphor.",
+      "width": 720,
+      "height": 560,
+      "documentary": false
+    }
+  ],
+  "permissions": {
+    "external_press_photos": "NOT USED — rights/permission not documented",
+    "social_media_photos": "NOT USED — participant/photo rights and guardian consents not documented",
+    "identifiable_people": "NONE IN SVG ARTWORK"
+  },
+  "optimization": "Local SVG with intrinsic viewBox, width/height in HTML, lazy loading below the fold; hero illustration uses fetchpriority=high."
+}

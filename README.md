@@ -16,8 +16,8 @@ Then open `http://localhost:8080` in a browser.
 
 - `index.html` — one-page website, semantic sections, SEO metadata and organization JSON-LD.
 - `styles.css` — responsive visual system, custom CSS illustrations, keyboard focus and reduced-motion support.
-- `script.js` — accessible mobile navigation and current footer year.
-- `assets/` — local SVG favicon.
+- `script.js` — accessible mobile navigation, current footer year and progressive scroll-reveal enhancement.
+- `assets/` — local SVG favicon and original editorial illustrations (hero, games, garden, discovery, culture, solidarity).
 - `tests/validate_site.py` — dependency-free structural/content checks.
 - `tests/test_menu.js` — dependency-free keyboard and mobile-menu interaction regression tests.
 - `evidence/` — research dossier, project contract, assumptions, decisions, validation outputs and screenshots.
@@ -25,9 +25,11 @@ Then open `http://localhost:8080` in a browser.
 
 ## Content and publication safeguards
 
-The intended organization is APAiL's **La Bulle Bleue** in Chalon-sur-Saône, not the unrelated theatre company with a similar name. Public reporting describes an association-led welcome space for children from age 6, teenagers and adults, with games, outings, creative activities, gardening and opportunities to talk.
+The intended organization is APAiL's **La Bulle Bleue** in Chalon-sur-Saône, not the unrelated theatre company with a similar name. Public reporting describes an association-led welcome space for children from age 6, teenagers and adults. Recent public-post examples include games, garden moments, archery, accessibility discovery, outings and music. Dated examples are not a permanent or guaranteed programme.
 
 The published email `apail@live.fr` is included as the primary contact route. The exact activity address differs between older and newer public sources, and the available opening times are historical. The website therefore does **not** publish a street address or weekly schedule; it asks visitors to confirm the venue, current dates and times directly with the association.
+
+The redesign uses original SVG illustrations. They are labelled as illustrations and do not depict real APAiL participants or specific events. Social/press photographs are not reused until rights and consent are documented.
 
 No application form is present. The site does not ask visitors to disclose diagnoses, health details or other sensitive information online. No testimonials, phone number, pricing, registration guarantee or medical promise has been invented.
 

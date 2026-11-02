@@ -74,6 +74,42 @@
       "tradeoffs": "The key handler is state-aware and has a dedicated dependency-free regression test.",
       "risk": "R1",
       "evidence": "node tests/test_menu.js passes against the actual script.js."
+    },
+    {
+      "id": "DEC-007",
+      "context": "CR-001 expands informational requirements and photo/motion direction.",
+      "options": [
+        "Leave contract 0.1 active",
+        "Adopt evidence-derived contract 0.2 in authorized Loop 003"
+      ],
+      "chosen": "Adopt Product Contract 0.2 as active evidence-derived baseline, not human-approved.",
+      "reason": "The exact CONTINUE authorized Loop 003 following CR-001; requirements are traceable and use conservative factual framing.",
+      "risk": "R2",
+      "reversibility": "Versioned contract and Git history preserve 0.1."
+    },
+    {
+      "id": "DEC-008",
+      "context": "The request calls for more imagery but real participant photos are not cleared.",
+      "options": [
+        "Reuse social/press photos",
+        "Use local original non-identifying SVG illustrations pending permission"
+      ],
+      "chosen": "Use original local SVG illustrations clearly labelled as illustrations.",
+      "reason": "Public visibility is not publication permission, especially for minors and vulnerable people.",
+      "risk": "LOW",
+      "reversibility": "Replace with approved documentary imagery after rights/consent clearance."
+    },
+    {
+      "id": "DEC-009",
+      "context": "Scroll animations may affect accessibility or essential content visibility.",
+      "options": [
+        "Hide content until animation fires",
+        "Use progressive IntersectionObserver enhancement with reduced-motion/unsupported fallback"
+      ],
+      "chosen": "Progressive reveal; only apply hidden initial state when observer is supported and reduced motion is off.",
+      "reason": "Content remains visible without JavaScript/observer and respects reduced-motion preferences.",
+      "risk": "R1",
+      "reversibility": "Remove enhancement without altering content structure."
     }
   ]
 }

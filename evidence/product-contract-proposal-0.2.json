@@ -1,6 +1,6 @@
 {
-  "contract_version": "0.2-proposed",
-  "status": "PROPOSED CHANGE REQUEST CR-001 — NOT YET ACTIVE",
+  "contract_version": "0.2",
+  "status": "ADOPTED IN LOOP 003 — SEE evidence/product-contract.json",
   "supersedes": "0.1 only after change-control adoption in an authorized loop",
   "project": "La Bulle Bleue — Chalon-sur-Saône",
   "expanded_objective": "Create a richer, more authentic, photo-led informational website explaining La Bulle Bleue and its parent association APAiL, reflecting recent activities while helping visitors contact or support the association.",
@@ -73,5 +73,6 @@
     "Official logo source file and visual standards are unknown.",
     "Current activity venue and current schedule remain unconfirmed."
   ],
-  "approval_state": "Awaiting Loop 003 control command; not active."
+  "approval_state": "Adopted as active evidence-derived baseline in Loop 003; not human-approved and does not authorize deployment.",
+  "adopted_on": "2026-11-02"
 }

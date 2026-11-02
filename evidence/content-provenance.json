@@ -1,13 +1,70 @@
 {
-  "content_provenance_version":"0.1",
-  "items":[
-    {"content":"La Bulle Bleue is an APAiL initiative in Chalon-sur-Saône.","classification":"third-party factual data from municipal/local reporting","confidence":"HIGH"},
-    {"content":"APAiL was founded in 1995; La Bulle Bleue began in 2021.","classification":"third-party factual data","confidence":"HIGH"},
-    {"content":"Audience includes children from age 6, teenagers and adults.","classification":"third-party factual data","confidence":"HIGH"},
-    {"content":"Games, outings, creative/manual activities, gardening and conversation.","classification":"third-party factual data, generalized as activity examples","confidence":"HIGH"},
-    {"content":"apail@live.fr","classification":"published third-party contact data (2022 municipal source)","confidence":"HIGH for provenance; deliverability untested"},
-    {"content":"Street address and weekly hours deliberately absent.","classification":"omission due to unresolved source conflict/stale data","confidence":"HIGH"},
-    {"content":"Hero headline, explanatory copy and first-contact guidance.","classification":"generated neutral copy; no business promise or service guarantee","confidence":"MEDIUM"},
-    {"content":"Logo mark and artwork.","classification":"original provisional CSS/SVG design; not official brand asset","confidence":"HIGH"}
+  "content_provenance_version": "0.2",
+  "items": [
+    {
+      "content": "La Bulle Bleue is an APAiL initiative in Chalon-sur-Saône.",
+      "classification": "third-party factual data from municipal/local reporting",
+      "confidence": "HIGH"
+    },
+    {
+      "content": "APAiL was founded in 1995; La Bulle Bleue began in 2021.",
+      "classification": "third-party factual data",
+      "confidence": "HIGH"
+    },
+    {
+      "content": "Audience includes children from age 6, teenagers and adults.",
+      "classification": "third-party factual data",
+      "confidence": "HIGH"
+    },
+    {
+      "content": "Games, outings, creative/manual activities, gardening and conversation.",
+      "classification": "third-party factual data, generalized as activity examples",
+      "confidence": "HIGH"
+    },
+    {
+      "content": "apail@live.fr",
+      "classification": "published third-party contact data (2022 municipal source)",
+      "confidence": "HIGH for provenance; deliverability untested"
+    },
+    {
+      "content": "Street address and weekly hours deliberately absent.",
+      "classification": "omission due to unresolved source conflict/stale data",
+      "confidence": "HIGH"
+    },
+    {
+      "content": "Hero headline, explanatory copy and first-contact guidance.",
+      "classification": "generated neutral copy; no business promise or service guarantee",
+      "confidence": "MEDIUM"
+    },
+    {
+      "content": "Logo mark and artwork.",
+      "classification": "original provisional CSS/SVG design; not official brand asset",
+      "confidence": "HIGH"
+    },
+    {
+      "content": "Recent examples dated 19 Sep–26 Oct 2026: games, garden, archery, outings, accessibility discovery workshop and local events.",
+      "classification": "Third-party social page mirror; posts attributed to Bulle Bleue–APAiL",
+      "confidence": "MEDIUM; not a fixed recurring activity promise"
+    },
+    {
+      "content": "APAiL created in 1995 under Solange Chevat; anniversary and participant percussion/singing in Oct 2025.",
+      "classification": "Info-Chalon report cross-read with municipal and statutory sources",
+      "confidence": "HIGH"
+    },
+    {
+      "content": "APAiL solidarity projects reported in Morocco, Burkina Faso, Madagascar and Romania.",
+      "classification": "Info-Chalon 2025 anniversary report",
+      "confidence": "HIGH as reported history; not a claim all projects remain active in 2026"
+    },
+    {
+      "content": "Original SVG illustrations under assets/illustrations/.",
+      "classification": "Original authored visual assets",
+      "confidence": "HIGH; not documentary photos"
+    },
+    {
+      "content": "Current venue and opening hours.",
+      "classification": "Omitted because sources conflict or are historical",
+      "confidence": "UNKNOWN / TO BE VALIDATED"
+    }
   ]
 }

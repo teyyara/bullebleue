@@ -177,3 +177,61 @@ The intended audience includes minors and people who may be vulnerable. Never us
 ## Updated research conclusion
 
 The local social feed provides strong new clues about current activities as of September–October 2026. The activity descriptions are medium-confidence because the directly linked Facebook page could not be fetched and the accessible page is a third-party mirror. Historical mission and event context are corroborated by local reporting. The address and schedule remain unresolved.
+
+
+---
+
+# Research Refresh — Primary Records and Contract Adoption
+
+**Refresh date:** 2026-11-02 · **Loop:** 003  
+**Research state:** COMPLETE FOR THE CURRENT INFORMATIONAL WEBSITE SCOPE; live contact, venue, timetable and image permissions remain UNKNOWN.
+
+## Primary-source cross-checks
+
+### Municipal magazine — November/December 2022
+The Ville de Chalon municipal magazine `Objectif Chalon n°42`, page 17, states that APAiL works in several countries, providing human support and material aid; under Solange Chevat's initiative it launched La Bulle Bleue in 2021; the local initiative welcomes children, adolescents and adults experiencing difficulty adapting; it published `apail@live.fr`; and it published 30 Rempart Saint-Vincent as the then activity venue with historical Wednesday/Saturday arrangements.
+
+Source: Ville de Chalon-sur-Saône, *Objectif Chalon* n°42, Nov–Dec 2022, p.17. Retrieved 2026-11-02.
+https://www.chalon.fr/fileadmin/PDF/Objectif_Chalon/11_2022_OBJECTIF_CHALON_42_NOVEMBRE-DECEMBRE.pdf
+
+Authoritative for what was published in 2022, not proof of November 2026 venue or schedule.
+
+### Journal officiel des associations — 2001 amendment
+A JOAFE notice for department 71, September 2001, records the expanded name “Amitié, Partage, Aide matérielle et morale, Initiative, Lutte contre l’Inégalité (A.P.A.I.L.)”. It records a registered office at 14 boulevard de la République, Chalon-sur-Saône, and an object including moral/material support, solidarity, training/education/health, dialogue and inter-school correspondence.
+
+Source: JOAFE notice no. 958, 27 August 2001 (publication 2001-09). Retrieved 2026-11-02.
+https://www.journal-officiel.gouv.fr/pages/listing-avis-joafe/?departement=71&month=09&sort=-dateparution&year=2001
+
+This statutory record is historical and does not establish a current visitor venue or schedule.
+
+### Thirty-year anniversary reporting — October 2025
+Info-Chalon's report of the event held on 11 October 2025 states APAiL was created in 1995 in Chalon under Solange Chevat; its values include solidarity, respect and sharing; reported international solidarity work includes Morocco, Burkina Faso, Madagascar and Romania; La Bulle Bleue is a local welcome/listening initiative outside school time; and young participants took part in gentle percussion and singing at the anniversary event.
+
+Source: Info-Chalon, 13 October 2025. Retrieved 2026-11-02.
+https://www.info-chalon.com/articles/2025/10/13/104129/l-apail-fete-ses-30-ans-de-solidarite-d-amitie-et-de-partage-au-clos-bourguignon/
+
+### Current administrative record — June 2026
+Pappers reports the association record was refreshed from RNA on 25 June 2026 and INSEE on 24 June 2026, with a registered office at 14 boulevard de la République and association registration dated 8 December 1995.
+
+Source: Pappers, APAiL association profile. Retrieved 2026-11-02.
+https://www.pappers.fr/entreprise/apail-amitie-partage-aide-lutte-contre-l-inegalite-519970743
+
+Pappers is a secondary registry-data service. Its registered office is not a confirmed Bulle Bleue visitor venue.
+
+## Recent activity evidence — confidence boundary
+The dossier's FindGlocal page mirror reproduces recent posts attributed to the Bulle Bleue–APAiL Facebook page, dated September–October 2026. These describe board games, garden moments, archery, outings, guided visits, an accessibility-awareness workshop and participation in local events. The primary Facebook page was throttled and the third-party mirror could not be reopened through the current web fetch. These details remain **MEDIUM confidence**. The website labels them as selected examples from public posts, not a recurring calendar. Refresh with APAiL before building a recurring news feed.
+
+## Unresolved and deliberately unpublished facts
+- Current activity venue: UNKNOWN; sources include historical 30 Rempart Saint-Vincent and conflicting later press spelling Rempart Saint-Pierre. 14 boulevard de la République is a registered office, not a confirmed activity venue.
+- Current days and opening hours: UNKNOWN; 2022 hours are historical only.
+- Current mailbox deliverability: NOT TESTED.
+- Participant image permissions, guardian consent and photo licences: UNKNOWN.
+- Official high-resolution brand assets: UNKNOWN.
+
+## Updated content and asset strategy
+The website distinguishes La Bulle Bleue (local welcome/listening initiative launched in 2021) from APAiL (parent association founded in 1995). Activities are flexible examples: games, garden/outdoors, discovery/workshops, culture/music and outings. Dated examples are not a timetable.
+
+The redesign uses original local SVG illustrations under `assets/illustrations/`: hero-community, games, garden, discovery, culture and solidarity. They are illustrations, not photographs of real APAiL events or members. No social-media or press photo is copied or hotlinked. Documentary photography requires written rights/consent.
+
+## Research completion gate
+`KEYPHRASE_RESEARCH: COMPLETE FOR LOOP 003`. Primary historical/statutory records and recent reporting were checked; social-feed information is explicitly medium confidence; venue, schedule and image-rights uncertainties remain recorded.

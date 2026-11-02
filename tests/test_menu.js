@@ -31,36 +31,63 @@ function createElement() {
   };
 }
 
-const toggle = createElement();
-toggle.setAttribute('aria-expanded', 'false');
-toggle.setAttribute('aria-label', 'Ouvrir le menu');
-const navigation = createElement();
-const link = createElement();
-navigation.children = [link];
-navigation.querySelectorAll = () => [link];
-const year = createElement();
-const documentListeners = {};
-const document = {
-  querySelector(selector) {
-    if (selector === '.menu-toggle') return toggle;
-    if (selector === '#navigation') return navigation;
-    if (selector === '#year') return year;
-    return null;
-  },
-  addEventListener(name, callback) { (documentListeners[name] ||= []).push(callback); },
-  dispatch(name, event = {}) { for (const callback of documentListeners[name] || []) callback(event); }
-};
+function boot({ reducedMotion = false, revealCount = 2 } = {}) {
+  const toggle = createElement();
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-label', 'Ouvrir le menu');
+  const navigation = createElement();
+  const link = createElement();
+  navigation.children = [link];
+  navigation.querySelectorAll = () => [link];
+  const year = createElement();
+  const revealItems = Array.from({ length: revealCount }, createElement);
+  const documentListeners = {};
+  const observers = [];
 
-const source = fs.readFileSync(path.join(__dirname, '..', 'script.js'), 'utf8');
-vm.runInNewContext(source, { document, Date });
+  class MockIntersectionObserver {
+    constructor(callback, options) {
+      this.callback = callback;
+      this.options = options;
+      this.observed = [];
+      this.unobserved = [];
+      observers.push(this);
+    }
+    observe(target) { this.observed.push(target); }
+    unobserve(target) { this.unobserved.push(target); }
+  }
+
+  const document = {
+    documentElement: createElement(),
+    querySelector(selector) {
+      if (selector === '.menu-toggle') return toggle;
+      if (selector === '#navigation') return navigation;
+      if (selector === '#year') return year;
+      return null;
+    },
+    querySelectorAll(selector) {
+      return selector === '.reveal' ? revealItems : [];
+    },
+    addEventListener(name, callback) { (documentListeners[name] ||= []).push(callback); },
+    dispatch(name, event = {}) { for (const callback of documentListeners[name] || []) callback(event); }
+  };
+  const window = {
+    matchMedia() { return { matches: reducedMotion }; },
+    IntersectionObserver: MockIntersectionObserver
+  };
+  const source = fs.readFileSync(path.join(__dirname, '..', 'script.js'), 'utf8');
+  vm.runInNewContext(source, { document, Date, window, IntersectionObserver: MockIntersectionObserver });
+  return { toggle, navigation, link, year, document, revealItems, observers };
+}
+
+const env = boot();
+const { toggle, navigation, link, document } = env;
 const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
 
-// Escape while closed must not steal focus (desktop and idle keyboard use).
+// Keyboard and mobile navigation behavior.
 document.dispatch('keydown', { key: 'Escape' });
 assert.equal(isOpen(), false);
 assert.equal(toggle.focusCount || 0, 0, 'closed-menu Escape must not focus hidden menu toggle');
 
-// Open then Escape closes the menu and restores focus to its trigger.
 toggle.dispatch('click');
 assert.equal(isOpen(), true);
 assert.equal(toggle.getAttribute('aria-label'), 'Fermer le menu');
@@ -71,21 +98,30 @@ assert.equal(toggle.getAttribute('aria-label'), 'Ouvrir le menu');
 assert.equal(navigation.classList.contains('is-open'), false);
 assert.equal(toggle.focusCount, 1, 'open-menu Escape restores trigger focus once');
 
-// Repeated Escape after closing must not repeatedly steal focus.
 document.dispatch('keydown', { key: 'Escape' });
 assert.equal(toggle.focusCount, 1);
 
-// Selecting a navigation link closes the menu without moving focus unexpectedly.
 toggle.dispatch('click');
 link.dispatch('click');
 assert.equal(isOpen(), false);
 assert.equal(toggle.focusCount, 1);
 
-// Clicking outside closes an open menu without forcing focus to the trigger.
 toggle.dispatch('click');
-const outside = createElement();
-document.dispatch('click', { target: outside });
+document.dispatch('click', { target: createElement() });
 assert.equal(isOpen(), false);
 assert.equal(toggle.focusCount, 1);
 
-console.log('PASS: closed Escape is inert; open Escape closes/restores focus; nav selection and outside click close safely.');
+// Motion enhancement is progressive and only observes elements when motion is allowed.
+assert.equal(env.document.documentElement.classList.contains('has-reveal'), true);
+assert.equal(env.observers.length, 1);
+assert.equal(env.observers[0].observed.length, env.revealItems.length);
+env.observers[0].callback(env.revealItems.map(target => ({ isIntersecting: true, target })), env.observers[0]);
+assert.ok(env.revealItems.every(item => item.classList.contains('is-visible')));
+assert.equal(env.observers[0].unobserved.length, env.revealItems.length);
+
+// Reduced-motion users never receive hidden reveal states or an observer.
+const reduced = boot({ reducedMotion: true });
+assert.equal(reduced.document.documentElement.classList.contains('has-reveal'), false);
+assert.equal(reduced.observers.length, 0);
+
+console.log('PASS: menu keyboard/outside-click behavior; scroll reveals; reduced-motion fallback.');

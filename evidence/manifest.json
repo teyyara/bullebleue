@@ -1,19 +1,26 @@
 {
-  "manifest_version": "0.3",
+  "manifest_version": "0.4",
   "run_id": "bullebleue-20261102-001",
-  "loop": 2,
-  "candidate": "bullebleue-loop-002-menu-accessibility-v1",
-  "candidate_status": "IMPLEMENTED; NOT RELEASE CERTIFIED",
+  "loop": 3,
+  "candidate": "bullebleue-loop-003-illustrated-story-redesign-v1",
+  "candidate_status": "IMPLEMENTED; STATIC SOURCE AND NODE INTERACTION TESTS PASS; VISUAL BROWSER RUNTIME PENDING; NOT RELEASE CERTIFIED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
   "implementation_checkpoint_commit": "4443c74fd77798d412e62e429de9af52be731270",
   "remote_git_blob_objects": {
-    "index.html": "271fd60d88736c75cb797730d3a0644791bed16c",
-    "styles.css": "ca86112b7db79bce868c380e3e696d2c6864cce0",
-    "script.js": "de53845f9aaa514b0d35843cd05fd83bdd6bfacf",
+    "index.html": "1783bc7fa3fd8d8961b6b92596154f0d166361f1",
+    "styles.css": "1b9d548642e65c09629844adad0d35c9bb62b118",
+    "script.js": "aa2ae008fdfa8c6eb1a0f6004938627104553b61",
     "assets/favicon.svg": "c98beb72f9633c41915ad00e5ced621faaf17799",
     "menu_regression_test_js": "493debf5b26c01e0b166d555b4dab53845a52f28",
-    "tests/test_menu.js": "493debf5b26c01e0b166d555b4dab53845a52f28"
+    "tests/test_menu.js": "051d0dec5655cbf2b2017e840c096ec4fc63fc6e",
+    "tests/validate_site.py": "604658798b3f5d08ad87a924b1c03e52d518cb8e",
+    "assets/illustrations/hero-community.svg": "d46b1fa640912b32259f2b0f17622e635b8bf09b",
+    "assets/illustrations/games.svg": "74f82b260859fc2658939d9cc42e074fedf17544",
+    "assets/illustrations/garden.svg": "4e15f67d6cebaf017411b9e49255e15aaa9ae7fa",
+    "assets/illustrations/discovery.svg": "ae5195596626a8441bda55f1a008ac3cb3e47fa8",
+    "assets/illustrations/culture.svg": "c8f03c2719d743336afeb680eef96b378bac8f51",
+    "assets/illustrations/solidarity.svg": "e80525d8acc48b3d429912d6229023db54a45e2e"
   },
   "local_screenshot_evidence": {
     "desktop": {
@@ -59,5 +66,20 @@
       "script.js": "de53845f9aaa514b0d35843cd05fd83bdd6bfacf",
       "tests/test_menu.js": "493debf5b26c01e0b166d555b4dab53845a52f28"
     }
+  },
+  "loop_003": {
+    "adopted_contract": "0.2",
+    "assets": [
+      "assets/illustrations/hero-community.svg",
+      "assets/illustrations/games.svg",
+      "assets/illustrations/garden.svg",
+      "assets/illustrations/discovery.svg",
+      "assets/illustrations/culture.svg",
+      "assets/illustrations/solidarity.svg"
+    ],
+    "motion": "CSS hero/bubble drift and progressive IntersectionObserver reveals; disabled when reduced motion is requested.",
+    "node_test": "PASS",
+    "visual_browser_runtime": "PENDING",
+    "production_artifact_sha256": null
   }
 }

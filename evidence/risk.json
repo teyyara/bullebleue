@@ -45,8 +45,27 @@
       "severity": "LOW",
       "mitigation": "Only close and restore focus when aria-expanded is true; add deterministic interaction regression test.",
       "residual": "Firefox/WebKit and manual screen-reader behavior remain unobserved."
+    },
+    {
+      "id": "RISK-007",
+      "risk": "Dated 2026 activity details are based on a third-party mirror rather than direct Facebook retrieval.",
+      "severity": "MEDIUM",
+      "mitigation": "Label as public-post examples and non-recurring; retain source confidence; confirm before future news updates."
+    },
+    {
+      "id": "RISK-008",
+      "risk": "Illustrations could be mistaken for documentary photos of real members/events.",
+      "severity": "MEDIUM",
+      "mitigation": "Alt text and visible captions explicitly state original illustrations, not event photographs."
+    },
+    {
+      "id": "RISK-009",
+      "risk": "Scroll reveals could hide content if script/observer fails.",
+      "severity": "MEDIUM",
+      "mitigation": "Apply has-reveal only when IntersectionObserver exists and reduced motion is off; visible default otherwise."
     }
   ],
   "release_status": "NOT CERTIFIED — candidate loop only",
-  "loop_002_change_risk": "R1 — local navigation keyboard interaction behavior"
+  "loop_002_change_risk": "R1 — local navigation keyboard interaction behavior",
+  "loop_003_change_risk": "R2 — public content and page composition changed; imagery remains local and no personal data or transactional workflows added."
 }

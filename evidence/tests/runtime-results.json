@@ -89,5 +89,35 @@
     ],
     "command": "node tests/test_menu.js",
     "limitation": "Deterministic interaction unit test; not a screen-reader test or substitute for browser-engine coverage."
+  },
+  "loop_003": {
+    "test_run": "loop-003-menu-and-motion-regression",
+    "runner": "Node.js 22.16.0",
+    "status": "PASS",
+    "command": "node tests/test_menu.js",
+    "execution_mode": "The repository script.js and test_menu.js contents were copied to an isolated local test directory and executed using Node vm and deterministic DOM/IntersectionObserver doubles.",
+    "checks": [
+      {
+        "name": "Menu keyboard behavior",
+        "result": "PASS",
+        "detail": "Escape while closed remains inert; Escape while open closes and returns focus; menu link and outside click close correctly."
+      },
+      {
+        "name": "Progressive reveal observer",
+        "result": "PASS",
+        "detail": "Observer created only when motion is allowed; reveal elements are observed, shown and unobserved after intersection."
+      },
+      {
+        "name": "Reduced motion fallback",
+        "result": "PASS",
+        "detail": "When prefers-reduced-motion matches, no reveal class or observer is installed."
+      },
+      {
+        "name": "JS syntax",
+        "result": "PASS",
+        "detail": "node --check script.js and node --check tests/test_menu.js passed."
+      }
+    ],
+    "limitation": "This is a deterministic interaction unit test, not a visual browser animation examination, screen-reader test or cross-browser run."
   }
 }

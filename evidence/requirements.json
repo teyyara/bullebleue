@@ -1,6 +1,6 @@
 {
-  "requirements_version": "0.2",
-  "candidate": "bullebleue-loop-002-menu-accessibility-v1",
+  "requirements_version": "0.3",
+  "candidate": "bullebleue-loop-003-illustrated-story-redesign-v1",
   "requirements": [
     {
       "id": "REQ-001",
@@ -118,6 +118,87 @@
       "validation": "node tests/test_menu.js",
       "status": "PASS",
       "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-014",
+      "requirement": "Explain the relationship and distinct roles of La Bulle Bleue and APAiL.",
+      "acceptance": "Page identifies La Bulle Bleue as a local initiative launched in 2021 and APAiL as parent association created in 1995.",
+      "risk": "R2",
+      "validation": "Content/source review and structural checks",
+      "status": "PASS",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-015",
+      "requirement": "Show a broader selection of publicly reported activity examples.",
+      "acceptance": "Games, garden/outdoors, discovery/workshops and culture/music/outings are represented; dated stories are explicitly non-recurring examples.",
+      "risk": "R2",
+      "validation": "Source-to-copy review and content safeguards",
+      "status": "PASS WITH SOURCE CONFIDENCE LIMITS",
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "REQ-016",
+      "requirement": "Improve visual richness with an image-led hero, activity imagery, stories and APAiL mission illustration.",
+      "acceptance": "Hero illustration, four activity cards, dated story mosaic and parent-association visual are present.",
+      "risk": "R1",
+      "validation": "HTML image inventory and visual structure inspection",
+      "status": "IMPLEMENTED — VISUAL RUNTIME CHECK PENDING",
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "REQ-017",
+      "requirement": "Avoid unlicensed identifiable participant or press photographs.",
+      "acceptance": "Only original locally authored non-identifying SVG illustrations are used; illustrations are labelled as such.",
+      "risk": "R2",
+      "validation": "Image source inventory and HTML asset path review",
+      "status": "PASS",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-018",
+      "requirement": "Provide optimized and accessible local visual assets.",
+      "acceptance": "Informative images use local paths, useful alt text, width/height and lazy loading below fold; hero uses fetchpriority high.",
+      "risk": "R1",
+      "validation": "Static validator",
+      "status": "PASS — STATIC",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-019",
+      "requirement": "Add restrained motion with reduced-motion support.",
+      "acceptance": "IntersectionObserver reveals only when supported and reduced motion is not requested; essential content stays visible by default.",
+      "risk": "R1",
+      "validation": "Source review and Node interaction test; browser animation observation pending",
+      "status": "IMPLEMENTED — MOTION RUNTIME PENDING",
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "REQ-020",
+      "requirement": "Keep activity/story visuals accessible and non-interactive without gallery controls.",
+      "acceptance": "Images are static content with alt text; no inert click affordances, focus trap or custom lightbox.",
+      "risk": "R1",
+      "validation": "DOM semantics/source review",
+      "status": "PASS",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-021",
+      "requirement": "Protect performance and privacy while adding assets.",
+      "acceptance": "No third-party image hosts; local SVGs; lazy loading and explicit dimensions for below-fold images.",
+      "risk": "R1",
+      "validation": "Asset inventory and source scan",
+      "status": "PASS — STATIC; HOSTED METRICS PENDING",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-022",
+      "requirement": "Preserve factual content provenance and avoid unsupported outcomes.",
+      "acceptance": "Dated stories identify public-report context; international mission attributed to 2025 coverage; no names, diagnoses or medical outcomes.",
+      "risk": "R2",
+      "validation": "Research dossier and provenance ledger",
+      "status": "PASS WITH MEDIUM-CONFIDENCE SOCIAL FEED LIMIT",
+      "confidence": "MEDIUM"
     }
   ]
 }

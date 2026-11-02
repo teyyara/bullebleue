@@ -31,6 +31,7 @@
     "analytics": false,
     "third_party_tracking": false
   },
-  "current_candidate": "bullebleue-loop-002-menu-accessibility-v1",
-  "status": "LOOP 002 CHECKPOINTED; WAITING FOR CONTINUE"
+  "current_candidate": "bullebleue-loop-003-illustrated-story-redesign-v1",
+  "status": "LOOP 003 IMPLEMENTED; STATIC AND NODE CHECKS PASS; VISUAL BROWSER CHECK PENDING",
+  "contract_version": "0.2"
 }
