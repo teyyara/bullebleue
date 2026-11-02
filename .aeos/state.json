@@ -34,6 +34,8 @@
     "research_addendum": "evidence/research/keyphrase-dossier.md",
     "change_request": "evidence/change-requests/CR-001.md",
     "proposed_contract": "evidence/product-contract-proposal-0.2.json",
-    "active_contract_unchanged": "evidence/product-contract.json version 0.1"
+    "active_contract_unchanged": "evidence/product-contract.json version 0.1",
+    "administrative_checkpoint": "9a4f551387d27bd3f559aec11f5057e52a7d791a",
+    "image_rights_policy": "No direct social/press images reused without rights-holder permission and appropriate participant/guardian consent."
   }
 }

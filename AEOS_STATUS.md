@@ -58,6 +58,7 @@ Loop 002 is complete. The remote checkpoint is verified and the system is now `W
 On 2026-11-02, a request was received to expand association research and make the website more photographic, asset-rich and animated. Additional public activity evidence from September–October 2026 was found through a FindGlocal mirror of the Bulle Bleue - APAiL Facebook page. The research addendum, formal CR-001 and proposed Product Contract 0.2 are stored under `evidence/`.
 
 **CR-001 status:** FORMALLY RECORDED — proposed Product Contract 0.2 not yet active.  
+**CR-001 administrative checkpoint:** `9a4f551387d27bd3f559aec11f5057e52a7d791a`.  
 **No implementation loop started from this message.** The project remains `WAITING_FOR_CONTINUE` pending the exact standalone control command.
 
 Design/asset safety: use actual participant photos only after rights/consent confirmation; otherwise use original illustrative assets. Current address and current schedule remain unpublished pending confirmation.
