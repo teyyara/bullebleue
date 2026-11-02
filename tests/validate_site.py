@@ -59,7 +59,7 @@ def main():
     assert all(text in html for text in ("La Bulle Bleue", "APAiL", "Chalon-sur-Saône", "dès 6 ans", "apail@live.fr"))
     assert 'id="la-vie-a-la-bulle"' in html, "recent activity story section missing"
     assert "10 octobre 2026" in html and "3 octobre 2026" in html, "dated activity examples missing"
-    section_labels = re.findall(r'<div class="section-label(?:\\s[^"]*)?">\\s*<span>(\\d{2})</span>', html)
+    section_labels = re.findall(r'<div class="section-label(?:\s[^"]*)?">\s*<span>(\d{2})</span>', html)
     assert section_labels == ["01", "02", "03", "04", "05", "06"], (
         f"numbered section markers must follow reading order 01–06; got {section_labels}"
     )
