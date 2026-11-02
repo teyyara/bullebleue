@@ -6,7 +6,7 @@
   "candidate_status": "SECTION ORDER CORRECTED; SOURCE-LEVEL STRUCTURE AND NODE INTERACTION TESTS PASS; CURRENT-CANDIDATE VISUAL BROWSER REVIEW PENDING; NOT RELEASE CERTIFIED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "3768f29568e30e027b7284eae64f8d3ab9d8a83f",
+  "implementation_checkpoint_commit": "9c2d9d7d5ad05fca2579946fd19be0c3a111b08f",
   "remote_git_blob_objects": {
     "index.html": "1dde6a913e9e862f2340121f4108bccf1ab01ac0",
     "styles.css": "1b9d548642e65c09629844adad0d35c9bb62b118",
@@ -14,7 +14,7 @@
     "assets/favicon.svg": "c98beb72f9633c41915ad00e5ced621faaf17799",
     "menu_regression_test_js": "493debf5b26c01e0b166d555b4dab53845a52f28",
     "tests/test_menu.js": "051d0dec5655cbf2b2017e840c096ec4fc63fc6e",
-    "tests/validate_site.py": "76bedf8a8f1073c0662a006230e1a51f95e29ea8",
+    "tests/validate_site.py": "fb3027cae2d113ef4a1a6b71a9fc6a3b457529d0",
     "assets/illustrations/hero-community.svg": "d46b1fa640912b32259f2b0f17622e635b8bf09b",
     "assets/illustrations/games.svg": "74f82b260859fc2658939d9cc42e074fedf17544",
     "assets/illustrations/garden.svg": "4e15f67d6cebaf017411b9e49255e15aaa9ae7fa",
@@ -96,21 +96,27 @@
     "changes": [
       "Corrected the reading-order section markers from 01, 02, 03, 04, 06, 05 to 01, 02, 03, 04, 05, 06.",
       "Extended tests/validate_site.py to enforce the numbered-section sequence.",
-      "Recorded source-structure and JavaScript interaction regression evidence."
+      "Recorded source-structure and JavaScript interaction regression evidence.",
+      "Corrected the validator's whitespace regex and verified it with a focused Python fixture for plain and modifier section-label classes."
     ],
-    "implementation_checkpoint_commit": "3768f29568e30e027b7284eae64f8d3ab9d8a83f",
+    "implementation_checkpoint_commit": "9c2d9d7d5ad05fca2579946fd19be0c3a111b08f",
     "validation": {
       "source_structure": "PASS — nine sections, one h1, one main landmark, ten local informative images with alt text and intrinsic dimensions, and no broken in-page anchors.",
       "numbered_section_order": "PASS — 01 through 06 in page reading order.",
       "content_guardrails": "PASS — disputed visitor street address and historical opening hours remain absent.",
       "javascript_syntax": "PASS — exact main-branch script.js and tests/test_menu.js passed node --check.",
-      "interaction_regression": "PASS — exact main-branch script.js and tests/test_menu.js passed keyboard menu, observer lifecycle and reduced-motion tests under Node 22.16.0."
+      "interaction_regression": "PASS — exact main-branch script.js and tests/test_menu.js passed the deterministic Node menu, reveal and reduced-motion test.",
+      "validator_pattern": "PASS — corrected regex successfully matched both plain and modifier section-label class fixtures; the full validator was not run against a mounted repository tree."
     },
     "visual_review": "PENDING — the mounted screenshot files depict the previous design and the exact current main-branch HTML/CSS/assets were not available in the local browser workspace. No current-candidate screenshot is claimed.",
     "production": "NOT DEPLOYED; deployment remains unauthorized.",
     "limitations": [
-      "The updated Python structural validator was source-reviewed but not executed against a mounted full repository tree.",
+      "The updated Python structural validator was source-reviewed and its new regex tested with a focused fixture, but the full validator was not executed against a mounted full repository tree.",
       "No visual browser rendering, cross-browser, screen-reader or hosted production testing was completed."
+    ],
+    "checkpoint_history": [
+      "3768f29568e30e027b7284eae64f8d3ab9d8a83f — first section-order implementation checkpoint",
+      "9c2d9d7d5ad05fca2579946fd19be0c3a111b08f — corrected validator regex; current implementation checkpoint"
     ]
   }
 }

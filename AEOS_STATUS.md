@@ -8,7 +8,7 @@
 **Repository:** `teyyara/bullebleue`  
 **Branch:** `main` (single-branch progression)  
 **Previous verified remote head:** `e75464434ea868e93247033f4cd117450c29779b`  
-**Implementation checkpoint commit:** `3768f29568e30e027b7284eae64f8d3ab9d8a83f`  
+**Implementation checkpoint commit:** `9c2d9d7d5ad05fca2579946fd19be0c3a111b08f`  
 **State:** `WAITING_FOR_CONTINUE`
 
 ## Loop 004 objective
@@ -19,6 +19,7 @@ Correct the numbered section sequence and strengthen regression checks for the c
 
 - Corrected reading-order labels to 01–06: first contact now precedes the APAiL history section in the numeric sequence.
 - Added a structural regression assertion in `tests/validate_site.py` so numbered section labels must remain in reading order.
+- Corrected and tested the validator's whitespace-matching expression.
 - Recorded exact main-branch JavaScript interaction evidence in the runtime results.
 
 ## Validation
@@ -28,8 +29,9 @@ Correct the numbered section sequence and strengthen regression checks for the c
 - Image inventory: PASS — ten informative images, each with non-empty alt text, numeric width/height and a local asset path.
 - Navigation anchors: PASS — all in-page fragment links resolve.
 - Content guardrails: PASS — disputed visitor address and historical opening times remain unpublished.
+- Validator regex fixture: PASS — the corrected pattern recognizes both plain and modifier section-label classes.
 - Node.js 22.16.0: PASS — exact main-branch `script.js` and `tests/test_menu.js` passed syntax checks and the repository menu / IntersectionObserver / reduced-motion interaction test.
-- Python structural validator: updated and source-reviewed; it was **not** executed against a mounted full repository tree in this loop.
+- Python structural validator: updated and source-reviewed; its full run was **not** executed against a mounted full repository tree in this loop.
 - Current-candidate visual browser review: **PENDING**. The available mounted screenshots show the older, pre-Loop-003 design, so they are marked stale and are not accepted as visual proof.
 - Firefox, WebKit, actual Safari, screen-reader, Lighthouse, ZAP and hosted production checks remain outstanding.
 
