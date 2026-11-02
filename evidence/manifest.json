@@ -1,26 +1,28 @@
 {
-  "manifest_version": "0.5",
+  "manifest_version": "0.6",
   "run_id": "bullebleue-20261102-001",
-  "loop": 3,
-  "candidate": "bullebleue-loop-003-illustrated-story-redesign-v1",
-  "candidate_status": "IMPLEMENTED; STRUCTURAL SOURCE INSPECTION AND NODE INTERACTION TEST PASS; VISUAL BROWSER REVIEW PENDING; NOT RELEASE CERTIFIED",
+  "loop": 4,
+  "candidate": "bullebleue-loop-004-section-order-and-structural-qa-v1",
+  "candidate_status": "SECTION ORDER CORRECTED; SOURCE-LEVEL STRUCTURE AND NODE INTERACTION TESTS PASS; CURRENT-CANDIDATE VISUAL BROWSER REVIEW PENDING; NOT RELEASE CERTIFIED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "0c40eb7bef15569ff57a37f2491da5fb1ee9154e",
+  "implementation_checkpoint_commit": "3768f29568e30e027b7284eae64f8d3ab9d8a83f",
   "remote_git_blob_objects": {
-    "index.html": "1783bc7fa3fd8d8961b6b92596154f0d166361f1",
+    "index.html": "1dde6a913e9e862f2340121f4108bccf1ab01ac0",
     "styles.css": "1b9d548642e65c09629844adad0d35c9bb62b118",
     "script.js": "aa2ae008fdfa8c6eb1a0f6004938627104553b61",
     "assets/favicon.svg": "c98beb72f9633c41915ad00e5ced621faaf17799",
     "menu_regression_test_js": "493debf5b26c01e0b166d555b4dab53845a52f28",
     "tests/test_menu.js": "051d0dec5655cbf2b2017e840c096ec4fc63fc6e",
-    "tests/validate_site.py": "604658798b3f5d08ad87a924b1c03e52d518cb8e",
+    "tests/validate_site.py": "76bedf8a8f1073c0662a006230e1a51f95e29ea8",
     "assets/illustrations/hero-community.svg": "d46b1fa640912b32259f2b0f17622e635b8bf09b",
     "assets/illustrations/games.svg": "74f82b260859fc2658939d9cc42e074fedf17544",
     "assets/illustrations/garden.svg": "4e15f67d6cebaf017411b9e49255e15aaa9ae7fa",
     "assets/illustrations/discovery.svg": "ae5195596626a8441bda55f1a008ac3cb3e47fa8",
     "assets/illustrations/culture.svg": "c8f03c2719d743336afeb680eef96b378bac8f51",
-    "assets/illustrations/solidarity.svg": "e80525d8acc48b3d429912d6229023db54a45e2e"
+    "assets/illustrations/solidarity.svg": "e80525d8acc48b3d429912d6229023db54a45e2e",
+    "evidence/tests/static-results.json": "86ef81bb80d4e904a2d2e403b1f0c25bcd5fe843",
+    "evidence/tests/runtime-results.json": "ed09990c5d24bdeedc5f1b74f252396ce0b1a231"
   },
   "local_screenshot_evidence": {
     "desktop": {
@@ -32,7 +34,8 @@
       "file": "bullebleue-mobile.png",
       "sha256": "64ccf856a44e74f27885d8921d6c7d34128434c4d432f21a7155f744cf22cdfc",
       "not_committed": true
-    }
+    },
+    "status": "STALE / LEGACY — inspected images depict the pre-Loop-003 design and are not visual evidence for the current candidate."
   },
   "runtime_environment": {
     "browser": "Chromium 144.0.7559.96",
@@ -84,7 +87,30 @@
       "visual_browser_runtime": "NOT RUN"
     },
     "image_policy": "No social or press participant photos reused; six original local SVG illustrations are clearly labelled.",
-    "motion": "CSS hero/bubble float and progressive IntersectionObserver reveals; no reveal activation under prefers-reduced-motion."
+    "motion": "CSS hero/bubble float and progressive IntersectionObserver reveals; no reveal activation under prefers-reduced-motion.",
+    "visual_review": "NOT ACCEPTED — mounted screenshot files show the previous design, not the Loop 003 illustrated redesign."
   },
-  "remote_branch_verified_after_implementation": true
+  "remote_branch_verified_after_implementation": true,
+  "loop_004": {
+    "objective": "Correct numbered section order and strengthen regression evidence for the current editorial redesign.",
+    "changes": [
+      "Corrected the reading-order section markers from 01, 02, 03, 04, 06, 05 to 01, 02, 03, 04, 05, 06.",
+      "Extended tests/validate_site.py to enforce the numbered-section sequence.",
+      "Recorded source-structure and JavaScript interaction regression evidence."
+    ],
+    "implementation_checkpoint_commit": "3768f29568e30e027b7284eae64f8d3ab9d8a83f",
+    "validation": {
+      "source_structure": "PASS — nine sections, one h1, one main landmark, ten local informative images with alt text and intrinsic dimensions, and no broken in-page anchors.",
+      "numbered_section_order": "PASS — 01 through 06 in page reading order.",
+      "content_guardrails": "PASS — disputed visitor street address and historical opening hours remain absent.",
+      "javascript_syntax": "PASS — exact main-branch script.js and tests/test_menu.js passed node --check.",
+      "interaction_regression": "PASS — exact main-branch script.js and tests/test_menu.js passed keyboard menu, observer lifecycle and reduced-motion tests under Node 22.16.0."
+    },
+    "visual_review": "PENDING — the mounted screenshot files depict the previous design and the exact current main-branch HTML/CSS/assets were not available in the local browser workspace. No current-candidate screenshot is claimed.",
+    "production": "NOT DEPLOYED; deployment remains unauthorized.",
+    "limitations": [
+      "The updated Python structural validator was source-reviewed but not executed against a mounted full repository tree.",
+      "No visual browser rendering, cross-browser, screen-reader or hosted production testing was completed."
+    ]
+  }
 }

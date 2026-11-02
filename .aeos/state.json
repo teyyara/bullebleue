@@ -10,15 +10,15 @@
   "branch": "main",
   "branch_policy": "single branch",
   "bootstrap_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b",
-  "latest_loop_checkpoint_commit": "4443c74fd77798d412e62e429de9af52be731270",
+  "latest_loop_checkpoint_commit": "3768f29568e30e027b7284eae64f8d3ab9d8a83f",
   "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
   "status_metadata_commit": "4d42d39679137f92b248df17a642bf2235da79d7",
   "last_known_good_release_commit": null,
-  "current_loop": 3,
-  "current_candidate": "bullebleue-loop-003-illustrated-story-redesign-v1",
+  "current_loop": 4,
+  "current_candidate": "bullebleue-loop-004-section-order-and-structural-qa-v1",
   "state": "WAITING_FOR_CONTINUE",
   "remote_checkpoint_verified": true,
-  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 004.",
+  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 005.",
   "deployment": "NOT CONFIGURED / NOT AUTHORIZED",
   "paid_dependencies": [],
   "open_blockers": [
@@ -26,8 +26,7 @@
     "Domain and hosting provider are not configured; production SEO, security headers and production verification remain pending.",
     "Firefox/WebKit, actual Safari, screen-reader, Lighthouse, ZAP and Gitleaks capabilities are unavailable in this environment.",
     "Manual screen-reader assessment and final human acceptance are outstanding.",
-    "Redesigned page visual/animation browser inspection not run in Loop 003.",
-    "Loop 003 redesigned layout/animation still needs an actual browser visual review."
+    "Fresh desktop and mobile visual inspection of the current main-branch redesign remains pending; the mounted screenshots are legacy artifacts."
   ],
   "evidence_manifest_reconciliation_commit": "62348c46a35547bbcea414e8250ebdc31218b693",
   "change_request_cr001": {
@@ -42,5 +41,7 @@
     "active_contract": "evidence/product-contract.json version 0.2"
   },
   "latest_loop_3_checkpoint_commit": "0c40eb7bef15569ff57a37f2491da5fb1ee9154e",
-  "loop_003_visual_review": "NOT RUN — pending actual browser environment"
+  "loop_003_visual_review": "NOT RUN — pending actual browser environment",
+  "latest_loop_4_checkpoint_commit": "3768f29568e30e027b7284eae64f8d3ab9d8a83f",
+  "latest_loop_4_visual_review": "PENDING — current main-branch page was not rendered; mounted screenshot artifacts depict the previous design."
 }
