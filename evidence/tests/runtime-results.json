@@ -119,5 +119,40 @@
       }
     ],
     "limitation": "This is a deterministic interaction unit test, not a visual browser animation examination, screen-reader test or cross-browser run."
+  },
+  "loop_004": {
+    "test_run": "loop-004-menu-and-motion-regression",
+    "observed_at": "2026-11-02",
+    "runner": "Node.js 22.16.0",
+    "execution_mode": "The exact main-branch script.js and tests/test_menu.js blobs were copied to an isolated local test directory and executed using Node syntax checks plus the repository VM-based deterministic DOM/IntersectionObserver regression test.",
+    "status": "PASS",
+    "source_blobs": {
+      "script.js": "aa2ae008fdfa8c6eb1a0f6004938627104553b61",
+      "tests/test_menu.js": "051d0dec5655cbf2b2017e840c096ec4fc63fc6e"
+    },
+    "checks": [
+      {
+        "name": "JavaScript syntax",
+        "result": "PASS",
+        "detail": "node --check script.js and node --check tests/test_menu.js."
+      },
+      {
+        "name": "Menu behavior",
+        "result": "PASS",
+        "detail": "Escape closes only an open menu, restores trigger focus, and navigation links/outside clicks close without unexpected focus movement."
+      },
+      {
+        "name": "Progressive reveal",
+        "result": "PASS",
+        "detail": "IntersectionObserver is created only when allowed, observed elements are revealed, and each is unobserved after intersecting."
+      },
+      {
+        "name": "Reduced motion",
+        "result": "PASS",
+        "detail": "No reveal class or observer is installed when prefers-reduced-motion is requested."
+      }
+    ],
+    "command": "node --check script.js && node --check tests/test_menu.js && node tests/test_menu.js",
+    "limitation": "Deterministic JavaScript interaction coverage only; not a visual browser rendering, cross-browser, screen-reader or hosted production test."
   }
 }

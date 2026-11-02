@@ -71,5 +71,38 @@
       }
     ],
     "limitation": "Repository Python validator has been updated but was not executed against a mounted working tree in this environment. This result records direct source inspection, not a claim that python3 tests/validate_site.py was executed."
+  },
+  "loop_004": {
+    "test_run": "loop-004-section-order-and-structure",
+    "runner": "Direct inspection of the current main-branch GitHub blob plus deterministic HTML source assertions",
+    "status": "PASS",
+    "checks": [
+      {
+        "name": "Reading-order section markers",
+        "result": "PASS",
+        "detail": "Numbered section markers now appear in sequence 01, 02, 03, 04, 05, 06."
+      },
+      {
+        "name": "Document structure",
+        "result": "PASS",
+        "detail": "One h1, one main landmark and nine content sections."
+      },
+      {
+        "name": "Images",
+        "result": "PASS",
+        "detail": "Ten informative images; all have non-empty alt text, numeric width/height and local /assets paths."
+      },
+      {
+        "name": "Navigation anchors",
+        "result": "PASS",
+        "detail": "Every in-page fragment link resolves to an element ID."
+      },
+      {
+        "name": "Content safeguards",
+        "result": "PASS",
+        "detail": "Disputed visitor address and historical opening times remain absent."
+      }
+    ],
+    "limitation": "Source inspection is not a rendered visual browser review."
   }
 }
