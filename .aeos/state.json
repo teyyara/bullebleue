@@ -10,9 +10,9 @@
   "branch": "main",
   "branch_policy": "single branch",
   "bootstrap_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b",
-  "latest_loop_checkpoint_commit": "6f871f49a35fbd31cefd4d33e0cad5fc9f4e5e8f",
+  "latest_loop_checkpoint_commit": "b7be387c2ec35515e4bf129f7a25687898d89844",
   "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
-  "status_metadata_commit": "4d42d39679137f92b248df17a642bf2235da79d7",
+  "status_metadata_commit": "b7be387c2ec35515e4bf129f7a25687898d89844",
   "last_known_good_release_commit": null,
   "current_loop": 8,
   "current_candidate": "bullebleue-loop-008-source-integrity-and-interaction-verification-v1",
@@ -64,7 +64,7 @@
     "source_url": "https://www.facebook.com/p/Bulle-Bleue-APAiL-100066715807933/"
   },
   "latest_loop_7_validator_correction_commit": "6f871f49a35fbd31cefd4d33e0cad5fc9f4e5e8f",
-  "latest_loop_8_checkpoint_commit": null,
+  "latest_loop_8_checkpoint_commit": "b7be387c2ec35515e4bf129f7a25687898d89844",
   "latest_loop_8_visual_review": "NOT RUN — source assertions and Node interaction test pass; no full-page browser render/screenshot.",
   "latest_loop_8_source_audit": "PASS — exact current main-branch blobs audited.",
   "latest_loop_8_node_test": "PASS — exact current main-branch script.js and test_menu.js blobs hash-verified and executed under Node.js 22.16.0."
