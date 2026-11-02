@@ -3,55 +3,44 @@
 **Active keyphrase:** `make a full website for: Bulle Bleue à Chalon-sur-Saône`  
 **Run ID:** `bullebleue-20261102-001`  
 **Rulebook:** AEOS v3  
-**Current loop:** LOOP 004  
-**Candidate:** `bullebleue-loop-004-section-order-and-structural-qa-v1`  
+**Current loop:** LOOP 005  
+**Candidate:** `bullebleue-loop-005-tablet-responsive-and-story-layout-v1`  
 **Repository:** `teyyara/bullebleue`  
 **Branch:** `main` (single-branch progression)  
-**Previous verified remote head:** `e75464434ea868e93247033f4cd117450c29779b`  
-**Implementation checkpoint commit:** `9c2d9d7d5ad05fca2579946fd19be0c3a111b08f`  
+**Previous verified remote head:** `de1348e8b0bf43df68c12dd591322108dd302781`  
+**Implementation checkpoint commit:** `a84079ff7dbc0dbbc4ce42222687adef76a54287`  
 **State:** `WAITING_FOR_CONTINUE`
 
-## Loop 004 objective
+## Loop 005 objective
 
-Correct the numbered section sequence and strengthen regression checks for the current editorial redesign without changing verified association facts or publishing unverified venue/schedule details.
+Complete the pending browser review using the exact current main-branch source, improve the tablet experience where the browser inspection revealed a real layout weakness, and remove empty space from the activity-story feature card.
 
 ## Changes
 
-- Corrected reading-order labels to 01–06: first contact now precedes the APAiL history section in the numeric sequence.
-- Added a structural regression assertion in `tests/validate_site.py` so numbered section labels must remain in reading order.
-- Corrected and tested the validator's whitespace-matching expression.
-- Recorded exact main-branch JavaScript interaction evidence in the runtime results.
+- At 761–960 px, the hero and intro now stack so text and illustration retain usable width.
+- At 761–900 px, the main nav switches to the compact menu; existing Escape/focus behavior is retained.
+- The featured “La vie à la Bulle” story uses a balanced image/text layout on desktop and tablet and returns to a vertical card on mobile.
+- Added requirement REQ-023 to capture the responsive acceptance criteria.
+- Current candidate CSS, browser runtime evidence, static test evidence and screenshots are recorded in the manifest.
 
 ## Validation
 
-- Current-main source inspection: PASS — one h1, one main landmark and nine sections.
-- Reading-order markers: PASS — 01, 02, 03, 04, 05, 06.
-- Image inventory: PASS — ten informative images, each with non-empty alt text, numeric width/height and a local asset path.
-- Navigation anchors: PASS — all in-page fragment links resolve.
-- Content guardrails: PASS — disputed visitor address and historical opening times remain unpublished.
-- Validator regex fixture: PASS — the corrected pattern recognizes both plain and modifier section-label classes.
-- Node.js 22.16.0: PASS — exact main-branch `script.js` and `tests/test_menu.js` passed syntax checks and the repository menu / IntersectionObserver / reduced-motion interaction test.
-- Python structural validator: updated and source-reviewed; its full run was **not** executed against a mounted full repository tree in this loop.
-- Current-candidate visual browser review: **PENDING**. The available mounted screenshots show the older, pre-Loop-003 design, so they are marked stale and are not accepted as visual proof.
-- Firefox, WebKit, actual Safari, screen-reader, Lighthouse, ZAP and hosted production checks remain outstanding.
+- Full Python structural/content validator: PASS — `python3 tests/validate_site.py` returned exit code 0 and the PASS summary.
+- JavaScript syntax: PASS — `node --check script.js` and `node --check tests/test_menu.js`.
+- Menu/reveal/reduced-motion interaction test: PASS — `node tests/test_menu.js`.
+- Chromium 144 Playwright: PASS at 320, 390, 768, 900, 960, 1024 and 1440 px; also checked boundary widths 760, 761, 900, 901, 960 and 961 px.
+- No horizontal overflow at any tested width.
+- All ten local image placements loaded after continuous scrolling; all twelve reveal elements became visible; compact menu opened and Escape closed it while restoring focus; no console or page errors.
+- Fresh desktop, tablet and mobile full-page screenshots captured and hashed. They are review artifacts only and are not committed as web assets.
 
-## Open items
+## Remaining limitations
 
-- Capture and inspect fresh desktop and mobile browser screenshots of the current main-branch design.
-- Confirm documentary-photo rights and participant/guardian consent before using real member photographs.
-- Confirm current public activity venue, opening schedule and contact mailbox deliverability.
-- Obtain official logo/brand files if available.
-- Configure host/domain, canonical URL, sitemap and security headers.
-- Complete cross-browser, manual accessibility, hosted performance/security checks and final human acceptance.
-
-## Run locally
-
-```bash
-python3 -m http.server 8080
-python3 tests/validate_site.py
-node --check script.js
-node tests/test_menu.js
-```
+- Chromium only. Firefox, WebKit, actual Safari, screen-reader testing and physical-device checks remain outstanding.
+- No hosted deployment, production smoke test, Lighthouse, ZAP or hosted performance measurement.
+- Current visitor venue and weekly hours remain unverified and unpublished.
+- Contact mailbox deliverability and official logo/brand asset availability remain unconfirmed.
+- Documentary photos remain excluded until rights and participant/guardian consent are documented.
+- Final human acceptance is still outstanding.
 
 ## Deployment
 
@@ -59,4 +48,4 @@ No production deployment has been performed or authorized. The candidate is not 
 
 ## Progression control
 
-Loop 004 is implemented and checkpointed. The system is now `WAITING_FOR_CONTINUE`. Exactly one standalone `CONTINUE` authorizes Loop 005.
+Loop 005 is implemented and checkpointed. The system is now `WAITING_FOR_CONTINUE`. Exactly one standalone `CONTINUE` authorizes Loop 006.

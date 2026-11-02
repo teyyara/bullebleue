@@ -1,15 +1,15 @@
 {
-  "manifest_version": "0.6",
+  "manifest_version": "0.7",
   "run_id": "bullebleue-20261102-001",
-  "loop": 4,
-  "candidate": "bullebleue-loop-004-section-order-and-structural-qa-v1",
-  "candidate_status": "SECTION ORDER CORRECTED; SOURCE-LEVEL STRUCTURE AND NODE INTERACTION TESTS PASS; CURRENT-CANDIDATE VISUAL BROWSER REVIEW PENDING; NOT RELEASE CERTIFIED",
+  "loop": 5,
+  "candidate": "bullebleue-loop-005-tablet-responsive-and-story-layout-v1",
+  "candidate_status": "TABLET RESPONSIVENESS AND FEATURE-STORY LAYOUT REFINED; FULL STATIC VALIDATOR AND CHROMIUM RESPONSIVE/INTERACTION REVIEW PASS; CROSS-BROWSER, MANUAL A11Y AND HOSTED PRODUCTION TESTS PENDING; NOT RELEASE CERTIFIED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "9c2d9d7d5ad05fca2579946fd19be0c3a111b08f",
+  "implementation_checkpoint_commit": "a84079ff7dbc0dbbc4ce42222687adef76a54287",
   "remote_git_blob_objects": {
     "index.html": "1dde6a913e9e862f2340121f4108bccf1ab01ac0",
-    "styles.css": "1b9d548642e65c09629844adad0d35c9bb62b118",
+    "styles.css": "9f00323842b43fcc549ed26ad4e2dd69d674be20",
     "script.js": "aa2ae008fdfa8c6eb1a0f6004938627104553b61",
     "assets/favicon.svg": "c98beb72f9633c41915ad00e5ced621faaf17799",
     "menu_regression_test_js": "493debf5b26c01e0b166d555b4dab53845a52f28",
@@ -21,8 +21,9 @@
     "assets/illustrations/discovery.svg": "ae5195596626a8441bda55f1a008ac3cb3e47fa8",
     "assets/illustrations/culture.svg": "c8f03c2719d743336afeb680eef96b378bac8f51",
     "assets/illustrations/solidarity.svg": "e80525d8acc48b3d429912d6229023db54a45e2e",
-    "evidence/tests/static-results.json": "86ef81bb80d4e904a2d2e403b1f0c25bcd5fe843",
-    "evidence/tests/runtime-results.json": "ed09990c5d24bdeedc5f1b74f252396ce0b1a231"
+    "evidence/tests/static-results.json": "00785344e1d7ce783671f30ba836b72116250939",
+    "evidence/tests/runtime-results.json": "6198a7131c960724bde9a3cf6d5c46d2cc4ae13d",
+    "evidence/requirements.json": "4715f46358f6b20bd16e9f7fc8be73d8da3b111a"
   },
   "local_screenshot_evidence": {
     "desktop": {
@@ -35,12 +36,36 @@
       "sha256": "64ccf856a44e74f27885d8921d6c7d34128434c4d432f21a7155f744cf22cdfc",
       "not_committed": true
     },
-    "status": "STALE / LEGACY — inspected images depict the pre-Loop-003 design and are not visual evidence for the current candidate."
+    "status": "STALE / LEGACY — inspected images depict the pre-Loop-003 design and are not visual evidence for the current candidate.",
+    "loop_005": {
+      "status": "CURRENT CANDIDATE — local Chromium 144 screenshots; exact base HTML/JS/SVG assets and Loop 005 stylesheet",
+      "desktop_full": {
+        "file": "/mnt/data/bullebleue-loop005-visual/loop005-desktop-full.png",
+        "sha256": "0a54160947192996b4175cb81a57a881f48d12ae8caa72d9667f70552ff1874d",
+        "width": 1440,
+        "height": 7203,
+        "not_committed": true
+      },
+      "tablet_full": {
+        "file": "/mnt/data/bullebleue-loop005-visual/loop005-tablet-full.png",
+        "sha256": "10cf841769d630decfc5b587ec2cace74a873fc0edabe5dc7396173997e5f2f0",
+        "width": 768,
+        "height": 8199,
+        "not_committed": true
+      },
+      "mobile_full": {
+        "file": "/mnt/data/bullebleue-loop005-visual/loop005-mobile-full.png",
+        "sha256": "6b8861d4e7bcd494bb42292ae3dcda57328d513341847bbc53f11e4bb50157b5",
+        "width": 390,
+        "height": 10666,
+        "not_committed": true
+      }
+    }
   },
   "runtime_environment": {
     "browser": "Chromium 144.0.7559.96",
-    "runner": "Playwright",
-    "mode": "in-memory page.set_content",
+    "runner": "Playwright Python",
+    "mode": "in-memory page.set_content using exact current main HTML, script.js and SVG blobs, with candidate Loop 005 CSS",
     "timestamp": "2026-11-02"
   },
   "production_artifact_sha256": null,
@@ -117,6 +142,31 @@
     "checkpoint_history": [
       "3768f29568e30e027b7284eae64f8d3ab9d8a83f — first section-order implementation checkpoint",
       "9c2d9d7d5ad05fca2579946fd19be0c3a111b08f — corrected validator regex; current implementation checkpoint"
+    ]
+  },
+  "loop_005": {
+    "objective": "Resolve the medium-width tablet layout issues and improve the editorial story mosaic after a real candidate browser inspection.",
+    "changes": [
+      "Stack the hero and audience introduction at 761–960 px to prevent narrow desktop columns from squeezing copy and artwork.",
+      "Switch navigation to the compact keyboard-operable menu at 761–900 px.",
+      "Recompose the featured activity story into a balanced horizontal image/text card on desktop and tablet, returning to a stacked card on mobile.",
+      "Add REQ-023 and record full structural, interaction and candidate browser validation."
+    ],
+    "implementation_checkpoint_commit": "a84079ff7dbc0dbbc4ce42222687adef76a54287",
+    "validation": {
+      "static_validator": "PASS — python3 tests/validate_site.py returned 0 and printed its PASS summary.",
+      "javascript": "PASS — node --check script.js and node --check tests/test_menu.js.",
+      "node_interactions": "PASS — node tests/test_menu.js.",
+      "chromium": "PASS — Chromium 144, seven primary viewport sizes plus six breakpoint boundaries; no horizontal overflow, ten images loaded, twelve reveals visible, menu/escape works and no browser errors.",
+      "screenshots": "PASS — desktop, tablet and mobile full-page screenshots stored locally and SHA-256 recorded in this manifest."
+    },
+    "visual_review": "PASS — current main-branch HTML, JavaScript and SVG asset sources were rendered; the Loop 005 CSS refinement is visually inspected at desktop, tablet and mobile sizes.",
+    "production": "NOT DEPLOYED; deployment remains unauthorized.",
+    "limitations": [
+      "Only Chromium was tested. Firefox, WebKit and actual Safari remain outstanding.",
+      "No screen-reader, axe-core, Lighthouse, ZAP or real physical-device testing.",
+      "No hosting domain configured; no production route or hosted performance checks.",
+      "Screenshots are local review evidence and are not committed as site assets."
     ]
   }
 }

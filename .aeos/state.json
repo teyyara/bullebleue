@@ -10,15 +10,15 @@
   "branch": "main",
   "branch_policy": "single branch",
   "bootstrap_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b",
-  "latest_loop_checkpoint_commit": "9c2d9d7d5ad05fca2579946fd19be0c3a111b08f",
+  "latest_loop_checkpoint_commit": "a84079ff7dbc0dbbc4ce42222687adef76a54287",
   "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
   "status_metadata_commit": "4d42d39679137f92b248df17a642bf2235da79d7",
   "last_known_good_release_commit": null,
-  "current_loop": 4,
-  "current_candidate": "bullebleue-loop-004-section-order-and-structural-qa-v1",
+  "current_loop": 5,
+  "current_candidate": "bullebleue-loop-005-tablet-responsive-and-story-layout-v1",
   "state": "WAITING_FOR_CONTINUE",
   "remote_checkpoint_verified": true,
-  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 005.",
+  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 006.",
   "deployment": "NOT CONFIGURED / NOT AUTHORIZED",
   "paid_dependencies": [],
   "open_blockers": [
@@ -26,7 +26,8 @@
     "Domain and hosting provider are not configured; production SEO, security headers and production verification remain pending.",
     "Firefox/WebKit, actual Safari, screen-reader, Lighthouse, ZAP and Gitleaks capabilities are unavailable in this environment.",
     "Manual screen-reader assessment and final human acceptance are outstanding.",
-    "Fresh desktop and mobile visual inspection of the current main-branch redesign remains pending; the mounted screenshots are legacy artifacts."
+    "Confirm documentary-photo rights and participant/guardian consent before using real member photographs.",
+    "Confirm current contact mailbox deliverability and official logo/brand files if available."
   ],
   "evidence_manifest_reconciliation_commit": "62348c46a35547bbcea414e8250ebdc31218b693",
   "change_request_cr001": {
@@ -43,5 +44,7 @@
   "latest_loop_3_checkpoint_commit": "0c40eb7bef15569ff57a37f2491da5fb1ee9154e",
   "loop_003_visual_review": "NOT RUN — pending actual browser environment",
   "latest_loop_4_checkpoint_commit": "9c2d9d7d5ad05fca2579946fd19be0c3a111b08f",
-  "latest_loop_4_visual_review": "PENDING — current main-branch page was not rendered; mounted screenshot artifacts depict the previous design."
+  "latest_loop_4_visual_review": "PENDING — current main-branch page was not rendered; mounted screenshot artifacts depict the previous design.",
+  "latest_loop_5_checkpoint_commit": "a84079ff7dbc0dbbc4ce42222687adef76a54287",
+  "latest_loop_5_visual_review": "PASS — current main-branch HTML/JS/SVG assets rendered with Chromium 144; candidate CSS responsive refinement reviewed at seven viewports plus six breakpoint boundaries."
 }
