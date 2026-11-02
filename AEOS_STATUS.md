@@ -3,53 +3,62 @@
 **Active keyphrase:** make a full website for: Bulle Bleue à Chalon-sur-Saône  
 **Run ID:** bullebleue-20261102-001  
 **Rulebook:** AEOS v3  
-**Current loop:** LOOP 007  
-**Candidate:** bullebleue-loop-007-facebook-extraction-content-v1  
+**Current loop:** LOOP 008  
+**Candidate:** bullebleue-loop-008-source-integrity-and-interaction-verification-v1  
 **Repository:** teyyara/bullebleue  
 **Branch:** main (single-branch progression)  
-**Parent at loop start:** b7ae5e67ee99027ba66ee48fc031a9ab1eaa0866  
-**Implementation checkpoint:** 6f871f49a35fbd31cefd4d33e0cad5fc9f4e5e8f  
+**Starting remote head:** 87ea22114ddebf210bd6ea0f205d6e77517ac604  
+**Code change:** None — QA/evidence-only loop  
 **State:** WAITING_FOR_CONTINUE
 
 ## Objective
 
-Replace the previous generic website content with a concise, source-led presentation based on the user-supplied `Bulle_Bleue_APAiL_contenu_facebook.md` file, which identifies the exact Bulle Bleue – APAiL Facebook page.
+Close the remaining Loop 007 verification gap by reading the exact current main-branch source files, auditing the content and responsive CSS declarations, and running the exact remote JavaScript interaction regression.
 
-## Source reviewed
+## Results
 
-- File: `Bulle_Bleue_APAiL_contenu_facebook.md`
-- Blob at loop start: `dec4ee6c3f4e0ea7c092ebe1760c4a35033e05bf`
-- Length: 816 lines / 35,152 characters
-- Extraction date stated in file: 2 November 2026
-- Coverage: page information and text publications from May 2023 to October 2026
-- Exact Facebook page: https://www.facebook.com/p/Bulle-Bleue-APAiL-100066715807933/
+### Source-level content and integrity audit — PASS
 
-## Changes
+Read-only assertions against the current GitHub blobs confirmed:
 
-- Rebuilt the page into six sections: accueil, publics, activités, actualités, APAiL and contact.
-- Added the two audience groups from the extraction: children over 6 on Wednesday afternoons; autonomous teenagers and adults on Saturday afternoons.
-- Displayed the stated 14 h 30 / 15 h times with a source/date note and a visible request to confirm before travelling.
-- Added 30 Rempart Saint-Vincent, 71100 Chalon-sur-Saône, plus the garden access via rue Leriche near bastion Saint-Pierre. The page attributes these details to the Facebook presentation dated 11 March 2024 and asks visitors to confirm.
-- Replaced generic activity descriptions with actual examples from the extraction: games, baby-foot, music, percussion, singing, arts, drawing, cooking, garden, outings, Ciné Relax, bowling, mediation animale and parent cafés.
-- Added four dated highlights from September/October 2026.
-- Expanded APAiL's 1995 history, the Bulle Bleue 2021 launch, reported solidarity activity in Sapala/Burkina Faso and Morocco, the volunteer name "les Bleuettes", and organisations cited in posts.
-- Historical projects and cited organisations are explicitly not presented as necessarily current/contractual.
-- No participant names or participant photos are used. The BB monogram is still provisional pending the official logo assets.
+- French document, one H1, one main landmark, six sections in the expected order, and all in-page links resolve.
+- The exact 816-line user-supplied Facebook extraction and 2 November 2026 source date remain present.
+- All required page content is present: both audience groups, Wednesday and Saturday times, venue/garden location, activity examples, four dated highlights, APAiL history, solidarity examples, Les Bleuettes and cited organisations.
+- Venue/time source-date note and confirmation request remain visible.
+- Activities are explicitly examples, not a fixed weekly promise.
+- Historic international projects are not represented as necessarily active; cited organisations are a non-exhaustive list.
+- The exact Facebook URL appears in three places: JSON-LD sameAs, contact and footer; JSON-LD parses.
+- No photo placements were introduced; local root-relative references resolve to the stylesheet, script and favicon.
+- Responsive CSS declarations exist for audience cards, activity grid (3 → 2 → 1), news grid (4 → 2 → 1), mobile association stacking and reduced-motion preferences.
 
-## Validation status
+This is source inspection, not rendered layout measurement.
 
-- The source file was read in full and content was reviewed against it.
-- `tests/validate_site.py` was updated with the new six-section and source-content guardrails, but it was **not executed** during this isolated GitHub editing session.
-- JavaScript was not changed; Loop 006 Node test results are not presented as a Loop 007 rerun.
-- Chromium/browser visual review and screenshots were **not run** for Loop 007. The page is longer and must be checked locally at mobile, tablet and desktop widths.
-- Cross-browser, screen-reader, manual accessibility, Lighthouse, ZAP and hosted performance checks remain outstanding.
+### JavaScript syntax and menu regression — PASS
+
+Exact remote Git blobs were copied to a local isolated test directory and their SHA-1s matched the GitHub source:
+
+- script.js: aa2ae008fdfa8c6eb1a0f6004938627104553b61
+- tests/test_menu.js: 051d0dec5655cbf2b2017e840c096ec4fc63fc6e
+
+Node.js 22.16.0 commands passed:
+
+    node --check script.js
+    node --check tests/test_menu.js
+    node tests/test_menu.js
+
+Result: menu keyboard/outside-click behavior, progressive reveal and reduced-motion fallback all pass.
+
+## Remaining validation limitations
+
+- The Python HTMLParser validator tests/validate_site.py was not executed against a complete local checkout.
+- Full-page Chromium/Playwright review of the current six-section page was not run. No rendered overflow pass, screenshot or browser-error claim is made.
+- CSS responsive breakpoints were inspected in source only; mobile/tablet/desktop rendered composition remains unverified.
+- Firefox/WebKit/Safari, manual screen-reader/assistive-tech checks, physical-device tests, Lighthouse, ZAP and hosted checks remain outstanding.
 - Mailbox deliverability remains untested.
+- Current operational accuracy of venue and timetable still needs confirmation from APAiL.
+- Official logo/photos remain pending; no unapproved participant image is used.
 - No production deployment has been performed or authorized.
-
-## Operational information caveat
-
-The Wednesday/Saturday times and local address/garden access are accurately transcribed from the supplied extraction, but the source presentation is dated 11 March 2024. Current validity must be confirmed with APAiL. The page makes that caveat visible.
 
 ## Progression control
 
-Loop 007 is committed to `main`. A small follow-up commit aligned the validator wording assertions with the actual page copy; the validator remains not executed. The repository is now in `WAITING_FOR_CONTINUE`. Exactly one standalone `CONTINUE` authorizes Loop 008.
+Loop 008 is a QA/evidence-only checkpoint; no product code changed. The remote repository is set to WAITING_FOR_CONTINUE. Exactly one standalone CONTINUE authorizes Loop 009.

@@ -1,9 +1,9 @@
 {
-  "manifest_version": "0.9",
+  "manifest_version": "1.0",
   "run_id": "bullebleue-20261102-001",
-  "loop": 7,
-  "candidate": "bullebleue-loop-007-facebook-extraction-content-v1",
-  "candidate_status": "WEBSITE CONTENT REPLACED WITH USER-SUPPLIED EXACT-PAGE FACEBOOK EXTRACTION; SOURCE/CONTENT VALIDATOR UPDATED BUT NOT EXECUTED; LOOP 007 CHROMIUM REVIEW NOT RUN; NO DEPLOYMENT",
+  "loop": 8,
+  "candidate": "bullebleue-loop-008-source-integrity-and-interaction-verification-v1",
+  "candidate_status": "LOOP 007 CONTENT SOURCE / HTML STRUCTURE / CONTENT CAVEATS / RESPONSIVE CSS DECLARATIONS AUDITED; EXACT REMOTE NODE MENU TEST PASSES; PYTHON VALIDATOR NOT RUN; FULL-PAGE CHROMIUM REVIEW NOT RUN; NOT RELEASE CERTIFIED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
   "implementation_checkpoint_commit": "6f871f49a35fbd31cefd4d33e0cad5fc9f4e5e8f",
@@ -241,5 +241,36 @@
       "No browser/visual validation in Loop 007; previous loop screenshots do not validate the new page."
     ],
     "production": "NOT DEPLOYED; DEPLOYMENT NOT AUTHORIZED"
+  },
+  "loop_008": {
+    "objective": "Close the Loop 007 verification gap with exact remote source audits and execution of the current Node menu/reduced-motion regression.",
+    "code_changes": "NONE — QA/evidence-only loop.",
+    "source_audit": {
+      "status": "PASS",
+      "method": "Read-only checks against exact current main-branch files.",
+      "checks": "Six-section structure, anchors, source extraction/date, content, operational/historical caveats, Facebook links/JSON-LD, zero images, local paths and CSS responsive declarations."
+    },
+    "node_regression": {
+      "status": "PASS",
+      "node_version": "22.16.0",
+      "source_blobs": {
+        "script.js": "aa2ae008fdfa8c6eb1a0f6004938627104553b61",
+        "tests/test_menu.js": "051d0dec5655cbf2b2017e840c096ec4fc63fc6e"
+      },
+      "commands": [
+        "node --check script.js",
+        "node --check tests/test_menu.js",
+        "node tests/test_menu.js"
+      ],
+      "output": "PASS: menu keyboard/outside-click behavior; scroll reveals; reduced-motion fallback."
+    },
+    "python_validator": "NOT RUN — full local checkout unavailable.",
+    "chromium": "NOT RUN — no full-page Loop 008 render, responsive overflow sweep or screenshots.",
+    "production": "NOT DEPLOYED; deployment remains unauthorized.",
+    "limitations": [
+      "CSS breakpoints checked in source but not rendered.",
+      "No Loop 008 screenshots.",
+      "Previous-loop screenshots do not validate the current page."
+    ]
   }
 }

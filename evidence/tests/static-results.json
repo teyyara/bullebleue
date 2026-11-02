@@ -215,5 +215,59 @@
       }
     ],
     "limitation": "No executed Python PASS is claimed. Run python3 tests/validate_site.py after checkout."
+  },
+  "loop_008": {
+    "test_run": "loop-008-source-integrity-audit",
+    "observed_at": "2026-11-02",
+    "runner": "Read-only JavaScript assertions against exact current GitHub file contents.",
+    "status": "PASS — CONTENT, STRUCTURE, PROVENANCE AND CSS SOURCE ASSERTIONS",
+    "source_blobs": {
+      "index.html": "5b5e1b4a3b27afd701dfa449a7263502980ecb59",
+      "styles.css": "565c505813dd4211243c6ff0c15094a4ef902295",
+      "script.js": "aa2ae008fdfa8c6eb1a0f6004938627104553b61",
+      "tests/validate_site.py": "7620455ffb56da5dacff8b449fd06b2bf5eb9bdc",
+      "Bulle_Bleue_APAiL_contenu_facebook.md": "dec4ee6c3f4e0ea7c092ebe1760c4a35033e05bf"
+    },
+    "checks": [
+      {
+        "name": "Document structure",
+        "result": "PASS",
+        "detail": "French lang, one h1, one main landmark, exactly six sections in intended order, all fragment targets resolve."
+      },
+      {
+        "name": "Local asset references",
+        "result": "PASS",
+        "detail": "All root-relative HTML references resolve to styles.css, script.js or assets/favicon.svg; no informative image placements."
+      },
+      {
+        "name": "Facebook content provenance",
+        "result": "PASS",
+        "detail": "The 816-line user-supplied source identifies the exact Facebook URL and extraction date; all required audience, time, activity, recent-post, history, solidarity, volunteer and cited-organisation items appear."
+      },
+      {
+        "name": "Operational and historical caveats",
+        "result": "PASS",
+        "detail": "Venue/time are linked to the 11 March 2024 presentation and visitors are asked to confirm; activities are examples, not fixed promises; old projects are not claimed as currently active; cited organisations are a non-exhaustive list."
+      },
+      {
+        "name": "External links and structured data",
+        "result": "PASS",
+        "detail": "The exact Facebook URL appears three times (JSON-LD sameAs, contact, footer); JSON-LD parses and sameAs matches."
+      },
+      {
+        "name": "Responsive CSS declarations",
+        "result": "PASS — SOURCE ONLY",
+        "detail": "Audience cards are two-column desktop and one-column mobile; activity grid 3→2→1; news grid 4→2→1; association stacks at mobile; reduced-motion rule exists. No rendered layout/overflow claim."
+      },
+      {
+        "name": "Python validator",
+        "result": "NOT RUN",
+        "detail": "tests/validate_site.py source was reviewed; execution against a complete checkout remains outstanding."
+      }
+    ],
+    "limitations": [
+      "Source-level checks are not a DOM parser or visual browser review.",
+      "No full-page browser screenshots or rendered overflow measurements were produced."
+    ]
   }
 }

@@ -434,5 +434,52 @@
       "Loop 006 browser results do not validate the new Loop 007 page.",
       "No hosted or production route was accessed."
     ]
+  },
+  "loop_008": {
+    "test_run": "loop-008-node-menu-motion-regression",
+    "observed_at": "2026-11-02",
+    "runner": "Node.js 22.16.0 in local container",
+    "execution_mode": "Exact current remote script.js and tests/test_menu.js copied to an isolated local worktree; both matched their Git blob SHA-1 before tests.",
+    "status": "PASS",
+    "source_blobs": {
+      "script.js": "aa2ae008fdfa8c6eb1a0f6004938627104553b61",
+      "tests/test_menu.js": "051d0dec5655cbf2b2017e840c096ec4fc63fc6e"
+    },
+    "commands": [
+      "node --check script.js",
+      "node --check tests/test_menu.js",
+      "node tests/test_menu.js"
+    ],
+    "checks": [
+      {
+        "name": "JavaScript syntax",
+        "result": "PASS",
+        "detail": "node --check succeeded for exact script.js and test_menu.js blobs."
+      },
+      {
+        "name": "Menu keyboard interaction",
+        "result": "PASS",
+        "detail": "Escape when closed is inert; Escape when open closes the menu and restores focus exactly once."
+      },
+      {
+        "name": "Navigation and outside click",
+        "result": "PASS",
+        "detail": "Selecting a navigation link or clicking outside closes the menu without unwanted focus movement."
+      },
+      {
+        "name": "Progressive reveal",
+        "result": "PASS",
+        "detail": "IntersectionObserver is installed only when motion is allowed, reveals observed nodes and unobserves them after intersection."
+      },
+      {
+        "name": "Reduced motion",
+        "result": "PASS",
+        "detail": "When prefers-reduced-motion matches, no reveal observer or initial hidden state is installed."
+      }
+    ],
+    "limitations": [
+      "Deterministic Node interaction test, not a real browser or screen-reader test.",
+      "Loop 008 did not render the full HTML/CSS page in Chromium."
+    ]
   }
 }

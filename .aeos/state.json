@@ -14,23 +14,24 @@
   "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
   "status_metadata_commit": "4d42d39679137f92b248df17a642bf2235da79d7",
   "last_known_good_release_commit": null,
-  "current_loop": 7,
-  "current_candidate": "bullebleue-loop-007-facebook-extraction-content-v1",
+  "current_loop": 8,
+  "current_candidate": "bullebleue-loop-008-source-integrity-and-interaction-verification-v1",
   "state": "WAITING_FOR_CONTINUE",
   "remote_checkpoint_verified": true,
-  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 008.",
+  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 009.",
   "deployment": "NOT CONFIGURED / NOT AUTHORIZED",
   "paid_dependencies": [],
   "open_blockers": [
-    "The user-supplied Facebook extraction is used as the primary source, but the live Facebook page was not independently retrieved during Loop 007.",
+    "The user-supplied Facebook extraction remains the primary content source; the live Facebook page was not independently re-fetched in Loop 008.",
     "The Wednesday 14:30 / Saturday 15:00 schedule and 30 Rempart Saint-Vincent / rue Leriche venue details are transcribed from the Facebook presentation dated 11 March 2024; current operational validity requires confirmation by APAiL.",
     "The official logo and original photos have not yet been added; the BB monogram and visual system remain provisional.",
-    "No participant names or photos are published; any future people photography requires appropriate rights-holder permission and participant/guardian consent.",
+    "No participant names or photos are published; any future people photography requires rights-holder permission and participant/guardian consent.",
     "The published apail@live.fr mailbox deliverability remains untested.",
-    "Loop 007 static validator and browser/visual review were not executed in this connector session.",
+    "The Python HTMLParser validator tests/validate_site.py was not executed against a full local repository checkout.",
+    "Full-page Chromium/Playwright visual review of the current page is outstanding; no rendered overflow pass or screenshot is claimed.",
     "Firefox/WebKit/Safari, manual screen-reader, physical-device, Lighthouse, ZAP and hosted performance/production checks remain outstanding.",
     "Domain and hosting target are not configured; deployment remains unauthorized.",
-    "Final human acceptance remains outstanding."
+    "Final human acceptance is outstanding."
   ],
   "evidence_manifest_reconciliation_commit": "62348c46a35547bbcea414e8250ebdc31218b693",
   "change_request_cr001": {
@@ -62,5 +63,9 @@
     "characters": 35152,
     "source_url": "https://www.facebook.com/p/Bulle-Bleue-APAiL-100066715807933/"
   },
-  "latest_loop_7_validator_correction_commit": "6f871f49a35fbd31cefd4d33e0cad5fc9f4e5e8f"
+  "latest_loop_7_validator_correction_commit": "6f871f49a35fbd31cefd4d33e0cad5fc9f4e5e8f",
+  "latest_loop_8_checkpoint_commit": null,
+  "latest_loop_8_visual_review": "NOT RUN — source assertions and Node interaction test pass; no full-page browser render/screenshot.",
+  "latest_loop_8_source_audit": "PASS — exact current main-branch blobs audited.",
+  "latest_loop_8_node_test": "PASS — exact current main-branch script.js and test_menu.js blobs hash-verified and executed under Node.js 22.16.0."
 }
