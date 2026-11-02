@@ -9,16 +9,22 @@
   "repository": "teyyara/bullebleue",
   "branch": "main",
   "branch_policy": "single branch",
-  "last_known_good_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b (bootstrap root only)",
+  "bootstrap_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b",
+  "latest_loop_checkpoint_commit": "4443c74fd77798d412e62e429de9af52be731270",
+  "evidence_manifest_commit": "9db926175299aa4d7496a734da7f2aad35916be1",
+  "status_metadata_commit": "c8b6e3ecb230f6209e05e26e617ca52301b69891",
+  "last_known_good_release_commit": null,
   "current_loop": 1,
   "current_candidate": "bullebleue-loop-001-static-site-v1",
-  "state": "LOOP_001_CHECKPOINT_PENDING",
-  "next_action": "Verify remote checkpoint, finalize AEOS status, then wait for standalone CONTINUE.",
+  "state": "WAITING_FOR_CONTINUE",
+  "remote_checkpoint_verified": true,
+  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 002.",
   "deployment": "NOT CONFIGURED / NOT AUTHORIZED",
   "paid_dependencies": [],
   "open_blockers": [
-    "Current activity venue and weekly hours are unknown/conflicting and deliberately omitted.",
-    "Domain and hosting provider are not configured; production SEO and security headers are pending.",
-    "Firefox/WebKit, screen-reader, Lighthouse, ZAP and production validation capabilities are unavailable."
+    "Current exact activity venue and weekly hours are unknown/conflicting and deliberately omitted from public content.",
+    "Domain and hosting provider are not configured; production SEO, security headers and production verification remain pending.",
+    "Firefox/WebKit, actual Safari, screen-reader, Lighthouse, ZAP and Gitleaks capabilities are unavailable in this environment.",
+    "Manual screen-reader assessment and final human acceptance are outstanding."
   ]
 }
