@@ -1,6 +1,6 @@
 {
-  "requirements_version": "0.3",
-  "candidate": "bullebleue-loop-003-illustrated-story-redesign-v1",
+  "requirements_version": "0.4",
+  "candidate": "bullebleue-loop-005-tablet-responsive-and-story-layout-v1",
   "requirements": [
     {
       "id": "REQ-001",
@@ -199,6 +199,15 @@
       "validation": "Research dossier and provenance ledger",
       "status": "PASS WITH MEDIUM-CONFIDENCE SOCIAL FEED LIMIT",
       "confidence": "MEDIUM"
+    },
+    {
+      "id": "REQ-023",
+      "requirement": "Maintain a legible, coherent and navigable layout across medium-width tablet viewports.",
+      "acceptance": "At 761–960 px the hero and audience introduction use a readable stacked layout; at 761–900 px navigation switches to the keyboard-operable compact menu; the activity-story feature has balanced image/text content without a large empty cell; no horizontal overflow at the tested viewport matrix.",
+      "risk": "R1",
+      "validation": "Chromium 144 Playwright viewport sweep, screenshot review, menu/escape interaction and existing static validator.",
+      "status": "PASS — CANDIDATE-LEVEL CHROMIUM",
+      "confidence": "HIGH"
     }
   ]
 }

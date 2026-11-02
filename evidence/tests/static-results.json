@@ -104,5 +104,37 @@
       }
     ],
     "limitation": "Source inspection is not a rendered visual browser review."
+  },
+  "loop_005": {
+    "test_run": "loop-005-static-and-source-validation",
+    "observed_at": "2026-11-02",
+    "runner": "Python HTMLParser validator executed against a reconstructed candidate worktree using current main Git blobs and the updated candidate stylesheet.",
+    "status": "PASS",
+    "checks": [
+      {
+        "name": "Full structural/content validator",
+        "result": "PASS",
+        "command": "python3 tests/validate_site.py",
+        "detail": "French document, one h1, one main landmark, ordered section labels, valid anchors, local asset paths, informative image alt/dimensions, no disputed visitor address or stale hours, reduced-motion support."
+      },
+      {
+        "name": "JavaScript syntax",
+        "result": "PASS",
+        "command": "node --check script.js && node --check tests/test_menu.js",
+        "detail": "Both commands exited 0."
+      },
+      {
+        "name": "Menu and motion regression",
+        "result": "PASS",
+        "command": "node tests/test_menu.js",
+        "detail": "Keyboard Escape/focus, menu link/outside click, IntersectionObserver lifecycle and reduced-motion fallback passed."
+      },
+      {
+        "name": "Responsive layout source",
+        "result": "PASS",
+        "detail": "Stylesheet adds browser-reviewed 761–960 px stacked layout, 761–900 px compact navigation and balanced activity-story feature layout."
+      }
+    ],
+    "limitation": "Candidate-level checks only; no hosted deployment or production route was used."
   }
 }

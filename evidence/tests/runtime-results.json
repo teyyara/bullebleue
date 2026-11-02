@@ -154,5 +154,156 @@
     ],
     "command": "node --check script.js && node --check tests/test_menu.js && node tests/test_menu.js",
     "limitation": "Deterministic JavaScript interaction coverage only; not a visual browser rendering, cross-browser, screen-reader or hosted production test."
+  },
+  "loop_005": {
+    "test_run": "loop-005-chromium-responsive-visual-review",
+    "observed_at": "2026-11-02",
+    "browser": "Chromium 144.0.7559.96",
+    "runner": "Python Playwright in Linux container",
+    "execution_mode": "page.set_content with exact current main HTML, script.js and six local SVGs (source blobs verified), plus Loop 005 candidate stylesheet. Resources were inlined locally; no external host or network used.",
+    "status": "PASS — CANDIDATE-LEVEL BROWSER REVIEW",
+    "viewports": [
+      {
+        "width": 320,
+        "height": 760,
+        "horizontal_overflow": false,
+        "images_loaded": 10,
+        "images_total": 10,
+        "reveals_visible": 12,
+        "reveals_total": 12,
+        "compact_menu": "PASS"
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "horizontal_overflow": false,
+        "images_loaded": 10,
+        "images_total": 10,
+        "reveals_visible": 12,
+        "reveals_total": 12,
+        "compact_menu": "PASS"
+      },
+      {
+        "width": 768,
+        "height": 900,
+        "horizontal_overflow": false,
+        "images_loaded": 10,
+        "images_total": 10,
+        "reveals_visible": 12,
+        "reveals_total": 12,
+        "compact_menu": "PASS"
+      },
+      {
+        "width": 900,
+        "height": 900,
+        "horizontal_overflow": false,
+        "images_loaded": 10,
+        "images_total": 10,
+        "reveals_visible": 12,
+        "reveals_total": 12,
+        "compact_menu": "PASS"
+      },
+      {
+        "width": 960,
+        "height": 900,
+        "horizontal_overflow": false,
+        "images_loaded": 10,
+        "images_total": 10,
+        "reveals_visible": 12,
+        "reveals_total": 12
+      },
+      {
+        "width": 1024,
+        "height": 900,
+        "horizontal_overflow": false,
+        "images_loaded": 10,
+        "images_total": 10,
+        "reveals_visible": 12,
+        "reveals_total": 12
+      },
+      {
+        "width": 1440,
+        "height": 1000,
+        "horizontal_overflow": false,
+        "images_loaded": 10,
+        "images_total": 10,
+        "reveals_visible": 12,
+        "reveals_total": 12
+      }
+    ],
+    "boundary_viewports": [
+      760,
+      761,
+      900,
+      901,
+      960,
+      961
+    ],
+    "checks": [
+      {
+        "name": "Responsive overflow",
+        "result": "PASS",
+        "detail": "No horizontal overflow at all seven primary viewports and six breakpoint boundary widths."
+      },
+      {
+        "name": "Local illustrations",
+        "result": "PASS",
+        "detail": "All ten image placements loaded after natural scrolling, including lazy-loaded content."
+      },
+      {
+        "name": "Progressive reveal",
+        "result": "PASS",
+        "detail": "All twelve reveal targets entered the visible state during continuous scrolling."
+      },
+      {
+        "name": "Compact navigation",
+        "result": "PASS",
+        "detail": "At 320, 390, 768 and 900 px the menu opens; Escape closes it and restores focus to the trigger."
+      },
+      {
+        "name": "Console and page errors",
+        "result": "PASS",
+        "detail": "No console errors or uncaught page errors were observed."
+      },
+      {
+        "name": "Tablet composition",
+        "result": "PASS",
+        "detail": "At 768 px and 960 px, hero and introduction stack into readable full-width sections."
+      },
+      {
+        "name": "Story mosaic",
+        "result": "PASS",
+        "detail": "Featured story uses a balanced image-and-copy split without the previous empty two-row span."
+      }
+    ],
+    "limitations": [
+      "Candidate-level in-memory browser review, not a hosted or production route smoke test.",
+      "Only Chromium tested; Firefox, WebKit and actual Safari remain outstanding.",
+      "No screen-reader, axe-core, Lighthouse, ZAP or real mobile-device assessment.",
+      "Screenshots are local, not committed as site assets."
+    ],
+    "screenshots": {
+      "desktop_full": {
+        "file": "/mnt/data/bullebleue-loop005-visual/loop005-desktop-full.png",
+        "sha256": "0a54160947192996b4175cb81a57a881f48d12ae8caa72d9667f70552ff1874d",
+        "width": 1440,
+        "height": 7203,
+        "committed": false
+      },
+      "tablet_full": {
+        "file": "/mnt/data/bullebleue-loop005-visual/loop005-tablet-full.png",
+        "sha256": "10cf841769d630decfc5b587ec2cace74a873fc0edabe5dc7396173997e5f2f0",
+        "width": 768,
+        "height": 8199,
+        "committed": false
+      },
+      "mobile_full": {
+        "file": "/mnt/data/bullebleue-loop005-visual/loop005-mobile-full.png",
+        "sha256": "6b8861d4e7bcd494bb42292ae3dcda57328d513341847bbc53f11e4bb50157b5",
+        "width": 390,
+        "height": 10666,
+        "committed": false
+      }
+    }
   }
 }
