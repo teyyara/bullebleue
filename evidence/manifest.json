@@ -1,20 +1,20 @@
 {
-  "manifest_version": "1.1",
+  "manifest_version": "1.2",
   "run_id": "bullebleue-20261102-001",
   "loop": 9,
   "candidate": "bullebleue-loop-009-multipage-professional-information-architecture-v1",
-  "candidate_status": "SIX-PAGE STATIC INFORMATION ARCHITECTURE IMPLEMENTED; CONCISE HOMEPAGE; COMMON ACCESSIBLE NAVIGATION; SOURCE VALIDATION PENDING; FULL-PAGE BROWSER REVIEW NOT RUN; NOT RELEASE CERTIFIED",
+  "candidate_status": "SIX-PAGE STATIC SITE IMPLEMENTED; REMOTE SOURCE STRUCTURE/CONTENT AUDIT PASS; EXACT REMOTE NODE MENU TEST PASS; PYTHON VALIDATOR NOT RUN; FULL-PAGE CHROMIUM REVIEW NOT RUN; NOT RELEASE CERTIFIED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "b7be387c2ec35515e4bf129f7a25687898d89844",
+  "implementation_checkpoint_commit": "0659dae09349d277844b14ea9a49d3a2ea19639a",
   "remote_git_blob_objects": {
-    "index.html": "5b5e1b4a3b27afd701dfa449a7263502980ecb59",
-    "styles.css": "565c505813dd4211243c6ff0c15094a4ef902295",
+    "index.html": "d3dab53aa6e7ded74032960b88198589a860806c",
+    "styles.css": "1b8bacf0d2d92a3a3bc88c33bb788b02f133b612",
     "script.js": "aa2ae008fdfa8c6eb1a0f6004938627104553b61",
     "assets/favicon.svg": "c98beb72f9633c41915ad00e5ced621faaf17799",
     "menu_regression_test_js": "493debf5b26c01e0b166d555b4dab53845a52f28",
     "tests/test_menu.js": "051d0dec5655cbf2b2017e840c096ec4fc63fc6e",
-    "tests/validate_site.py": "7620455ffb56da5dacff8b449fd06b2bf5eb9bdc",
+    "tests/validate_site.py": "8e348dea9e64d83107fdfc8c77df17ff9bea63f4",
     "assets/illustrations/hero-community.svg": "d46b1fa640912b32259f2b0f17622e635b8bf09b",
     "assets/illustrations/games.svg": "74f82b260859fc2658939d9cc42e074fedf17544",
     "assets/illustrations/garden.svg": "4e15f67d6cebaf017411b9e49255e15aaa9ae7fa",
@@ -29,10 +29,15 @@
     "evidence/decisions.json": "9b6e56b558e3c414748a8fdf1ac0b34bd89d43ab",
     "evidence/content-provenance.json": "ae0a0827f319d74e629525eaec19dde879f16cee",
     "evidence/visual/asset-register.json": "45f1c0b602a8ef80f69c8b332f86ca4a2a9d5eb9",
-    "README.md": "816a17b31922662b79dbbb012af0483f426b5d2d",
+    "README.md": "9f24615e56cfb1e0ebe6341bbd5019d1a2525acc",
     "evidence/change-requests/CR-002.md": "2750f8218da89eb4dfe79b4f8ae7f8fcc7dc87a5",
     "evidence/change-requests/CR-003.md": "be518026d30c328dc3da41f7f86704bb1ac80041",
-    "evidence/assumptions.json": "f1e4de524f240d1c707ec4fc73368372cf62eb77"
+    "evidence/assumptions.json": "f1e4de524f240d1c707ec4fc73368372cf62eb77",
+    "la-bulle.html": "2485ab59e195f2d14524c5258de5c9a3270e893e",
+    "activites.html": "742dc68ab0a90f4ad615b36b3b764da9a0ead652",
+    "actualites.html": "008138d75289cf94bfe6322e1bc069ab6a4863cf",
+    "apail.html": "fd1e7335556762f2219ba83633c87a4af36b140e",
+    "contact.html": "da48fd0cbd8bd372f024d47489fe0de22a7a89f5"
   },
   "local_screenshot_evidence": {
     "loop_006": {
@@ -275,25 +280,27 @@
     "metadata_checkpoint_commit": "b7be387c2ec35515e4bf129f7a25687898d89844"
   },
   "loop_009": {
-    "objective": "Reorganise the website into a professional multi-page structure, with the home page serving as an overview/navigation hub.",
+    "objective": "Reorganise La Bulle Bleue as a professional static multi-page site, with a concise homepage and dedicated content destinations.",
     "changes": [
-      "Added la-bulle.html, activites.html, actualites.html, apail.html and contact.html; rebuilt index.html as a concise landing page.",
-      "Moved audience/time details, activity catalogue, dated highlights, APAiL history/solidarity/volunteer/organisations and access/contact details to their respective pages.",
-      "Added identical six-destination navigation on all pages; current route is identified with aria-current=page.",
-      "Added page-specific titles/descriptions, breadcrumbs on interior pages, and common footer.",
-      "Added responsive page layouts and a common compact navigation breakpoint at 980 px."
+      "Added la-bulle.html, activites.html, actualites.html, apail.html and contact.html; index.html is now a short overview.",
+      "Moved the audience/session details, activity catalogue, dated updates, APAiL history/solidarity/volunteers/cited organisations and access/contact details to dedicated pages.",
+      "Created the same six-destination navigation/footer on every page and marks the active route with aria-current=page.",
+      "Added page-specific titles/descriptions and breadcrumbs on interior pages.",
+      "Added responsive layouts and a compact menu at widths <=980px."
     ],
     "validation": {
-      "structural_validator": "UPDATED — EXECUTION PENDING",
-      "source_audit": "IMPLEMENTATION CONTENT REVIEWED",
-      "node_menu_tests": "UNCHANGED; existing script.js/test_menu.js baseline remains valid but not rerun in Loop 009.",
+      "source_audit": "PASS — exact current remote page/CSS blobs checked; six pages, nav sequence/current state, metadata, links, content allocation and caveats.",
+      "node": "PASS — exact remote script.js and tests/test_menu.js hashes matched and Node syntax/menu/reduced-motion tests passed.",
+      "python_validator": "NOT RUN",
       "chromium": "NOT RUN",
       "screenshots": "NOT CAPTURED"
     },
     "production": "NOT DEPLOYED; deployment remains unauthorized.",
     "limitations": [
-      "No real-browser visual/overflow review yet.",
-      "Cross-browser, screen-reader and hosted testing remain outstanding."
+      "Source checks do not prove rendered layout or no horizontal overflow.",
+      "No full-page browser screenshots yet.",
+      "Python validator has not been executed.",
+      "Cross-browser and assistive-technology checks remain outstanding."
     ]
   }
 }

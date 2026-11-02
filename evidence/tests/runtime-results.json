@@ -483,14 +483,51 @@
     ]
   },
   "loop_009": {
-    "test_run": "loop-009-multipage-browser-review",
-    "status": "NOT RUN",
-    "reason": "Full-page browser execution was not available during the repository connector implementation.",
-    "required_follow_up": "Run the six-page validator and Chromium review at mobile, tablet and desktop widths; verify the common navigation, active route, no horizontal overflow and contact/news layouts.",
+    "test_run": "loop-009-node-interaction-regression",
+    "observed_at": "2026-11-02",
+    "runner": "Node.js 22.16.0 in local container",
+    "execution_mode": "Exact remote script.js and tests/test_menu.js copied to an isolated local directory; SHA-1 Git blob IDs matched remote files before test.",
+    "status": "PASS",
+    "source_blobs": {
+      "script.js": "aa2ae008fdfa8c6eb1a0f6004938627104553b61",
+      "tests/test_menu.js": "051d0dec5655cbf2b2017e840c096ec4fc63fc6e"
+    },
+    "commands": [
+      "node --check script.js",
+      "node --check tests/test_menu.js",
+      "node tests/test_menu.js"
+    ],
+    "output": "PASS: menu keyboard/outside-click behavior; scroll reveals; reduced-motion fallback.",
+    "checks": [
+      {
+        "name": "JS syntax",
+        "result": "PASS",
+        "detail": "Both exact remote source files passed node --check."
+      },
+      {
+        "name": "Menu keyboard",
+        "result": "PASS",
+        "detail": "Escape while closed does nothing; Escape while open closes and restores focus."
+      },
+      {
+        "name": "Menu dismissal",
+        "result": "PASS",
+        "detail": "Navigation link and outside-click dismissal work without unwanted focus movement."
+      },
+      {
+        "name": "Progressive reveal",
+        "result": "PASS",
+        "detail": "IntersectionObserver behavior and unobserve-after-intersection pass deterministic test."
+      },
+      {
+        "name": "Reduced motion",
+        "result": "PASS",
+        "detail": "Reduced-motion preference prevents reveal observer/hidden states."
+      }
+    ],
     "limitations": [
-      "No screenshot is claimed.",
-      "No browser overflow PASS is claimed.",
-      "Prior loop screenshots do not validate this multi-page site."
+      "Deterministic Node regression, not a visual menu test or screen-reader test.",
+      "Full-page Chromium review of the six-page site was not performed."
     ]
   }
 }

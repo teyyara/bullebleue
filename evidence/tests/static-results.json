@@ -271,41 +271,60 @@
     ]
   },
   "loop_009": {
-    "test_run": "loop-009-multipage-architecture-source-review",
-    "status": "IMPLEMENTED; STATIC VALIDATION TO BE RECORDED",
-    "candidate": "bullebleue-loop-009-multipage-professional-information-architecture-v1",
+    "test_run": "loop-009-multipage-remote-source-audit",
+    "observed_at": "2026-11-02",
+    "runner": "JavaScript read-only structural assertions against exact current main-branch GitHub file contents.",
+    "status": "PASS — SIX-PAGE STRUCTURE, NAVIGATION, CONTENT ALLOCATION AND CSS SOURCE AUDIT",
+    "source_blobs": {
+      "index.html": "d3dab53aa6e7ded74032960b88198589a860806c",
+      "la-bulle.html": "2485ab59e195f2d14524c5258de5c9a3270e893e",
+      "activites.html": "742dc68ab0a90f4ad615b36b3b764da9a0ead652",
+      "actualites.html": "008138d75289cf94bfe6322e1bc069ab6a4863cf",
+      "apail.html": "fd1e7335556762f2219ba83633c87a4af36b140e",
+      "contact.html": "da48fd0cbd8bd372f024d47489fe0de22a7a89f5",
+      "styles.css": "1b8bacf0d2d92a3a3bc88c33bb788b02f133b612",
+      "tests/validate_site.py": "8e348dea9e64d83107fdfc8c77df17ff9bea63f4"
+    },
     "checks": [
       {
-        "name": "Six page routes",
-        "result": "IMPLEMENTED",
-        "detail": "index.html, la-bulle.html, activites.html, actualites.html, apail.html and contact.html."
+        "name": "Six pages and one current route per page",
+        "result": "PASS",
+        "detail": "All six files exist, each exposes the same six navigation routes in the same order, and exactly one link carries aria-current=page."
+      },
+      {
+        "name": "Per-page document structure",
+        "result": "PASS",
+        "detail": "Each remote page has French lang, one h1, one main, a title and meta description; root assets and internal fragment/page links resolve."
       },
       {
         "name": "Concise homepage",
-        "result": "IMPLEMENTED",
-        "detail": "Short hero, overview, four destination cards and one contact invitation; detailed content moved to dedicated pages."
-      },
-      {
-        "name": "Shared navigation",
-        "result": "IMPLEMENTED",
-        "detail": "All pages use the same six links in the same order and mark the current page with aria-current=page."
-      },
-      {
-        "name": "Page-level metadata and semantics",
-        "result": "IMPLEMENTED — ASSERTIONS ADDED",
-        "detail": "Each page declares French, unique title and description, one h1 and one main landmark."
+        "result": "PASS",
+        "detail": "Homepage is 5,952 characters; contains route cards/contact invitation and omits the long address and Sapala/solidarity detail."
       },
       {
         "name": "Content allocation",
-        "result": "IMPLEMENTED",
-        "detail": "Audience/schedule on La Bulle; activity categories on Activités; dated posts on Actualités; history/solidarity/volunteers on APAiL; contact/access on Contact."
+        "result": "PASS",
+        "detail": "Audience and time information sits on la-bulle.html; activity catalogue on activites.html; dated 2026 posts on actualites.html; association history/solidarity/volunteer/cited organisations on apail.html; venue/email/contact on contact.html."
       },
       {
-        "name": "Responsive navigation",
-        "result": "IMPLEMENTED — CSS DECLARATIONS",
-        "detail": "Shared compact menu at <=980 px; responsive content grids collapse at 1040 px and 760 px."
+        "name": "Source caveats",
+        "result": "PASS",
+        "detail": "2024 presentation date is retained for venue/times; activities remain examples, not weekly guarantees; historical projects are caveated; cited organisations remain non-exhaustive."
+      },
+      {
+        "name": "CSS responsive declarations",
+        "result": "PASS — SOURCE ONLY",
+        "detail": "Compact navigation at <=980px; grids reduce at tablet/mobile breakpoints; reduced-motion rule retained. No rendered viewport measurement."
+      },
+      {
+        "name": "Python validator",
+        "result": "NOT RUN",
+        "detail": "Updated multi-page validator is stored in repository; Python execution against a full local checkout was not available in this session."
       }
     ],
-    "limitation": "Source declarations and generated content do not prove rendered visual quality or no-overflow; browser review is a separate outstanding check."
+    "limitations": [
+      "Source audit is not rendered browser testing.",
+      "No browser screenshot or no-overflow PASS is claimed."
+    ]
   }
 }
