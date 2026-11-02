@@ -6,7 +6,7 @@
   "candidate_status": "WEBSITE CONTENT REPLACED WITH USER-SUPPLIED EXACT-PAGE FACEBOOK EXTRACTION; SOURCE/CONTENT VALIDATOR UPDATED BUT NOT EXECUTED; LOOP 007 CHROMIUM REVIEW NOT RUN; NO DEPLOYMENT",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "62ebc451af17d9c03923279d2911a1f94fa917e8",
+  "implementation_checkpoint_commit": "6f871f49a35fbd31cefd4d33e0cad5fc9f4e5e8f",
   "remote_git_blob_objects": {
     "index.html": "5b5e1b4a3b27afd701dfa449a7263502980ecb59",
     "styles.css": "565c505813dd4211243c6ff0c15094a4ef902295",
@@ -14,7 +14,7 @@
     "assets/favicon.svg": "c98beb72f9633c41915ad00e5ced621faaf17799",
     "menu_regression_test_js": "493debf5b26c01e0b166d555b4dab53845a52f28",
     "tests/test_menu.js": "051d0dec5655cbf2b2017e840c096ec4fc63fc6e",
-    "tests/validate_site.py": "b9c582c873a0d230776ed411a11085835f936f7e",
+    "tests/validate_site.py": "7620455ffb56da5dacff8b449fd06b2bf5eb9bdc",
     "assets/illustrations/hero-community.svg": "d46b1fa640912b32259f2b0f17622e635b8bf09b",
     "assets/illustrations/games.svg": "74f82b260859fc2658939d9cc42e074fedf17544",
     "assets/illustrations/garden.svg": "4e15f67d6cebaf017411b9e49255e15aaa9ae7fa",
@@ -231,7 +231,8 @@
       "python_validator": "UPDATED BUT NOT EXECUTED",
       "javascript_tests": "UNCHANGED FROM LOOP 006; NOT RERUN IN LOOP 007",
       "chromium": "NOT RUN",
-      "screenshots": "NOT CAPTURED"
+      "screenshots": "NOT CAPTURED",
+      "validator_correction": "ASSERTIONS ALIGNED WITH ACTUAL SOURCE COPY; STILL NOT EXECUTED"
     },
     "limitations": [
       "The user-supplied extraction was treated as primary source; live Facebook was not independently fetched.",

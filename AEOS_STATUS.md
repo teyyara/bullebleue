@@ -8,7 +8,7 @@
 **Repository:** teyyara/bullebleue  
 **Branch:** main (single-branch progression)  
 **Parent at loop start:** b7ae5e67ee99027ba66ee48fc031a9ab1eaa0866  
-**Implementation checkpoint:** 62ebc451af17d9c03923279d2911a1f94fa917e8  
+**Implementation checkpoint:** 6f871f49a35fbd31cefd4d33e0cad5fc9f4e5e8f  
 **State:** WAITING_FOR_CONTINUE
 
 ## Objective
@@ -52,4 +52,4 @@ The Wednesday/Saturday times and local address/garden access are accurately tran
 
 ## Progression control
 
-Loop 007 is committed to `main`. The repository is now in `WAITING_FOR_CONTINUE`. Exactly one standalone `CONTINUE` authorizes Loop 008.
+Loop 007 is committed to `main`. A small follow-up commit aligned the validator wording assertions with the actual page copy; the validator remains not executed. The repository is now in `WAITING_FOR_CONTINUE`. Exactly one standalone `CONTINUE` authorizes Loop 008.
