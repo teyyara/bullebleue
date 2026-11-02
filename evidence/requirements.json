@@ -235,6 +235,42 @@
       "validation": "Research dossier, asset register, provenance ledger and asset inventory.",
       "status": "PASS — ASSET SAFEGUARD",
       "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-027",
+      "requirement": "Use the user-supplied Facebook extraction as the primary source for website copy.",
+      "acceptance": "The public page uses information grounded in Bulle_Bleue_APAiL_contenu_facebook.md rather than generic unsupported descriptions.",
+      "risk": "R1",
+      "validation": "Source-to-copy review and content validator.",
+      "status": "IMPLEMENTED — USER-SUPPLIED SOURCE",
+      "confidence": "HIGH for transcription provenance"
+    },
+    {
+      "id": "REQ-028",
+      "requirement": "Represent audience, session times and venue from the supplied exact-page extraction.",
+      "acceptance": "Children over 6 on Wednesday 14:30; autonomous teenagers/adults on Saturday 15:00; 30 Rempart Saint-Vincent and garden access via rue Leriche appear with source-date and confirm-before-travel caveats.",
+      "risk": "R2",
+      "validation": "HTML content assertions and source cross-check.",
+      "status": "IMPLEMENTED WITH SOURCE-AGE CAVEATS",
+      "confidence": "HIGH for what the extraction states; current operational validity not independently confirmed"
+    },
+    {
+      "id": "REQ-029",
+      "requirement": "Show actual published activity examples and recent dated news.",
+      "acceptance": "Games, music, creative, cooking, garden, outings, animal mediation and parent meeting examples; four autumn 2026 highlights keep their dates and are not presented as a recurring schedule.",
+      "risk": "R1",
+      "validation": "Source-to-copy review and validator.",
+      "status": "IMPLEMENTED — USER-SUPPLIED EXTRACTION",
+      "confidence": "HIGH for post text/date in supplied file"
+    },
+    {
+      "id": "REQ-030",
+      "requirement": "Explain APAiL's reported solidarity work and identify cited organisations without overstating current status.",
+      "acceptance": "Burkina Faso and Morocco history, selected projects, Les Bleuettes and organisations cited in posts are shown as reported/historical and non-exhaustive; no current contract/activity is implied.",
+      "risk": "R2",
+      "validation": "Content review and guardrail assertions.",
+      "status": "IMPLEMENTED — HISTORICAL/NON-EXHAUSTIVE FRAMING",
+      "confidence": "HIGH for extraction; current project/partner status not established"
     }
   ]
 }

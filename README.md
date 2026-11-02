@@ -1,60 +1,34 @@
 # La Bulle Bleue — Chalon-sur-Saône
 
-A concise, responsive French-language editorial website for La Bulle Bleue, the local welcome and connection initiative run by APAiL in Chalon-sur-Saône.
+Responsive French-language information website for La Bulle Bleue, an initiative of APAiL in Chalon-sur-Saône.
 
 ## Run locally
-
-The site uses plain HTML, CSS and vanilla JavaScript. It has no package manager, framework, build step, remote font request, analytics, tracking pixel or paid dependency.
+The site uses static HTML, CSS and vanilla JavaScript. No package manager, build step, remote fonts, analytics, tracking or paid dependencies are required.
 
     python3 -m http.server 8080
 
-Then open http://localhost:8080 in a browser.
+## Content source
+The current website is grounded in `Bulle_Bleue_APAiL_contenu_facebook.md`, a user-supplied extraction of the exact page https://www.facebook.com/p/Bulle-Bleue-APAiL-100066715807933/ made on 2 November 2026. It includes page information and text posts from May 2023 to October 2026. The website curates the material rather than reproducing all 816 lines.
 
-## Current page structure
-
-The Loop 006 redesign contains five main sections:
-
-1. Accueil — concise hero, audience and welcome statement.
-2. Les activités — four short, numbered editorial activity rows.
-3. L’accueil — brief welcome message and three first-contact steps.
-4. L’APAiL — concise parent-association history.
-5. Contact — email route, current venue/times caveat and Facebook link.
-
-The previous dated social-mirror story mosaic, repeated approach/first-step/volunteer sections and generic illustrated activity cards have been removed to shorten the page and improve hierarchy.
-
-## Visual identity status
-
-The current identity is provisional, not an official APAiL brand reproduction. It uses a restrained deep mineral/ink blue, warm paper ivory, muted teal, clay and aged ochre palette informed by public descriptions of welcome, listening, solidarity and sharing. No official HEX palette or type manual was verified.
-
-The typographic BB monogram is a temporary mark. The user supplied the exact Bulle Bleue - APAiL Facebook page at https://www.facebook.com/p/Bulle-Bleue-APAiL-100066715807933/, and that URL is linked in the contact panel and footer. Facebook page/profile-image retrieval was blocked in the current research environment. A FindGlocal mirror surfaced another page ID (100620708811103), which does not match the supplied ID (100066715807933); its logo or images are not treated as belonging to the supplied page. No participant or press photograph is reused.
+The page covers:
+1. Accueil and purpose.
+2. Publics and the published Wednesday/Saturday times.
+3. Activities observed in the posts.
+4. Selected dated highlights from September/October 2026.
+5. APAiL history, solidarity work, volunteer group and organisations cited.
+6. Contact, venue and garden access.
 
 ## Factual boundaries
+Wednesday 14:30 / Saturday 15:00 and the 30 Rempart Saint-Vincent address/garden access via rue Leriche are taken from the page presentation dated 11 March 2024 and the supplied extraction. The site shows that source context and asks visitors to confirm before travelling.
 
-Public reporting describes La Bulle Bleue as an APAiL initiative launched in 2021, with children from age 6, teenagers and adults among the audience. APAiL was founded in 1995. The website keeps the exact activity venue and current weekly hours unpublished because available public sources conflict or are historical. Visitors are asked to confirm current details directly with the association.
+Activities are examples, not a fixed weekly programme. News items keep their dates. Burkina Faso/Morocco projects are reported history, not claims that every project is still active. Organisations are described as cited in posts, not necessarily as permanent partners.
 
-The site uses apail@live.fr as a historically published contact email; deliverability has not been tested. It does not request diagnoses or other sensitive information.
-
-## Files
-
-- index.html — one-page content, semantics, metadata and Organization JSON-LD.
-- styles.css — editorial palette, texture, typographic hierarchy and responsive layout.
-- script.js — keyboard-operable mobile navigation and footer year.
-- assets/favicon.svg — local provisional favicon.
-- assets/illustrations/ — previous original SVG illustrations retained in the repository archive; not referenced in Loop 006 page markup.
-- tests/validate_site.py — dependency-free structural and content checks.
-- tests/test_menu.js — dependency-free menu interaction regression.
-- evidence/ — research, provenance, requirements, decisions and validation records.
-- .aeos/ and AEOS_STATUS.md — progression state and checkpoint.
+The published email `apail@live.fr` is retained from prior public-source research; deliverability has not been tested. The official logo and documentary photos have not been added; the BB monogram remains provisional. No participant names or photographs are published.
 
 ## Validation
-
     python3 tests/validate_site.py
     node --check script.js
     node --check tests/test_menu.js
     node tests/test_menu.js
-
-Loop 006 was rendered in Chromium 144 with Playwright at 12 viewport widths. It was not hosted or deployed. Firefox, WebKit, Safari, manual screen-reader checks and hosted performance/security checks remain outstanding.
-
-## Deployment
 
 No production deployment has been performed or authorized.

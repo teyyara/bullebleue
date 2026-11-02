@@ -249,3 +249,96 @@ h1 em,h2 em{color:inherit;font-style:italic;font-weight:400}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto !important;animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
 }
+
+
+/* LOOP 007 — content structure based on the user-supplied Facebook extraction. */
+.audiences{background:rgba(251,249,243,.78)}
+.audience-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.audience-card{position:relative;display:flex;flex-direction:column;min-height:330px;padding:28px 30px 24px;background:#fbf9f3;border:1px solid rgba(25,55,70,.13);border-top:3px solid var(--blue)}
+.audience-card-warm{border-top-color:var(--clay)}
+.audience-card-top{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:22px}
+.audience-label,.audience-day,.community-label{color:var(--clay);font-size:9px;font-weight:750;letter-spacing:.15em;text-transform:uppercase}
+.audience-day{color:var(--muted)}
+.audience-card h3{margin:0 0 12px;font-size:27px;line-height:1.05}
+.audience-card>p{max-width:490px;margin:0 0 11px;color:var(--muted);font-size:13px;line-height:1.7}
+.audience-card .audience-detail{font-size:11px}
+.audience-time{display:flex;align-items:baseline;gap:13px;margin-top:auto;padding-top:18px;border-top:1px solid var(--line)}
+.audience-time span{color:var(--blue);font-family:var(--serif);font-size:31px;line-height:1}
+.audience-time small{color:var(--muted);font-size:10px}
+.source-note{margin:14px 0 0;color:var(--muted);font-size:10px;line-height:1.65}
+.activity-grid-six{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 26px}
+.activity-grid-six .activity-card{grid-template-columns:43px minmax(0,1fr);min-height:142px;padding:17px 4px 17px 0}
+.activity-grid-six .activity-copy h3{font-size:21px}
+.activity-grid-six .activity-copy p{font-size:11px}
+.activity-extra{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:18px}
+.activity-extra strong{margin-right:5px;color:var(--clay);font-size:10px;letter-spacing:.09em;text-transform:uppercase}
+.activity-extra span{padding:5px 10px;border:1px solid rgba(49,95,112,.2);color:var(--blue);font-size:10px}
+.news{background:#e9eeeb}
+.news-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid rgba(25,55,70,.14);background:rgba(25,55,70,.14);gap:1px}
+.news-card{min-height:230px;padding:23px 20px;background:#f5f3ec}
+.news-card time{display:block;margin-bottom:31px;color:var(--clay);font-size:9px;font-weight:750;letter-spacing:.1em;text-transform:uppercase}
+.news-card h3{margin:0 0 9px;font-size:24px;line-height:1.05}
+.news-card p{margin:0;color:var(--muted);font-size:11px;line-height:1.7}
+.association{background:rgba(251,249,243,.72)}
+.association-intro{display:grid;grid-template-columns:.72fr 1.28fr;align-items:center;gap:58px;padding-bottom:44px;border-bottom:1px solid var(--line)}
+.association-years{display:grid;gap:18px}
+.association-years>div{display:grid;grid-template-columns:100px 1fr;align-items:baseline;gap:13px}
+.association-years strong{color:var(--blue);font-family:var(--serif);font-size:46px;font-weight:500;line-height:1}
+.association-years>div+div strong{color:var(--clay)}
+.association-years span{color:var(--muted);font-size:11px}
+.association-copy h2{max-width:720px;margin:0 0 14px;font-size:clamp(36px,4.2vw,51px);line-height:1.04}
+.association-copy h2 em,.solidarity-heading h3 em,.community-strip h3 em{color:var(--blue);font-weight:400}
+.association-copy>p:last-child{max-width:690px;margin:0;color:var(--muted);font-size:13px;line-height:1.8}
+.solidarity-block{display:grid;grid-template-columns:.72fr 1.28fr;gap:58px;padding:40px 0;border-bottom:1px solid var(--line)}
+.solidarity-heading .section-kicker{margin-bottom:12px}
+.solidarity-heading h3{max-width:340px;margin:0;font-size:33px;line-height:1.08}
+.solidarity-copy p{margin:0 0 12px;color:var(--muted);font-size:12px;line-height:1.8}
+.solidarity-copy .source-note{margin-top:8px;font-size:10px}
+.community-strip{display:grid;grid-template-columns:.72fr 1.28fr;gap:58px;padding-top:34px}
+.community-strip h3{margin:11px 0 9px;font-size:31px;line-height:1.08}
+.community-strip>div:first-child p{max-width:360px;margin:0;color:var(--muted);font-size:12px;line-height:1.7}
+.partner-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px;margin:12px 0 0;padding:0;list-style:none}
+.partner-list li{padding:8px 0;border-bottom:1px solid var(--line);color:#425c66;font-size:11px}
+.partner-area .source-note{margin-top:10px}
+.contact-panel-rich{grid-template-columns:1.05fr .95fr}
+.contact-panel-rich .contact-main .facebook-link{display:table;margin-top:18px}
+.contact-side address{margin:0 0 12px;color:#fffdf7;font-size:15px;font-style:normal;line-height:1.65}
+.contact-side address strong{font-weight:700}
+.contact-side p{margin:0;color:rgba(244,241,232,.75);font-size:11px;line-height:1.7}
+.contact-side .contact-side-label:not(:first-child){margin-top:12px}
+@media(max-width:1040px){
+ .activity-grid-six{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px}
+ .news-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .news-card{min-height:200px}.news-card time{margin-bottom:22px}
+}
+@media(max-width:900px){
+ .association-intro,.solidarity-block,.community-strip{grid-template-columns:.62fr 1.38fr;gap:32px}
+ .contact-panel-rich{grid-template-columns:1fr .9fr}
+}
+@media(max-width:760px){
+ .audience-grid{grid-template-columns:1fr;gap:14px}
+ .audience-card{min-height:0;padding:24px 22px 21px}
+ .audience-card-top{margin-bottom:17px}.audience-card h3{font-size:24px}
+ .audience-card>p{font-size:12px}.audience-time{padding-top:15px}
+ .activity-grid-six{grid-template-columns:1fr;gap:0}
+ .activity-grid-six .activity-card{min-height:106px;grid-template-columns:44px minmax(0,1fr);padding:14px 2px}
+ .activity-grid-six .activity-copy h3{font-size:19px}
+ .activity-extra{align-items:flex-start}
+ .news-grid{grid-template-columns:1fr}
+ .news-card{min-height:0;padding:20px 18px}.news-card time{margin-bottom:14px}.news-card h3{font-size:22px}
+ .association-intro,.solidarity-block,.community-strip{grid-template-columns:1fr;gap:22px}
+ .association-intro{padding-bottom:28px}
+ .association-years{grid-template-columns:1fr 1fr;gap:12px}
+ .association-years>div{grid-template-columns:auto 1fr;gap:8px}
+ .association-years strong{font-size:35px}.association-years span{font-size:9px}
+ .association-copy h2{font-size:clamp(34px,8.5vw,45px)}
+ .solidarity-block{gap:12px;padding:28px 0}.solidarity-heading h3{font-size:28px}
+ .community-strip{gap:23px;padding-top:26px}.community-strip h3{font-size:27px}
+ .partner-list{grid-template-columns:1fr;gap:0}
+ .contact-panel-rich{grid-template-columns:1fr}
+}
+@media(max-width:380px){
+ .audience-card{padding-inline:18px}.audience-card h3{font-size:22px}
+ .activity-extra span{font-size:9px}
+ .association-years>div{grid-template-columns:1fr;gap:2px}
+}

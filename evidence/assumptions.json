@@ -39,7 +39,7 @@
       "source": "2022/2024 vs 2025 address conflict; schedule not current-verified.",
       "confidence": "HIGH",
       "impact_if_wrong": "HIGH",
-      "resolution": "Keep omitted until association confirms."
+      "resolution": "SUPERSEDED IN LOOP 007: use venue and hours from the user-supplied exact-page extraction, with source/date and confirm-before-travel caveats."
     },
     {
       "id": "ASSUMP-006",
@@ -63,7 +63,7 @@
       "source": "FindGlocal mirror; Facebook direct access throttled",
       "confidence": "MEDIUM",
       "impact_if_wrong": "MEDIUM",
-      "resolution": "Confirm details with APAiL before maintaining a recurring news feed."
+      "resolution": "SUPERSEDED IN LOOP 007: do not use the different-ID mirror; use the user-supplied Markdown extraction for page posts."
     },
     {
       "id": "ASSUMP-009",
@@ -72,6 +72,14 @@
       "confidence": "HIGH",
       "impact_if_wrong": "MEDIUM",
       "resolution": "Use historical framing and refresh before claiming active programmes."
+    },
+    {
+      "id": "ASSUMP-010",
+      "assumption": "The user-supplied Markdown extraction is an authorized and accurate transcription of the exact Bulle Bleue - APAiL Facebook page, dated 2026-11-02.",
+      "source": "User-created repository file Bulle_Bleue_APAiL_contenu_facebook.md; exact Facebook URL and extraction date stated in the file.",
+      "confidence": "HIGH for source provenance; Facebook has not been independently reread during this loop.",
+      "impact_if_wrong": "HIGH",
+      "resolution": "Use as the primary source as expressly directed by the user; retain source/date context and confirmation note for venue/timetable."
     }
   ]
 }

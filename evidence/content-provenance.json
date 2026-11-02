@@ -1,5 +1,5 @@
 {
-  "content_provenance_version": "0.3",
+  "content_provenance_version": "0.4",
   "items": [
     {
       "content": "La Bulle Bleue is an APAiL initiative in Chalon-sur-Saône.",
@@ -80,6 +80,32 @@
       "content": "Loop 006 website imagery.",
       "classification": "No informative image placements; prior original SVGs remain archived in repository but are not referenced by the new page; no social/press/participant photos reused.",
       "confidence": "HIGH"
+    },
+    {
+      "content": "Page presentation, audience groups, session times, activity examples, 2023–2026 highlights, cited organisations, volunteer group, APAiL history and international solidarity projects.",
+      "classification": "Primary user-supplied extraction of the exact Bulle Bleue - APAiL Facebook page; file Bulle_Bleue_APAiL_contenu_facebook.md; extraction 2026-11-02; posts May 2023–October 2026.",
+      "confidence": "HIGH for the transcription in the user-supplied file; current validity of operational details requires APAiL confirmation.",
+      "source_blob": "dec4ee6c3f4e0ea7c092ebe1760c4a35033e05bf"
+    },
+    {
+      "content": "Wednesday 14:30 for children over 6; Saturday 15:00 for autonomous teenagers and adults.",
+      "classification": "Facebook extraction General Information section; introductory presentation post dated 2024-03-11; visible website confirmation caveat.",
+      "confidence": "HIGH for what the supplied document states; current timetable not independently confirmed."
+    },
+    {
+      "content": "30 Rempart Saint-Vincent, 71100 Chalon-sur-Saône; garden access rue Leriche near bastion Saint-Pierre.",
+      "classification": "Address and garden access stated in the user-supplied extraction. The website cites the presentation date and asks visitors to confirm before travel.",
+      "confidence": "HIGH for transcription; current venue not independently confirmed."
+    },
+    {
+      "content": "Selected activity highlights dated September and October 2026.",
+      "classification": "Dated post text in the supplied exact-page extraction, not the different-ID third-party mirror.",
+      "confidence": "HIGH for the content/date as represented in the supplied document."
+    },
+    {
+      "content": "APAiL actions in Sapala, Burkina Faso, and Morocco projects in Moulay-Bousselham, Loudaya, Talouine, Tamzargoute, Douira and Dcheira.",
+      "classification": "Historical projects described in the supplied Facebook extraction; website explicitly avoids claiming each remains active.",
+      "confidence": "HIGH for historical reporting; current project status not established."
     }
   ]
 }

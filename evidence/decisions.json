@@ -149,6 +149,20 @@
       "tradeoffs": "Rendering may fall back to a platform font on visitor devices where EB Garamond or Cabin is not installed; cross-platform fallback inspection remains outstanding.",
       "risk": "R1",
       "evidence": "Chromium 144 document.fonts checks and CSS source inspection."
+    },
+    {
+      "id": "DEC-013",
+      "context": "The user supplied a complete Markdown extraction from the exact Bulle Bleue - APAiL Facebook page and asked to replace website content using it.",
+      "options": [
+        "Keep Loop 006 generic copy",
+        "Use supplied extraction as primary source with explicit source/date caveats",
+        "Publish every post as a long chronology"
+      ],
+      "chosen": "Replace the page with a concise source-led structure covering audience, times, venue, activities, dated highlights, APAiL history/solidarity, volunteers, cited organisations and contact.",
+      "reason": "The extraction identifies the exact page and covers May 2023 through October 2026. The user explicitly directed that it be used as the primary content source.",
+      "tradeoffs": "The content is richer than Loop 006 but curated rather than copied verbatim. Venue and session validity cannot be guaranteed from the document alone.",
+      "risk": "R2",
+      "evidence": "Bulle_Bleue_APAiL_contenu_facebook.md (blob dec4ee6c3f4e0ea7c092ebe1760c4a35033e05bf), Loop 007 index.html and updated validator."
     }
   ]
 }

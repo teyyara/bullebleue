@@ -176,5 +176,44 @@
       }
     ],
     "limitation": "Static source checks do not establish cross-platform font availability, assistive-technology conformance or production rendering."
+  },
+  "loop_007": {
+    "test_run": "loop-007-facebook-extraction-content-validation",
+    "observed_at": "2026-11-02",
+    "runner": "Python HTMLParser validator updated in repository; execution not available during isolated GitHub editing",
+    "status": "NOT RUN — VALIDATOR UPDATED, NOT EXECUTED",
+    "checks": [
+      {
+        "name": "Six-section French page structure",
+        "result": "ASSERTIONS ADDED — NOT EXECUTED",
+        "detail": "One h1, one main landmark, six ordered sections and valid fragment anchors."
+      },
+      {
+        "name": "Facebook extraction presence and provenance",
+        "result": "ASSERTIONS ADDED — NOT EXECUTED",
+        "detail": "Requires supplied Markdown, exact Facebook URL and 2 November 2026 extraction date."
+      },
+      {
+        "name": "Audience, timetable and venue",
+        "result": "ASSERTIONS ADDED — NOT EXECUTED",
+        "detail": "Requires both audience groups, Wednesday 14:30, Saturday 15:00, Rempart Saint-Vincent, rue Leriche and confirmation caveats."
+      },
+      {
+        "name": "Activities and dated highlights",
+        "result": "ASSERTIONS ADDED — NOT EXECUTED",
+        "detail": "Requires activity examples and selected 2026 posts with original dates and no fixed-programme claim."
+      },
+      {
+        "name": "APAiL, international solidarity and partners",
+        "result": "ASSERTIONS ADDED — NOT EXECUTED",
+        "detail": "Requires 1995/2021, Sapala, Morocco localities, Les Bleuettes and cited organisations with historical/non-exhaustive caveats."
+      },
+      {
+        "name": "Asset, anchor and reduced-motion guardrails",
+        "result": "ASSERTIONS ADDED — NOT EXECUTED",
+        "detail": "No photographs are introduced; checks include local asset references, anchors, reduced-motion and existing Escape-menu behavior."
+      }
+    ],
+    "limitation": "No executed Python PASS is claimed. Run python3 tests/validate_site.py after checkout."
   }
 }

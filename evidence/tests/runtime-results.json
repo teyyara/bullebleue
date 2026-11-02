@@ -422,5 +422,17 @@
       "Facebook page URL is linked but the page/logo/images could not be retrieved; official logo remains unverified.",
       "Screenshots are local review evidence, not site assets."
     ]
+  },
+  "loop_007": {
+    "test_run": "loop-007-browser-review",
+    "observed_at": "2026-11-02",
+    "status": "NOT RUN",
+    "reason": "The updated GitHub source could not be mounted in the browser container from this isolated connector session. No production deployment is configured or authorized.",
+    "required_follow_up": "After checkout, run Chromium at 320, 390, 768, 1024 and 1440 px, inspect the longer association and partner sections, verify no horizontal overflow, and exercise the compact navigation.",
+    "limitations": [
+      "No Loop 007 screenshot is claimed.",
+      "Loop 006 browser results do not validate the new Loop 007 page.",
+      "No hosted or production route was accessed."
+    ]
   }
 }
