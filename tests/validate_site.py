@@ -43,7 +43,7 @@ def main():
     assert not missing, f"missing Facebook-derived content: {missing}"
     assert "Source : https://www.facebook.com/p/Bulle-Bleue-APAiL-100066715807933/" in source
     assert "02/11/2026" in source
-    assert "À confirmer" in html and "Confirmez le lieu" in html
+    assert "confirmer les horaires" in html and "Confirmez le lieu" in html
     assert "ne constituent pas un programme hebdomadaire garanti" in html
     assert "ne signifient pas que chaque projet est encore en cours" in html
     for asset in re.findall(r'(?:src|href)="/([^"]+)"',html):
@@ -51,7 +51,7 @@ def main():
     assert "prefers-reduced-motion" in css
     assert "event.key !== 'Escape' || toggle.getAttribute('aria-expanded') !== 'true'" in js
     assert "fonts.googleapis.com" not in css and "fonts.gstatic.com" not in css
-    assert "11 mars 2024" in html and "structures citées" in html
+    assert "11 mars 2024" in html and "Structures citées" in html
     print("PASS: six sections, source-led content, source/age caveats, Facebook/email routes, anchors, assets and accessibility safeguards")
 
 if __name__=="__main__": main()
