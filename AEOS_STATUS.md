@@ -51,3 +51,13 @@ node tests/test_menu.js
 ## Progression control
 
 Loop 002 is complete. The remote checkpoint is verified and the system is now `WAITING_FOR_CONTINUE`. Exactly one standalone `CONTINUE` authorizes Loop 003.
+
+
+## Change Request CR-001 recorded
+
+On 2026-11-02, a request was received to expand association research and make the website more photographic, asset-rich and animated. Additional public activity evidence from September–October 2026 was found through a FindGlocal mirror of the Bulle Bleue - APAiL Facebook page. The research addendum, formal CR-001 and proposed Product Contract 0.2 are stored under `evidence/`.
+
+**CR-001 status:** FORMALLY RECORDED — proposed Product Contract 0.2 not yet active.  
+**No implementation loop started from this message.** The project remains `WAITING_FOR_CONTINUE` pending the exact standalone control command.
+
+Design/asset safety: use actual participant photos only after rights/consent confirmation; otherwise use original illustrative assets. Current address and current schedule remain unpublished pending confirmation.

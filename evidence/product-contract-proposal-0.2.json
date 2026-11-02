@@ -1,0 +1,77 @@
+{
+  "contract_version": "0.2-proposed",
+  "status": "PROPOSED CHANGE REQUEST CR-001 — NOT YET ACTIVE",
+  "supersedes": "0.1 only after change-control adoption in an authorized loop",
+  "project": "La Bulle Bleue — Chalon-sur-Saône",
+  "expanded_objective": "Create a richer, more authentic, photo-led informational website explaining La Bulle Bleue and its parent association APAiL, reflecting recent activities while helping visitors contact or support the association.",
+  "new_content_requirements": [
+    "Clearly distinguish La Bulle Bleue (local welcome initiative) from APAiL (parent association).",
+    "Add sourced history and wider solidarity mission of APAiL, including international work where adequately supported.",
+    "Show specific activity examples from current public posts, clearly framed as recent examples rather than promised recurring sessions.",
+    "Add a photo-led activity/gallery experience with captions and dates where verified.",
+    "Keep disputed activity venue and unverified schedule unpublished.",
+    "Do not publish participant names, diagnoses or medical outcomes."
+  ],
+  "proposed_new_requirements": [
+    "REQ-014",
+    "REQ-015",
+    "REQ-016",
+    "REQ-017",
+    "REQ-018",
+    "REQ-019",
+    "REQ-020",
+    "REQ-021",
+    "REQ-022"
+  ],
+  "design_direction": {
+    "style": "Warm, authentic, editorial, friendly, inclusive and human; not clinical or infantilizing.",
+    "visual_assets": "Approved association photography plus original illustrative assets where genuine photos are unavailable.",
+    "visual_identity": "Use the official blue bubble identity if the association supplies/clears it; current public photo is only a reference.",
+    "components": [
+      "photo-led hero",
+      "activity mosaic/gallery",
+      "recent life/activity stories",
+      "APAiL mission/story section",
+      "volunteer CTA",
+      "clear email contact"
+    ]
+  },
+  "motion": {
+    "effects": [
+      "subtle bubble drift",
+      "gentle image reveal",
+      "section entrance transitions",
+      "subtle image hover/focus states"
+    ],
+    "implementation": "CSS and small amounts of vanilla JavaScript",
+    "reduced_motion_required": true,
+    "essential_content_must_not_depend_on_motion": true
+  },
+  "image_policy": {
+    "direct_page_photos": "Do not reuse without association/photo rights-holder permission and releases as applicable.",
+    "participants_and_minors": "No identifiable participant image without appropriate explicit consent; no participant names scraped from posts.",
+    "ai_generated_assets": "Allowed as clearly illustrative, not as documentary proof of actual activities.",
+    "optimization": [
+      "responsive srcset",
+      "WebP/AVIF where suitable",
+      "explicit width/height",
+      "lazy-load below-fold imagery",
+      "alt text"
+    ]
+  },
+  "accessibility_target": "WCAG 2.2 AA",
+  "cost_policy": {
+    "paid_dependencies": false,
+    "paid_stock": false,
+    "external_animation_frameworks": false,
+    "third_party_tracking": false
+  },
+  "acceptance_scope": "Candidate website implementation and tests; production certification and deployment remain separate.",
+  "outstanding_unknowns": [
+    "Direct Facebook page verification is throttled; aggregator mirror is medium-confidence evidence.",
+    "Image rights and participant/guardian consents are unknown.",
+    "Official logo source file and visual standards are unknown.",
+    "Current activity venue and current schedule remain unconfirmed."
+  ],
+  "approval_state": "Awaiting Loop 003 control command; not active."
+}

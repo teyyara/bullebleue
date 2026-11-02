@@ -18,7 +18,7 @@
   "current_candidate": "bullebleue-loop-002-menu-accessibility-v1",
   "state": "WAITING_FOR_CONTINUE",
   "remote_checkpoint_verified": true,
-  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 003.",
+  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 003 against CR-001.",
   "deployment": "NOT CONFIGURED / NOT AUTHORIZED",
   "paid_dependencies": [],
   "open_blockers": [
@@ -27,5 +27,13 @@
     "Firefox/WebKit, actual Safari, screen-reader, Lighthouse, ZAP and Gitleaks capabilities are unavailable in this environment.",
     "Manual screen-reader assessment and final human acceptance are outstanding."
   ],
-  "evidence_manifest_reconciliation_commit": "62348c46a35547bbcea414e8250ebdc31218b693"
+  "evidence_manifest_reconciliation_commit": "62348c46a35547bbcea414e8250ebdc31218b693",
+  "change_request_cr001": {
+    "received": "2026-11-02",
+    "status": "RECORDED — AWAITING LOOP 003 AUTHORIZATION",
+    "research_addendum": "evidence/research/keyphrase-dossier.md",
+    "change_request": "evidence/change-requests/CR-001.md",
+    "proposed_contract": "evidence/product-contract-proposal-0.2.json",
+    "active_contract_unchanged": "evidence/product-contract.json version 0.1"
+  }
 }
