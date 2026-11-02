@@ -80,6 +80,14 @@
       "confidence": "HIGH for source provenance; Facebook has not been independently reread during this loop.",
       "impact_if_wrong": "HIGH",
       "resolution": "Use as the primary source as expressly directed by the user; retain source/date context and confirmation note for venue/timetable."
+    },
+    {
+      "id": "ASSUMP-011",
+      "assumption": "Six static HTML pages are an appropriate next step: one concise home page plus five dedicated subject pages.",
+      "source": "User instruction that the site should be organised like a professional website and not put everything on the homepage.",
+      "confidence": "HIGH",
+      "impact_if_wrong": "MEDIUM",
+      "resolution": "Reassess navigation after preview; the static structure can be reorganised without backend migration."
     }
   ]
 }

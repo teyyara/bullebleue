@@ -1,9 +1,9 @@
 {
-  "manifest_version": "1.0",
+  "manifest_version": "1.1",
   "run_id": "bullebleue-20261102-001",
-  "loop": 8,
-  "candidate": "bullebleue-loop-008-source-integrity-and-interaction-verification-v1",
-  "candidate_status": "LOOP 007 CONTENT SOURCE / HTML STRUCTURE / CONTENT CAVEATS / RESPONSIVE CSS DECLARATIONS AUDITED; EXACT REMOTE NODE MENU TEST PASSES; PYTHON VALIDATOR NOT RUN; FULL-PAGE CHROMIUM REVIEW NOT RUN; NOT RELEASE CERTIFIED",
+  "loop": 9,
+  "candidate": "bullebleue-loop-009-multipage-professional-information-architecture-v1",
+  "candidate_status": "SIX-PAGE STATIC INFORMATION ARCHITECTURE IMPLEMENTED; CONCISE HOMEPAGE; COMMON ACCESSIBLE NAVIGATION; SOURCE VALIDATION PENDING; FULL-PAGE BROWSER REVIEW NOT RUN; NOT RELEASE CERTIFIED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
   "implementation_checkpoint_commit": "b7be387c2ec35515e4bf129f7a25687898d89844",
@@ -273,5 +273,27 @@
       "Previous-loop screenshots do not validate the current page."
     ],
     "metadata_checkpoint_commit": "b7be387c2ec35515e4bf129f7a25687898d89844"
+  },
+  "loop_009": {
+    "objective": "Reorganise the website into a professional multi-page structure, with the home page serving as an overview/navigation hub.",
+    "changes": [
+      "Added la-bulle.html, activites.html, actualites.html, apail.html and contact.html; rebuilt index.html as a concise landing page.",
+      "Moved audience/time details, activity catalogue, dated highlights, APAiL history/solidarity/volunteer/organisations and access/contact details to their respective pages.",
+      "Added identical six-destination navigation on all pages; current route is identified with aria-current=page.",
+      "Added page-specific titles/descriptions, breadcrumbs on interior pages, and common footer.",
+      "Added responsive page layouts and a common compact navigation breakpoint at 980 px."
+    ],
+    "validation": {
+      "structural_validator": "UPDATED — EXECUTION PENDING",
+      "source_audit": "IMPLEMENTATION CONTENT REVIEWED",
+      "node_menu_tests": "UNCHANGED; existing script.js/test_menu.js baseline remains valid but not rerun in Loop 009.",
+      "chromium": "NOT RUN",
+      "screenshots": "NOT CAPTURED"
+    },
+    "production": "NOT DEPLOYED; deployment remains unauthorized.",
+    "limitations": [
+      "No real-browser visual/overflow review yet.",
+      "Cross-browser, screen-reader and hosted testing remain outstanding."
+    ]
   }
 }

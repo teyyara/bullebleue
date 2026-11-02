@@ -481,5 +481,16 @@
       "Deterministic Node interaction test, not a real browser or screen-reader test.",
       "Loop 008 did not render the full HTML/CSS page in Chromium."
     ]
+  },
+  "loop_009": {
+    "test_run": "loop-009-multipage-browser-review",
+    "status": "NOT RUN",
+    "reason": "Full-page browser execution was not available during the repository connector implementation.",
+    "required_follow_up": "Run the six-page validator and Chromium review at mobile, tablet and desktop widths; verify the common navigation, active route, no horizontal overflow and contact/news layouts.",
+    "limitations": [
+      "No screenshot is claimed.",
+      "No browser overflow PASS is claimed.",
+      "Prior loop screenshots do not validate this multi-page site."
+    ]
   }
 }

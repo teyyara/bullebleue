@@ -1,8 +1,8 @@
 {
-  "contract_version": "0.4",
+  "contract_version": "0.5",
   "status": "ACTIVE EVIDENCE-DERIVED CHANGE BASELINE — CONTENT MIGRATION FROM USER-SUPPLIED FACEBOOK EXTRACTION",
-  "change_request": "CR-003",
-  "supersedes": "0.3",
+  "change_request": "CR-004",
+  "supersedes": "0.4",
   "project": "La Bulle Bleue — Chalon-sur-Saône",
   "business_objective": "Create an informative, welcoming and visually distinctive website explaining La Bulle Bleue and APAiL, representing publicly reported activities without overpromising and helping visitors contact the association.",
   "target_audience": [
@@ -12,20 +12,23 @@
     "relatives and supporters",
     "prospective volunteers"
   ],
-  "primary_user_intent": "Understand La Bulle Bleue, its relationship with APAiL, activity examples and how to make first contact.",
+  "primary_user_intent": "Understand La Bulle Bleue, identify the right audience information, explore activities and updates, learn about APAiL, then contact the association through a well-organised multi-page site.",
   "critical_user_journeys": [
-    "Homepage → audience → activities → dated examples → email contact",
-    "Homepage → APAiL history/solidarity mission → volunteer interest → email contact"
+    "Homepage → La Bulle → audience and session information → contact to confirm",
+    "Homepage → activities → examples → contact",
+    "Homepage → actualités → dated highlights → Facebook source",
+    "Homepage → APAiL → history and reported solidarity work → contact"
   ],
   "functional_requirements": [
-    "Responsive one-page informational site with anchor navigation",
-    "Keyboard-operable mobile navigation; Escape closes only an open menu and restores focus",
-    "Email-first contact using previously published apail@live.fr; mailbox deliverability remains untested",
-    "No sensitive-data intake form or diagnosis request",
-    "Publish venue and session times only with explicit attribution to the supplied extraction and a visible request to confirm before travel",
-    "Dated activity highlights must retain their dates and must not imply a fixed programme",
-    "Historical solidarity projects and cited organisations must not be presented as necessarily active/current",
-    "No participant names, individual diagnoses, medical outcomes or unapproved participant photographs"
+    "Six static HTML pages with dedicated purposes and a common top navigation/footer",
+    "Homepage is a concise orientation page, not the full information archive",
+    "Persistent navigation on all pages; active route uses aria-current=page",
+    "Keyboard-operable compact navigation; Escape closes only an open menu and restores focus",
+    "Every page has French language declaration, one H1, one main landmark, unique title and meta description",
+    "Static local page links work without a framework or backend",
+    "Preserve source/date caveats for venue, session times, dated posts, historical projects and cited organisations",
+    "Email and exact Facebook route remain available in the shared footer",
+    "No participant photographs, individual diagnoses, medical outcomes or sensitive-data collection"
   ],
   "content_requirements": [
     "Identify La Bulle Bleue as an APAiL initiative in Chalon-sur-Saône launched in 2021; identify APAiL as created in 1995",
@@ -132,14 +135,14 @@
     "branch": "main"
   },
   "success_criteria": [
-    "Visitors understand purpose and the two audience groups quickly.",
-    "Website content is grounded in the complete user-supplied Facebook extraction.",
-    "Audience, timetable and venue carry source context and confirmation caveats.",
-    "Activities are examples, not a guaranteed fixed programme.",
-    "Recent highlights retain dates; historical projects and cited organisations are framed accurately.",
-    "Exact Facebook page and email contact routes are present.",
-    "No participant names, individual diagnoses or unapproved photographs are published.",
-    "Responsive layout, keyboard navigation and reduced motion remain supported."
+    "Homepage is an orientation page under 9,000 characters.",
+    "Detailed topics have separate named pages: La Bulle, activities, actualités, APAiL and contact.",
+    "All six pages have identical navigation order and a clear current-page marker.",
+    "Every page has unique metadata, one H1 and one main landmark.",
+    "All internal page links work and the compact menu is keyboard-operable.",
+    "Source-derived facts and operational caveats remain on their appropriate pages.",
+    "No participant names or unapproved photographs are published.",
+    "Responsive layout declarations cover desktop, tablet and mobile; rendered visual validation is reported separately."
   ],
   "business_outcome_hypotheses": [
     "Specific activity stories may help families understand the initiative",
@@ -155,5 +158,14 @@
     "coverage": "Page information and text posts May 2023 to October 2026, supplied by the user.",
     "source_blob_at_loop_start": "dec4ee6c3f4e0ea7c092ebe1760c4a35033e05bf"
   },
-  "definition_of_done_loop_007": "Replace prior generic page copy with concise, source-grounded content from the supplied Facebook extraction; update requirements/provenance/validator; run available checks; checkpoint to main and verify; do not deploy."
+  "definition_of_done_loop_007": "Replace prior generic page copy with concise, source-grounded content from the supplied Facebook extraction; update requirements/provenance/validator; run available checks; checkpoint to main and verify; do not deploy.",
+  "definition_of_done_loop_009": "Create a six-page static information architecture with concise homepage, dedicated audience/session, activities, news, APAiL and contact pages, common accessible navigation, page-level metadata, updated multi-page checks/evidence, checkpoint to main, verify remote, no deployment.",
+  "information_architecture": {
+    "index.html": "Concise homepage, overview and destination cards.",
+    "la-bulle.html": "Audience groups, published session times and first-contact context.",
+    "activites.html": "Grouped activity examples.",
+    "actualites.html": "Selected dated highlights and Facebook source link.",
+    "apail.html": "Association history, reported solidarity projects, volunteers and organisations cited in posts.",
+    "contact.html": "Email, Facebook, venue, garden access and source/date confirmation caveat."
+  }
 }

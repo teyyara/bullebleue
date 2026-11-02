@@ -1,5 +1,5 @@
 {
-  "content_provenance_version": "0.4",
+  "content_provenance_version": "0.5",
   "items": [
     {
       "content": "La Bulle Bleue is an APAiL initiative in Chalon-sur-Saône.",
@@ -106,6 +106,11 @@
       "content": "APAiL actions in Sapala, Burkina Faso, and Morocco projects in Moulay-Bousselham, Loudaya, Talouine, Tamzargoute, Douira and Dcheira.",
       "classification": "Historical projects described in the supplied Facebook extraction; website explicitly avoids claiming each remains active.",
       "confidence": "HIGH for historical reporting; current project status not established."
+    },
+    {
+      "content": "Information architecture: concise homepage plus separate pages for La Bulle, activities, actualités, APAiL and contact.",
+      "classification": "Design structure authored in response to the user's explicit navigation/organisation feedback; factual copy remains grounded in the user-supplied Facebook extraction.",
+      "confidence": "HIGH for the design decision; factual source provenance remains unchanged."
     }
   ]
 }

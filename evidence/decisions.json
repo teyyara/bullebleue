@@ -163,6 +163,20 @@
       "tradeoffs": "The content is richer than Loop 006 but curated rather than copied verbatim. Venue and session validity cannot be guaranteed from the document alone.",
       "risk": "R2",
       "evidence": "Bulle_Bleue_APAiL_contenu_facebook.md (blob dec4ee6c3f4e0ea7c092ebe1760c4a35033e05bf), Loop 007 index.html and updated validator."
+    },
+    {
+      "id": "DEC-014",
+      "context": "The user requested a more organised professional site, with the homepage no longer containing everything.",
+      "options": [
+        "Keep a long single-page site with anchor navigation",
+        "Split major topics into dedicated pages with common navigation",
+        "Introduce a CMS or SPA"
+      ],
+      "chosen": "Six static HTML pages: home, La Bulle, activities, news, APAiL and contact.",
+      "reason": "Each major visitor question now has a dedicated, predictable destination; the homepage acts as an index. Static files preserve zero paid dependencies and simple hosting.",
+      "tradeoffs": "Shared navigation and common footer must remain consistent across separate files; automated tests now enforce this.",
+      "risk": "R1",
+      "evidence": "Loop 009 multi-page validator and route source review."
     }
   ]
 }

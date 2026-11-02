@@ -269,5 +269,43 @@
       "Source-level checks are not a DOM parser or visual browser review.",
       "No full-page browser screenshots or rendered overflow measurements were produced."
     ]
+  },
+  "loop_009": {
+    "test_run": "loop-009-multipage-architecture-source-review",
+    "status": "IMPLEMENTED; STATIC VALIDATION TO BE RECORDED",
+    "candidate": "bullebleue-loop-009-multipage-professional-information-architecture-v1",
+    "checks": [
+      {
+        "name": "Six page routes",
+        "result": "IMPLEMENTED",
+        "detail": "index.html, la-bulle.html, activites.html, actualites.html, apail.html and contact.html."
+      },
+      {
+        "name": "Concise homepage",
+        "result": "IMPLEMENTED",
+        "detail": "Short hero, overview, four destination cards and one contact invitation; detailed content moved to dedicated pages."
+      },
+      {
+        "name": "Shared navigation",
+        "result": "IMPLEMENTED",
+        "detail": "All pages use the same six links in the same order and mark the current page with aria-current=page."
+      },
+      {
+        "name": "Page-level metadata and semantics",
+        "result": "IMPLEMENTED — ASSERTIONS ADDED",
+        "detail": "Each page declares French, unique title and description, one h1 and one main landmark."
+      },
+      {
+        "name": "Content allocation",
+        "result": "IMPLEMENTED",
+        "detail": "Audience/schedule on La Bulle; activity categories on Activités; dated posts on Actualités; history/solidarity/volunteers on APAiL; contact/access on Contact."
+      },
+      {
+        "name": "Responsive navigation",
+        "result": "IMPLEMENTED — CSS DECLARATIONS",
+        "detail": "Shared compact menu at <=980 px; responsive content grids collapse at 1040 px and 760 px."
+      }
+    ],
+    "limitation": "Source declarations and generated content do not prove rendered visual quality or no-overflow; browser review is a separate outstanding check."
   }
 }

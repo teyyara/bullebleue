@@ -271,6 +271,33 @@
       "validation": "Content review and guardrail assertions.",
       "status": "IMPLEMENTED — HISTORICAL/NON-EXHAUSTIVE FRAMING",
       "confidence": "HIGH for extraction; current project/partner status not established"
+    },
+    {
+      "id": "REQ-031",
+      "requirement": "Separate site information into dedicated pages so visitors do not have to read everything on the homepage.",
+      "acceptance": "Homepage is a short orientation page; audience/session, activities, news, APAiL and contact details live on separate named HTML pages.",
+      "risk": "R1",
+      "validation": "Six-page structural validator and homepage character limit.",
+      "status": "IMPLEMENTED — SIX-PAGE STATIC ARCHITECTURE",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-032",
+      "requirement": "Provide consistent, predictable navigation across all pages.",
+      "acceptance": "All six pages expose the same six navigation destinations in the same order; current page uses aria-current=page; footer is consistent.",
+      "risk": "R1",
+      "validation": "Multi-page validator asserts common nav sequence and active-page state.",
+      "status": "IMPLEMENTED — SOURCE ASSERTIONS ADDED",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-033",
+      "requirement": "Make each page easy to scan and identify.",
+      "acceptance": "Every page includes lang=fr, one H1, one main landmark, unique title and meta description; each page intro and body are specific to its topic.",
+      "risk": "R1",
+      "validation": "Multi-page validator checks semantics, metadata and page content allocation.",
+      "status": "IMPLEMENTED — SOURCE ASSERTIONS ADDED",
+      "confidence": "HIGH"
     }
   ]
 }
