@@ -1,12 +1,12 @@
 {
-  "manifest_version": "0.4",
+  "manifest_version": "0.5",
   "run_id": "bullebleue-20261102-001",
   "loop": 3,
   "candidate": "bullebleue-loop-003-illustrated-story-redesign-v1",
-  "candidate_status": "IMPLEMENTED; STATIC SOURCE AND NODE INTERACTION TESTS PASS; VISUAL BROWSER RUNTIME PENDING; NOT RELEASE CERTIFIED",
+  "candidate_status": "IMPLEMENTED; STRUCTURAL SOURCE INSPECTION AND NODE INTERACTION TEST PASS; VISUAL BROWSER REVIEW PENDING; NOT RELEASE CERTIFIED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "4443c74fd77798d412e62e429de9af52be731270",
+  "implementation_checkpoint_commit": "0c40eb7bef15569ff57a37f2491da5fb1ee9154e",
   "remote_git_blob_objects": {
     "index.html": "1783bc7fa3fd8d8961b6b92596154f0d166361f1",
     "styles.css": "1b9d548642e65c09629844adad0d35c9bb62b118",
@@ -69,17 +69,22 @@
   },
   "loop_003": {
     "adopted_contract": "0.2",
-    "assets": [
-      "assets/illustrations/hero-community.svg",
-      "assets/illustrations/games.svg",
-      "assets/illustrations/garden.svg",
-      "assets/illustrations/discovery.svg",
-      "assets/illustrations/culture.svg",
-      "assets/illustrations/solidarity.svg"
-    ],
-    "motion": "CSS hero/bubble drift and progressive IntersectionObserver reveals; disabled when reduced motion is requested.",
-    "node_test": "PASS",
-    "visual_browser_runtime": "PENDING",
-    "production_artifact_sha256": null
-  }
+    "checkpoint_commit": "0c40eb7bef15569ff57a37f2491da5fb1ee9154e",
+    "assets": {
+      "hero-community.svg": "d46b1fa640912b32259f2b0f17622e635b8bf09b",
+      "games.svg": "74f82b260859fc2658939d9cc42e074fedf17544",
+      "garden.svg": "4e15f67d6cebaf017411b9e49255e15aaa9ae7fa",
+      "discovery.svg": "ae5195596626a8441bda55f1a008ac3cb3e47fa8",
+      "culture.svg": "c8f03c2719d743336afeb680eef96b378bac8f51",
+      "solidarity.svg": "e80525d8acc48b3d429912d6229023db54a45e2e"
+    },
+    "tests": {
+      "static_source_inspection": "PASS",
+      "node_menu_motion_reduced_motion": "PASS",
+      "visual_browser_runtime": "NOT RUN"
+    },
+    "image_policy": "No social or press participant photos reused; six original local SVG illustrations are clearly labelled.",
+    "motion": "CSS hero/bubble float and progressive IntersectionObserver reveals; no reveal activation under prefers-reduced-motion."
+  },
+  "remote_branch_verified_after_implementation": true
 }
