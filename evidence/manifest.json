@@ -1,16 +1,17 @@
 {
-  "manifest_version":"0.1",
+  "manifest_version":"0.2",
   "run_id":"bullebleue-20261102-001",
   "loop":1,
   "candidate":"bullebleue-loop-001-static-site-v1",
   "candidate_status":"IMPLEMENTED; NOT RELEASE CERTIFIED",
   "repository":"teyyara/bullebleue",
   "branch":"main",
-  "source_sha256":{
-    "index.html":"fe372586128b50da11deec97ed6c441d9de42fc78234ec7c31daa977630c1e42",
-    "styles.css":"98f22f85c2a6b8aceec8c8f61bc56f6055d9c2133335a5e29af9258aec876f33",
-    "script.js":"2596b01b678970dc0b575c97e33324a7c8e6bf356f7d95a055477078e55644a2",
-    "assets/favicon.svg":"b25a19996f0a78d1fa3431b51a4a690a188820155d3bbcab285b8239e570c71e"
+  "implementation_checkpoint_commit":"4443c74fd77798d412e62e429de9af52be731270",
+  "remote_git_blob_objects":{
+    "index.html":"271fd60d88736c75cb797730d3a0644791bed16c",
+    "styles.css":"ca86112b7db79bce868c380e3e696d2c6864cce0",
+    "script.js":"9fbef38151663c5f550e601f9d321174f7586b59",
+    "assets/favicon.svg":"c98beb72f9633c41915ad00e5ced621faaf17799"
   },
   "local_screenshot_evidence":{
     "desktop":{"file":"bullebleue-desktop.png","sha256":"a8650adc1ae0965da3bde28eb4db28f64ca2125ff865599c034af1dd74b38699","not_committed":true},
@@ -25,5 +26,11 @@
   "production_artifact_sha256":null,
   "release_frozen":false,
   "production_deployed":false,
-  "limitations":["Localhost/file navigation blocked","Firefox/WebKit/Safari unavailable","Screen-reader and Lighthouse/ZAP checks unavailable","No host/domain configured"]
+  "limitations":[
+    "Source files are recorded by their remote Git blob object IDs; this manifest does not claim a production artifact digest.",
+    "Localhost/file navigation blocked by sandbox.",
+    "Firefox/WebKit/Safari unavailable.",
+    "Screen-reader, axe-core, Lighthouse and ZAP checks unavailable.",
+    "No hosting domain configured."
+  ]
 }
