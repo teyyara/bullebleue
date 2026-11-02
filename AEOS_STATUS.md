@@ -9,16 +9,18 @@
 **Branch:** \`main\` (single-branch progression; repository was empty at activation)  
 **Implementation checkpoint commit:** \`4443c74fd77798d412e62e429de9af52be731270\`  
 **Evidence-manifest metadata commit:** \`9db926175299aa4d7496a734da7f2aad35916be1\`  
+**Validator correction commit:** \`8c80bc681a1c2f9f88b58be9f787f6f88fa28477\`  
 **State:** \`WAITING_FOR_CONTINUE\`
 
 ## Latest loop work
 
-- Verified repository identity and authenticated read/write permissions; initial repository was empty.
+- Verified repository identity and authenticated read/write permissions; repository was empty at activation.
 - Bootstrapped the repository and created a French-language responsive one-page association website.
 - Added audience information, publicly reported activity examples, a first-contact explanation, an APAiL introduction, volunteer CTA and email contact.
 - Avoided unsupported current venue/hours; no personal-data form, medical promise, testimonials, phone number or unsupported business facts were introduced.
 - Added research dossier, initial Product Contract, requirement matrix, capability manifest, risk/assumption/decision/content-provenance records, tests and evidence manifest.
-- Committed the website and AEOS records to \`main\`; branch advancement used an expected-head check and the remote branch/content were read back successfully.
+- Committed the website and AEOS records to \`main\`; branch advancement used an expected-head check and remote branch/content were read back.
+- Corrected a quoting defect found in the repository validator during final review; the corrected validator passed locally against the candidate source.
 
 ## Validation
 
