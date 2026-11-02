@@ -136,5 +136,45 @@
       }
     ],
     "limitation": "Candidate-level checks only; no hosted deployment or production route was used."
+  },
+  "loop_006": {
+    "test_run": "loop-006-concise-editorial-static-validation",
+    "observed_at": "2026-11-02",
+    "runner": "Python 3.11 against reconstructed Loop 006 candidate worktree",
+    "status": "PASS",
+    "checks": [
+      {
+        "name": "Structural validator",
+        "result": "PASS",
+        "command": "python3 tests/validate_site.py",
+        "detail": "French document, one h1, one main landmark, exactly five sections in intended order, valid fragment links and local asset references."
+      },
+      {
+        "name": "Concise content and factual safeguards",
+        "result": "PASS",
+        "detail": "Audience, email, APAiL/initiative dates and welcome ethos present; disputed street address and historical hours absent."
+      },
+      {
+        "name": "Facebook page route",
+        "result": "PASS",
+        "detail": "Exact user-supplied Facebook URL appears in contact and footer; new-tab links include noopener/noreferrer."
+      },
+      {
+        "name": "Image and artwork policy",
+        "result": "PASS",
+        "detail": "Zero informative image placements; no stock-style placeholders or unverified Facebook/press/participant photos. Typographic BB mark documented as provisional."
+      },
+      {
+        "name": "Typography and background source",
+        "result": "PASS",
+        "detail": "Editorial type stack and textured paper/mineral-blue palette present; no Google Fonts or other remote font request."
+      },
+      {
+        "name": "Accessibility foundation",
+        "result": "PASS WITH LIMITS",
+        "detail": "Single h1/main, named navigation, skip link, focus-visible states, semantic ordered steps, Escape focus handling and reduced-motion CSS fallback."
+      }
+    ],
+    "limitation": "Static source checks do not establish cross-platform font availability, assistive-technology conformance or production rendering."
   }
 }

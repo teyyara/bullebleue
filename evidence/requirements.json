@@ -1,6 +1,6 @@
 {
-  "requirements_version": "0.4",
-  "candidate": "bullebleue-loop-005-tablet-responsive-and-story-layout-v1",
+  "requirements_version": "0.5",
+  "candidate": "bullebleue-loop-006-concise-editorial-redesign-v1",
   "requirements": [
     {
       "id": "REQ-001",
@@ -140,10 +140,10 @@
     {
       "id": "REQ-016",
       "requirement": "Improve visual richness with an image-led hero, activity imagery, stories and APAiL mission illustration.",
-      "acceptance": "Hero illustration, four activity cards, dated story mosaic and parent-association visual are present.",
+      "acceptance": "The previous image-led hero, illustrated cards and dated story mosaic were retired in Loop 006 in favour of a concise editorial layout; no placeholder or unlicensed imagery remains in the current page.",
       "risk": "R1",
-      "validation": "HTML image inventory and visual structure inspection",
-      "status": "IMPLEMENTED — VISUAL RUNTIME CHECK PENDING",
+      "validation": "Loop 006 source inspection and browser review.",
+      "status": "SUPERSEDED BY LOOP 006 CONCISE EDITORIAL REDESIGN",
       "confidence": "MEDIUM"
     },
     {
@@ -158,10 +158,10 @@
     {
       "id": "REQ-018",
       "requirement": "Provide optimized and accessible local visual assets.",
-      "acceptance": "Informative images use local paths, useful alt text, width/height and lazy loading below fold; hero uses fetchpriority high.",
+      "acceptance": "No informative images are used in current page markup; local SVGs are archived and unused. If approved photography is added later, it must have intrinsic dimensions, useful alternative text and permission.",
       "risk": "R1",
-      "validation": "Static validator",
-      "status": "PASS — STATIC",
+      "validation": "Current HTML image inventory, asset register and permission policy.",
+      "status": "NOT APPLICABLE TO LOOP 006 — NO INFORMATIVE IMAGE PLACEMENTS",
       "confidence": "HIGH"
     },
     {
@@ -207,6 +207,33 @@
       "risk": "R1",
       "validation": "Chromium 144 Playwright viewport sweep, screenshot review, menu/escape interaction and existing static validator.",
       "status": "PASS — CANDIDATE-LEVEL CHROMIUM",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-024",
+      "requirement": "Reduce page length and remove redundant/duplicated long sections.",
+      "acceptance": "A concise five-section page in order: hero, activities, welcome/first contact, APAiL, contact. Activities remain scannable; the earlier separate story mosaic, approach, first-step and volunteer sections are not repeated.",
+      "risk": "R1",
+      "validation": "Structural Python validator and Chromium full-page screenshots.",
+      "status": "PASS — CANDIDATE",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-025",
+      "requirement": "Provide a direct route to the exact Bulle Bleue — APAiL Facebook page supplied by the user.",
+      "acceptance": "The exact supplied URL appears in both contact and footer, opening in a new tab with noopener/noreferrer.",
+      "risk": "R1",
+      "validation": "HTML source assertion and Chromium DOM count.",
+      "status": "PASS — LINK PRESENT; FACEBOOK DESTINATION NOT FETCHABLE IN TEST ENVIRONMENT",
+      "confidence": "HIGH for link target; destination availability not tested"
+    },
+    {
+      "id": "REQ-026",
+      "requirement": "Do not misrepresent provisional brand artwork or use unverified social-media imagery.",
+      "acceptance": "BB typographic monogram is documented as provisional; no Facebook logo/profile photo or participant photograph is copied until the exact page asset can be retrieved and usage rights/consent are confirmed. The different-ID mirror is excluded as a brand source.",
+      "risk": "R2",
+      "validation": "Research dossier, asset register, provenance ledger and asset inventory.",
+      "status": "PASS — ASSET SAFEGUARD",
       "confidence": "HIGH"
     }
   ]

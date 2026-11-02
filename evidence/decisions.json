@@ -110,6 +110,45 @@
       "reason": "Content remains visible without JavaScript/observer and respects reduced-motion preferences.",
       "risk": "R1",
       "reversibility": "Remove enhancement without altering content structure."
+    },
+    {
+      "id": "DEC-010",
+      "context": "User requested shorter sections, less generic typography, a professional design and a stronger visual background.",
+      "options": [
+        "Retain the image-heavy pastel cards and long story mosaic",
+        "Consolidate duplicate content into a concise editorial five-section page with a restrained palette and typographic hierarchy"
+      ],
+      "chosen": "Consolidate into five sections: hero, activities, welcome/first contact, APAiL, contact.",
+      "reason": "The previous design repeated welcome/approach/first-step/volunteer content and relied heavily on generic repeated illustration cards. A concise editorial layout better communicates the documented welcome/listening ethos with less scrolling.",
+      "tradeoffs": "Dated social-post mosaic and decorative placeholder illustrations are removed; fewer visual story details are displayed.",
+      "risk": "R1",
+      "evidence": "Loop 006 structural validator, Chromium viewport sweep and screenshots."
+    },
+    {
+      "id": "DEC-011",
+      "context": "The user supplied the exact Bulle Bleue - APAiL Facebook page as a potential official brand source.",
+      "options": [
+        "Use a different-ID third-party mirror as if it were the supplied page",
+        "Link the exact user-supplied page, but defer logo/photo reuse until that exact page's assets can be verified"
+      ],
+      "chosen": "Add the exact Facebook URL in contact and footer; do not copy an unverified logo or photographs.",
+      "reason": "The supplied page URL was blocked by the fetch environment. A public mirror surfaced a different page ID (100620708811103 versus the supplied 100066715807933), so identity cannot be assumed.",
+      "tradeoffs": "The current BB monogram and palette remain provisional; official artwork is still unverified.",
+      "risk": "R2",
+      "evidence": "Direct attempt to open user-provided Facebook URL; FindGlocal mirror ID comparison."
+    },
+    {
+      "id": "DEC-012",
+      "context": "A distinctive display/body type system should remain free of paid services and avoid unnecessary third-party requests.",
+      "options": [
+        "Load remote font APIs",
+        "Use an editorial font stack with platform fallback and no remote font request"
+      ],
+      "chosen": "Use EB Garamond/Cabin when available, with Iowan Old Style, Palatino, Georgia, Avenir Next, Segoe UI and other local system fallbacks.",
+      "reason": "No paid service or remote font request is required; the Chromium environment confirmed both named faces are locally available.",
+      "tradeoffs": "Rendering may fall back to a platform font on visitor devices where EB Garamond or Cabin is not installed; cross-platform fallback inspection remains outstanding.",
+      "risk": "R1",
+      "evidence": "Chromium 144 document.fonts checks and CSS source inspection."
     }
   ]
 }

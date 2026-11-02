@@ -1,5 +1,5 @@
 {
-  "content_provenance_version": "0.2",
+  "content_provenance_version": "0.3",
   "items": [
     {
       "content": "La Bulle Bleue is an APAiL initiative in Chalon-sur-Saône.",
@@ -42,9 +42,9 @@
       "confidence": "HIGH"
     },
     {
-      "content": "Recent examples dated 19 Sep–26 Oct 2026: games, garden, archery, outings, accessibility discovery workshop and local events.",
-      "classification": "Third-party social page mirror; posts attributed to Bulle Bleue–APAiL",
-      "confidence": "MEDIUM; not a fixed recurring activity promise"
+      "content": "Earlier Loop 003/005 dated activity examples came from a FindGlocal mirror attributed to Bulle Bleue–APAiL, whose Facebook page ID is 100620708811103; this does not match the user-supplied Facebook page ID 100066715807933. Excluded from Loop 006 page content.",
+      "classification": "Third-party mirror; identity mismatch with exact user-supplied page; not used as current first-party content or asset source",
+      "confidence": "NOT USED IN LOOP 006"
     },
     {
       "content": "APAiL created in 1995 under Solange Chevat; anniversary and participant percussion/singing in Oct 2025.",
@@ -65,6 +65,21 @@
       "content": "Current venue and opening hours.",
       "classification": "Omitted because sources conflict or are historical",
       "confidence": "UNKNOWN / TO BE VALIDATED"
+    },
+    {
+      "content": "Exact Facebook page URL supplied by the user: https://www.facebook.com/p/Bulle-Bleue-APAiL-100066715807933/",
+      "classification": "User-supplied page URL; linked from contact and footer; direct page and profile-image fetch were blocked.",
+      "confidence": "HIGH for URL provenance; current page assets/content not verified"
+    },
+    {
+      "content": "BB typographic monogram and Loop 006 colour/type system.",
+      "classification": "Original provisional design interpretation informed by public descriptions of welcome, listening, solidarity and sharing; not an official master logo or published palette.",
+      "confidence": "HIGH for authorship and provisional status; no official colour/font guide verified"
+    },
+    {
+      "content": "Loop 006 website imagery.",
+      "classification": "No informative image placements; prior original SVGs remain archived in repository but are not referenced by the new page; no social/press/participant photos reused.",
+      "confidence": "HIGH"
     }
   ]
 }

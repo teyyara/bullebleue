@@ -235,3 +235,29 @@ The redesign uses original local SVG illustrations under `assets/illustrations/`
 
 ## Research completion gate
 `KEYPHRASE_RESEARCH: COMPLETE FOR LOOP 003`. Primary historical/statutory records and recent reporting were checked; social-feed information is explicitly medium confidence; venue, schedule and image-rights uncertainties remain recorded.
+
+
+## Loop 006 — exact social-page lead and visual identity boundary
+
+The user identified the intended brand/social source as Bulle Bleue - APAiL and supplied this exact page URL:
+
+https://www.facebook.com/p/Bulle-Bleue-APAiL-100066715807933/
+
+The URL was checked directly in this research run. Facebook returned a blocked/disabled fetch response, and its profile-picture endpoint could not be retrieved. Therefore the page's current profile image, cover image, posts, official logo, exact brand colours and typography could not be verified from this URL in the available environment. The link is nevertheless included directly in the website contact panel and footer as requested.
+
+A searchable FindGlocal mirror surfaced a Bulle Bleue–APAiL listing with Facebook page ID 100620708811103. This does not match the user-supplied page ID 100066715807933. The two IDs are not treated as interchangeable; the mirror is not used to source the Loop 006 logo, photos, colour palette or activity copy.
+
+The Loop 006 design direction is consequently provisional, not an official brand reproduction. Deep ink/mineral blue, warm paper ivory, muted blue-teal, clay and aged ochre are used as a restrained interpretation of the publicly documented values of welcome, listening, kindness, solidarity and sharing. No official colour values were found in the verified sources. The typographic BB monogram is a temporary mark and must be replaced if the official page logo becomes available and its reuse is authorised.
+
+### Evidence used for the editorial direction
+
+- City of Chalon, Objectif Chalon no. 42, November–December 2022, p. 17: the local initiative, audience, 2021 launch and its purpose of welcome, discussion, shared activities and social connection.
+  https://www.chalon.fr/fileadmin/PDF/Objectif_Chalon/11_2022_OBJECTIF_CHALON_42_NOVEMBRE-DECEMBRE.pdf
+- Info-Chalon, 25 August 2021: launch reporting describes a welcoming, listening-led respite and activities shaped around the people attending.
+  https://www.info-chalon.com/articles/2021/08/25/62690/la-belle-bulle-d-oxygene-portee-a-saint-marcel/
+- Info-Chalon, 8 September 2024: coverage describes games, outings, manual and artistic activities, gardening and time for conversation.
+  https://www.info-chalon.com/articles/2024/09/08/92700/forum-de-la-vie-associative-et-sportive-chalonnaise-rencontre-avec-l-a-p-ai-l/
+- Info-Chalon, 13 October 2025: anniversary reporting documents APAiL's founding in 1995 and values including solidarity, respect and sharing.
+  https://www.info-chalon.com/articles/2025/10/13/104129/l-apail-fete-ses-30-ans-de-solidarite-d-amitie-et-de-partage-au-clos-bourguignon/
+
+These sources inform copy and design tone; they do not establish an official visual identity. The Loop 006 website removes the previous dated social-mirror story mosaic rather than presenting unverified mirror posts as confirmed first-party page content. No Facebook, press or participant image is copied or embedded in the new design.

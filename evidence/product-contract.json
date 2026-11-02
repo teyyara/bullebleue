@@ -1,8 +1,8 @@
 {
-  "contract_version": "0.2",
+  "contract_version": "0.3",
   "status": "ACTIVE EVIDENCE-DERIVED CHANGE BASELINE — NOT HUMAN-APPROVED",
-  "change_request": "CR-001",
-  "supersedes": "0.1",
+  "change_request": "CR-002",
+  "supersedes": "0.2",
   "project": "La Bulle Bleue — Chalon-sur-Saône",
   "business_objective": "Create an informative, welcoming and visually distinctive website explaining La Bulle Bleue and APAiL, representing publicly reported activities without overpromising and helping visitors contact the association.",
   "target_audience": [
@@ -40,36 +40,34 @@
   ],
   "brand": {
     "official_assets_supplied": false,
-    "direction": "Warm, authentic, editorial, friendly and inclusive; not clinical or infantilizing",
-    "provisional_system": "Blue bubble motif, deep/soft blues, warm off-white, muted yellow, peach, sage and lilac",
-    "logo_status": "Current mark is provisional, not official master artwork"
+    "direction": "Editorial, understated, human and welcoming; professional local-association identity rather than a generic pastel/illustrated landing-page template.",
+    "provisional_system": {
+      "palette": "Deep ink/mineral blue, warm paper ivory, muted blue-teal, restrained clay/terracotta and aged ochre.",
+      "basis": "Design interpretation of publicly documented welcome, listening, solidarity and sharing ethos; not an officially published colour specification.",
+      "typography": "EB Garamond display / Cabin body with Iowan Old Style, Palatino, Georgia, Avenir Next and Segoe UI platform fallbacks. No remote font request."
+    },
+    "logo_status": "Provisional typographic BB monogram only. User supplied the official Facebook page URL, but Facebook and its profile-image endpoint were not fetchable in this environment; the official master logo has not been verified or copied."
   },
   "visual_requirements": {
-    "hero": "Image-led hero with a large local illustration and layered bubble motifs",
-    "activities": "Illustrated cards for games, garden, discovery/workshops and culture/outings",
-    "stories": "Editorial dated activity-story mosaic",
-    "parent_association": "Distinct APAiL history and wider solidarity section",
-    "asset_policy": "Original local SVG illustrations only until documentary photo rights are cleared",
-    "images": [
-      "assets/illustrations/hero-community.svg",
-      "assets/illustrations/games.svg",
-      "assets/illustrations/garden.svg",
-      "assets/illustrations/discovery.svg",
-      "assets/illustrations/culture.svg",
-      "assets/illustrations/solidarity.svg"
-    ]
+    "hero": "Concise deep mineral-blue editorial hero with a typographic headline and restrained outlined statement panel.",
+    "activities": "Short, scannable numbered editorial rows across four broadly evidenced activity categories.",
+    "welcome": "One compact welcome and first-contact panel; no duplicated approach / volunteer / first-step sections.",
+    "association": "Short APAiL origin panel with verified 1995 and 2021 dates.",
+    "contact": "Single clear email action with current venue/schedule caveat and exact user-supplied Facebook link.",
+    "background": "Warm textured paper surface, alternating mineral-blue fields and restrained line/ring details.",
+    "stories": "Separate dated activity-story mosaic removed in Loop 006 to reduce page length and avoid reliance on an unverified Facebook mirror.",
+    "asset_policy": "No generic placeholder illustrations or unlicensed social/press photos. Retained prior original SVGs are not used in the new page markup.",
+    "images": []
   },
   "motion": {
     "effects": [
-      "subtle hero illustration float",
-      "floating decorative bubbles",
-      "scroll reveals",
-      "subtle image hover zoom"
+      "subtle CSS surface texture and background rings",
+      "small hover and focus transitions"
     ],
-    "implementation": "CSS and vanilla JavaScript IntersectionObserver",
+    "implementation": "CSS only; no scroll-triggered reveal hiding content",
     "reduced_motion_required": true,
     "essential_content_must_not_depend_on_motion": true,
-    "fallback": "Content is visible by default; reveal enhancement runs only when observer is supported and reduced motion is off."
+    "fallback": "Content is visible by default; CSS transitions are suppressed for prefers-reduced-motion."
   },
   "technical": {
     "architecture": "Static HTML, CSS and vanilla JavaScript",
@@ -134,20 +132,20 @@
     "branch": "main"
   },
   "success_criteria": [
-    "Visitors understand the relationship between La Bulle Bleue and APAiL",
-    "Visitors see activity examples without interpreting them as a fixed schedule",
-    "Visitors can initiate email contact",
-    "Local illustrations have alt text and dimensions",
-    "Mobile navigation is keyboard-operable",
-    "Reduced-motion users never receive essential hidden content",
-    "No overflow at tested viewports",
-    "No unverified address, schedule, health claim or sensitive data",
-    "No participant/press photo without permission"
+    "Visitors understand the purpose, audience and parent association quickly.",
+    "Main content is condensed into five sections with short paragraphs and scannable activity rows.",
+    "Typography, contrast, background and section composition form a restrained editorial identity.",
+    "The exact user-supplied Facebook page is reachable from contact and footer.",
+    "The BB monogram is clearly provisional until the official Facebook brand asset is verified.",
+    "No incorrect visitor venue, historical schedule, unlicensed participant photo, diagnosis-based eligibility or unsupported outcome is published.",
+    "No horizontal overflow at tested desktop/tablet/mobile widths.",
+    "Menu remains keyboard-operable and reduced-motion preferences are respected."
   ],
   "business_outcome_hypotheses": [
     "Specific activity stories may help families understand the initiative",
     "A richer editorial visual system may feel more approachable",
     "Outcomes require visitor feedback/measurement and are not proven by implementation"
   ],
-  "definition_of_done_loop_003": "Adopt contract 0.2; deliver local SVG illustrations, activity stories and reduced-motion-aware motion; update tests/evidence; checkpoint to main and verify remote; no deployment."
+  "definition_of_done_loop_003": "Adopt contract 0.2; deliver local SVG illustrations, activity stories and reduced-motion-aware motion; update tests/evidence; checkpoint to main and verify remote; no deployment.",
+  "definition_of_done_loop_006": "Deliver a concise five-section editorial redesign; add user-supplied Facebook link while documenting inability to verify official logo/assets; run structural validator, Node interaction tests and Chromium responsive visual review; checkpoint on main and verify; do not deploy."
 }

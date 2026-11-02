@@ -1,71 +1,64 @@
 {
-  "manifest_version": "0.7",
+  "manifest_version": "0.8",
   "run_id": "bullebleue-20261102-001",
-  "loop": 5,
-  "candidate": "bullebleue-loop-005-tablet-responsive-and-story-layout-v1",
-  "candidate_status": "TABLET RESPONSIVENESS AND FEATURE-STORY LAYOUT REFINED; FULL STATIC VALIDATOR AND CHROMIUM RESPONSIVE/INTERACTION REVIEW PASS; CROSS-BROWSER, MANUAL A11Y AND HOSTED PRODUCTION TESTS PENDING; NOT RELEASE CERTIFIED",
+  "loop": 6,
+  "candidate": "bullebleue-loop-006-concise-editorial-redesign-v1",
+  "candidate_status": "CONCISE FIVE-SECTION EDITORIAL REDESIGN IMPLEMENTED; PYTHON/HTML AND NODE VALIDATION PASS; CHROMIUM RESPONSIVE REVIEW PASS AT 12 WIDTHS; OFFICIAL FACEBOOK LOGO NOT RETRIEVED; CROSS-BROWSER, MANUAL A11Y AND HOSTED TESTS PENDING; NOT RELEASE CERTIFIED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
   "implementation_checkpoint_commit": "a84079ff7dbc0dbbc4ce42222687adef76a54287",
   "remote_git_blob_objects": {
-    "index.html": "1dde6a913e9e862f2340121f4108bccf1ab01ac0",
-    "styles.css": "9f00323842b43fcc549ed26ad4e2dd69d674be20",
+    "index.html": "0795dcd5acfbff63bf11064b48fd3fb0baa66084",
+    "styles.css": "0d0e74929dde3eecf2e63809574620b7a873e02f",
     "script.js": "aa2ae008fdfa8c6eb1a0f6004938627104553b61",
     "assets/favicon.svg": "c98beb72f9633c41915ad00e5ced621faaf17799",
     "menu_regression_test_js": "493debf5b26c01e0b166d555b4dab53845a52f28",
     "tests/test_menu.js": "051d0dec5655cbf2b2017e840c096ec4fc63fc6e",
-    "tests/validate_site.py": "fb3027cae2d113ef4a1a6b71a9fc6a3b457529d0",
+    "tests/validate_site.py": "a4292491460da2ebba35ba13a00c195215e72386",
     "assets/illustrations/hero-community.svg": "d46b1fa640912b32259f2b0f17622e635b8bf09b",
     "assets/illustrations/games.svg": "74f82b260859fc2658939d9cc42e074fedf17544",
     "assets/illustrations/garden.svg": "4e15f67d6cebaf017411b9e49255e15aaa9ae7fa",
     "assets/illustrations/discovery.svg": "ae5195596626a8441bda55f1a008ac3cb3e47fa8",
     "assets/illustrations/culture.svg": "c8f03c2719d743336afeb680eef96b378bac8f51",
     "assets/illustrations/solidarity.svg": "e80525d8acc48b3d429912d6229023db54a45e2e",
-    "evidence/tests/static-results.json": "00785344e1d7ce783671f30ba836b72116250939",
-    "evidence/tests/runtime-results.json": "6198a7131c960724bde9a3cf6d5c46d2cc4ae13d",
-    "evidence/requirements.json": "4715f46358f6b20bd16e9f7fc8be73d8da3b111a"
+    "evidence/tests/static-results.json": "9a9631c5a013a17274c1fb0024b2e5ec74704649",
+    "evidence/tests/runtime-results.json": "bb097a18c7a4d4d71150323135fb06b395beac5a",
+    "evidence/requirements.json": "e360e558a089877daec89b904b69cc0af3c9f298",
+    "evidence/product-contract.json": "1f06cee4d75f485e1a495ae7e663e84715e77f9d",
+    "evidence/research/keyphrase-dossier.md": "097b39681be69b04ebdca9334aa283d003ad69f7",
+    "evidence/decisions.json": "e3ade7591f7d465a7046674fa02a7312cfd47217",
+    "evidence/content-provenance.json": "583d678e42231b1b87ef71251971365b379858bb",
+    "evidence/visual/asset-register.json": "45f1c0b602a8ef80f69c8b332f86ca4a2a9d5eb9",
+    "README.md": "1aeff85eb180630ed0a6972843816ec985e59ee9",
+    "evidence/change-requests/CR-002.md": "2750f8218da89eb4dfe79b4f8ae7f8fcc7dc87a5"
   },
   "local_screenshot_evidence": {
-    "desktop": {
-      "file": "bullebleue-desktop.png",
-      "sha256": "a8650adc1ae0965da3bde28eb4db28f64ca2125ff865599c034af1dd74b38699",
-      "not_committed": true
-    },
-    "mobile": {
-      "file": "bullebleue-mobile.png",
-      "sha256": "64ccf856a44e74f27885d8921d6c7d34128434c4d432f21a7155f744cf22cdfc",
-      "not_committed": true
-    },
-    "status": "STALE / LEGACY — inspected images depict the pre-Loop-003 design and are not visual evidence for the current candidate.",
-    "loop_005": {
-      "status": "CURRENT CANDIDATE — local Chromium 144 screenshots; exact base HTML/JS/SVG assets and Loop 005 stylesheet",
-      "desktop_full": {
-        "file": "/mnt/data/bullebleue-loop005-visual/loop005-desktop-full.png",
-        "sha256": "0a54160947192996b4175cb81a57a881f48d12ae8caa72d9667f70552ff1874d",
+    "loop_006": {
+      "status": "Current Loop 006 candidate — full-page Chromium 144 review screenshots; not committed as site assets",
+      "desktop": {
+        "file": "/mnt/data/bullebleue-loop006-visual/loop006-1440-full.png",
+        "sha256": "c9238dd54f88b85ed0b5aaa0faea2ef403f7ea3211ff52143c2c522770f02588",
         "width": 1440,
-        "height": 7203,
         "not_committed": true
       },
-      "tablet_full": {
-        "file": "/mnt/data/bullebleue-loop005-visual/loop005-tablet-full.png",
-        "sha256": "10cf841769d630decfc5b587ec2cace74a873fc0edabe5dc7396173997e5f2f0",
+      "tablet": {
+        "file": "/mnt/data/bullebleue-loop006-visual/loop006-768-full.png",
+        "sha256": "edab66657a9419742b6537b4e34b286c9aab5a7f5745856343cd716d52b1cb64",
         "width": 768,
-        "height": 8199,
         "not_committed": true
       },
-      "mobile_full": {
-        "file": "/mnt/data/bullebleue-loop005-visual/loop005-mobile-full.png",
-        "sha256": "6b8861d4e7bcd494bb42292ae3dcda57328d513341847bbc53f11e4bb50157b5",
+      "mobile": {
+        "file": "/mnt/data/bullebleue-loop006-visual/loop006-390-full.png",
+        "sha256": "9524091bc1f46685ff48931e9689892455131184a65111c915aebfe443010c88",
         "width": 390,
-        "height": 10666,
         "not_committed": true
       }
     }
   },
   "runtime_environment": {
     "browser": "Chromium 144.0.7559.96",
-    "runner": "Playwright Python",
-    "mode": "in-memory page.set_content using exact current main HTML, script.js and SVG blobs, with candidate Loop 005 CSS",
+    "runner": "Python Playwright",
+    "mode": "In-memory candidate render; 12 responsive viewport widths; no external assets/font requests",
     "timestamp": "2026-11-02"
   },
   "production_artifact_sha256": null,
@@ -115,7 +108,7 @@
     "motion": "CSS hero/bubble float and progressive IntersectionObserver reveals; no reveal activation under prefers-reduced-motion.",
     "visual_review": "NOT ACCEPTED — mounted screenshot files show the previous design, not the Loop 003 illustrated redesign."
   },
-  "remote_branch_verified_after_implementation": true,
+  "remote_branch_verified_after_implementation": false,
   "loop_004": {
     "objective": "Correct numbered section order and strengthen regression evidence for the current editorial redesign.",
     "changes": [
@@ -167,6 +160,50 @@
       "No screen-reader, axe-core, Lighthouse, ZAP or real physical-device testing.",
       "No hosting domain configured; no production route or hosted performance checks.",
       "Screenshots are local review evidence and are not committed as site assets."
+    ]
+  },
+  "facebook_source_review": {
+    "supplied_url": "https://www.facebook.com/p/Bulle-Bleue-APAiL-100066715807933/",
+    "linked_in_site": true,
+    "direct_fetch": "BLOCKED / DisabledError",
+    "profile_image_fetch": "BLOCKED",
+    "mirror_found_page_id": "100620708811103",
+    "supplied_page_id": "100066715807933",
+    "mirror_identity_equivalence": "NOT ESTABLISHED — IDs differ; mirror excluded from Loop 006 branding/content.",
+    "official_logo_retrieved": false,
+    "official_photos_reused": false,
+    "monogram_status": "PROVISIONAL TYPOGRAPHIC BB"
+  },
+  "loop_006": {
+    "objective": "Shorten the page and replace the generic pastel/illustrated-card treatment with a professional editorial identity informed by verified public descriptions of La Bulle Bleue and APAiL.",
+    "changes": [
+      "Rebuilt the page as five main sections: hero, activities, welcome/first contact, APAiL history and contact.",
+      "Removed the separate dated story mosaic and repeated approach/first-step/volunteer sections to reduce scrolling and avoid relying on an unverified Facebook mirror.",
+      "Replaced repeated illustrated cards with compact numbered editorial activity rows.",
+      "Introduced a provisional mineral/ink-blue, warm-paper, blue-teal, clay and ochre palette with subtle CSS texture and background line/ring details; not claimed as an official palette.",
+      "Changed typographic hierarchy to EB Garamond/Cabin with considered local system fallbacks and no remote font request.",
+      "Added the exact user-supplied Facebook page URL in the contact area and footer.",
+      "Kept the BB typographic monogram explicitly provisional because the official Facebook profile/logo could not be fetched; did not copy assets from a different-ID mirror.",
+      "Removed all informative image placements from current page markup; previous original SVG files remain archived but unused."
+    ],
+    "validation": {
+      "python_validator": "PASS — python3 tests/validate_site.py.",
+      "javascript": "PASS — node --check script.js and node --check tests/test_menu.js.",
+      "node_interactions": "PASS — node tests/test_menu.js.",
+      "chromium": "PASS — Chromium 144 at 12 viewport widths from 320 to 1920 px; zero horizontal overflow and no console/page errors.",
+      "menu": "PASS — compact menu opens, Escape closes and restores focus.",
+      "facebook_link": "PASS — exact supplied URL appears twice in DOM; destination content itself not fetchable.",
+      "screenshots": "PASS — desktop, tablet and mobile full-page screenshots captured and SHA-256 recorded."
+    },
+    "visual_review": "PASS — candidate rendered and inspected at desktop, tablet and mobile widths.",
+    "facebook_asset_access": "LIMITED — exact page and profile image could not be fetched; a third-party mirror's ID differs; no official logo/photo is claimed.",
+    "production": "NOT DEPLOYED; deployment remains unauthorized.",
+    "limitations": [
+      "Only Chromium tested; Firefox, WebKit and actual Safari remain outstanding.",
+      "No screen-reader, axe-core, Lighthouse, ZAP or physical-device test.",
+      "EB Garamond and Cabin were available in the test browser but are not bundled; fallback typography varies by platform.",
+      "No hosted performance or production route test.",
+      "Official Facebook logo/cover/current post assets remain unverified."
     ]
   }
 }

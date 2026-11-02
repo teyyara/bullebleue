@@ -305,5 +305,122 @@
         "committed": false
       }
     }
+  },
+  "loop_006": {
+    "test_run": "loop-006-editorial-responsive-visual-review",
+    "observed_at": "2026-11-02",
+    "browser": "Chromium 144.0.7559.96",
+    "runner": "Python Playwright",
+    "execution_mode": "In-memory Loop 006 candidate page; no remote fonts, images or third-party scripts.",
+    "status": "PASS — CANDIDATE-LEVEL CHROMIUM REVIEW",
+    "viewport_widths": [
+      320,
+      360,
+      390,
+      430,
+      760,
+      768,
+      900,
+      901,
+      960,
+      1024,
+      1440,
+      1920
+    ],
+    "summary": {
+      "horizontal_overflow": false,
+      "section_count": 5,
+      "image_placements": 0,
+      "facebook_links": 2,
+      "font_checks": {
+        "eb_garamond_available_in_test_browser": true,
+        "cabin_available_in_test_browser": true
+      },
+      "hero_note_visible": true,
+      "browser_errors": [],
+      "compact_menu_widths": [
+        320,
+        360,
+        390,
+        430,
+        760,
+        768,
+        900
+      ],
+      "menu_open_escape_close_focus_restoration": "PASS"
+    },
+    "page_heights_px": {
+      "320": 3344,
+      "360": 3219,
+      "390": 3163,
+      "430": 3089,
+      "760": 3057,
+      "768": 2456,
+      "900": 2493,
+      "901": 2342,
+      "960": 2323,
+      "1024": 2330,
+      "1440": 2353,
+      "1920": 2353
+    },
+    "checks": [
+      {
+        "name": "Responsive overflow",
+        "result": "PASS",
+        "detail": "No horizontal overflow at all twelve tested viewport widths."
+      },
+      {
+        "name": "Page structure",
+        "result": "PASS",
+        "detail": "Exactly five main sections: hero, activities, welcome/first contact, APAiL and contact."
+      },
+      {
+        "name": "Font availability in test browser",
+        "result": "PASS",
+        "detail": "Chromium document.fonts checks report EB Garamond and Cabin available locally in this environment; visitor-device availability can differ and platform fallbacks are defined."
+      },
+      {
+        "name": "Facebook links",
+        "result": "PASS",
+        "detail": "Two DOM anchors match the exact supplied Facebook URL."
+      },
+      {
+        "name": "Menu interactions",
+        "result": "PASS",
+        "detail": "Compact menu opens; Escape closes and restores focus to trigger."
+      },
+      {
+        "name": "Browser errors",
+        "result": "PASS",
+        "detail": "No console or uncaught page errors."
+      }
+    ],
+    "screenshots": {
+      "desktop": {
+        "file": "/mnt/data/bullebleue-loop006-visual/loop006-1440-full.png",
+        "sha256": "c9238dd54f88b85ed0b5aaa0faea2ef403f7ea3211ff52143c2c522770f02588",
+        "width": 1440,
+        "not_committed": true
+      },
+      "tablet": {
+        "file": "/mnt/data/bullebleue-loop006-visual/loop006-768-full.png",
+        "sha256": "edab66657a9419742b6537b4e34b286c9aab5a7f5745856343cd716d52b1cb64",
+        "width": 768,
+        "not_committed": true
+      },
+      "mobile": {
+        "file": "/mnt/data/bullebleue-loop006-visual/loop006-390-full.png",
+        "sha256": "9524091bc1f46685ff48931e9689892455131184a65111c915aebfe443010c88",
+        "width": 390,
+        "not_committed": true
+      }
+    },
+    "limitations": [
+      "Chromium only; Firefox, WebKit, Safari and physical mobile devices not tested.",
+      "No manual screen-reader, axe-core, Lighthouse, ZAP or hosted-production verification.",
+      "EB Garamond and Cabin were available in this test browser but are not bundled; platform fallback fonts may render differently.",
+      "Facebook page URL is linked but the page/logo/images could not be retrieved; official logo remains unverified.",
+      "Screenshots are local review evidence, not site assets."
+    ]
   }
 }

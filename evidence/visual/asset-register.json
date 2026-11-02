@@ -1,6 +1,6 @@
 {
-  "version": "1.0",
-  "policy": "Original locally authored SVG illustrations; no participant or press photography used.",
+  "version": "1.1",
+  "policy": "Loop 006 uses no decorative or documentary image placements. Earlier original locally authored SVG illustrations remain in the repository archive but are not referenced by the current page. The BB monogram is provisional; no Facebook or press photo is copied.",
   "assets": [
     {
       "path": "assets/illustrations/hero-community.svg",
@@ -8,7 +8,8 @@
       "description": "Illustrative community-room scene with table games, plants and stylized non-identifiable silhouettes.",
       "width": 1000,
       "height": 760,
-      "documentary": false
+      "documentary": false,
+      "status": "ARCHIVED — NOT REFERENCED BY LOOP 006 HTML"
     },
     {
       "path": "assets/illustrations/games.svg",
@@ -16,7 +17,8 @@
       "description": "Board-game cards, dice and table illustration.",
       "width": 640,
       "height": 480,
-      "documentary": false
+      "documentary": false,
+      "status": "ARCHIVED — NOT REFERENCED BY LOOP 006 HTML"
     },
     {
       "path": "assets/illustrations/garden.svg",
@@ -24,7 +26,8 @@
       "description": "Garden plants, planter boxes and a small shared game table.",
       "width": 640,
       "height": 480,
-      "documentary": false
+      "documentary": false,
+      "status": "ARCHIVED — NOT REFERENCED BY LOOP 006 HTML"
     },
     {
       "path": "assets/illustrations/discovery.svg",
@@ -32,7 +35,8 @@
       "description": "Tactile activity and raised-dot discovery illustration.",
       "width": 640,
       "height": 480,
-      "documentary": false
+      "documentary": false,
+      "status": "ARCHIVED — NOT REFERENCED BY LOOP 006 HTML"
     },
     {
       "path": "assets/illustrations/culture.svg",
@@ -40,7 +44,8 @@
       "description": "Small stage with percussion drum, microphone and musical notes.",
       "width": 640,
       "height": 480,
-      "documentary": false
+      "documentary": false,
+      "status": "ARCHIVED — NOT REFERENCED BY LOOP 006 HTML"
     },
     {
       "path": "assets/illustrations/solidarity.svg",
@@ -48,13 +53,17 @@
       "description": "Stylized globe and hands as a solidarity metaphor.",
       "width": 720,
       "height": 560,
-      "documentary": false
+      "documentary": false,
+      "status": "ARCHIVED — NOT REFERENCED BY LOOP 006 HTML"
     }
   ],
   "permissions": {
     "external_press_photos": "NOT USED — rights/permission not documented",
     "social_media_photos": "NOT USED — participant/photo rights and guardian consents not documented",
-    "identifiable_people": "NONE IN SVG ARTWORK"
+    "identifiable_people": "NONE IN SVG ARTWORK",
+    "user_supplied_facebook_page": "URL linked in the site; page and profile-image fetch blocked; official logo not verified or reused.",
+    "current_page_images": "NONE",
+    "current_monogram": "PROVISIONAL TYPOGRAPHIC BB MARK — NOT THE OFFICIAL LOGO"
   },
-  "optimization": "Local SVG with intrinsic viewBox, width/height in HTML, lazy loading below the fold; hero illustration uses fetchpriority=high."
+  "optimization": "The current design intentionally uses no informative image placements; textured backgrounds and the hero statement are composed with CSS and text."
 }
