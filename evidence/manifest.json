@@ -1,36 +1,38 @@
 {
-  "manifest_version": "0.8",
+  "manifest_version": "0.9",
   "run_id": "bullebleue-20261102-001",
-  "loop": 6,
-  "candidate": "bullebleue-loop-006-concise-editorial-redesign-v1",
-  "candidate_status": "CONCISE FIVE-SECTION EDITORIAL REDESIGN IMPLEMENTED; PYTHON/HTML AND NODE VALIDATION PASS; CHROMIUM RESPONSIVE REVIEW PASS AT 12 WIDTHS; OFFICIAL FACEBOOK LOGO NOT RETRIEVED; CROSS-BROWSER, MANUAL A11Y AND HOSTED TESTS PENDING; NOT RELEASE CERTIFIED",
+  "loop": 7,
+  "candidate": "bullebleue-loop-007-facebook-extraction-content-v1",
+  "candidate_status": "WEBSITE CONTENT REPLACED WITH USER-SUPPLIED EXACT-PAGE FACEBOOK EXTRACTION; SOURCE/CONTENT VALIDATOR UPDATED BUT NOT EXECUTED; LOOP 007 CHROMIUM REVIEW NOT RUN; NO DEPLOYMENT",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "cddcca654c67229c71d68a89fcdb24f8ac5a374a",
+  "implementation_checkpoint_commit": "62ebc451af17d9c03923279d2911a1f94fa917e8",
   "remote_git_blob_objects": {
-    "index.html": "0795dcd5acfbff63bf11064b48fd3fb0baa66084",
-    "styles.css": "0d0e74929dde3eecf2e63809574620b7a873e02f",
+    "index.html": "5b5e1b4a3b27afd701dfa449a7263502980ecb59",
+    "styles.css": "565c505813dd4211243c6ff0c15094a4ef902295",
     "script.js": "aa2ae008fdfa8c6eb1a0f6004938627104553b61",
     "assets/favicon.svg": "c98beb72f9633c41915ad00e5ced621faaf17799",
     "menu_regression_test_js": "493debf5b26c01e0b166d555b4dab53845a52f28",
     "tests/test_menu.js": "051d0dec5655cbf2b2017e840c096ec4fc63fc6e",
-    "tests/validate_site.py": "a4292491460da2ebba35ba13a00c195215e72386",
+    "tests/validate_site.py": "b9c582c873a0d230776ed411a11085835f936f7e",
     "assets/illustrations/hero-community.svg": "d46b1fa640912b32259f2b0f17622e635b8bf09b",
     "assets/illustrations/games.svg": "74f82b260859fc2658939d9cc42e074fedf17544",
     "assets/illustrations/garden.svg": "4e15f67d6cebaf017411b9e49255e15aaa9ae7fa",
     "assets/illustrations/discovery.svg": "ae5195596626a8441bda55f1a008ac3cb3e47fa8",
     "assets/illustrations/culture.svg": "c8f03c2719d743336afeb680eef96b378bac8f51",
     "assets/illustrations/solidarity.svg": "e80525d8acc48b3d429912d6229023db54a45e2e",
-    "evidence/tests/static-results.json": "9a9631c5a013a17274c1fb0024b2e5ec74704649",
-    "evidence/tests/runtime-results.json": "bb097a18c7a4d4d71150323135fb06b395beac5a",
-    "evidence/requirements.json": "e360e558a089877daec89b904b69cc0af3c9f298",
-    "evidence/product-contract.json": "1f06cee4d75f485e1a495ae7e663e84715e77f9d",
+    "evidence/tests/static-results.json": "5547a8386e317877bf4ea3876182cc9a4166bda9",
+    "evidence/tests/runtime-results.json": "a90627545df76de7a9dc92f50eba9563e963a6b3",
+    "evidence/requirements.json": "43960ce32b3d0d56ecc08fe9f64881d1b8964890",
+    "evidence/product-contract.json": "3adb3eb571ff8a3aa1d401669c37a612960c5379",
     "evidence/research/keyphrase-dossier.md": "097b39681be69b04ebdca9334aa283d003ad69f7",
-    "evidence/decisions.json": "e3ade7591f7d465a7046674fa02a7312cfd47217",
-    "evidence/content-provenance.json": "583d678e42231b1b87ef71251971365b379858bb",
+    "evidence/decisions.json": "9b6e56b558e3c414748a8fdf1ac0b34bd89d43ab",
+    "evidence/content-provenance.json": "ae0a0827f319d74e629525eaec19dde879f16cee",
     "evidence/visual/asset-register.json": "45f1c0b602a8ef80f69c8b332f86ca4a2a9d5eb9",
-    "README.md": "1aeff85eb180630ed0a6972843816ec985e59ee9",
-    "evidence/change-requests/CR-002.md": "2750f8218da89eb4dfe79b4f8ae7f8fcc7dc87a5"
+    "README.md": "816a17b31922662b79dbbb012af0483f426b5d2d",
+    "evidence/change-requests/CR-002.md": "2750f8218da89eb4dfe79b4f8ae7f8fcc7dc87a5",
+    "evidence/change-requests/CR-003.md": "be518026d30c328dc3da41f7f86704bb1ac80041",
+    "evidence/assumptions.json": "f1e4de524f240d1c707ec4fc73368372cf62eb77"
   },
   "local_screenshot_evidence": {
     "loop_006": {
@@ -206,5 +208,37 @@
       "Official Facebook logo/cover/current post assets remain unverified."
     ],
     "implementation_checkpoint_commit": "cddcca654c67229c71d68a89fcdb24f8ac5a374a"
+  },
+  "loop_007": {
+    "objective": "Replace generic site content with concise information grounded in user-supplied Bulle_Bleue_APAiL_contenu_facebook.md.",
+    "source": {
+      "path": "Bulle_Bleue_APAiL_contenu_facebook.md",
+      "blob": "dec4ee6c3f4e0ea7c092ebe1760c4a35033e05bf",
+      "extraction_date": "2026-11-02",
+      "lines": 816,
+      "source_url": "https://www.facebook.com/p/Bulle-Bleue-APAiL-100066715807933/"
+    },
+    "changes": [
+      "Six content sections covering welcome, audiences, activities, dated highlights, APAiL and contact.",
+      "Audience split and stated Wednesday/Saturday times with explicit source/date confirmation caveats.",
+      "Address and garden access from the Facebook presentation with 11 March 2024 source note and confirmation warning.",
+      "Activity categories and selected September/October 2026 posts.",
+      "APAiL history, reported solidarity projects in Burkina Faso and Morocco, Les Bleuettes and organisations cited in posts.",
+      "No participant names/photos; official logo remains pending."
+    ],
+    "validation": {
+      "source_content_review": "MANUAL REVIEWED AGAINST COMPLETE USER-SUPPLIED FILE",
+      "python_validator": "UPDATED BUT NOT EXECUTED",
+      "javascript_tests": "UNCHANGED FROM LOOP 006; NOT RERUN IN LOOP 007",
+      "chromium": "NOT RUN",
+      "screenshots": "NOT CAPTURED"
+    },
+    "limitations": [
+      "The user-supplied extraction was treated as primary source; live Facebook was not independently fetched.",
+      "Venue and times are from a presentation dated 11 March 2024 and require association confirmation.",
+      "Historical solidarity projects and cited organisations are not asserted to be active/current.",
+      "No browser/visual validation in Loop 007; previous loop screenshots do not validate the new page."
+    ],
+    "production": "NOT DEPLOYED; DEPLOYMENT NOT AUTHORIZED"
   }
 }

@@ -10,27 +10,27 @@
   "branch": "main",
   "branch_policy": "single branch",
   "bootstrap_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b",
-  "latest_loop_checkpoint_commit": "cddcca654c67229c71d68a89fcdb24f8ac5a374a",
+  "latest_loop_checkpoint_commit": "62ebc451af17d9c03923279d2911a1f94fa917e8",
   "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
   "status_metadata_commit": "4d42d39679137f92b248df17a642bf2235da79d7",
   "last_known_good_release_commit": null,
-  "current_loop": 6,
-  "current_candidate": "bullebleue-loop-006-concise-editorial-redesign-v1",
+  "current_loop": 7,
+  "current_candidate": "bullebleue-loop-007-facebook-extraction-content-v1",
   "state": "WAITING_FOR_CONTINUE",
   "remote_checkpoint_verified": true,
-  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 007.",
+  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 008.",
   "deployment": "NOT CONFIGURED / NOT AUTHORIZED",
   "paid_dependencies": [],
   "open_blockers": [
-    "The exact user-supplied Facebook page is linked, but Facebook and its profile-image endpoint could not be fetched; the official logo/cover and current posts remain unverified.",
-    "A third-party FindGlocal mirror has a different page ID (100620708811103 versus the supplied 100066715807933); it is excluded from Loop 006 branding and content.",
-    "The BB typographic monogram and colour palette are provisional rather than official master brand assets.",
-    "Current exact activity venue and weekly hours are unknown/conflicting and deliberately omitted from public content.",
-    "Contact mailbox deliverability remains untested.",
-    "EB Garamond and Cabin were available in the test browser but are not bundled; platform fallback typography should be checked on actual target devices.",
+    "The user-supplied Facebook extraction is used as the primary source, but the live Facebook page was not independently retrieved during Loop 007.",
+    "The Wednesday 14:30 / Saturday 15:00 schedule and 30 Rempart Saint-Vincent / rue Leriche venue details are transcribed from the Facebook presentation dated 11 March 2024; current operational validity requires confirmation by APAiL.",
+    "The official logo and original photos have not yet been added; the BB monogram and visual system remain provisional.",
+    "No participant names or photos are published; any future people photography requires appropriate rights-holder permission and participant/guardian consent.",
+    "The published apail@live.fr mailbox deliverability remains untested.",
+    "Loop 007 static validator and browser/visual review were not executed in this connector session.",
     "Firefox/WebKit/Safari, manual screen-reader, physical-device, Lighthouse, ZAP and hosted performance/production checks remain outstanding.",
     "Domain and hosting target are not configured; deployment remains unauthorized.",
-    "Final human acceptance is outstanding."
+    "Final human acceptance remains outstanding."
   ],
   "evidence_manifest_reconciliation_commit": "62348c46a35547bbcea414e8250ebdc31218b693",
   "change_request_cr001": {
@@ -51,5 +51,15 @@
   "latest_loop_5_checkpoint_commit": "a84079ff7dbc0dbbc4ce42222687adef76a54287",
   "latest_loop_5_visual_review": "PASS — current main-branch HTML/JS/SVG assets rendered with Chromium 144; candidate CSS responsive refinement reviewed at seven viewports plus six breakpoint boundaries.",
   "latest_loop_6_checkpoint_commit": "cddcca654c67229c71d68a89fcdb24f8ac5a374a",
-  "latest_loop_6_visual_review": "PASS — in-memory Chromium 144 responsive review at twelve viewport widths; five-section page, no overflow, exact Facebook link in two locations, no browser errors."
+  "latest_loop_6_visual_review": "PASS — in-memory Chromium 144 responsive review at twelve viewport widths; five-section page, no overflow, exact Facebook link in two locations, no browser errors.",
+  "latest_loop_7_checkpoint_commit": "62ebc451af17d9c03923279d2911a1f94fa917e8",
+  "latest_loop_7_visual_review": "NOT RUN — content and CSS updated; no Loop 007 Chromium render/screenshot claimed.",
+  "loop_007_source": {
+    "path": "Bulle_Bleue_APAiL_contenu_facebook.md",
+    "blob_at_loop_start": "dec4ee6c3f4e0ea7c092ebe1760c4a35033e05bf",
+    "extraction_date": "2026-11-02",
+    "lines": 816,
+    "characters": 35152,
+    "source_url": "https://www.facebook.com/p/Bulle-Bleue-APAiL-100066715807933/"
+  }
 }
