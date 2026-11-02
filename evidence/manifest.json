@@ -10,10 +10,10 @@
   "remote_git_blob_objects": {
     "index.html": "271fd60d88736c75cb797730d3a0644791bed16c",
     "styles.css": "ca86112b7db79bce868c380e3e696d2c6864cce0",
-    "script.js": "9fbef38151663c5f550e601f9d321174f7586b59",
+    "script.js": "de53845f9aaa514b0d35843cd05fd83bdd6bfacf",
     "assets/favicon.svg": "c98beb72f9633c41915ad00e5ced621faaf17799",
-    "script_js": "de53845f9aaa514b0d35843cd05fd83bdd6bfacf",
-    "menu_regression_test_js": "493debf5b26c01e0b166d555b4dab53845a52f28"
+    "menu_regression_test_js": "493debf5b26c01e0b166d555b4dab53845a52f28",
+    "tests/test_menu.js": "493debf5b26c01e0b166d555b4dab53845a52f28"
   },
   "local_screenshot_evidence": {
     "desktop": {
