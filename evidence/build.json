@@ -1,0 +1,11 @@
+{
+  "candidate":"bullebleue-loop-001-static-site-v1",
+  "artifact_type":"static source candidate; no compilation/build step",
+  "build_command":null,
+  "build_status":"NOT REQUIRED FOR STATIC SOURCE; HOSTED BUILD NOT RUN",
+  "dependencies":[],
+  "production_artifact_digest":null,
+  "release_freeze":false,
+  "deployment":"NOT CONFIGURED / NOT AUTHORIZED",
+  "note":"Source file SHA-256 values and browser evidence are recorded in the evidence manifest. This is not a release artifact or production certification."
+}

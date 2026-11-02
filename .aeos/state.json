@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "run_id": "bullebleue-20261102-001",
+  "rulebook_version": "AEOS v3",
+  "active_keyphrase": "make a full website for: Bulle Bleue à Chalon-sur-Saône",
+  "keyphrase_research": "COMPLETE",
+  "research_dossier": "evidence/research/keyphrase-dossier.md",
+  "research_timestamp": "2026-11-02",
+  "repository": "teyyara/bullebleue",
+  "branch": "main",
+  "branch_policy": "single branch",
+  "last_known_good_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b (bootstrap root only)",
+  "current_loop": 1,
+  "current_candidate": "bullebleue-loop-001-static-site-v1",
+  "state": "LOOP_001_CHECKPOINT_PENDING",
+  "next_action": "Verify remote checkpoint, finalize AEOS status, then wait for standalone CONTINUE.",
+  "deployment": "NOT CONFIGURED / NOT AUTHORIZED",
+  "paid_dependencies": [],
+  "open_blockers": [
+    "Current activity venue and weekly hours are unknown/conflicting and deliberately omitted.",
+    "Domain and hosting provider are not configured; production SEO and security headers are pending.",
+    "Firefox/WebKit, screen-reader, Lighthouse, ZAP and production validation capabilities are unavailable."
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "assumptions_version":"0.1",
+  "assumptions":[
+    {"id":"ASSUMP-001","assumption":"The intended entity is the Chalon-sur-Saône initiative operated by APAiL, not a same-name organization elsewhere.","source":"Municipal and local press source triangulation","confidence":"HIGH","impact_if_wrong":"HIGH","resolution":"Identity disambiguated before implementation."},
+    {"id":"ASSUMP-002","assumption":"A one-page static site is the smallest appropriate initial release candidate.","source":"W0 informational scope; no dynamic business journey evidenced.","confidence":"MEDIUM","impact_if_wrong":"LOW","resolution":"Reassess if later supplied business requirements introduce multiple workflows."},
+    {"id":"ASSUMP-003","assumption":"Email-first contact is adequate for initial enquiry; no form/backend is needed.","source":"Publicly published association email; minimize personal-data collection.","confidence":"MEDIUM","impact_if_wrong":"MEDIUM","resolution":"Confirm through project acceptance."},
+    {"id":"ASSUMP-004","assumption":"The published email may be shown as a historical/public contact, but deliverability is unknown.","source":"Ville de Chalon 2022 publication.","confidence":"HIGH","impact_if_wrong":"MEDIUM","resolution":"Validate mailbox before final production acceptance."},
+    {"id":"ASSUMP-005","assumption":"Do not use a disputed address or old schedule.","source":"2022/2024 vs 2025 address conflict; schedule not current-verified.","confidence":"HIGH","impact_if_wrong":"HIGH","resolution":"Keep omitted until association confirms."},
+    {"id":"ASSUMP-006","assumption":"Visual mark and color system are provisional.","source":"No official brand assets supplied or verified.","confidence":"HIGH","impact_if_wrong":"LOW","resolution":"Replace when authoritative identity assets are available."}
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "requirements_version": "0.1",
+  "candidate": "bullebleue-loop-001-static-site-v1",
+  "requirements": [
+    {"id":"REQ-001","requirement":"Identify La Bulle Bleue as an APAiL initiative in Chalon-sur-Saône.","acceptance":"Page and metadata state initiative, association and city.","risk":"R2","validation":"Source review and static validator","status":"PASS","confidence":"HIGH"},
+    {"id":"REQ-002","requirement":"Describe audience without inventing eligibility.","acceptance":"Children from age 6, teenagers and adults; no diagnosis-based criteria.","risk":"R2","validation":"Content review","status":"PASS","confidence":"HIGH"},
+    {"id":"REQ-003","requirement":"Describe sourced activity examples without promising fixed programme.","acceptance":"Games, creative activity, gardening/outings and discussion represented.","risk":"R1","validation":"Source-to-copy review","status":"PASS","confidence":"HIGH"},
+    {"id":"REQ-004","requirement":"Provide primary email contact route.","acceptance":"Visible mailto links use apail@live.fr.","risk":"R1","validation":"HTML and Chromium DOM/runtime check","status":"PASS","confidence":"HIGH"},
+    {"id":"REQ-005","requirement":"Do not publish unresolved address or stale weekly hours.","acceptance":"No street address or fixed hours; confirm them directly by email.","risk":"R2","validation":"Content guardrail + source conflict review","status":"PASS","confidence":"HIGH"},
+    {"id":"REQ-006","requirement":"Responsive, keyboard-operable navigation.","acceptance":"Menu opens, closes on Escape and closes after selecting an anchor.","risk":"R1","validation":"Chromium in-memory runtime interaction","status":"PASS","confidence":"HIGH"},
+    {"id":"REQ-007","requirement":"Prevent horizontal overflow at supported viewports.","acceptance":"No horizontal overflow at 320–1920 px test matrix.","risk":"R1","validation":"Chromium viewport sweep","status":"PASS","confidence":"HIGH"},
+    {"id":"REQ-008","requirement":"Provide baseline French SEO metadata.","acceptance":"lang, title, meta description, OG data, JSON-LD and robots.txt.","risk":"R0","validation":"Static check","status":"PASS","confidence":"HIGH"},
+    {"id":"REQ-009","requirement":"Implement accessibility foundations.","acceptance":"Main landmark, one h1, labeled nav, skip link, focus styles, Escape and reduced motion.","risk":"R2","validation":"Semantic/keyboard checks; screen-reader assessment not run","status":"PARTIAL — FOUNDATION PASS","confidence":"MEDIUM"},
+    {"id":"REQ-010","requirement":"Avoid paid or unnecessary third-party runtime dependencies.","acceptance":"No framework packages, remote fonts, tracking, analytics or embeds.","risk":"R1","validation":"Source and dependency inventory","status":"PASS","confidence":"HIGH"},
+    {"id":"REQ-011","requirement":"Validate hosting, headers and deployed routes.","acceptance":"Configured host and production URL observed.","risk":"R3","validation":"Production runtime","status":"BLOCKED — HOST NOT CONFIGURED","confidence":"LOW"},
+    {"id":"REQ-012","requirement":"Validate multiple browser engines and assistive technologies.","acceptance":"Firefox, WebKit and screen-reader environments executed.","risk":"R2","validation":"Cross-browser and manual a11y","status":"BLOCKED — CAPABILITIES UNAVAILABLE","confidence":"LOW"}
+  ]
+}

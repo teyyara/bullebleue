@@ -1,0 +1,36 @@
+{
+  "project_id": "bullebleue-chalon",
+  "project_name": "La Bulle Bleue — Chalon-sur-Saône",
+  "active_keyphrase": "make a full website for: Bulle Bleue à Chalon-sur-Saône",
+  "activation_date": "2026-11-02",
+  "rulebook_version": "AEOS v3",
+  "repository": {
+    "full_name": "teyyara/bullebleue",
+    "visibility": "public",
+    "default_branch": "main",
+    "branch_policy": "single-branch progression on main",
+    "authorized_read": true,
+    "authorized_write": true,
+    "authorized_push": true
+  },
+  "classification": {
+    "website_level": "W0",
+    "description": "Informational association website with email contact links and responsive navigation"
+  },
+  "locale": "fr-FR",
+  "region": "Chalon-sur-Saône, Saône-et-Loire, France",
+  "deployment": {
+    "provider": "UNKNOWN / NOT CONFIGURED",
+    "domain": null,
+    "production_deployment_authorized": false,
+    "production_deployment_performed": false
+  },
+  "cost_policy": {
+    "zero_paid_dependencies": true,
+    "external_runtime_dependencies": [],
+    "analytics": false,
+    "third_party_tracking": false
+  },
+  "current_candidate": "bullebleue-loop-001-static-site-v1",
+  "status": "LOOP 001 CHECKPOINTED; WAITING FOR CONTINUE"
+}

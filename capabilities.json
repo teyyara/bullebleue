@@ -1,0 +1,59 @@
+{
+  "observed_at": "2026-11-02",
+  "environment": {
+    "os": "Linux container",
+    "python": "3.13.5",
+    "git": "2.47.3",
+    "node": "22.16.0",
+    "chromium": "144.0.7559.96",
+    "playwright_python": true
+  },
+  "repository": {
+    "github_connector_read": true,
+    "github_connector_write": true,
+    "github_connector_push_via_git_data_api": true,
+    "local_git_binary": true,
+    "direct_git_clone_from_container": false,
+    "reason": "Container DNS could not resolve github.com; repository operations used authenticated GitHub connector"
+  },
+  "browsers": {
+    "chromium": true,
+    "firefox": false,
+    "webkit": false,
+    "actual_safari": false,
+    "mobile_emulation": true,
+    "real_mobile_device": false
+  },
+  "runtime_observation": {
+    "chromium_page_set_content": true,
+    "browser_console_and_page_errors": true,
+    "screenshots": true,
+    "direct_localhost_navigation": false,
+    "direct_file_navigation": false,
+    "reason": "Sandbox browser policy blocked localhost and file URLs; page.set_content with candidate HTML/CSS/JS was allowed"
+  },
+  "accessibility": {
+    "semantic_dom_checks": true,
+    "keyboard_interaction_checks": true,
+    "contrast_checks": true,
+    "axe_core": false,
+    "nvda": false,
+    "voiceover": false,
+    "manual_screen_reader_testing": false
+  },
+  "quality_and_security": {
+    "python_structural_validator": true,
+    "node_syntax_check": true,
+    "lighthouse": false,
+    "zap": false,
+    "gitleaks": false,
+    "dependency_audit": "NOT APPLICABLE — no external package dependencies"
+  },
+  "production": {
+    "deployment_access": false,
+    "production_domain": false,
+    "production_smoke": false,
+    "field_rum": false,
+    "rollback_target": "NOT CONFIGURED"
+  }
+}

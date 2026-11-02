@@ -1,0 +1,10 @@
+{
+  "decisions_version":"0.1",
+  "decisions":[
+    {"id":"DEC-001","context":"Initial website implementation for a local association.","options":["static HTML/CSS/JS","framework-based SPA","CMS with hosted backend"],"chosen":"static HTML, CSS and vanilla JavaScript","reason":"W0 content site; no backend or dynamic data required; zero paid dependencies and minimal attack surface.","tradeoffs":"Manual source editing instead of CMS authoring workflow.","risk":"LOW","evidence":"No package dependencies; local static preview."},
+    {"id":"DEC-002","context":"Unverified current venue and conflicting historical address.","options":["publish latest reported address","publish older venue","omit address pending verification"],"chosen":"omit street address; ask visitors to contact association","reason":"Sources disagree; latest reported suffix conflicts with older municipal/press sources.","risk":"HIGH if wrong address published","reversibility":"High; add when confirmed."},
+    {"id":"DEC-003","context":"Opening times in older sources only.","options":["reuse historical Wednesday/Saturday times","omit current schedule"],"chosen":"omit fixed weekly times","reason":"Current validity not demonstrated.","risk":"HIGH if outdated details misdirect visitors."},
+    {"id":"DEC-004","context":"Potentially sensitive participant audience.","options":["build intake form","email-first contact","collect diagnosis info"],"chosen":"email-first CTA; no form or diagnosis question","reason":"No business need to collect sensitive personal data online in v1.","risk":"LOW."},
+    {"id":"DEC-005","context":"No official visual identity supplied.","options":["invent official logo","provisional typographic identity and CSS art"],"chosen":"provisional wordmark and abstract CSS illustration","reason":"Creates coherent presentation without claiming official logo status.","risk":"LOW; reversible."}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "test_run":"loop-001-static",
+  "observed_at":"2026-11-02",
+  "status":"PASS",
+  "checks":[
+    {"name":"Structural validator","result":"PASS","detail":"French language, one h1, one main landmark, description, in-page anchors and local assets."},
+    {"name":"Content guardrails","result":"PASS","detail":"Required identity/contact content present; conflicting street address and historical opening hours absent."},
+    {"name":"Accessibility foundation","result":"PASS WITH LIMITS","detail":"Skip link, named navigation, focus-visible styles, reduced-motion support, Escape key behavior and selected 4.5:1 contrast pairs."},
+    {"name":"HTMLParser","result":"PASS","detail":"Parsed 294 opening tags."},
+    {"name":"JavaScript syntax","result":"PASS","detail":"node --check script.js; Node 22.16.0."},
+    {"name":"Secrets scan","result":"PASS — BASIC PATTERN SCAN","detail":"No common token/private-key patterns in tracked source. Gitleaks unavailable; this is not a complete secret audit."}
+  ]
+}

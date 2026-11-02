@@ -1,0 +1,29 @@
+{
+  "manifest_version":"0.1",
+  "run_id":"bullebleue-20261102-001",
+  "loop":1,
+  "candidate":"bullebleue-loop-001-static-site-v1",
+  "candidate_status":"IMPLEMENTED; NOT RELEASE CERTIFIED",
+  "repository":"teyyara/bullebleue",
+  "branch":"main",
+  "source_sha256":{
+    "index.html":"fe372586128b50da11deec97ed6c441d9de42fc78234ec7c31daa977630c1e42",
+    "styles.css":"98f22f85c2a6b8aceec8c8f61bc56f6055d9c2133335a5e29af9258aec876f33",
+    "script.js":"2596b01b678970dc0b575c97e33324a7c8e6bf356f7d95a055477078e55644a2",
+    "assets/favicon.svg":"b25a19996f0a78d1fa3431b51a4a690a188820155d3bbcab285b8239e570c71e"
+  },
+  "local_screenshot_evidence":{
+    "desktop":{"file":"bullebleue-desktop.png","sha256":"a8650adc1ae0965da3bde28eb4db28f64ca2125ff865599c034af1dd74b38699","not_committed":true},
+    "mobile":{"file":"bullebleue-mobile.png","sha256":"64ccf856a44e74f27885d8921d6c7d34128434c4d432f21a7155f744cf22cdfc","not_committed":true}
+  },
+  "runtime_environment":{
+    "browser":"Chromium 144.0.7559.96",
+    "runner":"Playwright",
+    "mode":"in-memory page.set_content",
+    "timestamp":"2026-11-02"
+  },
+  "production_artifact_sha256":null,
+  "release_frozen":false,
+  "production_deployed":false,
+  "limitations":["Localhost/file navigation blocked","Firefox/WebKit/Safari unavailable","Screen-reader and Lighthouse/ZAP checks unavailable","No host/domain configured"]
+}

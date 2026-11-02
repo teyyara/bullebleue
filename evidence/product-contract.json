@@ -1,0 +1,70 @@
+{
+  "contract_version": "0.1",
+  "status": "INITIAL EVIDENCE-DERIVED BASELINE — NOT HUMAN-APPROVED",
+  "project": "La Bulle Bleue — Chalon-sur-Saône",
+  "business_objective": "Create a clear, welcoming public information website explaining La Bulle Bleue and helping visitors contact APAiL to ask about attendance or volunteering.",
+  "target_audience": ["children from age 6 and families", "teenagers", "adults", "relatives/supporters", "prospective volunteers"],
+  "primary_user_intent": "Understand the initiative, who it welcomes and how to make first contact.",
+  "critical_journeys": [
+    "Homepage → audience → activity examples → email contact",
+    "Homepage → association → volunteering interest → email contact"
+  ],
+  "functional_requirements": [
+    "Single-page information architecture with anchor navigation",
+    "Responsive keyboard-operable mobile navigation",
+    "Visible mailto contact links using publicly published email",
+    "No sensitive personal-data form",
+    "No disputed address or stale weekly schedule"
+  ],
+  "content_requirements": [
+    "Identify APAiL and Chalon-sur-Saône",
+    "Describe reported audience and activity examples without overpromising",
+    "Explain first contact and volunteer interest",
+    "Direct visitors to confirm current venue, dates and hours"
+  ],
+  "brand": {
+    "official_assets_supplied": false,
+    "direction": "Warm, calm, reassuring, modern and inclusive across ages; not clinical or infantilizing",
+    "provisional_system": "Deep/soft blues, muted yellow, peach, sage and lilac; typographic wordmark and CSS illustration",
+    "replacement": "Use official identity if later provided"
+  },
+  "technical": {
+    "architecture": "Static HTML, CSS and vanilla JavaScript",
+    "dependencies": [],
+    "paid_services": [],
+    "forms_backend": false,
+    "analytics": false,
+    "third_party_embeds": false,
+    "run": "python3 -m http.server 8080"
+  },
+  "accessibility_target": "WCAG 2.2 AA; candidate evidence covers structural checks, keyboard navigation and selected contrast pairs only. Manual screen-reader assessment remains outstanding.",
+  "responsive_viewports": [320, 360, 390, 430, 760, 761, 768, 1024, 1440, 1920],
+  "seo": ["French lang", "title", "description", "Open Graph metadata", "Organization JSON-LD", "robots.txt"],
+  "seo_pending": ["canonical URL", "absolute OG image", "sitemap.xml", "live crawl/indexability; requires confirmed domain"],
+  "performance": "No external runtime requests. Hosted performance metrics and budgets remain unmeasured.",
+  "security": {
+    "level": "W0 static informational site",
+    "personal_data_collected": false,
+    "auth": false,
+    "payments": false,
+    "server_api": false,
+    "third_party_scripts": false,
+    "security_headers": "NOT CONFIGURED — deployment target unknown"
+  },
+  "deployment": {
+    "provider": "UNKNOWN",
+    "domain": null,
+    "authorized": false,
+    "performed": false,
+    "branch": "main"
+  },
+  "success_criteria": [
+    "Visitors understand purpose and audience",
+    "Visitors discover representative activities",
+    "Visitors can initiate email contact",
+    "Mobile menu works by pointer and keyboard",
+    "No horizontal overflow at tested widths",
+    "No unverified address, schedule, health claim or sensitive-data collection"
+  ],
+  "loop_001_definition_of_done": "Responsive static candidate, evidence records and tests committed to main; candidate checks pass; remote checkpoint verified; certification and deployment remain deferred."
+}

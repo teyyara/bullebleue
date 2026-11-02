@@ -1,0 +1,14 @@
+{
+  "risk_version":"0.1",
+  "project_classification":"W0 informational static website",
+  "loop_001_change_risk":"R2",
+  "factors":["Public-facing identity and content","Sensitive audience context","Primary contact journey","Responsive navigation"],
+  "risks":[
+    {"id":"RISK-001","risk":"Wrong venue or historical schedule could misdirect visitors.","severity":"HIGH","mitigation":"Omit conflicting address and unverified schedule; ask visitors to confirm directly."},
+    {"id":"RISK-002","risk":"Sensitive personal/health information could be collected unnecessarily.","severity":"HIGH","mitigation":"No form; no diagnostic eligibility; no request for health details."},
+    {"id":"RISK-003","risk":"Public contact email may no longer be monitored.","severity":"MEDIUM","mitigation":"Clearly mark as published contact; mailbox deliverability remains to be confirmed."},
+    {"id":"RISK-004","risk":"Provisional design could conflict with official brand identity.","severity":"LOW","mitigation":"Use neutral warm design; mark assets as provisional; replace once verified."},
+    {"id":"RISK-005","risk":"Production readiness cannot be established without a host/domain.","severity":"HIGH","mitigation":"No deployment claim; production SEO, headers, runtime, monitoring and rollback remain blocked."}
+  ],
+  "release_status":"NOT CERTIFIED — candidate loop only"
+}
