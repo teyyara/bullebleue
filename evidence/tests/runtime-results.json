@@ -1,21 +1,93 @@
 {
-  "test_run":"loop-001-chromium-in-memory",
-  "observed_at":"2026-11-02",
-  "browser":"Chromium 144.0.7559.96",
-  "runner":"Python Playwright in Linux container",
-  "execution_mode":"page.set_content using actual local index.html and styles.css, with actual script.js added to page",
-  "status":"PASS — CANDIDATE-LEVEL RUNTIME ONLY",
-  "checks":[
-    {"name":"Primary document content","result":"PASS","detail":"h1, main, document title and mailto contact present."},
-    {"name":"Mobile nav open","result":"PASS","detail":"Toggle updates aria-expanded and opens navigation."},
-    {"name":"Escape closes menu","result":"PASS","detail":"Escape closes menu and restores focus to toggle."},
-    {"name":"Anchor navigation closes menu","result":"PASS","detail":"Selecting a nav link closes mobile navigation."},
-    {"name":"Responsive overflow sweep","result":"PASS","viewports":[320,360,390,430,760,761,768,1024,1440,1920],"detail":"No horizontal overflow at tested viewport widths."},
-    {"name":"Browser console/page errors","result":"PASS","detail":"No console or uncaught page errors observed."}
+  "test_run": "loop-001-chromium-in-memory",
+  "observed_at": "2026-11-02",
+  "browser": "Chromium 144.0.7559.96",
+  "runner": "Python Playwright in Linux container",
+  "execution_mode": "page.set_content using actual local index.html and styles.css, with actual script.js added to page",
+  "status": "PASS — CANDIDATE-LEVEL RUNTIME ONLY",
+  "checks": [
+    {
+      "name": "Primary document content",
+      "result": "PASS",
+      "detail": "h1, main, document title and mailto contact present."
+    },
+    {
+      "name": "Mobile nav open",
+      "result": "PASS",
+      "detail": "Toggle updates aria-expanded and opens navigation."
+    },
+    {
+      "name": "Escape closes menu",
+      "result": "PASS",
+      "detail": "Escape closes menu and restores focus to toggle."
+    },
+    {
+      "name": "Anchor navigation closes menu",
+      "result": "PASS",
+      "detail": "Selecting a nav link closes mobile navigation."
+    },
+    {
+      "name": "Responsive overflow sweep",
+      "result": "PASS",
+      "viewports": [
+        320,
+        360,
+        390,
+        430,
+        760,
+        761,
+        768,
+        1024,
+        1440,
+        1920
+      ],
+      "detail": "No horizontal overflow at tested viewport widths."
+    },
+    {
+      "name": "Browser console/page errors",
+      "result": "PASS",
+      "detail": "No console or uncaught page errors observed."
+    }
   ],
-  "limitations":[
+  "limitations": [
     "Direct localhost/file URL navigation returned ERR_BLOCKED_BY_ADMINISTRATOR; runtime test used in-memory page.set_content.",
     "Not a hosted website or production route smoke test.",
     "Firefox, WebKit, actual Safari, screen readers, axe-core, Lighthouse, ZAP and real mobile devices not tested."
-  ]
+  ],
+  "loop_002": {
+    "test_run": "loop-002-keyboard-menu-regression",
+    "observed_at": "2026-11-02",
+    "runner": "Node.js 22.16.0",
+    "execution_mode": "Node vm executing repository script.js against deterministic DOM interaction doubles; no external test dependency",
+    "status": "PASS",
+    "checks": [
+      {
+        "name": "Escape while closed",
+        "result": "PASS",
+        "detail": "No focus call is made; avoids moving focus to a hidden toggle on desktop or while the menu is closed."
+      },
+      {
+        "name": "Escape while open",
+        "result": "PASS",
+        "detail": "Menu closes, aria-expanded and aria-label reset, .is-open is removed, and focus returns to the trigger exactly once."
+      },
+      {
+        "name": "Repeated Escape",
+        "result": "PASS",
+        "detail": "Subsequent Escape while closed does not steal focus."
+      },
+      {
+        "name": "Navigation link selection",
+        "result": "PASS",
+        "detail": "Menu closes without unexpected focus movement."
+      },
+      {
+        "name": "Outside click",
+        "result": "PASS",
+        "detail": "Menu closes without forcing focus to the toggle."
+      }
+    ],
+    "command": "node tests/test_menu.js",
+    "limitation": "Deterministic interaction unit test; not a screen-reader test or substitute for browser-engine coverage."
+  }
 }

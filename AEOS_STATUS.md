@@ -1,57 +1,52 @@
 # AEOS Status — La Bulle Bleue
 
-**Active keyphrase:** \`make a full website for: Bulle Bleue à Chalon-sur-Saône\`  
-**Run ID:** \`bullebleue-20261102-001\`  
+**Active keyphrase:** `make a full website for: Bulle Bleue à Chalon-sur-Saône`  
+**Run ID:** `bullebleue-20261102-001`  
 **Rulebook:** AEOS v3  
-**Current loop:** LOOP 001  
-**Candidate:** \`bullebleue-loop-001-static-site-v1\`  
-**Repository:** \`teyyara/bullebleue\`  
-**Branch:** \`main\` (single-branch progression; repository was empty at activation)  
-**Implementation checkpoint commit:** \`4443c74fd77798d412e62e429de9af52be731270\`  
-**Evidence-manifest metadata commit:** \`9db926175299aa4d7496a734da7f2aad35916be1\`  
-**Validator correction commit:** \`8c80bc681a1c2f9f88b58be9f787f6f88fa28477\`  
-**State:** \`WAITING_FOR_CONTINUE\`
+**Current loop:** LOOP 002  
+**Candidate:** `bullebleue-loop-002-menu-accessibility-v1`  
+**Repository:** `teyyara/bullebleue`  
+**Branch:** `main` (single-branch progression)  
+**Previous verified remote head:** `d05ed5b6163019033130dd83d9be633acadee53b`  
+**Implementation checkpoint commit:** pending creation / remote verification  
+**State:** `LOOP 002 — IMPLEMENTED; CHECKPOINT PENDING`
 
-## Latest loop work
+## Loop 002 objective
 
-- Verified repository identity and authenticated read/write permissions; repository was empty at activation.
-- Bootstrapped the repository and created a French-language responsive one-page association website.
-- Added audience information, publicly reported activity examples, a first-contact explanation, an APAiL introduction, volunteer CTA and email contact.
-- Avoided unsupported current venue/hours; no personal-data form, medical promise, testimonials, phone number or unsupported business facts were introduced.
-- Added research dossier, initial Product Contract, requirement matrix, capability manifest, risk/assumption/decision/content-provenance records, tests and evidence manifest.
-- Committed the website and AEOS records to \`main\`; branch advancement used an expected-head check and remote branch/content were read back.
-- Corrected a quoting defect found in the repository validator during final review; the corrected validator passed locally against the candidate source.
+Correct keyboard focus behavior for Escape in the mobile navigation and add a durable, dependency-free regression test.
+
+## Changes
+
+- Escape is now ignored when `aria-expanded` is not `true`.
+- When the menu is actually open, Escape closes it and restores focus to the menu trigger.
+- Selecting a navigation link and clicking outside continue to close the menu without unexpected focus movement.
+- Added `tests/test_menu.js`, a Node.js VM-based regression test using deterministic DOM interaction doubles.
+- Updated README test instructions, structural validator, requirements, risk, decision and learning evidence.
 
 ## Validation
 
-- Structural validator: PASS.
-- HTML parser: PASS.
-- JavaScript syntax (\`node --check\`): PASS.
-- Chromium in-memory runtime check: PASS for mobile navigation, Escape handling, mail CTA presence, semantic landmarks and no console/page errors.
-- Responsive width sweep: PASS at 320, 360, 390, 430, 760, 761, 768, 1024, 1440 and 1920 px; no horizontal overflow.
-- Desktop/mobile screenshots captured and examined; local-only evidence hashes recorded in \`evidence/manifest.json\`.
-- Direct localhost/file navigation was blocked by sandbox policy; Chromium used Playwright \`page.set_content\` with candidate HTML/CSS/JS.
-- Firefox, WebKit, actual Safari, NVDA/VoiceOver, axe, Lighthouse, ZAP, production routes/headers and field RUM: NOT TESTED / BLOCKED by unavailable capabilities or unconfigured deployment.
+- `python3 tests/validate_site.py`: PASS.
+- `node --check script.js`: PASS.
+- `node --check tests/test_menu.js`: PASS.
+- `node tests/test_menu.js`: PASS; closed Escape inert, open Escape closes/restores focus, repeated Escape inert, nav selection closes, outside click closes.
+- Existing Chromium and responsive checks remain inherited from Loop 001; no new browser-engine claim is made in this loop.
 
-## Open items
+## Limitations / open items
 
-- Confirm the current APAiL contact mailbox, exact activity venue and current weekly schedule before public launch.
-- Obtain official logo/brand guidance if available.
-- Configure deployment provider/domain; then add canonical URL, sitemap and host security headers and perform production verification.
-- Run broader browser, manual accessibility, security, SEO and performance checks for a stable candidate.
+- Firefox, WebKit, actual Safari and screen-reader environments are unavailable.
+- Current APAiL venue and weekly hours remain unverified and omitted.
+- Domain/host is not configured; no production deployment or smoke test.
+- Candidate is not release-certified.
 
 ## Run locally
 
-\`\`\`bash
+```bash
 python3 -m http.server 8080
-\`\`\`
-
-Open \`http://localhost:8080\`. No install/build step is required.
-
-## Deployment
-
-No production deployment was performed. Target provider/domain and rollback target are not configured. This candidate is not release-certified.
+python3 tests/validate_site.py
+node --check script.js
+node tests/test_menu.js
+```
 
 ## Progression control
 
-Loop 001 is complete and stopped. Exactly one standalone \`CONTINUE\` authorizes exactly one subsequent loop.
+Loop 002 is one bounded checkpoint. After remote verification it will enter `WAITING_FOR_CONTINUE`; exactly one standalone `CONTINUE` authorizes Loop 003.

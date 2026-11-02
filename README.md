@@ -1,37 +1,46 @@
 # La Bulle Bleue — Chalon-sur-Saône
 
-Responsive French-language website for **La Bulle Bleue**, the welcome-and-connection initiative operated by **APAiL** in Chalon-sur-Saône.
+A lightweight, responsive French-language website for **La Bulle Bleue**, the welcome-and-connection initiative run by the association **APAiL** in Chalon-sur-Saône.
 
 ## Run locally
 
-This is a static site built with HTML, CSS and vanilla JavaScript. No package install, framework, remote font, analytics, tracking pixel or paid runtime dependency is required.
+The site is plain HTML, CSS and JavaScript. It has no package manager, framework, build step, remote font, analytics, tracking pixel or paid dependency.
 
-\`\`\`bash
+```bash
 python3 -m http.server 8080
-\`\`\`
+```
 
-Open \`http://localhost:8080\`.
+Then open `http://localhost:8080` in a browser.
 
-## Website
+## Website structure
 
-- \`index.html\` — one-page site, semantic sections, SEO metadata and organization JSON-LD.
-- \`styles.css\` — responsive visual system, custom CSS illustrations, keyboard focus and reduced-motion support.
-- \`script.js\` — accessible mobile navigation and current footer year.
-- \`assets/favicon.svg\` — local SVG icon.
-- \`tests/validate_site.py\` — dependency-free structural checks.
-- \`evidence/\` — research dossier, contract, requirements, assumptions, risk, decisions and validation results.
-- \`.aeos/\` and \`AEOS_STATUS.md\` — persistent progression state and status.
+- `index.html` — one-page website, semantic sections, SEO metadata and organization JSON-LD.
+- `styles.css` — responsive visual system, custom CSS illustrations, keyboard focus and reduced-motion support.
+- `script.js` — accessible mobile navigation and current footer year.
+- `assets/` — local SVG favicon.
+- `tests/validate_site.py` — dependency-free structural/content checks.
+- `tests/test_menu.js` — dependency-free keyboard and mobile-menu interaction regression tests.
+- `evidence/` — research dossier, project contract, assumptions, decisions, validation outputs and screenshots.
+- `.aeos/` and `AEOS_STATUS.md` — project progression state and boss-facing status.
 
-## Content safeguards
+## Content and publication safeguards
 
-Public sources identify La Bulle Bleue as an APAiL initiative. The page describes the publicly reported audience and examples of activities. The public email \`apail@live.fr\` is shown with its source provenance; mailbox deliverability has not been tested.
+The intended organization is APAiL's **La Bulle Bleue** in Chalon-sur-Saône, not the unrelated theatre company with a similar name. Public reporting describes an association-led welcome space for children from age 6, teenagers and adults, with games, outings, creative activities, gardening and opportunities to talk.
 
-Earlier sources say 30 Rempart Saint-Vincent; a 2025 report says 30 Rempart Saint-Pierre. Published Wednesday/Saturday afternoon times are historical. The site omits the disputed street address and current weekly schedule and asks visitors to confirm them with the association.
+The published email `apail@live.fr` is included as the primary contact route. The exact activity address differs between older and newer public sources, and the available opening times are historical. The website therefore does **not** publish a street address or weekly schedule; it asks visitors to confirm the venue, current dates and times directly with the association.
 
-No sensitive-data form, diagnosis eligibility, medical promise, testimonial, phone number, price or registration guarantee has been invented.
+No application form is present. The site does not ask visitors to disclose diagnoses, health details or other sensitive information online. No testimonials, phone number, pricing, registration guarantee or medical promise has been invented.
 
-## Validation limits
+## Deployment
 
-The structural validator and JavaScript syntax check pass. Chromium was exercised in-memory through Playwright using the actual HTML/CSS/JavaScript because sandbox policy blocked direct navigation to localhost and file URLs. This is candidate-level evidence, not a hosted production test.
+No production deployment has been performed or authorized in this loop. No domain or hosting target was supplied. The site is static and should be deployable by a static hosting provider, but production headers, canonical URL, sitemap, host configuration and production verification remain pending identification of the actual deployment target.
 
-Firefox, WebKit, actual Safari, manual screen-reader testing, Lighthouse, ZAP, host security headers and production smoke tests remain untested or unavailable. No host/domain was configured and no production deployment was performed.
+## Local validation
+
+```bash
+python3 tests/validate_site.py
+node --check script.js
+node tests/test_menu.js
+```
+
+The evidence folder distinguishes candidate-level browser checks from production checks. Chromium was exercised in-memory through Playwright because the sandbox blocks direct navigation to localhost and file URLs. This does not count as a hosted production smoke test.

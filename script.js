@@ -25,10 +25,11 @@
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      closeMenu();
-      toggle.focus();
-    }
+    if (event.key !== 'Escape') return;
+    if (toggle.getAttribute('aria-expanded') !== 'true') return;
+
+    closeMenu();
+    toggle.focus();
   });
 
   document.addEventListener('click', (event) => {

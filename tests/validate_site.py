@@ -32,7 +32,7 @@ class Parser(HTMLParser):
             self.description = True
 
 def main():
-    for path in ("index.html", "styles.css", "script.js", "assets/favicon.svg"):
+    for path in ("index.html", "styles.css", "script.js", "assets/favicon.svg", "tests/test_menu.js"):
         item = ROOT / path
         assert item.is_file() and item.stat().st_size, f"missing required file: {path}"
 
@@ -58,6 +58,7 @@ def main():
     assert "mailto:apail@live.fr" in html, "primary email CTA missing"
     assert "prefers-reduced-motion" in css, "reduced motion preference missing"
     assert "aria-expanded" in js and "Escape" in js, "keyboard menu behavior incomplete"
+    assert "toggle.getAttribute('aria-expanded') !== 'true'" in js, "Escape should only close an open menu"
     print("PASS: structure, French language, landmarks, anchors, local assets, content safeguards, reduced motion and keyboard hooks")
 
 if __name__ == "__main__":

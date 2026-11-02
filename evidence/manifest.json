@@ -1,36 +1,63 @@
 {
-  "manifest_version":"0.2",
-  "run_id":"bullebleue-20261102-001",
-  "loop":1,
-  "candidate":"bullebleue-loop-001-static-site-v1",
-  "candidate_status":"IMPLEMENTED; NOT RELEASE CERTIFIED",
-  "repository":"teyyara/bullebleue",
-  "branch":"main",
-  "implementation_checkpoint_commit":"4443c74fd77798d412e62e429de9af52be731270",
-  "remote_git_blob_objects":{
-    "index.html":"271fd60d88736c75cb797730d3a0644791bed16c",
-    "styles.css":"ca86112b7db79bce868c380e3e696d2c6864cce0",
-    "script.js":"9fbef38151663c5f550e601f9d321174f7586b59",
-    "assets/favicon.svg":"c98beb72f9633c41915ad00e5ced621faaf17799"
+  "manifest_version": "0.3",
+  "run_id": "bullebleue-20261102-001",
+  "loop": 2,
+  "candidate": "bullebleue-loop-002-menu-accessibility-v1",
+  "candidate_status": "IMPLEMENTED; NOT RELEASE CERTIFIED",
+  "repository": "teyyara/bullebleue",
+  "branch": "main",
+  "implementation_checkpoint_commit": "4443c74fd77798d412e62e429de9af52be731270",
+  "remote_git_blob_objects": {
+    "index.html": "271fd60d88736c75cb797730d3a0644791bed16c",
+    "styles.css": "ca86112b7db79bce868c380e3e696d2c6864cce0",
+    "script.js": "9fbef38151663c5f550e601f9d321174f7586b59",
+    "assets/favicon.svg": "c98beb72f9633c41915ad00e5ced621faaf17799",
+    "script_js": "de53845f9aaa514b0d35843cd05fd83bdd6bfacf",
+    "menu_regression_test_js": "493debf5b26c01e0b166d555b4dab53845a52f28"
   },
-  "local_screenshot_evidence":{
-    "desktop":{"file":"bullebleue-desktop.png","sha256":"a8650adc1ae0965da3bde28eb4db28f64ca2125ff865599c034af1dd74b38699","not_committed":true},
-    "mobile":{"file":"bullebleue-mobile.png","sha256":"64ccf856a44e74f27885d8921d6c7d34128434c4d432f21a7155f744cf22cdfc","not_committed":true}
+  "local_screenshot_evidence": {
+    "desktop": {
+      "file": "bullebleue-desktop.png",
+      "sha256": "a8650adc1ae0965da3bde28eb4db28f64ca2125ff865599c034af1dd74b38699",
+      "not_committed": true
+    },
+    "mobile": {
+      "file": "bullebleue-mobile.png",
+      "sha256": "64ccf856a44e74f27885d8921d6c7d34128434c4d432f21a7155f744cf22cdfc",
+      "not_committed": true
+    }
   },
-  "runtime_environment":{
-    "browser":"Chromium 144.0.7559.96",
-    "runner":"Playwright",
-    "mode":"in-memory page.set_content",
-    "timestamp":"2026-11-02"
+  "runtime_environment": {
+    "browser": "Chromium 144.0.7559.96",
+    "runner": "Playwright",
+    "mode": "in-memory page.set_content",
+    "timestamp": "2026-11-02"
   },
-  "production_artifact_sha256":null,
-  "release_frozen":false,
-  "production_deployed":false,
-  "limitations":[
+  "production_artifact_sha256": null,
+  "release_frozen": false,
+  "production_deployed": false,
+  "limitations": [
     "Source files are recorded by their remote Git blob object IDs; this manifest does not claim a production artifact digest.",
     "Localhost/file navigation blocked by sandbox.",
     "Firefox/WebKit/Safari unavailable.",
     "Screen-reader, axe-core, Lighthouse and ZAP checks unavailable.",
     "No hosting domain configured."
-  ]
+  ],
+  "loop_002": {
+    "change": "Only process Escape when the mobile navigation is expanded; preserve focus for unrelated or closed-menu Escape events.",
+    "regression_test": "tests/test_menu.js",
+    "validation": "PASS",
+    "command": "node tests/test_menu.js",
+    "checks": [
+      "closed Escape is inert",
+      "open Escape closes and restores focus",
+      "repeated Escape remains inert",
+      "navigation link closes menu without focus theft",
+      "outside click closes menu without forced focus"
+    ],
+    "source_blobs": {
+      "script.js": "de53845f9aaa514b0d35843cd05fd83bdd6bfacf",
+      "tests/test_menu.js": "493debf5b26c01e0b166d555b4dab53845a52f28"
+    }
+  }
 }
