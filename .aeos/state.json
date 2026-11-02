@@ -11,14 +11,14 @@
   "branch_policy": "single branch",
   "bootstrap_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b",
   "latest_loop_checkpoint_commit": "4443c74fd77798d412e62e429de9af52be731270",
-  "latest_loop_2_checkpoint_commit": null,
-  "status_metadata_commit": "d05ed5b6163019033130dd83d9be633acadee53b",
+  "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
+  "status_metadata_commit": "4d42d39679137f92b248df17a642bf2235da79d7",
   "last_known_good_release_commit": null,
   "current_loop": 2,
   "current_candidate": "bullebleue-loop-002-menu-accessibility-v1",
-  "state": "LOOP_002_CHECKPOINT_PENDING",
-  "remote_checkpoint_verified": false,
-  "next_action": "Finish LOOP 002 checkpoint, verify remote branch, finalize status and wait.",
+  "state": "WAITING_FOR_CONTINUE",
+  "remote_checkpoint_verified": true,
+  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 003.",
   "deployment": "NOT CONFIGURED / NOT AUTHORIZED",
   "paid_dependencies": [],
   "open_blockers": [
@@ -26,5 +26,6 @@
     "Domain and hosting provider are not configured; production SEO, security headers and production verification remain pending.",
     "Firefox/WebKit, actual Safari, screen-reader, Lighthouse, ZAP and Gitleaks capabilities are unavailable in this environment.",
     "Manual screen-reader assessment and final human acceptance are outstanding."
-  ]
+  ],
+  "evidence_manifest_reconciliation_commit": "62348c46a35547bbcea414e8250ebdc31218b693"
 }
