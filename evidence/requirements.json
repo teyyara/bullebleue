@@ -394,18 +394,18 @@
       "requirement": "Provide a repeatable, non-deploying quality workflow for the static site.",
       "acceptance": "A read-only GitHub Actions workflow runs the Python structural validator and Node syntax/interaction checks on pushes and pull requests to main; no deploy, secrets, writable repository permission or application dependency is added.",
       "risk": "R1",
-      "validation": "Workflow source audit and recorded job result when available.",
-      "status": "IMPLEMENTED — WORKFLOW COMMITTED; RUN RESULT NOT OBSERVED",
-      "confidence": "HIGH for source and trigger definition; execution status not independently verified."
+      "validation": "Source audit and GitHub Actions run 41661941172.",
+      "status": "PASS — READ-ONLY WORKFLOW RUN 41661941172 SUCCEEDED ON MAIN",
+      "confidence": "HIGH — workflow source inspected and exact commit run completed successfully."
     },
     {
       "id": "REQ-045",
       "requirement": "Add current-candidate responsive browser regression coverage for the nine-page site.",
       "acceptance": "A Playwright test serves the local repository and checks all nine routes at 320, 390, 768, 1024 and 1440 px; verifies image loads, no horizontal overflow, navigation/menu keyboard behavior, sticky chapter changes, reduced-motion and no-JavaScript visibility, no external requests and browser errors; captures desktop/mobile screenshots.",
       "risk": "R1",
-      "validation": "python tests/test_browser.py under Chromium; output and screenshots uploaded as CI artifact.",
-      "status": "IMPLEMENTED — TEST COMMITTED; BROWSER EXECUTION NOT OBSERVED",
-      "confidence": "HIGH for authored test scope; rendered results pending."
+      "validation": "python tests/test_browser.py in GitHub Actions run 41661941172; output and six-image artifact retrieved.",
+      "status": "PASS — NINE PAGES X FIVE VIEWPORTS; PLAYWRIGHT RUN 41661941172 SUCCEEDED",
+      "confidence": "HIGH — 45 page/viewport combinations completed with no overflow, failed requests or browser errors."
     },
     {
       "id": "REQ-046",
@@ -413,17 +413,17 @@
       "acceptance": "The homepage keeps its one sticky SVG illustration and three text chapters, then presents exactly two user-supplied close-up activity photographs with descriptive alt text and captions, local lazy-loaded image paths and responsive layout. The photos are described as general activity examples, not attributed to a dated event. People-forward group/children photographs remain unpublished until image-specific releases are documented.",
       "risk": "R2",
       "validation": "Static validator verifies both exact local image paths, two semantic figure cards, visible provenance and responsive CSS. Playwright confirms both images load and have alt text across the existing page/viewport matrix.",
-      "status": "IMPLEMENTED — REMOTE SOURCE AUDIT PENDING; PYTHON/BROWSER EXECUTION NOT OBSERVED",
-      "confidence": "HIGH for exact supplied assets and visible image content; identifiable-photo releases remain a separate blocker."
+      "status": "PASS — TWO SUPPLIED PHOTOS PRESENT; RESPONSIVE IMAGE LOAD CHECKS PASSED",
+      "confidence": "HIGH — exact homepage paths, alt text and gallery screenshot inspected at desktop/mobile sizes."
     },
     {
       "id": "REQ-047",
       "requirement": "Produce trustworthy visual-review screenshots of each sticky homepage story state and the supplied-photo gallery.",
       "acceptance": "The browser suite captures all three desktop story chapters only after the active text panel's opacity transition reaches its visible state; captures gallery elements at desktop and mobile after lazy images are explicitly loaded and decoded; captures story viewports without full-page sticky-position artifacts; uploads a six-image CI artifact with Loop 015-specific paths and labels.",
       "risk": "R1",
-      "validation": "Playwright asserts the target story chapter is active and computed panel opacity is at least 0.99 before each chapter screenshot; waits for all image naturalWidth/decode before gallery screenshots; CI artifact contains six expected files.",
-      "status": "IMPLEMENTED — CI EXECUTION PENDING",
-      "confidence": "HIGH for automated capture conditions; screenshots require manual visual review."
+      "validation": "GitHub Actions run 41661941172 plus manual inspection of all six PNGs in artifact 13241898121.",
+      "status": "PASS — CI AND MANUAL VISUAL REVIEW",
+      "confidence": "HIGH — CI confirmed all capture preconditions; all six screenshots were opened and inspected."
     }
   ]
 }

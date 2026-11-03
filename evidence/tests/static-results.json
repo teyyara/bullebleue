@@ -473,5 +473,69 @@
       }
     ],
     "limitation": "Automated browser rendering and no-overflow checks passed. Manual inspection of screenshot composition, cross-browser testing, assistive technology testing and final owner acceptance remain open."
+  },
+  "loop_015": {
+    "test_run": "loop-015-trustworthy-sticky-story-and-gallery-visual-evidence",
+    "observed_at": "2026-11-03",
+    "runner": "Remote source audit and GitHub Actions hosted Ubuntu 24.04; screenshots downloaded from CI artifact and manually inspected.",
+    "status": "PASS — SOURCE, AUTOMATED CI AND MANUAL SIX-IMAGE VISUAL REVIEW",
+    "implementation_commit": "3a20b49f9faf93afc14cd93e8950def56b328c81",
+    "workflow_run": {
+      "id": 41661941172,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41661941172",
+      "head_sha": "3a20b49f9faf93afc14cd93e8950def56b328c81",
+      "conclusion": "success"
+    },
+    "checks": [
+      {
+        "name": "Visual-evidence issue identification",
+        "result": "PASS — MANUAL REVIEW OF LOOP 014 ARTIFACT",
+        "detail": "The previous screenshot artifact showed lazy-loaded gallery placeholders and a story panel captured mid-opacity transition. The issue was in screenshot sequencing, not in a demonstrated user-facing rendering failure."
+      },
+      {
+        "name": "Story chapter screenshot capture",
+        "result": "PASS — AUTOMATED AND MANUAL",
+        "detail": "The capture helper waits until the requested chapter is current and computed opacity is >=0.99. All three desktop screenshots show the intended text fully visible with the sticky illustration in a normal viewport."
+      },
+      {
+        "name": "Gallery screenshot capture",
+        "result": "PASS — AUTOMATED AND MANUAL",
+        "detail": "The capture helper switches images to eager loading, waits for complete/naturalWidth and decode, then captures the actual gallery section on desktop and mobile. Both supplied photographs are visible in both captures."
+      },
+      {
+        "name": "Python structural validator",
+        "result": "PASS — GITHUB ACTIONS",
+        "detail": "python tests/validate_site.py passed."
+      },
+      {
+        "name": "Node syntax and interaction regression",
+        "result": "PASS — GITHUB ACTIONS",
+        "detail": "Both node --check commands and node tests/test_menu.js passed."
+      },
+      {
+        "name": "Responsive Playwright suite",
+        "result": "PASS — GITHUB ACTIONS",
+        "detail": "Nine public pages across five viewport widths (45 page/viewport combinations); no horizontal overflow; all local image loads; menu/keyboard behavior, sticky chapter behavior, reduced-motion and no-JavaScript fallbacks; no external requests, failed requests or browser errors."
+      },
+      {
+        "name": "CI artifact",
+        "result": "PASS — SIX FILES UPLOADED AND INSPECTED",
+        "detail": "All six screenshots (three desktop story states, desktop gallery, mobile story and mobile gallery) were downloaded and opened. The story copy is fully visible; the two activity photos load and fit their frames. No major screenshot/rendering defect observed."
+      }
+    ],
+    "manual_visual_review": {
+      "status": "PASS",
+      "artifact_id": 13241898121,
+      "inspected_files": [
+        "home-story-01-desktop.png",
+        "home-story-02-desktop.png",
+        "home-story-03-desktop.png",
+        "home-gallery-desktop.png",
+        "home-story-01-mobile.png",
+        "home-gallery-mobile.png"
+      ],
+      "observations": "All three chapter panels are fully visible; the same illustrated scene remains behind the active chapter; both documentary gallery images are visible in desktop and mobile captures.",
+      "scope": "Manual inspection of the six provided screenshot files. This is not final owner acceptance or a cross-browser/device test."
+    }
   }
 }
