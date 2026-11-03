@@ -31,7 +31,7 @@
     "analytics": false,
     "third_party_tracking": false
   },
-  "current_candidate": "bullebleue-loop-013-repeatable-quality-and-browser-validation-v1",
-  "status": "LOOP 013 QUALITY WORKFLOW AND PLAYWRIGHT SUITE COMMITTED; EXACT NODE TESTS PASS; PYTHON/BROWSER/WORKFLOW RUN STATUS UNVERIFIED; NOT DEPLOYED",
-  "contract_version": "0.7"
+  "current_candidate": "bullebleue-loop-014-user-supplied-homepage-photo-gallery-v1",
+  "status": "LOOP 014: SUPPLIED HOMEPAGE PHOTO GALLERY IMPLEMENTED; PYTHON/NODE/PLAYWRIGHT CI PASS; SCREENSHOTS UPLOADED; NOT DEPLOYED",
+  "contract_version": "0.8"
 }

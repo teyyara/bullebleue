@@ -616,5 +616,72 @@
       "Python structural validator was not run locally.",
       "Cross-browser, manual screen-reader, physical-device, Lighthouse, ZAP and production tests remain outstanding."
     ]
+  },
+  "loop_014": {
+    "test_run": "loop-014-current-candidate-runtime-and-ci",
+    "observed_at": "2026-11-03",
+    "runner": "GitHub Actions, Ubuntu 24.04; Python 3.13.17; Node.js 22.23.4; Playwright 1.57.0; Chromium 143.0.7499.4 (build v1200).",
+    "status": "PASS — STRUCTURAL, NODE AND BROWSER CHECKS",
+    "commit": "b622176dc3bec04190da4d2bbadb553ff329fdd3",
+    "workflow": {
+      "run_id": 41659845807,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41659845807",
+      "conclusion": "success"
+    },
+    "python_validator": {
+      "status": "PASS",
+      "command": "python tests/validate_site.py",
+      "detail": "PASS: 9 pages, shared accessible navigation, 3 dated article routes, 3-card news overview, scroll-story, reduced-motion fallback, local assets and logo palette."
+    },
+    "node": {
+      "status": "PASS",
+      "commands": [
+        "node --check script.js",
+        "node --check tests/test_menu.js",
+        "node tests/test_menu.js"
+      ],
+      "output": "PASS: menu keyboard/outside-click behavior; progressive reveals; sticky-story transitions; reduced-motion fallback."
+    },
+    "browser": {
+      "status": "PASS",
+      "suite": "tests/test_browser.py",
+      "pages": 9,
+      "viewports": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "page_viewport_runs": 45,
+      "checks": [
+        "no horizontal overflow",
+        "HTTP routes and all local image naturalWidth loads",
+        "shared navigation order",
+        "mobile menu Escape/focus behavior",
+        "sticky artwork and all three chapter transitions",
+        "reduced-motion content visibility",
+        "no-JavaScript content visibility",
+        "exactly two homepage photo cards with descriptive alt text",
+        "no external requests, failed requests or browser console/page errors"
+      ],
+      "screenshots": {
+        "artifact_name": "bulle-bleue-loop014-browser-review",
+        "artifact_id": 13241331764,
+        "url": "https://github.com/teyyara/bullebleue/actions/runs/41659845807/artifacts/13241331764",
+        "files": [
+          "artifacts/loop014-browser/home-desktop.png",
+          "artifacts/loop014-browser/home-story-final.png",
+          "artifacts/loop014-browser/home-mobile.png"
+        ],
+        "uploaded": true,
+        "manually_reviewed": false
+      }
+    },
+    "limitations": [
+      "The uploaded screenshots were not downloaded and manually inspected; automated layout checks do not equal final visual acceptance.",
+      "Firefox/WebKit, manual screen-reader, physical-device, Lighthouse, ZAP and production-hosting checks remain outstanding.",
+      "No production deployment was performed or authorized."
+    ]
   }
 }

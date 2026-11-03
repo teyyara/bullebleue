@@ -428,5 +428,50 @@
       }
     ],
     "limitation": "The source audit and local Node regression are observed results. The workflow was committed but its GitHub Actions execution status could not be retrieved with the available repository tools. Python and browser runs remain unverified."
+  },
+  "loop_014": {
+    "test_run": "loop-014-user-supplied-homepage-photo-gallery-and-quality-verification",
+    "observed_at": "2026-11-03",
+    "runner": "GitHub Actions on Ubuntu 24.04, commit b622176dc3bec04190da4d2bbadb553ff329fdd3; remote source audit/readback performed after push.",
+    "status": "PASS — REMOTE SOURCE AUDIT AND ALL AUTOMATED CI CHECKS",
+    "workflow_run": {
+      "id": 41659845807,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41659845807",
+      "head_sha": "b622176dc3bec04190da4d2bbadb553ff329fdd3",
+      "conclusion": "success"
+    },
+    "checks": [
+      {
+        "name": "Homepage source and selected photographs",
+        "result": "PASS",
+        "detail": "The homepage retains the one sticky SVG background and exactly three text chapters, followed by two supplied documentary close-ups. Both exact local image paths, descriptive alt text, captions and visible provenance are present. Photos are not assigned to dated event stories."
+      },
+      {
+        "name": "Privacy-aware asset selection",
+        "result": "PASS — SOURCE AND DIRECT IMAGE REVIEW",
+        "detail": "The two selected images show tabletop games and players' hands without recognizable faces. People-forward group, children and other recognizable participant photos remain unpublished pending image-specific releases."
+      },
+      {
+        "name": "Python structural validator",
+        "result": "PASS — GITHUB ACTIONS",
+        "detail": "python tests/validate_site.py completed successfully on the exact commit."
+      },
+      {
+        "name": "Node syntax and interaction",
+        "result": "PASS — GITHUB ACTIONS",
+        "detail": "node --check script.js; node --check tests/test_menu.js; node tests/test_menu.js all completed successfully."
+      },
+      {
+        "name": "Playwright responsive browser suite",
+        "result": "PASS — GITHUB ACTIONS",
+        "detail": "All nine public pages tested at 320, 390, 768, 1024 and 1440 px (45 page/viewport combinations); no horizontal overflow; all local image loads; shared navigation order; mobile Escape/focus; sticky story chapters; reduced-motion and no-JavaScript fallbacks; no external/failed requests or console/page errors. The two homepage gallery cards and their alt text were also asserted."
+      },
+      {
+        "name": "Screenshot artifact",
+        "result": "PASS — UPLOADED",
+        "detail": "Three browser screenshots were uploaded in artifact bulle-bleue-loop014-browser-review (ID 13241331764, 1,581,741 bytes). They were not downloaded or manually visually inspected in this session."
+      }
+    ],
+    "limitation": "Automated browser rendering and no-overflow checks passed. Manual inspection of screenshot composition, cross-browser testing, assistive technology testing and final owner acceptance remain open."
   }
 }

@@ -3,44 +3,47 @@
 **Active keyphrase:** make a full website for: Bulle Bleue à Chalon-sur-Saône  
 **Run ID:** bullebleue-20261102-001  
 **Rulebook:** AEOS v3  
-**Current loop:** LOOP 013  
-**Candidate:** bullebleue-loop-013-repeatable-quality-and-browser-validation-v1  
+**Current loop:** LOOP 014  
+**Candidate:** bullebleue-loop-014-user-supplied-homepage-photo-gallery-v1  
 **Repository:** teyyara/bullebleue  
 **Branch:** main (single-branch progression)  
-**Implementation checkpoint:** 206ca33e928ea12ed08e80a3dc000979f1560620  
+**Latest code checkpoint:** b622176dc3bec04190da4d2bbadb553ff329fdd3  
 **Status:** WAITING_FOR_CONTINUE
 
-## Delivered in Loop 013
+## Delivered in Loop 014
 
-- Added `.github/workflows/quality.yml`, a read-only GitHub Actions quality workflow triggered by pushes and pull requests to `main`, with manual dispatch.
-- The workflow runs `tests/validate_site.py`, Node syntax checks, the menu/story/reduced-motion unit test, and a Playwright Chromium suite. It has `contents: read` permission and no deployment step.
-- Added `tests/test_browser.py`. It starts a local static server and checks all nine routes across 320, 390, 768, 1024 and 1440 px. It checks overflow, local image loads, common navigation, mobile Escape/focus handling, sticky background/chapter transitions, reduced-motion and no-JavaScript fallbacks, external requests and browser errors.
-- Configured the browser workflow to upload desktop/mobile review screenshots as a short-retention artifact.
-- Updated the README and AEOS requirements/contract and test evidence.
+- Preserved the homepage's sticky illustrated background and all three successive text chapters.
+- Added a separate responsive photo gallery below the story, using two supplied close-up activity photographs: a tabletop game board and a tabletop arrangement of triangular game pieces.
+- Kept the gallery's copy general; neither photograph is attributed to one of the dated news posts.
+- Added descriptive alternative text and captions; images remain local and lazy-loaded.
+- Kept group photographs, children’s photographs and other images with recognizable people unpublished pending image-specific participant/guardian releases.
+- Updated the asset register, content provenance, decision log, requirements, product contract, change request and README.
+- Corrected two issues exposed by CI: a malformed multiline string in the Playwright test and the gallery provenance assertion's capitalization. Aligned the browser screenshot output labels and CI artifact path with Loop 014.
 
 ## Verification
 
-- Remote source audit: PASS — workflow and browser suite read back from the exact remote `main` blobs. Push/PR triggers, read-only permission, test commands and the absence of a deploy step were checked.
-- Exact Node source hashes: PASS — local `git hash-object` values match the remote blobs for `script.js` and `tests/test_menu.js`.
-- Node syntax: PASS — `node --check script.js` and `node --check tests/test_menu.js`.
-- Node interaction regression: PASS — `node tests/test_menu.js` printed: `PASS: menu keyboard/outside-click behavior; progressive reveals; sticky-story transitions; reduced-motion fallback.`
-- Python structural validator: NOT RUN locally.
-- Playwright browser suite: NOT RUN/OBSERVED.
-- GitHub Actions run status: NOT OBSERVED through the available repository integration. The workflow is committed, but no unobserved result is called a pass.
-- Current screenshots and visual design review: NOT CAPTURED/INSPECTED. No rendered no-overflow PASS is claimed.
+- Remote source/readback audit: PASS — exact main-branch blobs checked after commit.
+- GitHub Actions run: PASS — [run 41659845807](https://github.com/teyyara/bullebleue/actions/runs/41659845807), head `b622176dc3bec04190da4d2bbadb553ff329fdd3`.
+- Python structural validator: PASS — run step completed successfully.
+- Node syntax checks and interaction regression: PASS — both syntax checks and the menu/story/reduced-motion regression completed successfully.
+- Playwright Chromium suite: PASS — all nine public pages across 320, 390, 768, 1024 and 1440 px (45 page/viewport combinations); no horizontal overflow, all local images loaded, navigation/menu and sticky-story checks passed, reduced-motion/no-JavaScript fallbacks passed, and no failed/external requests or browser errors were recorded.
+- Homepage gallery browser assertions: PASS — exactly two gallery cards and descriptive alt text verified.
+- Screenshot artifact: [bulle-bleue-loop014-browser-review](https://github.com/teyyara/bullebleue/actions/runs/41659845807/artifacts/13241331764), three screenshots uploaded (desktop, final story state and mobile). The artifact is available for seven days from 3 November 2026.
+- Limitation: the screenshots were generated and uploaded but were not downloaded and manually inspected in this session. Automated browser checks are not a substitute for final human visual review.
 
 ## Open items
 
-1. Verify the actual GitHub Actions run and its Python/Playwright job results.
-2. Inspect the Playwright screenshots and run any fixes indicated by the five-viewport, nine-page review.
-3. APAiL must supply and confirm its exact legal designation, registered office, publication manager and hosting-provider details before legal sign-off.
-4. Confirm current membership terms if the Adhérer page is to show a fee/process.
-5. Confirm the 2024-referenced session schedule and venue details before presenting them as current.
-6. Confirm image-specific participant/guardian releases before adding recognisable participant photography.
-7. Cross-browser, manual screen-reader, physical-device, Lighthouse, ZAP, live hosting and owner-acceptance checks remain outstanding.
+1. Review the uploaded desktop/mobile screenshots and obtain final visual acceptance from the association owner.
+2. APAiL must supply and confirm its exact legal designation, registered office, publication manager and hosting-provider details before legal sign-off.
+3. Confirm current membership amount, process, documents and renewal conditions before publishing those terms.
+4. Confirm the historical 2024-referenced session schedule and venue details before presenting them as current.
+5. Confirm image-specific participant/guardian releases before publishing recognizable participant or group photographs.
+6. Test the published apail@live.fr mailbox deliverability.
+7. Cross-browser, manual screen-reader, physical-device, Lighthouse, ZAP and hosted performance/security checks remain outstanding.
+8. Domain/hosting configuration remains unknown; production deployment is unauthorized.
 
 No production deployment has been performed or authorized.
 
 ## Progression control
 
-Loop 013 is checkpointed on `main`. The repository is set to `WAITING_FOR_CONTINUE`. Exactly one standalone `CONTINUE` authorizes Loop 014.
+Loop 014 is checkpointed on main. The repository is set to WAITING_FOR_CONTINUE. Exactly one standalone CONTINUE authorizes Loop 015.
