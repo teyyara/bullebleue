@@ -250,9 +250,9 @@ def main() -> None:
                 ],
                 "measurements": measurements,
                 "screenshots": [
-                    "artifacts/loop013-browser/home-desktop.png",
-                    "artifacts/loop013-browser/home-story-final.png",
-                    "artifacts/loop013-browser/home-mobile.png",
+                    "artifacts/loop014-browser/home-desktop.png",
+                    "artifacts/loop014-browser/home-story-final.png",
+                    "artifacts/loop014-browser/home-mobile.png",
                 ],
             },
             ensure_ascii=False,
