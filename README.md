@@ -10,7 +10,7 @@ Static HTML, CSS and vanilla JavaScript. No package manager, build step, remote 
 
 ## Site map
 
-- `index.html` — sticky illustrated background with three successive scroll chapters.
+- `index.html` — sticky illustrated background with three successive scroll chapters, followed by two user-supplied activity photographs.
 - `qui-sommes-nous.html` — La Bulle Bleue, its audience and activities, Les Bleuettes, APAiL history and reported solidarity work.
 - `actualites.html` — three featured dated stories in editorial cards.
 - `actualite-2026-10-26.html` — 26 October 2026, games at La Bulle Bleue.
@@ -24,7 +24,7 @@ The five primary navigation links are Accueil, Qui sommes-nous ?, Actualités, A
 
 ## Homepage motion and accessibility
 
-The same original local SVG drawing stays sticky behind three text chapters as visitors scroll. JavaScript uses IntersectionObserver only as progressive enhancement. All content is visible by default, and reduced-motion users do not receive hidden story states or scroll transitions. The sticky experience still requires current-browser visual review.
+The same original local SVG drawing stays sticky behind three text chapters as visitors scroll. Below it, a small gallery uses two user-supplied close-up photographs of shared tabletop activities; the photographs are not presented as dated event evidence. JavaScript uses IntersectionObserver only as progressive enhancement. All content is visible by default, and reduced-motion users do not receive hidden story states or scroll transitions. The sticky experience and new gallery still require current-browser visual review.
 
 ## News content and imagery
 
@@ -59,7 +59,7 @@ The primary content source is `Bulle_Bleue_APAiL_contenu_facebook.md`, the user-
 
 Membership fees, current membership forms and process are not evidenced; the Adhérer page asks visitors to contact APAiL for current information. Legal association identity, registered-office address, publication responsible person and actual host details have not been supplied. The Mentions légales page is visibly marked as incomplete and must be completed and approved by APAiL before the site is published.
 
-No identifiable-participant Facebook photographs are used in the current Loop 012 pages. The owner-reported asset permission is recorded in the asset register.
+The homepage uses two close-up activity photographs from the supplied Facebook-page assets; no recognizable faces are visible in the selected frames. Group, children’s and other identifiable participant photographs remain unpublished until image-specific releases are documented. The owner-reported asset permission is recorded in the asset register.
 
 ## Validation
 

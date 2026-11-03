@@ -109,8 +109,16 @@ def main():
     home = parsed["index.html"][0]
     assert len(home) < 9000, "homepage must remain concise"
     assert home.count('class="story-step"') == 3, "homepage has exactly three scroll chapters"
-    assert 'src="/assets/illustrations/hero-community.svg"' in home
-    assert "home-hero-photo" not in home and "/assets/posts/" not in home
+    assert 'src="/assets/illustrations/hero-community.svg"' in home, "sticky story illustration remains"
+    gallery_photos = (
+        "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg",
+        "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg",
+    )
+    assert home.count('class="home-photo-card"') == 2, "homepage has exactly two selected documentary photos"
+    for photo in gallery_photos:
+        assert f'src="/{photo}"' in home, f"missing supplied homepage photo: {photo}"
+    assert "photographies, issues des publications de La Bulle Bleue" in home.lower(), "gallery provenance is visible"
+    assert "home-hero-photo" not in home
     assert all(h in home for h in ("Qui sommes-nous ?", "actualites.html", "adherer.html", "contact.html"))
 
     news = parsed["actualites.html"][0]
@@ -139,6 +147,8 @@ def main():
     css = (ROOT / "styles.css").read_text(encoding="utf-8")
     js = (ROOT / "script.js").read_text(encoding="utf-8")
     assert ".story-art{position:sticky" in css and "html.has-scroll-story .story-step.is-current .story-panel" in css
+    assert ".home-photo-inner{display:grid" in css and ".home-photo-grid{display:grid" in css
+    assert "@media(max-width:760px)" in css and ".home-photo-grid{grid-template-columns:1fr" in css
     assert "@media(prefers-reduced-motion:reduce)" in css and "@media(max-width:760px)" in css
     assert "storySteps" in js and "prefers-reduced-motion" in js and "has-scroll-story" in js
     assert all(token in css for token in ("--ink:#06195E", "--blue:#1642A5", "--blue-mid:#1C60CF", "--blue-bright:#2084DE", "--sky:#4EABEC", "--blue-pale:#D3DEF0"))

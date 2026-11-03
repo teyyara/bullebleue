@@ -283,6 +283,20 @@
       "reason": "Complies with AEOS no-invention rule and avoids collecting personal data before a verified process exists.",
       "risk": "R2",
       "evidence": "Available supplied extraction, project.config.json and Loop 012 content review."
+    },
+    {
+      "id": "DEC-023",
+      "context": "The user asked that the photographs they supplied be used on the site while the homepage retains the owner's sticky illustrated scroll-story.",
+      "options": [
+        "Replace the illustrated story background with Facebook photographs",
+        "Use the supplied people-forward group photographs throughout the site",
+        "Keep the sticky illustration and add a restrained gallery using close-up activity photographs without recognizable faces"
+      ],
+      "chosen": "Keep the sticky SVG story background and add two user-supplied close-up tabletop activity photographs in a separate homepage gallery.",
+      "reason": "This incorporates the supplied documentary assets without misrepresenting their connection to dated articles or publishing recognizable participant/children images without image-specific releases.",
+      "tradeoffs": "Only two selected close-ups are used in this loop; other supplied photographs remain archived pending image-specific release confirmation.",
+      "risk": "R2",
+      "evidence": "The selected files were visually inspected directly: the frames show game boards, pieces and hands, with no recognizable faces; asset register and homepage validator were updated."
     }
   ]
 }

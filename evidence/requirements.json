@@ -1,6 +1,6 @@
 {
-  "requirements_version": "0.7",
-  "candidate": "bullebleue-loop-013-repeatable-quality-and-browser-validation-v1",
+  "requirements_version": "0.8",
+  "candidate": "bullebleue-loop-014-user-supplied-homepage-photo-gallery-v1",
   "requirements": [
     {
       "id": "REQ-001",
@@ -406,6 +406,15 @@
       "validation": "python tests/test_browser.py under Chromium; output and screenshots uploaded as CI artifact.",
       "status": "IMPLEMENTED — TEST COMMITTED; BROWSER EXECUTION NOT OBSERVED",
       "confidence": "HIGH for authored test scope; rendered results pending."
+    },
+    {
+      "id": "REQ-046",
+      "requirement": "Use the user's supplied La Bulle Bleue photographs in the public site without compromising the existing illustrated homepage story or participant privacy.",
+      "acceptance": "The homepage keeps its one sticky SVG illustration and three text chapters, then presents exactly two user-supplied close-up activity photographs with descriptive alt text and captions, local lazy-loaded image paths and responsive layout. The photos are described as general activity examples, not attributed to a dated event. People-forward group/children photographs remain unpublished until image-specific releases are documented.",
+      "risk": "R2",
+      "validation": "Static validator verifies both exact local image paths, two semantic figure cards, visible provenance and responsive CSS. Playwright confirms both images load and have alt text across the existing page/viewport matrix.",
+      "status": "IMPLEMENTED — REMOTE SOURCE AUDIT PENDING; PYTHON/BROWSER EXECUTION NOT OBSERVED",
+      "confidence": "HIGH for exact supplied assets and visible image content; identifiable-photo releases remain a separate blocker."
     }
   ]
 }

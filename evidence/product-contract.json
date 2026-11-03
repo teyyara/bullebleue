@@ -1,5 +1,5 @@
 {
-  "contract_version": "0.7",
+  "contract_version": "0.8",
   "status": "ACTIVE QUALITY BASELINE — LOOP 013 ADDS REPEATABLE STATIC/NODE/BROWSER CHECKS",
   "change_request": "CR-006",
   "supersedes": "0.6",
@@ -318,5 +318,7 @@
   "definition_of_done_loop_010": "Integrate the user-supplied transparent logo in all six page headers and footers; select and place documentary activity photos with useful alt text; update responsive styles, tests, README and evidence; checkpoint on main and verify; no deployment. Exact logo-palette sampling is recorded as blocked because the >1 MB PNG could not be read by the repository connector and remains an open item.",
   "definition_of_done_loop_011": "Sample the directly uploaded transparent logo; document dominant colour clusters and representative hex codes; replace the interim palette throughout shared CSS, page metadata and favicon; update tests, README and design evidence; checkpoint on main and verify; no deployment.",
   "definition_of_done_loop_012": "Replace the previous six-page menu with the owner's five primary destinations, create a sticky illustrated scroll-story homepage, consolidate identity content, feature three dated editorial news cards with individual article pages, add Adhérer and a visibly incomplete Mentions légales draft, revise shared navigation/footer, tests and evidence, checkpoint on main and verify remote; do not deploy.",
-  "definition_of_done_loop_013": "Add a repeatable read-only GitHub Actions quality workflow and Playwright browser regression suite for the exact nine-page candidate; execute available checks, record exact results without claiming unobserved CI/browser success, update evidence and status, checkpoint to main and verify remote; no deployment."
+  "definition_of_done_loop_013": "Add a repeatable read-only GitHub Actions quality workflow and Playwright browser regression suite for the exact nine-page candidate; execute available checks, record exact results without claiming unobserved CI/browser success, update evidence and status, checkpoint to main and verify remote; no deployment.",
+  "candidate": "bullebleue-loop-014-user-supplied-homepage-photo-gallery-v1",
+  "definition_of_done_loop_014": "Preserve the sticky illustrated homepage background and its three scroll chapters; add a responsive, accessible gallery using two exact user-supplied close-up activity photographs that show no recognizable faces; do not assign the photos to dated news events; keep identifiable group/children photos unpublished pending image-specific releases; update the source validator, browser regression, asset register, provenance, decisions, requirements, README and change request; checkpoint on main, verify exact remote readback, record unobserved Python/browser/CI results honestly, and do not deploy."
 }

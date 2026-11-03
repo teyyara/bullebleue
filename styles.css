@@ -612,6 +612,16 @@ h1 em,h2 em{color:inherit;font-style:italic;font-weight:400}
 .story-index span{color:rgba(252,253,255,.58)}
 html.has-scroll-story .story-panel{opacity:0;transform:translateY(22px);transition:opacity .52s ease,transform .52s ease}
 html.has-scroll-story .story-step.is-current .story-panel{opacity:1;transform:translateY(0)}
+.home-photo-section{padding-block:clamp(52px,7vw,86px);background:rgba(211,222,240,.38)}
+.home-photo-inner{display:grid;grid-template-columns:.72fr 1.28fr;gap:clamp(28px,5vw,70px);align-items:center}
+.home-photo-intro h2{max-width:450px;margin:0 0 15px;font-size:clamp(34px,4.2vw,49px);line-height:1.05}
+.home-photo-intro h2 em{color:var(--blue)}
+.home-photo-intro>p:last-child{max-width:390px;margin:0;color:var(--muted);font-size:13px;line-height:1.8}
+.home-photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.home-photo-card{min-width:0;margin:0}
+.home-photo-frame{overflow:hidden;aspect-ratio:5/4;border:1px solid var(--line);background:var(--blue-pale)}
+.home-photo-frame img{display:block;width:100%;height:100%;object-fit:cover}
+.home-photo-card figcaption{padding-top:10px;color:var(--muted);font-size:11px;line-height:1.55}
 .home-after{padding-block:clamp(52px,8vw,92px);background:var(--paper-light)}
 .home-after-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}
 .home-after h2{max-width:620px;margin:0 0 17px;font-size:clamp(36px,4.6vw,54px);line-height:1.04}
@@ -707,12 +717,16 @@ html.has-scroll-story .story-step.is-current .story-panel{opacity:1;transform:tr
 .legal-page dd{margin:0;color:var(--muted);font-size:12px;line-height:1.7}
 @media(max-width:980px){
   :root{--header-offset:70px}
+  .home-photo-inner{grid-template-columns:1fr;gap:26px}
+  .home-photo-intro{max-width:680px}
   .main-nav a[aria-current="page"]::after,.main-nav a[aria-current="location"]::after{display:none}
   .main-nav a[aria-current="page"],.main-nav a[aria-current="location"]{background:rgba(22,66,165,.08);padding-left:10px}
   .news-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:760px){
   .home-story{overflow:clip}
+  .home-photo-grid{grid-template-columns:1fr;gap:18px}
+  .home-photo-frame{aspect-ratio:16/10}
   .story-art{height:calc(100vh - 70px);margin-bottom:calc(-100vh + 70px)}
   .story-art{height:calc(100svh - 70px);margin-bottom:calc(-100svh + 70px)}
   .story-art img{object-position:57% center}

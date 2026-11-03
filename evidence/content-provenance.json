@@ -1,5 +1,5 @@
 {
-  "content_provenance_version": "0.6",
+  "content_provenance_version": "0.7",
   "items": [
     {
       "content": "La Bulle Bleue is an APAiL initiative in Chalon-sur-Saône.",
@@ -151,6 +151,11 @@
       "content": "Legal association identity, registered-office address, publication manager and actual host details.",
       "classification": "Not supplied by available project evidence; legal page explicitly marks these as needing confirmation.",
       "confidence": "UNKNOWN — legal sign-off blocked."
+    },
+    {
+      "content": "Two close-up activity photographs displayed in the homepage gallery: assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg and assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg.",
+      "classification": "User-supplied documentary photographs from the exact La Bulle Bleue Facebook-page asset set; directly reviewed for visible content; used as general activity examples rather than attributed to specific dated posts.",
+      "confidence": "HIGH for the visible tabletop-game content and user-supplied asset provenance; selected frames show no recognizable faces. Owner permission is user-reported; releases for identifiable participants in the remaining photos are not independently documented."
     }
   ]
 }

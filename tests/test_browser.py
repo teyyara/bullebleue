@@ -121,6 +121,12 @@ def main() -> None:
                     )
                     assert_no_horizontal_overflow(page, width, path)
                     image_count = check_images(page, path)
+                    if path == "index.html":
+                        photo_cards = page.locator(".home-photo-card")
+                        assert photo_cards.count() == 2, "homepage photo gallery must show two cards"
+                        assert page.locator(".home-photo-card img[alt]").count() == 2, (
+                            "homepage gallery photos require descriptive alternative text"
+                        )
 
                     nav_links = page.locator("#navigation a").evaluate_all(
                         "(links) => links.map((link) => link.getAttribute('href'))"
@@ -147,11 +153,11 @@ def main() -> None:
                             "height": height,
                             "images": image_count,
                             "layout": page.evaluate(
-                                "() => ({
+                                """() => ({
                                   viewport: window.innerWidth,
                                   document: document.documentElement.scrollWidth,
                                   body: document.body.scrollWidth
-                                })"
+                                })"""
                             ),
                         }
                     )

@@ -1,6 +1,6 @@
 {
-  "version": "1.4",
-  "policy": "Loop 012 uses the existing original SVG community drawing as the sticky homepage background and three recoloured SVG illustrations on the editorial Actualités overview and article pages. The official transparent logo and sampled logo-blue palette remain consistent across all nine pages; no event-specific documentary photo is implied by the illustrations.",
+  "version": "1.5",
+  "policy": "Loop 014 preserves the original sticky illustrated homepage story and adds a clearly labelled two-photo gallery using user-supplied close-up documentary images of tabletop activities. The selected frames do not show recognizable faces and are not assigned to specific dated posts. Identifiable group/children photographs remain withheld pending image-specific releases.",
   "assets": [
     {
       "path": "assets/illustrations/hero-community.svg",
@@ -117,7 +117,7 @@
       "use": "Activities page — discovery photograph",
       "description": "Close-up of an illustrated tabletop puzzle/board with hands nearby; no identifiable faces visible.",
       "documentary": true,
-      "status": "ARCHIVED — retained locally; current activities page consolidated into Qui sommes-nous."
+      "status": "IN USE — homepage documentary photo gallery (Loop 014); close-up activity frame with no recognizable face visible."
     },
     {
       "path": "assets/posts/861826539_1459854896248357_2220258804161137760_n.jpg",
@@ -138,25 +138,27 @@
       "use": "Activities page — manipulation/creation photograph",
       "description": "Close-up of geometric pieces arranged around a table; no identifiable faces visible.",
       "documentary": true,
-      "status": "ARCHIVED — retained locally; current activities page consolidated into Qui sommes-nous."
+      "status": "IN USE — homepage documentary photo gallery (Loop 014); close-up activity frame with no recognizable face visible."
     }
   ],
   "permissions": {
     "external_press_photos": "NOT USED",
-    "social_media_photos": "USER-REPORTED OWNER AUTHORISATION; no documentary Facebook JPG is currently placed in the Loop 012 public page templates.",
-    "identifiable_people": "Identifiable participant/group photographs remain unused in Loop 012; the current news images are original non-documentary SVG illustrations.",
+    "social_media_photos": "USER-REPORTED OWNER AUTHORISATION; two close-up documentary photos from the supplied Facebook-page assets are used in the homepage gallery. Identifiable group/children photos remain withheld pending image-specific releases.",
+    "identifiable_people": "Identifiable participant/group photographs remain unused in Loop 014; the two published close-ups show tabletop games and hands, without recognizable faces.",
     "user_supplied_facebook_page": "Exact Facebook URL remains linked. User supplied the official transparent logo and original page images in the repository.",
     "current_page_images": [
       "assets/illustrations/hero-community.svg",
       "assets/illustrations/games.svg",
       "assets/illustrations/culture.svg",
       "assets/illustrations/discovery.svg",
-      "assets/logo final.png"
+      "assets/logo final.png",
+      "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg",
+      "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg"
     ],
     "current_monogram": "RETIRED — replaced with assets/logo final.png",
     "owner_authorization": "USER-REPORTED: owner authorised reuse of Facebook-page assets.",
-    "participant_image_releases": "NOT INDEPENDENTLY DOCUMENTED — initial placements use close-ups without identifiable faces.",
+    "participant_image_releases": "NOT INDEPENDENTLY DOCUMENTED — the two selected close-up frames do not show recognizable faces; identifiable participant/group photographs remain unpublished pending image-specific releases.",
     "logo_palette": "SAMPLED IN LOOP 011 from the uploaded transparent RGBA logo; Loop 012 SVG illustrations use the sampled blue family."
   },
-  "optimization": "The homepage scene is a local SVG loaded eagerly as a sticky decorative backdrop. Three local SVG news illustrations use intrinsic 640×480 dimensions and lazy loading on the overview. The logo remains local and uses width/height attributes. No remote image host or font dependency is introduced."
+  "optimization": "The homepage scene is a local SVG loaded eagerly as a sticky decorative backdrop. Two user-supplied documentary close-ups are displayed in a local responsive gallery with lazy loading and intrinsic aspect-ratio framing. Three local SVG news illustrations remain clearly labelled as illustrations. The logo remains local. No remote image host or font dependency is introduced."
 }
