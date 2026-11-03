@@ -12,7 +12,7 @@
   "bootstrap_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b",
   "latest_loop_checkpoint_commit": "3990f99b3ee422783dacd6b94f6664b73ed81c4b",
   "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
-  "status_metadata_commit": "616be0a237282bcc4fac88a69a2276e089b73d0d",
+  "status_metadata_commit": "e910d0ac3b200bd0c50f41015000c0c3ad2ed132",
   "last_known_good_release_commit": null,
   "current_loop": 16,
   "current_candidate": "bullebleue-loop-016-verified-apail-legal-identity-v1",
@@ -31,7 +31,7 @@
     "Final human acceptance from the association owner remains outstanding.",
     "Identifiable participant photographs remain out of current page templates pending image-specific releases."
   ],
-  "evidence_manifest_reconciliation_commit": "616be0a237282bcc4fac88a69a2276e089b73d0d",
+  "evidence_manifest_reconciliation_commit": "e910d0ac3b200bd0c50f41015000c0c3ad2ed132",
   "change_request_cr001": {
     "received": "2026-11-02",
     "status": "ADOPTED AND IMPLEMENTED IN LOOP 003",
@@ -131,5 +131,6 @@
   "latest_loop_16_browser": "PASS — nine pages x five viewport widths (45); no overflow, failed requests, external requests or browser errors.",
   "latest_loop_16_workflow_status": "PASS — GitHub Actions run 41665188280 completed successfully on 2026-11-03.",
   "latest_loop_16_legal_status": "PARTIAL — legal name from JOAFE 2019 and RNA/SIREN identifiers added with caveat; registered office unresolved due conflicting public addresses; publication manager and hosting provider remain pending.",
-  "latest_loop_16_metadata_commit": null
+  "latest_loop_16_metadata_commit": "e910d0ac3b200bd0c50f41015000c0c3ad2ed132",
+  "latest_loop_16_final_ci_run": 41665188280
 }

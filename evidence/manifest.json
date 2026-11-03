@@ -1,12 +1,12 @@
 {
-  "manifest_version": "1.8",
+  "manifest_version": "1.9",
   "run_id": "bullebleue-20261102-001",
-  "loop": 15,
-  "candidate": "bullebleue-loop-015-accurate-story-and-gallery-visual-evidence-v1",
-  "candidate_status": "VISUAL CAPTURE DEFECTS CORRECTED; PYTHON/NODE/PLAYWRIGHT CI PASS; ALL SIX STORY/GALLERY SCREENSHOTS DOWNLOADED AND MANUALLY INSPECTED; OWNER ACCEPTANCE PENDING; NOT RELEASE CERTIFIED",
+  "loop": 16,
+  "candidate": "bullebleue-loop-016-verified-apail-legal-identity-v1",
+  "candidate_status": "JOAFE-PUBLISHED DENOMINATION AND RNA/SIREN IDENTIFIERS ADDED; REGISTERED-OFFICE ADDRESS CONFLICT EXPLICITLY DISCLOSED; PYTHON/NODE/PLAYWRIGHT CI PASS; PUBLICATION MANAGER/HOST/OWNER CONFIRMATION PENDING; NOT RELEASE CERTIFIED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "3a20b49f9faf93afc14cd93e8950def56b328c81",
+  "implementation_checkpoint_commit": "3990f99b3ee422783dacd6b94f6664b73ed81c4b",
   "remote_git_blob_objects": {
     "index.html": "de828d2fc49f4931645a965650b42383be86c8d5",
     "styles.css": "98433a44165db5837d44d2c725bf2a77833315f9",
@@ -14,25 +14,25 @@
     "assets/favicon.svg": "8afd81a5cb62be5651bdae4d31e53c83c1c4b9b6",
     "menu_regression_test_js": "493debf5b26c01e0b166d555b4dab53845a52f28",
     "tests/test_menu.js": "d2d4a14519309811297651d79f28bc667646f5fb",
-    "tests/validate_site.py": "61d317d55390d7914787652f4b592bbca60806bb",
+    "tests/validate_site.py": "602a42ef94df4d51ff1936c575f3d70332a4bd69",
     "assets/illustrations/hero-community.svg": "be16475b8fe6e28faab3b2441943a531f109b697",
     "assets/illustrations/games.svg": "a4de76c67db92ea8922508109aab9ed4fcffc77f",
     "assets/illustrations/garden.svg": "4e15f67d6cebaf017411b9e49255e15aaa9ae7fa",
     "assets/illustrations/discovery.svg": "3584a19294dd93f1a418004dddc358aec49a847f",
     "assets/illustrations/culture.svg": "778b27484a79db0d1b64abe785ae4b0696b4df2d",
     "assets/illustrations/solidarity.svg": "e80525d8acc48b3d429912d6229023db54a45e2e",
-    "evidence/tests/static-results.json": "0dbd78905439b2b32147789f68503c5c4b6cca36",
-    "evidence/tests/runtime-results.json": "4440a59c4dd9aba83ae6454aaa391353a38dc44b",
-    "evidence/requirements.json": "d33b0aa4e805c8a3244b90151e1c461d72dcc1d2",
-    "evidence/product-contract.json": "b85578d71b3290e719ad92bc6511a3ebc9f0a468",
+    "evidence/tests/static-results.json": "f64ec61b9567437f81fd954a61a994fa7eeb016b",
+    "evidence/tests/runtime-results.json": "0b4d735f888fea334b760315d35dd0ce9d626e8d",
+    "evidence/requirements.json": "be9384a8b5e8709de0e8ad153dfdcbc169ec8132",
+    "evidence/product-contract.json": "bb2373e08c2874feea5a7d1add252dbcabafe898",
     "evidence/research/keyphrase-dossier.md": "097b39681be69b04ebdca9334aa283d003ad69f7",
-    "evidence/decisions.json": "8326ccf3cc2d01213cf9adca765b2f798a78bbf1",
-    "evidence/content-provenance.json": "b17b4ae59eccecd7ee96540c9a88c5008756fd07",
+    "evidence/decisions.json": "b4081a2557f531bf01916d380b2e4fb11d86eb6d",
+    "evidence/content-provenance.json": "837709ea308a2ea442754336aedbe41e98d265a2",
     "evidence/visual/asset-register.json": "88b7804fa6af0c01bbdbabd449b97a3e86cd054e",
-    "README.md": "07bfef8110392ddbde313fc4f99460e4a0d44a0c",
+    "README.md": "64f7114b259f7ab10525b9194309bec4356f3bdf",
     "evidence/change-requests/CR-002.md": "2750f8218da89eb4dfe79b4f8ae7f8fcc7dc87a5",
     "evidence/change-requests/CR-003.md": "be518026d30c328dc3da41f7f86704bb1ac80041",
-    "evidence/assumptions.json": "ad8caec32fcb9ee3e57f8620b05038fbb8a54fcf",
+    "evidence/assumptions.json": "8a0fad9ffea6bfe245bd3dc4f1eca8edf2c7b684",
     "actualites.html": "2248d19df8002597085528af5e140ae57a6784ad",
     "contact.html": "c2aaae49cd4a3802281a7a191fcb5fa0ad8e608b",
     "evidence/change-requests/CR-005.md": "99bffbed3c781672ec023d52df2e806b3e426152",
@@ -54,14 +54,15 @@
     "actualite-2026-10-17.html": "c8b8ec9db56983863e39db0381305454f7e00a60",
     "actualite-2026-10-10.html": "90721d3bf06dd7156de47bb21a8943feedece974",
     "adherer.html": "25bab14f258987327204dda0d03cbf422e1eab95",
-    "mentions-legales.html": "97ec6325c0dd9cb240310bf8a08fe91b9c8e7e17",
+    "mentions-legales.html": "69269bbecd193f090650ddcd8b2bd559ea93e1ef",
     "evidence/change-requests/CR-006.md": "67417f3ef178ce7dc1780e7227fbf3d0ea5449a8",
-    ".aeos/state.json": "0d7d5cbe1ca903347495b33eaea75bd835d55d3d",
-    "AEOS_STATUS.md": "82cf6d5c0ea89f9923d33189ff03f025f5e03d14",
-    "project.config.json": "4e1b0f2495ef6c36bf0053270b25aa96c98bc802",
+    ".aeos/state.json": "44b4d1807d137a594e19e7985a1b4e52f7a1a035",
+    "AEOS_STATUS.md": "8cd3705db9478ef61c1f5ae59329660ae3ab5546",
+    "project.config.json": "1193ef509628c35c1f7151fbf46271dd513ffb7f",
     ".github/workflows/quality.yml": "5ac49f21b50b420440f444c29ae2a83c63b7940f",
     "tests/test_browser.py": "57acf40b567b7b4787e2ea131fbf2b46c71c541a",
-    "evidence/change-requests/CR-007.md": "076bd89bef7e14cdfdba67823a60749dba82c10a"
+    "evidence/change-requests/CR-007.md": "076bd89bef7e14cdfdba67823a60749dba82c10a",
+    "evidence/change-requests/CR-009.md": "4f4e9574686db28269404569bd6968a592256d28"
   },
   "local_screenshot_evidence": {
     "loop_006": {
@@ -105,8 +106,8 @@
     "node": "22.23.4",
     "playwright": "1.57.0",
     "chromium": "143.0.7499.4 (build v1200)",
-    "last_verified_commit": "3a20b49f9faf93afc14cd93e8950def56b328c81",
-    "last_verified_at": "2026-11-03T15:16:40Z"
+    "last_verified_commit": "3990f99b3ee422783dacd6b94f6664b73ed81c4b",
+    "last_verified_at": "2026-11-03T15:35:06Z"
   },
   "production_artifact_sha256": null,
   "release_frozen": false,
@@ -128,8 +129,8 @@
     "Current membership fee/process/required paperwork are unknown; the Adhérer page directs visitors to request up-to-date terms.",
     "Python validator and Node regression/syntax tests were not executed during Loop 012.",
     "Loop 013 exact Node syntax and menu/story regression passed locally; the updated Python validator and Playwright browser suite were not executed or observed.",
-    "Recognizable participant/group and children photographs remain unpublished pending image-specific participant/guardian releases.",
-    "Loop 015 six-image visual-review artifact was downloaded and manually inspected; all three story panels and desktop/mobile gallery images are visible. Final acceptance by the association owner remains outstanding.",
+    "Cross-browser, assistive technology, physical-device, Lighthouse, ZAP and hosted production checks remain outstanding.",
+    "Loop 016 legal identity research verified a JOAFE-published denomination and registry-listed RNA/SIREN identifiers. The current registered-office address remains unresolved because public records conflict; the publication manager and hosting provider remain unconfirmed.",
     "Cross-browser, assistive technology, physical-device, Lighthouse, ZAP and hosted production checks remain outstanding.",
     "Recognizable participant/group and children photographs remain unpublished pending image-specific participant/guardian releases."
   ],
@@ -389,8 +390,8 @@
     },
     "production": "NOT DEPLOYED; deployment remains unauthorized."
   },
-  "status_metadata_commit": "616be0a237282bcc4fac88a69a2276e089b73d0d",
-  "evidence_manifest_reconciliation_commit": "616be0a237282bcc4fac88a69a2276e089b73d0d",
+  "status_metadata_commit": "e910d0ac3b200bd0c50f41015000c0c3ad2ed132",
+  "evidence_manifest_reconciliation_commit": "e910d0ac3b200bd0c50f41015000c0c3ad2ed132",
   "loop_011": {
     "objective": "Use the uploaded transparent association logo as the source of truth for the website's full artistic colour direction.",
     "logo_sampling": {
@@ -504,6 +505,17 @@
       "sha256": "10874ab168b7e73650bbde0159606eba60ea6697fa9809c186c770f274a4af7a",
       "bytes": 1581741,
       "expires_at": "2026-11-10T15:04:16Z"
+    },
+    "loop_016": {
+      "status": "GENERATED BY PASSING CI; NOT MANUALLY INSPECTED (NO VISUAL CHANGE IN LOOP)",
+      "run_id": 41665188280,
+      "run_url": "https://github.com/teyyara/bullebleue/actions/runs/41665188280",
+      "artifact_id": 13246071352,
+      "artifact_name": "bulle-bleue-loop015-visual-review",
+      "artifact_url": "https://github.com/teyyara/bullebleue/actions/runs/41665188280/artifacts/13246071352",
+      "sha256": "eb84f733af8ed97fdbc662fe95157faf1c2dd6f99d469a0d28a02b1ee0d581d1",
+      "bytes": 2579792,
+      "expires_at": "2026-11-10T15:35:00Z"
     }
   },
   "loop_014": {
@@ -546,6 +558,33 @@
     "source_capture_checks": "PASS — story active-state opacity >=0.99; gallery images eager-loaded, naturalWidth checked and decode awaited.",
     "manual_visual_review": "PASS — all six screenshots opened and inspected.",
     "findings": "Loop 014 screenshot artifacts were misleading due to lazy image load timing, story opacity transition capture, and full-page sticky capture. Public website behavior and lazy loading remain unchanged; test evidence capture is now accurate.",
+    "deployment": "NOT PERFORMED"
+  },
+  "loop_016": {
+    "implementation_commit": "3990f99b3ee422783dacd6b94f6664b73ed81c4b",
+    "metadata_commit": "e910d0ac3b200bd0c50f41015000c0c3ad2ed132",
+    "change_request": "evidence/change-requests/CR-009.md",
+    "workflow_run_id": 41665188280,
+    "ci_conclusion": "success",
+    "legal_identity": {
+      "joafe_denomination": "A.P.AI.L. : AMITIÉ PARTAGE AIDE LOGISTIQUE, MATÉRIELLE ET MORALE",
+      "joafe_notice": "20190009/1308 — 2019-02-27",
+      "rna": "W712002504",
+      "siren": "519 970 743",
+      "conflicting_addresses": [
+        "14, quai Gambetta — JOAFE 2019 and Ville de Chalon directory",
+        "14, boulevard de la République — SIRENE-derived public listing updated 2026-06-24"
+      ],
+      "current_registered_office": "UNRESOLVED — APAiL confirmation required",
+      "publication_manager": "UNCONFIRMED",
+      "hosting_provider": "UNCONFIRMED"
+    },
+    "checks": {
+      "python": "PASS",
+      "node": "PASS",
+      "playwright": "PASS — nine pages x five viewports (45 combinations); no horizontal overflow or browser/network errors"
+    },
+    "ui_visual_change": "NONE — legal-notice content and source links changed only; no manual visual re-review required for homepage/story/gallery",
     "deployment": "NOT PERFORMED"
   }
 }
