@@ -204,6 +204,33 @@
       "tradeoffs": "The logo and photos are integrated, but the requested final colour-led artistic direction remains incomplete.",
       "risk": "R1",
       "evidence": "GitHub asset blob 82c6eb3e5067b19ebb94c356723f8ad05b8cbde9; repeated base64/UTF-8 retrieval attempts returned no PNG payload."
+    },
+    {
+      "id": "DEC-017",
+      "context": "Loop 011 received the original transparent logo as an inspectable uploaded image, making the previously blocked logo-palette task possible.",
+      "options": [
+        "Retain the inherited warm clay/ochre palette",
+        "Choose blue shades by visual guess",
+        "Extract dominant representative colours from visible logo pixels and use them as shared design tokens"
+      ],
+      "chosen": "Use an alpha-weighted eight-cluster sample of visible RGBA logo pixels; the primary token family is navy #06195E, cobalt #1642A5, primary blue #1C60CF, clear blue #2084DE, sky blue #4EABEC, steel blue #587ABA, icy blue #9DC0EA and pale highlight #D3DEF0.",
+      "reason": "The upload is RGBA with a transparent background; colour clusters were computed from non-transparent pixels using a reproducible deterministic sample. Hex values are the nearest actual image pixel to cluster centres. Surface whites are documented tints, not falsely labelled as sampled logo pixels.",
+      "tradeoffs": "Blue-focused art direction will replace the former warm paper/clay/gold identity; the content and typography remain unchanged.",
+      "risk": "R1",
+      "evidence": "Uploaded logo final.png (1052×1024 RGBA); alpha-weighted KMeans analysis, Loop 011 CSS tokens and source audit."
+    },
+    {
+      "id": "DEC-018",
+      "context": "The site needs legible page surfaces while remaining visibly derived from the highly saturated blue logo.",
+      "options": [
+        "Use saturated logo colours for every page background",
+        "Use logo blues for identity and accents, with very pale derived tints for long-reading surfaces"
+      ],
+      "chosen": "Use sampled deep navy/cobalt/blue shades for headings, hero fields, links and accents; use derived near-white tints #F3F7FE and #FCFDFF for reading surfaces; use #D3DEF0 for pale section fields.",
+      "reason": "This preserves the logo colour character while maintaining text legibility and a calm professional informational site.",
+      "tradeoffs": "Near-white tints are blended derivatives of the logo highlight, not colours sampled verbatim from image pixels.",
+      "risk": "R1",
+      "evidence": "Logo-derived palette and CSS contrast checks."
     }
   ]
 }

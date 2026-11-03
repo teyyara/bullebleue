@@ -17,6 +17,23 @@ Static HTML, CSS and vanilla JavaScript. No package manager, build step, remote 
 
 Every page shares the same navigation and footer. The active page uses `aria-current="page"`; the compact menu supports keyboard interaction.
 
+## Logo-derived visual identity
+
+The transparent logo at `assets/logo final.png` is used in every page header and footer. Its palette was sampled directly in Loop 011 from visible pixels in the original 1052×1024 RGBA image. Transparent pixels were excluded; an alpha-weighted eight-cluster analysis was run on a deterministic sample of 120,000 visible pixels. Shares below are approximate portions of visible pixels; each hex is the nearest actual source pixel to its cluster centre.
+
+| Representative colour | Hex | Approx. share |
+|---|---|---:|
+| Deep navy | `#06195E` | 8.1% |
+| Cobalt | `#1642A5` | 14.9% |
+| Primary blue | `#1C60CF` | 23.3% |
+| Clear blue | `#2084DE` | 21.4% |
+| Sky blue | `#4EABEC` | 7.7% |
+| Steel blue | `#587ABA` | 4.6% |
+| Icy blue | `#9DC0EA` | 13.2% |
+| Pale highlight | `#D3DEF0` | 6.8% |
+
+The reading surfaces `#F3F7FE` and `#FCFDFF` are near-white tints derived from the pale logo highlights, not literal sampled logo colours. The previous warm clay/ochre palette has been retired. The same colour direction is reflected in the favicon, page headers, backgrounds, links, cards, focus states and buttons.
+
 ## Source and factual boundaries
 The primary source is `Bulle_Bleue_APAiL_contenu_facebook.md`, the user-supplied extraction of https://www.facebook.com/p/Bulle-Bleue-APAiL-100066715807933/, dated 2 November 2026.
 
@@ -24,7 +41,7 @@ The Wednesday 14:30 / Saturday 15:00 times and the 30 Rempart Saint-Vincent addr
 
 Activities are examples, not a fixed weekly programme. News retains original dates. Burkina Faso/Morocco projects are reported history, not claims that each remains active. Organisations are cited in posts, not necessarily permanent partners. The published email `apail@live.fr` comes from prior public-source research; deliverability is untested.
 
-The transparent official logo supplied by the user is stored at `assets/logo final.png` and is used in every page header and footer. Four close-up activity photographs with no identifiable faces are used on the homepage and activities page. Other supplied photographs that show recognisable participants, including children, remain out of the public layout pending confirmation of any image-specific participant/guardian releases. The user reports that the owner authorised use of Facebook-page assets. The exact logo colour palette has not yet been sampled because the 1 MB PNG was not returned by the available repository file reader; the current CSS colour tokens therefore remain provisional and must not be described as logo-extracted.
+Four close-up activity photographs with no identifiable faces are used on the homepage and activities page. Other supplied photographs that show recognisable participants, including children, remain out of the public layout pending confirmation of any image-specific participant/guardian releases. The user reports that the owner authorised use of Facebook-page assets.
 
 ## Validation
     python3 tests/validate_site.py

@@ -101,9 +101,9 @@
       "id": "ASSUMP-013",
       "assumption": "The precise official logo colour palette can be sampled from the supplied PNG.",
       "source": "assets/logo final.png, blob 82c6eb3e5067b19ebb94c356723f8ad05b8cbde9.",
-      "confidence": "LOW — available connector returned empty content for the >1 MB PNG.",
+      "confidence": "HIGH — directly sampled from the user-uploaded 1052×1024 transparent RGBA image.",
       "impact_if_wrong": "MEDIUM",
-      "resolution": "Keep the CSS palette provisional; sample the PNG directly after it is provided through an inspectable image attachment or an accessible smaller export."
+      "resolution": "RESOLVED IN LOOP 011: a reproducible alpha-weighted eight-cluster analysis extracted the representative logo palette; CSS tokens, backgrounds and favicon now use the sampled blue family and derived icy surface tints."
     }
   ]
 }

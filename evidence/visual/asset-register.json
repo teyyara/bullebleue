@@ -1,6 +1,6 @@
 {
-  "version": "1.2",
-  "policy": "Loop 010 replaces the provisional BB monogram with the user-supplied transparent logo and places four local close-up activity photographs. The user reports that the owner authorised Facebook-page asset reuse. The selected photos do not show identifiable faces; people-forward images remain unpublished until image-specific participant/guardian consent is confirmed. Exact logo palette sampling is still pending.",
+  "version": "1.3",
+  "policy": "Loop 011 samples the user's transparent logo and replaces the inherited interim/warm palette throughout the shared site styles and favicon with the logo's blue family. Selected documentary photos and the official logo remain locally hosted.",
   "assets": [
     {
       "path": "assets/illustrations/hero-community.svg",
@@ -155,7 +155,7 @@
     "current_monogram": "RETIRED — replaced with assets/logo final.png",
     "owner_authorization": "USER-REPORTED: owner authorised reuse of Facebook-page assets.",
     "participant_image_releases": "NOT INDEPENDENTLY DOCUMENTED — initial placements use close-ups without identifiable faces.",
-    "logo_palette": "NOT YET SAMPLED; existing CSS tokens remain provisional"
+    "logo_palette": "SAMPLED IN LOOP 011 from the directly uploaded RGBA logo; representative colour clusters and derived surface tints are documented in evidence/product-contract.json."
   },
-  "optimization": "Documentary images are stored locally and lazy-loaded below the homepage hero; all placed images have responsive aspect ratios and descriptive alt text. The hero image is loaded eagerly. The oversized original logo is displayed with a fixed contain box; explicit intrinsic dimensions are not known."
+  "optimization": "Documentary images are stored locally and lazy-loaded below the homepage hero; all placed images have responsive aspect ratios and descriptive alt text. The hero image is loaded eagerly. The oversized original logo is displayed with a fixed contain box; explicit intrinsic dimensions are not known. Palette extraction used the transparent original; the site continues to reference the repository logo locally."
 }

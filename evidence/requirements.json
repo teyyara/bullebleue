@@ -322,9 +322,9 @@
       "requirement": "Derive the website's complete artistic colour direction from the official logo.",
       "acceptance": "Sample exact representative colours from the supplied logo; define named CSS tokens and apply them consistently to all backgrounds, text, links, cards, borders and interactive states.",
       "risk": "R1",
-      "validation": "Direct logo pixel sampling, CSS token inventory and rendered review across all six pages.",
-      "status": "BLOCKED — LOGO PNG BINARY NOT AVAILABLE TO INSPECTION TOOL; CURRENT PALETTE REMAINS PROVISIONAL",
-      "confidence": "LOW until logo can be sampled"
+      "validation": "Direct RGBA pixel sampling and deterministic alpha-weighted 8-cluster colour analysis; CSS token/old-palette assertions in tests/validate_site.py; remote six-page read-back. Browser render remains a separate check.",
+      "status": "IMPLEMENTED — LOGO PIXEL SAMPLING, CSS TOKENS AND SIX-PAGE SOURCE AUDIT PASS",
+      "confidence": "HIGH for palette extraction and source integration; rendered visual review remains pending"
     }
   ]
 }

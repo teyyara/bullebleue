@@ -1,0 +1,124 @@
+{
+  "version": "1.0",
+  "source": {
+    "path": "assets/logo final.png",
+    "format": "PNG RGBA",
+    "width": 1052,
+    "height": 1024,
+    "file_bytes": 1062882,
+    "fully_transparent_pixels": 454316,
+    "semi_transparent_pixels": 161368
+  },
+  "method": {
+    "description": "Alpha-weighted KMeans over visible pixels, with transparent/near-transparent pixels excluded; deterministic NumPy generator seed 42; 120,000 sampled pixels; 8 clusters; n_init=5; representative hex is the nearest actual source pixel to each computed cluster centre.",
+    "alpha_filter": "alpha > 0.15",
+    "sample_size": 120000,
+    "clusters": 8,
+    "seed": 42,
+    "share_basis": "Alpha-weighted share among the analysed visible logo pixels; values rounded to 0.1 percentage point."
+  },
+  "sampled_colours": [
+    {
+      "name": "Primary blue",
+      "hex": "#1C60CF",
+      "cluster_centroid": "#1C60CF",
+      "share_percent": 23.3,
+      "role": "Largest identity colour; primary surface/visual identity"
+    },
+    {
+      "name": "Clear blue",
+      "hex": "#2084DE",
+      "cluster_centroid": "#2084DE",
+      "share_percent": 21.4,
+      "role": "Bright blue supporting shade and restrained gradient depth"
+    },
+    {
+      "name": "Cobalt",
+      "hex": "#1642A5",
+      "cluster_centroid": "#1642A5",
+      "share_percent": 14.9,
+      "role": "Primary link/interactive colour and cool emphasis"
+    },
+    {
+      "name": "Icy blue",
+      "hex": "#9DC0EA",
+      "cluster_centroid": "#9DC1EA",
+      "share_percent": 13.2,
+      "role": "Light accent and button surface on dark-blue backgrounds"
+    },
+    {
+      "name": "Deep navy",
+      "hex": "#06195E",
+      "cluster_centroid": "#07195E",
+      "share_percent": 8.1,
+      "role": "Deep background and primary text"
+    },
+    {
+      "name": "Sky blue",
+      "hex": "#4EABEC",
+      "cluster_centroid": "#4EABEC",
+      "share_percent": 7.7,
+      "role": "Fine highlights and subtle background atmosphere"
+    },
+    {
+      "name": "Pale highlight",
+      "hex": "#D3DEF0",
+      "cluster_centroid": "#D3DEF0",
+      "share_percent": 6.8,
+      "role": "Pale panels and card backgrounds"
+    },
+    {
+      "name": "Steel blue",
+      "hex": "#587ABA",
+      "cluster_centroid": "#587ABA",
+      "share_percent": 4.6,
+      "role": "Supporting blue detail"
+    }
+  ],
+  "derived_surface_tints": [
+    {
+      "name": "Page paper",
+      "hex": "#F3F7FE",
+      "method": "Pale logo highlight (#D3DEF0) blended toward white for long-reading surfaces; not a verbatim sampled colour."
+    },
+    {
+      "name": "Card white",
+      "hex": "#FCFDFF",
+      "method": "Near-white derivative for cards and raised surfaces; not a verbatim sampled colour."
+    },
+    {
+      "name": "Muted body text",
+      "hex": "#405989",
+      "method": "Dark slate-blue derived for legible secondary copy."
+    }
+  ],
+  "css_tokens": {
+    "--ink": "#06195E",
+    "--ink-deep": "#06195E",
+    "--blue": "#1642A5",
+    "--blue-mid": "#1C60CF",
+    "--blue-bright": "#2084DE",
+    "--sky": "#4EABEC",
+    "--blue-steel": "#587ABA",
+    "--blue-light": "#9DC0EA",
+    "--blue-pale": "#D3DEF0",
+    "--paper": "#F3F7FE",
+    "--paper-light": "#FCFDFF",
+    "--muted": "#405989"
+  },
+  "retired_colours": [
+    "#94543b",
+    "#d0b17d",
+    "warm clay/rust accents",
+    "warm ochre/gold accents"
+  ],
+  "contrast_checks": {
+    "ink_on_paper": 14.94,
+    "cobalt_on_paper": 8.29,
+    "blue_mid_on_paper": 5.39,
+    "muted_on_paper": 6.5,
+    "icy_blue_on_cobalt": 4.74,
+    "deep_ink_on_icy_button": 8.53,
+    "method": "WCAG relative-luminance contrast ratio for the listed sRGB hex pairs."
+  }
+}

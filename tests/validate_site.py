@@ -40,6 +40,8 @@ def main():
   assert html.count('src="/assets/logo%20final.png"')==2, f"{page}: official logo must appear in header and footer"
   assert html.count('class="brand-logo"')==2, f"{page}: expected two official logo placements"
   assert "https://www.facebook.com/p/Bulle-Bleue-APAiL-100066715807933/" in html
+  assert "#173b4b" not in html.lower(), f"{page}: previous theme colour remains"
+  assert "#1642A5" in html, f"{page}: logo-derived theme colour missing"
  home=(ROOT/"index.html").read_text(encoding="utf-8")
  assert len(home)<9000, "homepage too long"
  assert all(page in home for page in PAGES[1:])

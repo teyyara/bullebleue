@@ -44,21 +44,96 @@
   "brand": {
     "official_assets_supplied": true,
     "direction": "Editorial, understated, human and welcoming; professional local-association identity rather than a generic pastel/illustrated landing-page template.",
-    "provisional_system": {
-      "palette": "Interim blue/ink/paper palette inherited from the previous design. It is not yet verified against the official logo and must be calibrated after direct visual inspection.",
-      "basis": "Interim palette only. Exact official brand colours are pending direct sampling from the supplied PNG.",
-      "typography": "EB Garamond display / Cabin body with Iowan Old Style, Palatino, Georgia, Avenir Next and Segoe UI platform fallbacks. No remote font request."
-    },
     "logo_status": "Official transparent PNG supplied by the user at assets/logo final.png; integrated in all six page headers and footers in Loop 010.",
-    "palette_status": "PARTIAL — the official logo is present and used, but exact colour sampling remains pending. The PNG is larger than 1 MB and the available GitHub file reader returned an empty binary payload. Current CSS colour tokens remain provisional; no hex values are claimed as extracted from the logo."
+    "palette_status": "IMPLEMENTED — the user-uploaded transparent logo was sampled directly in Loop 011. The CSS now uses the extracted navy/cobalt/blue/sky/ice family; pale near-white page surfaces are documented as derived tints.",
+    "logo_derived_system": {
+      "palette": "Logo-derived cool blues with icy light surfaces; the former clay/ochre palette has been removed.",
+      "sampling_method": "RGBA source 1052×1024; transparent pixels excluded; alpha-weighted 8-cluster colour analysis on a deterministic sample of 120,000 visible pixels. Reported shares are approximate visible-pixel cluster shares; each hex is the nearest actual source pixel to its cluster centre.",
+      "sampled_colours": [
+        {
+          "name": "Deep navy",
+          "hex": "#06195E",
+          "share_percent": 8.1,
+          "role": "Deep backgrounds, primary text, high-contrast outlines"
+        },
+        {
+          "name": "Cobalt",
+          "hex": "#1642A5",
+          "share_percent": 14.9,
+          "role": "Primary links, accents and core identity"
+        },
+        {
+          "name": "Primary blue",
+          "hex": "#1C60CF",
+          "share_percent": 23.3,
+          "role": "Main blue surfaces and navigation emphasis"
+        },
+        {
+          "name": "Clear blue",
+          "hex": "#2084DE",
+          "share_percent": 21.4,
+          "role": "Gradient depth and decorative blue emphasis"
+        },
+        {
+          "name": "Sky blue",
+          "hex": "#4EABEC",
+          "share_percent": 7.7,
+          "role": "Subtle highlights, surface glow and fine details"
+        },
+        {
+          "name": "Steel blue",
+          "hex": "#587ABA",
+          "share_percent": 4.6,
+          "role": "Supporting text/secondary details"
+        },
+        {
+          "name": "Icy blue",
+          "hex": "#9DC0EA",
+          "share_percent": 13.2,
+          "role": "Light accent on dark blue and primary button surface"
+        },
+        {
+          "name": "Pale highlight",
+          "hex": "#D3DEF0",
+          "share_percent": 6.8,
+          "role": "Pale section and card surfaces"
+        }
+      ],
+      "derived_surface_tints": [
+        {
+          "name": "Page paper",
+          "hex": "#F3F7FE",
+          "basis": "Pale logo highlight blended toward white"
+        },
+        {
+          "name": "Card white",
+          "hex": "#FCFDFF",
+          "basis": "Near-white tint to keep the content surface calm"
+        }
+      ],
+      "css_tokens": {
+        "--ink": "#06195E",
+        "--ink-deep": "#06195E",
+        "--blue": "#1642A5",
+        "--blue-mid": "#1C60CF",
+        "--blue-bright": "#2084DE",
+        "--sky": "#4EABEC",
+        "--blue-steel": "#587ABA",
+        "--blue-light": "#9DC0EA",
+        "--blue-pale": "#D3DEF0",
+        "--paper": "#F3F7FE",
+        "--paper-light": "#FCFDFF",
+        "--muted": "#405989"
+      }
+    }
   },
   "visual_requirements": {
-    "hero": "Concise deep mineral-blue editorial hero with a typographic headline and restrained outlined statement panel.",
+    "hero": "Deep navy-to-cobalt/primary-blue gradient; icy logo highlights replace all warm gold/clay details.",
     "activities": "Short, scannable numbered editorial rows across four broadly evidenced activity categories.",
     "welcome": "One compact welcome and first-contact panel; no duplicated approach / volunteer / first-step sections.",
     "association": "Short APAiL origin panel with verified 1995 and 2021 dates.",
-    "contact": "Single clear email action with current venue/schedule caveat and exact user-supplied Facebook link.",
-    "background": "Warm textured paper surface, alternating mineral-blue fields and restrained line/ring details.",
+    "contact": "Cobalt/primary-blue gradient with pale icy text and highlights.",
+    "background": "Cool, very light icy-blue and near-white surfaces with low-opacity blue texture, cobalt borders and small sky-blue highlights. No beige, rust or ochre palette remains.",
     "stories": "Separate dated activity-story mosaic removed in Loop 006 to reduce page length and avoid reliance on an unverified Facebook mirror.",
     "asset_policy": "The user reports that the owner authorised use of assets published on the Facebook page. Use local repository assets. Loop 010 uses only close-up activity photographs without identifiable faces; photos showing identifiable participants, including children, remain unpublished pending confirmation of image-specific participant/guardian consent.",
     "images": [
@@ -92,7 +167,8 @@
         "description": "Close-up of geometric game pieces arranged on a table; no identifiable faces visible.",
         "status": "IN USE"
       }
-    ]
+    ],
+    "palette": "Use only the sampled logo blues plus documented pale near-white tints derived from the logo; no warm clay/ochre accents."
   },
   "motion": {
     "effects": [
@@ -177,7 +253,8 @@
     "Responsive layout declarations cover desktop, tablet and mobile; rendered visual validation is reported separately.",
     "The official transparent logo supplied by the user appears consistently in the header and footer of all six pages.",
     "The homepage and activities page use local documentary photos with meaningful alt text; no identifiable participants are shown in the selected crops.",
-    "The final CSS palette is sampled from the official logo, documented as exact hex tokens and used consistently across all six pages."
+    "The final CSS palette is sampled from the official logo, documented as exact hex tokens and used consistently across all six pages.",
+    "All six pages use the logo-derived blue palette consistently across backgrounds, text, links, cards, borders, focus and button states; no previous warm clay/ochre accents remain."
   ],
   "business_outcome_hypotheses": [
     "Specific activity stories may help families understand the initiative",
@@ -203,5 +280,6 @@
     "apail.html": "Association history, reported solidarity projects, volunteers and organisations cited in posts.",
     "contact.html": "Email, Facebook, venue, garden access and source/date confirmation caveat."
   },
-  "definition_of_done_loop_010": "Integrate the user-supplied transparent logo in all six page headers and footers; select and place documentary activity photos with useful alt text; update responsive styles, tests, README and evidence; checkpoint on main and verify; no deployment. Exact logo-palette sampling is recorded as blocked because the >1 MB PNG could not be read by the repository connector and remains an open item."
+  "definition_of_done_loop_010": "Integrate the user-supplied transparent logo in all six page headers and footers; select and place documentary activity photos with useful alt text; update responsive styles, tests, README and evidence; checkpoint on main and verify; no deployment. Exact logo-palette sampling is recorded as blocked because the >1 MB PNG could not be read by the repository connector and remains an open item.",
+  "definition_of_done_loop_011": "Sample the directly uploaded transparent logo; document dominant colour clusters and representative hex codes; replace the interim palette throughout shared CSS, page metadata and favicon; update tests, README and design evidence; checkpoint on main and verify; no deployment."
 }
