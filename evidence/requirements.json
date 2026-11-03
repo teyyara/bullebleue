@@ -1,6 +1,6 @@
 {
-  "requirements_version": "0.8",
-  "candidate": "bullebleue-loop-014-user-supplied-homepage-photo-gallery-v1",
+  "requirements_version": "0.9",
+  "candidate": "bullebleue-loop-015-accurate-story-and-gallery-visual-evidence-v1",
   "requirements": [
     {
       "id": "REQ-001",
@@ -415,6 +415,15 @@
       "validation": "Static validator verifies both exact local image paths, two semantic figure cards, visible provenance and responsive CSS. Playwright confirms both images load and have alt text across the existing page/viewport matrix.",
       "status": "IMPLEMENTED — REMOTE SOURCE AUDIT PENDING; PYTHON/BROWSER EXECUTION NOT OBSERVED",
       "confidence": "HIGH for exact supplied assets and visible image content; identifiable-photo releases remain a separate blocker."
+    },
+    {
+      "id": "REQ-047",
+      "requirement": "Produce trustworthy visual-review screenshots of each sticky homepage story state and the supplied-photo gallery.",
+      "acceptance": "The browser suite captures all three desktop story chapters only after the active text panel's opacity transition reaches its visible state; captures gallery elements at desktop and mobile after lazy images are explicitly loaded and decoded; captures story viewports without full-page sticky-position artifacts; uploads a six-image CI artifact with Loop 015-specific paths and labels.",
+      "risk": "R1",
+      "validation": "Playwright asserts the target story chapter is active and computed panel opacity is at least 0.99 before each chapter screenshot; waits for all image naturalWidth/decode before gallery screenshots; CI artifact contains six expected files.",
+      "status": "IMPLEMENTED — CI EXECUTION PENDING",
+      "confidence": "HIGH for automated capture conditions; screenshots require manual visual review."
     }
   ]
 }

@@ -297,6 +297,20 @@
       "tradeoffs": "Only two selected close-ups are used in this loop; other supplied photographs remain archived pending image-specific release confirmation.",
       "risk": "R2",
       "evidence": "The selected files were visually inspected directly: the frames show game boards, pieces and hands, with no recognizable faces; asset register and homepage validator were updated."
+    },
+    {
+      "id": "DEC-024",
+      "context": "Direct visual inspection of the Loop 014 CI screenshots showed two capture defects: lazy gallery images were not loaded in screenshot navigations, and a sticky-story panel was captured while its opacity transition was still in progress. Full-page screenshots also represented sticky artwork poorly because they expand the capture viewport rather than simulating user scrolling.",
+      "options": [
+        "Treat automated screenshots as already trustworthy because browser image/scroll assertions passed",
+        "Disable lazy loading or remove story transitions from the website",
+        "Keep the live experience unchanged and make screenshot capture explicitly load/decode gallery assets, capture each story state in the viewport after its transition completes, and avoid misleading full-page sticky captures"
+      ],
+      "chosen": "Keep the user-facing experience and fix the visual-evidence process: wait for each story panel to be fully visible, decode lazy images, and capture three desktop story states plus desktop/mobile gallery views.",
+      "reason": "The issue is in screenshot capture timing and full-page sticky rendering, not evidence that the actual user-facing scroll behavior is broken. Lazy loading remains appropriate for the public page.",
+      "tradeoffs": "The CI artifact grows from three to six screenshots and remains short-retention.",
+      "risk": "R1",
+      "evidence": "Direct inspection of Loop 014 artifact 13241331764 showed blank gallery placeholders in captures and a near-transparent final story panel; screenshot source was then audited against IntersectionObserver and lazy-loading behavior."
     }
   ]
 }

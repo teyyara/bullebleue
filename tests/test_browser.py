@@ -72,13 +72,42 @@ def check_images(page, path: str) -> int:
     return page.locator("img").count()
 
 
+def wait_for_story_panel(page, index: int) -> None:
+    page.wait_for_function(
+        """(index) => {
+          const steps = document.querySelectorAll(".story-step");
+          const panel = steps[index]?.querySelector(".story-panel");
+          return Boolean(
+            steps[index]?.classList.contains("is-current") &&
+            panel &&
+            Number.parseFloat(getComputedStyle(panel).opacity) >= 0.99
+          );
+        }""",
+        arg=index,
+        timeout=6000,
+    )
+
+
+def prepare_screenshot_images(page) -> int:
+    page.locator("img").evaluate_all(
+        "(images) => images.forEach((image) => { image.loading = 'eager'; })"
+    )
+    page.wait_for_function(
+        "() => Array.from(document.images).every((image) => image.complete && image.naturalWidth > 0)",
+        timeout=15000,
+    )
+    page.evaluate(
+        "() => Promise.all(Array.from(document.images, (image) => image.decode().catch(() => undefined)))"
+    )
+    return page.locator("img").count()
+
 def main() -> None:
     handler = partial(QuietHandler, directory=str(ROOT))
     server = ThreadingHTTPServer(("127.0.0.1", 0), handler)
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     base_url = f"http://127.0.0.1:{server.server_port}"
-    screenshot_dir = ROOT / "artifacts" / "loop014-browser"
+    screenshot_dir = ROOT / "artifacts" / "loop015-browser"
     screenshot_dir.mkdir(parents=True, exist_ok=True)
     measurements: list[dict] = []
 
@@ -162,7 +191,9 @@ def main() -> None:
                         }
                     )
 
-            # Sticky artwork remains in the visual frame while text chapters change.
+            # Capture each sticky-story state after its opacity transition has finished.
+            # Full-page screenshots are misleading for sticky scrollytelling: the sticky
+            # artwork is only pinned in the real viewport, not repeated down a tall capture.
             page.set_viewport_size({"width": 1440, "height": 900})
             page.goto(f"{base_url}/index.html", wait_until="networkidle")
             page.wait_for_function(
@@ -173,9 +204,14 @@ def main() -> None:
                 "(element) => getComputedStyle(element).top"
             )
             assert sticky_top == "76px", f"unexpected desktop sticky offset: {sticky_top}"
-            page.screenshot(path=str(screenshot_dir / "home-desktop.png"), full_page=True)
+            prepare_screenshot_images(page)
+            wait_for_story_panel(page, 0)
+            page.screenshot(
+                path=str(screenshot_dir / "home-story-01-desktop.png"),
+                full_page=False,
+            )
 
-            for index in range(3):
+            for index in (1, 2):
                 step = page.locator(".story-step").nth(index)
                 step.scroll_into_view_if_needed()
                 page.wait_for_function(
@@ -183,16 +219,43 @@ def main() -> None:
                     arg=index,
                     timeout=6000,
                 )
-            assert page.locator(".story-art").evaluate(
-                "(element) => Math.abs(element.getBoundingClientRect().top - 76) < 2"
-            ), "desktop story artwork did not remain sticky"
-            page.screenshot(path=str(screenshot_dir / "home-story-final.png"), full_page=False)
+                wait_for_story_panel(page, index)
+                assert page.locator(".story-art").evaluate(
+                    "(element) => Math.abs(element.getBoundingClientRect().top - 76) < 2"
+                ), f"desktop story artwork did not remain sticky at chapter {index + 1}"
+                page.screenshot(
+                    path=str(screenshot_dir / f"home-story-0{index + 1}-desktop.png"),
+                    full_page=False,
+                )
 
-            # At mobile width the illustration and chapters must still remain inside the viewport.
+            # Capture the gallery as an element after explicitly decoding its lazy images.
+            desktop_gallery = page.locator(".home-photo-section")
+            desktop_gallery.scroll_into_view_if_needed()
+            prepare_screenshot_images(page)
+            assert desktop_gallery.locator("img").count() == 2
+            desktop_gallery.screenshot(
+                path=str(screenshot_dir / "home-gallery-desktop.png")
+            )
+
+            # Mobile captures keep the same sticky story and show the actual loaded gallery.
             page.set_viewport_size({"width": 390, "height": 844})
             page.goto(f"{base_url}/index.html", wait_until="networkidle")
             assert_no_horizontal_overflow(page, 390, "index.html (sticky story)")
-            page.screenshot(path=str(screenshot_dir / "home-mobile.png"), full_page=True)
+            page.wait_for_function(
+                "() => document.documentElement.classList.contains('has-scroll-story')"
+            )
+            prepare_screenshot_images(page)
+            wait_for_story_panel(page, 0)
+            page.screenshot(
+                path=str(screenshot_dir / "home-story-01-mobile.png"),
+                full_page=False,
+            )
+            mobile_gallery = page.locator(".home-photo-section")
+            mobile_gallery.scroll_into_view_if_needed()
+            prepare_screenshot_images(page)
+            mobile_gallery.screenshot(
+                path=str(screenshot_dir / "home-gallery-mobile.png")
+            )
 
             # Reduced-motion users keep every story panel readable without JS motion classes.
             reduced = context.new_page()
@@ -246,13 +309,18 @@ def main() -> None:
                     "sticky art and chapter transitions",
                     "reduced-motion content visibility",
                     "no-JavaScript content visibility",
+                    "story screenshot captured after all three opacity transitions complete",
+                    "desktop and mobile gallery screenshots captured after lazy images decode",
                     "no external requests, failed requests or console errors",
                 ],
                 "measurements": measurements,
                 "screenshots": [
-                    "artifacts/loop014-browser/home-desktop.png",
-                    "artifacts/loop014-browser/home-story-final.png",
-                    "artifacts/loop014-browser/home-mobile.png",
+                    "artifacts/loop015-browser/home-story-01-desktop.png",
+                    "artifacts/loop015-browser/home-story-02-desktop.png",
+                    "artifacts/loop015-browser/home-story-03-desktop.png",
+                    "artifacts/loop015-browser/home-gallery-desktop.png",
+                    "artifacts/loop015-browser/home-story-01-mobile.png",
+                    "artifacts/loop015-browser/home-gallery-mobile.png",
                 ],
             },
             ensure_ascii=False,
