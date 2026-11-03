@@ -52,6 +52,8 @@
 
   const storySteps = document.querySelectorAll('.story-step');
   if (!reduceMotion && 'IntersectionObserver' in window && storySteps.length) {
+    // Keep the opening chapter visible before the first observer callback is delivered.
+    storySteps[0].classList.add('is-current');
     document.documentElement.classList.add('has-scroll-story');
     const ratios = new Map(Array.from(storySteps, (step) => [step, 0]));
     const storyObserver = new IntersectionObserver((entries) => {

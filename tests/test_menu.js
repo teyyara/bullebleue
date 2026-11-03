@@ -122,6 +122,7 @@ assert.equal(env.observers[0].unobserved.length, env.revealItems.length);
 
 // Sticky homepage keeps a single active text step as the same illustration remains in place.
 assert.equal(env.document.documentElement.classList.contains('has-scroll-story'), true);
+assert.equal(env.storySteps[0].classList.contains('is-current'), true, 'opening chapter is visible before the first observer callback');
 assert.equal(env.observers[1].observed.length, env.storySteps.length);
 env.observers[1].callback([
   { target: env.storySteps[0], isIntersecting: true, intersectionRatio: 0.55 },
