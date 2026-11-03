@@ -12,7 +12,7 @@
   "bootstrap_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b",
   "latest_loop_checkpoint_commit": "206ca33e928ea12ed08e80a3dc000979f1560620",
   "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
-  "status_metadata_commit": "214797a025a6350941dc7c2a0fe1e001fd6bdf55",
+  "status_metadata_commit": "5d9341247f46ddf9ba687717b285a7d9a210a679",
   "last_known_good_release_commit": null,
   "current_loop": 13,
   "current_candidate": "bullebleue-loop-013-repeatable-quality-and-browser-validation-v1",
@@ -34,7 +34,7 @@
     "Final human acceptance from the association owner remains outstanding.",
     "Identifiable participant photographs remain out of current page templates pending image-specific releases."
   ],
-  "evidence_manifest_reconciliation_commit": "214797a025a6350941dc7c2a0fe1e001fd6bdf55",
+  "evidence_manifest_reconciliation_commit": "5d9341247f46ddf9ba687717b285a7d9a210a679",
   "change_request_cr001": {
     "received": "2026-11-02",
     "status": "ADOPTED AND IMPLEMENTED IN LOOP 003",
@@ -103,5 +103,6 @@
   "latest_loop_13_python_validator": "NOT RUN — no exact full local worktree; GitHub Actions result not observed.",
   "latest_loop_13_visual_review": "NOT RUN — Playwright browser suite committed; no run, screenshot or no-overflow result observed.",
   "latest_loop_13_workflow_status": "NOT OBSERVED — push-triggered run status unavailable through current repository tools.",
-  "latest_loop_13_status": "WAITING_FOR_CONTINUE — CI harness and browser suite committed; no deployment."
+  "latest_loop_13_status": "WAITING_FOR_CONTINUE — CI harness and browser suite committed; no deployment.",
+  "latest_loop_13_metadata_commit": "5d9341247f46ddf9ba687717b285a7d9a210a679"
 }
