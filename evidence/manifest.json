@@ -1,20 +1,20 @@
 {
-  "manifest_version": "1.3",
+  "manifest_version": "1.4",
   "run_id": "bullebleue-20261102-001",
-  "loop": 10,
-  "candidate": "bullebleue-loop-010-official-logo-and-activity-photography-v1",
-  "candidate_status": "OFFICIAL LOGO AND FOUR LOCAL PHOTOS INTEGRATED; SIX-PAGE SOURCE AUDIT PASS; EXACT LOGO PALETTE SAMPLING BLOCKED; PYTHON VALIDATOR AND BROWSER VISUAL REVIEW NOT RUN; NOT RELEASE CERTIFIED",
+  "loop": 11,
+  "candidate": "bullebleue-loop-011-logo-derived-blue-art-direction-v1",
+  "candidate_status": "LOGO PALETTE SAMPLED; COOL BLUE IDENTITY IMPLEMENTED ACROSS SIX PAGES, SHARED CSS AND FAVICON; REMOTE SOURCE AUDIT PASS; PYTHON VALIDATOR AND BROWSER VISUAL REVIEW NOT RUN; NOT RELEASE CERTIFIED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "19aa0bacf4680e7a2c4e5367245f6e045bb2bce1",
+  "implementation_checkpoint_commit": "81d43194ba68d47fb8556d6ec18d2b1ff6f61f2e",
   "remote_git_blob_objects": {
-    "index.html": "7e29d3f857bf30125e74d29a7bce52abc9fb92f3",
-    "styles.css": "b3cf157911565a305f467d0c53dba59d4baf16b5",
+    "index.html": "e38318b4dd90113119f017283b0cf22bd6a73269",
+    "styles.css": "558145d4e6c2f6d7edb12f16b26d4971bf1e4d6e",
     "script.js": "aa2ae008fdfa8c6eb1a0f6004938627104553b61",
-    "assets/favicon.svg": "c98beb72f9633c41915ad00e5ced621faaf17799",
+    "assets/favicon.svg": "8afd81a5cb62be5651bdae4d31e53c83c1c4b9b6",
     "menu_regression_test_js": "493debf5b26c01e0b166d555b4dab53845a52f28",
     "tests/test_menu.js": "051d0dec5655cbf2b2017e840c096ec4fc63fc6e",
-    "tests/validate_site.py": "6992cbe46430b3eadcc3bb2f01aad0d5a3988b3a",
+    "tests/validate_site.py": "0410a25cc0f162fdae7b3999e50d577cba8506cd",
     "assets/illustrations/hero-community.svg": "d46b1fa640912b32259f2b0f17622e635b8bf09b",
     "assets/illustrations/games.svg": "74f82b260859fc2658939d9cc42e074fedf17544",
     "assets/illustrations/garden.svg": "4e15f67d6cebaf017411b9e49255e15aaa9ae7fa",
@@ -23,22 +23,22 @@
     "assets/illustrations/solidarity.svg": "e80525d8acc48b3d429912d6229023db54a45e2e",
     "evidence/tests/static-results.json": "5547a8386e317877bf4ea3876182cc9a4166bda9",
     "evidence/tests/runtime-results.json": "a90627545df76de7a9dc92f50eba9563e963a6b3",
-    "evidence/requirements.json": "9fd879fc459f089ef39b94223b73ebd0318735ee",
-    "evidence/product-contract.json": "178b108e87cf4cf690f83016dac8a70a09dec8fa",
+    "evidence/requirements.json": "d2f5b7e4ac77c24702dedc8aac06337b2af34177",
+    "evidence/product-contract.json": "862209db7c4376d7e322dad56aef4ce47223e896",
     "evidence/research/keyphrase-dossier.md": "097b39681be69b04ebdca9334aa283d003ad69f7",
-    "evidence/decisions.json": "8374c7adf470310fdf011e92562155d3b2a25278",
+    "evidence/decisions.json": "33367354953fecabcd44ca808552c67120154011",
     "evidence/content-provenance.json": "ae0a0827f319d74e629525eaec19dde879f16cee",
-    "evidence/visual/asset-register.json": "4dd6c36362ac580b02b4d70e71b0ae8e6a47037b",
-    "README.md": "292366c0530da19015cfc1c93ee3dcfa4f8cf8ef",
+    "evidence/visual/asset-register.json": "4e3c5aa52cca05af8a88b90d5ef6fadf476e8f1f",
+    "README.md": "4504c93a855fe237b2a993fad3633e40c3e5a9ab",
     "evidence/change-requests/CR-002.md": "2750f8218da89eb4dfe79b4f8ae7f8fcc7dc87a5",
     "evidence/change-requests/CR-003.md": "be518026d30c328dc3da41f7f86704bb1ac80041",
-    "evidence/assumptions.json": "82f906f6e85149300cf418989d055197abfd0d9b",
-    "la-bulle.html": "fa552125694513770a5b1a303008b5832f09d62c",
-    "activites.html": "73ef69432d708e206a077215f25356cc62a8f627",
-    "actualites.html": "6858bbbb5a98169137574e61247e694911eace25",
-    "apail.html": "3f2c452fae5e67846ac4a38021452129ce5b722c",
-    "contact.html": "ca98568f552693f42b64db3b9736302a6519dcdc",
-    "evidence/change-requests/CR-005.md": "a73aa63115e591809c0357289e05ec0ff42633ce",
+    "evidence/assumptions.json": "bf04e38d79601979162580e8471a573dd17c1b62",
+    "la-bulle.html": "6536faf6579b8bba5ccd56f5dd21c81cc5824ca3",
+    "activites.html": "3b75f132d33e0aacf1b5c137585580e13d53adc3",
+    "actualites.html": "635dfb5a27f9f38a129daca97575ed5d74f2a044",
+    "apail.html": "2496034aa6f98d4626ac78e1cd0d1ffb842eb4d8",
+    "contact.html": "bd00179a89d56dcabfbd4f1dca5bfd4ab4d5b56e",
+    "evidence/change-requests/CR-005.md": "99bffbed3c781672ec023d52df2e806b3e426152",
     "assets/logo final.png": "82c6eb3e5067b19ebb94c356723f8ad05b8cbde9",
     "assets/posts/735543787_1361390089428172_5312506833854343201_n.jpg": "2803425066ddf6ed1a1ece5b5795601e443ab772",
     "assets/posts/783036041_1408453024721878_3578205087320603775_n.jpg": "02b9b51ab231c3f3f2bfe3454169003f3c979455",
@@ -50,7 +50,8 @@
     "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg": "2332d38c51cc25a7ad20a5479caa62ff1aa29574",
     "assets/posts/861826539_1459854896248357_2220258804161137760_n.jpg": "2e851c411faaf0f016c413067338f92ffb5153c3",
     "assets/posts/863353686_1459854766248370_1734709857082262774_n.jpg": "7b6922357e42520049d7a9f0fb9698792a974b48",
-    "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg": "25efb99fb2457b9a1518022018f7ceb8ea2e5261"
+    "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg": "25efb99fb2457b9a1518022018f7ceb8ea2e5261",
+    "evidence/visual/logo-palette.json": "3caad866c35f42749c36abadb6ccc4dbeb4fdd11"
   },
   "local_screenshot_evidence": {
     "loop_006": {
@@ -76,6 +77,9 @@
     },
     "loop_010": {
       "status": "NOT CAPTURED — current six-page site was not rendered in a browser during Loop 010; no visual PASS claimed."
+    },
+    "loop_011": {
+      "status": "NOT CAPTURED — no current-browser render or screenshots during Loop 011."
     }
   },
   "runtime_environment": {
@@ -93,9 +97,10 @@
     "Firefox/WebKit/Safari unavailable.",
     "Screen-reader, axe-core, Lighthouse and ZAP checks unavailable.",
     "No hosting domain configured.",
-    "The supplied logo PNG is 1,062,882 bytes; the available repository reader returned no image payload, so exact logo-colour sampling is outstanding.",
     "Loop 010 source checks passed, but Python validator and current browser screenshots were not run.",
-    "Photos showing identifiable participants, including children, remain unused pending image-specific participant/guardian consent confirmation."
+    "Photos showing identifiable participants, including children, remain unused pending image-specific participant/guardian consent confirmation.",
+    "Loop 011 Python validator was not executed against a complete local checkout; full-page browser review and responsive screenshots remain outstanding.",
+    "Logo-colour shares are approximate cluster proportions from visible pixels; near-white reading surfaces are explicitly derived tints rather than verbatim sampled pixels."
   ],
   "loop_002": {
     "change": "Only process Escape when the mobile navigation is expanded; preserve focus for unrelated or closed-menu Escape events.",
@@ -354,5 +359,47 @@
     "production": "NOT DEPLOYED; deployment remains unauthorized."
   },
   "status_metadata_commit": "240035899112b23699a658e50ce832ee17f39786",
-  "evidence_manifest_reconciliation_commit": "240035899112b23699a658e50ce832ee17f39786"
+  "evidence_manifest_reconciliation_commit": "240035899112b23699a658e50ce832ee17f39786",
+  "loop_011": {
+    "objective": "Use the uploaded transparent association logo as the source of truth for the website's full artistic colour direction.",
+    "logo_sampling": {
+      "source": "User-uploaded /mnt/data/logo final.png; repository path assets/logo final.png",
+      "format": "PNG RGBA",
+      "dimensions": "1052×1024",
+      "method": "Alpha-weighted 8-cluster analysis of 120,000 visible pixels (alpha > 0.15), deterministic seed 42; hex representative is nearest actual pixel to the cluster centre.",
+      "palette_file": "evidence/visual/logo-palette.json",
+      "dominant_swatches": [
+        "#1C60CF",
+        "#2084DE",
+        "#1642A5",
+        "#9DC0EA",
+        "#06195E",
+        "#4EABEC",
+        "#D3DEF0",
+        "#587ABA"
+      ],
+      "derived_surface_tints": [
+        "#F3F7FE",
+        "#FCFDFF"
+      ]
+    },
+    "changes": [
+      "Retired warm clay/ochre/rust accents and replaced the full token system with extracted navy, cobalt, royal blue, clear blue, sky blue, steel blue and icy highlights.",
+      "Restyled hero and page-intro fields with navy-to-cobalt gradients, using the light logo accents only on dark blue surfaces.",
+      "Made light page section labels use the darker cobalt for readable text; retained deep navy/icy-blue contrasts for buttons, links and focus details.",
+      "Applied the brand palette to all six HTML theme-colour declarations and rebuilt the SVG favicon using the logo blues.",
+      "Updated the multi-page validator to check the palette tokens, reject retired warm colours and verify the favicon.",
+      "Updated README, product contract, requirements, decisions, assumptions, asset register and CR-005."
+    ],
+    "validation": {
+      "remote_page_audit": "PASS — six pages read back from main; each contains two official logo references, one H1/main, identical six-link navigation, one correct current-page marker in the nav, the new theme colour, no old theme colour and the exact Facebook route.",
+      "css_palette_audit": "PASS — extracted core tokens present; no warm clay/ochre colour tokens or prior beige/teal palette values remain; responsive and reduced-motion rules remain.",
+      "asset_audit": "PASS — official logo, four placed JPG paths and updated SVG favicon are present in the repository tree.",
+      "contrast_pairs": "PASS — representative sRGB contrast ratios recorded in evidence/visual/logo-palette.json; this is not a complete WCAG audit.",
+      "python_validator": "NOT RUN — no complete local checkout available.",
+      "node_tests": "NOT RUN — JavaScript unchanged in this loop.",
+      "browser_visual_review": "NOT RUN — no rendered six-page screenshot review; no visual or no-overflow PASS claimed."
+    },
+    "production": "NOT DEPLOYED; deployment remains unauthorized."
+  }
 }

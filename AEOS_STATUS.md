@@ -3,49 +3,49 @@
 **Active keyphrase:** make a full website for: Bulle Bleue à Chalon-sur-Saône  
 **Run ID:** bullebleue-20261102-001  
 **Rulebook:** AEOS v3  
-**Current loop:** LOOP 010  
-**Candidate:** bullebleue-loop-010-official-logo-and-activity-photography-v1  
+**Current loop:** LOOP 011  
+**Candidate:** bullebleue-loop-011-logo-derived-blue-art-direction-v1  
 **Repository:** teyyara/bullebleue  
 **Branch:** main (single-branch progression)  
-**Implementation checkpoint:** 19aa0bacf4680e7a2c4e5367245f6e045bb2bce1  
+**Implementation checkpoint:** 81d43194ba68d47fb8556d6ec18d2b1ff6f61f2e  
 **State:** WAITING_FOR_CONTINUE
 
 ## User direction
 
-The user supplied the association's transparent logo and eleven documentary photographs in `assets/`, reports that the owner authorised reuse of Facebook-page assets, and requested that the provisional mark be replaced, relevant photographs be placed in the website, and the overall colour direction be derived from the logo.
+The user supplied the transparent official logo and asked that the whole site's artistic direction and colours be derived from it. Loop 011 received an inspectable image upload and completed the previously blocked palette sampling.
 
-## Delivered in Loop 010
+## Delivered in Loop 011
 
-- Replaced the BB monogram in the header and footer of all six pages with the local transparent logo at `assets/logo final.png`.
-- Added one close-up activity photograph to the homepage hero.
-- Added three activity photographs to `activites.html` in a responsive image row.
-- Updated the styles for the logo and photography, including responsive breakpoints.
-- Added meaningful alt text and local asset-path assertions to the multi-page validator.
-- Updated the README, product contract, requirements, decisions, assumptions and asset register. Added `evidence/change-requests/CR-005.md`.
+- Sampled the original 1052×1024 transparent RGBA logo using an alpha-weighted eight-cluster analysis of 120,000 visible pixels.
+- Replaced the inherited warm clay/ochre/rust palette with the logo's deep navy, cobalt, primary blue, clear blue, sky blue, steel blue and icy highlights.
+- Reworked the shared CSS tokens, page backgrounds, section accents, gradients, buttons, focus/hover details and light surface tints.
+- Updated theme-colour metadata on all six pages and rebuilt the favicon with the same blue family.
+- Updated the source validator to check palette tokens, ban the former warm values and verify the favicon.
+- Documented the palette and sampling method in `evidence/visual/logo-palette.json`; updated the README, active contract, requirements, decisions, assumptions, asset register and CR-005.
 
-## Asset selection
+## Palette
 
-Eleven JPGs were visually reviewed. Four close-up photos of games, puzzle pieces and hands at work were selected because no identifiable faces are visible. Seven photos showing identifiable people, including children, were left out of the page layout for now. The user reports owner authorisation; image-specific participant/guardian releases were not independently documented.
+The representative logo colours are `#06195E`, `#1642A5`, `#1C60CF`, `#2084DE`, `#4EABEC`, `#587ABA`, `#9DC0EA` and `#D3DEF0`. The page surfaces `#F3F7FE` and `#FCFDFF` are documented near-white tints derived from the pale logo highlights. Approximate cluster shares and method are recorded in the palette evidence file.
 
 ## Verification
 
-- Remote main-branch read-back: PASS. All six pages contain the official logo twice (header and footer), have one H1 and main landmark, preserve the shared six-link navigation order and mark exactly one current page in the primary navigation.
-- Local asset paths: PASS. The official PNG and all four referenced JPGs are present in the remote repository tree.
-- CSS source: PASS. The new logo/photo styles and responsive image breakpoints are present.
+- Remote page audit: PASS — all six pages read back from `main`; each retains two logo placements, one H1/main, identical navigation order and one correct active navigation link. Each has the new theme colour and no old theme colour.
+- CSS palette audit: PASS — all major logo-derived tokens present; prior warm clay/ochre and beige/teal palette values removed; responsive and reduced-motion rules retained.
+- Asset audit: PASS — official logo, four referenced local photos and the updated SVG favicon exist in the repository.
+- Representative contrast pairs: PASS in source calculations; this is not a complete WCAG audit.
 - Python validator: NOT RUN against a complete local checkout.
-- Node tests: NOT RUN; the JavaScript was unchanged in this loop.
-- Current-browser visual review/screenshots: NOT RUN. No rendered-layout or horizontal-overflow PASS is claimed.
-- Exact logo palette sampling: BLOCKED. The supplied PNG is 1,062,882 bytes and the available repository reader returned an empty binary payload. The existing CSS colour tokens remain provisional and have not been presented as colours sampled from the logo.
+- Node tests: NOT RUN; JavaScript unchanged in this loop.
+- Current-browser screenshots/visual review: NOT RUN. No rendered-layout or horizontal-overflow PASS is claimed.
 
 ## Open items
 
-1. Inspect an accessible copy of the logo and extract the exact brand colours; then calibrate the CSS variables and all page surfaces to that palette.
-2. Confirm image-specific participant/guardian consent before using the people-forward photographs.
-3. Render all six pages at the responsive viewport matrix and run the Python validator once a complete local checkout is available.
-4. Current schedule and venue details still require confirmation by APAiL; email deliverability remains untested.
+1. Run the Python validator and render all six pages across the responsive viewport matrix.
+2. Confirm image-specific participant/guardian releases before using photos that show identifiable people, including children.
+3. APAiL should confirm current schedule and venue details; published mailbox deliverability remains untested.
+4. Cross-browser, manual screen-reader, Lighthouse and security checks remain outstanding.
 
 No production deployment has been performed or authorized.
 
 ## Progression control
 
-Loop 010 is checkpointed on `main`. The repository is set to `WAITING_FOR_CONTINUE`. Exactly one standalone `CONTINUE` authorizes Loop 011.
+Loop 011 is checkpointed on `main`. The repository is set to `WAITING_FOR_CONTINUE`. Exactly one standalone `CONTINUE` authorizes Loop 012.
