@@ -21,8 +21,8 @@
     "assets/illustrations/discovery.svg": "3584a19294dd93f1a418004dddc358aec49a847f",
     "assets/illustrations/culture.svg": "778b27484a79db0d1b64abe785ae4b0696b4df2d",
     "assets/illustrations/solidarity.svg": "e80525d8acc48b3d429912d6229023db54a45e2e",
-    "evidence/tests/static-results.json": "75453b06087ede813b362d1d87aa7de624feb593",
-    "evidence/tests/runtime-results.json": "88d01e5906bcae1e1a0e7ef010ff4ef8f3bc8371",
+    "evidence/tests/static-results.json": "0ac07e433bc3af8bf0be9b46f238350a1ee58fd0",
+    "evidence/tests/runtime-results.json": "53671e70a7c3d2ba247c4e97ad7856964c7c080d",
     "evidence/requirements.json": "2201c800acbb5619dedb72ec920e7f05242aeb9a",
     "evidence/product-contract.json": "7bf9318862034b4f635582b5d6da61e7946341b3",
     "evidence/research/keyphrase-dossier.md": "097b39681be69b04ebdca9334aa283d003ad69f7",
@@ -56,8 +56,9 @@
     "adherer.html": "25bab14f258987327204dda0d03cbf422e1eab95",
     "mentions-legales.html": "97ec6325c0dd9cb240310bf8a08fe91b9c8e7e17",
     "evidence/change-requests/CR-006.md": "67417f3ef178ce7dc1780e7227fbf3d0ea5449a8",
-    ".aeos/state.json": "1c5a9f1769aba36d94234c7a26a5a0fb8dd326d1",
-    "AEOS_STATUS.md": "a03afd52e11f9c66c2db4c658e141aec4eeedafe"
+    ".aeos/state.json": "a13c354a6b68a476fbffd302fab08aeb629e39b5",
+    "AEOS_STATUS.md": "9498e00a907911faffc8580141cf3586dae5388c",
+    "project.config.json": "af6b7de501dcfcddb80ec01b859d57907ca5edac"
   },
   "local_screenshot_evidence": {
     "loop_006": {
@@ -373,8 +374,8 @@
     },
     "production": "NOT DEPLOYED; deployment remains unauthorized."
   },
-  "status_metadata_commit": "be6c057aff2c5c0985c9e5bfd926b150d0fabbeb",
-  "evidence_manifest_reconciliation_commit": "be6c057aff2c5c0985c9e5bfd926b150d0fabbeb",
+  "status_metadata_commit": "99b6f0942f55264ab474b74c3c08d41d2b397e88",
+  "evidence_manifest_reconciliation_commit": "99b6f0942f55264ab474b74c3c08d41d2b397e88",
   "loop_011": {
     "objective": "Use the uploaded transparent association logo as the source of truth for the website's full artistic colour direction.",
     "logo_sampling": {

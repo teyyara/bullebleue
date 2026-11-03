@@ -12,7 +12,7 @@
   "bootstrap_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b",
   "latest_loop_checkpoint_commit": "97c429d83c723c1bff441d32458afd60a95a8e96",
   "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
-  "status_metadata_commit": "be6c057aff2c5c0985c9e5bfd926b150d0fabbeb",
+  "status_metadata_commit": "99b6f0942f55264ab474b74c3c08d41d2b397e88",
   "last_known_good_release_commit": null,
   "current_loop": 12,
   "current_candidate": "bullebleue-loop-012-owner-led-information-architecture-sticky-home-news-v1",
@@ -33,7 +33,7 @@
     "Final human acceptance from the association owner remains outstanding.",
     "Identifiable participant photographs, including photos of minors, remain out of current page templates; image-specific participant/guardian releases are not independently documented."
   ],
-  "evidence_manifest_reconciliation_commit": "be6c057aff2c5c0985c9e5bfd926b150d0fabbeb",
+  "evidence_manifest_reconciliation_commit": "99b6f0942f55264ab474b74c3c08d41d2b397e88",
   "change_request_cr001": {
     "received": "2026-11-02",
     "status": "ADOPTED AND IMPLEMENTED IN LOOP 003",
@@ -93,5 +93,6 @@
   "latest_loop_12_node_test": "NOT RUN — updated script.js and tests/test_menu.js were not executed with Node.js during Loop 012.",
   "latest_loop_12_visual_review": "NOT RUN — no current candidate browser render or screenshots; no rendered visual/no-overflow PASS claimed.",
   "latest_loop_12_status": "WAITING_FOR_CONTINUE — implementation checkpointed; no deployment.",
-  "change_request_cr006": "IMPLEMENTED IN LOOP 012: owner-requested sticky illustrated homepage, Qui sommes-nous, three curated news cards with dedicated articles, Adhérer, Nous contacter and Mentions légales."
+  "change_request_cr006": "IMPLEMENTED IN LOOP 012: owner-requested sticky illustrated homepage, Qui sommes-nous, three curated news cards with dedicated articles, Adhérer, Nous contacter and Mentions légales.",
+  "latest_loop_12_metadata_commit": "99b6f0942f55264ab474b74c3c08d41d2b397e88"
 }
