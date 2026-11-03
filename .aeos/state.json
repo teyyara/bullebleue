@@ -12,13 +12,13 @@
   "bootstrap_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b",
   "latest_loop_checkpoint_commit": "b622176dc3bec04190da4d2bbadb553ff329fdd3",
   "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
-  "status_metadata_commit": "3f4d41475ec69fab4129f229ba9ce5b10b2580a2",
+  "status_metadata_commit": "616be0a237282bcc4fac88a69a2276e089b73d0d",
   "last_known_good_release_commit": null,
-  "current_loop": 14,
-  "current_candidate": "bullebleue-loop-014-user-supplied-homepage-photo-gallery-v1",
+  "current_loop": 15,
+  "current_candidate": "bullebleue-loop-015-accurate-story-and-gallery-visual-evidence-v1",
   "state": "WAITING_FOR_CONTINUE",
   "remote_checkpoint_verified": true,
-  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 015.",
+  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 016.",
   "deployment": "NOT CONFIGURED / NOT AUTHORIZED",
   "paid_dependencies": [],
   "open_blockers": [
@@ -32,7 +32,7 @@
     "Final human acceptance from the association owner remains outstanding.",
     "Identifiable participant photographs remain out of current page templates pending image-specific releases."
   ],
-  "evidence_manifest_reconciliation_commit": "5d9341247f46ddf9ba687717b285a7d9a210a679",
+  "evidence_manifest_reconciliation_commit": "616be0a237282bcc4fac88a69a2276e089b73d0d",
   "change_request_cr001": {
     "received": "2026-11-02",
     "status": "ADOPTED AND IMPLEMENTED IN LOOP 003",
@@ -119,5 +119,8 @@
     "manually_reviewed": false
   },
   "latest_loop_14_visual_review": "Automated Playwright browser suite and screenshot upload passed; screenshots not manually downloaded/inspected; human visual review remains pending.",
-  "latest_loop_14_status": "WAITING_FOR_CONTINUE — supplied-photo gallery and automated quality checks completed; no deployment."
+  "latest_loop_14_status": "WAITING_FOR_CONTINUE — supplied-photo gallery and automated quality checks completed; no deployment.",
+  "latest_loop_15_metadata_commit": "616be0a237282bcc4fac88a69a2276e089b73d0d",
+  "latest_loop_15_final_ci_run": 41661941172,
+  "latest_loop_15_artifact_review": "PASS — six screenshots downloaded from artifact 13241898121, opened and inspected."
 }
