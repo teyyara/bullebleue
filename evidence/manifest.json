@@ -1,35 +1,35 @@
 {
-  "manifest_version": "1.6",
+  "manifest_version": "1.7",
   "run_id": "bullebleue-20261102-001",
-  "loop": 13,
-  "candidate": "bullebleue-loop-013-repeatable-quality-and-browser-validation-v1",
-  "candidate_status": "READ-ONLY QUALITY WORKFLOW AND PLAYWRIGHT SUITE COMMITTED; EXACT NODE TESTS PASS LOCALLY; PYTHON/BROWSER/GITHUB ACTIONS RUN RESULT NOT OBSERVED; NOT RELEASE CERTIFIED",
+  "loop": 14,
+  "candidate": "bullebleue-loop-014-user-supplied-homepage-photo-gallery-v1",
+  "candidate_status": "SUPPLIED HOMEPAGE PHOTO GALLERY IMPLEMENTED; PYTHON/NODE/PLAYWRIGHT CI PASS ON MAIN; THREE SCREENSHOTS UPLOADED; MANUAL VISUAL/OWNER REVIEW PENDING; NOT RELEASE CERTIFIED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "206ca33e928ea12ed08e80a3dc000979f1560620",
+  "implementation_checkpoint_commit": "b622176dc3bec04190da4d2bbadb553ff329fdd3",
   "remote_git_blob_objects": {
-    "index.html": "77e503b48b27ab2b183fdab70b2819b8f4153723",
-    "styles.css": "a54868e47682c66b795284727a45ba43605e8836",
+    "index.html": "de828d2fc49f4931645a965650b42383be86c8d5",
+    "styles.css": "98433a44165db5837d44d2c725bf2a77833315f9",
     "script.js": "cdd53cf6de635f3217ada8c14eb2ee4ae5a70d4d",
     "assets/favicon.svg": "8afd81a5cb62be5651bdae4d31e53c83c1c4b9b6",
     "menu_regression_test_js": "493debf5b26c01e0b166d555b4dab53845a52f28",
     "tests/test_menu.js": "d2d4a14519309811297651d79f28bc667646f5fb",
-    "tests/validate_site.py": "2ccfca3f5e332f6f69ef42e9c15845d3f7030e30",
+    "tests/validate_site.py": "61d317d55390d7914787652f4b592bbca60806bb",
     "assets/illustrations/hero-community.svg": "be16475b8fe6e28faab3b2441943a531f109b697",
     "assets/illustrations/games.svg": "a4de76c67db92ea8922508109aab9ed4fcffc77f",
     "assets/illustrations/garden.svg": "4e15f67d6cebaf017411b9e49255e15aaa9ae7fa",
     "assets/illustrations/discovery.svg": "3584a19294dd93f1a418004dddc358aec49a847f",
     "assets/illustrations/culture.svg": "778b27484a79db0d1b64abe785ae4b0696b4df2d",
     "assets/illustrations/solidarity.svg": "e80525d8acc48b3d429912d6229023db54a45e2e",
-    "evidence/tests/static-results.json": "ade93f79904e497a9758f82c47eae30b097bbf1c",
-    "evidence/tests/runtime-results.json": "5ade188242d6185bac6b007614d7154371b171d9",
-    "evidence/requirements.json": "dabd27bd23cb67f3150c2e00ed38da262fe84416",
-    "evidence/product-contract.json": "90803edbe29ffc5927e60b355f5103f37634f1f4",
+    "evidence/tests/static-results.json": "0dbd78905439b2b32147789f68503c5c4b6cca36",
+    "evidence/tests/runtime-results.json": "4440a59c4dd9aba83ae6454aaa391353a38dc44b",
+    "evidence/requirements.json": "d33b0aa4e805c8a3244b90151e1c461d72dcc1d2",
+    "evidence/product-contract.json": "b85578d71b3290e719ad92bc6511a3ebc9f0a468",
     "evidence/research/keyphrase-dossier.md": "097b39681be69b04ebdca9334aa283d003ad69f7",
-    "evidence/decisions.json": "05a246b293927538e6eeb5935831508f01f6e0dc",
-    "evidence/content-provenance.json": "f65e22a45a509e43ea6323d169adf0ed5b796f05",
-    "evidence/visual/asset-register.json": "034e483180f0c1c5454b4d58ad2b1209bdb602e2",
-    "README.md": "f3723dfbcb8654ef96c688138332fc0136527e73",
+    "evidence/decisions.json": "8326ccf3cc2d01213cf9adca765b2f798a78bbf1",
+    "evidence/content-provenance.json": "b17b4ae59eccecd7ee96540c9a88c5008756fd07",
+    "evidence/visual/asset-register.json": "88b7804fa6af0c01bbdbabd449b97a3e86cd054e",
+    "README.md": "07bfef8110392ddbde313fc4f99460e4a0d44a0c",
     "evidence/change-requests/CR-002.md": "2750f8218da89eb4dfe79b4f8ae7f8fcc7dc87a5",
     "evidence/change-requests/CR-003.md": "be518026d30c328dc3da41f7f86704bb1ac80041",
     "evidence/assumptions.json": "ad8caec32fcb9ee3e57f8620b05038fbb8a54fcf",
@@ -56,11 +56,12 @@
     "adherer.html": "25bab14f258987327204dda0d03cbf422e1eab95",
     "mentions-legales.html": "97ec6325c0dd9cb240310bf8a08fe91b9c8e7e17",
     "evidence/change-requests/CR-006.md": "67417f3ef178ce7dc1780e7227fbf3d0ea5449a8",
-    ".aeos/state.json": "54d04b2b0dd969392955b0a2a669e9226a3e674a",
-    "AEOS_STATUS.md": "4ddd5ce89638b2fc2b8b729cca38c5bd2911618e",
-    "project.config.json": "6c06b81409568eaa39efaff884326c81685ac1e5",
-    ".github/workflows/quality.yml": "999f0edc43aa7003b23b3978b1ac8973187a86cc",
-    "tests/test_browser.py": "e1d9db7b5f07c78d90ee408fde2267063d9422d7"
+    ".aeos/state.json": "bb668a6c7577a3040ae93a83bbd4538bdaf0fbb3",
+    "AEOS_STATUS.md": "82cf6d5c0ea89f9923d33189ff03f025f5e03d14",
+    "project.config.json": "4e1b0f2495ef6c36bf0053270b25aa96c98bc802",
+    ".github/workflows/quality.yml": "5ac49f21b50b420440f444c29ae2a83c63b7940f",
+    "tests/test_browser.py": "57acf40b567b7b4787e2ea131fbf2b46c71c541a",
+    "evidence/change-requests/CR-007.md": "076bd89bef7e14cdfdba67823a60749dba82c10a"
   },
   "local_screenshot_evidence": {
     "loop_006": {
@@ -95,13 +96,17 @@
     },
     "loop_013": {
       "status": "NOT CAPTURED/INSPECTED — Playwright screenshots are configured as a CI artifact but no workflow artifact/run result was observed."
-    }
+    },
+    "loop_014": "NOT STORED LOCALLY — three screenshots were generated and uploaded as the linked CI artifact. Manual visual inspection remains pending."
   },
   "runtime_environment": {
-    "browser": "Chromium 144.0.7559.96",
-    "runner": "Python Playwright",
-    "mode": "In-memory candidate render; 12 responsive viewport widths; no external assets/font requests",
-    "timestamp": "2026-11-02"
+    "runner": "GitHub Actions hosted Ubuntu 24.04",
+    "python": "3.13.17",
+    "node": "22.23.4",
+    "playwright": "1.57.0",
+    "chromium": "143.0.7499.4 (build v1200)",
+    "last_verified_commit": "b622176dc3bec04190da4d2bbadb553ff329fdd3",
+    "last_verified_at": "2026-11-03T15:04:21Z"
   },
   "production_artifact_sha256": null,
   "release_frozen": false,
@@ -123,7 +128,8 @@
     "Current membership fee/process/required paperwork are unknown; the Adhérer page directs visitors to request up-to-date terms.",
     "Python validator and Node regression/syntax tests were not executed during Loop 012.",
     "Loop 013 exact Node syntax and menu/story regression passed locally; the updated Python validator and Playwright browser suite were not executed or observed.",
-    "The GitHub Actions quality workflow is committed with read-only permissions and no deploy job, but its push-triggered run status was not available through the GitHub connector."
+    "Loop 014 automated checks and the GitHub Actions workflow passed on 3 November 2026. The screenshots are uploaded as a short-retention CI artifact but have not been manually inspected; owner acceptance remains pending.",
+    "Recognizable participant/group and children photographs remain unpublished pending image-specific participant/guardian releases."
   ],
   "loop_002": {
     "change": "Only process Escape when the mobile navigation is expanded; preserve focus for unrelated or closed-menu Escape events.",
@@ -381,7 +387,7 @@
     },
     "production": "NOT DEPLOYED; deployment remains unauthorized."
   },
-  "status_metadata_commit": "5d9341247f46ddf9ba687717b285a7d9a210a679",
+  "status_metadata_commit": "3f4d41475ec69fab4129f229ba9ce5b10b2580a2",
   "evidence_manifest_reconciliation_commit": "5d9341247f46ddf9ba687717b285a7d9a210a679",
   "loop_011": {
     "objective": "Use the uploaded transparent association logo as the source of truth for the website's full artistic colour direction.",
@@ -479,5 +485,45 @@
       "github_actions_run": "NOT OBSERVED — available repository integration did not expose a run listing for the push-triggered workflow."
     },
     "production": "NOT DEPLOYED; deployment remains unauthorized."
+  },
+  "remote_ci_artifact_evidence": {
+    "loop_014": {
+      "status": "CAPTURED AND UPLOADED BY PASSING PLAYWRIGHT WORKFLOW; NOT MANUALLY INSPECTED",
+      "run_id": 41659845807,
+      "run_url": "https://github.com/teyyara/bullebleue/actions/runs/41659845807",
+      "artifact_id": 13241331764,
+      "artifact_name": "bulle-bleue-loop014-browser-review",
+      "artifact_url": "https://github.com/teyyara/bullebleue/actions/runs/41659845807/artifacts/13241331764",
+      "files": [
+        "artifacts/loop014-browser/home-desktop.png",
+        "artifacts/loop014-browser/home-story-final.png",
+        "artifacts/loop014-browser/home-mobile.png"
+      ],
+      "sha256": "10874ab168b7e73650bbde0159606eba60ea6697fa9809c186c770f274a4af7a",
+      "bytes": 1581741,
+      "expires_at": "2026-11-10T15:04:16Z"
+    }
+  },
+  "loop_014": {
+    "implementation_commits": [
+      "c40b30f98c7b7620e2199defdc9d383e4dcbbd46",
+      "a3934b9ac1be2abc2339c05da160371f2814ed4b",
+      "b622176dc3bec04190da4d2bbadb553ff329fdd3"
+    ],
+    "metadata_commit": "3f4d41475ec69fab4129f229ba9ce5b10b2580a2",
+    "change_request": "evidence/change-requests/CR-007.md",
+    "selected_photos": [
+      "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg",
+      "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg"
+    ],
+    "ci_run_id": 41659845807,
+    "ci_conclusion": "success",
+    "automated_results": {
+      "python_validator": "PASS",
+      "node_syntax_and_interaction": "PASS",
+      "playwright": "PASS — 9 pages x 5 viewports; all expected assertions passed"
+    },
+    "manual_visual_review": "PENDING — screenshots were uploaded, not manually inspected.",
+    "deployment": "NOT PERFORMED"
   }
 }
