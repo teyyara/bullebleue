@@ -353,6 +353,6 @@
     },
     "production": "NOT DEPLOYED; deployment remains unauthorized."
   },
-  "status_metadata_commit": null,
-  "evidence_manifest_reconciliation_commit": null
+  "status_metadata_commit": "240035899112b23699a658e50ce832ee17f39786",
+  "evidence_manifest_reconciliation_commit": "240035899112b23699a658e50ce832ee17f39786"
 }
