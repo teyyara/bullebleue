@@ -3,39 +3,49 @@
 **Active keyphrase:** make a full website for: Bulle Bleue à Chalon-sur-Saône  
 **Run ID:** bullebleue-20261102-001  
 **Rulebook:** AEOS v3  
-**Current loop:** LOOP 009  
-**Candidate:** bullebleue-loop-009-multipage-professional-information-architecture-v1  
+**Current loop:** LOOP 010  
+**Candidate:** bullebleue-loop-010-official-logo-and-activity-photography-v1  
 **Repository:** teyyara/bullebleue  
 **Branch:** main (single-branch progression)  
-**Implementation checkpoint:** 0659dae09349d277844b14ea9a49d3a2ea19639a  
+**Implementation checkpoint:** 19aa0bacf4680e7a2c4e5367245f6e045bb2bce1  
 **State:** WAITING_FOR_CONTINUE
 
 ## User direction
 
-The user asked for a more organised professional website where information is easy to read and navigate, with content no longer all placed on the homepage.
+The user supplied the association's transparent logo and eleven documentary photographs in `assets/`, reports that the owner authorised reuse of Facebook-page assets, and requested that the provisional mark be replaced, relevant photographs be placed in the website, and the overall colour direction be derived from the logo.
 
-## Information architecture delivered
+## Delivered in Loop 010
 
-- `index.html` — short homepage, welcome summary, destination cards and contact invitation.
-- `la-bulle.html` — audience groups, published session times and first-contact context.
-- `activites.html` — activity examples grouped by theme.
-- `actualites.html` — selected dated updates.
-- `apail.html` — association history, reported solidarity projects, volunteers and organisations cited in posts.
-- `contact.html` — email, Facebook, address/garden access and source-date confirmation note.
+- Replaced the BB monogram in the header and footer of all six pages with the local transparent logo at `assets/logo final.png`.
+- Added one close-up activity photograph to the homepage hero.
+- Added three activity photographs to `activites.html` in a responsive image row.
+- Updated the styles for the logo and photography, including responsive breakpoints.
+- Added meaningful alt text and local asset-path assertions to the multi-page validator.
+- Updated the README, product contract, requirements, decisions, assumptions and asset register. Added `evidence/change-requests/CR-005.md`.
 
-All pages use the same six-item navigation in the same order, a shared footer, page-specific metadata, a current-page state and breadcrumbs on interior pages.
+## Asset selection
+
+Eleven JPGs were visually reviewed. Four close-up photos of games, puzzle pieces and hands at work were selected because no identifiable faces are visible. Seven photos showing identifiable people, including children, were left out of the page layout for now. The user reports owner authorisation; image-specific participant/guardian releases were not independently documented.
 
 ## Verification
 
-- Remote source audit: PASS. All six pages have one H1/main, page-specific titles/descriptions, identical six-link navigation order and exactly one current-page marker. Internal links and local paths resolve.
-- Homepage length: 5,952 characters; detailed address and solidarity history are no longer on the homepage.
-- Content allocation and source/date caveats: PASS by exact remote source assertions.
-- Responsive CSS declarations: present at desktop/tablet/mobile breakpoints; rendered layout remains unverified.
-- Node syntax and interaction tests: PASS using exact remote script.js and tests/test_menu.js blobs verified by SHA-1.
-- Python validator: NOT RUN. Full-page Chromium review/screenshots: NOT RUN. No visual/no-overflow PASS is claimed.
+- Remote main-branch read-back: PASS. All six pages contain the official logo twice (header and footer), have one H1 and main landmark, preserve the shared six-link navigation order and mark exactly one current page in the primary navigation.
+- Local asset paths: PASS. The official PNG and all four referenced JPGs are present in the remote repository tree.
+- CSS source: PASS. The new logo/photo styles and responsive image breakpoints are present.
+- Python validator: NOT RUN against a complete local checkout.
+- Node tests: NOT RUN; the JavaScript was unchanged in this loop.
+- Current-browser visual review/screenshots: NOT RUN. No rendered-layout or horizontal-overflow PASS is claimed.
+- Exact logo palette sampling: BLOCKED. The supplied PNG is 1,062,882 bytes and the available repository reader returned an empty binary payload. The existing CSS colour tokens remain provisional and have not been presented as colours sampled from the logo.
+
+## Open items
+
+1. Inspect an accessible copy of the logo and extract the exact brand colours; then calibrate the CSS variables and all page surfaces to that palette.
+2. Confirm image-specific participant/guardian consent before using the people-forward photographs.
+3. Render all six pages at the responsive viewport matrix and run the Python validator once a complete local checkout is available.
+4. Current schedule and venue details still require confirmation by APAiL; email deliverability remains untested.
 
 No production deployment has been performed or authorized.
 
 ## Progression control
 
-Loop 009 is checkpointed on `main`. The repository is set to `WAITING_FOR_CONTINUE`. Exactly one standalone `CONTINUE` authorizes Loop 010.
+Loop 010 is checkpointed on `main`. The repository is set to `WAITING_FOR_CONTINUE`. Exactly one standalone `CONTINUE` authorizes Loop 011.

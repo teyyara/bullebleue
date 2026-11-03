@@ -1,20 +1,20 @@
 {
-  "manifest_version": "1.2",
+  "manifest_version": "1.3",
   "run_id": "bullebleue-20261102-001",
-  "loop": 9,
-  "candidate": "bullebleue-loop-009-multipage-professional-information-architecture-v1",
-  "candidate_status": "SIX-PAGE STATIC SITE IMPLEMENTED; REMOTE SOURCE STRUCTURE/CONTENT AUDIT PASS; EXACT REMOTE NODE MENU TEST PASS; PYTHON VALIDATOR NOT RUN; FULL-PAGE CHROMIUM REVIEW NOT RUN; NOT RELEASE CERTIFIED",
+  "loop": 10,
+  "candidate": "bullebleue-loop-010-official-logo-and-activity-photography-v1",
+  "candidate_status": "OFFICIAL LOGO AND FOUR LOCAL PHOTOS INTEGRATED; SIX-PAGE SOURCE AUDIT PASS; EXACT LOGO PALETTE SAMPLING BLOCKED; PYTHON VALIDATOR AND BROWSER VISUAL REVIEW NOT RUN; NOT RELEASE CERTIFIED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "0659dae09349d277844b14ea9a49d3a2ea19639a",
+  "implementation_checkpoint_commit": "19aa0bacf4680e7a2c4e5367245f6e045bb2bce1",
   "remote_git_blob_objects": {
-    "index.html": "d3dab53aa6e7ded74032960b88198589a860806c",
-    "styles.css": "1b8bacf0d2d92a3a3bc88c33bb788b02f133b612",
+    "index.html": "7e29d3f857bf30125e74d29a7bce52abc9fb92f3",
+    "styles.css": "b3cf157911565a305f467d0c53dba59d4baf16b5",
     "script.js": "aa2ae008fdfa8c6eb1a0f6004938627104553b61",
     "assets/favicon.svg": "c98beb72f9633c41915ad00e5ced621faaf17799",
     "menu_regression_test_js": "493debf5b26c01e0b166d555b4dab53845a52f28",
     "tests/test_menu.js": "051d0dec5655cbf2b2017e840c096ec4fc63fc6e",
-    "tests/validate_site.py": "8e348dea9e64d83107fdfc8c77df17ff9bea63f4",
+    "tests/validate_site.py": "6992cbe46430b3eadcc3bb2f01aad0d5a3988b3a",
     "assets/illustrations/hero-community.svg": "d46b1fa640912b32259f2b0f17622e635b8bf09b",
     "assets/illustrations/games.svg": "74f82b260859fc2658939d9cc42e074fedf17544",
     "assets/illustrations/garden.svg": "4e15f67d6cebaf017411b9e49255e15aaa9ae7fa",
@@ -23,21 +23,34 @@
     "assets/illustrations/solidarity.svg": "e80525d8acc48b3d429912d6229023db54a45e2e",
     "evidence/tests/static-results.json": "5547a8386e317877bf4ea3876182cc9a4166bda9",
     "evidence/tests/runtime-results.json": "a90627545df76de7a9dc92f50eba9563e963a6b3",
-    "evidence/requirements.json": "43960ce32b3d0d56ecc08fe9f64881d1b8964890",
-    "evidence/product-contract.json": "3adb3eb571ff8a3aa1d401669c37a612960c5379",
+    "evidence/requirements.json": "9fd879fc459f089ef39b94223b73ebd0318735ee",
+    "evidence/product-contract.json": "178b108e87cf4cf690f83016dac8a70a09dec8fa",
     "evidence/research/keyphrase-dossier.md": "097b39681be69b04ebdca9334aa283d003ad69f7",
-    "evidence/decisions.json": "9b6e56b558e3c414748a8fdf1ac0b34bd89d43ab",
+    "evidence/decisions.json": "8374c7adf470310fdf011e92562155d3b2a25278",
     "evidence/content-provenance.json": "ae0a0827f319d74e629525eaec19dde879f16cee",
-    "evidence/visual/asset-register.json": "45f1c0b602a8ef80f69c8b332f86ca4a2a9d5eb9",
-    "README.md": "9f24615e56cfb1e0ebe6341bbd5019d1a2525acc",
+    "evidence/visual/asset-register.json": "4dd6c36362ac580b02b4d70e71b0ae8e6a47037b",
+    "README.md": "292366c0530da19015cfc1c93ee3dcfa4f8cf8ef",
     "evidence/change-requests/CR-002.md": "2750f8218da89eb4dfe79b4f8ae7f8fcc7dc87a5",
     "evidence/change-requests/CR-003.md": "be518026d30c328dc3da41f7f86704bb1ac80041",
-    "evidence/assumptions.json": "f1e4de524f240d1c707ec4fc73368372cf62eb77",
-    "la-bulle.html": "2485ab59e195f2d14524c5258de5c9a3270e893e",
-    "activites.html": "742dc68ab0a90f4ad615b36b3b764da9a0ead652",
-    "actualites.html": "008138d75289cf94bfe6322e1bc069ab6a4863cf",
-    "apail.html": "fd1e7335556762f2219ba83633c87a4af36b140e",
-    "contact.html": "da48fd0cbd8bd372f024d47489fe0de22a7a89f5"
+    "evidence/assumptions.json": "82f906f6e85149300cf418989d055197abfd0d9b",
+    "la-bulle.html": "fa552125694513770a5b1a303008b5832f09d62c",
+    "activites.html": "73ef69432d708e206a077215f25356cc62a8f627",
+    "actualites.html": "6858bbbb5a98169137574e61247e694911eace25",
+    "apail.html": "3f2c452fae5e67846ac4a38021452129ce5b722c",
+    "contact.html": "ca98568f552693f42b64db3b9736302a6519dcdc",
+    "evidence/change-requests/CR-005.md": "a73aa63115e591809c0357289e05ec0ff42633ce",
+    "assets/logo final.png": "82c6eb3e5067b19ebb94c356723f8ad05b8cbde9",
+    "assets/posts/735543787_1361390089428172_5312506833854343201_n.jpg": "2803425066ddf6ed1a1ece5b5795601e443ab772",
+    "assets/posts/783036041_1408453024721878_3578205087320603775_n.jpg": "02b9b51ab231c3f3f2bfe3454169003f3c979455",
+    "assets/posts/830754903_1438852398348607_8575046537706443389_n.jpg": "9ca4887addd5196aaef7be5aeee5acf0ce9a397f",
+    "assets/posts/844190417_1446490757584771_1709901819062193861_n.jpg": "b4de8d47a5cabbdd26d3e5ce036119730f0909ac",
+    "assets/posts/854414257_1451277357106111_100552518532689623_n.jpg": "359b89aafaa8e4d894ec2df095b33052bfda6671",
+    "assets/posts/858642199_1459855032915010_3703135960600555271_n.jpg": "1b4e6e9741b994d79959c132ef485ab714b9ead7",
+    "assets/posts/860039147_1459854696248377_603952803324221168_n.jpg": "e9eb6f62d9be36f18ca96ea269e24760b9074a70",
+    "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg": "2332d38c51cc25a7ad20a5479caa62ff1aa29574",
+    "assets/posts/861826539_1459854896248357_2220258804161137760_n.jpg": "2e851c411faaf0f016c413067338f92ffb5153c3",
+    "assets/posts/863353686_1459854766248370_1734709857082262774_n.jpg": "7b6922357e42520049d7a9f0fb9698792a974b48",
+    "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg": "25efb99fb2457b9a1518022018f7ceb8ea2e5261"
   },
   "local_screenshot_evidence": {
     "loop_006": {
@@ -60,6 +73,9 @@
         "width": 390,
         "not_committed": true
       }
+    },
+    "loop_010": {
+      "status": "NOT CAPTURED — current six-page site was not rendered in a browser during Loop 010; no visual PASS claimed."
     }
   },
   "runtime_environment": {
@@ -76,7 +92,10 @@
     "Localhost/file navigation blocked by sandbox.",
     "Firefox/WebKit/Safari unavailable.",
     "Screen-reader, axe-core, Lighthouse and ZAP checks unavailable.",
-    "No hosting domain configured."
+    "No hosting domain configured.",
+    "The supplied logo PNG is 1,062,882 bytes; the available repository reader returned no image payload, so exact logo-colour sampling is outstanding.",
+    "Loop 010 source checks passed, but Python validator and current browser screenshots were not run.",
+    "Photos showing identifiable participants, including children, remain unused pending image-specific participant/guardian consent confirmation."
   ],
   "loop_002": {
     "change": "Only process Escape when the mobile navigation is expanded; preserve focus for unrelated or closed-menu Escape events.",
@@ -302,5 +321,38 @@
       "Python validator has not been executed.",
       "Cross-browser and assistive-technology checks remain outstanding."
     ]
-  }
+  },
+  "loop_010": {
+    "objective": "Replace the provisional BB monogram with the supplied official transparent logo and bring authentic activity imagery into relevant pages without disturbing the concise six-page information architecture.",
+    "changes": [
+      "Replaced both provisional marks on every page (header and footer) with the supplied local PNG logo.",
+      "Placed an activity photo in the homepage hero and three close-up photos in an activities-page image row.",
+      "Added responsive image layouts, descriptive alternative text, eager hero loading and lazy loading for below-fold images.",
+      "Updated local-asset validation to decode URL-escaped spaces, and extended requirements, decisions, assumptions, asset register and README."
+    ],
+    "asset_review": {
+      "logo": "assets/logo final.png — 1,062,882-byte transparent PNG, referenced in all six page headers and footers.",
+      "photographs_reviewed": 11,
+      "photographs_placed": 4,
+      "identifiable_people_photos_deferred": 7,
+      "selected_paths": [
+        "assets/posts/861826539_1459854896248377_603952803324221168_n.jpg",
+        "assets/posts/860039147_1459854696248377_603952803324221168_n.jpg",
+        "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg",
+        "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg"
+      ],
+      "permission": "User reports that the owner authorised use of Facebook-page assets; image-specific participant/guardian releases are not independently documented."
+    },
+    "validation": {
+      "source_audit": "PASS — exact remote main files read back; all six pages have two official-logo references, one H1/main, identical six-link nav order and one current-page marker in the primary nav. Four photo references and one logo path exist in the remote tree.",
+      "css_source": "PASS — new logo/photo styles and responsive breakpoints are present in the exact remote CSS blob.",
+      "python_validator": "NOT RUN — no complete local working checkout available.",
+      "node_tests": "NOT RUN — script.js unchanged in this loop.",
+      "browser_review": "NOT RUN — no current-browser render/screenshots; no rendered-layout or no-overflow claim.",
+      "logo_palette_sampling": "BLOCKED — the >1 MB PNG returned an empty content payload from the available repository reader; exact colours were not sampled and the CSS palette remains provisional."
+    },
+    "production": "NOT DEPLOYED; deployment remains unauthorized."
+  },
+  "status_metadata_commit": null,
+  "evidence_manifest_reconciliation_commit": null
 }
