@@ -49,4 +49,23 @@
 
     document.querySelectorAll('.reveal').forEach((item) => revealObserver.observe(item));
   }
+
+  const storySteps = document.querySelectorAll('.story-step');
+  if (!reduceMotion && 'IntersectionObserver' in window && storySteps.length) {
+    document.documentElement.classList.add('has-scroll-story');
+    const ratios = new Map(Array.from(storySteps, (step) => [step, 0]));
+    const storyObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => ratios.set(entry.target, entry.isIntersecting ? entry.intersectionRatio : 0));
+      let activeStep = null;
+      let highestRatio = 0;
+      ratios.forEach((ratio, step) => {
+        if (ratio > highestRatio) {
+          highestRatio = ratio;
+          activeStep = step;
+        }
+      });
+      storySteps.forEach((step) => step.classList.toggle('is-current', step === activeStep));
+    }, { threshold: [0, 0.15, 0.3, 0.45], rootMargin: '-18% 0px -18% 0px' });
+    storySteps.forEach((step) => storyObserver.observe(step));
+  }
 })();

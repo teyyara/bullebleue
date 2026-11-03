@@ -1,5 +1,5 @@
 {
-  "content_provenance_version": "0.5",
+  "content_provenance_version": "0.6",
   "items": [
     {
       "content": "La Bulle Bleue is an APAiL initiative in Chalon-sur-Saône.",
@@ -111,6 +111,46 @@
       "content": "Information architecture: concise homepage plus separate pages for La Bulle, activities, actualités, APAiL and contact.",
       "classification": "Design structure authored in response to the user's explicit navigation/organisation feedback; factual copy remains grounded in the user-supplied Facebook extraction.",
       "confidence": "HIGH for the design decision; factual source provenance remains unchanged."
+    },
+    {
+      "content": "The owner-requested information architecture: Accueil, Qui sommes-nous ?, Actualités, Adhérer, Nous contacter, with Mentions légales in the footer.",
+      "classification": "User-provided design requirement recorded 2026-11-03.",
+      "confidence": "HIGH for instruction provenance."
+    },
+    {
+      "content": "Homepage sticky illustrated background and changing scroll chapters.",
+      "classification": "User-provided design requirement; visual implementation uses repository illustration assets/illustrations/hero-community.svg with sampled logo palette.",
+      "confidence": "HIGH for direction; browser rendering not yet inspected."
+    },
+    {
+      "content": "News story: Une Bulle Bleue bien remplie, games throughout the venue including the kitchen.",
+      "classification": "User-supplied exact Facebook extraction, post dated 2026-10-26.",
+      "confidence": "HIGH for source transcription; summary is editorial."
+    },
+    {
+      "content": "News story: La Bulle Bleue in a walk for the launch of the 40th anniversary of Chalon dans la Rue.",
+      "classification": "User-supplied exact Facebook extraction, post dated 2026-10-17.",
+      "confidence": "HIGH for source transcription; summary is editorial."
+    },
+    {
+      "content": "News story: Association Valentin Haüy introduced daily experiences without sight to 10 Bulle Bleue members.",
+      "classification": "User-supplied exact Facebook extraction, post dated 2026-10-10.",
+      "confidence": "HIGH for source transcription; summary is editorial."
+    },
+    {
+      "content": "Images on Actualités and its detail pages.",
+      "classification": "Original vector illustrations in the repository, recoloured to the sampled official logo palette; explicitly identified in captions as illustrations and not photographs of the dated events.",
+      "confidence": "HIGH."
+    },
+    {
+      "content": "Membership amount, process, required forms and renewal conditions.",
+      "classification": "Unknown; not stated in available source extraction.",
+      "confidence": "UNKNOWN — page directs enquiries to APAiL."
+    },
+    {
+      "content": "Legal association identity, registered-office address, publication manager and actual host details.",
+      "classification": "Not supplied by available project evidence; legal page explicitly marks these as needing confirmation.",
+      "confidence": "UNKNOWN — legal sign-off blocked."
     }
   ]
 }

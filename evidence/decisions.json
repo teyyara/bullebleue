@@ -231,6 +231,58 @@
       "tradeoffs": "Near-white tints are blended derivatives of the logo highlight, not colours sampled verbatim from image pixels.",
       "risk": "R1",
       "evidence": "Logo-derived palette and CSS contrast checks."
+    },
+    {
+      "id": "DEC-019",
+      "context": "The owner requested a simpler and more predictable top-level menu with distinct pages for identity, news, membership, contact and legal notices.",
+      "options": [
+        "Keep the six-page menu and expose every previous category",
+        "Consolidate previous La Bulle, Activities and APAiL information on Qui sommes-nous, add Adhérer and legal page, retain Actualités and Contact"
+      ],
+      "chosen": "Five primary destinations: Accueil, Qui sommes-nous ?, Actualités, Adhérer, Nous contacter; Mentions légales is a shared footer link. Previous La Bulle, Activités and APAiL files are replaced by one consolidated Qui sommes-nous page.",
+      "reason": "Matches the owner's explicit information architecture and avoids duplicate or fragmented content.",
+      "risk": "R1",
+      "evidence": "User feedback dated 2026-11-03; Loop 012 route and navigation source audit."
+    },
+    {
+      "id": "DEC-020",
+      "context": "The owner wants a drawn background that remains visible while homepage text changes during scrolling.",
+      "options": [
+        "Keep a separate photo hero and static destination mosaic",
+        "Use a sticky local illustration with progressive scroll chapters",
+        "Use remote video/background service"
+      ],
+      "chosen": "A single original local SVG scene is sticky behind three text chapters; IntersectionObserver switches the active copy.",
+      "reason": "No paid or remote dependencies are needed; reduced-motion and no-observer fallbacks leave all copy visible.",
+      "tradeoffs": "Sticky behavior and timing still require rendered browser review.",
+      "risk": "R1",
+      "evidence": "Loop 012 index.html, styles.css, script.js and interaction regression test."
+    },
+    {
+      "id": "DEC-021",
+      "context": "The Actualités page is a high-priority user journey and the source offers only dated summaries with no direct post permalink mapping for the stored illustrations.",
+      "options": [
+        "List a long textual chronology",
+        "Show two or three cards without article details",
+        "Show exactly three curated cards, each with a dedicated article and clearly labelled representative illustration"
+      ],
+      "chosen": "Three dated cards with three root-level article pages; original SVG illustrations are explicitly described as illustrations and not photographs of the events.",
+      "reason": "Matches the owner's requested news-site interaction without misrepresenting the image-to-event relationship.",
+      "risk": "R1",
+      "evidence": "Supplied Facebook extraction for 2026-10-26, 2026-10-17 and 2026-10-10; Loop 012 pages."
+    },
+    {
+      "id": "DEC-022",
+      "context": "The owner requested Adhérer and Mentions légales pages but current membership and legal configuration details are not evidenced.",
+      "options": [
+        "Invent fees/legal entities/host information",
+        "Leave both pages absent",
+        "Provide functional contact guidance and visibly pending legal fields without inventing details"
+      ],
+      "chosen": "Adhérer routes to an email request for the current terms. Mentions légales is a clearly marked draft with unknown publisher, registered-office, publication manager and host details pending confirmation.",
+      "reason": "Complies with AEOS no-invention rule and avoids collecting personal data before a verified process exists.",
+      "risk": "R2",
+      "evidence": "Available supplied extraction, project.config.json and Loop 012 content review."
     }
   ]
 }

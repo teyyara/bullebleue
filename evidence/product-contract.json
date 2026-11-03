@@ -1,8 +1,8 @@
 {
-  "contract_version": "0.5",
-  "status": "ACTIVE EVIDENCE-DERIVED CHANGE BASELINE — CONTENT MIGRATION FROM USER-SUPPLIED FACEBOOK EXTRACTION",
-  "change_request": "CR-004",
-  "supersedes": "0.4",
+  "contract_version": "0.6",
+  "status": "ACTIVE EVIDENCE-DERIVED CHANGE BASELINE — OWNER-REQUESTED INFORMATION ARCHITECTURE AND EDITORIAL NEWS",
+  "change_request": "CR-006",
+  "supersedes": "0.5",
   "project": "La Bulle Bleue — Chalon-sur-Saône",
   "business_objective": "Create an informative, welcoming and visually distinctive website explaining La Bulle Bleue and APAiL, representing publicly reported activities without overpromising and helping visitors contact the association.",
   "target_audience": [
@@ -12,34 +12,37 @@
     "relatives and supporters",
     "prospective volunteers"
   ],
-  "primary_user_intent": "Understand La Bulle Bleue, identify the right audience information, explore activities and updates, learn about APAiL, then contact the association through a well-organised multi-page site.",
+  "primary_user_intent": "Understand who La Bulle Bleue and APAiL are, explore a small number of current editorial updates, learn how to adhere, then contact the association through clear and accessible routes.",
   "critical_user_journeys": [
-    "Homepage → La Bulle → audience and session information → contact to confirm",
-    "Homepage → activities → examples → contact",
-    "Homepage → actualités → dated highlights → Facebook source",
-    "Homepage → APAiL → history and reported solidarity work → contact"
+    "Accueil → Qui sommes-nous ? → Adhérer → contact APAiL",
+    "Accueil → Actualités → one dedicated article → return to the news overview or source Facebook page",
+    "Actualités → selected dated article → source page",
+    "Any page → Nous contacter",
+    "Any page → Mentions légales in the footer"
   ],
   "functional_requirements": [
-    "Six static HTML pages with dedicated purposes and a common top navigation/footer",
-    "Homepage is a concise orientation page, not the full information archive",
-    "Persistent navigation on all pages; active route uses aria-current=page",
-    "Keyboard-operable compact navigation; Escape closes only an open menu and restores focus",
-    "Every page has French language declaration, one H1, one main landmark, unique title and meta description",
-    "Static local page links work without a framework or backend",
-    "Preserve source/date caveats for venue, session times, dated posts, historical projects and cited organisations",
-    "Email and exact Facebook route remain available in the shared footer",
-    "No participant photographs, individual diagnoses, medical outcomes or sensitive-data collection"
+    "Nine static HTML pages: home, who-we-are, news overview, three article details, membership, contact and legal notices",
+    "Five consistent primary-navigation links in the order Accueil, Qui sommes-nous ?, Actualités, Adhérer, Nous contacter",
+    "Mentions légales is reachable from the shared footer, not crowded into the primary navigation",
+    "The homepage has one illustrated sticky background and three scroll chapters; the illustration remains fixed while the text changes",
+    "Scroll transitions are progressive enhancement; content is visible without JavaScript, IntersectionObserver or motion",
+    "prefers-reduced-motion users never receive hidden homepage story content",
+    "The Actualités overview displays exactly three editorial cards; each has an illustration, date, short caption, concise summary and Voir plus link",
+    "Each news card opens its own full article page with image/illustration, date, editorial text and source reference",
+    "All article copy is traceable to exact dated posts in the user-provided Facebook extraction",
+    "The shared logo, palette, header and footer are consistent on all pages; the current news section is indicated on article pages",
+    "Membership CTA uses email; no fee, membership form, required document or renewal term is invented",
+    "Legal notices page clearly marks missing legal identity and hosting data as pending association confirmation"
   ],
   "content_requirements": [
-    "Identify La Bulle Bleue as an APAiL initiative in Chalon-sur-Saône launched in 2021; identify APAiL as created in 1995",
-    "Describe both audience groups and Wednesday 14:30 / Saturday 15:00 with clear source/date and confirmation caveat",
-    "Show 30 Rempart Saint-Vincent and garden access via rue Leriche with explicit 11 March 2024 source note and confirmation caveat",
-    "Represent games, music, art, cooking, garden, outings, animal mediation and parent meetings",
-    "Include selected recent 2026 posts with original dates as past highlights",
-    "Describe reported Burkina Faso/Morocco solidarity work as history, not a claim all projects remain active",
-    "Name volunteer group Les Bleuettes and list organisations cited in posts as non-exhaustive references",
-    "Preserve Facebook and email contact routes",
-    "Do not publish participant names, individual diagnoses or medical outcomes"
+    "Identify La Bulle Bleue as an APAiL initiative launched in 2021 and APAiL as created in 1995",
+    "Consolidate audience, activity examples, volunteers and historical solidarity information on Qui sommes-nous ?",
+    "Keep operational schedule/location source dates and confirmation caveats; do not present 2024 details as independently current",
+    "Feature exactly three news items dated 26 October, 17 October and 10 October 2026",
+    "Use concise editorial summaries, not fabricated first-person stories, testimonials or unreported outcomes",
+    "Label SVG story imagery as illustrations rather than photographs of the specific events",
+    "Keep Adhérer and Contact direct and email-led without personal-data collection",
+    "Mark unprovided legal name, registered-office address, publication responsible person and host details as unknown/pending confirmation"
   ],
   "brand": {
     "official_assets_supplied": true,
@@ -168,17 +171,22 @@
         "status": "IN USE"
       }
     ],
-    "palette": "Use only the sampled logo blues plus documented pale near-white tints derived from the logo; no warm clay/ochre accents."
+    "palette": "Use only the sampled logo blues plus documented pale near-white tints derived from the logo; no warm clay/ochre accents.",
+    "homepage": "One large original local SVG drawing forms a sticky background across three scroll chapters. Successive text panels change as the visitor scrolls; the former separate hero photo and home image mosaic are removed. Use the sampled logo blues and dark overlay for contrast.",
+    "news": "Exactly three rectangular editorial cards with a compact landscape illustration, visible date, small category/caption, short text and a distinct Voir plus link. Each links to a dedicated detail article.",
+    "articles": "A clean article template with date, headline, short deck, one labelled illustration, concise text, provenance note and return-to-news link.",
+    "navigation": "Five clear primary destinations. Mentions légales remains in the shared footer."
   },
   "motion": {
     "effects": [
-      "subtle CSS surface texture and background rings",
-      "small hover and focus transitions"
+      "sticky illustrated backdrop",
+      "scroll-position chapter changes",
+      "subtle panel transition"
     ],
-    "implementation": "CSS only; no scroll-triggered reveal hiding content",
+    "implementation": "Progressive IntersectionObserver enhancement toggles the active homepage story panel; no animation or hidden content is required for comprehension.",
     "reduced_motion_required": true,
     "essential_content_must_not_depend_on_motion": true,
-    "fallback": "Content is visible by default; CSS transitions are suppressed for prefers-reduced-motion."
+    "fallback": "All three text chapters are visible by default. Only when IntersectionObserver is supported and prefers-reduced-motion is false does the page add an enhancement class and transition the active chapter."
   },
   "technical": {
     "architecture": "Static HTML, CSS and vanilla JavaScript",
@@ -243,18 +251,17 @@
     "branch": "main"
   },
   "success_criteria": [
-    "Homepage is an orientation page under 9,000 characters.",
-    "Detailed topics have separate named pages: La Bulle, activities, actualités, APAiL and contact.",
-    "All six pages have identical navigation order and a clear current-page marker.",
-    "Every page has unique metadata, one H1 and one main landmark.",
-    "All internal page links work and the compact menu is keyboard-operable.",
-    "Source-derived facts and operational caveats remain on their appropriate pages.",
-    "No participant names or unapproved photographs are published.",
-    "Responsive layout declarations cover desktop, tablet and mobile; rendered visual validation is reported separately.",
-    "The official transparent logo supplied by the user appears consistently in the header and footer of all six pages.",
-    "The homepage and activities page use local documentary photos with meaningful alt text; no identifiable participants are shown in the selected crops.",
-    "The final CSS palette is sampled from the official logo, documented as exact hex tokens and used consistently across all six pages.",
-    "All six pages use the logo-derived blue palette consistently across backgrounds, text, links, cards, borders, focus and button states; no previous warm clay/ochre accents remain."
+    "Homepage contains one sticky illustrated backdrop and exactly three text chapters; the old standalone image hero is absent.",
+    "Text transitions are progressive but content remains available with JavaScript disabled or reduced motion enabled.",
+    "Primary nav has exactly five links in the owner-requested order; Mentions légales appears in the footer.",
+    "Qui sommes-nous consolidates the previous La Bulle, Activités and APAiL sections without losing important grounded information.",
+    "Actualités overview contains exactly three editorial cards and three dedicated article pages with exact source dates.",
+    "All three article images are explicitly labelled illustrations, not photographs of the events.",
+    "Adhérer uses a direct contact CTA and does not invent fee, process or mandatory documents.",
+    "Legal page visibly identifies information requiring confirmation and is not described as legally complete.",
+    "All nine pages have lang=fr, one H1, one main, unique title/description, consistent logo, navigation and footer.",
+    "Local links and assets resolve; CSS retains logo-derived palette, responsive breakpoints and reduced-motion support.",
+    "No paid dependencies, CMS, tracking, new backend or deployment."
   ],
   "business_outcome_hypotheses": [
     "Specific activity stories may help families understand the initiative",
@@ -273,13 +280,17 @@
   "definition_of_done_loop_007": "Replace prior generic page copy with concise, source-grounded content from the supplied Facebook extraction; update requirements/provenance/validator; run available checks; checkpoint to main and verify; do not deploy.",
   "definition_of_done_loop_009": "Create a six-page static information architecture with concise homepage, dedicated audience/session, activities, news, APAiL and contact pages, common accessible navigation, page-level metadata, updated multi-page checks/evidence, checkpoint to main, verify remote, no deployment.",
   "information_architecture": {
-    "index.html": "Concise homepage, overview and destination cards.",
-    "la-bulle.html": "Audience groups, published session times and first-contact context.",
-    "activites.html": "Grouped activity examples.",
-    "actualites.html": "Selected dated highlights and Facebook source link.",
-    "apail.html": "Association history, reported solidarity projects, volunteers and organisations cited in posts.",
-    "contact.html": "Email, Facebook, venue, garden access and source/date confirmation caveat."
+    "index.html": "Illustrated sticky-background homepage with three sequential messages and concise links.",
+    "qui-sommes-nous.html": "Consolidated identity, audience, activities, volunteers and historically framed APAiL solidarity story.",
+    "actualites.html": "Three curated dated news cards with illustrations and Voir plus actions.",
+    "actualite-2026-10-26.html": "Article detail: Une Bulle bien remplie (26 October 2026).",
+    "actualite-2026-10-17.html": "Article detail: Chalon dans la Rue (17 October 2026).",
+    "actualite-2026-10-10.html": "Article detail: discovery with Association Valentin Haüy (10 October 2026).",
+    "adherer.html": "Email-first request for current membership terms; no invented fee or process.",
+    "contact.html": "Direct email, Facebook and venue information with source-age confirmation caveat.",
+    "mentions-legales.html": "Legal-information draft; missing association and host details visibly await confirmation."
   },
   "definition_of_done_loop_010": "Integrate the user-supplied transparent logo in all six page headers and footers; select and place documentary activity photos with useful alt text; update responsive styles, tests, README and evidence; checkpoint on main and verify; no deployment. Exact logo-palette sampling is recorded as blocked because the >1 MB PNG could not be read by the repository connector and remains an open item.",
-  "definition_of_done_loop_011": "Sample the directly uploaded transparent logo; document dominant colour clusters and representative hex codes; replace the interim palette throughout shared CSS, page metadata and favicon; update tests, README and design evidence; checkpoint on main and verify; no deployment."
+  "definition_of_done_loop_011": "Sample the directly uploaded transparent logo; document dominant colour clusters and representative hex codes; replace the interim palette throughout shared CSS, page metadata and favicon; update tests, README and design evidence; checkpoint on main and verify; no deployment.",
+  "definition_of_done_loop_012": "Replace the previous six-page menu with the owner's five primary destinations, create a sticky illustrated scroll-story homepage, consolidate identity content, feature three dated editorial news cards with individual article pages, add Adhérer and a visibly incomplete Mentions légales draft, revise shared navigation/footer, tests and evidence, checkpoint on main and verify remote; do not deploy."
 }

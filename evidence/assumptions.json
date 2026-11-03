@@ -1,5 +1,5 @@
 {
-  "assumptions_version": "0.1",
+  "assumptions_version": "0.6",
   "assumptions": [
     {
       "id": "ASSUMP-001",
@@ -104,6 +104,46 @@
       "confidence": "HIGH — directly sampled from the user-uploaded 1052×1024 transparent RGBA image.",
       "impact_if_wrong": "MEDIUM",
       "resolution": "RESOLVED IN LOOP 011: a reproducible alpha-weighted eight-cluster analysis extracted the representative logo palette; CSS tokens, backgrounds and favicon now use the sampled blue family and derived icy surface tints."
+    },
+    {
+      "id": "ASSUMP-014",
+      "assumption": "The owner intends the primary navigation to contain only the five explicitly named pages, with Mentions légales accessible from the footer.",
+      "source": "Owner feedback recorded by user on 2026-11-03.",
+      "confidence": "HIGH",
+      "impact_if_wrong": "LOW",
+      "resolution": "Implemented as five primary links and a footer legal link; can be adjusted after owner review."
+    },
+    {
+      "id": "ASSUMP-015",
+      "assumption": "A single existing community illustration can serve as the fixed visual backdrop while text chapters change during scrolling.",
+      "source": "Owner request for drawings as a persistent homepage background with changing text; repository contains an original community-room SVG.",
+      "confidence": "HIGH",
+      "impact_if_wrong": "MEDIUM",
+      "resolution": "Used the existing local vector scene, recoloured with official logo palette; browser review remains outstanding."
+    },
+    {
+      "id": "ASSUMP-016",
+      "assumption": "The three selected recent Facebook posts are suitable as the featured Actualités selection.",
+      "source": "User-supplied exact-page extraction: posts dated 2026-10-26, 2026-10-17 and 2026-10-10.",
+      "confidence": "HIGH",
+      "impact_if_wrong": "LOW",
+      "resolution": "Used the three latest suitable dated stories; each article links to the exact Facebook page, not an invented post permalink."
+    },
+    {
+      "id": "ASSUMP-017",
+      "assumption": "No membership fee, current process, bulletin or required document is established by available source material.",
+      "source": "Supplied extraction, repository content and project records.",
+      "confidence": "HIGH",
+      "impact_if_wrong": "MEDIUM",
+      "resolution": "Adhérer page asks visitors to request current terms directly from APAiL; no fee or process is stated."
+    },
+    {
+      "id": "ASSUMP-018",
+      "assumption": "The legal identity, registered-office address, publication manager and actual hosting provider have not been supplied or independently verified.",
+      "source": "Repository project configuration and available source extraction.",
+      "confidence": "HIGH",
+      "impact_if_wrong": "HIGH",
+      "resolution": "Mentions légales page clearly marks these fields pending confirmation and is not treated as release-ready."
     }
   ]
 }

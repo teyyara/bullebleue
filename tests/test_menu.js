@@ -9,9 +9,7 @@ function createElement() {
   const attributes = {};
   const classes = new Set();
   return {
-    listeners,
-    attributes,
-    textContent: '',
+    listeners, attributes, textContent: '',
     addEventListener(name, callback) { (listeners[name] ||= []).push(callback); },
     dispatch(name, event = {}) { for (const callback of listeners[name] || []) callback(event); },
     setAttribute(name, value) { attributes[name] = value; },
@@ -31,7 +29,7 @@ function createElement() {
   };
 }
 
-function boot({ reducedMotion = false, revealCount = 2 } = {}) {
+function boot({ reducedMotion = false, revealCount = 2, storyCount = 3 } = {}) {
   const toggle = createElement();
   toggle.setAttribute('aria-expanded', 'false');
   toggle.setAttribute('aria-label', 'Ouvrir le menu');
@@ -41,6 +39,7 @@ function boot({ reducedMotion = false, revealCount = 2 } = {}) {
   navigation.querySelectorAll = () => [link];
   const year = createElement();
   const revealItems = Array.from({ length: revealCount }, createElement);
+  const storySteps = Array.from({ length: storyCount }, createElement);
   const documentListeners = {};
   const observers = [];
 
@@ -65,7 +64,9 @@ function boot({ reducedMotion = false, revealCount = 2 } = {}) {
       return null;
     },
     querySelectorAll(selector) {
-      return selector === '.reveal' ? revealItems : [];
+      if (selector === '.reveal') return revealItems;
+      if (selector === '.story-step') return storySteps;
+      return [];
     },
     addEventListener(name, callback) { (documentListeners[name] ||= []).push(callback); },
     dispatch(name, event = {}) { for (const callback of documentListeners[name] || []) callback(event); }
@@ -76,7 +77,7 @@ function boot({ reducedMotion = false, revealCount = 2 } = {}) {
   };
   const source = fs.readFileSync(path.join(__dirname, '..', 'script.js'), 'utf8');
   vm.runInNewContext(source, { document, Date, window, IntersectionObserver: MockIntersectionObserver });
-  return { toggle, navigation, link, year, document, revealItems, observers };
+  return { toggle, navigation, link, year, document, revealItems, storySteps, observers };
 }
 
 const env = boot();
@@ -111,17 +112,34 @@ document.dispatch('click', { target: createElement() });
 assert.equal(isOpen(), false);
 assert.equal(toggle.focusCount, 1);
 
-// Motion enhancement is progressive and only observes elements when motion is allowed.
+// Existing progressive reveal behavior.
+assert.equal(env.observers.length, 2, 'reveal and sticky-story observers are both installed');
 assert.equal(env.document.documentElement.classList.contains('has-reveal'), true);
-assert.equal(env.observers.length, 1);
 assert.equal(env.observers[0].observed.length, env.revealItems.length);
 env.observers[0].callback(env.revealItems.map(target => ({ isIntersecting: true, target })), env.observers[0]);
 assert.ok(env.revealItems.every(item => item.classList.contains('is-visible')));
 assert.equal(env.observers[0].unobserved.length, env.revealItems.length);
 
-// Reduced-motion users never receive hidden reveal states or an observer.
+// Sticky homepage keeps a single active text step as the same illustration remains in place.
+assert.equal(env.document.documentElement.classList.contains('has-scroll-story'), true);
+assert.equal(env.observers[1].observed.length, env.storySteps.length);
+env.observers[1].callback([
+  { target: env.storySteps[0], isIntersecting: true, intersectionRatio: 0.55 },
+  { target: env.storySteps[1], isIntersecting: false, intersectionRatio: 0 },
+  { target: env.storySteps[2], isIntersecting: false, intersectionRatio: 0 }
+], env.observers[1]);
+assert.equal(env.storySteps[0].classList.contains('is-current'), true);
+env.observers[1].callback([
+  { target: env.storySteps[0], isIntersecting: false, intersectionRatio: 0 },
+  { target: env.storySteps[1], isIntersecting: true, intersectionRatio: 0.62 }
+], env.observers[1]);
+assert.equal(env.storySteps[0].classList.contains('is-current'), false);
+assert.equal(env.storySteps[1].classList.contains('is-current'), true);
+
+// Reduced-motion visitors receive all story copy without reveal observers.
 const reduced = boot({ reducedMotion: true });
 assert.equal(reduced.document.documentElement.classList.contains('has-reveal'), false);
+assert.equal(reduced.document.documentElement.classList.contains('has-scroll-story'), false);
 assert.equal(reduced.observers.length, 0);
 
-console.log('PASS: menu keyboard/outside-click behavior; scroll reveals; reduced-motion fallback.');
+console.log('PASS: menu keyboard/outside-click behavior; progressive reveals; sticky-story transitions; reduced-motion fallback.');

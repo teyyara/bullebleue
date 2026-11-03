@@ -1,72 +1,155 @@
 #!/usr/bin/env python3
-"""Validate the multi-page information architecture and shared navigation."""
+"""Validate the Loop 012 public pages, article routes, shared navigation and sticky story."""
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote
 import re
-ROOT=Path(__file__).resolve().parents[1]
-PAGES=("index.html","la-bulle.html","activites.html","actualites.html","apail.html","contact.html")
+
+ROOT = Path(__file__).resolve().parents[1]
+PAGES = (
+    "index.html", "qui-sommes-nous.html", "actualites.html", "adherer.html",
+    "contact.html", "mentions-legales.html",
+    "actualite-2026-10-26.html", "actualite-2026-10-17.html", "actualite-2026-10-10.html",
+)
+NAV = ("index.html", "qui-sommes-nous.html", "actualites.html", "adherer.html", "contact.html")
+EXPECTED_CURRENT = {
+    "index.html": ("index.html", "page"),
+    "qui-sommes-nous.html": ("qui-sommes-nous.html", "page"),
+    "actualites.html": ("actualites.html", "page"),
+    "adherer.html": ("adherer.html", "page"),
+    "contact.html": ("contact.html", "page"),
+    "mentions-legales.html": (None, None),
+    "actualite-2026-10-26.html": ("actualites.html", "location"),
+    "actualite-2026-10-17.html": ("actualites.html", "location"),
+    "actualite-2026-10-10.html": ("actualites.html", "location"),
+}
+
 class PageParser(HTMLParser):
- def __init__(self):
-  super().__init__(); self.lang=None; self.title=False; self.description=False; self.h1=0; self.main=0; self.ids=set(); self.links=[]; self.nav_depth=0; self.nav_links=[]; self.current_nav=[]
- def handle_starttag(self,tag,attrs):
-  a=dict(attrs)
-  if tag=="html": self.lang=a.get("lang")
-  if tag=="title": self.title=True
-  if tag=="h1": self.h1+=1
-  if tag=="main": self.main+=1
-  if a.get("id"): self.ids.add(a["id"])
-  if tag=="meta" and a.get("name")=="description" and a.get("content"): self.description=True
-  if tag=="nav" and a.get("id")=="navigation": self.nav_depth+=1
-  if tag=="a" and a.get("href"):
-   self.links.append(a["href"])
-   if self.nav_depth:
-    self.nav_links.append(a["href"])
-    if a.get("aria-current")=="page": self.current_nav.append(a["href"])
- def handle_endtag(self,tag):
-  if tag=="nav" and self.nav_depth: self.nav_depth-=1
+    def __init__(self):
+        super().__init__()
+        self.lang = None
+        self.title = False
+        self.description = False
+        self.h1 = 0
+        self.main = 0
+        self.ids = set()
+        self.links = []
+        self.nav_depth = 0
+        self.nav_links = []
+        self.nav_current = []
+        self.footer_current = []
+        self.images = []
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if tag == "html":
+            self.lang = a.get("lang")
+        if tag == "title":
+            self.title = True
+        if tag == "h1":
+            self.h1 += 1
+        if tag == "main":
+            self.main += 1
+        if a.get("id"):
+            self.ids.add(a["id"])
+        if tag == "meta" and a.get("name") == "description" and a.get("content"):
+            self.description = True
+        if tag == "nav" and a.get("id") == "navigation":
+            self.nav_depth += 1
+        if tag == "a" and a.get("href"):
+            self.links.append(a["href"])
+            if self.nav_depth:
+                self.nav_links.append(a["href"])
+                if a.get("aria-current"):
+                    self.nav_current.append((a["href"], a["aria-current"]))
+            elif a.get("aria-current") == "page":
+                self.footer_current.append(a["href"])
+        if tag == "img":
+            self.images.append(a)
+    def handle_endtag(self, tag):
+        if tag == "nav" and self.nav_depth:
+            self.nav_depth -= 1
+
 def main():
- for page in PAGES:
-  path=ROOT/page; assert path.is_file() and path.stat().st_size>1000, f"missing/empty page: {page}"
-  html=path.read_text(encoding="utf-8"); p=PageParser(); p.feed(html)
-  assert p.lang=="fr" and p.title and p.description, f"{page}: language/title/description"
-  assert p.h1==1 and p.main==1, f"{page}: expected one h1 and main"
-  assert p.nav_links==list(PAGES), f"{page}: shared navigation/order {p.nav_links}"
-  assert p.current_nav==[page], f"{page}: active nav state"
-  assert all(h[1:] in p.ids for h in p.links if h.startswith("#")), f"{page}: broken fragment"
-  for href in p.links:
-   if re.match(r"^(index|la-bulle|activites|actualites|apail|contact)\.html$",href): assert (ROOT/href).is_file(), f"{page}: broken local link {href}"
-  for asset in re.findall(r'(?:src|href)="/([^"]+)"',html): assert (ROOT/unquote(asset)).is_file(), f"{page}: missing local asset {asset}"
-  assert html.count('src="/assets/logo%20final.png"')==2, f"{page}: official logo must appear in header and footer"
-  assert html.count('class="brand-logo"')==2, f"{page}: expected two official logo placements"
-  assert "https://www.facebook.com/p/Bulle-Bleue-APAiL-100066715807933/" in html
-  assert "#173b4b" not in html.lower(), f"{page}: previous theme colour remains"
-  assert "#1642A5" in html, f"{page}: logo-derived theme colour missing"
- home=(ROOT/"index.html").read_text(encoding="utf-8")
- assert len(home)<9000, "homepage too long"
- assert all(page in home for page in PAGES[1:])
- assert "30 Rempart Saint-Vincent" not in home and "Sapala" not in home
- assert "861826539_1459854896248357_2220258804161137760_n.jpg" in home
- assert 'class="home-hero-photo"' in home
- audience=(ROOT/"la-bulle.html").read_text(encoding="utf-8")
- assert all(x in audience for x in ("Enfants de plus de 6 ans","Adolescents et adultes","14 h 30","15 h","11 mars 2024","confirmer les horaires"))
- activities=(ROOT/"activites.html").read_text(encoding="utf-8")
- assert all(x in activities for x in ("Jeux & convivialité","Musique & scène","Arts & création","Cuisine & fêtes","Jardin & nature","Ciné Relax","Médiation animale"))
- assert activities.count('class="activity-photo-card"')==3
- assert all(x in activities for x in ("860039147_1459854696248377_603952803324221168_n.jpg","860071516_1459854822915031_8736563633377469815_n.jpg","863442942_1459854946248352_2630610521884942198_n.jpg"))
- news=(ROOT/"actualites.html").read_text(encoding="utf-8")
- assert all(x in news for x in ("26 octobre 2026","17 octobre 2026","10 octobre 2026","20 septembre 2026"))
- apail=(ROOT/"apail.html").read_text(encoding="utf-8")
- assert all(x in apail for x in ("1995","2021","Sapala","Moulay-Bousselham","Dcheira","les Bleuettes","Association Valentin Haüy"))
- contact=(ROOT/"contact.html").read_text(encoding="utf-8")
- assert all(x in contact for x in ("apail@live.fr","30 Rempart Saint-Vincent","rue Leriche","11 mars 2024","Confirmez le lieu"))
- css=(ROOT/"styles.css").read_text(encoding="utf-8"); js=(ROOT/"script.js").read_text(encoding="utf-8")
- assert "prefers-reduced-motion" in css and "@media(max-width:980px)" in css
- assert 'aria-current="page"]' in css
- assert "event.key !== 'Escape' || toggle.getAttribute('aria-expanded') !== 'true'" in js
- assert all(token in css for token in ("--ink:#06195E","--blue:#1642A5","--blue-mid:#1C60CF","--blue-bright:#2084DE","--sky:#4EABEC","--blue-pale:#D3DEF0","--blue-light:#9DC0EA"))
- assert all(token not in css for token in ("--clay","--ochre","#94543b","#d0b17d","#e9eeeb","#eae7de","rgba(177,138,80"))
- favicon=(ROOT/"assets/favicon.svg").read_text(encoding="utf-8")
- assert all(token in favicon for token in ("#06195E","#1642A5","#1C60CF","#2084DE","#F3F7FE"))
- print("PASS: six pages, shared navigation, active-page state, metadata, content allocation, concise homepage, local links and accessibility safeguards")
-if __name__=="__main__": main()
+    parsed = {}
+    for page in PAGES:
+        path = ROOT / page
+        assert path.is_file() and path.stat().st_size > 1000, f"missing/empty page: {page}"
+        html = path.read_text(encoding="utf-8")
+        parser = PageParser()
+        parser.feed(html)
+        parsed[page] = (html, parser)
+        assert parser.lang == "fr" and parser.title and parser.description, f"{page}: French metadata"
+        assert parser.h1 == 1 and parser.main == 1, f"{page}: expected one h1 and main"
+        assert parser.nav_links == list(NAV), f"{page}: shared navigation/order {parser.nav_links}"
+        current_href, current_type = EXPECTED_CURRENT[page]
+        if current_href:
+            assert parser.nav_current == [(current_href, current_type)], f"{page}: active navigation {parser.nav_current}"
+        else:
+            assert parser.nav_current == [], f"{page}: legal page must not claim a main-nav current page"
+            assert parser.footer_current == ["mentions-legales.html"], f"{page}: legal footer current state"
+        assert all(h[1:] in parser.ids for h in parser.links if h.startswith("#")), f"{page}: broken fragment"
+        for href in parser.links:
+            if href.startswith("#") or href.startswith(("mailto:", "tel:", "https://", "http://")):
+                continue
+            target = unquote(href.split("?", 1)[0].split("#", 1)[0]).lstrip("/")
+            if target:
+                assert (ROOT / target).is_file(), f"{page}: broken local link {href}"
+        for img in parser.images:
+            src = unquote(img.get("src", ""))
+            if src.startswith("/"):
+                src = src.lstrip("/")
+                assert (ROOT / src).is_file(), f"{page}: missing image {src}"
+            assert "alt" in img, f"{page}: image missing alt text"
+        assert html.count('src="/assets/logo%20final.png"') == 2, f"{page}: official logo header/footer"
+        assert "https://www.facebook.com/p/Bulle-Bleue-APAiL-100066715807933/" in html, f"{page}: exact Facebook page"
+        assert "#1642A5" in html, f"{page}: logo-derived theme metadata"
+    for obsolete in ("la-bulle.html", "activites.html", "apail.html"):
+        assert not (ROOT / obsolete).exists(), f"obsolete page still published: {obsolete}"
+
+    home = parsed["index.html"][0]
+    assert len(home) < 9000, "homepage must remain concise"
+    assert home.count('class="story-step"') == 3, "homepage has exactly three scroll chapters"
+    assert 'src="/assets/illustrations/hero-community.svg"' in home
+    assert "home-hero-photo" not in home and "/assets/posts/" not in home
+    assert all(h in home for h in ("Qui sommes-nous ?", "actualites.html", "adherer.html", "contact.html"))
+
+    news = parsed["actualites.html"][0]
+    assert news.count('class="news-card"') == 3, "news overview must show exactly three cards"
+    assert news.count("Voir plus") == 3
+    for slug in ("actualite-2026-10-26.html", "actualite-2026-10-17.html", "actualite-2026-10-10.html"):
+        assert slug in news and (ROOT / slug).is_file(), f"news route missing: {slug}"
+    for page, date, topic in (
+        ("actualite-2026-10-26.html", "26 octobre 2026", "cuisine"),
+        ("actualite-2026-10-17.html", "17 octobre 2026", "40 ans"),
+        ("actualite-2026-10-10.html", "10 octobre 2026", "Association Valentin Haüy"),
+    ):
+        html = parsed[page][0]
+        assert date in html and topic in html, f"{page}: dated content"
+
+    about = parsed["qui-sommes-nous.html"][0]
+    assert all(term in about for term in ("1995", "2021", "enfants de plus de 6 ans", "les Bleuettes", "Sapala", "Maroc"))
+    join = parsed["adherer.html"][0]
+    assert "Demander les modalités d’adhésion" in join and "cotisation" in join.lower()
+    assert "<form" not in join.lower(), "membership page must not collect unnecessary sensitive information"
+    contact = parsed["contact.html"][0]
+    assert all(term in contact for term in ("apail@live.fr", "30 Rempart Saint-Vincent", "11 mars 2024", "confirmer le lieu"))
+    legal = parsed["mentions-legales.html"][0]
+    assert all(term in legal for term in ("Page à compléter", "Responsable de publication", "Hébergement", "À communiquer par l’association", "à confirmer"))
+
+    css = (ROOT / "styles.css").read_text(encoding="utf-8")
+    js = (ROOT / "script.js").read_text(encoding="utf-8")
+    assert ".story-art{position:sticky" in css and "html.has-scroll-story .story-step.is-current .story-panel" in css
+    assert "@media(prefers-reduced-motion:reduce)" in css and "@media(max-width:760px)" in css
+    assert "storySteps" in js and "prefers-reduced-motion" in js and "has-scroll-story" in js
+    assert all(token in css for token in ("--ink:#06195E", "--blue:#1642A5", "--blue-mid:#1C60CF", "--blue-bright:#2084DE", "--sky:#4EABEC", "--blue-pale:#D3DEF0"))
+    for svg in ("hero-community.svg", "games.svg", "culture.svg", "discovery.svg"):
+        data = (ROOT / "assets/illustrations" / svg).read_text(encoding="utf-8")
+        assert any(c in data for c in ("#1642A5", "#2084DE", "#1C60CF", "#4EABEC"))
+        assert not any(c in data.lower() for c in ("#f6d877", "#d59d76", "#a96f55", "#e5a28e", "#c68f6d"))
+
+    favicon = (ROOT / "assets/favicon.svg").read_text(encoding="utf-8")
+    assert all(c in favicon for c in ("#06195E", "#1642A5", "#1C60CF", "#2084DE", "#F3F7FE"))
+    print("PASS: 9 pages, shared accessible navigation, 3 dated article routes, 3-card news overview, scroll-story, reduced-motion fallback, local assets and logo palette.")
+
+if __name__ == "__main__":
+    main()

@@ -1,6 +1,6 @@
 {
-  "version": "1.3",
-  "policy": "Loop 011 samples the user's transparent logo and replaces the inherited interim/warm palette throughout the shared site styles and favicon with the logo's blue family. Selected documentary photos and the official logo remain locally hosted.",
+  "version": "1.4",
+  "policy": "Loop 012 uses the existing original SVG community drawing as the sticky homepage background and three recoloured SVG illustrations on the editorial Actualités overview and article pages. The official transparent logo and sampled logo-blue palette remain consistent across all nine pages; no event-specific documentary photo is implied by the illustrations.",
   "assets": [
     {
       "path": "assets/illustrations/hero-community.svg",
@@ -9,7 +9,7 @@
       "width": 1000,
       "height": 760,
       "documentary": false,
-      "status": "ARCHIVED — NOT REFERENCED BY LOOP 006 HTML"
+      "status": "IN USE — index.html sticky homepage backdrop; recoloured with logo-derived blues."
     },
     {
       "path": "assets/illustrations/games.svg",
@@ -18,7 +18,7 @@
       "width": 640,
       "height": 480,
       "documentary": false,
-      "status": "ARCHIVED — NOT REFERENCED BY LOOP 006 HTML"
+      "status": "IN USE — Actualités card and 26 October 2026 article; explicitly labelled illustration."
     },
     {
       "path": "assets/illustrations/garden.svg",
@@ -36,7 +36,7 @@
       "width": 640,
       "height": 480,
       "documentary": false,
-      "status": "ARCHIVED — NOT REFERENCED BY LOOP 006 HTML"
+      "status": "IN USE — Actualités card and 10 October 2026 article; explicitly labelled illustration."
     },
     {
       "path": "assets/illustrations/culture.svg",
@@ -45,7 +45,7 @@
       "width": 640,
       "height": 480,
       "documentary": false,
-      "status": "ARCHIVED — NOT REFERENCED BY LOOP 006 HTML"
+      "status": "IN USE — Actualités card and 17 October 2026 article; explicitly labelled illustration."
     },
     {
       "path": "assets/illustrations/solidarity.svg",
@@ -61,7 +61,7 @@
       "use": "Shared site logo in all six page headers and footers",
       "description": "User-supplied transparent official logo. Binary is present in the repository; visual pixel sampling was blocked by the >1 MB file reader limit.",
       "documentary": false,
-      "status": "IN USE — PALETTE SAMPLING PENDING"
+      "status": "IN USE — official transparent logo in header/footer of all nine public pages."
     },
     {
       "path": "assets/posts/735543787_1361390089428172_5312506833854343201_n.jpg",
@@ -110,21 +110,21 @@
       "use": "Activities page — games photograph",
       "description": "Close-up of tabletop game pieces and a board; no identifiable faces visible.",
       "documentary": true,
-      "status": "IN USE — activites.html"
+      "status": "ARCHIVED — retained locally; current activities page consolidated into Qui sommes-nous."
     },
     {
       "path": "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg",
       "use": "Activities page — discovery photograph",
       "description": "Close-up of an illustrated tabletop puzzle/board with hands nearby; no identifiable faces visible.",
       "documentary": true,
-      "status": "IN USE — activites.html"
+      "status": "ARCHIVED — retained locally; current activities page consolidated into Qui sommes-nous."
     },
     {
       "path": "assets/posts/861826539_1459854896248357_2220258804161137760_n.jpg",
       "use": "Homepage hero photograph",
       "description": "Close-up of wooden geometric game pieces and hands around a table; no identifiable faces visible.",
       "documentary": true,
-      "status": "IN USE — index.html"
+      "status": "ARCHIVED — retained locally; no longer used on current homepage."
     },
     {
       "path": "assets/posts/863353686_1459854766248370_1734709857082262774_n.jpg",
@@ -138,24 +138,25 @@
       "use": "Activities page — manipulation/creation photograph",
       "description": "Close-up of geometric pieces arranged around a table; no identifiable faces visible.",
       "documentary": true,
-      "status": "IN USE — activites.html"
+      "status": "ARCHIVED — retained locally; current activities page consolidated into Qui sommes-nous."
     }
   ],
   "permissions": {
     "external_press_photos": "NOT USED",
-    "social_media_photos": "USER-REPORTED OWNER AUTHORISATION — selected local photos used after visual review",
-    "identifiable_people": "People-forward/group photographs showing identifiable adults or children remain unpublished pending image-specific participant/guardian consent confirmation.",
+    "social_media_photos": "USER-REPORTED OWNER AUTHORISATION; no documentary Facebook JPG is currently placed in the Loop 012 public page templates.",
+    "identifiable_people": "Identifiable participant/group photographs remain unused in Loop 012; the current news images are original non-documentary SVG illustrations.",
     "user_supplied_facebook_page": "Exact Facebook URL remains linked. User supplied the official transparent logo and original page images in the repository.",
     "current_page_images": [
-      "assets/posts/861826539_1459854896248357_2220258804161137760_n.jpg",
-      "assets/posts/860039147_1459854696248377_603952803324221168_n.jpg",
-      "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg",
-      "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg"
+      "assets/illustrations/hero-community.svg",
+      "assets/illustrations/games.svg",
+      "assets/illustrations/culture.svg",
+      "assets/illustrations/discovery.svg",
+      "assets/logo final.png"
     ],
     "current_monogram": "RETIRED — replaced with assets/logo final.png",
     "owner_authorization": "USER-REPORTED: owner authorised reuse of Facebook-page assets.",
     "participant_image_releases": "NOT INDEPENDENTLY DOCUMENTED — initial placements use close-ups without identifiable faces.",
-    "logo_palette": "SAMPLED IN LOOP 011 from the directly uploaded RGBA logo; representative colour clusters and derived surface tints are documented in evidence/product-contract.json."
+    "logo_palette": "SAMPLED IN LOOP 011 from the uploaded transparent RGBA logo; Loop 012 SVG illustrations use the sampled blue family."
   },
-  "optimization": "Documentary images are stored locally and lazy-loaded below the homepage hero; all placed images have responsive aspect ratios and descriptive alt text. The hero image is loaded eagerly. The oversized original logo is displayed with a fixed contain box; explicit intrinsic dimensions are not known. Palette extraction used the transparent original; the site continues to reference the repository logo locally."
+  "optimization": "The homepage scene is a local SVG loaded eagerly as a sticky decorative backdrop. Three local SVG news illustrations use intrinsic 640×480 dimensions and lazy loading on the overview. The logo remains local and uses width/height attributes. No remote image host or font dependency is introduced."
 }

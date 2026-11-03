@@ -1,6 +1,6 @@
 {
-  "requirements_version": "0.5",
-  "candidate": "bullebleue-loop-006-concise-editorial-redesign-v1",
+  "requirements_version": "0.6",
+  "candidate": "bullebleue-loop-012-owner-led-information-architecture-sticky-home-news-v1",
   "requirements": [
     {
       "id": "REQ-001",
@@ -274,20 +274,20 @@
     },
     {
       "id": "REQ-031",
-      "requirement": "Separate site information into dedicated pages so visitors do not have to read everything on the homepage.",
-      "acceptance": "Homepage is a short orientation page; audience/session, activities, news, APAiL and contact details live on separate named HTML pages.",
+      "requirement": "Organise public information around the owner's requested navigation.",
+      "acceptance": "Main destinations are Accueil, Qui sommes-nous ?, Actualités, Adhérer and Nous contacter; Mentions légales is linked in the footer; prior La Bulle/Activités/APAiL copy is consolidated into Qui sommes-nous ?.",
       "risk": "R1",
       "validation": "Six-page structural validator and homepage character limit.",
-      "status": "IMPLEMENTED — SIX-PAGE STATIC ARCHITECTURE",
+      "status": "IMPLEMENTED — LOOP 012 SOURCE AUDIT PENDING",
       "confidence": "HIGH"
     },
     {
       "id": "REQ-032",
       "requirement": "Provide consistent, predictable navigation across all pages.",
-      "acceptance": "All six pages expose the same six navigation destinations in the same order; current page uses aria-current=page; footer is consistent.",
+      "acceptance": "All public pages use the same five-link primary navigation in the same order; the relevant destination or parent news section is indicated with aria-current.",
       "risk": "R1",
       "validation": "Multi-page validator asserts common nav sequence and active-page state.",
-      "status": "IMPLEMENTED — SOURCE ASSERTIONS ADDED",
+      "status": "IMPLEMENTED — LOOP 012 SOURCE AUDIT PENDING",
       "confidence": "HIGH"
     },
     {
@@ -310,11 +310,11 @@
     },
     {
       "id": "REQ-035",
-      "requirement": "Use authentic activity photography without overwhelming the organised information architecture.",
-      "acceptance": "A small local photo treatment appears on the homepage and a three-image activity-photo row appears on activites.html; each image has meaningful alt text, appropriate eager/lazy loading and a local source path.",
+      "requirement": "Use illustrations as the homepage's persistent scroll background and present illustrations for selected news stories.",
+      "acceptance": "The homepage uses one full-scene local SVG illustration as a sticky backdrop while three text chapters transition on scroll; news uses three locally hosted, explicitly labelled illustrations rather than implying they are documentary event photos.",
       "risk": "R1",
       "validation": "HTML source assertions, asset register and local-path checks.",
-      "status": "IMPLEMENTED — SOURCE AUDIT PASS",
+      "status": "IMPLEMENTED — LOOP 012 SOURCE AUDIT PENDING",
       "confidence": "HIGH for source structure; browser rendering pending"
     },
     {
@@ -325,6 +325,69 @@
       "validation": "Direct RGBA pixel sampling and deterministic alpha-weighted 8-cluster colour analysis; CSS token/old-palette assertions in tests/validate_site.py; remote six-page read-back. Browser render remains a separate check.",
       "status": "IMPLEMENTED — LOGO PIXEL SAMPLING, CSS TOKENS AND SIX-PAGE SOURCE AUDIT PASS",
       "confidence": "HIGH for palette extraction and source integration; rendered visual review remains pending"
+    },
+    {
+      "id": "REQ-037",
+      "requirement": "Create an illustrated homepage scroll story in line with the owner's feedback.",
+      "acceptance": "One illustration remains sticky as the visitor scrolls through three successive text chapters; the previous standalone hero photograph and image-heavy destination mosaic are removed.",
+      "risk": "R1",
+      "validation": "HTML/CSS source audit, IntersectionObserver unit test, responsive and reduced-motion checks.",
+      "status": "IMPLEMENTED — SOURCE AUDIT PENDING",
+      "confidence": "HIGH for implementation intent; browser rendering not yet reviewed."
+    },
+    {
+      "id": "REQ-038",
+      "requirement": "Keep homepage text understandable and available without animation.",
+      "acceptance": "Text is visible by default; IntersectionObserver progressively enhances which chapter is visible only when motion is allowed; reduced-motion and unsupported-browser users receive all content.",
+      "risk": "R1",
+      "validation": "Script regression test and reduced-motion CSS/source assertions.",
+      "status": "IMPLEMENTED — TEST EXECUTION PENDING",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-039",
+      "requirement": "Make Actualités a prominent editorial section with dedicated story pages.",
+      "acceptance": "The overview contains exactly three rectangular cards with an image, date, short caption, brief summary and Voir plus link; each card opens a dedicated article page with its own illustration, date and source note.",
+      "risk": "R1",
+      "validation": "Static validator checks card count, article routes, dates and source labels.",
+      "status": "IMPLEMENTED — SOURCE AUDIT PENDING",
+      "confidence": "HIGH for content transcription; images are illustrative, not confirmed event photos."
+    },
+    {
+      "id": "REQ-040",
+      "requirement": "Provide a dedicated Qui sommes-nous page that consolidates association information.",
+      "acceptance": "The page combines the 1995 APAiL / 2021 La Bulle milestones, audience, activity examples, Les Bleuettes and historically framed solidarity information.",
+      "risk": "R1",
+      "validation": "Source-to-copy review and static validator.",
+      "status": "IMPLEMENTED — SOURCE AUDIT PENDING",
+      "confidence": "HIGH for supplied extraction provenance."
+    },
+    {
+      "id": "REQ-041",
+      "requirement": "Provide an Adhérer page without inventing membership terms or collecting sensitive data.",
+      "acceptance": "A mailto request asks APAiL for the current process; no fee, form, required document or renewal rule is invented.",
+      "risk": "R2",
+      "validation": "Static validator confirms CTA and absence of an HTML form or specific invented fee.",
+      "status": "IMPLEMENTED — SOURCE AUDIT PENDING",
+      "confidence": "HIGH for conservative content boundary."
+    },
+    {
+      "id": "REQ-042",
+      "requirement": "Create a Mentions légales page while preserving unknown legal/hosting details as explicit blockers.",
+      "acceptance": "The page labels unknown official association name, registered office, publication manager and hosting provider for confirmation; no legal or hosting information is fabricated.",
+      "risk": "R2",
+      "validation": "Static validator asserts pending-confirmation notice and required field labels.",
+      "status": "IMPLEMENTED — NOT READY FOR LEGAL SIGN-OFF",
+      "confidence": "HIGH for known unknowns."
+    },
+    {
+      "id": "REQ-043",
+      "requirement": "Maintain one shared accessible navigation and footer over all destination and article pages.",
+      "acceptance": "All nine pages provide French language metadata, one H1, one main landmark, unique title/description, shared header/footer, logo references and working local paths; article pages mark Actualités as the current section.",
+      "risk": "R1",
+      "validation": "Multi-page Python validator and remote tree/path audit.",
+      "status": "IMPLEMENTED — SOURCE AUDIT PENDING",
+      "confidence": "HIGH"
     }
   ]
 }
