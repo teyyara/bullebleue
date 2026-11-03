@@ -6,14 +6,14 @@
   "candidate_status": "OWNER-REQUESTED NINE-PAGE ARCHITECTURE IMPLEMENTED; STICKY ILLUSTRATED HOMEPAGE AND THREE DEDICATED NEWS ARTICLES PASS REMOTE SOURCE AUDIT; PYTHON/NODE/BROWSER CHECKS NOT RUN; LEGAL PAGE REQUIRES APAiL COMPLETION; NOT RELEASE CERTIFIED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "97c429d83c723c1bff441d32458afd60a95a8e96",
+  "implementation_checkpoint_commit": "c3a556b58e01f1c6751c66fc3bf84a63740387ff",
   "remote_git_blob_objects": {
     "index.html": "77e503b48b27ab2b183fdab70b2819b8f4153723",
     "styles.css": "a54868e47682c66b795284727a45ba43605e8836",
-    "script.js": "307c5840d82993e961428f74a4d7d5f97c67d5e9",
+    "script.js": "cdd53cf6de635f3217ada8c14eb2ee4ae5a70d4d",
     "assets/favicon.svg": "8afd81a5cb62be5651bdae4d31e53c83c1c4b9b6",
     "menu_regression_test_js": "493debf5b26c01e0b166d555b4dab53845a52f28",
-    "tests/test_menu.js": "98bd18e752a3d3a5126c26bee1a54b1a7c8be2ca",
+    "tests/test_menu.js": "d2d4a14519309811297651d79f28bc667646f5fb",
     "tests/validate_site.py": "2ccfca3f5e332f6f69ef42e9c15845d3f7030e30",
     "assets/illustrations/hero-community.svg": "be16475b8fe6e28faab3b2441943a531f109b697",
     "assets/illustrations/games.svg": "a4de76c67db92ea8922508109aab9ed4fcffc77f",
@@ -425,7 +425,8 @@
     "implementation_commits": [
       "cc4a277a8de112343f6ad9e51b82fa296dd66001",
       "f166d4005f415cffc57b88ed9c9c4190fbdfb45d",
-      "97c429d83c723c1bff441d32458afd60a95a8e96"
+      "97c429d83c723c1bff441d32458afd60a95a8e96",
+      "c3a556b58e01f1c6751c66fc3bf84a63740387ff"
     ],
     "changes": [
       "Replaced six-link IA with five main destinations and a legal-notices link in the shared footer.",
@@ -436,11 +437,12 @@
       "Added Nous contacter and Mentions légales; unknown legal and hosting details are clearly marked pending association confirmation.",
       "Recoloured selected local vector illustrations with the sampled official logo blues and documented surface tints; strengthened palette validation.",
       "Added the current nine-page structural validator and a Node regression test for story transitions and reduced-motion fallback.",
-      "Retired prior standalone la-bulle.html, activites.html and apail.html entry points."
+      "Retired prior standalone la-bulle.html, activites.html and apail.html entry points.",
+      "Set the opening text chapter active before the first IntersectionObserver callback to prevent a blank initial story frame."
     ],
     "validation": {
       "remote_source_audit": "PASS — all nine page structures, shared nav, active states, metadata, logo/footer links, internal page paths and all root-relative local assets checked against exact main-branch blobs/tree.",
-      "homepage_and_scroll_story": "PASS — three chapters, single sticky SVG, progressive IntersectionObserver JS and reduced-motion fallback are present in source.",
+      "homepage_and_scroll_story": "PASS — three chapters, single sticky local SVG, first chapter initially active before observer delivery, progressive IntersectionObserver JS and reduced-motion fallback are present in source.",
       "news": "PASS — exactly three cards and Voir plus links, all three dated article routes present; SVG imagery explicitly labelled illustration.",
       "palette": "PASS — all placed SVG colour tokens restricted to official logo colours and documented near-white tints.",
       "membership_and_legal": "PASS — no HTML form or invented fees; legal/hosting unknowns visibly pending.",

@@ -10,7 +10,7 @@
   "branch": "main",
   "branch_policy": "single branch",
   "bootstrap_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b",
-  "latest_loop_checkpoint_commit": "97c429d83c723c1bff441d32458afd60a95a8e96",
+  "latest_loop_checkpoint_commit": "c3a556b58e01f1c6751c66fc3bf84a63740387ff",
   "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
   "status_metadata_commit": "99b6f0942f55264ab474b74c3c08d41d2b397e88",
   "last_known_good_release_commit": null,
@@ -87,12 +87,13 @@
   "latest_loop_11_node_test": "NOT RUN — JavaScript unchanged.",
   "latest_loop_11_visual_review": "NOT RUN — no browser render/screenshots; no rendered no-overflow claim.",
   "loop_011_validator_correction_commit": "0cf2cf07a2eb363a8d490a09890544519944f335",
-  "latest_loop_12_checkpoint_commit": "97c429d83c723c1bff441d32458afd60a95a8e96",
-  "latest_loop_12_source_audit": "PASS — exact main-branch remote source/tree audit across all nine pages, shared nav/footer/current states, local links/assets, sticky homepage, three dated article routes, logo palette and legal/membership caveats.",
+  "latest_loop_12_checkpoint_commit": "c3a556b58e01f1c6751c66fc3bf84a63740387ff",
+  "latest_loop_12_source_audit": "PASS — exact main-branch remote source/tree audit across all nine pages, shared nav/footer/current states, local links/assets, sticky homepage, three dated article routes, illustration palette, legal/membership caveats, and initial first-chapter visibility before observer delivery.",
   "latest_loop_12_python_validator": "NOT RUN — updated tests/validate_site.py was not executed against a complete local checkout.",
   "latest_loop_12_node_test": "NOT RUN — updated script.js and tests/test_menu.js were not executed with Node.js during Loop 012.",
   "latest_loop_12_visual_review": "NOT RUN — no current candidate browser render or screenshots; no rendered visual/no-overflow PASS claimed.",
   "latest_loop_12_status": "WAITING_FOR_CONTINUE — implementation checkpointed; no deployment.",
   "change_request_cr006": "IMPLEMENTED IN LOOP 012: owner-requested sticky illustrated homepage, Qui sommes-nous, three curated news cards with dedicated articles, Adhérer, Nous contacter and Mentions légales.",
-  "latest_loop_12_metadata_commit": "99b6f0942f55264ab474b74c3c08d41d2b397e88"
+  "latest_loop_12_metadata_commit": "99b6f0942f55264ab474b74c3c08d41d2b397e88",
+  "latest_loop_12_final_code_commit": "c3a556b58e01f1c6751c66fc3bf84a63740387ff"
 }

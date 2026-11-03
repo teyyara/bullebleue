@@ -7,7 +7,7 @@
 **Candidate:** bullebleue-loop-012-owner-led-information-architecture-sticky-home-news-v1  
 **Repository:** teyyara/bullebleue  
 **Branch:** main (single-branch progression)  
-**Implementation checkpoint:** 97c429d83c723c1bff441d32458afd60a95a8e96  
+**Implementation checkpoint:** c3a556b58e01f1c6751c66fc3bf84a63740387ff  
 **Status:** WAITING_FOR_CONTINUE
 
 ## Owner direction implemented
@@ -19,7 +19,7 @@ On 3 November 2026, the user relayed the association owner's requested informati
 - Replaced the old six-destination navigation with five clear primary links: Accueil, Qui sommes-nous ?, Actualités, Adhérer and Nous contacter. Mentions légales is available from the shared footer.
 - Consolidated the previous La Bulle, Activités and APAiL pages into one dedicated Qui sommes-nous page, preserving source-grounded identity, audience, activity examples, volunteer information and historical solidarity context.
 - Rebuilt the homepage around one local illustrated community backdrop that remains sticky while three text chapters take their turn as the visitor scrolls.
-- Added progressive IntersectionObserver enhancement for the homepage. Content is visible in the non-enhanced default and remains visible for reduced-motion users or browsers without IntersectionObserver.
+- Added progressive IntersectionObserver enhancement for the homepage. The opening panel is active immediately, before the first observer callback; content is visible in the non-enhanced default and remains visible for reduced-motion users or browsers without IntersectionObserver.
 - Rebuilt Actualités as a compact editorial overview with exactly three rectangular cards and three Voir plus actions. Each card opens its own dedicated dated article page: 26 October, 17 October and 10 October 2026.
 - Used original local SVG illustrations on Actualités and individual articles. They are labelled as illustrations, not as documentary photographs of the specific events.
 - Added Adhérer with an email request for up-to-date membership terms. No fee, mandatory document, form or renewal conditions are invented.

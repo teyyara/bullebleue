@@ -382,6 +382,11 @@
         "name": "Obsolete route removal",
         "result": "PASS",
         "detail": "la-bulle.html, activites.html and apail.html are removed from the remote tree; content consolidated in qui-sommes-nous.html."
+      },
+      {
+        "name": "Initial chapter state",
+        "result": "PASS — SOURCE",
+        "detail": "The first homepage chapter is marked active before the first observer callback; the updated Node regression test asserts this initial state. The test itself was not executed."
       }
     ],
     "limitation": "This is a source/tree audit performed against the exact remote main-branch blobs. It is not execution of python3 tests/validate_site.py, Node.js tests, browser rendering or a visual responsive review."
