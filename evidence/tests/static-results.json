@@ -1,7 +1,7 @@
 {
   "test_run": "loop-001-static",
-  "observed_at": "2026-11-02",
-  "status": "PASS",
+  "observed_at": "2026-11-03",
+  "status": "PASS WITH LIMITS — LOOP 012 REMOTE SOURCE AUDIT",
   "checks": [
     {
       "name": "Structural validator",
@@ -326,5 +326,64 @@
       "Source audit is not rendered browser testing.",
       "No browser screenshot or no-overflow PASS is claimed."
     ]
+  },
+  "loop_012": {
+    "test_run": "loop-012-owner-led-information-architecture-source-audit",
+    "observed_at": "2026-11-03",
+    "runner": "In-turn deterministic source audit of exact main-branch GitHub blobs and recursive Git tree using the GitHub repository connector.",
+    "status": "PASS — REMOTE SOURCE AUDIT ONLY",
+    "checks": [
+      {
+        "name": "Nine-page document structure",
+        "result": "PASS",
+        "detail": "All nine current pages have lang=fr, a unique title and meta description, exactly one h1 and one main landmark."
+      },
+      {
+        "name": "Shared primary navigation",
+        "result": "PASS",
+        "detail": "All pages expose the same five primary destinations in the owner-requested order; every main destination has one accurate aria-current state. Article details mark Actualités as the current section using aria-current=location."
+      },
+      {
+        "name": "Footer and official identity",
+        "result": "PASS",
+        "detail": "All nine pages contain two references to the transparent official logo, the exact Facebook page and a Mentions légales footer link."
+      },
+      {
+        "name": "Local page routes and assets",
+        "result": "PASS",
+        "detail": "All root-relative local references resolve in the recursive main-branch tree; all image elements include alt attributes; no unresolved internal HTML routes."
+      },
+      {
+        "name": "Homepage sticky story source",
+        "result": "PASS",
+        "detail": "Three successive text chapters share one local sticky illustration. The previous homepage photo block is removed. Script uses IntersectionObserver as progressive enhancement."
+      },
+      {
+        "name": "Reduced motion and content fallback",
+        "result": "PASS — SOURCE",
+        "detail": "When motion is reduced or IntersectionObserver is unavailable, the scroll-story enhancement class is not added; CSS provides a static-visible content state."
+      },
+      {
+        "name": "Editorial news journey",
+        "result": "PASS",
+        "detail": "Actualités contains exactly three rectangular cards and three Voir plus actions. All three cards link to dedicated, dated article pages with source notes."
+      },
+      {
+        "name": "Illustration honesty and palette",
+        "result": "PASS",
+        "detail": "Every news visual is labelled as an illustration, not an event photograph. Hex colours in the four placed SVGs are limited to the logo-derived palette and documented near-white surface tints."
+      },
+      {
+        "name": "Owner-requested destination content",
+        "result": "PASS",
+        "detail": "Qui sommes-nous consolidates identity, audience, activities and volunteer/history information; Adhérer does not invent fees or collect data; Mentions légales explicitly marks unprovided legal/hosting fields pending."
+      },
+      {
+        "name": "Obsolete route removal",
+        "result": "PASS",
+        "detail": "la-bulle.html, activites.html and apail.html are removed from the remote tree; content consolidated in qui-sommes-nous.html."
+      }
+    ],
+    "limitation": "This is a source/tree audit performed against the exact remote main-branch blobs. It is not execution of python3 tests/validate_site.py, Node.js tests, browser rendering or a visual responsive review."
   }
 }

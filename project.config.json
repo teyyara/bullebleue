@@ -31,7 +31,7 @@
     "analytics": false,
     "third_party_tracking": false
   },
-  "current_candidate": "bullebleue-loop-003-illustrated-story-redesign-v1",
-  "status": "LOOP 003 IMPLEMENTED; STATIC AND NODE CHECKS PASS; VISUAL BROWSER CHECK PENDING",
-  "contract_version": "0.2"
+  "current_candidate": "bullebleue-loop-012-owner-led-information-architecture-sticky-home-news-v1",
+  "status": "LOOP 012 IMPLEMENTED; NINE-PAGE SOURCE AUDIT PASS; PYTHON/NODE/BROWSER CHECKS PENDING; LEGAL PAGE NEEDS APAiL CONFIRMATION; NOT DEPLOYED",
+  "contract_version": "0.6"
 }

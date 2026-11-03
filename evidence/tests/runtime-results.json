@@ -529,5 +529,38 @@
       "Deterministic Node regression, not a visual menu test or screen-reader test.",
       "Full-page Chromium review of the six-page site was not performed."
     ]
+  },
+  "loop_012": {
+    "test_run": "loop-012-current-candidate-runtime-review",
+    "observed_at": "2026-11-03",
+    "runner": "NOT RUN",
+    "status": "NOT RUN — NO CURRENT CANDIDATE BROWSER OR LOCAL TEST EXECUTION",
+    "checks": [
+      {
+        "name": "Python structural validator",
+        "result": "NOT RUN",
+        "detail": "The updated tests/validate_site.py was committed but was not executed against a complete local worktree."
+      },
+      {
+        "name": "Node syntax and interaction tests",
+        "result": "NOT RUN",
+        "detail": "The updated script.js and tests/test_menu.js were source-audited but node --check and node tests/test_menu.js were not executed during Loop 012."
+      },
+      {
+        "name": "Chromium rendering and viewport sweep",
+        "result": "NOT RUN",
+        "detail": "No current candidate page.set_content render or screenshots were run; no horizontal-overflow or visual-design PASS is claimed."
+      },
+      {
+        "name": "Browser console/errors",
+        "result": "NOT RUN",
+        "detail": "No current candidate browser session was available for observation."
+      }
+    ],
+    "limitations": [
+      "The previous loop's screenshots do not validate Loop 012's new sticky homepage or new page templates.",
+      "The sticky illustration timing, text transitions, card balance and mobile behavior require browser review.",
+      "Cross-browser, manual screen-reader, physical-device, Lighthouse and hosted performance/security tests remain outstanding."
+    ]
   }
 }

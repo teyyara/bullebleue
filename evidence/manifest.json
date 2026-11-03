@@ -1,43 +1,40 @@
 {
-  "manifest_version": "1.4",
+  "manifest_version": "1.5",
   "run_id": "bullebleue-20261102-001",
-  "loop": 11,
-  "candidate": "bullebleue-loop-011-logo-derived-blue-art-direction-v1",
-  "candidate_status": "LOGO PALETTE SAMPLED; COOL BLUE IDENTITY IMPLEMENTED ACROSS SIX PAGES, SHARED CSS AND FAVICON; REMOTE SOURCE AUDIT PASS; PYTHON VALIDATOR AND BROWSER VISUAL REVIEW NOT RUN; NOT RELEASE CERTIFIED",
+  "loop": 12,
+  "candidate": "bullebleue-loop-012-owner-led-information-architecture-sticky-home-news-v1",
+  "candidate_status": "OWNER-REQUESTED NINE-PAGE ARCHITECTURE IMPLEMENTED; STICKY ILLUSTRATED HOMEPAGE AND THREE DEDICATED NEWS ARTICLES PASS REMOTE SOURCE AUDIT; PYTHON/NODE/BROWSER CHECKS NOT RUN; LEGAL PAGE REQUIRES APAiL COMPLETION; NOT RELEASE CERTIFIED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "81d43194ba68d47fb8556d6ec18d2b1ff6f61f2e",
+  "implementation_checkpoint_commit": "97c429d83c723c1bff441d32458afd60a95a8e96",
   "remote_git_blob_objects": {
-    "index.html": "e38318b4dd90113119f017283b0cf22bd6a73269",
-    "styles.css": "558145d4e6c2f6d7edb12f16b26d4971bf1e4d6e",
-    "script.js": "aa2ae008fdfa8c6eb1a0f6004938627104553b61",
+    "index.html": "77e503b48b27ab2b183fdab70b2819b8f4153723",
+    "styles.css": "a54868e47682c66b795284727a45ba43605e8836",
+    "script.js": "307c5840d82993e961428f74a4d7d5f97c67d5e9",
     "assets/favicon.svg": "8afd81a5cb62be5651bdae4d31e53c83c1c4b9b6",
     "menu_regression_test_js": "493debf5b26c01e0b166d555b4dab53845a52f28",
-    "tests/test_menu.js": "051d0dec5655cbf2b2017e840c096ec4fc63fc6e",
-    "tests/validate_site.py": "20c722be00c7e799ddb441ea66d1201fd78a20e9",
-    "assets/illustrations/hero-community.svg": "d46b1fa640912b32259f2b0f17622e635b8bf09b",
-    "assets/illustrations/games.svg": "74f82b260859fc2658939d9cc42e074fedf17544",
+    "tests/test_menu.js": "98bd18e752a3d3a5126c26bee1a54b1a7c8be2ca",
+    "tests/validate_site.py": "2ccfca3f5e332f6f69ef42e9c15845d3f7030e30",
+    "assets/illustrations/hero-community.svg": "be16475b8fe6e28faab3b2441943a531f109b697",
+    "assets/illustrations/games.svg": "a4de76c67db92ea8922508109aab9ed4fcffc77f",
     "assets/illustrations/garden.svg": "4e15f67d6cebaf017411b9e49255e15aaa9ae7fa",
-    "assets/illustrations/discovery.svg": "ae5195596626a8441bda55f1a008ac3cb3e47fa8",
-    "assets/illustrations/culture.svg": "c8f03c2719d743336afeb680eef96b378bac8f51",
+    "assets/illustrations/discovery.svg": "3584a19294dd93f1a418004dddc358aec49a847f",
+    "assets/illustrations/culture.svg": "778b27484a79db0d1b64abe785ae4b0696b4df2d",
     "assets/illustrations/solidarity.svg": "e80525d8acc48b3d429912d6229023db54a45e2e",
-    "evidence/tests/static-results.json": "5547a8386e317877bf4ea3876182cc9a4166bda9",
-    "evidence/tests/runtime-results.json": "a90627545df76de7a9dc92f50eba9563e963a6b3",
-    "evidence/requirements.json": "d2f5b7e4ac77c24702dedc8aac06337b2af34177",
-    "evidence/product-contract.json": "862209db7c4376d7e322dad56aef4ce47223e896",
+    "evidence/tests/static-results.json": "75453b06087ede813b362d1d87aa7de624feb593",
+    "evidence/tests/runtime-results.json": "88d01e5906bcae1e1a0e7ef010ff4ef8f3bc8371",
+    "evidence/requirements.json": "2201c800acbb5619dedb72ec920e7f05242aeb9a",
+    "evidence/product-contract.json": "7bf9318862034b4f635582b5d6da61e7946341b3",
     "evidence/research/keyphrase-dossier.md": "097b39681be69b04ebdca9334aa283d003ad69f7",
-    "evidence/decisions.json": "33367354953fecabcd44ca808552c67120154011",
-    "evidence/content-provenance.json": "ae0a0827f319d74e629525eaec19dde879f16cee",
-    "evidence/visual/asset-register.json": "4e3c5aa52cca05af8a88b90d5ef6fadf476e8f1f",
-    "README.md": "4504c93a855fe237b2a993fad3633e40c3e5a9ab",
+    "evidence/decisions.json": "05a246b293927538e6eeb5935831508f01f6e0dc",
+    "evidence/content-provenance.json": "f65e22a45a509e43ea6323d169adf0ed5b796f05",
+    "evidence/visual/asset-register.json": "034e483180f0c1c5454b4d58ad2b1209bdb602e2",
+    "README.md": "2da84404625471e64a85e7fdd690824ecc8a0e80",
     "evidence/change-requests/CR-002.md": "2750f8218da89eb4dfe79b4f8ae7f8fcc7dc87a5",
     "evidence/change-requests/CR-003.md": "be518026d30c328dc3da41f7f86704bb1ac80041",
-    "evidence/assumptions.json": "bf04e38d79601979162580e8471a573dd17c1b62",
-    "la-bulle.html": "6536faf6579b8bba5ccd56f5dd21c81cc5824ca3",
-    "activites.html": "3b75f132d33e0aacf1b5c137585580e13d53adc3",
-    "actualites.html": "635dfb5a27f9f38a129daca97575ed5d74f2a044",
-    "apail.html": "2496034aa6f98d4626ac78e1cd0d1ffb842eb4d8",
-    "contact.html": "bd00179a89d56dcabfbd4f1dca5bfd4ab4d5b56e",
+    "evidence/assumptions.json": "ad8caec32fcb9ee3e57f8620b05038fbb8a54fcf",
+    "actualites.html": "2248d19df8002597085528af5e140ae57a6784ad",
+    "contact.html": "c2aaae49cd4a3802281a7a191fcb5fa0ad8e608b",
     "evidence/change-requests/CR-005.md": "99bffbed3c781672ec023d52df2e806b3e426152",
     "assets/logo final.png": "82c6eb3e5067b19ebb94c356723f8ad05b8cbde9",
     "assets/posts/735543787_1361390089428172_5312506833854343201_n.jpg": "2803425066ddf6ed1a1ece5b5795601e443ab772",
@@ -51,7 +48,16 @@
     "assets/posts/861826539_1459854896248357_2220258804161137760_n.jpg": "2e851c411faaf0f016c413067338f92ffb5153c3",
     "assets/posts/863353686_1459854766248370_1734709857082262774_n.jpg": "7b6922357e42520049d7a9f0fb9698792a974b48",
     "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg": "25efb99fb2457b9a1518022018f7ceb8ea2e5261",
-    "evidence/visual/logo-palette.json": "3caad866c35f42749c36abadb6ccc4dbeb4fdd11"
+    "evidence/visual/logo-palette.json": "3caad866c35f42749c36abadb6ccc4dbeb4fdd11",
+    "qui-sommes-nous.html": "73460d011d9f99092470e574e4426be786088947",
+    "actualite-2026-10-26.html": "c2e5a0d6a075ffca155bbdb94ad0ac27064467ee",
+    "actualite-2026-10-17.html": "c8b8ec9db56983863e39db0381305454f7e00a60",
+    "actualite-2026-10-10.html": "90721d3bf06dd7156de47bb21a8943feedece974",
+    "adherer.html": "25bab14f258987327204dda0d03cbf422e1eab95",
+    "mentions-legales.html": "97ec6325c0dd9cb240310bf8a08fe91b9c8e7e17",
+    "evidence/change-requests/CR-006.md": "67417f3ef178ce7dc1780e7227fbf3d0ea5449a8",
+    ".aeos/state.json": "1c5a9f1769aba36d94234c7a26a5a0fb8dd326d1",
+    "AEOS_STATUS.md": "a03afd52e11f9c66c2db4c658e141aec4eeedafe"
   },
   "local_screenshot_evidence": {
     "loop_006": {
@@ -80,6 +86,9 @@
     },
     "loop_011": {
       "status": "NOT CAPTURED — no current-browser render or screenshots during Loop 011."
+    },
+    "loop_012": {
+      "status": "NOT CAPTURED — no current-browser render or screenshots during Loop 012; no visual or no-overflow PASS claimed."
     }
   },
   "runtime_environment": {
@@ -100,7 +109,13 @@
     "Loop 010 source checks passed, but Python validator and current browser screenshots were not run.",
     "Photos showing identifiable participants, including children, remain unused pending image-specific participant/guardian consent confirmation.",
     "Loop 011 Python validator was not executed against a complete local checkout; full-page browser review and responsive screenshots remain outstanding.",
-    "Logo-colour shares are approximate cluster proportions from visible pixels; near-white reading surfaces are explicitly derived tints rather than verbatim sampled pixels."
+    "Logo-colour shares are approximate cluster proportions from visible pixels; near-white reading surfaces are explicitly derived tints rather than verbatim sampled pixels.",
+    "Loop 012 changes nine public HTML pages and replaces the earlier six-page navigation; full-page current-candidate browser review and responsive screenshots are not available.",
+    "The sticky scroll-story may need visual tuning after browser review; the source fallback for reduced-motion/no-IntersectionObserver is implemented.",
+    "The three Actualités images are local vector illustrations, explicitly not photographs of the individual events.",
+    "Legal notices are an incomplete draft until APAiL supplies and confirms its legal name, registered office, publication manager and hosting provider.",
+    "Current membership fee/process/required paperwork are unknown; the Adhérer page directs visitors to request up-to-date terms.",
+    "Python validator and Node regression/syntax tests were not executed during Loop 012."
   ],
   "loop_002": {
     "change": "Only process Escape when the mobile navigation is expanded; preserve focus for unrelated or closed-menu Escape events.",
@@ -403,5 +418,35 @@
     },
     "production": "NOT DEPLOYED; deployment remains unauthorized."
   },
-  "loop_011_validator_correction_commit": "0cf2cf07a2eb363a8d490a09890544519944f335"
+  "loop_011_validator_correction_commit": "0cf2cf07a2eb363a8d490a09890544519944f335",
+  "loop_012": {
+    "objective": "Implement the association owner's requested content architecture, illustrated scroll-story homepage, three-card editorial Actualités with distinct articles, Adhérer, Nous contacter and Mentions légales.",
+    "implementation_commits": [
+      "cc4a277a8de112343f6ad9e51b82fa296dd66001",
+      "f166d4005f415cffc57b88ed9c9c4190fbdfb45d",
+      "97c429d83c723c1bff441d32458afd60a95a8e96"
+    ],
+    "changes": [
+      "Replaced six-link IA with five main destinations and a legal-notices link in the shared footer.",
+      "Consolidated the previous La Bulle, Activités and APAiL pages into qui-sommes-nous.html.",
+      "Rebuilt the homepage around one sticky local SVG drawing and three sequential scroll text chapters; removed the previous homepage documentary photo.",
+      "Added an Actualités overview with exactly three curated cards and a dedicated article page for each dated story.",
+      "Added Adhérer with a direct request for current membership information and no invented fee, form or terms.",
+      "Added Nous contacter and Mentions légales; unknown legal and hosting details are clearly marked pending association confirmation.",
+      "Recoloured selected local vector illustrations with the sampled official logo blues and documented surface tints; strengthened palette validation.",
+      "Added the current nine-page structural validator and a Node regression test for story transitions and reduced-motion fallback.",
+      "Retired prior standalone la-bulle.html, activites.html and apail.html entry points."
+    ],
+    "validation": {
+      "remote_source_audit": "PASS — all nine page structures, shared nav, active states, metadata, logo/footer links, internal page paths and all root-relative local assets checked against exact main-branch blobs/tree.",
+      "homepage_and_scroll_story": "PASS — three chapters, single sticky SVG, progressive IntersectionObserver JS and reduced-motion fallback are present in source.",
+      "news": "PASS — exactly three cards and Voir plus links, all three dated article routes present; SVG imagery explicitly labelled illustration.",
+      "palette": "PASS — all placed SVG colour tokens restricted to official logo colours and documented near-white tints.",
+      "membership_and_legal": "PASS — no HTML form or invented fees; legal/hosting unknowns visibly pending.",
+      "python_validator": "NOT RUN — source updated, not executed locally.",
+      "node_tests": "NOT RUN — test source updated, not executed locally.",
+      "browser_visual_review": "NOT RUN — no current candidate render/screenshots; responsive no-overflow not certified."
+    },
+    "production": "NOT DEPLOYED; deployment remains unauthorized."
+  }
 }
