@@ -60,8 +60,7 @@
     "AEOS_STATUS.md": "4ddd5ce89638b2fc2b8b729cca38c5bd2911618e",
     "project.config.json": "6c06b81409568eaa39efaff884326c81685ac1e5",
     ".github/workflows/quality.yml": "999f0edc43aa7003b23b3978b1ac8973187a86cc",
-    "tests/test_browser.py": "e1d9db7b5f07c78d90ee408fde2267063d9422d7",
-    "evidence/manifest.json": "c393a61ddf3b0c6f22b57b620c99b79b4668678d"
+    "tests/test_browser.py": "e1d9db7b5f07c78d90ee408fde2267063d9422d7"
   },
   "local_screenshot_evidence": {
     "loop_006": {
