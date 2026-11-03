@@ -21,7 +21,7 @@
     "assets/illustrations/discovery.svg": "3584a19294dd93f1a418004dddc358aec49a847f",
     "assets/illustrations/culture.svg": "778b27484a79db0d1b64abe785ae4b0696b4df2d",
     "assets/illustrations/solidarity.svg": "e80525d8acc48b3d429912d6229023db54a45e2e",
-    "evidence/tests/static-results.json": "0ac07e433bc3af8bf0be9b46f238350a1ee58fd0",
+    "evidence/tests/static-results.json": "969bfcc4b997b105332f9782e32e31083f0bea78",
     "evidence/tests/runtime-results.json": "53671e70a7c3d2ba247c4e97ad7856964c7c080d",
     "evidence/requirements.json": "2201c800acbb5619dedb72ec920e7f05242aeb9a",
     "evidence/product-contract.json": "7bf9318862034b4f635582b5d6da61e7946341b3",
@@ -56,8 +56,8 @@
     "adherer.html": "25bab14f258987327204dda0d03cbf422e1eab95",
     "mentions-legales.html": "97ec6325c0dd9cb240310bf8a08fe91b9c8e7e17",
     "evidence/change-requests/CR-006.md": "67417f3ef178ce7dc1780e7227fbf3d0ea5449a8",
-    ".aeos/state.json": "a13c354a6b68a476fbffd302fab08aeb629e39b5",
-    "AEOS_STATUS.md": "9498e00a907911faffc8580141cf3586dae5388c",
+    ".aeos/state.json": "8b1c70623da4c7b7dfd7e92b20c9ec546a600460",
+    "AEOS_STATUS.md": "cfbf9902bb35bdea8ddd742964f7a28e4c852cc2",
     "project.config.json": "af6b7de501dcfcddb80ec01b859d57907ca5edac"
   },
   "local_screenshot_evidence": {
@@ -374,8 +374,8 @@
     },
     "production": "NOT DEPLOYED; deployment remains unauthorized."
   },
-  "status_metadata_commit": "99b6f0942f55264ab474b74c3c08d41d2b397e88",
-  "evidence_manifest_reconciliation_commit": "99b6f0942f55264ab474b74c3c08d41d2b397e88",
+  "status_metadata_commit": "214797a025a6350941dc7c2a0fe1e001fd6bdf55",
+  "evidence_manifest_reconciliation_commit": "214797a025a6350941dc7c2a0fe1e001fd6bdf55",
   "loop_011": {
     "objective": "Use the uploaded transparent association logo as the source of truth for the website's full artistic colour direction.",
     "logo_sampling": {
