@@ -64,5 +64,9 @@ def main():
  assert "prefers-reduced-motion" in css and "@media(max-width:980px)" in css
  assert 'aria-current="page"]' in css
  assert "event.key !== 'Escape' || toggle.getAttribute('aria-expanded') !== 'true'" in js
+ assert all(token in css for token in ("--ink:#06195E","--blue:#1642A5","--blue-mid:#1C60CF","--blue-bright:#2084DE","--sky:#4EABEC","--blue-pale:#D3DEF0","--blue-light:#9DC0EA"))
+ assert all(token not in css for token in ("--clay","--ochre","#94543b","#d0b17d","#e9eeeb","#eae7de","rgba(177,138,80"))
+ favicon=(ROOT/"assets/favicon.svg").read_text(encoding="utf-8")
+ assert all(token in favicon for token in ("#06195E","#1642A5","#1C60CF","#2084DE","#F3F7FE"))
  print("PASS: six pages, shared navigation, active-page state, metadata, content allocation, concise homepage, local links and accessibility safeguards")
 if __name__=="__main__": main()
