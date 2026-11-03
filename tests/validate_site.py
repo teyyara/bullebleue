@@ -144,8 +144,9 @@ def main():
     assert all(token in css for token in ("--ink:#06195E", "--blue:#1642A5", "--blue-mid:#1C60CF", "--blue-bright:#2084DE", "--sky:#4EABEC", "--blue-pale:#D3DEF0"))
     for svg in ("hero-community.svg", "games.svg", "culture.svg", "discovery.svg"):
         data = (ROOT / "assets/illustrations" / svg).read_text(encoding="utf-8")
-        assert any(c in data for c in ("#1642A5", "#2084DE", "#1C60CF", "#4EABEC"))
-        assert not any(c in data.lower() for c in ("#f6d877", "#d59d76", "#a96f55", "#e5a28e", "#c68f6d"))
+        palette = {"#06195E", "#1642A5", "#1C60CF", "#2084DE", "#4EABEC", "#587ABA", "#9DC0EA", "#D3DEF0", "#F3F7FE", "#FCFDFF"}
+        colours = {c.upper() for c in re.findall(r"#[0-9A-Fa-f]{6}", data)}
+        assert colours and colours <= palette, f"{svg}: illustration contains colours outside the official logo palette and documented surface tints: {colours - palette}"
 
     favicon = (ROOT / "assets/favicon.svg").read_text(encoding="utf-8")
     assert all(c in favicon for c in ("#06195E", "#1642A5", "#1C60CF", "#2084DE", "#F3F7FE"))
