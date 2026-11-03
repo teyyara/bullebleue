@@ -177,6 +177,33 @@
       "tradeoffs": "Shared navigation and common footer must remain consistent across separate files; automated tests now enforce this.",
       "risk": "R1",
       "evidence": "Loop 009 multi-page validator and route source review."
+    },
+    {
+      "id": "DEC-015",
+      "context": "The user supplied the official transparent logo and documentary photographs, and reports owner authorization for Facebook-page assets.",
+      "options": [
+        "Keep the provisional BB monogram and no documentary photos",
+        "Use the official logo and publish a full gallery of all uploaded photos",
+        "Use the official logo and a small selection of non-identifying activity close-ups while deferring identifiable portraits"
+      ],
+      "chosen": "Replace the BB monogram with the official logo in all six headers and footers; use four local close-up photographs on the homepage and activities page; defer photos showing identifiable participants.",
+      "reason": "The four selected photos show games and activities without identifiable faces. The other supplied photos contain identifiable people, including children. The user-reported owner permission is recorded, while participant/guardian release status is not independently documented.",
+      "tradeoffs": "The exact logo palette cannot yet be sampled from the supplied >1 MB PNG; existing CSS colour tokens remain explicitly provisional until a direct visual sample is available.",
+      "risk": "R2",
+      "evidence": "Loop 010 source audit, asset register and user-supplied repository files."
+    },
+    {
+      "id": "DEC-016",
+      "context": "The user's main brand requirement is for the site's full colour system to come from the official logo, but the available repository reader could not return the PNG binary.",
+      "options": [
+        "Guess a palette and describe it as logo-derived",
+        "Retain the existing tokenized palette as provisional and defer exact calibration until the logo can be visually sampled"
+      ],
+      "chosen": "Retain the existing tokenized colours as provisional and explicitly block exact palette sign-off.",
+      "reason": "A 1,062,882-byte PNG produced an empty response from the repository file reader; no trustworthy pixel sampling was possible. Guessing would falsely claim that the site palette was derived from the logo.",
+      "tradeoffs": "The logo and photos are integrated, but the requested final colour-led artistic direction remains incomplete.",
+      "risk": "R1",
+      "evidence": "GitHub asset blob 82c6eb3e5067b19ebb94c356723f8ad05b8cbde9; repeated base64/UTF-8 retrieval attempts returned no PNG payload."
     }
   ]
 }

@@ -47,15 +47,15 @@
       "source": "No official brand assets supplied or verified.",
       "confidence": "HIGH",
       "impact_if_wrong": "LOW",
-      "resolution": "Replace when authoritative identity assets are available."
+      "resolution": "SUPERSEDED IN LOOP 010: the user supplied the official transparent logo at assets/logo final.png and it is now used in all six headers and footers. Exact palette extraction remains pending because the >1 MB PNG binary could not be read by the available connector."
     },
     {
       "id": "ASSUMP-007",
-      "assumption": "Original local SVG illustrations are the safe visual substitute until participant/photo rights are evidenced.",
+      "assumption": "User-reported owner authorization permits reuse of Facebook-page assets, but image-specific participant/guardian release status is not independently documented; avoid identifiable people in the initial placements.",
       "source": "CR-001 image-rights policy",
       "confidence": "HIGH",
       "impact_if_wrong": "LOW",
-      "resolution": "Replace/supplement only with approved source photos and documented permission."
+      "resolution": "Loop 010 uses four object-/hands-focused photographs without identifiable faces; all people-forward/group photographs remain in the repository but are not placed pending image-specific consent confirmation."
     },
     {
       "id": "ASSUMP-008",
@@ -88,6 +88,22 @@
       "confidence": "HIGH",
       "impact_if_wrong": "MEDIUM",
       "resolution": "Reassess navigation after preview; the static structure can be reorganised without backend migration."
+    },
+    {
+      "id": "ASSUMP-012",
+      "assumption": "The owner authorised the user to reuse assets from the Bulle Bleue Facebook page.",
+      "source": "User's direct statement in the Loop 010 request.",
+      "confidence": "HIGH — user-reported permission; no separate rights document inspected.",
+      "impact_if_wrong": "HIGH",
+      "resolution": "Use user-supplied logo and local Facebook-page photos; continue to avoid identifiable participants until individual/guardian image consent is confirmed."
+    },
+    {
+      "id": "ASSUMP-013",
+      "assumption": "The precise official logo colour palette can be sampled from the supplied PNG.",
+      "source": "assets/logo final.png, blob 82c6eb3e5067b19ebb94c356723f8ad05b8cbde9.",
+      "confidence": "LOW — available connector returned empty content for the >1 MB PNG.",
+      "impact_if_wrong": "MEDIUM",
+      "resolution": "Keep the CSS palette provisional; sample the PNG directly after it is provided through an inspectable image attachment or an accessible smaller export."
     }
   ]
 }

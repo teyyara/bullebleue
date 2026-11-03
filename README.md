@@ -24,7 +24,7 @@ The Wednesday 14:30 / Saturday 15:00 times and the 30 Rempart Saint-Vincent addr
 
 Activities are examples, not a fixed weekly programme. News retains original dates. Burkina Faso/Morocco projects are reported history, not claims that each remains active. Organisations are cited in posts, not necessarily permanent partners. The published email `apail@live.fr` comes from prior public-source research; deliverability is untested.
 
-The official logo and documentary photographs have not been added; the BB monogram remains provisional. No participant names or photographs are published.
+The transparent official logo supplied by the user is stored at `assets/logo final.png` and is used in every page header and footer. Four close-up activity photographs with no identifiable faces are used on the homepage and activities page. Other supplied photographs that show recognisable participants, including children, remain out of the public layout pending confirmation of any image-specific participant/guardian releases. The user reports that the owner authorised use of Facebook-page assets. The exact logo colour palette has not yet been sampled because the 1 MB PNG was not returned by the available repository file reader; the current CSS colour tokens therefore remain provisional and must not be described as logo-extracted.
 
 ## Validation
     python3 tests/validate_site.py

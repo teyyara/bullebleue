@@ -298,6 +298,33 @@
       "validation": "Multi-page validator checks semantics, metadata and page content allocation.",
       "status": "IMPLEMENTED — SOURCE ASSERTIONS ADDED",
       "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-034",
+      "requirement": "Use the official Bulle Bleue logo consistently instead of the provisional BB mark.",
+      "acceptance": "The transparent user-supplied logo is present in every page header and footer; its image file is local and has no redundant accessible announcement beside the visible brand name.",
+      "risk": "R1",
+      "validation": "Six-page source audit and local asset-path validation.",
+      "status": "IMPLEMENTED — SOURCE AUDIT PASS",
+      "confidence": "HIGH for source integration; rendered visual review pending"
+    },
+    {
+      "id": "REQ-035",
+      "requirement": "Use authentic activity photography without overwhelming the organised information architecture.",
+      "acceptance": "A small local photo treatment appears on the homepage and a three-image activity-photo row appears on activites.html; each image has meaningful alt text, appropriate eager/lazy loading and a local source path.",
+      "risk": "R1",
+      "validation": "HTML source assertions, asset register and local-path checks.",
+      "status": "IMPLEMENTED — SOURCE AUDIT PASS",
+      "confidence": "HIGH for source structure; browser rendering pending"
+    },
+    {
+      "id": "REQ-036",
+      "requirement": "Derive the website's complete artistic colour direction from the official logo.",
+      "acceptance": "Sample exact representative colours from the supplied logo; define named CSS tokens and apply them consistently to all backgrounds, text, links, cards, borders and interactive states.",
+      "risk": "R1",
+      "validation": "Direct logo pixel sampling, CSS token inventory and rendered review across all six pages.",
+      "status": "BLOCKED — LOGO PNG BINARY NOT AVAILABLE TO INSPECTION TOOL; CURRENT PALETTE REMAINS PROVISIONAL",
+      "confidence": "LOW until logo can be sampled"
     }
   ]
 }

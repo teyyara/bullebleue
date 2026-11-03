@@ -462,3 +462,105 @@ h1 em,h2 em{color:inherit;font-style:italic;font-weight:400}
  .contact-page-primary{padding:0}.contact-address-card{padding:25px 23px}
 }
 @media(max-width:380px){.home-hero h1{font-size:43px}.home-hero-note p{font-size:32px}.destination-title{font-size:25px}.news-item time{font-size:9px}}
+
+
+/* LOOP 010 — official mark and documentary activity photography. */
+.brand-logo{
+  display:block;
+  flex:0 0 52px;
+  width:52px;
+  height:52px;
+  object-fit:contain;
+}
+.brand{gap:13px}
+.footer-brand .brand-logo{flex-basis:44px;width:44px;height:44px}
+.home-hero-photo{
+  position:relative;
+  align-self:stretch;
+  min-width:0;
+  min-height:320px;
+  margin:0;
+  overflow:hidden;
+  border:1px solid rgba(244,241,232,.22);
+  background:var(--blue-pale);
+}
+.home-hero-photo img{
+  display:block;
+  width:100%;
+  height:100%;
+  min-height:320px;
+  object-fit:cover;
+  object-position:center 48%;
+}
+.home-hero-photo figcaption{
+  position:absolute;
+  inset:auto 0 0;
+  display:grid;
+  gap:6px;
+  padding:34px 24px 20px;
+  background:linear-gradient(180deg,transparent,rgba(18,48,63,.94));
+  color:var(--paper);
+}
+.home-hero-photo figcaption span{
+  color:var(--ochre);
+  font-size:9px;
+  font-weight:750;
+  letter-spacing:.16em;
+}
+.home-hero-photo figcaption strong{
+  max-width:360px;
+  font-family:var(--serif);
+  font-size:clamp(23px,2.5vw,31px);
+  font-weight:500;
+  line-height:1.08;
+}
+.activity-photo-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  margin:0 0 40px;
+}
+.activity-photo-card{
+  min-width:0;
+  margin:0;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:var(--paper-light);
+}
+.activity-photo-card img{
+  display:block;
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  background:var(--blue-pale);
+}
+.activity-photo-card figcaption{
+  display:grid;
+  gap:4px;
+  padding:14px 16px 16px;
+}
+.activity-photo-card figcaption strong{
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:21px;
+  font-weight:500;
+  line-height:1.1;
+}
+.activity-photo-card figcaption span{
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.5;
+}
+@media(max-width:1040px){
+  .activity-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .brand-logo{flex-basis:45px;width:45px;height:45px}
+  .footer-brand .brand-logo{flex-basis:40px;width:40px;height:40px}
+  .home-hero-photo,.home-hero-photo img{min-height:245px}
+  .activity-photo-grid{grid-template-columns:1fr;gap:12px;margin-bottom:30px}
+  .activity-photo-card{display:grid;grid-template-columns:minmax(112px,.82fr) 1fr;align-items:stretch}
+  .activity-photo-card img{height:100%;min-height:132px;aspect-ratio:auto}
+  .activity-photo-card figcaption{align-content:center;padding:12px 14px}
+  .activity-photo-card figcaption strong{font-size:19px}
+}

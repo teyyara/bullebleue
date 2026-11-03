@@ -42,14 +42,15 @@
     "Do not publish participant names, individual diagnoses or medical outcomes"
   ],
   "brand": {
-    "official_assets_supplied": false,
+    "official_assets_supplied": true,
     "direction": "Editorial, understated, human and welcoming; professional local-association identity rather than a generic pastel/illustrated landing-page template.",
     "provisional_system": {
-      "palette": "Deep ink/mineral blue, warm paper ivory, muted blue-teal, restrained clay/terracotta and aged ochre.",
-      "basis": "Design interpretation of publicly documented welcome, listening, solidarity and sharing ethos; not an officially published colour specification.",
+      "palette": "Interim blue/ink/paper palette inherited from the previous design. It is not yet verified against the official logo and must be calibrated after direct visual inspection.",
+      "basis": "Interim palette only. Exact official brand colours are pending direct sampling from the supplied PNG.",
       "typography": "EB Garamond display / Cabin body with Iowan Old Style, Palatino, Georgia, Avenir Next and Segoe UI platform fallbacks. No remote font request."
     },
-    "logo_status": "Provisional BB monogram pending official logo upload; user plans to add Facebook assets to the repository in a future loop."
+    "logo_status": "Official transparent PNG supplied by the user at assets/logo final.png; integrated in all six page headers and footers in Loop 010.",
+    "palette_status": "PARTIAL — the official logo is present and used, but exact colour sampling remains pending. The PNG is larger than 1 MB and the available GitHub file reader returned an empty binary payload. Current CSS colour tokens remain provisional; no hex values are claimed as extracted from the logo."
   },
   "visual_requirements": {
     "hero": "Concise deep mineral-blue editorial hero with a typographic headline and restrained outlined statement panel.",
@@ -59,8 +60,39 @@
     "contact": "Single clear email action with current venue/schedule caveat and exact user-supplied Facebook link.",
     "background": "Warm textured paper surface, alternating mineral-blue fields and restrained line/ring details.",
     "stories": "Separate dated activity-story mosaic removed in Loop 006 to reduce page length and avoid reliance on an unverified Facebook mirror.",
-    "asset_policy": "No generic placeholder illustrations or unlicensed social/press photos. Retained prior original SVGs are not used in the new page markup.",
-    "images": []
+    "asset_policy": "The user reports that the owner authorised use of assets published on the Facebook page. Use local repository assets. Loop 010 uses only close-up activity photographs without identifiable faces; photos showing identifiable participants, including children, remain unpublished pending confirmation of image-specific participant/guardian consent.",
+    "images": [
+      {
+        "path": "assets/logo final.png",
+        "use": "Shared site logo in all six page headers and footers",
+        "description": "Transparent user-supplied official logo; exact dimensions and colour profile not inspected by the repository reader.",
+        "status": "IN USE — exact palette sampling pending"
+      },
+      {
+        "path": "assets/posts/861826539_1459854896248357_2220258804161137760_n.jpg",
+        "use": "Homepage hero photograph",
+        "description": "Close-up of wooden game pieces and hands around a table; no identifiable faces visible.",
+        "status": "IN USE"
+      },
+      {
+        "path": "assets/posts/860039147_1459854696248377_603952803324221168_n.jpg",
+        "use": "Activities page — games photograph",
+        "description": "Close-up of a tabletop board game and colourful pieces; no identifiable faces visible.",
+        "status": "IN USE"
+      },
+      {
+        "path": "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg",
+        "use": "Activities page — discovery photograph",
+        "description": "Close-up of an illustrated tabletop puzzle/board with hands nearby; no identifiable faces visible.",
+        "status": "IN USE"
+      },
+      {
+        "path": "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg",
+        "use": "Activities page — manipulation/creation photograph",
+        "description": "Close-up of geometric game pieces arranged on a table; no identifiable faces visible.",
+        "status": "IN USE"
+      }
+    ]
   },
   "motion": {
     "effects": [
@@ -80,7 +112,7 @@
     "tracking": false,
     "analytics": false,
     "forms_backend": false,
-    "image_hosting": "Local SVG assets",
+    "image_hosting": "Local repository assets under assets/; no remote image host or third-party image request.",
     "run": "python3 -m http.server 8080"
   },
   "accessibility_target": "WCAG 2.2 AA; foundation includes semantics, alt text, dimensions, keyboard navigation, reduced-motion fallback and progressive reveal. Manual screen-reader testing remains outstanding.",
@@ -142,7 +174,10 @@
     "All internal page links work and the compact menu is keyboard-operable.",
     "Source-derived facts and operational caveats remain on their appropriate pages.",
     "No participant names or unapproved photographs are published.",
-    "Responsive layout declarations cover desktop, tablet and mobile; rendered visual validation is reported separately."
+    "Responsive layout declarations cover desktop, tablet and mobile; rendered visual validation is reported separately.",
+    "The official transparent logo supplied by the user appears consistently in the header and footer of all six pages.",
+    "The homepage and activities page use local documentary photos with meaningful alt text; no identifiable participants are shown in the selected crops.",
+    "The final CSS palette is sampled from the official logo, documented as exact hex tokens and used consistently across all six pages."
   ],
   "business_outcome_hypotheses": [
     "Specific activity stories may help families understand the initiative",
@@ -167,5 +202,6 @@
     "actualites.html": "Selected dated highlights and Facebook source link.",
     "apail.html": "Association history, reported solidarity projects, volunteers and organisations cited in posts.",
     "contact.html": "Email, Facebook, venue, garden access and source/date confirmation caveat."
-  }
+  },
+  "definition_of_done_loop_010": "Integrate the user-supplied transparent logo in all six page headers and footers; select and place documentary activity photos with useful alt text; update responsive styles, tests, README and evidence; checkpoint on main and verify; no deployment. Exact logo-palette sampling is recorded as blocked because the >1 MB PNG could not be read by the repository connector and remains an open item."
 }

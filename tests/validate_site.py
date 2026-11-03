@@ -2,6 +2,7 @@
 """Validate the multi-page information architecture and shared navigation."""
 from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import unquote
 import re
 ROOT=Path(__file__).resolve().parents[1]
 PAGES=("index.html","la-bulle.html","activites.html","actualites.html","apail.html","contact.html")
@@ -35,16 +36,22 @@ def main():
   assert all(h[1:] in p.ids for h in p.links if h.startswith("#")), f"{page}: broken fragment"
   for href in p.links:
    if re.match(r"^(index|la-bulle|activites|actualites|apail|contact)\.html$",href): assert (ROOT/href).is_file(), f"{page}: broken local link {href}"
-  for asset in re.findall(r'(?:src|href)="/([^"]+)"',html): assert (ROOT/asset).is_file(), f"{page}: missing local asset {asset}"
+  for asset in re.findall(r'(?:src|href)="/([^"]+)"',html): assert (ROOT/unquote(asset)).is_file(), f"{page}: missing local asset {asset}"
+  assert html.count('src="/assets/logo%20final.png"')==2, f"{page}: official logo must appear in header and footer"
+  assert html.count('class="brand-logo"')==2, f"{page}: expected two official logo placements"
   assert "https://www.facebook.com/p/Bulle-Bleue-APAiL-100066715807933/" in html
  home=(ROOT/"index.html").read_text(encoding="utf-8")
  assert len(home)<9000, "homepage too long"
  assert all(page in home for page in PAGES[1:])
  assert "30 Rempart Saint-Vincent" not in home and "Sapala" not in home
+ assert "861826539_1459854896248357_2220258804161137760_n.jpg" in home
+ assert 'class="home-hero-photo"' in home
  audience=(ROOT/"la-bulle.html").read_text(encoding="utf-8")
  assert all(x in audience for x in ("Enfants de plus de 6 ans","Adolescents et adultes","14 h 30","15 h","11 mars 2024","confirmer les horaires"))
  activities=(ROOT/"activites.html").read_text(encoding="utf-8")
  assert all(x in activities for x in ("Jeux & convivialité","Musique & scène","Arts & création","Cuisine & fêtes","Jardin & nature","Ciné Relax","Médiation animale"))
+ assert activities.count('class="activity-photo-card"')==3
+ assert all(x in activities for x in ("860039147_1459854696248377_603952803324221168_n.jpg","860071516_1459854822915031_8736563633377469815_n.jpg","863442942_1459854946248352_2630610521884942198_n.jpg"))
  news=(ROOT/"actualites.html").read_text(encoding="utf-8")
  assert all(x in news for x in ("26 octobre 2026","17 octobre 2026","10 octobre 2026","20 septembre 2026"))
  apail=(ROOT/"apail.html").read_text(encoding="utf-8")

@@ -1,6 +1,6 @@
 {
-  "version": "1.1",
-  "policy": "Loop 006 uses no decorative or documentary image placements. Earlier original locally authored SVG illustrations remain in the repository archive but are not referenced by the current page. The BB monogram is provisional; no Facebook or press photo is copied.",
+  "version": "1.2",
+  "policy": "Loop 010 replaces the provisional BB monogram with the user-supplied transparent logo and places four local close-up activity photographs. The user reports that the owner authorised Facebook-page asset reuse. The selected photos do not show identifiable faces; people-forward images remain unpublished until image-specific participant/guardian consent is confirmed. Exact logo palette sampling is still pending.",
   "assets": [
     {
       "path": "assets/illustrations/hero-community.svg",
@@ -55,15 +55,107 @@
       "height": 560,
       "documentary": false,
       "status": "ARCHIVED — NOT REFERENCED BY LOOP 006 HTML"
+    },
+    {
+      "path": "assets/logo final.png",
+      "use": "Shared site logo in all six page headers and footers",
+      "description": "User-supplied transparent official logo. Binary is present in the repository; visual pixel sampling was blocked by the >1 MB file reader limit.",
+      "documentary": false,
+      "status": "IN USE — PALETTE SAMPLING PENDING"
+    },
+    {
+      "path": "assets/posts/735543787_1361390089428172_5312506833854343201_n.jpg",
+      "use": "Creative workshop / craft activity",
+      "description": "A person holds a large craft hoop/ribbon with others and workshop materials visible; identifiable faces.",
+      "documentary": true,
+      "status": "REVIEWED — NOT PLACED; identifiable participants"
+    },
+    {
+      "path": "assets/posts/783036041_1408453024721878_3578205087320603775_n.jpg",
+      "use": "Drawing and visual-art workshop",
+      "description": "Participants draw at a table with coloured pens; identifiable faces.",
+      "documentary": true,
+      "status": "REVIEWED — NOT PLACED; identifiable participants"
+    },
+    {
+      "path": "assets/posts/830754903_1438852398348607_8575046537706443389_n.jpg",
+      "use": "Garden and conviviality",
+      "description": "Group seated around a garden table; many identifiable faces.",
+      "documentary": true,
+      "status": "REVIEWED — NOT PLACED; identifiable group"
+    },
+    {
+      "path": "assets/posts/844190417_1446490757584771_1709901819062193861_n.jpg",
+      "use": "Group event",
+      "description": "Indoor group photograph with identifiable adults and children.",
+      "documentary": true,
+      "status": "REVIEWED — NOT PLACED; identifiable participants/minors"
+    },
+    {
+      "path": "assets/posts/854414257_1451277357106111_100552518532689623_n.jpg",
+      "use": "Group outing / community event",
+      "description": "Outdoor evening group photograph with identifiable faces.",
+      "documentary": true,
+      "status": "REVIEWED — NOT PLACED; identifiable group"
+    },
+    {
+      "path": "assets/posts/858642199_1459855032915010_3703135960600555271_n.jpg",
+      "use": "Games and play area",
+      "description": "Two children playing a wooden block-tower game; faces partly visible.",
+      "documentary": true,
+      "status": "REVIEWED — NOT PLACED; identifiable children"
+    },
+    {
+      "path": "assets/posts/860039147_1459854696248377_603952803324221168_n.jpg",
+      "use": "Activities page — games photograph",
+      "description": "Close-up of tabletop game pieces and a board; no identifiable faces visible.",
+      "documentary": true,
+      "status": "IN USE — activites.html"
+    },
+    {
+      "path": "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg",
+      "use": "Activities page — discovery photograph",
+      "description": "Close-up of an illustrated tabletop puzzle/board with hands nearby; no identifiable faces visible.",
+      "documentary": true,
+      "status": "IN USE — activites.html"
+    },
+    {
+      "path": "assets/posts/861826539_1459854896248357_2220258804161137760_n.jpg",
+      "use": "Homepage hero photograph",
+      "description": "Close-up of wooden geometric game pieces and hands around a table; no identifiable faces visible.",
+      "documentary": true,
+      "status": "IN USE — index.html"
+    },
+    {
+      "path": "assets/posts/863353686_1459854766248370_1734709857082262774_n.jpg",
+      "use": "Arts and creative activity",
+      "description": "Participants assemble illustrated face pieces at a table; partial profiles/identifiable people visible.",
+      "documentary": true,
+      "status": "REVIEWED — NOT PLACED; identifiable participants"
+    },
+    {
+      "path": "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg",
+      "use": "Activities page — manipulation/creation photograph",
+      "description": "Close-up of geometric pieces arranged around a table; no identifiable faces visible.",
+      "documentary": true,
+      "status": "IN USE — activites.html"
     }
   ],
   "permissions": {
-    "external_press_photos": "NOT USED — rights/permission not documented",
-    "social_media_photos": "NOT USED — participant/photo rights and guardian consents not documented",
-    "identifiable_people": "NONE IN SVG ARTWORK",
-    "user_supplied_facebook_page": "URL linked in the site; page and profile-image fetch blocked; official logo not verified or reused.",
-    "current_page_images": "NONE",
-    "current_monogram": "PROVISIONAL TYPOGRAPHIC BB MARK — NOT THE OFFICIAL LOGO"
+    "external_press_photos": "NOT USED",
+    "social_media_photos": "USER-REPORTED OWNER AUTHORISATION — selected local photos used after visual review",
+    "identifiable_people": "People-forward/group photographs showing identifiable adults or children remain unpublished pending image-specific participant/guardian consent confirmation.",
+    "user_supplied_facebook_page": "Exact Facebook URL remains linked. User supplied the official transparent logo and original page images in the repository.",
+    "current_page_images": [
+      "assets/posts/861826539_1459854896248357_2220258804161137760_n.jpg",
+      "assets/posts/860039147_1459854696248377_603952803324221168_n.jpg",
+      "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg",
+      "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg"
+    ],
+    "current_monogram": "RETIRED — replaced with assets/logo final.png",
+    "owner_authorization": "USER-REPORTED: owner authorised reuse of Facebook-page assets.",
+    "participant_image_releases": "NOT INDEPENDENTLY DOCUMENTED — initial placements use close-ups without identifiable faces.",
+    "logo_palette": "NOT YET SAMPLED; existing CSS tokens remain provisional"
   },
-  "optimization": "The current design intentionally uses no informative image placements; textured backgrounds and the hero statement are composed with CSS and text."
+  "optimization": "Documentary images are stored locally and lazy-loaded below the homepage hero; all placed images have responsive aspect ratios and descriptive alt text. The hero image is loaded eagerly. The oversized original logo is displayed with a fixed contain box; explicit intrinsic dimensions are not known."
 }
