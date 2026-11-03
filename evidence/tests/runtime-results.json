@@ -756,5 +756,60 @@
       "Final acceptance by the association owner remains outstanding; this loop's manual review is limited to six CI screenshots.",
       "No production deployment was performed or authorized."
     ]
+  },
+  "loop_016": {
+    "test_run": "loop-016-legal-identity-page-and-regression",
+    "observed_at": "2026-11-03",
+    "runner": "GitHub Actions Ubuntu 24.04; Python 3.13.17; Node.js 22.23.4; Playwright 1.57.0; Chromium 143.0.7499.4.",
+    "status": "PASS — PYTHON, NODE AND PLAYWRIGHT",
+    "commit": "3990f99b3ee422783dacd6b94f6664b73ed81c4b",
+    "workflow": {
+      "run_id": 41665188280,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41665188280",
+      "conclusion": "success"
+    },
+    "python_validator": {
+      "status": "PASS",
+      "command": "python tests/validate_site.py",
+      "detail": "PASS: 9 pages, shared accessible navigation, 3 dated article routes, 3-card news overview, scroll-story, reduced-motion fallback, local assets and logo palette."
+    },
+    "node": {
+      "status": "PASS",
+      "commands": [
+        "node --check script.js",
+        "node --check tests/test_menu.js",
+        "node tests/test_menu.js"
+      ],
+      "output": "PASS: menu keyboard/outside-click behavior; progressive reveals; sticky-story transitions; reduced-motion fallback."
+    },
+    "browser": {
+      "status": "PASS",
+      "suite": "tests/test_browser.py",
+      "pages": 9,
+      "viewports": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "page_viewport_runs": 45,
+      "checks": [
+        "no horizontal overflow",
+        "HTTP routes and local image loads",
+        "shared navigation order",
+        "mobile menu Escape/focus behavior",
+        "sticky artwork and all three chapter transitions",
+        "reduced-motion and no-JavaScript fallbacks",
+        "desktop/mobile gallery screenshots with images decoded",
+        "no external requests, failed requests or browser errors"
+      ]
+    },
+    "limitations": [
+      "The current registered-office address is not resolved because the JOAFE/municipal record and SIRENE-derived listing differ.",
+      "Publication manager and hosting provider remain unconfirmed.",
+      "Cross-browser, manual assistive technology, physical-device, Lighthouse, ZAP and hosted checks remain outstanding.",
+      "No deployment performed or authorized."
+    ]
   }
 }

@@ -430,9 +430,9 @@
       "requirement": "Improve the legal-notices page using verifiable public association identity while preserving unresolved legal details.",
       "acceptance": "Display the denomination exactly as published in the 27 February 2019 JOAFE modification notice, the registry-listed RNA W712002504 and SIREN 519 970 743 with appropriate confirmation context; make the conflicting public addresses explicit but do not assert either as the current registered office; retain publication manager and host as pending; cite source records in page and internal provenance; add static validator coverage.",
       "risk": "R2",
-      "validation": "Static validator asserts denomination, identifiers, conflicting address caveat and official source URLs; CI Python, Node and Playwright suite must pass.",
-      "status": "IMPLEMENTED — CI EXECUTION PENDING",
-      "confidence": "HIGH for denomination and identifiers; no claim is made about the current registered-office address."
+      "validation": "python tests/validate_site.py in GitHub Actions run 41665188280; the exact name, RNA/SIREN, address-conflict caveat and source links were asserted.",
+      "status": "PASS — PYTHON STRUCTURAL VALIDATOR AND FULL CI RUN SUCCEEDED",
+      "confidence": "HIGH for published 2019 JOAFE name and registry identifiers; current registered-office address remains unresolved."
     }
   ]
 }

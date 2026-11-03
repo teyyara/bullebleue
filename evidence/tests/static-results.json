@@ -537,5 +537,61 @@
       "observations": "All three chapter panels are fully visible; the same illustrated scene remains behind the active chapter; both documentary gallery images are visible in desktop and mobile captures.",
       "scope": "Manual inspection of the six provided screenshot files. This is not final owner acceptance or a cross-browser/device test."
     }
+  },
+  "loop_016": {
+    "test_run": "loop-016-verified-apail-legal-identity-and-address-conflict",
+    "observed_at": "2026-11-03",
+    "runner": "GitHub Actions hosted Ubuntu 24.04, commit 3990f99b3ee422783dacd6b94f6664b73ed81c4b.",
+    "status": "PASS — PUBLIC IDENTITY REFERENCES, STATIC VALIDATOR AND FULL CI",
+    "research": {
+      "joafe_name": "A.P.AI.L. : AMITIÉ PARTAGE AIDE LOGISTIQUE, MATÉRIELLE ET MORALE",
+      "joafe_notice": "20190009/1308, dated 2019-02-27",
+      "rna": "W712002504",
+      "siren": "519 970 743",
+      "address_conflict": [
+        "14, quai Gambetta (JOAFE 2019 notice and Ville de Chalon association directory)",
+        "14, boulevard de la République (SIRENE-derived public listing updated 2026-06-24)"
+      ],
+      "disposition": "Neither address is asserted as the current registered office; APAiL must confirm.",
+      "sources": [
+        "https://www.journal-officiel.gouv.fr/associations/detail-annonce/associations_b/20190009/1308",
+        "https://www.chalon.fr/annuaires-de-batimentsstructures/cartographie-des-associations-256/apail-aide-logistique-materielle-et-morale-2052.html",
+        "https://www.pappers.fr/entreprise/apail-amitie-partage-aide-lutte-contre-l-inegalite-519970743"
+      ]
+    },
+    "workflow_run": {
+      "id": 41665188280,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41665188280",
+      "head_sha": "3990f99b3ee422783dacd6b94f6664b73ed81c4b",
+      "conclusion": "success"
+    },
+    "checks": [
+      {
+        "name": "Legal page identity fields",
+        "result": "PASS — SOURCE ASSERTIONS",
+        "detail": "The page states the exact JOAFE-published denomination, RNA and SIREN identifiers with a confirmation note."
+      },
+      {
+        "name": "Registered-office conflict",
+        "result": "PASS — TRANSPARENTLY DISCLOSED",
+        "detail": "The 14 quai Gambetta and 14 boulevard de la République records are both referenced with their source context; neither is asserted as the current registered office."
+      },
+      {
+        "name": "Python structural validator",
+        "result": "PASS — GITHUB ACTIONS",
+        "detail": "The updated legal identity, identifiers, address caveat and official source URLs passed."
+      },
+      {
+        "name": "Node syntax and interaction",
+        "result": "PASS — GITHUB ACTIONS",
+        "detail": "Both syntax checks and the menu/story/reduced-motion regression completed successfully."
+      },
+      {
+        "name": "Playwright responsive suite",
+        "result": "PASS — GITHUB ACTIONS",
+        "detail": "Nine public pages at five widths (45 page/viewport combinations); no horizontal overflow, all local images loaded, expected navigation/story behavior, no external/failed requests or browser errors."
+      }
+    ],
+    "limitation": "This resolves only the publicly verifiable identity fields. The current registered office, publication manager, hosting provider and final legal sign-off remain pending APAiL confirmation."
   }
 }
