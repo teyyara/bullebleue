@@ -1,6 +1,6 @@
 {
-  "requirements_version": "0.6",
-  "candidate": "bullebleue-loop-012-owner-led-information-architecture-sticky-home-news-v1",
+  "requirements_version": "0.7",
+  "candidate": "bullebleue-loop-013-repeatable-quality-and-browser-validation-v1",
   "requirements": [
     {
       "id": "REQ-001",
@@ -388,6 +388,24 @@
       "validation": "Multi-page Python validator and remote tree/path audit.",
       "status": "IMPLEMENTED — SOURCE AUDIT PENDING",
       "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-044",
+      "requirement": "Provide a repeatable, non-deploying quality workflow for the static site.",
+      "acceptance": "A read-only GitHub Actions workflow runs the Python structural validator and Node syntax/interaction checks on pushes and pull requests to main; no deploy, secrets, writable repository permission or application dependency is added.",
+      "risk": "R1",
+      "validation": "Workflow source audit and recorded job result when available.",
+      "status": "IMPLEMENTED — WORKFLOW COMMITTED; RUN RESULT NOT OBSERVED",
+      "confidence": "HIGH for source and trigger definition; execution status not independently verified."
+    },
+    {
+      "id": "REQ-045",
+      "requirement": "Add current-candidate responsive browser regression coverage for the nine-page site.",
+      "acceptance": "A Playwright test serves the local repository and checks all nine routes at 320, 390, 768, 1024 and 1440 px; verifies image loads, no horizontal overflow, navigation/menu keyboard behavior, sticky chapter changes, reduced-motion and no-JavaScript visibility, no external requests and browser errors; captures desktop/mobile screenshots.",
+      "risk": "R1",
+      "validation": "python tests/test_browser.py under Chromium; output and screenshots uploaded as CI artifact.",
+      "status": "IMPLEMENTED — TEST COMMITTED; BROWSER EXECUTION NOT OBSERVED",
+      "confidence": "HIGH for authored test scope; rendered results pending."
     }
   ]
 }

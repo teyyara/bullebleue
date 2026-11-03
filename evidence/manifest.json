@@ -1,12 +1,12 @@
 {
-  "manifest_version": "1.5",
+  "manifest_version": "1.6",
   "run_id": "bullebleue-20261102-001",
-  "loop": 12,
-  "candidate": "bullebleue-loop-012-owner-led-information-architecture-sticky-home-news-v1",
-  "candidate_status": "OWNER-REQUESTED NINE-PAGE ARCHITECTURE IMPLEMENTED; STICKY ILLUSTRATED HOMEPAGE AND THREE DEDICATED NEWS ARTICLES PASS REMOTE SOURCE AUDIT; PYTHON/NODE/BROWSER CHECKS NOT RUN; LEGAL PAGE REQUIRES APAiL COMPLETION; NOT RELEASE CERTIFIED",
+  "loop": 13,
+  "candidate": "bullebleue-loop-013-repeatable-quality-and-browser-validation-v1",
+  "candidate_status": "READ-ONLY QUALITY WORKFLOW AND PLAYWRIGHT SUITE COMMITTED; EXACT NODE TESTS PASS LOCALLY; PYTHON/BROWSER/GITHUB ACTIONS RUN RESULT NOT OBSERVED; NOT RELEASE CERTIFIED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "c3a556b58e01f1c6751c66fc3bf84a63740387ff",
+  "implementation_checkpoint_commit": "206ca33e928ea12ed08e80a3dc000979f1560620",
   "remote_git_blob_objects": {
     "index.html": "77e503b48b27ab2b183fdab70b2819b8f4153723",
     "styles.css": "a54868e47682c66b795284727a45ba43605e8836",
@@ -58,7 +58,9 @@
     "evidence/change-requests/CR-006.md": "67417f3ef178ce7dc1780e7227fbf3d0ea5449a8",
     ".aeos/state.json": "8b1c70623da4c7b7dfd7e92b20c9ec546a600460",
     "AEOS_STATUS.md": "cfbf9902bb35bdea8ddd742964f7a28e4c852cc2",
-    "project.config.json": "af6b7de501dcfcddb80ec01b859d57907ca5edac"
+    "project.config.json": "af6b7de501dcfcddb80ec01b859d57907ca5edac",
+    ".github/workflows/quality.yml": "999f0edc43aa7003b23b3978b1ac8973187a86cc",
+    "tests/test_browser.py": "e1d9db7b5f07c78d90ee408fde2267063d9422d7"
   },
   "local_screenshot_evidence": {
     "loop_006": {
@@ -90,6 +92,9 @@
     },
     "loop_012": {
       "status": "NOT CAPTURED — no current-browser render or screenshots during Loop 012; no visual or no-overflow PASS claimed."
+    },
+    "loop_013": {
+      "status": "NOT CAPTURED/INSPECTED — Playwright screenshots are configured as a CI artifact but no workflow artifact/run result was observed."
     }
   },
   "runtime_environment": {
@@ -116,7 +121,9 @@
     "The three Actualités images are local vector illustrations, explicitly not photographs of the individual events.",
     "Legal notices are an incomplete draft until APAiL supplies and confirms its legal name, registered office, publication manager and hosting provider.",
     "Current membership fee/process/required paperwork are unknown; the Adhérer page directs visitors to request up-to-date terms.",
-    "Python validator and Node regression/syntax tests were not executed during Loop 012."
+    "Python validator and Node regression/syntax tests were not executed during Loop 012.",
+    "Loop 013 exact Node syntax and menu/story regression passed locally; the updated Python validator and Playwright browser suite were not executed or observed.",
+    "The GitHub Actions quality workflow is committed with read-only permissions and no deploy job, but its push-triggered run status was not available through the GitHub connector."
   ],
   "loop_002": {
     "change": "Only process Escape when the mobile navigation is expanded; preserve focus for unrelated or closed-menu Escape events.",
@@ -449,6 +456,27 @@
       "python_validator": "NOT RUN — source updated, not executed locally.",
       "node_tests": "NOT RUN — test source updated, not executed locally.",
       "browser_visual_review": "NOT RUN — no current candidate render/screenshots; responsive no-overflow not certified."
+    },
+    "production": "NOT DEPLOYED; deployment remains unauthorized."
+  },
+  "loop_013": {
+    "objective": "Close the repeatability gap left by Loop 012 with a non-deploying quality workflow and current-site Playwright test suite.",
+    "implementation_commits": [
+      "206ca33e928ea12ed08e80a3dc000979f1560620"
+    ],
+    "changes": [
+      "Added .github/workflows/quality.yml for push/pull_request on main and manual dispatch, with contents:read only, Python structural validation, Node syntax/interaction checks, and Playwright Chromium browser checks.",
+      "Added tests/test_browser.py to serve the static site locally and test nine routes at 320, 390, 768, 1024 and 1440 px.",
+      "Browser test checks image loading, overflow, shared navigation, mobile menu Escape/focus, sticky story chapter transitions, reduced-motion and no-JavaScript fallbacks, external requests, failed requests and browser errors.",
+      "Browser screenshots are configured for a short-retention workflow artifact; no screenshot has yet been observed."
+    ],
+    "validation": {
+      "remote_source_audit": "PASS — workflow and browser test exact blobs read back from main; triggers, read-only permission, test commands and absence of deployment step verified.",
+      "node_syntax": "PASS — exact remote script.js and tests/test_menu.js blob hashes matched local files; node --check passed.",
+      "node_interaction": "PASS — exact remote tests/test_menu.js ran against exact remote script.js under Node.js 22.16.0.",
+      "python_validator": "NOT RUN — no complete local checkout; CI execution result not observed.",
+      "playwright_browser": "NOT RUN — test committed; CI execution result and screenshots not observed.",
+      "github_actions_run": "NOT OBSERVED — available repository integration did not expose a run listing for the push-triggered workflow."
     },
     "production": "NOT DEPLOYED; deployment remains unauthorized."
   }

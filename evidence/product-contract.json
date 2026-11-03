@@ -1,8 +1,8 @@
 {
-  "contract_version": "0.6",
-  "status": "ACTIVE EVIDENCE-DERIVED CHANGE BASELINE — OWNER-REQUESTED INFORMATION ARCHITECTURE AND EDITORIAL NEWS",
+  "contract_version": "0.7",
+  "status": "ACTIVE QUALITY BASELINE — LOOP 013 ADDS REPEATABLE STATIC/NODE/BROWSER CHECKS",
   "change_request": "CR-006",
-  "supersedes": "0.5",
+  "supersedes": "0.6",
   "project": "La Bulle Bleue — Chalon-sur-Saône",
   "business_objective": "Create an informative, welcoming and visually distinctive website explaining La Bulle Bleue and APAiL, representing publicly reported activities without overpromising and helping visitors contact the association.",
   "target_audience": [
@@ -32,7 +32,12 @@
     "All article copy is traceable to exact dated posts in the user-provided Facebook extraction",
     "The shared logo, palette, header and footer are consistent on all pages; the current news section is indicated on article pages",
     "Membership CTA uses email; no fee, membership form, required document or renewal term is invented",
-    "Legal notices page clearly marks missing legal identity and hosting data as pending association confirmation"
+    "Legal notices page clearly marks missing legal identity and hosting data as pending association confirmation",
+    "Repository quality workflow runs on pushes and pull requests to main using read-only contents permission; the workflow contains no deployment job.",
+    "Static validation runs tests/validate_site.py on a clean checkout.",
+    "JavaScript syntax and menu/story/reduced-motion regression run with Node.js.",
+    "A Playwright Chromium suite serves the site locally and tests all nine routes across 320/390/768/1024/1440 px, local images, mobile navigation, homepage story transitions, reduced-motion and no-JavaScript fallbacks, external requests and console errors.",
+    "Browser review screenshots are uploaded as a short-retention workflow artifact; no screenshots or results are claimed until the job has actually been observed."
   ],
   "content_requirements": [
     "Identify La Bulle Bleue as an APAiL initiative launched in 2021 and APAiL as created in 1995",
@@ -197,7 +202,25 @@
     "analytics": false,
     "forms_backend": false,
     "image_hosting": "Local repository assets under assets/; no remote image host or third-party image request.",
-    "run": "python3 -m http.server 8080"
+    "run": "python3 -m http.server 8080",
+    "quality_checks": {
+      "workflow": ".github/workflows/quality.yml",
+      "triggers": [
+        "push to main",
+        "pull_request to main",
+        "manual workflow_dispatch"
+      ],
+      "permissions": "contents: read",
+      "jobs": [
+        "python tests/validate_site.py",
+        "node --check script.js",
+        "node --check tests/test_menu.js",
+        "node tests/test_menu.js",
+        "python tests/test_browser.py"
+      ],
+      "browser": "Playwright Python 1.57.0 with Chromium; tests are tooling-only and do not add a runtime website dependency.",
+      "deployment": "No deploy job, no Vercel credentials and no production mutation."
+    }
   },
   "accessibility_target": "WCAG 2.2 AA; foundation includes semantics, alt text, dimensions, keyboard navigation, reduced-motion fallback and progressive reveal. Manual screen-reader testing remains outstanding.",
   "responsive_viewports": [
@@ -261,7 +284,9 @@
     "Legal page visibly identifies information requiring confirmation and is not described as legally complete.",
     "All nine pages have lang=fr, one H1, one main, unique title/description, consistent logo, navigation and footer.",
     "Local links and assets resolve; CSS retains logo-derived palette, responsive breakpoints and reduced-motion support.",
-    "No paid dependencies, CMS, tracking, new backend or deployment."
+    "No paid dependencies, CMS, tracking, new backend or deployment.",
+    "Quality workflow is committed and runs structural Python, Node syntax, Node interaction and Chromium browser checks; workflow result is separately verified before a PASS is recorded.",
+    "Local Playwright browser coverage checks all nine pages at five responsive widths and records sticky-story/reduced-motion/no-JavaScript behavior."
   ],
   "business_outcome_hypotheses": [
     "Specific activity stories may help families understand the initiative",
@@ -292,5 +317,6 @@
   },
   "definition_of_done_loop_010": "Integrate the user-supplied transparent logo in all six page headers and footers; select and place documentary activity photos with useful alt text; update responsive styles, tests, README and evidence; checkpoint on main and verify; no deployment. Exact logo-palette sampling is recorded as blocked because the >1 MB PNG could not be read by the repository connector and remains an open item.",
   "definition_of_done_loop_011": "Sample the directly uploaded transparent logo; document dominant colour clusters and representative hex codes; replace the interim palette throughout shared CSS, page metadata and favicon; update tests, README and design evidence; checkpoint on main and verify; no deployment.",
-  "definition_of_done_loop_012": "Replace the previous six-page menu with the owner's five primary destinations, create a sticky illustrated scroll-story homepage, consolidate identity content, feature three dated editorial news cards with individual article pages, add Adhérer and a visibly incomplete Mentions légales draft, revise shared navigation/footer, tests and evidence, checkpoint on main and verify remote; do not deploy."
+  "definition_of_done_loop_012": "Replace the previous six-page menu with the owner's five primary destinations, create a sticky illustrated scroll-story homepage, consolidate identity content, feature three dated editorial news cards with individual article pages, add Adhérer and a visibly incomplete Mentions légales draft, revise shared navigation/footer, tests and evidence, checkpoint on main and verify remote; do not deploy.",
+  "definition_of_done_loop_013": "Add a repeatable read-only GitHub Actions quality workflow and Playwright browser regression suite for the exact nine-page candidate; execute available checks, record exact results without claiming unobserved CI/browser success, update evidence and status, checkpoint to main and verify remote; no deployment."
 }

@@ -63,9 +63,16 @@ No identifiable-participant Facebook photographs are used in the current Loop 01
 
 ## Validation
 
+Run the structural, Node and browser checks locally:
+
     python3 tests/validate_site.py
     node --check script.js
     node --check tests/test_menu.js
     node tests/test_menu.js
+    python -m pip install "playwright==1.57.0"
+    python -m playwright install chromium
+    python tests/test_browser.py
 
-A passing source or unit test does not replace browser rendering, accessibility inspection or owner acceptance. No production deployment has been performed or authorized.
+The read-only GitHub Actions workflow at `.github/workflows/quality.yml` runs these checks on pushes and pull requests to `main`; it has no deployment step. The Playwright suite checks all nine pages at 320, 390, 768, 1024 and 1440 px, including images, overflow, keyboard navigation, sticky-story transitions, reduced motion and no-JavaScript fallback. It uploads browser screenshots as a short-retention artifact.
+
+A committed workflow or test is not itself a passing result: check the actual workflow run before treating the Python or browser checks as passed. A passing source/unit test does not replace manual accessibility inspection or owner acceptance. No production deployment has been performed or authorized.

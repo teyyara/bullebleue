@@ -562,5 +562,59 @@
       "The sticky illustration timing, text transitions, card balance and mobile behavior require browser review.",
       "Cross-browser, manual screen-reader, physical-device, Lighthouse and hosted performance/security tests remain outstanding."
     ]
+  },
+  "loop_013": {
+    "test_run": "loop-013-current-candidate-runtime-and-ci",
+    "observed_at": "2026-11-03",
+    "runner": "Local Node.js 22.16.0 for syntax and interaction; GitHub Actions workflow committed but run status not observed.",
+    "status": "PARTIAL — NODE PASS; PYTHON/BROWSER/WORKFLOW RESULT UNVERIFIED",
+    "node": {
+      "status": "PASS",
+      "version": "22.16.0",
+      "source_blobs": {
+        "script.js": "cdd53cf6de635f3217ada8c14eb2ee4ae5a70d4d",
+        "tests/test_menu.js": "d2d4a14519309811297651d79f28bc667646f5fb"
+      },
+      "commands": [
+        "node --check script.js",
+        "node --check tests/test_menu.js",
+        "node tests/test_menu.js"
+      ],
+      "output": "PASS: menu keyboard/outside-click behavior; progressive reveals; sticky-story transitions; reduced-motion fallback."
+    },
+    "python_validator": {
+      "status": "NOT RUN",
+      "reason": "No complete exact remote checkout was available locally during this loop; a read-only CI workflow now includes the validator, but its result was not retrieved."
+    },
+    "browser": {
+      "status": "NOT RUN — NO OBSERVED RUN",
+      "suite": "tests/test_browser.py",
+      "viewports": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "pages": 9,
+      "screenshots": "Configured to upload as the bulle-bleue-loop013-browser-review artifact when the workflow runs."
+    },
+    "workflow": {
+      "path": ".github/workflows/quality.yml",
+      "status": "COMMITTED; EXECUTION RESULT NOT OBSERVED",
+      "triggers": [
+        "push main",
+        "pull_request main",
+        "workflow_dispatch"
+      ],
+      "permissions": "contents: read",
+      "deploy_step": false
+    },
+    "limitations": [
+      "No GitHub Actions run result was available through the repository tools in this session.",
+      "No current-candidate browser screenshot was inspected; no visual or horizontal-overflow PASS is claimed.",
+      "Python structural validator was not run locally.",
+      "Cross-browser, manual screen-reader, physical-device, Lighthouse, ZAP and production tests remain outstanding."
+    ]
   }
 }

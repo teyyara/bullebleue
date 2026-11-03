@@ -390,5 +390,43 @@
       }
     ],
     "limitation": "This is a source/tree audit performed against the exact remote main-branch blobs. It is not execution of python3 tests/validate_site.py, Node.js tests, browser rendering or a visual responsive review."
+  },
+  "loop_013": {
+    "test_run": "loop-013-remote-source-audit-and-node-regression",
+    "observed_at": "2026-11-03",
+    "status": "PASS WITH LIMITS — WORKFLOW SOURCE AUDIT AND EXACT NODE REGRESSION",
+    "checks": [
+      {
+        "name": "Quality workflow source",
+        "result": "PASS — SOURCE",
+        "detail": "The main-branch workflow triggers on push/pull_request to main and workflow_dispatch, requests contents:read only, includes Python/Node/Playwright validation and has no deploy step."
+      },
+      {
+        "name": "Browser suite source",
+        "result": "PASS — SOURCE AUDIT",
+        "detail": "The committed test covers nine routes, five viewport widths (320/390/768/1024/1440), no-overflow, local image loads, keyboard menu behavior, sticky chapter transitions, reduced-motion, no-JavaScript content visibility, external requests and browser errors."
+      },
+      {
+        "name": "Node syntax",
+        "result": "PASS — EXECUTED LOCALLY",
+        "detail": "Exact remote script.js and tests/test_menu.js blobs were reconstructed in an isolated local folder; git hash-object matched cdd53cf6de635f3217ada8c14eb2ee4ae5a70d4d and d2d4a14519309811297651d79f28bc667646f5fb respectively. node --check passed for both."
+      },
+      {
+        "name": "Node interaction regression",
+        "result": "PASS — EXECUTED LOCALLY",
+        "detail": "node tests/test_menu.js printed PASS: menu keyboard/outside-click behavior; progressive reveals; sticky-story transitions; reduced-motion fallback."
+      },
+      {
+        "name": "Python structural validator",
+        "result": "NOT RUN",
+        "detail": "The exact nine-page Python validator was source-audited in prior Loop 012; it was not executed during Loop 013. The new workflow runs it on clean checkouts, but no workflow run result was observable."
+      },
+      {
+        "name": "Playwright browser suite",
+        "result": "NOT RUN — EXECUTION NOT OBSERVED",
+        "detail": "The Playwright suite is committed and wired into GitHub Actions, but no current-candidate browser run or screenshot has been observed; no layout/no-overflow visual pass is claimed."
+      }
+    ],
+    "limitation": "The source audit and local Node regression are observed results. The workflow was committed but its GitHub Actions execution status could not be retrieved with the available repository tools. Python and browser runs remain unverified."
   }
 }
