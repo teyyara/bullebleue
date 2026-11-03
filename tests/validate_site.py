@@ -117,7 +117,7 @@ def main():
     assert home.count('class="home-photo-card"') == 2, "homepage has exactly two selected documentary photos"
     for photo in gallery_photos:
         assert f'src="/{photo}"' in home, f"missing supplied homepage photo: {photo}"
-    assert "photographies, issues des publications de La Bulle Bleue" in home.lower(), "gallery provenance is visible"
+    assert "photographies, issues des publications de la bulle bleue" in home.lower(), "gallery provenance is visible"
     assert "home-hero-photo" not in home
     assert all(h in home for h in ("Qui sommes-nous ?", "actualites.html", "adherer.html", "contact.html"))
 
