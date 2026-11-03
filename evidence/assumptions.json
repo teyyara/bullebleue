@@ -1,5 +1,5 @@
 {
-  "assumptions_version": "0.6",
+  "assumptions_version": "0.7",
   "assumptions": [
     {
       "id": "ASSUMP-001",
@@ -139,11 +139,19 @@
     },
     {
       "id": "ASSUMP-018",
-      "assumption": "The legal identity, registered-office address, publication manager and actual hosting provider have not been supplied or independently verified.",
-      "source": "Repository project configuration and available source extraction.",
+      "assumption": "The public records identify APAiL's JOAFE-published denomination and registry identifiers, but the current registered-office address remains unresolved because public sources disagree; the publication manager and hosting provider are still unknown.",
+      "source": "Official JOAFE modification notice 2019-02-27; Ville de Chalon association directory; RNA/SIRENE-derived registry listing updated 2026-06-24.",
+      "confidence": "HIGH for denomination and identifiers; HIGH that the public address sources conflict.",
+      "impact_if_wrong": "HIGH",
+      "resolution": "PARTIALLY RESOLVED IN LOOP 016: publish only the JOAFE-published denomination with RNA/SIREN identifiers; explicitly retain registered office, publication manager and host as pending confirmation."
+    },
+    {
+      "id": "ASSUMP-019",
+      "assumption": "The currently registered-office address cannot safely be inferred by choosing between the 2019 JOAFE/municipal directory address (14 quai Gambetta) and the SIRENE-derived listing (14 boulevard de la République).",
+      "source": "JOAFE notice 20190009/1308, Ville de Chalon APAiL directory, Pappers listing of SIREN 519970743 showing an INSEE update dated 2026-06-24.",
       "confidence": "HIGH",
       "impact_if_wrong": "HIGH",
-      "resolution": "Mentions légales page clearly marks these fields pending confirmation and is not treated as release-ready."
+      "resolution": "Keep the current registered-office address unpublished as a definitive fact until APAiL confirms it or supplies a current official notice/INSEE situation statement."
     }
   ]
 }

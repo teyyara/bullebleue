@@ -57,7 +57,7 @@ The reading surfaces `#F3F7FE` and `#FCFDFF` are documented near-white tints der
 
 The primary content source is `Bulle_Bleue_APAiL_contenu_facebook.md`, the user-supplied extraction dated 2 November 2026. The 2024 venue and session information remains dated and must be confirmed by the association before travel.
 
-Membership fees, current membership forms and process are not evidenced; the Adhérer page asks visitors to contact APAiL for current information. Legal association identity, registered-office address, publication responsible person and actual host details have not been supplied. The Mentions légales page is visibly marked as incomplete and must be completed and approved by APAiL before the site is published.
+Membership fees, current membership forms and process are not evidenced; the Adhérer page asks visitors to contact APAiL for current information. The legal page now records the association denomination published in the JOAFE modification notice of 27 February 2019 and the public RNA/SIREN identifiers. The registered-office address remains deliberately unconfirmed: the JOAFE notice and municipal directory list 14 quai Gambetta, while a 2026 SIRENE-derived record lists 14 boulevard de la République. The publication responsible person and actual hosting provider remain unknown. The Mentions légales page is still incomplete and must be validated by APAiL before publication.
 
 The homepage uses two close-up activity photographs from the supplied Facebook-page assets; no recognizable faces are visible in the selected frames. Group, children’s and other identifiable participant photographs remain unpublished until image-specific releases are documented. The owner-reported asset permission is recorded in the asset register.
 

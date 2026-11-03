@@ -31,7 +31,7 @@
     "analytics": false,
     "third_party_tracking": false
   },
-  "current_candidate": "bullebleue-loop-015-accurate-story-and-gallery-visual-evidence-v1",
-  "status": "LOOP 015: STORY/GALLERY SCREENSHOT CAPTURE FIXED; PYTHON/NODE/PLAYWRIGHT CI PASS; SIX SCREENSHOTS MANUALLY INSPECTED; NOT DEPLOYED",
-  "contract_version": "0.9"
+  "current_candidate": "bullebleue-loop-016-verified-apail-legal-identity-v1",
+  "status": "LOOP 016: JOAFE DENOMINATION AND REGISTRY IDENTIFIERS ADDED; REGISTERED ADDRESS CONFLICT DISCLOSED; LEGAL SIGN-OFF PENDING; NOT DEPLOYED",
+  "contract_version": "1.0"
 }

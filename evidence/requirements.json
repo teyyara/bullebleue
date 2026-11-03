@@ -1,6 +1,6 @@
 {
-  "requirements_version": "0.9",
-  "candidate": "bullebleue-loop-015-accurate-story-and-gallery-visual-evidence-v1",
+  "requirements_version": "1.0",
+  "candidate": "bullebleue-loop-016-verified-apail-legal-identity-v1",
   "requirements": [
     {
       "id": "REQ-001",
@@ -377,8 +377,8 @@
       "acceptance": "The page labels unknown official association name, registered office, publication manager and hosting provider for confirmation; no legal or hosting information is fabricated.",
       "risk": "R2",
       "validation": "Static validator asserts pending-confirmation notice and required field labels.",
-      "status": "IMPLEMENTED — NOT READY FOR LEGAL SIGN-OFF",
-      "confidence": "HIGH for known unknowns."
+      "status": "PARTIALLY RESOLVED — JOAFE DENOMINATION AND RNA/SIREN ADDED; CURRENT REGISTERED OFFICE, PUBLICATION MANAGER AND HOST STILL REQUIRE CONFIRMATION",
+      "confidence": "HIGH for public identity references; address sources conflict; legal sign-off remains blocked."
     },
     {
       "id": "REQ-043",
@@ -424,6 +424,15 @@
       "validation": "GitHub Actions run 41661941172 plus manual inspection of all six PNGs in artifact 13241898121.",
       "status": "PASS — CI AND MANUAL VISUAL REVIEW",
       "confidence": "HIGH — CI confirmed all capture preconditions; all six screenshots were opened and inspected."
+    },
+    {
+      "id": "REQ-048",
+      "requirement": "Improve the legal-notices page using verifiable public association identity while preserving unresolved legal details.",
+      "acceptance": "Display the denomination exactly as published in the 27 February 2019 JOAFE modification notice, the registry-listed RNA W712002504 and SIREN 519 970 743 with appropriate confirmation context; make the conflicting public addresses explicit but do not assert either as the current registered office; retain publication manager and host as pending; cite source records in page and internal provenance; add static validator coverage.",
+      "risk": "R2",
+      "validation": "Static validator asserts denomination, identifiers, conflicting address caveat and official source URLs; CI Python, Node and Playwright suite must pass.",
+      "status": "IMPLEMENTED — CI EXECUTION PENDING",
+      "confidence": "HIGH for denomination and identifiers; no claim is made about the current registered-office address."
     }
   ]
 }

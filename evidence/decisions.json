@@ -311,6 +311,20 @@
       "tradeoffs": "The CI artifact grows from three to six screenshots and remains short-retention.",
       "risk": "R1",
       "evidence": "Direct inspection of Loop 014 artifact 13241331764 showed blank gallery placeholders in captures and a near-transparent final story panel; screenshot source was then audited against IntersectionObserver and lazy-loading behavior."
+    },
+    {
+      "id": "DEC-025",
+      "context": "Public legal/association records now provide a JOAFE-published denomination and RNA/SIREN identifiers, but the registered-office address differs across public sources.",
+      "options": [
+        "Continue to show all legal identity details as unknown",
+        "Select one public address and present it as the current registered office",
+        "Publish the sourced JOAFE denomination and registry identifiers, retain the address as pending, and disclose the record conflict"
+      ],
+      "chosen": "Use the name published in the 27 February 2019 JOAFE modification notice and list RNA W712002504 / SIREN 519 970 743 as registry identifiers with an association-confirmation note. Do not select a current registered-office address while the public records conflict.",
+      "reason": "This resolves verifiable identity details without converting an activity/directory address or potentially stale record into a legal claim about the current registered office.",
+      "tradeoffs": "The legal page is more informative but still cannot be signed off until APAiL confirms the address, publication manager and hosting provider.",
+      "risk": "R2",
+      "evidence": "Official JOAFE announcement 20190009/1308; Ville de Chalon association directory; public RNA/SIRENE-derived listing updated 2026-06-24."
     }
   ]
 }

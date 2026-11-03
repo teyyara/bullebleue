@@ -142,7 +142,9 @@ def main():
     contact = parsed["contact.html"][0]
     assert all(term in contact for term in ("apail@live.fr", "30 Rempart Saint-Vincent", "11 mars 2024", "confirmer le lieu"))
     legal = parsed["mentions-legales.html"][0]
-    assert all(term in legal for term in ("Page à compléter", "Responsable de publication", "Hébergement", "À communiquer par l’association", "à confirmer"))
+    assert all(term in legal for term in ("Page à compléter", "A.P.AI.L.", "Amitié Partage Aide Logistique, Matérielle et Morale", "W712002504", "519 970 743", "14, quai Gambetta", "14, boulevard de la République", "Responsable de publication", "Hébergement", "à confirmer"))
+    assert "https://www.journal-officiel.gouv.fr/associations/detail-annonce/associations_b/20190009/1308" in legal
+    assert "https://www.chalon.fr/annuaires-de-batimentsstructures/cartographie-des-associations-256/apail-aide-logistique-materielle-et-morale-2052.html" in legal
 
     css = (ROOT / "styles.css").read_text(encoding="utf-8")
     js = (ROOT / "script.js").read_text(encoding="utf-8")
