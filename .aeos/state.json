@@ -10,9 +10,9 @@
   "branch": "main",
   "branch_policy": "single branch",
   "bootstrap_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b",
-  "latest_loop_checkpoint_commit": "81d43194ba68d47fb8556d6ec18d2b1ff6f61f2e",
+  "latest_loop_checkpoint_commit": "0cf2cf07a2eb363a8d490a09890544519944f335",
   "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
-  "status_metadata_commit": "240035899112b23699a658e50ce832ee17f39786",
+  "status_metadata_commit": null,
   "last_known_good_release_commit": null,
   "current_loop": 11,
   "current_candidate": "bullebleue-loop-011-logo-derived-blue-art-direction-v1",
@@ -22,7 +22,6 @@
   "deployment": "NOT CONFIGURED / NOT AUTHORIZED",
   "paid_dependencies": [],
   "open_blockers": [
-    "The Python validator tests/validate_site.py was not executed against a complete local checkout.",
     "Full-page Chromium/Playwright review of all six pages is outstanding; no screenshots or rendered no-overflow PASS are claimed.",
     "The Wednesday 14:30 / Saturday 15:00 schedule and 30 Rempart Saint-Vincent / rue Leriche location are transcribed from the Facebook presentation dated 11 March 2024; current operational validity requires APAiL confirmation.",
     "The published apail@live.fr mailbox deliverability is untested.",
@@ -32,7 +31,7 @@
     "Seven supplied photographs containing identifiable participants, including children, remain unused until image-specific participant/guardian consent is confirmed; user reports owner authorization for Facebook-page assets.",
     "Loop 011 Python validator tests/validate_site.py was not executed against a complete local checkout; current six-page browser review/screenshots remain outstanding."
   ],
-  "evidence_manifest_reconciliation_commit": "240035899112b23699a658e50ce832ee17f39786",
+  "evidence_manifest_reconciliation_commit": null,
   "change_request_cr001": {
     "received": "2026-11-02",
     "status": "ADOPTED AND IMPLEMENTED IN LOOP 003",
@@ -79,10 +78,11 @@
   "latest_loop_10_visual_review": "NOT RUN — no current browser render or screenshots; no rendered no-overflow PASS claimed.",
   "latest_loop_10_palette_sampling": "BLOCKED — exact logo colours not sampled; current CSS tokens remain provisional.",
   "change_request_cr005": "COMPLETE IN LOOPS 010–011: official logo, selected photos and logo-derived blue art direction integrated; identifiable participant photos remain deferred pending image-specific consent confirmation.",
-  "latest_loop_11_checkpoint_commit": "81d43194ba68d47fb8556d6ec18d2b1ff6f61f2e",
+  "latest_loop_11_checkpoint_commit": "0cf2cf07a2eb363a8d490a09890544519944f335",
   "latest_loop_11_source_audit": "PASS — six-page remote read-back, shared logo, identical navigation, active page, theme metadata, extracted palette tokens and removed warm colours.",
   "latest_loop_11_palette_sampling": "PASS — uploaded transparent logo sampled directly; eight representative colour clusters and derived surface tints documented in evidence/visual/logo-palette.json.",
   "latest_loop_11_python_validator": "NOT RUN — no complete local checkout.",
   "latest_loop_11_node_test": "NOT RUN — JavaScript unchanged.",
-  "latest_loop_11_visual_review": "NOT RUN — no browser render/screenshots; no rendered no-overflow claim."
+  "latest_loop_11_visual_review": "NOT RUN — no browser render/screenshots; no rendered no-overflow claim.",
+  "loop_011_validator_correction_commit": "0cf2cf07a2eb363a8d490a09890544519944f335"
 }

@@ -8,6 +8,7 @@
 **Repository:** teyyara/bullebleue  
 **Branch:** main (single-branch progression)  
 **Implementation checkpoint:** 81d43194ba68d47fb8556d6ec18d2b1ff6f61f2e  
+**Validator follow-up:** 0cf2cf07a2eb363a8d490a09890544519944f335  
 **State:** WAITING_FOR_CONTINUE
 
 ## User direction
@@ -19,9 +20,9 @@ The user supplied the transparent official logo and asked that the whole site's 
 - Sampled the original 1052×1024 transparent RGBA logo using an alpha-weighted eight-cluster analysis of 120,000 visible pixels.
 - Replaced the inherited warm clay/ochre/rust palette with the logo's deep navy, cobalt, primary blue, clear blue, sky blue, steel blue and icy highlights.
 - Reworked the shared CSS tokens, page backgrounds, section accents, gradients, buttons, focus/hover details and light surface tints.
-- Updated theme-colour metadata on all six pages and rebuilt the favicon with the same blue family.
-- Updated the source validator to check palette tokens, ban the former warm values and verify the favicon.
-- Documented the palette and sampling method in `evidence/visual/logo-palette.json`; updated the README, active contract, requirements, decisions, assumptions, asset register and CR-005.
+- Updated theme-colour metadata on all six pages and rebuilt the SVG favicon with the same blue family.
+- Updated the multi-page validator to check the palette tokens, reject the former warm values, verify the favicon and confirm the new page theme colour.
+- Documented the palette in `evidence/visual/logo-palette.json`; updated the README, active contract, requirements, decisions, assumptions, asset register and CR-005.
 
 ## Palette
 
@@ -31,6 +32,7 @@ The representative logo colours are `#06195E`, `#1642A5`, `#1C60CF`, `#2084DE`, 
 
 - Remote page audit: PASS — all six pages read back from `main`; each retains two logo placements, one H1/main, identical navigation order and one correct active navigation link. Each has the new theme colour and no old theme colour.
 - CSS palette audit: PASS — all major logo-derived tokens present; prior warm clay/ochre and beige/teal palette values removed; responsive and reduced-motion rules retained.
+- Validator source: PASS — palette token, retired-colour, favicon and page theme-colour assertions are committed.
 - Asset audit: PASS — official logo, four referenced local photos and the updated SVG favicon exist in the repository.
 - Representative contrast pairs: PASS in source calculations; this is not a complete WCAG audit.
 - Python validator: NOT RUN against a complete local checkout.

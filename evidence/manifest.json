@@ -14,7 +14,7 @@
     "assets/favicon.svg": "8afd81a5cb62be5651bdae4d31e53c83c1c4b9b6",
     "menu_regression_test_js": "493debf5b26c01e0b166d555b4dab53845a52f28",
     "tests/test_menu.js": "051d0dec5655cbf2b2017e840c096ec4fc63fc6e",
-    "tests/validate_site.py": "0410a25cc0f162fdae7b3999e50d577cba8506cd",
+    "tests/validate_site.py": "20c722be00c7e799ddb441ea66d1201fd78a20e9",
     "assets/illustrations/hero-community.svg": "d46b1fa640912b32259f2b0f17622e635b8bf09b",
     "assets/illustrations/games.svg": "74f82b260859fc2658939d9cc42e074fedf17544",
     "assets/illustrations/garden.svg": "4e15f67d6cebaf017411b9e49255e15aaa9ae7fa",
@@ -341,7 +341,7 @@
       "photographs_placed": 4,
       "identifiable_people_photos_deferred": 7,
       "selected_paths": [
-        "assets/posts/861826539_1459854896248377_603952803324221168_n.jpg",
+        "assets/posts/861826539_1459854896248357_603952803324221168_n.jpg",
         "assets/posts/860039147_1459854696248377_603952803324221168_n.jpg",
         "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg",
         "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg"
@@ -396,10 +396,12 @@
       "css_palette_audit": "PASS — extracted core tokens present; no warm clay/ochre colour tokens or prior beige/teal palette values remain; responsive and reduced-motion rules remain.",
       "asset_audit": "PASS — official logo, four placed JPG paths and updated SVG favicon are present in the repository tree.",
       "contrast_pairs": "PASS — representative sRGB contrast ratios recorded in evidence/visual/logo-palette.json; this is not a complete WCAG audit.",
-      "python_validator": "NOT RUN — no complete local checkout available.",
+      "python_validator": "NOT RUN — source assertions updated but not executed against a complete local checkout.",
       "node_tests": "NOT RUN — JavaScript unchanged in this loop.",
-      "browser_visual_review": "NOT RUN — no rendered six-page screenshot review; no visual or no-overflow PASS claimed."
+      "browser_visual_review": "NOT RUN — browser layout and responsive overflow were not rendered.",
+      "validator_source": "PASS — updated validator now checks logo palette CSS tokens, rejects retired warm colours, verifies the favicon palette and verifies each page theme colour."
     },
     "production": "NOT DEPLOYED; deployment remains unauthorized."
-  }
+  },
+  "loop_011_validator_correction_commit": "0cf2cf07a2eb363a8d490a09890544519944f335"
 }
