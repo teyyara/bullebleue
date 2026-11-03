@@ -10,7 +10,7 @@
   "branch": "main",
   "branch_policy": "single branch",
   "bootstrap_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b",
-  "latest_loop_checkpoint_commit": "b622176dc3bec04190da4d2bbadb553ff329fdd3",
+  "latest_loop_checkpoint_commit": "3a20b49f9faf93afc14cd93e8950def56b328c81",
   "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
   "status_metadata_commit": "616be0a237282bcc4fac88a69a2276e089b73d0d",
   "last_known_good_release_commit": null,
@@ -22,7 +22,6 @@
   "deployment": "NOT CONFIGURED / NOT AUTHORIZED",
   "paid_dependencies": [],
   "open_blockers": [
-    "Loop 014 browser screenshots were uploaded to CI but have not been manually inspected; visual acceptance by the association owner remains outstanding.",
     "Legal-notices page remains a draft until APAiL confirms exact legal designation, registered office, publication manager and hosting provider.",
     "Membership amount, current procedure, documents and renewal conditions remain unknown.",
     "Wednesday 14:30 / Saturday 15:00 schedule and 30 Rempart Saint-Vincent / rue Leriche location remain transcribed from the 11 March 2024 Facebook presentation; current validity requires APAiL confirmation.",
@@ -122,5 +121,6 @@
   "latest_loop_14_status": "WAITING_FOR_CONTINUE — supplied-photo gallery and automated quality checks completed; no deployment.",
   "latest_loop_15_metadata_commit": "616be0a237282bcc4fac88a69a2276e089b73d0d",
   "latest_loop_15_final_ci_run": 41661941172,
-  "latest_loop_15_artifact_review": "PASS — six screenshots downloaded from artifact 13241898121, opened and inspected."
+  "latest_loop_15_artifact_review": "PASS — six screenshots downloaded from artifact 13241898121, opened and inspected.",
+  "latest_loop_15_status": "WAITING_FOR_CONTINUE — screenshot capture sequence fixed; CI and six-image visual review PASS; no deployment."
 }
