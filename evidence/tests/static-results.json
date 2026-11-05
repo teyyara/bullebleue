@@ -627,5 +627,38 @@
       }
     ],
     "limitation": "Automated validation does not replace final owner approval or image-release confirmation."
+  },
+  "loop_017_photo_gallery": {
+    "test_run": "loop-017-owner-authorised-complete-photo-set-static-validation",
+    "observed_at": "2026-11-05",
+    "status": "PASS — PYTHON STRUCTURAL VALIDATOR",
+    "commit": "c77448d327ac24c804f863ee96aae3e7e03439cb",
+    "workflow": {
+      "run_id": 41944690393,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41944690393",
+      "conclusion": "success"
+    },
+    "checks": [
+      {
+        "name": "All supplied homepage photo files",
+        "result": "PASS",
+        "detail": "All eleven assets/posts JPEGs are asserted in the homepage album with descriptive alternative text and short captions."
+      },
+      {
+        "name": "Closing gathering photograph",
+        "result": "PASS",
+        "detail": "Exactly one assets/gathering.jpeg is asserted inside the DERRIÈRE LA BULLE/contact closing composition."
+      },
+      {
+        "name": "Owner permission basis",
+        "result": "PASS",
+        "detail": "TODO.md records that the owner supplied the photo assets and verbally authorised their visible use; no additional permission hold remains."
+      },
+      {
+        "name": "Playful homepage art",
+        "result": "PASS",
+        "detail": "All five supplied drawings are referenced; old hero-community.svg placeholder is absent."
+      }
+    ]
   }
 }

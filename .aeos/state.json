@@ -10,12 +10,12 @@
   "branch": "main",
   "branch_policy": "single branch",
   "bootstrap_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b",
-  "latest_loop_checkpoint_commit": "c57a2a87c55267dbb8409cfd522b8d5134ff608e",
+  "latest_loop_checkpoint_commit": "78db0157e231932c16ad654f6fd735839c4ee1e7",
   "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
   "status_metadata_commit": "e910d0ac3b200bd0c50f41015000c0c3ad2ed132",
   "last_known_good_release_commit": null,
   "current_loop": 17,
-  "current_candidate": "bullebleue-loop-017-playful-bubble-art-direction-v1",
+  "current_candidate": "bullebleue-loop-017-playful-bubble-complete-photo-gallery-v2",
   "state": "WAITING_FOR_CONTINUE",
   "remote_checkpoint_verified": true,
   "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 018.",
@@ -29,7 +29,7 @@
     "Cross-browser Firefox/WebKit/Safari, manual screen-reader, physical-device, Lighthouse, ZAP and hosted performance/security checks remain outstanding.",
     "Domain/hosting configuration is unknown; production deployment remains unauthorized.",
     "Final visual/content acceptance from the association owner remains outstanding.",
-    "The owner-selected assets/gathering.jpeg contains recognizable people; image-specific participant/guardian releases are not documented. Keep it unpublished until the association supplies and records the necessary releases."
+    "An additional screenshot-only CI run (41945343097) adds desktop/mobile captures of the closing gathering.jpeg composition; Chromium installation remains in progress. The complete-photo site and responsive browser matrix passed in run 41944690393; no closing screenshot review is claimed until the capture run completes."
   ],
   "evidence_manifest_reconciliation_commit": "e910d0ac3b200bd0c50f41015000c0c3ad2ed132",
   "change_request_cr001": {
@@ -153,5 +153,14 @@
     "review": "All six images opened and inspected: three desktop story states, mobile story, and desktop/mobile gallery."
   },
   "latest_loop_17_visual_review": "PASS — all six final-candidate screenshots from artifact 13377971069 manually opened and inspected; sticky five-drawing collage, story panels, gallery, mobile layout and pill navigation reviewed.",
-  "latest_loop_17_status": "WAITING_FOR_CONTINUE — playful art direction and five-drawing collage implemented; Python/Node/Playwright CI and six-image visual review PASS; gathering.jpeg remains unpublished pending releases; no deployment."
+  "latest_loop_17_status": "WAITING_FOR_CONTINUE — playful bubble direction, five drawings, eleven-photo gallery and closing gathering photo implemented; core photo implementation CI PASS; screenshot-only closing-composition capture refinement still in progress; no deployment.",
+  "latest_loop_17_photo_implementation_commit": "445858d7daa1f7e273a4283d74b98d2beb921e82",
+  "latest_loop_17_browser_assertion_fix_commit": "c77448d327ac24c804f863ee96aae3e7e03439cb",
+  "latest_loop_17_visual_capture_refinement_commit": "78db0157e231932c16ad654f6fd735839c4ee1e7",
+  "latest_loop_17_photo_ci_run": 41944690393,
+  "latest_loop_17_photo_ci_status": "PASS — Python validator, Node syntax/menu/story checks and Playwright 9 pages × 5 viewports; all eleven assets/posts photos and gathering.jpeg loaded; no overflow, failed/external requests or browser errors.",
+  "latest_loop_17_photo_artifact_id": 13377109238,
+  "latest_loop_17_visual_capture_refinement_run": 41945343097,
+  "latest_loop_17_visual_capture_refinement_status": "IN PROGRESS at Chromium installation as of 2026-11-05; no result or artifact is claimed.",
+  "latest_loop_17_permission": "Association owner supplied all eleven assets/posts photographs plus gathering.jpeg and verbally authorised their visible use on the website; this is accepted as the project permission basis. No additional permission hold remains."
 }

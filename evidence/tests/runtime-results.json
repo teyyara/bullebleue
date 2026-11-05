@@ -884,5 +884,57 @@
       "gathering.jpeg remains unpublished pending participant/guardian release evidence.",
       "No production deployment was performed or authorized."
     ]
+  },
+  "loop_017_photo_gallery": {
+    "test_run": "loop-017-owner-authorised-complete-photo-set-responsive-browser-regression",
+    "observed_at": "2026-11-05",
+    "runner": "GitHub Actions; Python 3.13; Node.js 22; Playwright 1.57.0; Chromium 143.0.7499.4.",
+    "status": "PASS — PYTHON, NODE AND PLAYWRIGHT",
+    "commit": "c77448d327ac24c804f863ee96aae3e7e03439cb",
+    "workflow": {
+      "run_id": 41944690393,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41944690393",
+      "conclusion": "success"
+    },
+    "python_validator": "PASS",
+    "node": "PASS — syntax and menu/story/reduced-motion regression.",
+    "browser": {
+      "status": "PASS",
+      "pages": 9,
+      "viewports": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "page_viewport_runs": 45,
+      "checks": [
+        "all 5 homepage drawings loaded",
+        "all 11 assets/posts photos rendered in the gallery and have alt text",
+        "gathering.jpeg present in closing home-after-photo composition and loaded",
+        "no horizontal overflow",
+        "all local images loaded",
+        "navigation and keyboard menu",
+        "sticky story transitions",
+        "reduced-motion and no-JavaScript fallbacks",
+        "no failed/external requests or browser errors"
+      ]
+    }
+  },
+  "loop_017_screenshot_refinement": {
+    "test_run": "loop-017-dedicated-closing-photo-visual-capture",
+    "observed_at": "2026-11-05",
+    "commit": "78db0157e231932c16ad654f6fd735839c4ee1e7",
+    "workflow": {
+      "run_id": 41945343097,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41945343097",
+      "status": "IN PROGRESS"
+    },
+    "status": "PENDING — Chromium installation has not completed; no closing-composition screenshots or result claimed.",
+    "scope": [
+      "desktop and mobile full 11-photo gallery element captures",
+      "desktop and mobile gathering.jpeg closing-contact composition captures"
+    ]
   }
 }
