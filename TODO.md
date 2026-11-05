@@ -22,7 +22,7 @@
 - [x] Derrière la Bulle copy and volunteer/membership actions.
 - [x] Fredoka, Atkinson Hyperlegible and Caveat applied.
 - [x] Eleven assets/posts photos stay on secondary pages; homepage uses only Se retrouver and gathering documentary photos.
-- [x] Owner verbally authorised supplied image use.
+- [x] The association owner has verbally authorized use of the supplied images for the public website.
 
 ## Still open
 - [ ] Genuine young-person, parent and volunteer testimonials if the owner wants prompts replaced.
