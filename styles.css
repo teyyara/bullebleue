@@ -1054,3 +1054,8 @@ h1 em,h2 em{
  .community-photo-grid--activities,.community-photo-grid--gatherings{grid-template-columns:1fr}
  .community-photo-frame{aspect-ratio:16/10}
 }
+
+
+/* Loop 018 contrast override: beat the earlier generic about-page paragraph selector. */
+.about-two-col .solidarity-note>p:not(.section-kicker){color:var(--joy-muted)}
+.about-two-col .solidarity-note>p.source-note{color:var(--joy-muted)}
