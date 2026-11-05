@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="133" height="157" viewBox="0 0 133 157" role="img" aria-label="Transparent cut-out from drawing 6">
+  <defs>
+    <clipPath id="character-cutout" clipPathUnits="userSpaceOnUse">
+      <path d="M302 281 C310 270 331 269 345 276 C357 271 372 275 381 286 L391 301 L383 315 L393 330 L395 342 L387 350 L378 344 L369 328 L360 321 L352 329 L352 350 L360 380 L371 406 L365 417 L355 419 L346 404 L339 382 L331 363 L320 369 L313 397 L309 417 L300 425 L289 419 L293 397 L301 369 L301 343 L291 339 L281 350 L271 351 L266 342 L278 326 L289 313 L282 296 L289 286 Z" transform="translate(-264 -268)"/>
+    </clipPath>
+  </defs>
+  <image href="../dessin6.jpeg" x="-264" y="-268" width="442" height="498" preserveAspectRatio="none" clip-path="url(#character-cutout)"/>
+</svg>

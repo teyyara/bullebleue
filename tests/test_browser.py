@@ -153,6 +153,14 @@ def main() -> None:
                     if path == "index.html":
                         drawing_count = page.locator(".story-art .drawing-sticker").count()
                         assert drawing_count == 9, f"homepage must display all nine supplied drawings, found {drawing_count}"
+                        cutout_groups = page.locator(".story-art .drawing-character-group")
+                        assert cutout_groups.count() == 4, "four supplied drawing groups must use transparent character cut-outs"
+                        assert page.locator(".story-art .character-cutout").count() == 20, "all 20 separate character cut-outs must render"
+                        for drawing, expected in {6: 6, 7: 4, 8: 1, 9: 9}.items():
+                            actual = page.locator(f".story-art .drawing-character-group--{drawing} .character-cutout").count()
+                            assert actual == expected, f"drawing {drawing}: expected {expected} character cut-outs, got {actual}"
+                        group_style = cutout_groups.first.evaluate("(el) => getComputedStyle(el)")
+                        assert group_style.borderTopWidth == "0px" and group_style.backgroundColor == "rgba(0, 0, 0, 0)", "cut-out groups must not retain paper-card borders/backgrounds"
                         assert page.locator('img[src*="/assets/posts/"]').count() == 0, "homepage must stay light and contain no activity gallery"
                         heading_font = page.locator(".story-panel h1").evaluate("(el) => getComputedStyle(el).fontFamily")
                         assert "Fredoka" in heading_font, f"owner-specified Fredoka heading font is missing: {heading_font}"
@@ -397,7 +405,7 @@ def main() -> None:
                     "HTTP routes and local image loads",
                     "shared navigation order",
                     "mobile menu Escape/focus behavior",
-                    "nine supplied drawings render in the sticky art collage; highlighted drawing varies by scroll scene",
+                    "nine supplied drawing groups render in the sticky art collage, with 20 independent transparent character cut-outs from drawings 6–9; original complete sheets remain in Jouer/créer",
                     "all eleven owner-supplied assets/posts photos are distributed to activity and community sections on secondary pages; homepage stays photo-light except for gathering.jpeg",
                     "sticky art and chapter transitions",
                     "reduced-motion content visibility",
@@ -410,16 +418,16 @@ def main() -> None:
                 ],
                 "measurements": measurements,
                 "screenshots": [
-                    "artifacts/loop020-browser/home-story-01-desktop.png",
-                    "artifacts/loop018-browser/home-story-02-desktop.png",
-                    "artifacts/loop018-browser/home-story-03-desktop.png",
-                    "artifacts/loop018-browser/news-desktop.png",
-                    "artifacts/loop018-browser/news-mobile.png",
-                    "artifacts/loop018-browser/about-desktop.png",
-                    "artifacts/loop018-browser/about-mobile.png",
-                    "artifacts/loop018-browser/home-closing-desktop.png",
-                    "artifacts/loop018-browser/home-story-01-mobile.png",
-                    "artifacts/loop018-browser/home-closing-mobile.png",
+                    "artifacts/loop022-browser/home-story-01-desktop.png",
+                    "artifacts/loop022-browser/home-story-02-desktop.png",
+                    "artifacts/loop022-browser/home-story-03-desktop.png",
+                    "artifacts/loop022-browser/news-desktop.png",
+                    "artifacts/loop022-browser/news-mobile.png",
+                    "artifacts/loop022-browser/about-desktop.png",
+                    "artifacts/loop022-browser/about-mobile.png",
+                    "artifacts/loop022-browser/home-closing-desktop.png",
+                    "artifacts/loop022-browser/home-story-01-mobile.png",
+                    "artifacts/loop022-browser/home-closing-mobile.png",
                 ],
             },
             ensure_ascii=False,

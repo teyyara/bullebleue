@@ -216,6 +216,20 @@ def main():
     for drawing in ("dessin6.jpeg", "dessin7.jpeg", "dessin8.jpeg", "dessin9.jpeg"):
         assert f'src="/assets/{drawing}"' in home, f"new owner drawing missing: {drawing}"
     assert "Prendre confiance" in home and "bb-collage" in home and "assets/posts/" not in home
+    # LOOP 022: original sheets stay in the four-card collage; the sticky illustration uses 20 transparent per-character assets.
+    expected_cutouts = {6: 6, 7: 4, 8: 1, 9: 9}
+    cutout_files = sorted((ROOT / "assets/characters").glob("dessin*.svg"))
+    assert len(cutout_files) == sum(expected_cutouts.values()), f"expected 20 individual cut-outs, found {len(cutout_files)}"
+    for drawing, expected_count in expected_cutouts.items():
+        files = sorted((ROOT / "assets/characters").glob(f"dessin{drawing}-*.svg"))
+        assert len(files) == expected_count, f"drawing {drawing}: expected {expected_count} cut-outs, found {len(files)}"
+        for cutout in files:
+            svg = cutout.read_text(encoding="utf-8")
+            assert "<clipPath" in svg and 'clip-path="url(#character-cutout)"' in svg, f"{cutout.name}: transparent silhouette clipping is required"
+            assert f'href="../dessin{drawing}.jpeg"' in svg, f"{cutout.name}: original artwork must remain the pixel source"
+            assert svg.count("<path ") == 1 and "<rect" not in svg, f"{cutout.name}: one hand-traced silhouette and no opaque background expected"
+    for drawing in expected_cutouts:
+        assert f'src="/assets/dessin{drawing}.jpeg"' in home, f"complete original drawing {drawing} must remain in Jouer/créer"
     for text in ("Une association, des bénévoles engagés.", "les « Bleuets » et « Bleuettes »", "Devenir bénévole", "Adhérer à l’APAiL"):
         assert text in home, f"homepage owner copy missing: {text}"
     for page, (html, _) in parsed.items():

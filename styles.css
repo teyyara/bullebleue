@@ -1250,3 +1250,8 @@ p,li,figcaption,small,input,button{font-family:var(--body-font)}
 @media(min-width:761px){
   .news-card-image .image-kind{top:15px;right:18px;bottom:auto}
 }
+
+
+/* LOOP 022 — transparent, independently positioned character cut-outs. The complete source sheets remain in Jouer/créer. */
+.story-art>.drawing-character-group{height:auto;max-height:none;aspect-ratio:var(--source-ratio);overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none;filter:none;object-fit:unset}
+.story-art>.drawing-character-group>.character-cutout{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:auto;max-width:none;display:block;border:0;border-radius:0;background:transparent;box-shadow:none;object-fit:contain;opacity:1;filter:drop-shadow(0 4px 3px rgba(20,41,104,.16));pointer-events:none;transition:none}
