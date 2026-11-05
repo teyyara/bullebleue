@@ -1,25 +1,30 @@
 {
-  "test_run": "loop-021-full-quality-regression-after-validator-wording-fix",
+  "test_run": "loop-022-full-quality-regression-transparent-character-cutouts",
   "observed_at": "2026-11-05",
-  "browser": "Chromium 144.0.7559.96",
+  "browser": "Chromium 143.0.7499.4",
   "runner": "GitHub Actions hosted Ubuntu; Python 3.13; Node.js 22; Playwright 1.57; Chromium.",
-  "execution_mode": "page.set_content using actual local index.html and styles.css, with actual script.js added to page",
-  "status": "PASS — LOOP 021 PYTHON, NODE AND PLAYWRIGHT",
+  "execution_mode": "page.set_content using actual local HTML, CSS and script; Playwright checked all nine pages at five viewport widths.",
+  "status": "PASS — LOOP 022 PYTHON, NODE AND PLAYWRIGHT",
   "checks": [
     {
-      "name": "JavaScript syntax",
+      "name": "JavaScript syntax and interaction",
       "result": "PASS",
-      "detail": "node --check script.js and node --check tests/test_menu.js"
+      "detail": "node --check script.js and node --check tests/test_menu.js; menu keyboard/outside-click, sticky story/scroll-scene and reduced-motion tests passed."
     },
     {
-      "name": "Menu and scroll-scene interaction",
+      "name": "Transparent cut-out rendering",
       "result": "PASS",
-      "detail": "Mobile menu open/close, Escape/focus and outside-click behavior; IntersectionObserver highlights the appropriate illustration across narrative, testimonial and activity scenes."
+      "detail": "All twenty SVG cut-outs (6/4/1/9) loaded in Chromium; each of the four story groups contained its expected count; groups had no paper-card border or opaque background."
     },
     {
-      "name": "Reduced motion",
+      "name": "Original drawing preservation",
       "result": "PASS",
-      "detail": "No observer/reveal motion is required for content visibility when prefers-reduced-motion is active."
+      "detail": "The four complete original JPEG drawing sheets remain in the Jouer/créer collage."
+    },
+    {
+      "name": "Responsive layout and image loading",
+      "result": "PASS",
+      "detail": "Nine pages × five viewport widths (320, 390, 768, 1024 and 1440 px; 45 combinations). No horizontal overflow, failed local image loads, failed non-Google-Fonts requests, page errors or console errors."
     }
   ],
   "limitations": [
@@ -1125,5 +1130,25 @@
         "existing organic Actualités contours and desktop Illustration labels remain covered by the suite"
       ]
     }
+  },
+  "loop_022": {
+    "test_run": "loop-022-full-quality-regression-transparent-character-cutouts",
+    "observed_at": "2026-11-05",
+    "run_id": 42082401519,
+    "url": "https://github.com/teyyara/bullebleue/actions/runs/42082401519",
+    "status": "PASS",
+    "python": "PASS — structural assertions for 20 transparent SVG cut-outs and original-sheet preservation.",
+    "node": "PASS — syntax, menu, sticky story and reduced-motion tests.",
+    "playwright": "PASS — nine pages × five viewports (45 combinations), 20 cut-outs loaded, zero overflow and browser errors.",
+    "screenshot_artifact": {
+      "id": 13440433219,
+      "name": "bulle-bleue-loop022-visual-review",
+      "sha256": "81b759fdce230ef884f2a0561ee26a297a0f521bc812a41a4526dd704bff1aa8",
+      "screenshot_count": 18,
+      "manually_reviewed_count": 7
+    },
+    "limitations": [
+      "Hosted route, production deployment, Firefox, WebKit/Safari, screen readers, axe-core, Lighthouse, ZAP and physical mobile devices were not tested."
+    ]
   }
 }

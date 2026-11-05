@@ -3,6 +3,15 @@
 **Last updated:** 5 November 2026  
 **Repository:** teyyara/bullebleue · main
 
+## Loop 022 — Transparent character cut-outs from drawings 6–9
+- [x] Created 20 individually addressable transparent SVG character cut-outs: six from drawing 6, four clearly drawn figures from drawing 7, one from drawing 8 and nine from drawing 9.
+- [x] Each cut-out uses a hand-traced SVG clip path over the corresponding untouched original JPEG; the supplied drawing pixels are preserved rather than redrawn.
+- [x] Excluded the pasted football photograph and cropped edge fragment in drawing 7 from the drawn-character set.
+- [x] Positioned the individual figures in the sticky homepage story artwork with transparent backgrounds and no paper-card frame.
+- [x] Kept all four complete original drawings in the Jouer/créer collage.
+- [x] Added structural and browser assertions; Python, Node and Playwright all PASS across nine pages × five viewport widths.
+- [x] Uploaded 18 screenshots and manually reviewed seven relevant desktop/mobile captures.
+
 ## Loop 021 — Restore validator-compatible owner authorization wording
 - [x] Keep the explicit project record that the association owner has verbally authorized use of the supplied images for the public website.
 - [x] Restore the exact phrase “verbally authorized” required by `tests/validate_site.py`; this is a documentation/validator compatibility correction only.
@@ -30,7 +39,6 @@
 
 ## Still open
 - [ ] Genuine young-person, parent and volunteer testimonials if the owner wants prompts replaced.
-- [ ] Transparent character cut-outs from drawings 6–9; complete originals currently used.
 - [ ] Final association-owner visual/content acceptance.
 - [ ] Confirm registered office, publication manager and hosting provider.
 - [ ] Confirm membership fee, procedure, forms and renewals.

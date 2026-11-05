@@ -1,6 +1,6 @@
 {
-  "requirements_version": "1.6",
-  "candidate": "bullebleue-loop-020-organic-news-blob-contours-v1",
+  "requirements_version": "1.7",
+  "candidate": "bullebleue-loop-022-transparent-drawing-character-cutouts-v1",
   "requirements": [
     {
       "id": "REQ-001",
@@ -568,6 +568,15 @@
       "validation": "Python source checks, Playwright contour uniqueness at five widths, desktop badge geometry and manual desktop/mobile screenshot review.",
       "status": "IMPLEMENTED — LOOP 020",
       "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-064",
+      "requirement": "Prepare individual transparent character cut-outs from supplied drawings 6–9 for the sticky homepage collage.",
+      "acceptance": "Twenty independently addressable SVG assets (6 from drawing 6, 4 drawn characters from drawing 7, 1 from drawing 8 and 9 from drawing 9); each uses a transparent hand-traced clip path over its untouched original local JPEG; pasted photograph/cropped edge fragment from drawing 7 are not treated as drawn characters; all four complete original JPEGs remain in Jouer/créer; all cut-outs load without responsive overflow.",
+      "risk": "R1",
+      "validation": "Structural SVG/source assertions, Playwright image-load and count checks at five viewport widths, desktop/mobile screenshot review.",
+      "status": "IMPLEMENTED — LOOP 022",
+      "confidence": "HIGH for source references, counts, rendering and asset preservation; silhouette accuracy is based on manual vector traces."
     }
   ]
 }

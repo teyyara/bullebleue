@@ -1,5 +1,5 @@
 {
-  "version": "1.9",
+  "version": "2.0",
   "policy": "Loop 019 adds the owner-selected se retrouver.jpg group photograph to the homepage, uses drawings 6–9 as scroll-reactive artwork and a four-drawing Jouer/créer collage, and uses designmergeavecbackground.jpeg only as a restrained texture. The eleven assets/posts photos remain on secondary pages. The owner supplied and verbally authorised the images.",
   "assets": [
     {
@@ -185,28 +185,28 @@
       "use": "Sticky art and Jouer/créer collage",
       "description": "Child-made drawing of several colourful characters.",
       "documentary": false,
-      "status": "IN USE — complete original drawing; individual character cut-outs not yet produced."
+      "status": "IN USE — complete original retained in Jouer/créer; individual transparent cut-outs from this sheet are used in the sticky story collage."
     },
     {
       "path": "assets/dessin7.jpeg",
       "use": "Sticky art and Jouer/créer collage",
       "description": "Child-made drawing of colourful figures with Bulle Bleue lettering.",
       "documentary": false,
-      "status": "IN USE — complete original drawing; individual character cut-outs not yet produced."
+      "status": "IN USE — complete original retained in Jouer/créer; individual transparent cut-outs from this sheet are used in the sticky story collage."
     },
     {
       "path": "assets/dessin8.jpeg",
       "use": "Sticky art and Jouer/créer collage",
       "description": "Small colourful hand-drawn character.",
       "documentary": false,
-      "status": "IN USE — complete original drawing; individual character cut-outs not yet produced."
+      "status": "IN USE — complete original retained in Jouer/créer; individual transparent cut-outs from this sheet are used in the sticky story collage."
     },
     {
       "path": "assets/dessin9.jpeg",
       "use": "Sticky art and Jouer/créer collage",
       "description": "Child-made drawing of a diverse group of characters holding hands.",
       "documentary": false,
-      "status": "IN USE — complete original drawing; individual character cut-outs not yet produced."
+      "status": "IN USE — complete original retained in Jouer/créer; individual transparent cut-outs from this sheet are used in the sticky story collage."
     },
     {
       "path": "assets/se retrouver.jpg.jpeg",
@@ -214,6 +214,186 @@
       "description": "Owner-selected indoor photograph of participants and volunteers sharing a table.",
       "documentary": true,
       "status": "IN USE — owner supplied and verbally authorised for website display."
+    },
+    {
+      "path": "assets/characters/dessin6-01.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 6; source pixels remain in assets/dessin6.jpeg.",
+      "width": 130,
+      "height": 210,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
+    },
+    {
+      "path": "assets/characters/dessin6-02.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 6; source pixels remain in assets/dessin6.jpeg.",
+      "width": 89,
+      "height": 150,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
+    },
+    {
+      "path": "assets/characters/dessin6-03.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 6; source pixels remain in assets/dessin6.jpeg.",
+      "width": 85,
+      "height": 116,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
+    },
+    {
+      "path": "assets/characters/dessin6-04.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 6; source pixels remain in assets/dessin6.jpeg.",
+      "width": 139,
+      "height": 102,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
+    },
+    {
+      "path": "assets/characters/dessin6-05.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 6; source pixels remain in assets/dessin6.jpeg.",
+      "width": 133,
+      "height": 157,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
+    },
+    {
+      "path": "assets/characters/dessin6-06.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 6; source pixels remain in assets/dessin6.jpeg.",
+      "width": 73,
+      "height": 115,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
+    },
+    {
+      "path": "assets/characters/dessin7-01.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 7; source pixels remain in assets/dessin7.jpeg.",
+      "width": 113,
+      "height": 97,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
+    },
+    {
+      "path": "assets/characters/dessin7-02.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 7; source pixels remain in assets/dessin7.jpeg.",
+      "width": 136,
+      "height": 156,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
+    },
+    {
+      "path": "assets/characters/dessin7-03.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 7; source pixels remain in assets/dessin7.jpeg.",
+      "width": 51,
+      "height": 117,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
+    },
+    {
+      "path": "assets/characters/dessin7-04.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 7; source pixels remain in assets/dessin7.jpeg.",
+      "width": 77,
+      "height": 166,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
+    },
+    {
+      "path": "assets/characters/dessin8-01.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 8; source pixels remain in assets/dessin8.jpeg.",
+      "width": 106,
+      "height": 147,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
+    },
+    {
+      "path": "assets/characters/dessin9-01.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 9; source pixels remain in assets/dessin9.jpeg.",
+      "width": 70,
+      "height": 96,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
+    },
+    {
+      "path": "assets/characters/dessin9-02.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 9; source pixels remain in assets/dessin9.jpeg.",
+      "width": 130,
+      "height": 163,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
+    },
+    {
+      "path": "assets/characters/dessin9-03.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 9; source pixels remain in assets/dessin9.jpeg.",
+      "width": 93,
+      "height": 139,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
+    },
+    {
+      "path": "assets/characters/dessin9-04.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 9; source pixels remain in assets/dessin9.jpeg.",
+      "width": 92,
+      "height": 161,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
+    },
+    {
+      "path": "assets/characters/dessin9-05.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 9; source pixels remain in assets/dessin9.jpeg.",
+      "width": 76,
+      "height": 122,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
+    },
+    {
+      "path": "assets/characters/dessin9-06.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 9; source pixels remain in assets/dessin9.jpeg.",
+      "width": 62,
+      "height": 86,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
+    },
+    {
+      "path": "assets/characters/dessin9-07.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 9; source pixels remain in assets/dessin9.jpeg.",
+      "width": 74,
+      "height": 119,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
+    },
+    {
+      "path": "assets/characters/dessin9-08.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 9; source pixels remain in assets/dessin9.jpeg.",
+      "width": 87,
+      "height": 137,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
+    },
+    {
+      "path": "assets/characters/dessin9-09.svg",
+      "use": "Sticky homepage story artwork — individually positioned transparent character cut-out",
+      "description": "Hand-traced transparent character silhouette cut from the original child-made drawing 9; source pixels remain in assets/dessin9.jpeg.",
+      "width": 101,
+      "height": 118,
+      "documentary": false,
+      "status": "IN USE — transparent SVG cut-out; complete original JPEG remains in the Jouer/créer collage."
     }
   ],
   "permissions": {
@@ -249,5 +429,5 @@
     "participant_image_releases": "No additional release document is required by the project workflow: the user confirms the association owner supplied the images and verbally authorised their visible use. Captions avoid names and identity claims.",
     "logo_palette": "SAMPLED IN LOOP 011 from the uploaded transparent RGBA logo; Loop 012 SVG illustrations use the sampled blue family."
   },
-  "optimization": "The homepage uses five local JPEG drawings for the sticky story and gathering.jpeg at the closing contact composition. Eight assets/posts photos form the Qui sommes-nous activity gallery; three group/outing photos form a separate undated Actualités strip. Secondary-page photos use lazy loading and descriptive alt text; no paid or remote dependencies are added."
+  "optimization": "Twenty individually addressable SVG character cut-outs (6 from drawing 6, 4 from drawing 7, 1 from drawing 8 and 9 from drawing 9) use local SVG clipping paths over the untouched original JPEGs. The sticky homepage collage positions these figures independently; the four complete originals remain in Jouer/créer. The homepage remains photo-light, with gathering.jpeg at the closing composition. Eight assets/posts photographs remain on Qui sommes-nous and three undated group/outing photographs remain on Actualités. No paid or remote image dependencies are added."
 }

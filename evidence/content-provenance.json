@@ -1,5 +1,5 @@
 {
-  "content_provenance_version": "1.2",
+  "content_provenance_version": "1.3",
   "items": [
     {
       "content": "La Bulle Bleue is an APAiL initiative in Chalon-sur-Saône.",
@@ -201,6 +201,11 @@
       "content": "assets/designmergeavecbackground.jpeg, assets/dessin6.jpeg through assets/dessin9.jpeg, and assets/se retrouver.jpg.jpeg.",
       "classification": "New repository assets uploaded at the association owner's request; owner supplied them and verbally authorised their visible use on the website.",
       "confidence": "HIGH for provenance and permission basis; poster embedded schedule is treated as decorative artwork only."
+    },
+    {
+      "content": "Twenty individual transparent SVG character cut-outs derived from assets/dessin6.jpeg through assets/dessin9.jpeg (6, 4, 1 and 9 cut-outs respectively).",
+      "classification": "The association owner supplied the original child-made drawings and verbally authorised their visible use. Each SVG uses a hand-traced clip path and references the corresponding untouched local JPEG as its pixel source; these are derivative layout assets, not redraws or generated artwork. The pasted football photograph and cropped edge fragment in drawing 7 are excluded from the character set.",
+      "confidence": "HIGH for original asset paths, derived SVG references, asset count and owner-reported permission; silhouette boundaries are manually traced visual approximations."
     }
   ]
 }

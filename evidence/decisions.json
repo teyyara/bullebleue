@@ -1,5 +1,5 @@
 {
-  "decisions_version": "0.3",
+  "decisions_version": "0.4",
   "decisions": [
     {
       "id": "DEC-001",
@@ -433,6 +433,20 @@
       "tradeoffs": "Clip-path is progressive enhancement; border-radius remains fallback. Desktop tags move upper-right.",
       "risk": "R1",
       "evidence": "Loop 019/020 desktop/mobile screenshot review and Playwright assertions."
+    },
+    {
+      "id": "DEC-034",
+      "context": "Drawings 6–9 were displayed as complete rectangular sheets in the sticky homepage story collage. The owner-feedback TODO requested separate transparent character cut-outs while retaining the original sheets.",
+      "options": [
+        "Keep complete sheets as the only sticky artwork",
+        "Create individual transparent cut-outs from the supplied originals while preserving the full sheets in Jouer/créer",
+        "Redraw the figures or use generated replacements"
+      ],
+      "chosen": "Create 20 independently addressable SVG cut-outs using manually traced clip paths over the original JPEG pixels; use them as individually positioned figures in the sticky art groups and retain all four complete source drawings in Jouer/créer.",
+      "reason": "The user asked for transparent character cut-outs; preserving the supplied image pixels avoids changing child-made artwork and keeps provenance clear. The pasted football photograph and cropped edge fragment in drawing 7 are excluded from the drawn-character set.",
+      "tradeoffs": "Silhouette boundaries are hand-traced approximations; external JPEG image references inside the SVGs preserve the source pixels without duplicating the originals. The full drawing sheets remain available as documentary artwork.",
+      "risk": "R1",
+      "evidence": "CR-014, twenty SVG assets, source-preservation structural assertions and Loop 022 Chromium screenshots."
     }
   ]
 }
