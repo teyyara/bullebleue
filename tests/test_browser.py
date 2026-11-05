@@ -178,8 +178,15 @@ def main() -> None:
                         assert page.locator(".news-card h2").first.evaluate("(el) => getComputedStyle(el).color") == "rgb(20, 41, 104)", "news titles must use readable navy"
                         assert page.locator(".news-grid").evaluate("(el) => getComputedStyle(el).borderTopWidth") == "0px", "legacy rectangular news-grid frame must be removed"
                         assert page.locator(".news-grid").evaluate("(el) => getComputedStyle(el).backgroundColor") == "rgba(0, 0, 0, 0)", "news-grid wrapper must remain transparent behind blob cards"
-                        blob_radius = page.locator(".news-card").first.evaluate("(el) => getComputedStyle(el, '::before').borderTopLeftRadius")
-                        assert "66px" in blob_radius, f"news cards need pronounced organic bubble corners: {blob_radius}"
+                        blob_shapes = page.locator(".news-card").evaluate_all(
+                            "(cards) => cards.map((card) => getComputedStyle(card, '::before').clipPath)"
+                        )
+                        assert len(set(blob_shapes)) == 3, f"each dated news card needs its own organic silhouette: {blob_shapes}"
+                        assert all(shape.startswith("polygon(") for shape in blob_shapes), f"news-card backgrounds must use organic clipped contours, not only rounded rectangles: {blob_shapes}"
+                        image_shapes = page.locator(".news-card-image").evaluate_all(
+                            "(images) => images.map((image) => getComputedStyle(image).clipPath)"
+                        )
+                        assert len(set(image_shapes)) == 3, f"news illustration frames need their own organic contours: {image_shapes}"
 
                     nav_links = page.locator("#navigation a").evaluate_all(
                         "(links) => links.map((link) => link.getAttribute('href'))"

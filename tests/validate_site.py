@@ -185,7 +185,9 @@ def main():
     assert ".story-panel h1,.story-panel h2{font-family:var(--playful-font);font-size:clamp(42px,4.6vw,60px)" in css
     assert ".page-intro{\n color:var(--joy-ink)" in css and ".solidarity-note{\n color:var(--joy-ink)" in css
     assert ".story-panel h1 em,.story-panel h2 em{color:var(--joy-blue)}" in css
-    assert ".news-card::before" in css and "border-radius:66px 46px 58px 42px" in css
+    assert ".news-card::before" in css and "clip-path:polygon(" in css
+    assert "news-card:nth-child(2)::before" in css and "news-card:nth-child(3)::before" in css
+    assert "news-card:nth-child(2) .news-card-image" in css and "news-card:nth-child(3) .news-card-image" in css
     assert ".community-photo-grid--activities{grid-template-columns:repeat(4,minmax(0,1fr))}" in css
     assert ".community-photo-grid--gatherings{grid-template-columns:repeat(3,minmax(0,1fr))}" in css
     assert "@media(max-width:760px)" in css and ".home-photo-grid{grid-template-columns:1fr" in css

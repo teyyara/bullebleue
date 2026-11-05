@@ -1220,3 +1220,71 @@ p,li,figcaption,small,input,button{font-family:var(--body-font)}
 
 /* Keep anchor targets clear of the sticky navigation on desktop and touch screens. */
 #se-retrouver,#ils-en-parlent,#jouer-creer,.story-step--derriere{scroll-margin-top:calc(var(--header-offset,76px) + 18px)}
+
+
+/* LOOP 020 — make the Actualités cards read as organic bubbles, not rounded boxes. */
+.news-card::before{
+  border-radius:38% 43% 31% 46% / 12% 10% 13% 11%;
+  clip-path:polygon(
+    8% 1%, 27% 0%, 48% 2%, 70% 0%, 90% 2%,
+    97% 8%, 100% 20%, 97% 33%, 100% 47%, 97% 62%,
+    100% 77%, 95% 90%, 86% 98%, 67% 100%, 49% 98%,
+    30% 100%, 13% 97%, 4% 91%, 0% 78%, 3% 63%,
+    0% 48%, 3% 33%, 0% 19%, 4% 8%
+  );
+  filter:drop-shadow(0 10px 0 rgba(22,66,165,.075)) drop-shadow(0 18px 22px rgba(6,25,94,.09));
+}
+.news-card:nth-child(2)::before{
+  border-radius:44% 34% 45% 32% / 10% 13% 9% 12%;
+  clip-path:polygon(
+    11% 0%, 31% 2%, 53% 0%, 74% 2%, 92% 1%,
+    98% 9%, 100% 23%, 97% 37%, 100% 52%, 97% 66%,
+    99% 81%, 92% 93%, 80% 98%, 61% 100%, 43% 98%,
+    25% 100%, 9% 94%, 2% 85%, 0% 71%, 3% 56%,
+    0% 40%, 3% 25%, 2% 11%
+  );
+  background:#F0FFF6;
+}
+.news-card:nth-child(3)::before{
+  border-radius:34% 46% 30% 43% / 13% 9% 14% 10%;
+  clip-path:polygon(
+    6% 2%, 25% 0%, 47% 2%, 68% 0%, 88% 3%,
+    97% 11%, 100% 25%, 97% 40%, 100% 54%, 97% 69%,
+    99% 83%, 93% 93%, 82% 98%, 63% 100%, 45% 98%,
+    27% 100%, 11% 96%, 3% 88%, 0% 74%, 3% 58%,
+    0% 43%, 4% 27%, 1% 13%
+  );
+  background:#FFF5DF;
+}
+.news-card-image,
+.news-card:nth-child(2) .news-card-image,
+.news-card:nth-child(3) .news-card-image{
+  border-radius:38% 43% 31% 46% / 12% 10% 13% 11%;
+  clip-path:polygon(
+    8% 1%, 28% 0%, 50% 2%, 72% 0%, 92% 2%,
+    98% 10%, 100% 25%, 97% 42%, 100% 58%, 97% 75%,
+    93% 92%, 83% 99%, 64% 100%, 44% 98%, 25% 100%,
+    9% 95%, 2% 86%, 0% 68%, 3% 50%, 0% 31%, 3% 13%
+  );
+}
+.news-card:nth-child(2) .news-card-image{
+  clip-path:polygon(11% 0%,30% 2%,52% 0%,74% 2%,93% 1%,99% 13%,97% 31%,100% 50%,97% 69%,100% 87%,87% 100%,67% 98%,47% 100%,27% 98%,9% 100%,1% 85%,3% 65%,0% 45%,3% 25%);
+}
+.news-card:nth-child(3) .news-card-image{
+  clip-path:polygon(7% 2%,27% 0%,48% 2%,70% 0%,90% 3%,99% 14%,97% 34%,100% 53%,97% 72%,92% 92%,79% 100%,59% 98%,39% 100%,19% 97%,2% 85%,4% 65%,0% 46%,3% 25%);
+}
+.news-card-image img{border-radius:inherit}
+@media(max-width:760px){
+  .news-card,.news-card:nth-child(2),.news-card:nth-child(3){padding:16px 12px 20px}
+  .news-card::before{
+    border-radius:35% 42% 32% 44% / 9% 11% 10% 12%;
+  }
+  .news-card:nth-child(2)::before{border-radius:43% 34% 44% 31% / 10% 12% 9% 11%}
+  .news-card:nth-child(3)::before{border-radius:33% 45% 29% 42% / 12% 9% 13% 10%}
+  .news-card-image,.news-card:nth-child(2) .news-card-image,.news-card:nth-child(3) .news-card-image{
+    margin:4px 2px 0;
+    clip-path:polygon(8% 1%,28% 0%,50% 2%,72% 0%,92% 2%,98% 10%,100% 27%,97% 45%,100% 63%,96% 82%,87% 98%,67% 100%,47% 98%,27% 100%,9% 95%,1% 83%,3% 63%,0% 43%,3% 23%);
+  }
+  .news-card:nth-child(2) .news-card-image{clip-path:polygon(11% 0%,31% 2%,52% 0%,74% 2%,93% 1%,99% 14%,97% 33%,100% 53%,97% 72%,88% 100%,67% 98%,47% 100%,27% 98%,9% 100%,1% 85%,3% 64%,0% 44%,3% 24%)}
+  .news-card:nth-child(3) .news-card-image{clip-path:polygon(7% 2%,27% 0%,48% 2%,70% 0%,90% 3%,99% 15%,97% 35%,100% 55%,96% 75%,86% 99%,65% 98%,45% 100%,25% 97%,2% 85%,4% 65%,0% 45%,3% 25%)}
+}
