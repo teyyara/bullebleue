@@ -239,7 +239,7 @@ def main() -> None:
             desktop_gallery = page.locator(".home-photo-section")
             desktop_gallery.scroll_into_view_if_needed()
             prepare_screenshot_images(page)
-            assert desktop_gallery.locator("img").count() == 2
+            assert desktop_gallery.locator("img").count() == 11
             desktop_gallery.screenshot(
                 path=str(screenshot_dir / "home-gallery-desktop.png")
             )
