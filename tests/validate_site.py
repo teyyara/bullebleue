@@ -159,6 +159,8 @@ def main():
     assert "--joy-coral:#FF8D83" in css and "--playful-font:" in css
     assert "border-radius:999px" in css and ".drawing-mural" in css and ".drawing-sticker--five" in css
     assert "Comic Sans MS" in css and "Trebuchet MS" in css
+    assert ',system-ui,sans-serif' in css and ",cursive;" not in css
+    assert ".main-nav .nav-contact{padding:10px 17px;border:2px solid #fff;border-radius:999px" in css
     assert ".home-photo-inner{display:grid" in css and ".home-photo-grid{display:grid" in css
     assert "@media(max-width:760px)" in css and ".home-photo-grid{grid-template-columns:1fr" in css
     assert "@media(prefers-reduced-motion:reduce)" in css and "@media(max-width:760px)" in css

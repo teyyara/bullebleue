@@ -153,6 +153,10 @@ def main() -> None:
                     if path == "index.html":
                         drawing_count = page.locator(".story-art .drawing-sticker").count()
                         assert drawing_count == 5, f"homepage must display all five supplied drawings, found {drawing_count}"
+                        heading_font = page.locator(".story-panel h1").evaluate("(el) => getComputedStyle(el).fontFamily")
+                        assert "system-ui" in heading_font and "cursive" not in heading_font, f"playful heading stack must end in a sans fallback: {heading_font}"
+                        contact_radius = page.locator("#navigation .nav-contact").evaluate("(el) => getComputedStyle(el).borderRadius")
+                        assert contact_radius == "999px", f"header contact action must be fully pill-shaped: {contact_radius}"
                         photo_cards = page.locator(".home-photo-card")
                         assert photo_cards.count() == 2, "homepage photo gallery must show two cards"
                         assert page.locator(".home-photo-card img[alt]").count() == 2, (

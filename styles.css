@@ -768,7 +768,7 @@ html.has-scroll-story .story-step.is-current .story-panel{opacity:1;transform:tr
 
 
 /* LOOP 017 — owner-approved playful, bubbly and arts-led visual direction. */
-:root{--joy-paper:#FFF9F0;--joy-surface:#FFFEFA;--joy-ink:#142968;--joy-coral:#FF8D83;--joy-lemon:#FFE28A;--joy-mint:#BDEBD7;--joy-lilac:#DCCEFF;--joy-pink:#F8C9DC;--playful-font:"Comic Sans MS","Chalkboard SE","Comic Neue",cursive;--rounded-font:"Trebuchet MS","Arial Rounded MT Bold","Verdana",sans-serif;--serif:"Comic Sans MS","Chalkboard SE","Comic Neue",cursive;--sans:"Trebuchet MS","Arial Rounded MT Bold","Verdana",sans-serif}
+:root{--joy-paper:#FFF9F0;--joy-surface:#FFFEFA;--joy-ink:#142968;--joy-coral:#FF8D83;--joy-lemon:#FFE28A;--joy-mint:#BDEBD7;--joy-lilac:#DCCEFF;--joy-pink:#F8C9DC;--playful-font:"Comic Sans MS","Chalkboard SE","Comic Neue","Trebuchet MS",system-ui,sans-serif;--rounded-font:"Trebuchet MS","Arial Rounded MT Bold","Verdana",sans-serif;--serif:"Comic Sans MS","Chalkboard SE","Comic Neue","Trebuchet MS",system-ui,sans-serif;--sans:"Trebuchet MS","Arial Rounded MT Bold","Verdana",sans-serif}
 body{color:var(--joy-ink);background-color:var(--joy-paper);background-image:radial-gradient(circle at 8% 7%,rgba(255,141,131,.13) 0 7px,transparent 8px),radial-gradient(circle at 89% 21%,rgba(220,206,255,.22) 0 13px,transparent 14px),radial-gradient(circle at 14% 73%,rgba(189,235,215,.25) 0 10px,transparent 11px),radial-gradient(ellipse at 50% 0%,rgba(255,226,138,.2),transparent 35%);font-family:var(--rounded-font)}
 h1,h2,h3{font-family:var(--playful-font);font-weight:700;letter-spacing:-.035em;text-wrap:balance}
 h1 em,h2 em{color:var(--blue);text-decoration:underline wavy var(--joy-coral);text-underline-offset:5px}
@@ -781,7 +781,7 @@ a:focus-visible,button:focus-visible{outline:3px dashed var(--joy-coral);outline
 .main-nav a{padding:9px 12px;border-radius:999px;color:var(--joy-ink);font-family:var(--rounded-font);font-size:12px;font-weight:700;transition:background .2s ease,transform .2s ease,color .2s ease}
 .main-nav a:hover{background:var(--joy-mint);color:var(--joy-ink);transform:translateY(-2px)}
 .main-nav a[aria-current="page"],.main-nav a[aria-current="location"]{background:var(--joy-lilac);color:var(--joy-ink)}
-.main-nav .nav-contact{padding:10px 17px;border:2px solid #fff;background:var(--joy-coral);color:var(--joy-ink);box-shadow:0 4px 0 rgba(6,25,94,.1)}
+.main-nav .nav-contact{padding:10px 17px;border:2px solid #fff;border-radius:999px;background:var(--joy-coral);color:var(--joy-ink);box-shadow:0 4px 0 rgba(6,25,94,.1)}
 .main-nav .nav-contact:hover{background:var(--joy-lemon)}.main-nav .nav-contact span{color:var(--joy-ink)}
 .button{min-height:48px;border-radius:999px;padding:0 22px;font-family:var(--rounded-font);font-size:13px;font-weight:800;letter-spacing:0;box-shadow:0 5px 0 rgba(6,25,94,.12);transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
 .button:hover{transform:translateY(-3px) rotate(-1deg);box-shadow:0 8px 0 rgba(6,25,94,.1)}
