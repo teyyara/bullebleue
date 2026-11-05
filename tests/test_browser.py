@@ -235,13 +235,21 @@ def main() -> None:
                     full_page=False,
                 )
 
-            # Capture the gallery as an element after explicitly decoding its lazy images.
+            # Capture the gallery without the sticky header covering its first row.
             desktop_gallery = page.locator(".home-photo-section")
             desktop_gallery.scroll_into_view_if_needed()
+            page.add_style_tag(content=".site-header{position:relative!important;top:auto!important}")
             prepare_screenshot_images(page)
             assert desktop_gallery.locator("img").count() == 11
             desktop_gallery.screenshot(
                 path=str(screenshot_dir / "home-gallery-desktop.png")
+            )
+            desktop_closing = page.locator(".home-after")
+            desktop_closing.scroll_into_view_if_needed()
+            prepare_screenshot_images(page)
+            assert desktop_closing.locator(".home-after-photo img").evaluate("(img) => img.naturalWidth") > 0
+            desktop_closing.screenshot(
+                path=str(screenshot_dir / "home-closing-desktop.png")
             )
 
             # Mobile captures keep the same sticky story and show the actual loaded gallery.
@@ -259,9 +267,17 @@ def main() -> None:
             )
             mobile_gallery = page.locator(".home-photo-section")
             mobile_gallery.scroll_into_view_if_needed()
+            page.add_style_tag(content=".site-header{position:relative!important;top:auto!important}")
             prepare_screenshot_images(page)
             mobile_gallery.screenshot(
                 path=str(screenshot_dir / "home-gallery-mobile.png")
+            )
+            mobile_closing = page.locator(".home-after")
+            mobile_closing.scroll_into_view_if_needed()
+            prepare_screenshot_images(page)
+            assert mobile_closing.locator(".home-after-photo img").evaluate("(img) => img.naturalWidth") > 0
+            mobile_closing.screenshot(
+                path=str(screenshot_dir / "home-closing-mobile.png")
             )
 
             # Reduced-motion users keep every story panel readable without JS motion classes.
@@ -319,7 +335,8 @@ def main() -> None:
                     "reduced-motion content visibility",
                     "no-JavaScript content visibility",
                     "story screenshot captured after all three opacity transitions complete",
-                    "desktop and mobile gallery screenshots captured after lazy images decode",
+                    "desktop and mobile eleven-photo gallery screenshots captured after lazy images decode",
+                    "desktop and mobile closing gathering.jpeg composition screenshots captured and image decode verified",
                     "no external requests, failed requests or console errors",
                 ],
                 "measurements": measurements,
@@ -328,8 +345,10 @@ def main() -> None:
                     "artifacts/loop017-browser/home-story-02-desktop.png",
                     "artifacts/loop017-browser/home-story-03-desktop.png",
                     "artifacts/loop017-browser/home-gallery-desktop.png",
+                    "artifacts/loop017-browser/home-closing-desktop.png",
                     "artifacts/loop017-browser/home-story-01-mobile.png",
                     "artifacts/loop017-browser/home-gallery-mobile.png",
+                    "artifacts/loop017-browser/home-closing-mobile.png",
                 ],
             },
             ensure_ascii=False,
