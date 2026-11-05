@@ -169,6 +169,8 @@ def main() -> None:
                         assert page.locator(".community-photo-grid--gatherings .community-photo-card").count() == 3, "news page has three un-dated community images"
                         assert page.locator(".news-card").count() == 3, "news page keeps its three dated stories"
                         assert page.locator(".news-card h2").first.evaluate("(el) => getComputedStyle(el).color") == "rgb(20, 41, 104)", "news titles must use readable navy"
+                        assert page.locator(".news-grid").evaluate("(el) => getComputedStyle(el).borderTopWidth") == "0px", "legacy rectangular news-grid frame must be removed"
+                        assert page.locator(".news-grid").evaluate("(el) => getComputedStyle(el).backgroundColor") == "rgba(0, 0, 0, 0)", "news-grid wrapper must remain transparent behind blob cards"
                         blob_radius = page.locator(".news-card").first.evaluate("(el) => getComputedStyle(el, '::before').borderTopLeftRadius")
                         assert "66px" in blob_radius, f"news cards need pronounced organic bubble corners: {blob_radius}"
 
