@@ -40,6 +40,17 @@ function boot({ reducedMotion = false, revealCount = 2, storyCount = 3 } = {}) {
   const year = createElement();
   const revealItems = Array.from({ length: revealCount }, createElement);
   const storySteps = Array.from({ length: storyCount }, createElement);
+  storySteps.forEach((step, index) => {
+    step.classList.add('story-step');
+    step.dataset = { scene: ['accueil', 'se-retrouver', 'derriere'][index] || 'accueil' };
+  });
+  const testimonialScene = createElement();
+  testimonialScene.dataset = { scene: 'temoignages' };
+  const activityScene = createElement();
+  activityScene.dataset = { scene: 'jouer' };
+  const sceneTargets = [...storySteps, testimonialScene, activityScene];
+  const storyArt = createElement();
+  storyArt.dataset = { scene: 'accueil' };
   const documentListeners = {};
   const observers = [];
 
@@ -61,11 +72,13 @@ function boot({ reducedMotion = false, revealCount = 2, storyCount = 3 } = {}) {
       if (selector === '.menu-toggle') return toggle;
       if (selector === '#navigation') return navigation;
       if (selector === '#year') return year;
+      if (selector === '.story-art') return storyArt;
       return null;
     },
     querySelectorAll(selector) {
       if (selector === '.reveal') return revealItems;
       if (selector === '.story-step') return storySteps;
+      if (selector === '.story-step[data-scene], .home-testimonials[data-scene], .bb-jouer[data-scene]') return sceneTargets;
       return [];
     },
     addEventListener(name, callback) { (documentListeners[name] ||= []).push(callback); },
@@ -77,7 +90,7 @@ function boot({ reducedMotion = false, revealCount = 2, storyCount = 3 } = {}) {
   };
   const source = fs.readFileSync(path.join(__dirname, '..', 'script.js'), 'utf8');
   vm.runInNewContext(source, { document, Date, window, IntersectionObserver: MockIntersectionObserver });
-  return { toggle, navigation, link, year, document, revealItems, storySteps, observers };
+  return { toggle, navigation, link, year, document, revealItems, storySteps, sceneTargets, storyArt, testimonialScene, activityScene, observers };
 }
 
 const env = boot();
@@ -123,7 +136,7 @@ assert.equal(env.observers[0].unobserved.length, env.revealItems.length);
 // Sticky homepage keeps a single active text step as the same illustration remains in place.
 assert.equal(env.document.documentElement.classList.contains('has-scroll-story'), true);
 assert.equal(env.storySteps[0].classList.contains('is-current'), true, 'opening chapter is visible before the first observer callback');
-assert.equal(env.observers[1].observed.length, env.storySteps.length);
+assert.equal(env.observers[1].observed.length, env.sceneTargets.length);
 env.observers[1].callback([
   { target: env.storySteps[0], isIntersecting: true, intersectionRatio: 0.55 },
   { target: env.storySteps[1], isIntersecting: false, intersectionRatio: 0 },
@@ -136,6 +149,18 @@ env.observers[1].callback([
 ], env.observers[1]);
 assert.equal(env.storySteps[0].classList.contains('is-current'), false);
 assert.equal(env.storySteps[1].classList.contains('is-current'), true);
+assert.equal(env.storyArt.dataset.scene, 'se-retrouver', 'Se retrouver changes the featured drawing scene');
+env.observers[1].callback([
+  { target: env.storySteps[1], isIntersecting: false, intersectionRatio: 0 },
+  { target: env.testimonialScene, isIntersecting: true, intersectionRatio: 0.72 }
+], env.observers[1]);
+assert.equal(env.storyArt.dataset.scene, 'temoignages', 'testimonial section changes the featured drawing scene');
+assert.ok(env.storySteps.every(step => step.classList.contains('is-current') === false), 'standalone sections do not leave a story panel active');
+env.observers[1].callback([
+  { target: env.testimonialScene, isIntersecting: false, intersectionRatio: 0 },
+  { target: env.activityScene, isIntersecting: true, intersectionRatio: 0.7 }
+], env.observers[1]);
+assert.equal(env.storyArt.dataset.scene, 'jouer', 'activity section changes the featured drawing scene');
 
 // Reduced-motion visitors receive all story copy without reveal observers.
 const reduced = boot({ reducedMotion: true });
@@ -143,4 +168,4 @@ assert.equal(reduced.document.documentElement.classList.contains('has-reveal'), 
 assert.equal(reduced.document.documentElement.classList.contains('has-scroll-story'), false);
 assert.equal(reduced.observers.length, 0);
 
-console.log('PASS: menu keyboard/outside-click behavior; progressive reveals; sticky-story transitions; reduced-motion fallback.');
+console.log('PASS: menu keyboard/outside-click behavior; progressive reveals; sticky-story and scroll-scene transitions; reduced-motion fallback.');
