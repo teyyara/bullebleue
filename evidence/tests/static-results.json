@@ -660,5 +660,43 @@
         "detail": "All five supplied drawings are referenced; old hero-community.svg placeholder is absent."
       }
     ]
+  },
+  "loop_018": {
+    "test_run": "loop-018-photo-distribution-bubble-and-contrast-structural-validation",
+    "observed_at": "2026-11-05",
+    "status": "PASS — PYTHON STRUCTURAL VALIDATOR",
+    "commit": "ce6c113afc7f36b1be354d13f23c2a65694dac7c",
+    "workflow": {
+      "run_id": 41950304947,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41950304947",
+      "conclusion": "success"
+    },
+    "checks": [
+      {
+        "name": "Airy homepage",
+        "result": "PASS",
+        "detail": "No assets/posts references or home-photo-section; one gathering.jpeg appears in the closing contact composition; five supplied drawings and all three story chapters remain."
+      },
+      {
+        "name": "Activity photo placement",
+        "result": "PASS",
+        "detail": "Eight supplied assets/posts photos appear beside activity content on Qui sommes-nous."
+      },
+      {
+        "name": "Undated community strip",
+        "result": "PASS",
+        "detail": "Three group/outing photos appear separately on Actualités; the copy states they are not linked to the three dated articles."
+      },
+      {
+        "name": "News card shape",
+        "result": "PASS",
+        "detail": "Asymmetric news-card pseudo-element shapes and curved illustration frames are present."
+      },
+      {
+        "name": "Contrast-safe palette",
+        "result": "PASS",
+        "detail": "Pastel page intro and solidarity note use deep readable text, and dark panels use light text."
+      }
+    ]
   }
 }

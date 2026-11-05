@@ -939,5 +939,70 @@
       "count": 8,
       "manual_review": "PASS — all eight PNG screenshots manually opened and inspected."
     }
+  },
+  "loop_018": {
+    "test_run": "loop-018-responsive-photo-distribution-bubble-and-colour-browser-regression",
+    "observed_at": "2026-11-05",
+    "runner": "GitHub Actions; Python 3.13; Node.js 22; Playwright 1.57.0; Chromium 143.0.7499.4.",
+    "status": "PASS — PYTHON, NODE, PLAYWRIGHT AND MANUAL SCREENSHOT REVIEW",
+    "commit": "ce6c113afc7f36b1be354d13f23c2a65694dac7c",
+    "workflow": {
+      "run_id": 41950304947,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41950304947",
+      "conclusion": "success"
+    },
+    "python_validator": "PASS",
+    "node": "PASS — script/test syntax and menu/story/reduced-motion regression.",
+    "browser": {
+      "status": "PASS",
+      "suite": "tests/test_browser.py",
+      "pages": 9,
+      "viewports": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "page_viewport_runs": 45,
+      "checks": [
+        "five supplied drawings render in the homepage sticky collage",
+        "homepage has zero assets/posts photos and one gathering.jpeg closing image",
+        "Qui sommes-nous contains eight activity photos",
+        "Actualités contains three undated group/outing photos separate from three dated stories",
+        "Actualités has three organic bubble cards and a transparent, borderless news-grid wrapper",
+        "computed page-intro, lede, news-title and solidarity-note text colours pass",
+        "all local images loaded with no horizontal overflow",
+        "shared navigation and mobile Escape/focus behavior",
+        "sticky story transitions",
+        "reduced-motion and no-JavaScript visibility",
+        "no failed/external requests or browser/console errors"
+      ],
+      "screenshots": [
+        "artifacts/loop018-browser/home-story-01-desktop.png",
+        "artifacts/loop018-browser/home-story-02-desktop.png",
+        "artifacts/loop018-browser/home-story-03-desktop.png",
+        "artifacts/loop018-browser/home-story-01-mobile.png",
+        "artifacts/loop018-browser/home-closing-desktop.png",
+        "artifacts/loop018-browser/home-closing-mobile.png",
+        "artifacts/loop018-browser/news-desktop.png",
+        "artifacts/loop018-browser/news-mobile.png",
+        "artifacts/loop018-browser/about-desktop.png",
+        "artifacts/loop018-browser/about-mobile.png"
+      ]
+    },
+    "artifact": {
+      "id": 13380044365,
+      "name": "bulle-bleue-loop018-visual-review",
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41950304947/artifacts/13380044365",
+      "sha256": "384eb5c98e3607e92b323cdddfa9429259cc6882cdf10121521bed3463b39a69",
+      "screenshot_count": 10,
+      "manual_review": "PASS — all ten PNG screenshots manually opened and visually inspected."
+    },
+    "limitations": [
+      "Firefox/WebKit/Safari, manual screen-reader, physical-device, Lighthouse, ZAP and hosted checks remain outstanding.",
+      "Association-owner visual/content acceptance remains outstanding.",
+      "No production deployment was performed or authorized."
+    ]
   }
 }

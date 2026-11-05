@@ -1,12 +1,12 @@
 {
-  "manifest_version": "2.2",
+  "manifest_version": "2.3",
   "run_id": "bullebleue-20261102-001",
-  "loop": 17,
-  "candidate": "bullebleue-loop-017-playful-bubble-complete-photo-gallery-v2",
-  "candidate_status": "OWNER-REQUESTED PLAYFUL BUBBLE ART DIRECTION; FIVE-DRAWING STICKY COLLAGE; ALL ELEVEN OWNER-SUPPLIED ASSETS/POSTS PHOTOS IN HOMEPAGE ALBUM; GATHERING.JPEG IN CLOSING CONTACT AREA; OWNER VERBAL AUTHORIZATION ACCEPTED; PYTHON/NODE/PLAYWRIGHT CI PASS; EIGHT SCREENSHOTS MANUALLY REVIEWED; NOT DEPLOYED",
+  "loop": 18,
+  "candidate": "bullebleue-loop-018-airy-photo-distribution-and-bubble-art-direction-v1",
+  "candidate_status": "AIRY HOMEPAGE WITH GATHERING.JPEG ONLY; EIGHT ACTIVITY PHOTOS ON QUI SOMMES-NOUS; THREE UNDATED GROUP PHOTOS ON ACTUALITÉS; ORGANIC BUBBLE NEWS CARDS; CONTRAST-SAFE PLAYFUL PALETTE; PYTHON/NODE/PLAYWRIGHT PASS; TEN SCREENSHOTS MANUALLY REVIEWED; NOT DEPLOYED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "445858d7daa1f7e273a4283d74b98d2beb921e82",
+  "implementation_checkpoint_commit": "ce6c113afc7f36b1be354d13f23c2a65694dac7",
   "remote_git_blob_objects": {
     "index.html": "f91e167bdc7656f48ef7850db36850581558d47e",
     "styles.css": "1689800eeab3ea38c0d27beaee25a57564d1d56a",
