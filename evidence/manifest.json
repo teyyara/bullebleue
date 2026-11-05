@@ -21,9 +21,9 @@
     "assets/illustrations/discovery.svg": "3584a19294dd93f1a418004dddc358aec49a847f",
     "assets/illustrations/culture.svg": "778b27484a79db0d1b64abe785ae4b0696b4df2d",
     "assets/illustrations/solidarity.svg": "e80525d8acc48b3d429912d6229023db54a45e2e",
-    "evidence/tests/static-results.json": "9b1783f36bf24e88a389f6265d2eff13f8c61cf6",
-    "evidence/tests/runtime-results.json": "3d8de66385a30ee6fea48a2e5c0d3e693a3b8a74",
-    "evidence/requirements.json": "2a6f22fc7f60e26f0a49fdfd76c545fa0c31b06d",
+    "evidence/tests/static-results.json": "fd420f9acaf75e24e1488f5f6a5a7d10a681ce73",
+    "evidence/tests/runtime-results.json": "703a52335da94ef2b4a8a17204a9a7adbe5029c5",
+    "evidence/requirements.json": "7aca7f6369c68ea7a7f4dadac1317854c40bd017",
     "evidence/product-contract.json": "9026044cd58138fbab901447925bdd2aba9e65b0",
     "evidence/research/keyphrase-dossier.md": "097b39681be69b04ebdca9334aa283d003ad69f7",
     "evidence/decisions.json": "345ce86a1da6fb46f72cf91646d3ed5743f25b39",
@@ -56,9 +56,9 @@
     "adherer.html": "25bab14f258987327204dda0d03cbf422e1eab95",
     "mentions-legales.html": "69269bbecd193f090650ddcd8b2bd559ea93e1ef",
     "evidence/change-requests/CR-006.md": "67417f3ef178ce7dc1780e7227fbf3d0ea5449a8",
-    ".aeos/state.json": "e8be2eab22cd5bee7164618b1669ba14b5e9f63b",
-    "AEOS_STATUS.md": "c18c8a917a5bb2c60f540cdd8c97ae3092e567ac",
-    "project.config.json": "a39a345caed97eae1a96128f06ea86485522d8d4",
+    ".aeos/state.json": "1813b7180f776b62aac3eb8241ff7b0ee9ef39aa",
+    "AEOS_STATUS.md": "a5f354a8ae3ceec78a027cac8d0b778e5252e0d9",
+    "project.config.json": "a5af086ba2cf3015c0b8e8e4c2cf45403e215125",
     ".github/workflows/quality.yml": "a2c87b7ddc2c8b30386296d679b51c523285e322",
     "tests/test_browser.py": "606cbca15ec43e3e08cd2486c60fb10b85c66dcd",
     "evidence/change-requests/CR-007.md": "076bd89bef7e14cdfdba67823a60749dba82c10a",
@@ -657,5 +657,6 @@
     "status": "WAITING_FOR_CONTINUE",
     "deployment": "NOT PERFORMED / NOT AUTHORIZED"
   },
-  "latest_loop_17_final_commit": "78db0157e231932c16ad654f6fd735839c4ee1e7"
+  "latest_loop_17_final_commit": "78db0157e231932c16ad654f6fd735839c4ee1e7",
+  "status_metadata_reconciliation": "PASS — remote blob map reconciled with current main at 2026-11-05; manifest intentionally does not self-reference."
 }
