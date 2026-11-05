@@ -168,6 +168,14 @@
       "confidence": "HIGH — direct owner authorization is reported by the project user.",
       "impact_if_wrong": "MEDIUM",
       "resolution": "RESOLVED IN LOOP 017: accept the owner's verbal authorization as the project permission basis; include all eleven assets/posts photographs and gathering.jpeg. No further permission is requested by this workflow."
+    },
+    {
+      "id": "ASSUMP-022",
+      "assumption": "The eight activity and three group/outing photos can be represented as general association moments without attaching them to a specific dated Facebook post.",
+      "source": "Visual inspection of the eleven supplied image assets and their visible subject matter; user requested placing them in relevant other website sections.",
+      "confidence": "HIGH for general captions and visible content; no specific event date is asserted.",
+      "impact_if_wrong": "LOW",
+      "resolution": "Use general activity/meeting captions only. The Actualités photo strip explicitly says it is not attached to the three dated stories."
     }
   ]
 }

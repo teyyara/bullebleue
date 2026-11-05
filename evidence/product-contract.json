@@ -1,6 +1,6 @@
 {
-  "contract_version": "1.2",
-  "status": "ACTIVE QUALITY BASELINE — LOOP 017 IMPLEMENTS OWNER-AUTHORISED COMPLETE PHOTO SET AND PLAYFUL BUBBLE ART DIRECTION",
+  "contract_version": "1.3",
+  "status": "ACTIVE QUALITY BASELINE — LOOP 018 CORRECTS PHOTO DISTRIBUTION, ORGANIC NEWS BUBBLES AND CONTRAST-SAFE PLAYFUL PALETTE",
   "change_request": "CR-010",
   "supersedes": "1.0",
   "project": "La Bulle Bleue — Chalon-sur-Saône",
@@ -149,7 +149,7 @@
     "contact": "Cobalt/primary-blue gradient with pale icy text and highlights.",
     "background": "Warm paper base with soft bubbles and supporting pastel accents (coral, lemon, mint and lilac) around the logo-derived blues. Keep the official logo legible and avoid a corporate card-grid appearance.",
     "stories": "Separate dated activity-story mosaic removed in Loop 006 to reduce page length and avoid reliance on an unverified Facebook mirror.",
-    "asset_policy": "The association owner supplied the five drawings, eleven assets/posts photographs and gathering.jpeg and verbally authorised their visible use on the website. All eleven assets/posts photos appear in the homepage album; gathering.jpeg appears beside the closing contact content.",
+    "asset_policy": "The association owner supplied the five drawings, eleven assets/posts photographs and gathering.jpeg and verbally authorised their visible use on the website. Only gathering.jpeg appears on the homepage. Eight activity photos appear on Qui sommes-nous; the three group/outing photos appear in a separate, explicitly undated strip on Actualités.",
     "images": [
       {
         "path": "assets/logo final.png",
@@ -243,14 +243,18 @@
       }
     ],
     "palette": "Use only the sampled logo blues plus documented pale near-white tints derived from the logo; no warm clay/ochre accents.",
-    "homepage": "All five supplied drawings form the sticky backdrop for three scrolling story chapters. The homepage then includes an eleven-photo documentary album from assets/posts and closes with gathering.jpeg beside DERRIÈRE LA BULLE/contact links.",
-    "news": "Exactly three rectangular editorial cards with a compact landscape illustration, visible date, small category/caption, short text and a distinct Voir plus link. Each links to a dedicated detail article.",
+    "homepage": "The homepage remains light: five supplied drawings in the sticky story collage, three short story chapters and gathering.jpeg beside the closing DERRIÈRE LA BULLE/contact links. No assets/posts gallery or other activity photographs appear on the homepage.",
+    "news": "Three dated stories are presented as distinct, irregular bubble-shaped articles with inset curved illustrations and responsive stacked layout. A separate, undated gallery shows three community/group photographs; it explicitly states they are not tied to the dated stories.",
     "articles": "A clean article template with date, headline, short deck, one labelled illustration, concise text, provenance note and return-to-news link.",
     "navigation": "Five clear primary destinations. Mentions légales remains in the shared footer.",
     "cards": "Avoid rigid rectangles. Use organic, uneven bubble-like silhouettes, soft dotted or hand-drawn outlines, pill controls, gentle rotations and generous readable spacing throughout all nine public pages.",
     "typography": "Friendly handwritten-style headline fallback and rounded, readable body fallback; informal and fun rather than formal/professional. No remote font dependency.",
     "home_closing_photo": "Place assets/gathering.jpeg prominently beside the DERRIÈRE LA BULLE/contact content at the end of the homepage. The owner supplied the image and verbally authorised its visible use on the website.",
-    "photo_gallery": "Display all eleven local photos from assets/posts in a playful organic gallery with descriptive alt text and short captions. The owner supplied the photographs and verbally authorised their website use."
+    "photo_gallery": "Display all eleven local photos from assets/posts in a playful organic gallery with descriptive alt text and short captions. The owner supplied the photographs and verbally authorised their website use.",
+    "about_photos": "Eight supplied activity photographs appear beside the activities content on Qui sommes-nous in a compact responsive gallery; descriptive French alt text and short captions identify the activity, not the people.",
+    "photo_distribution": "Distribute the eleven assets/posts photos away from the homepage: 8 activity photos on Qui sommes-nous, 3 group/outing photos in a separate undated strip on Actualités. Do not imply the three Actualités photos depict the three dated stories.",
+    "colour_contrast": "Use explicit deep navy/blue text on pale cream/pastel backgrounds and light text only on dark blue gradients. Page-intro has a pale background and must use dark text. Avoid low-contrast pale-blue title emphasis on pale surfaces; keep the solidarity note on a pale surface with dark text.",
+    "news_card_shape": "Article cards must visibly read as organic bubbles/blobs, not merely rounded rectangles. Use asymmetrical shapes, varied card contour and inset organic image frames with mobile stacking."
   },
   "motion": {
     "effects": [
@@ -344,7 +348,11 @@
     "branch": "main"
   },
   "success_criteria": [
-    "The owner-authorised gathering.jpeg is placed beside the closing homepage contact content."
+    "The owner-authorised gathering.jpeg is placed beside the closing homepage contact content.",
+    "The homepage contains no assets/posts photos or home photo album; gathering.jpeg remains the one documentary photo beside the closing contact section.",
+    "All eleven assets/posts photos are displayed on the two relevant secondary pages: eight activities on Qui sommes-nous and three undated community images on Actualités.",
+    "The three dated Actualités cards have clear organic blob silhouettes and remain responsive.",
+    "Pastel page headers and solidarity panel use dark readable text; dark panels use light text; headline emphasis has adequate contrast."
   ],
   "business_outcome_hypotheses": [
     "Specific activity stories may help families understand the initiative",
@@ -377,7 +385,7 @@
   "definition_of_done_loop_011": "Sample the directly uploaded transparent logo; document dominant colour clusters and representative hex codes; replace the interim palette throughout shared CSS, page metadata and favicon; update tests, README and design evidence; checkpoint on main and verify; no deployment.",
   "definition_of_done_loop_012": "Replace the previous six-page menu with the owner's five primary destinations, create a sticky illustrated scroll-story homepage, consolidate identity content, feature three dated editorial news cards with individual article pages, add Adhérer and a visibly incomplete Mentions légales draft, revise shared navigation/footer, tests and evidence, checkpoint on main and verify remote; do not deploy.",
   "definition_of_done_loop_013": "Add a repeatable read-only GitHub Actions quality workflow and Playwright browser regression suite for the exact nine-page candidate; execute available checks, record exact results without claiming unobserved CI/browser success, update evidence and status, checkpoint to main and verify remote; no deployment.",
-  "candidate": "bullebleue-loop-017-playful-bubble-complete-photo-gallery-v2",
+  "candidate": "bullebleue-loop-018-airy-photo-distribution-and-bubble-art-direction-v1",
   "definition_of_done_loop_014": "Preserve the sticky illustrated homepage background and its three scroll chapters; add a responsive, accessible gallery using two exact user-supplied close-up activity photographs that show no recognizable faces; do not assign the photos to dated news events; keep identifiable group/children photos unpublished pending image-specific releases; update the source validator, browser regression, asset register, provenance, decisions, requirements, README and change request; checkpoint on main, verify exact remote readback, record unobserved Python/browser/CI results honestly, and do not deploy.",
   "definition_of_done_loop_015": "Visually inspect the latest Loop 014 Playwright screenshots; correct screenshot capture so each of the three sticky-story chapters is captured only once its text is fully visible, and capture the two supplied-photo gallery at desktop and mobile after lazy images load/decode; keep captures faithful to real sticky viewport behavior, update CI artifact paths, browser suite output, README, requirements, decision/evidence/status records; run full CI, inspect the resulting six screenshot files, commit final evidence to main and verify remote checkpoint; no deployment.",
   "definition_of_done_loop_016": "Research APAiL legal identity through official JOAFE and municipal sources plus current registry-derived identifiers; update Mentions légales with the exact dated JOAFE denomination and RNA/SIREN references; document the conflict between 14 quai Gambetta and 14 boulevard de la République without claiming either as the present registered office; retain publication manager and host as unknown; update requirements, provenance, assumptions, decisions, README and change request; extend static validation; run full quality CI, checkpoint and verify remote main; do not deploy.",
@@ -389,5 +397,14 @@
     "Static validator and Node tests pass; Playwright verifies nine pages at 320/390/768/1024/1440 px, five drawing assets, all photo loads, no overflow, keyboard navigation, story transitions, reduced-motion and no-JavaScript fallbacks.",
     "Six current-candidate desktop/mobile homepage screenshots are uploaded; manual visual inspection and owner acceptance remain separate release gates.",
     "No deployment is performed."
+  ],
+  "definition_of_done_loop_018": [
+    "Homepage is light: sticky five-drawing story, three chapters and gathering.jpeg only; no assets/posts photos appear in index.html.",
+    "Eight activity photos appear with activities on Qui sommes-nous; three group/outing photos appear in a separate, explicitly undated strip on Actualités.",
+    "The three dated news cards have pronounced organic bubble contours and inset curved image frames, with a single-column mobile layout.",
+    "Page-intro text is dark on light pastel backgrounds; the solidarity note remains a pale surface with dark text; story headline emphasis is blue with readable contrast.",
+    "Validator asserts all eleven exact photo paths are distributed correctly; Playwright verifies bubble radii, computed text colours, all images, responsive overflow and navigation.",
+    "Desktop/mobile visual screenshots of homepage, Actualités and Qui sommes-nous are uploaded and manually inspected.",
+    "No production deployment."
   ]
 }

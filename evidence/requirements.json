@@ -1,6 +1,6 @@
 {
-  "requirements_version": "1.2",
-  "candidate": "bullebleue-loop-017-playful-bubble-complete-photo-gallery-v2",
+  "requirements_version": "1.3",
+  "candidate": "bullebleue-loop-018-airy-photo-distribution-and-bubble-art-direction-v1",
   "requirements": [
     {
       "id": "REQ-001",
@@ -463,12 +463,48 @@
     },
     {
       "id": "REQ-052",
-      "requirement": "Include every supplied assets/posts photograph in the public homepage photo album.",
-      "acceptance": "All eleven JPG files in assets/posts are referenced as individual figures in the homepage responsive photo album, each with descriptive French alternative text and a short caption; images are local and lazy-loaded.",
+      "requirement": "Distribute the eleven supplied assets/posts photographs across relevant secondary pages, not the homepage.",
+      "acceptance": "All eight activity-related images appear in the Qui sommes-nous gallery; the three group/outing images appear in a separate undated image strip on Actualités. The homepage contains no assets/posts photos and retains only gathering.jpeg beside the closing contact section. The dated story cards remain illustrations, not falsely associated photographs.",
       "risk": "R1",
-      "validation": "PASS — final GitHub Actions run 41945343097; structural validator, Node checks, Playwright nine pages × five viewports, and eight manually reviewed screenshots.",
-      "status": "PASS — AUTOMATED VALIDATION; OWNER ACCEPTANCE PENDING",
-      "confidence": "HIGH — final exact main-branch implementation and eight screenshots inspected."
+      "validation": "Static validator checks zero assets/posts paths in index.html, eight exact paths on Qui sommes-nous and three exact paths on Actualités. Playwright verifies image counts and all local images load across nine routes and five viewport sizes.",
+      "status": "IMPLEMENTED — VALIDATION PENDING",
+      "confidence": "HIGH — exact asset paths and destination sections are present in source; browser CI pending."
+    },
+    {
+      "id": "REQ-053",
+      "requirement": "Keep the homepage photo-light and preserve only the owner-selected gathering photograph at the closing contact section.",
+      "acceptance": "index.html has no assets/posts references or photo album. It retains the five supplied drawing collage, three sticky story chapters and exactly one assets/gathering.jpeg in the closing DERRIÈRE LA BULLE/contact composition.",
+      "risk": "R1",
+      "validation": "Structural validator asserts no assets/posts paths, and one gathering.jpeg; Playwright confirms no activity gallery on homepage.",
+      "status": "IMPLEMENTED — VALIDATION PENDING",
+      "confidence": "HIGH — exact homepage source updated; browser CI pending."
+    },
+    {
+      "id": "REQ-054",
+      "requirement": "Use all eleven assets/posts photos in relevant locations across secondary pages.",
+      "acceptance": "Eight activity photographs are placed on Qui sommes-nous. Three group/outing photos appear in an explicitly undated gallery on Actualités with copy stating they are not linked to the three dated stories.",
+      "risk": "R1",
+      "validation": "Structural validator asserts all eight and three exact paths in the correct pages and all img tags have alt text; Playwright loads them on desktop/mobile.",
+      "status": "IMPLEMENTED — VALIDATION PENDING",
+      "confidence": "HIGH — exact asset paths and captions are in source; browser CI pending."
+    },
+    {
+      "id": "REQ-055",
+      "requirement": "Make the three dated Actualités articles visibly organic bubble shapes instead of rounded rectangles.",
+      "acceptance": "Each card uses an asymmetrical organic background silhouette, individual variations, a curved image frame and pill-shaped action; responsive layout stacks cards on mobile.",
+      "risk": "R1",
+      "validation": "CSS source assertion plus Playwright computed pseudo-element radius assertion and desktop/mobile screenshots.",
+      "status": "IMPLEMENTED — VALIDATION PENDING",
+      "confidence": "HIGH — source CSS implemented; rendered review pending."
+    },
+    {
+      "id": "REQ-056",
+      "requirement": "Use a coherent, contrast-safe colour system across public pages.",
+      "acceptance": "Light pastel page-intro backgrounds use readable deep navy titles, breadcrumbs and ledes; the solidarity panel is light with dark text; dark gradients retain light text; emphasized story words use primary blue rather than pale blue on pale panels.",
+      "risk": "R1",
+      "validation": "Validator asserts explicit colour rules; Playwright verifies computed colors for page intro, news cards and solidarity panel across desktop/mobile screenshots.",
+      "status": "IMPLEMENTED — VALIDATION PENDING",
+      "confidence": "HIGH — explicit CSS declarations and runtime assertions added; CI pending."
     }
   ]
 }

@@ -107,7 +107,7 @@ def main() -> None:
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     base_url = f"http://127.0.0.1:{server.server_port}"
-    screenshot_dir = ROOT / "artifacts" / "loop017-browser"
+    screenshot_dir = ROOT / "artifacts" / "loop018-browser"
     screenshot_dir.mkdir(parents=True, exist_ok=True)
     measurements: list[dict] = []
 
@@ -153,16 +153,24 @@ def main() -> None:
                     if path == "index.html":
                         drawing_count = page.locator(".story-art .drawing-sticker").count()
                         assert drawing_count == 5, f"homepage must display all five supplied drawings, found {drawing_count}"
+                        assert page.locator('img[src*="/assets/posts/"]').count() == 0, "homepage must stay light and contain no activity gallery"
                         heading_font = page.locator(".story-panel h1").evaluate("(el) => getComputedStyle(el).fontFamily")
                         assert "system-ui" in heading_font and "cursive" not in heading_font, f"playful heading stack must end in a sans fallback: {heading_font}"
                         contact_radius = page.locator("#navigation .nav-contact").evaluate("(el) => getComputedStyle(el).borderRadius")
                         assert contact_radius == "999px", f"header contact action must be fully pill-shaped: {contact_radius}"
-                        photo_cards = page.locator(".home-photo-card")
-                        assert photo_cards.count() == 11, "homepage photo gallery must show all eleven supplied assets/posts photos"
-                        assert page.locator(".home-photo-card img[alt]").count() == 11, (
-                            "all eleven homepage photos require descriptive alternative text"
-                        )
                         assert page.locator(".home-after-photo img").count() == 1, "gathering.jpeg must appear in the closing composition"
+                    if path == "qui-sommes-nous.html":
+                        activity_cards = page.locator(".community-photo-grid--activities .community-photo-card")
+                        assert activity_cards.count() == 8, "about page must hold eight activity photos"
+                        assert page.locator(".page-intro").evaluate("(el) => getComputedStyle(el).color") == "rgb(20, 41, 104)", "pastel page intro must use deep readable navy text"
+                        assert page.locator(".page-intro-lede").evaluate("(el) => getComputedStyle(el).color") == "rgb(52, 72, 120)", "page intro lede must not inherit white text on a light background"
+                        assert page.locator(".solidarity-note > p:not(.section-kicker)").evaluate("(el) => getComputedStyle(el).color") == "rgb(62, 82, 122)", "solidarity note body text must use readable dark text on its pastel surface"
+                    if path == "actualites.html":
+                        assert page.locator(".community-photo-grid--gatherings .community-photo-card").count() == 3, "news page has three un-dated community images"
+                        assert page.locator(".news-card").count() == 3, "news page keeps its three dated stories"
+                        assert page.locator(".news-card h2").first.evaluate("(el) => getComputedStyle(el).color") == "rgb(20, 41, 104)", "news titles must use readable navy"
+                        blob_radius = page.locator(".news-card").first.evaluate("(el) => getComputedStyle(el, '::before').borderTopLeftRadius")
+                        assert "66px" in blob_radius, f"news cards need pronounced organic bubble corners: {blob_radius}"
 
                     nav_links = page.locator("#navigation a").evaluate_all(
                         "(links) => links.map((link) => link.getAttribute('href'))"
@@ -235,15 +243,7 @@ def main() -> None:
                     full_page=False,
                 )
 
-            # Capture the gallery without the sticky header covering its first row.
-            desktop_gallery = page.locator(".home-photo-section")
-            desktop_gallery.scroll_into_view_if_needed()
-            page.add_style_tag(content=".site-header{position:relative!important;top:auto!important}")
-            prepare_screenshot_images(page)
-            assert desktop_gallery.locator("img").count() == 11
-            desktop_gallery.screenshot(
-                path=str(screenshot_dir / "home-gallery-desktop.png")
-            )
+            # The homepage stays deliberately light: story drawings, then the selected closing gathering photo.
             desktop_closing = page.locator(".home-after")
             desktop_closing.scroll_into_view_if_needed()
             prepare_screenshot_images(page)
@@ -252,7 +252,26 @@ def main() -> None:
                 path=str(screenshot_dir / "home-closing-desktop.png")
             )
 
-            # Mobile captures keep the same sticky story and show the actual loaded gallery.
+            # Inspect the actual news cards and undated community strip, not just the homepage.
+            page.goto(f"{base_url}/actualites.html", wait_until="networkidle")
+            prepare_screenshot_images(page)
+            page.screenshot(path=str(screenshot_dir / "news-desktop.png"), full_page=True)
+            page.set_viewport_size({"width": 390, "height": 844})
+            page.goto(f"{base_url}/actualites.html", wait_until="networkidle")
+            prepare_screenshot_images(page)
+            page.screenshot(path=str(screenshot_dir / "news-mobile.png"), full_page=True)
+
+            # Inspect the eight activity photos in their natural home on the About page.
+            page.set_viewport_size({"width": 1440, "height": 900})
+            page.goto(f"{base_url}/qui-sommes-nous.html", wait_until="networkidle")
+            prepare_screenshot_images(page)
+            page.screenshot(path=str(screenshot_dir / "about-desktop.png"), full_page=True)
+            page.set_viewport_size({"width": 390, "height": 844})
+            page.goto(f"{base_url}/qui-sommes-nous.html", wait_until="networkidle")
+            prepare_screenshot_images(page)
+            page.screenshot(path=str(screenshot_dir / "about-mobile.png"), full_page=True)
+
+            # Mobile captures keep the same sticky story and selected closing photo.
             page.set_viewport_size({"width": 390, "height": 844})
             page.goto(f"{base_url}/index.html", wait_until="networkidle")
             assert_no_horizontal_overflow(page, 390, "index.html (sticky story)")
@@ -264,13 +283,6 @@ def main() -> None:
             page.screenshot(
                 path=str(screenshot_dir / "home-story-01-mobile.png"),
                 full_page=False,
-            )
-            mobile_gallery = page.locator(".home-photo-section")
-            mobile_gallery.scroll_into_view_if_needed()
-            page.add_style_tag(content=".site-header{position:relative!important;top:auto!important}")
-            prepare_screenshot_images(page)
-            mobile_gallery.screenshot(
-                path=str(screenshot_dir / "home-gallery-mobile.png")
             )
             mobile_closing = page.locator(".home-after")
             mobile_closing.scroll_into_view_if_needed()
@@ -330,25 +342,28 @@ def main() -> None:
                     "shared navigation order",
                     "mobile menu Escape/focus behavior",
                     "five supplied drawings render in the sticky art collage",
-                    "eleven supplied activity photographs and gathering.jpeg load across responsive checks",
+                    "all eleven owner-supplied assets/posts photos are distributed to activity and community sections on secondary pages; homepage stays photo-light except for gathering.jpeg",
                     "sticky art and chapter transitions",
                     "reduced-motion content visibility",
                     "no-JavaScript content visibility",
                     "story screenshot captured after all three opacity transitions complete",
-                    "desktop and mobile eleven-photo gallery screenshots captured after lazy images decode",
+                    "desktop and mobile actualites pages captured, including three un-dated community photos",
+                    "desktop and mobile qui-sommes-nous pages captured, including eight activity photos",
                     "desktop and mobile closing gathering.jpeg composition screenshots captured and image decode verified",
                     "no external requests, failed requests or console errors",
                 ],
                 "measurements": measurements,
                 "screenshots": [
-                    "artifacts/loop017-browser/home-story-01-desktop.png",
-                    "artifacts/loop017-browser/home-story-02-desktop.png",
-                    "artifacts/loop017-browser/home-story-03-desktop.png",
-                    "artifacts/loop017-browser/home-gallery-desktop.png",
-                    "artifacts/loop017-browser/home-closing-desktop.png",
-                    "artifacts/loop017-browser/home-story-01-mobile.png",
-                    "artifacts/loop017-browser/home-gallery-mobile.png",
-                    "artifacts/loop017-browser/home-closing-mobile.png",
+                    "artifacts/loop018-browser/home-story-01-desktop.png",
+                    "artifacts/loop018-browser/home-story-02-desktop.png",
+                    "artifacts/loop018-browser/home-story-03-desktop.png",
+                    "artifacts/loop018-browser/news-desktop.png",
+                    "artifacts/loop018-browser/news-mobile.png",
+                    "artifacts/loop018-browser/about-desktop.png",
+                    "artifacts/loop018-browser/about-mobile.png",
+                    "artifacts/loop018-browser/home-closing-desktop.png",
+                    "artifacts/loop018-browser/home-story-01-mobile.png",
+                    "artifacts/loop018-browser/home-closing-mobile.png",
                 ],
             },
             ensure_ascii=False,

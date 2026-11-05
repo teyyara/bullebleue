@@ -1,6 +1,6 @@
 {
-  "version": "1.7",
-  "policy": "Loop 017 uses the complete photo set supplied by the association owner. The owner supplied the images and verbally authorised their visible use on the website, as relayed by the project user on 2026-11-05. All eleven assets/posts images appear in the homepage gallery; assets/gathering.jpeg appears beside the closing DERRIÈRE LA BULLE/contact content. No additional permission gate is imposed by this project workflow.",
+  "version": "1.8",
+  "policy": "Loop 018 corrects the photo distribution: homepage uses only gathering.jpeg beside DERRIÈRE LA BULLE/contact; eight assets/posts activity photos appear on Qui sommes-nous and three group/outing photos appear in a separate undated image strip on Actualités. All image files were supplied by the association owner, who verbally authorised their visible use; this is the accepted project permission basis.",
   "assets": [
     {
       "path": "assets/illustrations/games.svg",
@@ -56,80 +56,80 @@
     },
     {
       "path": "assets/posts/735543787_1361390089428172_5312506833854343201_n.jpg",
-      "use": "Creative workshop / craft activity",
+      "use": "Qui sommes-nous — activité créative",
       "description": "A person holds a large craft hoop/ribbon with others and workshop materials visible; identifiable faces.",
       "documentary": true,
-      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
+      "status": "IN USE — Qui sommes-nous activity gallery (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/783036041_1408453024721878_3578205087320603775_n.jpg",
-      "use": "Drawing and visual-art workshop",
+      "use": "Qui sommes-nous — dessin et arts plastiques",
       "description": "Participants draw at a table with coloured pens; identifiable faces.",
       "documentary": true,
-      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
+      "status": "IN USE — Qui sommes-nous activity gallery (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/830754903_1438852398348607_8575046537706443389_n.jpg",
-      "use": "Garden and conviviality",
+      "use": "Actualités — bandeau de moments de groupe non datés",
       "description": "Group seated around a garden table; many identifiable faces.",
       "documentary": true,
-      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
+      "status": "IN USE — separate undated Actualités community image strip (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/844190417_1446490757584771_1709901819062193861_n.jpg",
-      "use": "Group event",
+      "use": "Actualités — bandeau de moments de groupe non datés",
       "description": "Indoor group photograph with identifiable adults and children.",
       "documentary": true,
-      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
+      "status": "IN USE — separate undated Actualités community image strip (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/854414257_1451277357106111_100552518532689623_n.jpg",
-      "use": "Group outing / community event",
+      "use": "Actualités — bandeau de moments de groupe non datés",
       "description": "Outdoor evening group photograph with identifiable faces.",
       "documentary": true,
-      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
+      "status": "IN USE — separate undated Actualités community image strip (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/858642199_1459855032915010_3703135960600555271_n.jpg",
-      "use": "Games and play area",
+      "use": "Qui sommes-nous — jeux et construction",
       "description": "Two children playing a wooden block-tower game; faces partly visible.",
       "documentary": true,
-      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
+      "status": "IN USE — Qui sommes-nous activity gallery (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/860039147_1459854696248377_603952803324221168_n.jpg",
-      "use": "Activities page — games photograph",
+      "use": "Qui sommes-nous — jeux de société",
       "description": "Close-up of tabletop game pieces and a board; no identifiable faces visible.",
       "documentary": true,
-      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
+      "status": "IN USE — Qui sommes-nous activity gallery (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg",
-      "use": "Activities page — discovery photograph",
+      "use": "Qui sommes-nous — puzzle et jeu de découverte",
       "description": "Close-up of an illustrated tabletop puzzle/board with hands nearby; no identifiable faces visible.",
       "documentary": true,
-      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
+      "status": "IN USE — Qui sommes-nous activity gallery (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/861826539_1459854896248357_2220258804161137760_n.jpg",
-      "use": "Homepage hero photograph",
+      "use": "Qui sommes-nous — jeux de formes",
       "description": "Close-up of wooden geometric game pieces and hands around a table; no identifiable faces visible.",
       "documentary": true,
-      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
+      "status": "IN USE — Qui sommes-nous activity gallery (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/863353686_1459854766248370_1734709857082262774_n.jpg",
-      "use": "Arts and creative activity",
+      "use": "Qui sommes-nous — activité de création",
       "description": "Participants assemble illustrated face pieces at a table; partial profiles/identifiable people visible.",
       "documentary": true,
-      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
+      "status": "IN USE — Qui sommes-nous activity gallery (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg",
-      "use": "Activities page — manipulation/creation photograph",
+      "use": "Qui sommes-nous — manipulation et formes",
       "description": "Close-up of geometric pieces arranged around a table; no identifiable faces visible.",
       "documentary": true,
-      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
+      "status": "IN USE — Qui sommes-nous activity gallery (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/dessin1.jpeg",
@@ -207,5 +207,5 @@
     "participant_image_releases": "No additional release document is required by the project workflow: the user confirms the association owner supplied the images and verbally authorised their visible use. Captions avoid names and identity claims.",
     "logo_palette": "SAMPLED IN LOOP 011 from the uploaded transparent RGBA logo; Loop 012 SVG illustrations use the sampled blue family."
   },
-  "optimization": "The homepage sticky collage uses five local JPEG drawings loaded eagerly. Eleven locally supplied assets/posts photos are displayed in a responsive album using lazy loading and descriptive alt text. The locally supplied gathering.jpeg is placed beside the closing contact content. No remote image host, remote font, tracking or paid dependency is introduced."
+  "optimization": "The homepage uses five local JPEG drawings for the sticky story and gathering.jpeg at the closing contact composition. Eight assets/posts photos form the Qui sommes-nous activity gallery; three group/outing photos form a separate undated Actualités strip. Secondary-page photos use lazy loading and descriptive alt text; no paid or remote dependencies are added."
 }

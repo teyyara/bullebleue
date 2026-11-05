@@ -1,5 +1,5 @@
 {
-  "content_provenance_version": "1.0",
+  "content_provenance_version": "1.1",
   "items": [
     {
       "content": "La Bulle Bleue is an APAiL initiative in Chalon-sur-Saône.",
@@ -178,9 +178,14 @@
       "confidence": "HIGH for implementation provenance."
     },
     {
-      "content": "All eleven homepage activity/community photographs from assets/posts/ are displayed in the photo album; assets/gathering.jpeg is displayed beside the closing DERRIÈRE LA BULLE/contact content.",
-      "classification": "Documentary photographs supplied by the association owner. The project user confirms the owner verbally authorised their visible use on the website on 2026-11-05. Captions describe activities and scenes without naming individuals.",
-      "confidence": "HIGH for file provenance, visible content and user-reported owner authorization."
+      "content": "Eight supplied activity photographs from assets/posts/ appear on Qui sommes-nous; three group/outing photographs appear in a separate, undated image strip on Actualités. The homepage contains no assets/posts images; it uses only assets/gathering.jpeg as its documentary photograph.",
+      "classification": "Photographs supplied by the association owner, who verbally authorised visible use on the website, as relayed by the project user. Captions are general descriptions; the three Actualités photographs are explicitly not linked to the three dated stories.",
+      "confidence": "HIGH for asset paths, visible contents and user-reported owner authorization."
+    },
+    {
+      "content": "Loop 018 photo distribution and colour/art-direction correction.",
+      "classification": "Owner clarification dated 2026-11-05: homepage should stay light and use gathering.jpeg only; the eleven assets/posts photos belong in other website sections. CSS and browser checks address bubble-shaped Actualités cards and readable colour pairings.",
+      "confidence": "HIGH for exact implementation source and test evidence."
     }
   ]
 }

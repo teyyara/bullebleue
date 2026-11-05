@@ -10,7 +10,7 @@ Static HTML, CSS and vanilla JavaScript. No package manager, build step, remote 
 
 ## Site map
 
-- `index.html` — a sticky, colourful collage of five drawings supplied by the association, three successive scroll chapters, then an eleven-photo activity album and the owner-supplied gathering.jpeg beside the final DERRIÈRE LA BULLE/contact content.
+- `index.html` — a sticky, colourful collage of five drawings supplied by the association, three successive scroll chapters, then the owner-supplied gathering.jpeg beside the final DERRIÈRE LA BULLE/contact content. The eleven assets/posts photographs are intentionally distributed to the Qui sommes-nous and Actualités pages, not the homepage.
 - `qui-sommes-nous.html` — La Bulle Bleue, its audience and activities, Les Bleuettes, APAiL history and reported solidarity work.
 - `actualites.html` — three featured dated stories in editorial cards.
 - `actualite-2026-10-26.html` — 26 October 2026, games at La Bulle Bleue.
@@ -59,7 +59,7 @@ The primary content source is `Bulle_Bleue_APAiL_contenu_facebook.md`, the user-
 
 Membership fees, current membership forms and process are not evidenced; the Adhérer page asks visitors to contact APAiL for current information. The legal page now records the association denomination published in the JOAFE modification notice of 27 February 2019 and the public RNA/SIREN identifiers. The registered-office address remains deliberately unconfirmed: the JOAFE notice and municipal directory list 14 quai Gambetta, while a 2026 SIRENE-derived record lists 14 boulevard de la République. The publication responsible person and actual hosting provider remain unknown. The Mentions légales page is still incomplete and must be validated by APAiL before publication.
 
-The homepage publishes the eleven supplied assets/posts photos in the responsive album and uses gathering.jpeg in the closing section. The association owner supplied all images and verbally authorised their visible use on the website, as relayed by the project user; this is recorded as the project's permission basis.
+The homepage does not publish any assets/posts photographs. Eight appear in the Qui sommes-nous activity gallery and three in an explicitly undated image strip on Actualités; gathering.jpeg remains the only documentary photograph on the homepage, beside the closing section. The association owner supplied all images and verbally authorised their visible use on the website; this is recorded as the project's permission basis.
 
 ## Validation
 
@@ -73,10 +73,10 @@ Run the structural, Node and browser checks locally:
     python -m playwright install chromium
     python tests/test_browser.py
 
-The read-only GitHub Actions workflow at `.github/workflows/quality.yml` runs these checks on pushes and pull requests to `main`; it has no deployment step. The Playwright suite checks all nine pages at 320, 390, 768, 1024 and 1440 px, including images, overflow, keyboard navigation, sticky-story transitions, reduced motion and no-JavaScript fallback. Its six visual-review screenshots wait for the relevant story text transition and explicitly decode lazy gallery images before capture; it records each of the three story chapters plus desktop/mobile gallery views.
+The read-only GitHub Actions workflow at `.github/workflows/quality.yml` runs these checks on pushes and pull requests to `main`; it has no deployment step. The Playwright suite checks all nine pages at 320, 390, 768, 1024 and 1440 px, including images, overflow, keyboard navigation, sticky-story transitions, reduced motion and no-JavaScript fallback. Its visual-review screenshots wait for the relevant story text transition and explicitly decode lazy images before capture; it records the homepage story and closing photograph plus desktop/mobile captures of Actualités and Qui sommes-nous.
 
 A committed workflow or test is not itself a passing result: check the actual workflow run before treating the Python or browser checks as passed. A passing source/unit test does not replace manual accessibility inspection or owner acceptance. No production deployment has been performed or authorized.
 
 ## Current owner feedback and TODO
 
-The playful bubble-style art direction and five-drawing homepage collage are tracked in [TODO.md](TODO.md). All eleven assets/posts photographs and gathering.jpeg are displayed under the association owner's verbal website-use authorization.
+The playful bubble-style art direction and five-drawing homepage collage are tracked in [TODO.md](TODO.md). The homepage stays light, while all eleven assets/posts photographs appear on the two relevant secondary pages under the association owner's verbal website-use authorization.

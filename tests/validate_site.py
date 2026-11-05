@@ -107,23 +107,46 @@ def main():
         assert not (ROOT / obsolete).exists(), f"obsolete page still published: {obsolete}"
 
     home = parsed["index.html"][0]
-    assert len(home) < 14000, "homepage remains concise relative to its curated local photo gallery"
+    assert len(home) < 9000, "homepage should remain airy and concise"
     assert home.count('class="story-step"') == 3, "homepage has exactly three scroll chapters"
     drawings = ("dessin1.jpeg", "dessin2.jpeg", "dessin3.jpeg", "dessin4.jpeg", "dessin5.jpeg")
     assert home.count('class="drawing-sticker') == 5, "homepage collage uses exactly five supplied drawings"
     for drawing in drawings:
         assert f'src="/assets/{drawing}"' in home, f"missing supplied homepage drawing: {drawing}"
     assert "hero-community.svg" not in home, "placeholder SVG hero is retired"
-    assert home.count('src="/assets/gathering.jpeg"') == 1, "owner-selected gathering photo is used once in the closing area"
-    assert home.count('class="home-after-photo"') == 1, "closing contact area includes the gathering photograph composition"
-    assert (ROOT / "TODO.md").is_file(), "owner design feedback must remain tracked in TODO.md"
+    assert "assets/posts/" not in home and "home-photo-section" not in home, "activity photos must be distributed to other pages, not crowded onto the homepage"
+    assert home.count('src="/assets/gathering.jpeg"') == 1, "homepage has only the owner-selected closing gathering photo"
+    assert home.count('class="home-after-photo"') == 1, "closing contact area includes the gathering photograph"
+    assert (ROOT / "TODO.md").is_file(), "owner feedback must remain tracked in TODO.md"
     assert "verbally authorized" in (ROOT / "TODO.md").read_text(encoding="utf-8"), "owner's verbal image-use authorization is recorded"
-    gallery_photos = ["735543787_1361390089428172_5312506833854343201_n.jpg","783036041_1408453024721878_3578205087320603775_n.jpg","830754903_1438852398348607_8575046537706443389_n.jpg","844190417_1446490757584771_1709901819062193861_n.jpg","854414257_1451277357106111_100552518532689623_n.jpg","858642199_1459855032915010_3703135960600555271_n.jpg","860039147_1459854696248377_603952803324221168_n.jpg","860071516_1459854822915031_8736563633377469815_n.jpg","861826539_1459854896248357_2220258804161137760_n.jpg","863353686_1459854766248370_1734709857082262774_n.jpg","863442942_1459854946248352_2630610521884942198_n.jpg"]
-    assert home.count('class="home-photo-card"') == 11, "homepage gallery contains all eleven supplied photos"
-    for photo in gallery_photos:
-        assert f'src="/assets/posts/{photo}"' in home, f"missing owner-authorised homepage photo: {photo}"
-    assert "album de la vie de l’association" in home.lower(), "gallery introduction is visible"
     assert "home-hero-photo" not in home
+
+    about = parsed["qui-sommes-nous.html"][0]
+    about_photos = (
+        "735543787_1361390089428172_5312506833854343201_n.jpg",
+        "783036041_1408453024721878_3578205087320603775_n.jpg",
+        "858642199_1459855032915010_3703135960600555271_n.jpg",
+        "860039147_1459854696248377_603952803324221168_n.jpg",
+        "860071516_1459854822915031_8736563633377469815_n.jpg",
+        "861826539_1459854896248357_2220258804161137760_n.jpg",
+        "863353686_1459854766248370_1734709857082262774_n.jpg",
+        "863442942_1459854946248352_2630610521884942198_n.jpg",
+    )
+    assert about.count('class="community-photo-card"') == 8, "about page contains eight relevant activity photos"
+    for photo in about_photos:
+        assert f'src="/assets/posts/{photo}"' in about, f"missing activity photo on about page: {photo}"
+
+    news = parsed["actualites.html"][0]
+    group_photos = (
+        "830754903_1438852398348607_8575046537706443389_n.jpg",
+        "844190417_1446490757584771_1709901819062193861_n.jpg",
+        "854414257_1451277357106111_100552518532689623_n.jpg",
+    )
+    assert news.count('class="community-photo-card"') == 3, "news page has a separate three-photo community strip"
+    for photo in group_photos:
+        assert f'src="/assets/posts/{photo}"' in news, f"missing undated community photo on news page: {photo}"
+    assert "ne sont pas rattachées aux trois actualités datées" in news, "community photographs must not be misattributed to dated news"
+    assert sum(f'src="/assets/posts/{photo}"' in page for page, _ in parsed.values() for photo in about_photos + group_photos) == 11, "all eleven supplied photographs appear across the two relevant secondary pages"
     assert all(h in home for h in ("Qui sommes-nous ?", "actualites.html", "adherer.html", "contact.html"))
 
     news = parsed["actualites.html"][0]
@@ -160,7 +183,11 @@ def main():
     assert ',system-ui,sans-serif' in css and ",cursive;" not in css
     assert ".main-nav .nav-contact{padding:10px 17px;border:2px solid #fff;border-radius:999px" in css
     assert ".story-panel h1,.story-panel h2{font-family:var(--playful-font);font-size:clamp(42px,4.6vw,60px)" in css
-    assert ".home-photo-inner{display:grid" in css and ".home-photo-grid{display:grid" in css
+    assert ".page-intro{\n color:var(--joy-ink)" in css and ".solidarity-note{\n color:var(--joy-ink)" in css
+    assert ".story-panel h1 em,.story-panel h2 em{color:var(--joy-blue)}" in css
+    assert ".news-card::before" in css and "border-radius:66px 46px 58px 42px" in css
+    assert ".community-photo-grid--activities{grid-template-columns:repeat(4,minmax(0,1fr))}" in css
+    assert ".community-photo-grid--gatherings{grid-template-columns:repeat(3,minmax(0,1fr))}" in css
     assert "@media(max-width:760px)" in css and ".home-photo-grid{grid-template-columns:1fr" in css
     assert "@media(prefers-reduced-motion:reduce)" in css and "@media(max-width:760px)" in css
     assert "storySteps" in js and "prefers-reduced-motion" in js and "has-scroll-story" in js

@@ -367,6 +367,33 @@
       "tradeoffs": "The owner remains responsible for the association's supplied content and its authorization; the website describes photographs without naming individuals.",
       "risk": "R1",
       "evidence": "User clarification on 2026-11-05: owner supplied all images and verbally authorized visible website use; all relevant paths are committed in the repository."
+    },
+    {
+      "id": "DEC-029",
+      "context": "The user clarified that all eleven assets/posts photos should not crowd the homepage; only gathering.jpeg belongs in the closing section.",
+      "options": [
+        "Keep all eleven in the homepage gallery",
+        "Remove all assets/posts photos",
+        "Distribute eight activity photos to Qui sommes-nous and three undated group/outing photos to Actualités"
+      ],
+      "chosen": "Keep the homepage light with gathering.jpeg only; place eight activity photos on Qui sommes-nous and three group/outing photos in a separate, undated Actualités image strip.",
+      "reason": "The activities belong beside the activity description, while group/outing moments enrich a general community image strip without falsely associating them with dated news. The homepage returns to a clear story-first flow.",
+      "tradeoffs": "Secondary pages become richer; alt text and responsive layouts must stay concise.",
+      "risk": "R1",
+      "evidence": "User clarification during Loop 018 and direct inspection of all eleven assets."
+    },
+    {
+      "id": "DEC-030",
+      "context": "The Actualités cards still read as rectangles, and pastel page headers rendered near-white text while the solidarity panel combined a dark gradient with dark text.",
+      "options": [
+        "Make small border-radius adjustments only",
+        "Use a coherent palette and organic card silhouettes with explicit contrast roles"
+      ],
+      "chosen": "Redesign news cards with asymmetrical bubble/blob pseudo-surfaces and curved image frames; use deep navy/blue text on pale pastel surfaces and light text only on dark blue panels.",
+      "reason": "The user explicitly asked for articles that look like bubbles and readable colour choices; this resolves the identified mismatched background/text pairings.",
+      "tradeoffs": "Large organic card shapes need desktop/mobile visual review.",
+      "risk": "R1",
+      "evidence": "Direct CSS audit in Loop 018 and browser checks of computed styles."
     }
   ]
 }

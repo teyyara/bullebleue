@@ -31,7 +31,7 @@
     "analytics": false,
     "third_party_tracking": false
   },
-  "current_candidate": "bullebleue-loop-017-playful-bubble-complete-photo-gallery-v2",
-  "status": "LOOP 017: PLAYFUL BUBBLE ART DIRECTION, FIVE-DRAWING COLLAGE, ALL ELEVEN ASSETS/POSTS PHOTOS AND CLOSING GATHERING PHOTO IMPLEMENTED; PYTHON/NODE/PLAYWRIGHT CI PASS; EIGHT SCREENSHOTS MANUALLY REVIEWED; NOT DEPLOYED",
-  "contract_version": "1.2"
+  "current_candidate": "bullebleue-loop-018-airy-photo-distribution-and-bubble-art-direction-v1",
+  "status": "LOOP 018: HOMEPAGE LIGHT WITH GATHERING PHOTO ONLY; 8 ACTIVITY PHOTOS ON QUI SOMMES-NOUS; 3 UNDATED GROUP PHOTOS ON ACTUALITES; ORGANIC NEWS BUBBLES; CONTRAST-SAFE PLAYFUL PALETTE; VALIDATION PENDING; NOT DEPLOYED",
+  "contract_version": "1.3"
 }

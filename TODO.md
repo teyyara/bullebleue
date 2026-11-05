@@ -6,22 +6,25 @@
 
 ## Owner's creative direction
 
-The association wants the website to feel joyful, playful, childlike and artistic—not corporate or overly professional. Rectangles are specifically disliked.
+The association wants the website to feel joyful, playful, childlike and artistic—not corporate or overly professional. Rectangles are specifically disliked. Colour should feel cheerful and coherent, with every text/background pairing remaining easy to read.
 
 ### Visual design and imagery
 
-- [x] Replace rigid rectangular cards and controls with organic, irregular bubble-like shapes, soft outlines and pill-shaped actions across the shared site design.
-- [x] Use friendly, informal handwritten-style system-font fallbacks while keeping paragraphs readable.
-- [x] Apply a colourful, playful art direction with hand-drawn accents and gentle rotations; keep the supplied blue logo recognisable.
+- [x] Use organic, irregular bubble-like shapes rather than rigid rectangles, with soft outlines and pill-shaped actions.
+- [x] Use friendly, informal typography while keeping paragraphs readable.
+- [x] Apply a cheerful, coherent palette around the association's recognisable blue: warm cream, soft mint, lilac and lemon, with coral as a restrained accent.
+- [x] Keep pastel page headers dark-text-on-light; keep dark panels light-text-on-dark; avoid low-contrast light-blue headline accents on pale surfaces.
 - [x] Replace the placeholder homepage illustration with a collage of all five supplied drawings: assets/dessin1.jpeg through assets/dessin5.jpeg.
-- [x] Place all eleven supplied assets/posts photographs in the homepage's responsive photo gallery.
-- [x] Place the owner-selected assets/gathering.jpeg prominently beside the closing DERRIÈRE LA BULLE/contact content at the end of the homepage.
+- [x] Keep the homepage airy: sticky drawing collage and three story chapters, with gathering.jpeg as the only documentary photo beside the final DERRIÈRE LA BULLE/contact content.
+- [x] Place eight assets/posts activity photographs with the activities on Qui sommes-nous.
+- [x] Place the remaining three group/outing photos in a separate, undated Moments ensemble image strip on Actualités; do not imply they illustrate any of the three dated news stories.
+- [x] Redesign the three Actualités articles as visibly organic, asymmetrical bubbles rather than rounded rectangles.
 - [x] Record the owner's authorization: the association owner supplied the image assets and verbally authorized their visible use on the website. This is accepted as the project permission basis; no further permission is being requested.
 
 ## Review and refinement
 
-- [ ] Inspect all nine public pages at desktop and mobile sizes for any remaining rigid rectangular treatments or inconsistent visual language.
-- [ ] Obtain the association owner's visual acceptance of the new art direction and refine details from her next feedback.
+- [ ] Inspect every public page at desktop and mobile sizes for any remaining inconsistent colours, low-contrast text, rigid card shapes or spacing issues.
+- [ ] Obtain the association owner's final visual/content acceptance and refine details from her feedback.
 
 ## Other open project work
 
