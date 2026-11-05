@@ -761,5 +761,38 @@
         "detail": "Derrière la Bulle contains the two requested actions; mobile horizontal collage/card scrolling, sticky-header anchor offset, reduced-motion and no-JS fallbacks remain."
       }
     ]
+  },
+  "loop_020": {
+    "test_run": "loop-020-actualites-organic-bubble-contours",
+    "observed_at": "2026-11-05",
+    "status": "PASS — PYTHON STRUCTURAL VALIDATOR",
+    "commit": "3d7d8683d0ec471e03a31ac2ba4aeb7f200571a9",
+    "workflow": {
+      "run_id": 42072524668,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/42072524668",
+      "conclusion": "success"
+    },
+    "checks": [
+      {
+        "name": "Card contours",
+        "result": "PASS",
+        "detail": "Three unique smooth sampled Bézier contours via clip-path; border-radius fallback retained."
+      },
+      {
+        "name": "Image contours",
+        "result": "PASS",
+        "detail": "Each dated story image has its own matching organic contour."
+      },
+      {
+        "name": "Badge placement",
+        "result": "PASS",
+        "detail": "Desktop Illustration labels upper-right; mobile labels lower-right."
+      },
+      {
+        "name": "Content/routes",
+        "result": "PASS",
+        "detail": "Three dated routes and undated community strip unchanged."
+      }
+    ]
   }
 }

@@ -1,19 +1,19 @@
 {
-  "manifest_version": "2.4",
+  "manifest_version": "2.6",
   "run_id": "bullebleue-20261102-001",
-  "loop": 19,
-  "candidate": "bullebleue-loop-019-owner-homepage-content-testimonials-and-visual-system-v1",
-  "candidate_status": "LOOP 019 COMPLETE — OWNER COPY, AUTHENTIC TESTIMONIAL, RESPONSIVE DRAWING COLLAGE, TYPOGRAPHY; PYTHON/NODE/PLAYWRIGHT PASS; TEN SCREENSHOTS MANUALLY REVIEWED; NO DEPLOYMENT",
+  "loop": 20,
+  "candidate": "bullebleue-loop-020-organic-news-blob-contours-v1",
+  "candidate_status": "LOOP 020 COMPLETE — THREE DISTINCT SMOOTH ORGANIC ACTUALITÉS BUBBLES AND MATCHING IMAGE CONTOURS; PYTHON/NODE/PLAYWRIGHT PASS; DESKTOP/MOBILE SCREENSHOTS MANUALLY REVIEWED; NOT DEPLOYED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "4babf6711d208a738f5eb5b7d9c13438380e83bc",
+  "implementation_checkpoint_commit": "3d7d8683d0ec471e03a31ac2ba4aeb7f200571a9",
   "remote_git_blob_objects": {
-    ".aeos/state.json": "c07d32651b798dad84af8271b9c4842dab192c16",
-    ".github/workflows/quality.yml": "66a0d8ded90a42bf0bee26545a06413a2cfab4ca",
-    "AEOS_STATUS.md": "66d05db338d09dc483b6ba4c3bb7be2347d40248",
+    ".aeos/state.json": "6f676aa455e678215917bc6b17feb029907e29ff",
+    ".github/workflows/quality.yml": "d80a3ab7b91efa28a36c6864bd987c607c3ff1aa",
+    "AEOS_STATUS.md": "a4013e1ce8a31210a34d44613b1ff3ac63269bf4",
     "Bulle_Bleue_APAiL_contenu_facebook.md": "dec4ee6c3f4e0ea7c092ebe1760c4a35033e05bf",
-    "README.md": "d5db35aa90be92d8ade86cb3e8bab3ad7a0a368a",
-    "TODO.md": "5511f67bd6db6064c862a23a6d1d900baae290d6",
+    "README.md": "35b0820dc73361a332862867b182024d32ab184d",
+    "TODO.md": "db5cae23e7f8a9d7fd0cf6f4500cb78e48644cae",
     "actualite-2026-10-10.html": "2123a7a72e299520043daa1f7fef1b7f0bb26e0c",
     "actualite-2026-10-17.html": "678a603e372e9b00e6ecbd857269d610d786a4b7",
     "actualite-2026-10-26.html": "e8fdaf165fc35e31ac868864a9da6d09533b66c8",
@@ -67,29 +67,30 @@
     "evidence/change-requests/CR-010.md": "5e15fd83be26de56d6b51705b77f2cf4ea789e09",
     "evidence/change-requests/CR-011.md": "c85666d46c8630c608b4eee45f78505b484daca8",
     "evidence/change-requests/CR-012.md": "dc1b2bfa984e18978bf35c53e7961ec81cc52661",
+    "evidence/change-requests/CR-013.md": "aa38384b56775e62b97d104436a8dcc520ac7e5c",
     "evidence/content-provenance.json": "f82b6446a0820e31eb68645645cce457b5ebf5a6",
-    "evidence/decisions.json": "aeb584be8d9e0733545ae887d4fd5173711167da",
+    "evidence/decisions.json": "b22ecde5130be91571575b8784a7957d0dab1185",
     "evidence/learning.json": "718972df9dd6b519e158d864712713dc9fd83d11",
     "evidence/product-contract-proposal-0.2.json": "d8608b78aa3e234907b193f2fd28a346ce82783a",
-    "evidence/product-contract.json": "0725b3c886c430bbecec3cc72a8b5d27e69a6d5d",
-    "evidence/requirements.json": "9b7683f700e5f1873cc50ef5f7241b333b1fdafa",
+    "evidence/product-contract.json": "ccfd58d411583d7b76f945c50c816392d0e3b90f",
+    "evidence/requirements.json": "05e0544183cc5b7910987740fdc2641007b963e6",
     "evidence/research/keyphrase-dossier.md": "097b39681be69b04ebdca9334aa283d003ad69f7",
     "evidence/risk.json": "ec4e01229f0f7360967b1fd29b19c8c4ee97632d",
     "evidence/screenshots/README.md": "a1ae6cda8cb215ceb24c4f18a2bab9682b5a3e97",
-    "evidence/tests/runtime-results.json": "02843d0e06f11436a5f643f845d2a93da12dcfec",
-    "evidence/tests/static-results.json": "c1b37c1f9a9ea6222905be29808a520b3f621167",
+    "evidence/tests/runtime-results.json": "3e8a5dffdadb50e81b94d6c4bfa8407164bb3772",
+    "evidence/tests/static-results.json": "b83e9c0fb9df2a701ad260af2af4d26a8dc2e90e",
     "evidence/visual/asset-register.json": "102afb724b6779a077b8f08caf5132d9bb78389d",
     "evidence/visual/logo-palette.json": "3caad866c35f42749c36abadb6ccc4dbeb4fdd11",
     "index.html": "300db915de71fed48fbc3bccf1d9d94dd9fd62d4",
     "mentions-legales.html": "69a5e2a41f032ec0e7449942092b166ab7af9400",
-    "project.config.json": "ec9604f6bbcb0cbc4fe9ed290ecdc672560b0a5b",
+    "project.config.json": "248fe01a98660c372d4ffb0f68d138abe1b1b34c",
     "qui-sommes-nous.html": "18e16c12f2a3f66d6613d67558033e4adbefdc51",
     "robots.txt": "c2a49f4fb82f19ffa9089fcf8630e5a2870d3feb",
     "script.js": "e84c4c425ac4dd3fb28a3702cb49039087ef7ca7",
-    "styles.css": "1f93581ab886cca381f818041ee38b701ee40508",
-    "tests/test_browser.py": "2f4ffc1c76490bc84484108607fc1bd29c07f22e",
+    "styles.css": "6e40853059c045d52ca695d9f61eba7d24a7900c",
+    "tests/test_browser.py": "b519cf7ccc44a11d63886b23b2e553ef6e4f0ef2",
     "tests/test_menu.js": "4506ecd2b4e57db7cb6484ff4d9e47f19c918d7d",
-    "tests/validate_site.py": "d8cd1c34497a0f264a9c34ad1e5a865f1f1f7841"
+    "tests/validate_site.py": "259d915513bbaa3cef038f469dd091b7ef0fe934"
   },
   "local_screenshot_evidence": {
     "loop_006": {
@@ -135,6 +136,15 @@
       "screenshot_count": 18,
       "manually_reviewed_count": 10,
       "review": "Welcome banner, Se retrouver, Ils en parlent, Jouer/créer and Derrière la Bulle at desktop and mobile; ten screenshots visually inspected."
+    },
+    "loop_020": {
+      "status": "Final CI screenshots uploaded; final Actualités desktop/mobile screenshots manually inspected.",
+      "artifact_id": 13436352631,
+      "name": "bulle-bleue-loop020-visual-review",
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/42072524668/artifacts/13436352631",
+      "sha256": "577b1aa9ac8ca741fd092db1aed3321b959ba0f902f6712d009238cbc2c900c8",
+      "screenshot_count": 18,
+      "manually_reviewed_count": 2
     }
   },
   "runtime_environment": {
@@ -151,16 +161,16 @@
   "release_frozen": false,
   "production_deployed": false,
   "limitations": [
-    "The manifest maps remote Git blob objects, not a production deployment artifact digest.",
-    "Firefox/WebKit/Safari, manual screen-reader, axe-core, physical-device, Lighthouse, ZAP and hosted performance/security checks remain outstanding.",
+    "The manifest maps remote Git blob objects, not a production artifact digest.",
+    "Firefox/WebKit/Safari, manual screen-reader, physical-device, Lighthouse, ZAP and hosted checks remain outstanding.",
     "No hosting domain is configured; production deployment is not authorised and has not occurred.",
-    "Legal notices remain a draft until APAiL confirms the current registered office, publication manager and hosting provider.",
-    "Current membership fee, process, paperwork and renewal conditions are not yet confirmed.",
-    "Current venue/location needs association confirmation; Wednesday 14h30 and Saturday 15h are the latest direct owner-provided times.",
-    "The association owner's final visual/content acceptance remains pending.",
-    "Transparent individual character cut-outs from drawings 6–9 have not yet been produced; original drawings are used intact.",
-    "Only Miette's quotation is a real attributed testimonial currently supplied; other testimonial cards invite future authentic contributions.",
-    "Owner-supplied photos are authorised for website use according to the owner's verbal confirmation; no participant-photo permission hold remains."
+    "Legal notices await confirmation of registered office, publication manager and hosting provider.",
+    "Membership fee/procedure/forms/renewals remain unconfirmed.",
+    "Current venue/location requires association confirmation.",
+    "Association-owner final visual/content acceptance remains pending.",
+    "Transparent character cut-outs from drawings 6–9 have not been produced; complete original drawings are used.",
+    "Only Miette's quotation is currently supplied as an authentic testimonial; other cards invite future contributions.",
+    "Owner-supplied photos are authorised according to verbal confirmation."
   ],
   "loop_002": {
     "change": "Only process Escape when the mobile navigation is expanded; preserve focus for unrelated or closed-menu Escape events.",
@@ -674,7 +684,7 @@
   },
   "latest_loop_17_final_commit": "78db0157e231932c16ad654f6fd735839c4ee1e7",
   "status_metadata_reconciliation": "PASS — remote Git blob map reconciled with main at Loop 018 checkpoint; manifest does not self-reference.",
-  "remote_git_blob_objects_note": "Exact blob IDs from the Loop 019 final metadata tree. evidence/manifest.json intentionally omits its own blob ID to avoid a recursive self-hash.",
+  "remote_git_blob_objects_note": "Exact remote blob IDs for all tracked files except evidence/manifest.json itself; self-reference omitted to avoid a recursive hash.",
   "loop_019": {
     "code_checkpoint_commit": "4babf6711d208a738f5eb5b7d9c13438380e83bc",
     "commits": [
@@ -709,6 +719,30 @@
     "permission": "Owner supplied the uploaded images and verbally authorised their use. Permission is not an unresolved blocker.",
     "character_cutouts": "Not produced. Drawings 6–9 are used intact as original artworks; transparent individual-character extraction remains open.",
     "testimonial_truthfulness": "Only Miette's owner-provided AG 2026 quote is attributed. All other cards are invitations to submit real testimonials.",
+    "status": "WAITING_FOR_CONTINUE — no deployment."
+  },
+  "loop_020": {
+    "code_checkpoint_commit": "3d7d8683d0ec471e03a31ac2ba4aeb7f200571a9",
+    "metadata_batch_1_commit": "249ff51e38ceb464c19eea44f54dfc08b5dde82a",
+    "commits": [
+      "1b8288abc87b0b362d7f700efa53140f04c44cbb",
+      "290b518f9ecdb73533411560b900a5ebaf08eef1",
+      "3d7d8683d0ec471e03a31ac2ba4aeb7f200571a9"
+    ],
+    "quality_run": 42072524668,
+    "quality_url": "https://github.com/teyyara/bullebleue/actions/runs/42072524668",
+    "quality_conclusion": "success",
+    "python_validator": "PASS",
+    "node_regression": "PASS",
+    "browser": "PASS — 9 pages × 5 viewports; distinct smooth card and image contours, desktop label placement, no overflow/browser errors.",
+    "screenshot_artifact": {
+      "id": 13436352631,
+      "name": "bulle-bleue-loop020-visual-review",
+      "sha256": "577b1aa9ac8ca741fd092db1aed3321b959ba0f902f6712d009238cbc2c900c8",
+      "screenshot_count": 18,
+      "manually_reviewed_count": 2
+    },
+    "visual_review": "Final Actualités desktop/mobile screenshots manually inspected; cards read as organic bubbles and labels remain clear.",
     "status": "WAITING_FOR_CONTINUE — no deployment."
   }
 }

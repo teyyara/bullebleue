@@ -26,6 +26,10 @@ The five primary navigation links are Accueil, Qui sommes-nous ?, Actualités, A
 
 Nine supplied drawings form a playful, sticker-like collage behind the homepage story. Drawings 6–9 also appear in the adapted Jouer/créer collage, which scrolls horizontally on mobile; the highlighted drawing changes as the visitor moves between homepage sections. The site uses Fredoka 600 for headings, Atkinson Hyperlegible 400/700 for reading text and Caveat 600 for handwritten accents. Google Fonts is the only free remote font service; all illustration and documentary images remain local. The eleven assets/posts photographs stay off the homepage: eight remain on Qui sommes-nous and three in an undated strip on Actualités. Only se retrouver.jpg.jpeg and gathering.jpeg are documentary photos on the homepage. The association owner supplied the photo set and verbally authorised its visible use on the website, as relayed by the project user on 2026-11-05. JavaScript remains progressive enhancement; no-JavaScript and reduced-motion content stays visible.
 
+## Actualités card art direction
+
+The three dated story cards use distinct, smooth organic bubble silhouettes with matching illustration frames rather than rounded-rectangle surfaces. “Illustration” labels stay safely inside their frames at desktop and mobile.
+
 ## News content and imagery
 
 The three featured stories are sourced from the user-provided extraction of the exact Facebook page:
@@ -79,4 +83,4 @@ A committed workflow or test is not itself a passing result: check the actual wo
 
 ## Current owner feedback and TODO
 
-The playful bubble-style art direction and five-drawing homepage collage are tracked in [TODO.md](TODO.md). The homepage stays light, while all eleven assets/posts photographs appear on the two relevant secondary pages under the association owner's verbal website-use authorization.
+The playful bubble-style art direction, organic Actualités shapes and nine-drawing homepage collage are tracked in [TODO.md](TODO.md). The homepage stays light, while all eleven assets/posts photographs appear on the two relevant secondary pages under the association owner's verbal website-use authorization.

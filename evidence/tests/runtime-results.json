@@ -1049,5 +1049,47 @@
       "The association owner's final visual/content acceptance remains outstanding.",
       "No production deployment was performed or authorised."
     ]
+  },
+  "loop_020": {
+    "test_run": "loop-020-responsive-organic-actualites-bubbles",
+    "observed_at": "2026-11-05",
+    "runner": "GitHub Actions; Python 3.13; Node 22; Playwright 1.57; Chromium 143.",
+    "status": "PASS",
+    "commit": "3d7d8683d0ec471e03a31ac2ba4aeb7f200571a9",
+    "workflow": {
+      "run_id": 42072524668,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/42072524668",
+      "conclusion": "success"
+    },
+    "python_validator": "PASS",
+    "node": "PASS — JavaScript syntax and menu/story/reduced-motion regression.",
+    "browser": {
+      "status": "PASS",
+      "pages": 9,
+      "viewports": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "page_viewport_runs": 45,
+      "checks": [
+        "nine pages at five widths",
+        "three distinct smooth organic card contours",
+        "three distinct matching image contours",
+        "desktop Illustration badges stay in upper image frame; mobile remains lower-right",
+        "dated routes and separate undated photo strip unchanged",
+        "all local images load; no overflow, failed requests, page errors or console errors"
+      ]
+    },
+    "visual_review": {
+      "status": "PASS — MANUAL REVIEW",
+      "artifact_id": 13436352631,
+      "artifact_sha256": "577b1aa9ac8ca741fd092db1aed3321b959ba0f902f6712d009238cbc2c900c8",
+      "screenshot_count": 18,
+      "manually_opened_screenshots": 2,
+      "detail": "Final desktop/mobile Actualités screenshots manually inspected; smooth bubble shapes, matching image masks and clear desktop labels confirmed."
+    }
   }
 }

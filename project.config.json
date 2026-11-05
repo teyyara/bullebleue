@@ -31,7 +31,7 @@
     "analytics": false,
     "third_party_tracking": false
   },
-  "current_candidate": "bullebleue-loop-019-owner-homepage-content-testimonials-and-visual-system-v1",
-  "status": "LOOP 018: LIGHT HOMEPAGE WITH GATHERING PHOTO ONLY; 8 ACTIVITY PHOTOS ON QUI SOMMES-NOUS; 3 UNDATED GROUP PHOTOS ON ACTUALITES; ORGANIC NEWS BUBBLES; CONTRAST-SAFE PLAYFUL PALETTE; PYTHON/NODE/PLAYWRIGHT CI PASS; 10 SCREENSHOTS MANUALLY REVIEWED; NOT DEPLOYED",
-  "contract_version": "1.4"
+  "current_candidate": "bullebleue-loop-020-organic-news-blob-contours-v1",
+  "status": "LOOP 020: TRUE ORGANIC ACTUALITÉS BUBBLES WITH MATCHING IMAGE CONTOURS; DESKTOP/MOBILE REVIEW; PYTHON/NODE/PLAYWRIGHT PASS; NOT DEPLOYED",
+  "contract_version": "1.5"
 }
