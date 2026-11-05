@@ -164,7 +164,7 @@ def main() -> None:
                         assert activity_cards.count() == 8, "about page must hold eight activity photos"
                         assert page.locator(".page-intro").evaluate("(el) => getComputedStyle(el).color") == "rgb(20, 41, 104)", "pastel page intro must use deep readable navy text"
                         assert page.locator(".page-intro-lede").evaluate("(el) => getComputedStyle(el).color") == "rgb(52, 72, 120)", "page intro lede must not inherit white text on a light background"
-                        assert page.locator(".solidarity-note > p:not(.section-kicker)").evaluate("(el) => getComputedStyle(el).color") == "rgb(62, 82, 122)", "solidarity note body text must use readable dark text on its pastel surface"
+                        assert page.locator(".solidarity-note > p:not(.section-kicker)").first.evaluate("(el) => getComputedStyle(el).color") == "rgb(62, 82, 122)", "solidarity note body text must use readable dark text on its pastel surface"
                     if path == "actualites.html":
                         assert page.locator(".community-photo-grid--gatherings .community-photo-card").count() == 3, "news page has three un-dated community images"
                         assert page.locator(".news-card").count() == 3, "news page keeps its three dated stories"
