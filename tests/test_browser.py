@@ -317,21 +317,24 @@ def main() -> None:
                 path=str(screenshot_dir / "home-closing-mobile.png")
             )
 
-            # Mobile screenshots cover all new owner-requested homepage sections and scene changes.
+            # Viewport captures reflect the actual sticky-header experience on mobile.
             for selector, scene, filename in (
                 ("#se-retrouver", "se-retrouver", "home-se-retrouver-mobile.png"),
                 ("#ils-en-parlent", "temoignages", "home-testimonials-mobile.png"),
                 ("#jouer-creer", "jouer", "home-jouer-creer-mobile.png"),
                 (".story-step--derriere", "derriere", "home-derriere-mobile.png"),
             ):
-                section = page.locator(selector)
-                section.scroll_into_view_if_needed()
+                page.evaluate(
+                    "(selector) => { const target = document.querySelector(selector); if (target) window.scrollTo(0, window.scrollY + target.getBoundingClientRect().top - 92); }",
+                    selector,
+                )
                 page.wait_for_function(
                     "(scene) => document.querySelector('.story-art').dataset.scene === scene",
                     arg=scene,
                     timeout=6000,
                 )
-                section.screenshot(path=str(screenshot_dir / filename))
+                page.wait_for_timeout(650)
+                page.screenshot(path=str(screenshot_dir / filename))
 
             # Reduced-motion users keep every story panel readable without JS motion classes.
             reduced = context.new_page()

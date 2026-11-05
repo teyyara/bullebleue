@@ -1217,3 +1217,6 @@ p,li,figcaption,small,input,button{font-family:var(--body-font)}
 .story-art>.drawing-sticker--six,.story-art>.drawing-sticker--seven,.story-art>.drawing-sticker--eight,.story-art>.drawing-sticker--nine{transition:none}
 .bb-blob img{animation:none}.bb-polaroid,.bb-blob{transition:none}
 }
+
+/* Keep anchor targets clear of the sticky navigation on desktop and touch screens. */
+#se-retrouver,#ils-en-parlent,#jouer-creer,.story-step--derriere{scroll-margin-top:calc(var(--header-offset,76px) + 18px)}
