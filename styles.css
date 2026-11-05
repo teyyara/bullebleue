@@ -1246,3 +1246,7 @@ p,li,figcaption,small,input,button{font-family:var(--body-font)}
   .news-card,.news-card:nth-child(2),.news-card:nth-child(3){padding:16px 12px 20px}
   .news-card-image,.news-card:nth-child(2) .news-card-image,.news-card:nth-child(3) .news-card-image{margin:4px 2px 0}
 }
+
+@media(min-width:761px){
+  .news-card-image .image-kind{top:15px;right:18px;bottom:auto}
+}

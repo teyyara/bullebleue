@@ -187,6 +187,11 @@ def main() -> None:
                             "(images) => images.map((image) => getComputedStyle(image).clipPath)"
                         )
                         assert len(set(image_shapes)) == 3, f"news illustration frames need their own organic contours: {image_shapes}"
+                        if width > 760:
+                            badge_positions = page.locator(".news-card-image .image-kind").evaluate_all(
+                                "(badges) => badges.map((badge) => ({top: badge.getBoundingClientRect().top, imageTop: badge.parentElement.getBoundingClientRect().top, imageHeight: badge.parentElement.getBoundingClientRect().height}))"
+                            )
+                            assert all((badge["top"] - badge["imageTop"]) < badge["imageHeight"] / 2 for badge in badge_positions), f"desktop illustration labels must stay within the upper half of the organic image frames: {badge_positions}"
 
                     nav_links = page.locator("#navigation a").evaluate_all(
                         "(links) => links.map((link) => link.getAttribute('href'))"
