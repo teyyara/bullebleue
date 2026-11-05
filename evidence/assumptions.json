@@ -1,5 +1,5 @@
 {
-  "assumptions_version": "0.7",
+  "assumptions_version": "0.8",
   "assumptions": [
     {
       "id": "ASSUMP-001",
@@ -176,6 +176,22 @@
       "confidence": "HIGH for general captions and visible content; no specific event date is asserted.",
       "impact_if_wrong": "LOW",
       "resolution": "Use general activity/meeting captions only. The Actualités photo strip explicitly says it is not attached to the three dated stories."
+    },
+    {
+      "id": "ASSUMP-023",
+      "assumption": "The latest owner-provided Wednesday 14h30 and Saturday 15h schedule supersedes older schedule transcription.",
+      "source": "Direct owner feedback relayed on 2026-11-05.",
+      "confidence": "HIGH for latest owner instruction.",
+      "impact_if_wrong": "LOW",
+      "resolution": "Use the latest supplied homepage copy; do not reuse old schedule wording embedded in poster artwork."
+    },
+    {
+      "id": "ASSUMP-024",
+      "assumption": "The single Miette quotation is the only verified testimonial currently available for publication.",
+      "source": "The owner supplied exactly one real quotation from Facebook AG 2026 and asked for three profile cards.",
+      "confidence": "HIGH for current evidence availability.",
+      "impact_if_wrong": "LOW",
+      "resolution": "Publish only Miette's exact attributed quote. Label all other profile cards as invitations to submit testimony."
     }
   ]
 }

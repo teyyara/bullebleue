@@ -1,8 +1,8 @@
 {
-  "contract_version": "1.3",
+  "contract_version": "1.4",
   "status": "ACTIVE QUALITY BASELINE — LOOP 018 CORRECTS PHOTO DISTRIBUTION, ORGANIC NEWS BUBBLES AND CONTRAST-SAFE PLAYFUL PALETTE",
-  "change_request": "CR-010",
-  "supersedes": "1.0",
+  "change_request": "CR-012 — Owner homepage copy, authentic testimonials, supplied art direction and typography",
+  "supersedes": "1.3",
   "project": "La Bulle Bleue — Chalon-sur-Saône",
   "business_objective": "Create an informative, welcoming and visually distinctive website explaining La Bulle Bleue and APAiL, representing publicly reported activities without overpromising and helping visitors contact the association.",
   "target_audience": [
@@ -135,21 +135,22 @@
       }
     },
     "typography": {
-      "heading": "Friendly handwritten-style system stack (Comic Sans MS / Chalkboard SE / Comic Neue where available); no remote font service.",
-      "body": "Rounded and readable system stack (Trebuchet MS / Arial Rounded / Verdana); preserve comfortable paragraph measure and contrast.",
-      "note": "Font availability varies by device; no font binary or third-party runtime request is required."
+      "heading": "Fredoka 600",
+      "body": "Atkinson Hyperlegible 400/700",
+      "handwritten_accents": "Caveat 600, reserved for captions and small notes",
+      "note": "Free Google Fonts CSS delivery with system fallbacks; no paid font dependency."
     },
     "owner_photo_permission": "The association owner supplied the photograph assets and verbally authorised their visible use on the website, as relayed by the project user on 2026-11-05. This is accepted as the project's permission basis."
   },
   "visual_requirements": {
-    "hero": "Sticky homepage art is a layered, playful collage of all five user-supplied drawings (assets/dessin1.jpeg through assets/dessin5.jpeg), arranged as irregular sticker-like shapes behind the three scrolling story chapters. The previous placeholder SVG is no longer used.",
-    "activities": "Short, scannable numbered editorial rows across four broadly evidenced activity categories.",
+    "hero": "Sticky homepage art is a layered, playful collage of nine user-supplied drawings (assets/dessin1.jpeg through assets/dessin9.jpeg), arranged as irregular sticker-like shapes behind the scroll narrative. Drawings 6–9 vary in emphasis across scroll scenes. No chapter counters.",
+    "activities": "Adapt assets/section-jouer-creer.html as an organic desktop collage of four supplied child drawings, with polaroid and one organic frame, Caveat captions and doodles; horizontal scroll-snap on mobile.",
     "welcome": "One compact welcome and first-contact panel; no duplicated approach / volunteer / first-step sections.",
     "association": "Short APAiL origin panel with verified 1995 and 2021 dates.",
     "contact": "Cobalt/primary-blue gradient with pale icy text and highlights.",
-    "background": "Warm paper base with soft bubbles and supporting pastel accents (coral, lemon, mint and lilac) around the logo-derived blues. Keep the official logo legible and avoid a corporate card-grid appearance.",
+    "background": "Warm paper base with a low-opacity designmergeavecbackground.jpeg texture, nine child drawings and scene-based emphasis. The old flyer schedule embedded in the poster is never treated as current operational information.",
     "stories": "Separate dated activity-story mosaic removed in Loop 006 to reduce page length and avoid reliance on an unverified Facebook mirror.",
-    "asset_policy": "The association owner supplied the five drawings, eleven assets/posts photographs and gathering.jpeg and verbally authorised their visible use on the website. Only gathering.jpeg appears on the homepage. Eight activity photos appear on Qui sommes-nous; the three group/outing photos appear in a separate, explicitly undated strip on Actualités.",
+    "asset_policy": "All eleven assets/posts photos remain secondary-page-only: eight on Qui sommes-nous and three explicitly undated on Actualités. Homepage uses only se retrouver.jpg.jpeg and gathering.jpeg as documentary photos. Owner supplied all and verbally authorized their visible use.",
     "images": [
       {
         "path": "assets/logo final.png",
@@ -243,18 +244,21 @@
       }
     ],
     "palette": "Use only the sampled logo blues plus documented pale near-white tints derived from the logo; no warm clay/ochre accents.",
-    "homepage": "The homepage remains light: five supplied drawings in the sticky story collage, three short story chapters and gathering.jpeg beside the closing DERRIÈRE LA BULLE/contact links. No assets/posts gallery or other activity photographs appear on the homepage.",
+    "homepage": "Owner-approved welcome copy, Se retrouver with the new group photograph and full owner-provided weekly/outings copy, Ils en parlent immediately afterwards with Miette's one verified quote, the Jouer/créer four-drawing collage, and the DERRIÈRE LA BULLE closing story with two direct calls to action. gathering.jpeg remains in the closing section.",
     "news": "Three dated stories are presented as distinct, irregular bubble-shaped articles with inset curved illustrations and responsive stacked layout. A separate, undated gallery shows three community/group photographs; it explicitly states they are not tied to the dated stories.",
     "articles": "A clean article template with date, headline, short deck, one labelled illustration, concise text, provenance note and return-to-news link.",
     "navigation": "Five clear primary destinations. Mentions légales remains in the shared footer.",
     "cards": "Avoid rigid rectangles. Use organic, uneven bubble-like silhouettes, soft dotted or hand-drawn outlines, pill controls, gentle rotations and generous readable spacing throughout all nine public pages.",
-    "typography": "Friendly handwritten-style headline fallback and rounded, readable body fallback; informal and fun rather than formal/professional. No remote font dependency.",
+    "typography": "Fredoka 600 for titles; Atkinson Hyperlegible 400 and 700 for body copy; Caveat 600 only for captions and small notes.",
     "home_closing_photo": "Place assets/gathering.jpeg prominently beside the DERRIÈRE LA BULLE/contact content at the end of the homepage. The owner supplied the image and verbally authorised its visible use on the website.",
     "photo_gallery": "Display all eleven local photos from assets/posts in a playful organic gallery with descriptive alt text and short captions. The owner supplied the photographs and verbally authorised their website use.",
     "about_photos": "Eight supplied activity photographs appear beside the activities content on Qui sommes-nous in a compact responsive gallery; descriptive French alt text and short captions identify the activity, not the people.",
     "photo_distribution": "Distribute the eleven assets/posts photos away from the homepage: 8 activity photos on Qui sommes-nous, 3 group/outing photos in a separate undated strip on Actualités. Do not imply the three Actualités photos depict the three dated stories.",
     "colour_contrast": "Use explicit deep navy/blue text on pale cream/pastel backgrounds and light text only on dark blue gradients. Page-intro has a pale background and must use dark text. Avoid low-contrast pale-blue title emphasis on pale surfaces; keep the solidarity note on a pale surface with dark text.",
-    "news_card_shape": "Article cards must visibly read as organic bubbles/blobs, not merely rounded rectangles. Use asymmetrical shapes, varied card contour and inset organic image frames with mobile stacking."
+    "news_card_shape": "Article cards must visibly read as organic bubbles/blobs, not merely rounded rectangles. Use asymmetrical shapes, varied card contour and inset organic image frames with mobile stacking.",
+    "typography_provider": "Free Google Fonts CSS. Keep sans-serif system fallbacks and ensure all essential content stays readable if fonts fail to load.",
+    "testimonials": "Place immediately after Se retrouver. Feature the exact Miette quote supplied by the owner (AG 2026) and no invented attributed statements. The three young-person, parent and volunteer cards are invitation prompts until genuine quotes arrive. No face photographs in this section.",
+    "typography_old_note": "The previous system-font-only direction was superseded by CR-012. Google Fonts CSS is now used for owner-selected families; fallbacks remain local."
   },
   "motion": {
     "effects": [
@@ -271,7 +275,7 @@
     "architecture": "Static HTML, CSS and vanilla JavaScript",
     "dependencies": [],
     "paid_services": [],
-    "external_fonts": false,
+    "external_fonts": true,
     "tracking": false,
     "analytics": false,
     "forms_backend": false,
@@ -294,7 +298,8 @@
       ],
       "browser": "Playwright Python 1.57.0 with Chromium; tests are tooling-only and do not add a runtime website dependency.",
       "deployment": "No deploy job, no Vercel credentials and no production mutation."
-    }
+    },
+    "fonts_provider": "Google Fonts CSS (Fredoka, Atkinson Hyperlegible, Caveat), free service; local font-family fallbacks remain."
   },
   "accessibility_target": "WCAG 2.2 AA; foundation includes semantics, alt text, dimensions, keyboard navigation, reduced-motion fallback and progressive reveal. Manual screen-reader testing remains outstanding.",
   "responsive_viewports": [
@@ -352,7 +357,13 @@
     "The homepage contains no assets/posts photos or home photo album; gathering.jpeg remains the one documentary photo beside the closing contact section.",
     "All eleven assets/posts photos are displayed on the two relevant secondary pages: eight activities on Qui sommes-nous and three undated community images on Actualités.",
     "The three dated Actualités cards have clear organic blob silhouettes and remain responsive.",
-    "Pastel page headers and solidarity panel use dark readable text; dark panels use light text; headline emphasis has adequate contrast."
+    "Pastel page headers and solidarity panel use dark readable text; dark panels use light text; headline emphasis has adequate contrast.",
+    "Site identity is Bulle Bleue - APAiL across all nine page titles and the shared header, with the lowercase i preserved.",
+    "Homepage welcome copy and Se retrouver copy, image, Wednesday 14h30 / Saturday 15h sessions and outings match the latest owner feedback.",
+    "Ils en parlent immediately follows Se retrouver; only Miette's real quote is attributed; all other cards are labelled as future testimony prompts.",
+    "Jouer/créer uses the four new child drawings in an organic collage with mobile horizontal swipe; homepage assets/posts photographs remain absent.",
+    "DERRIÈRE LA BULLE uses latest owner-supplied association/volunteer copy with Devenir bénévole and Adhérer à l’APAiL actions.",
+    "Fredoka 600, Atkinson Hyperlegible 400/700 and Caveat 600 are used throughout the site."
   ],
   "business_outcome_hypotheses": [
     "Specific activity stories may help families understand the initiative",
@@ -406,5 +417,15 @@
     "Validator asserts all eleven exact photo paths are distributed correctly; Playwright verifies bubble radii, computed text colours, all images, responsive overflow and navigation.",
     "Desktop/mobile visual screenshots of homepage, Actualités and Qui sommes-nous are uploaded and manually inspected.",
     "No production deployment."
+  ],
+  "definition_of_done_loop_019": [
+    "Record owner feedback in TODO, CR-012, contract, requirements, asset register and provenance.",
+    "Use exact Bulle Bleue - APAiL brand identity, updated welcome copy and no visible chapter counters.",
+    "Implement Se retrouver's supplied copy, session times, outings and photo; insert Ils en parlent immediately afterwards with the one genuine Miette quote and no fabricated testimonials.",
+    "Adapt the supplied activity collage reference using drawings 6–9 and mobile horizontal swipe; vary new art emphasis by scroll scene and use the poster image as subtle background texture only.",
+    "Replace DERRIÈRE LA BULLE copy and links with the owner's latest wording.",
+    "Apply Fredoka 600, Atkinson Hyperlegible 400/700 and Caveat 600; retain responsive and reduced-motion fallbacks.",
+    "Run static, Node and Playwright checks across all nine routes and five viewport widths; review new desktop and mobile screenshots.",
+    "Checkpoint to main, verify remote state and record test evidence; do not deploy."
   ]
 }

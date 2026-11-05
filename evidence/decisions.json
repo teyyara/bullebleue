@@ -1,5 +1,5 @@
 {
-  "decisions_version": "0.1",
+  "decisions_version": "0.2",
   "decisions": [
     {
       "id": "DEC-001",
@@ -394,6 +394,32 @@
       "tradeoffs": "Large organic card shapes need desktop/mobile visual review.",
       "risk": "R1",
       "evidence": "Direct CSS audit in Loop 018 and browser checks of computed styles."
+    },
+    {
+      "id": "DEC-031",
+      "context": "The owner supplied precise homepage text, a selected Se retrouver group photo, new drawings, an activity-layout HTML reference and exact font preferences.",
+      "options": [
+        "Keep current homepage copy and old typography",
+        "Adopt owner text/artwork/fonts while preserving the approved secondary-page photo distribution"
+      ],
+      "chosen": "Implement the owner-approved homepage sequence and wording, use supplied drawings and selected photograph, adapt the four-artwork collage, and apply Fredoka/Atkinson Hyperlegible/Caveat.",
+      "reason": "The owner feedback is direct and specific; the implementation must express the association's voice while preserving the airy homepage and honest provenance.",
+      "tradeoffs": "Google Fonts CSS becomes a free runtime font request; system fallbacks protect legibility. Separate character extraction remains pending.",
+      "risk": "R1",
+      "evidence": "CR-012, owner-uploaded images and supplied section-jouer-creer.html."
+    },
+    {
+      "id": "DEC-032",
+      "context": "Only one real testimonial was provided, while the requested visual layout has three cards for young people, parents and volunteers.",
+      "options": [
+        "Invent sample testimonials",
+        "Show Miette's authentic quote and mark the remaining cards as invitations"
+      ],
+      "chosen": "Use only Miette's verified owner-supplied quotation; other cards remain explicit 'Témoignage à recueillir' invitations with no attributed words.",
+      "reason": "Attribution must remain truthful. The page can invite future contributions without claiming statements that have not been provided.",
+      "tradeoffs": "The three supporting cards are invitation prompts rather than quotations until real material is supplied.",
+      "risk": "R1",
+      "evidence": "Owner feedback received 2026-11-05."
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "content_provenance_version": "1.1",
+  "content_provenance_version": "1.2",
   "items": [
     {
       "content": "La Bulle Bleue is an APAiL initiative in Chalon-sur-Saône.",
@@ -186,6 +186,21 @@
       "content": "Loop 018 photo distribution and colour/art-direction correction.",
       "classification": "Owner clarification dated 2026-11-05: homepage should stay light and use gathering.jpeg only; the eleven assets/posts photos belong in other website sections. CSS and browser checks address bubble-shaped Actualités cards and readable colour pairings.",
       "confidence": "HIGH for exact implementation source and test evidence."
+    },
+    {
+      "content": "Homepage welcome and Se retrouver copy, session times, outing description, association/volunteer paragraph and CTA wording.",
+      "classification": "Exact copy supplied in latest association-owner feedback relayed by the project user on 2026-11-05.",
+      "confidence": "HIGH for owner-supplied content; owner feedback is the latest operational input."
+    },
+    {
+      "content": "“Je remplis ma jauge de positif et d’amour quand je viens vous voir à la Bulle Bleue ! Merci de faire vivre cet espace si important pour qu’on puisse exister comme on est !” — Miette, participante.",
+      "classification": "Exact testimonial and attribution supplied by association owner; described as published on Facebook at AG 2026.",
+      "confidence": "HIGH for the quote and attribution as owner-provided source."
+    },
+    {
+      "content": "assets/designmergeavecbackground.jpeg, assets/dessin6.jpeg through assets/dessin9.jpeg, and assets/se retrouver.jpg.jpeg.",
+      "classification": "New repository assets uploaded at the association owner's request; owner supplied them and verbally authorised their visible use on the website.",
+      "confidence": "HIGH for provenance and permission basis; poster embedded schedule is treated as decorative artwork only."
     }
   ]
 }

@@ -107,7 +107,7 @@ def main() -> None:
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     base_url = f"http://127.0.0.1:{server.server_port}"
-    screenshot_dir = ROOT / "artifacts" / "loop018-browser"
+    screenshot_dir = ROOT / "artifacts" / "loop019-browser"
     screenshot_dir.mkdir(parents=True, exist_ok=True)
     measurements: list[dict] = []
 
@@ -135,7 +135,7 @@ def main() -> None:
             page.on(
                 "request",
                 lambda request: external_requests.append(request.url)
-                if not request.url.startswith(base_url)
+                if not request.url.startswith(base_url) and not any(host in request.url for host in ("fonts.googleapis.com", "fonts.gstatic.com"))
                 else None,
             )
 
@@ -152,13 +152,20 @@ def main() -> None:
                     image_count = check_images(page, path)
                     if path == "index.html":
                         drawing_count = page.locator(".story-art .drawing-sticker").count()
-                        assert drawing_count == 5, f"homepage must display all five supplied drawings, found {drawing_count}"
+                        assert drawing_count == 9, f"homepage must display all nine supplied drawings, found {drawing_count}"
                         assert page.locator('img[src*="/assets/posts/"]').count() == 0, "homepage must stay light and contain no activity gallery"
                         heading_font = page.locator(".story-panel h1").evaluate("(el) => getComputedStyle(el).fontFamily")
-                        assert "system-ui" in heading_font and "cursive" not in heading_font, f"playful heading stack must end in a sans fallback: {heading_font}"
+                        assert "Fredoka" in heading_font, f"owner-specified Fredoka heading font is missing: {heading_font}"
                         contact_radius = page.locator("#navigation .nav-contact").evaluate("(el) => getComputedStyle(el).borderRadius")
                         assert contact_radius == "999px", f"header contact action must be fully pill-shaped: {contact_radius}"
                         assert page.locator(".home-after-photo img").count() == 1, "gathering.jpeg must appear in the closing composition"
+                        assert page.locator(".home-testimonials .voice-card").count() == 3, "homepage must show three explicitly-labelled profile prompts"
+                        assert page.locator(".quote-feature footer").inner_text() == "— Miette, participante", "only the verified Miette quote is attributed"
+                        assert page.locator(".bb-collage figure").count() == 4, "Jouer, créer collage must contain four artwork cards"
+                        assert page.locator(".story-index").count() == 0, "homepage chapter counters must be removed"
+                        assert page.locator(".se-photo img").count() == 1, "Se retrouver must show the owner-selected photo"
+                        assert "Mercredi · 14h30" in page.locator(".se-schedule-grid").inner_text()
+                        assert "Samedi · 15h" in page.locator(".se-schedule-grid").inner_text()
                     if path == "qui-sommes-nous.html":
                         activity_cards = page.locator(".community-photo-grid--activities .community-photo-card")
                         assert activity_cards.count() == 8, "about page must hold eight activity photos"
@@ -343,7 +350,7 @@ def main() -> None:
                     "HTTP routes and local image loads",
                     "shared navigation order",
                     "mobile menu Escape/focus behavior",
-                    "five supplied drawings render in the sticky art collage",
+                    "nine supplied drawings render in the sticky art collage; highlighted drawing varies by scroll scene",
                     "all eleven owner-supplied assets/posts photos are distributed to activity and community sections on secondary pages; homepage stays photo-light except for gathering.jpeg",
                     "sticky art and chapter transitions",
                     "reduced-motion content visibility",
@@ -352,11 +359,11 @@ def main() -> None:
                     "desktop and mobile actualites pages captured, including three un-dated community photos",
                     "desktop and mobile qui-sommes-nous pages captured, including eight activity photos",
                     "desktop and mobile closing gathering.jpeg composition screenshots captured and image decode verified",
-                    "no external requests, failed requests or console errors",
+                    "only Google Fonts requests are permitted externally; no failed requests or console errors",
                 ],
                 "measurements": measurements,
                 "screenshots": [
-                    "artifacts/loop018-browser/home-story-01-desktop.png",
+                    "artifacts/loop019-browser/home-story-01-desktop.png",
                     "artifacts/loop018-browser/home-story-02-desktop.png",
                     "artifacts/loop018-browser/home-story-03-desktop.png",
                     "artifacts/loop018-browser/news-desktop.png",

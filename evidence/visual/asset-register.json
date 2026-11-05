@@ -1,6 +1,6 @@
 {
-  "version": "1.8",
-  "policy": "Loop 018 corrects the photo distribution: homepage uses only gathering.jpeg beside DERRIÈRE LA BULLE/contact; eight assets/posts activity photos appear on Qui sommes-nous and three group/outing photos appear in a separate undated image strip on Actualités. All image files were supplied by the association owner, who verbally authorised their visible use; this is the accepted project permission basis.",
+  "version": "1.9",
+  "policy": "Loop 019 adds the owner-selected se retrouver.jpg group photograph to the homepage, uses drawings 6–9 as scroll-reactive artwork and a four-drawing Jouer/créer collage, and uses designmergeavecbackground.jpeg only as a restrained texture. The eleven assets/posts photos remain on secondary pages. The owner supplied and verbally authorised the images.",
   "assets": [
     {
       "path": "assets/illustrations/games.svg",
@@ -56,77 +56,77 @@
     },
     {
       "path": "assets/posts/735543787_1361390089428172_5312506833854343201_n.jpg",
-      "use": "Qui sommes-nous — activité créative",
+      "use": "Qui sommes-nous — activités",
       "description": "A person holds a large craft hoop/ribbon with others and workshop materials visible; identifiable faces.",
       "documentary": true,
       "status": "IN USE — Qui sommes-nous activity gallery (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/783036041_1408453024721878_3578205087320603775_n.jpg",
-      "use": "Qui sommes-nous — dessin et arts plastiques",
+      "use": "Qui sommes-nous — activités",
       "description": "Participants draw at a table with coloured pens; identifiable faces.",
       "documentary": true,
       "status": "IN USE — Qui sommes-nous activity gallery (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/830754903_1438852398348607_8575046537706443389_n.jpg",
-      "use": "Actualités — bandeau de moments de groupe non datés",
+      "use": "Actualités — moments de groupe non datés",
       "description": "Group seated around a garden table; many identifiable faces.",
       "documentary": true,
       "status": "IN USE — separate undated Actualités community image strip (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/844190417_1446490757584771_1709901819062193861_n.jpg",
-      "use": "Actualités — bandeau de moments de groupe non datés",
+      "use": "Actualités — moments de groupe non datés",
       "description": "Indoor group photograph with identifiable adults and children.",
       "documentary": true,
       "status": "IN USE — separate undated Actualités community image strip (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/854414257_1451277357106111_100552518532689623_n.jpg",
-      "use": "Actualités — bandeau de moments de groupe non datés",
+      "use": "Actualités — moments de groupe non datés",
       "description": "Outdoor evening group photograph with identifiable faces.",
       "documentary": true,
       "status": "IN USE — separate undated Actualités community image strip (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/858642199_1459855032915010_3703135960600555271_n.jpg",
-      "use": "Qui sommes-nous — jeux et construction",
+      "use": "Qui sommes-nous — activités",
       "description": "Two children playing a wooden block-tower game; faces partly visible.",
       "documentary": true,
       "status": "IN USE — Qui sommes-nous activity gallery (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/860039147_1459854696248377_603952803324221168_n.jpg",
-      "use": "Qui sommes-nous — jeux de société",
+      "use": "Qui sommes-nous — activités",
       "description": "Close-up of tabletop game pieces and a board; no identifiable faces visible.",
       "documentary": true,
       "status": "IN USE — Qui sommes-nous activity gallery (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg",
-      "use": "Qui sommes-nous — puzzle et jeu de découverte",
+      "use": "Qui sommes-nous — activités",
       "description": "Close-up of an illustrated tabletop puzzle/board with hands nearby; no identifiable faces visible.",
       "documentary": true,
       "status": "IN USE — Qui sommes-nous activity gallery (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/861826539_1459854896248357_2220258804161137760_n.jpg",
-      "use": "Qui sommes-nous — jeux de formes",
+      "use": "Qui sommes-nous — activités",
       "description": "Close-up of wooden geometric game pieces and hands around a table; no identifiable faces visible.",
       "documentary": true,
       "status": "IN USE — Qui sommes-nous activity gallery (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/863353686_1459854766248370_1734709857082262774_n.jpg",
-      "use": "Qui sommes-nous — activité de création",
+      "use": "Qui sommes-nous — activités",
       "description": "Participants assemble illustrated face pieces at a table; partial profiles/identifiable people visible.",
       "documentary": true,
       "status": "IN USE — Qui sommes-nous activity gallery (Loop 018); owner-supplied and verbally authorised."
     },
     {
       "path": "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg",
-      "use": "Qui sommes-nous — manipulation et formes",
+      "use": "Qui sommes-nous — activités",
       "description": "Close-up of geometric pieces arranged around a table; no identifiable faces visible.",
       "documentary": true,
       "status": "IN USE — Qui sommes-nous activity gallery (Loop 018); owner-supplied and verbally authorised."
@@ -172,6 +172,48 @@
       "description": "Group event photograph with recognizable adults and young people; selected by the association owner for the DERRIÈRE LA BULLE/contact area.",
       "documentary": true,
       "status": "IN USE — Loop 017 closing homepage photo; covered by association-owner verbal website-use authorization."
+    },
+    {
+      "path": "assets/designmergeavecbackground.jpeg",
+      "use": "Homepage background texture",
+      "description": "Owner-supplied poster design with Bulle Bleue branding and activity copy; used only at low opacity as a visual background because old embedded operational details are not current confirmation.",
+      "documentary": false,
+      "status": "IN USE — low-opacity background layer only; no embedded schedule is promoted."
+    },
+    {
+      "path": "assets/dessin6.jpeg",
+      "use": "Sticky art and Jouer/créer collage",
+      "description": "Child-made drawing of several colourful characters.",
+      "documentary": false,
+      "status": "IN USE — complete original drawing; individual character cut-outs not yet produced."
+    },
+    {
+      "path": "assets/dessin7.jpeg",
+      "use": "Sticky art and Jouer/créer collage",
+      "description": "Child-made drawing of colourful figures with Bulle Bleue lettering.",
+      "documentary": false,
+      "status": "IN USE — complete original drawing; individual character cut-outs not yet produced."
+    },
+    {
+      "path": "assets/dessin8.jpeg",
+      "use": "Sticky art and Jouer/créer collage",
+      "description": "Small colourful hand-drawn character.",
+      "documentary": false,
+      "status": "IN USE — complete original drawing; individual character cut-outs not yet produced."
+    },
+    {
+      "path": "assets/dessin9.jpeg",
+      "use": "Sticky art and Jouer/créer collage",
+      "description": "Child-made drawing of a diverse group of characters holding hands.",
+      "documentary": false,
+      "status": "IN USE — complete original drawing; individual character cut-outs not yet produced."
+    },
+    {
+      "path": "assets/se retrouver.jpg.jpeg",
+      "use": "Homepage Se retrouver section",
+      "description": "Owner-selected indoor photograph of participants and volunteers sharing a table.",
+      "documentary": true,
+      "status": "IN USE — owner supplied and verbally authorised for website display."
     }
   ],
   "permissions": {

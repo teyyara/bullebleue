@@ -107,10 +107,10 @@ def main():
         assert not (ROOT / obsolete).exists(), f"obsolete page still published: {obsolete}"
 
     home = parsed["index.html"][0]
-    assert len(home) < 9000, "homepage should remain airy and concise"
-    assert home.count('class="story-step"') == 3, "homepage has exactly three scroll chapters"
-    drawings = ("dessin1.jpeg", "dessin2.jpeg", "dessin3.jpeg", "dessin4.jpeg", "dessin5.jpeg")
-    assert home.count('class="drawing-sticker') == 5, "homepage collage uses exactly five supplied drawings"
+    assert len(home) < 18000, "homepage should remain airy and concise"
+    assert home.count('class="story-step ') == 3, "homepage has exactly three scroll chapters"
+    drawings = ("dessin1.jpeg", "dessin2.jpeg", "dessin3.jpeg", "dessin4.jpeg", "dessin5.jpeg", "dessin6.jpeg", "dessin7.jpeg", "dessin8.jpeg", "dessin9.jpeg")
+    assert home.count('class="drawing-sticker') == 9, "homepage collage uses exactly five supplied drawings"
     for drawing in drawings:
         assert f'src="/assets/{drawing}"' in home, f"missing supplied homepage drawing: {drawing}"
     assert "hero-community.svg" not in home, "placeholder SVG hero is retired"
@@ -179,8 +179,8 @@ def main():
     assert ".story-art{position:sticky" in css and "html.has-scroll-story .story-step.is-current .story-panel" in css
     assert "--joy-coral:#FF8D83" in css and "--playful-font:" in css
     assert "border-radius:999px" in css and ".drawing-mural" in css and ".drawing-sticker--five" in css
-    assert "Comic Sans MS" in css and "Trebuchet MS" in css
-    assert ',system-ui,sans-serif' in css and ",cursive;" not in css
+    assert '"Fredoka"' in css and '"Atkinson Hyperlegible"' in css and '"Caveat"' in css
+    assert ',system-ui,sans-serif' in css and '"Caveat",cursive;' in css
     assert ".main-nav .nav-contact{padding:10px 17px;border:2px solid #fff;border-radius:999px" in css
     assert ".story-panel h1,.story-panel h2{font-family:var(--playful-font);font-size:clamp(42px,4.6vw,60px)" in css
     assert ".page-intro{\n color:var(--joy-ink)" in css and ".solidarity-note{\n color:var(--joy-ink)" in css
@@ -200,7 +200,26 @@ def main():
 
     favicon = (ROOT / "assets/favicon.svg").read_text(encoding="utf-8")
     assert all(c in favicon for c in ("#06195E", "#1642A5", "#1C60CF", "#2084DE", "#F3F7FE"))
-    print("PASS: 9 pages, shared navigation, playful bubble design system, five-drawing sticky collage, eleven-photo activity gallery, owner-authorised closing photograph, reduced-motion fallback, local assets and logo palette.")
+    # LOOP 019 owner-content, asset, testimonial and typography acceptance.
+    assert "Bulle Bleue - APAiL" in home and "Tous différents, mais uniques." in home
+    assert "Une association basée à CHALON-SUR-SAÔNE" in home
+    assert "story-index" not in home and "01 / 03" not in home
+    for text in ("Un lieu où l’on peut être soi.", "Mercredi · 14h30", "Samedi · 15h", "Sorties thématiques et culturelles", "séances Ciné Relax adaptées"):
+        assert text in home, f"homepage owner copy missing: {text}"
+    assert 'src="/assets/se%20retrouver.jpg.jpeg"' in home
+    assert 'id="ils-en-parlent"' in home and "Ce que la Bulle change pour eux." in home
+    assert "Miette, participante" in home and "Je remplis ma jauge de positif et d’amour" in home
+    assert home.count('class="voice-card ') == 3 and home.count("Témoignage à recueillir") == 3
+    assert "Vous aussi, vous fréquentez la Bulle ? Racontez-nous" in home
+    for drawing in ("dessin6.jpeg", "dessin7.jpeg", "dessin8.jpeg", "dessin9.jpeg"):
+        assert f'src="/assets/{drawing}"' in home, f"new owner drawing missing: {drawing}"
+    assert "Prendre confiance" in home and "bb-collage" in home and "assets/posts/" not in home
+    for text in ("Une association, des bénévoles engagés.", "les « Bleuets » et « Bleuettes »", "Devenir bénévole", "Adhérer à l’APAiL"):
+        assert text in home, f"homepage owner copy missing: {text}"
+    for page, (html, _) in parsed.items():
+        assert "Bulle Bleue - APAiL" in html, f"{page}: exact site identity in page metadata"
+        assert "fonts.googleapis.com/css2?family=Atkinson" in html, f"{page}: owner typography stylesheet"
+    print("PASS: 9 pages, owner-approved homepage copy, nine drawings, genuine testimonial only, adapted collage, eleven-photo secondary distribution, exact typography, reduced-motion, local assets and logo palette.")
 
 if __name__ == "__main__":
     main()

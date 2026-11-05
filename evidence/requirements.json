@@ -1,5 +1,5 @@
 {
-  "requirements_version": "1.4",
+  "requirements_version": "1.5",
   "candidate": "bullebleue-loop-018-airy-photo-distribution-and-bubble-art-direction-v1",
   "requirements": [
     {
@@ -505,6 +505,60 @@
       "validation": "PASS — GitHub Actions run 41950304947 on final implementation commit ce6c113afc7f36b1be354d13f23c2a65694dac7c; Python, Node, Playwright nine pages × five widths and ten manually reviewed screenshots.",
       "status": "PASS — AUTOMATED VALIDATION; OWNER ACCEPTANCE PENDING",
       "confidence": "HIGH — exact final main-branch source, computed browser assertions and ten visual screenshots inspected."
+    },
+    {
+      "id": "REQ-057",
+      "requirement": "Use the owner-approved site identity and welcome copy.",
+      "acceptance": "All public metadata uses Bulle Bleue - APAiL; homepage displays exact welcome eyebrow, title and paragraph; no chapter counter; Qui sommes-nous action is prominent.",
+      "risk": "R1",
+      "validation": "Static validator and Playwright DOM checks",
+      "status": "IMPLEMENTED — LOOP 019",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-058",
+      "requirement": "Publish the owner's complete Se retrouver content and selected group photo.",
+      "acceptance": "Exact title, paragraph, Wednesday 14h30 / Saturday 15h and outings; owner-supplied image has descriptive alt text.",
+      "risk": "R1",
+      "validation": "Static copy/path assertions and Playwright image/layout checks",
+      "status": "IMPLEMENTED — LOOP 019",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-059",
+      "requirement": "Present testimonials accurately and respectfully.",
+      "acceptance": "The only attributed quote is Miette's owner-provided AG 2026 quote; no invented quote or testimonial portrait; other profiles are invitations to contribute; Contact link is visible.",
+      "risk": "R1",
+      "validation": "Source copy audit, validator, DOM and screenshot review",
+      "status": "IMPLEMENTED — MORE QUOTES PENDING",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-060",
+      "requirement": "Adapt the supplied Jouer, créer collage as a responsive artwork composition.",
+      "acceptance": "Four supplied drawings are shown with organic/polaroid framing and captions; mobile supports horizontal scroll-snap; assets/posts gallery is not copied to homepage.",
+      "risk": "R1",
+      "validation": "HTML asset assertions and desktop/mobile Playwright checks",
+      "status": "IMPLEMENTED — LOOP 019",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-061",
+      "requirement": "Use the owner-selected fonts.",
+      "acceptance": "Fredoka 600 headings, Atkinson Hyperlegible 400/700 body, Caveat 600 captions/notes, with free service and local fallbacks.",
+      "risk": "R1",
+      "validation": "Source checks and browser computed family assertion",
+      "status": "IMPLEMENTED — GOOGLE FONTS CSS",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-062",
+      "requirement": "Vary supplied artwork across the scrolling homepage and use the merged design image as background.",
+      "acceptance": "Drawings 6–9 added to sticky collage; scene observer changes highlighted drawing; designmerge image remains low-opacity and its old schedule is not surfaced; reduced-motion retains content without transitions.",
+      "risk": "R1",
+      "validation": "Source inspection, browser scene assertions, reduced-motion and screenshot review",
+      "status": "IMPLEMENTED — CHARACTER CUT-OUTS STILL OPEN",
+      "confidence": "HIGH"
     }
   ]
 }

@@ -1,4 +1,4 @@
-# La Bulle Bleue — Chalon-sur-Saône
+# Bulle Bleue - APAiL — Chalon-sur-Saône
 
 Responsive French-language static website for La Bulle Bleue, an initiative of APAiL.
 
@@ -10,7 +10,7 @@ Static HTML, CSS and vanilla JavaScript. No package manager, build step, remote 
 
 ## Site map
 
-- `index.html` — a sticky, colourful collage of five drawings supplied by the association, three successive scroll chapters, then the owner-supplied gathering.jpeg beside the final DERRIÈRE LA BULLE/contact content. The eleven assets/posts photographs are intentionally distributed to the Qui sommes-nous and Actualités pages, not the homepage.
+- `index.html` — a sticky, colourful collage of nine supplied drawings that changes its highlighted artwork as visitors scroll; owner-authored welcome, Se retrouver, Ils en parlent, Jouer/créer and DERRIÈRE LA BULLE sections; the owner-supplied se retrouver.jpg group photo and gathering.jpeg closing photograph. The eleven assets/posts photographs remain on Qui sommes-nous and Actualités, not the homepage.
 - `qui-sommes-nous.html` — La Bulle Bleue, its audience and activities, Les Bleuettes, APAiL history and reported solidarity work.
 - `actualites.html` — three featured dated stories in editorial cards.
 - `actualite-2026-10-26.html` — 26 October 2026, games at La Bulle Bleue.
@@ -24,7 +24,7 @@ The five primary navigation links are Accueil, Qui sommes-nous ?, Actualités, A
 
 ## Homepage motion and accessibility
 
-Five local drawings supplied in the repository now form a playful, sticker-like collage behind the three sticky homepage text chapters. The site uses informal system-font fallbacks, hand-drawn accents, organic bubble silhouettes, gentle rotations and a brighter supporting palette while preserving the sampled blue logo as its anchor. No remote font or runtime dependency is introduced. All eleven photographs in assets/posts are displayed in the responsive homepage album, and assets/gathering.jpeg appears beside the closing contact content. The association owner supplied the photo set and verbally authorised its visible use on the website, as relayed by the project user on 2026-11-05. JavaScript remains progressive enhancement; no-JavaScript and reduced-motion content stays visible.
+Five local drawings supplied in the repository now form a playful, sticker-like collage behind the three sticky homepage text chapters. The site uses Fredoka 600 for headings, Atkinson Hyperlegible 400/700 for reading text and Caveat 600 for handwritten accents. Google Fonts is the only free remote font service; all illustration and documentary images remain local. The four new drawings are presented in an adapted polaroid/organic collage with horizontal swipe on mobile. The eleven assets/posts photographs stay off the homepage: eight remain on Qui sommes-nous and three in an undated strip on Actualités. Only se retrouver.jpg.jpeg and gathering.jpeg are documentary photos on the homepage. The association owner supplied the photo set and verbally authorised its visible use on the website, as relayed by the project user on 2026-11-05. JavaScript remains progressive enhancement; no-JavaScript and reduced-motion content stays visible.
 
 ## News content and imagery
 
