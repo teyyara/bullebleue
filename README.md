@@ -4,7 +4,7 @@ Responsive French-language static website for La Bulle Bleue, an initiative of A
 
 ## Run locally
 
-Static HTML, CSS and vanilla JavaScript. No package manager, build step, remote fonts, analytics, tracking, backend, CMS or paid dependencies.
+Static HTML, CSS and vanilla JavaScript. No package manager, build step, analytics, tracking, backend, CMS or paid dependencies. The owner-selected typefaces load through the free Google Fonts CSS service, with local system fallbacks.
 
     python3 -m http.server 8080
 
@@ -24,7 +24,7 @@ The five primary navigation links are Accueil, Qui sommes-nous ?, Actualités, A
 
 ## Homepage motion and accessibility
 
-Five local drawings supplied in the repository now form a playful, sticker-like collage behind the three sticky homepage text chapters. The site uses Fredoka 600 for headings, Atkinson Hyperlegible 400/700 for reading text and Caveat 600 for handwritten accents. Google Fonts is the only free remote font service; all illustration and documentary images remain local. The four new drawings are presented in an adapted polaroid/organic collage with horizontal swipe on mobile. The eleven assets/posts photographs stay off the homepage: eight remain on Qui sommes-nous and three in an undated strip on Actualités. Only se retrouver.jpg.jpeg and gathering.jpeg are documentary photos on the homepage. The association owner supplied the photo set and verbally authorised its visible use on the website, as relayed by the project user on 2026-11-05. JavaScript remains progressive enhancement; no-JavaScript and reduced-motion content stays visible.
+Nine supplied drawings form a playful, sticker-like collage behind the homepage story. Drawings 6–9 also appear in the adapted Jouer/créer collage, which scrolls horizontally on mobile; the highlighted drawing changes as the visitor moves between homepage sections. The site uses Fredoka 600 for headings, Atkinson Hyperlegible 400/700 for reading text and Caveat 600 for handwritten accents. Google Fonts is the only free remote font service; all illustration and documentary images remain local. The eleven assets/posts photographs stay off the homepage: eight remain on Qui sommes-nous and three in an undated strip on Actualités. Only se retrouver.jpg.jpeg and gathering.jpeg are documentary photos on the homepage. The association owner supplied the photo set and verbally authorised its visible use on the website, as relayed by the project user on 2026-11-05. JavaScript remains progressive enhancement; no-JavaScript and reduced-motion content stays visible.
 
 ## News content and imagery
 

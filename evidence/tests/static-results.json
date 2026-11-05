@@ -1,37 +1,47 @@
 {
-  "test_run": "loop-001-static",
-  "observed_at": "2026-11-03",
-  "status": "PASS WITH LIMITS — LOOP 012 REMOTE SOURCE AUDIT",
+  "test_run": "loop-019-owner-homepage-content-typography-and-photo-distribution",
+  "observed_at": "2026-11-05",
+  "status": "PASS — LOOP 019 PYTHON STRUCTURAL VALIDATOR",
   "checks": [
     {
-      "name": "Structural validator",
+      "name": "Public identity",
       "result": "PASS",
-      "detail": "French language, one h1, one main landmark, description, in-page anchors and local assets."
+      "detail": "All nine page metadata titles, social preview titles and visible shared brand identity use Bulle Bleue - APAiL."
     },
     {
-      "name": "Content guardrails",
+      "name": "Homepage copy and narrative",
       "result": "PASS",
-      "detail": "Required identity/contact content present; conflicting street address and historical opening hours absent."
+      "detail": "Owner-provided welcome and Se retrouver copy, Wed 14h30 / Sat 15h and outings; chapter counters removed; Se retrouver is followed immediately by Ils en parlent."
     },
     {
-      "name": "Accessibility foundation",
-      "result": "PASS WITH LIMITS",
-      "detail": "Skip link, named navigation, focus-visible styles, reduced-motion support, Escape key behavior and selected 4.5:1 contrast pairs."
-    },
-    {
-      "name": "HTMLParser",
+      "name": "Selected imagery",
       "result": "PASS",
-      "detail": "Parsed 294 opening tags."
+      "detail": "Owner-selected se retrouver.jpg.jpeg appears in Se retrouver; gathering.jpeg remains the closing documentary image; drawings 1–9 render in the sticky artwork."
     },
     {
-      "name": "JavaScript syntax",
+      "name": "Testimonial truthfulness",
       "result": "PASS",
-      "detail": "node --check script.js; Node 22.16.0."
+      "detail": "Only Miette's supplied AG 2026 quotation is attributed. Three profile cards explicitly say Témoignage à recueillir; no invented quote or photo in testimonial section."
     },
     {
-      "name": "Secrets scan",
-      "result": "PASS — BASIC PATTERN SCAN",
-      "detail": "No common token/private-key patterns in tracked source. Gitleaks unavailable; this is not a complete secret audit."
+      "name": "Jouer/créer collage",
+      "result": "PASS",
+      "detail": "Four drawings 6–9 form the collage inspired by section-jouer-creer.html; homepage contains no assets/posts documentary photo references."
+    },
+    {
+      "name": "Secondary page photo distribution",
+      "result": "PASS",
+      "detail": "Eight assets/posts photos remain on Qui sommes-nous and three undated group/outing photos remain on Actualités, separately from dated articles."
+    },
+    {
+      "name": "Typography",
+      "result": "PASS",
+      "detail": "Fredoka, Atkinson Hyperlegible and Caveat CSS families loaded through the owner-selected free Google Fonts CSS stylesheet with fallbacks."
+    },
+    {
+      "name": "Engagement and accessibility foundations",
+      "result": "PASS",
+      "detail": "Derrière la Bulle contains the two requested actions; mobile horizontal collage/card scrolling, sticky-header anchor offset, reduced-motion and no-JS fallbacks remain."
     }
   ],
   "loop_003": {
@@ -696,6 +706,59 @@
         "name": "Contrast-safe palette",
         "result": "PASS",
         "detail": "Pastel page intro and solidarity note use deep readable text, and dark panels use light text."
+      }
+    ]
+  },
+  "loop_019": {
+    "test_run": "loop-019-owner-homepage-content-typography-and-photo-distribution",
+    "observed_at": "2026-11-05",
+    "status": "PASS — PYTHON STRUCTURAL VALIDATOR",
+    "commit": "4babf6711d208a738f5eb5b7d9c13438380e83bc",
+    "workflow": {
+      "run_id": 42068155012,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/42068155012",
+      "conclusion": "success"
+    },
+    "checks": [
+      {
+        "name": "Public identity",
+        "result": "PASS",
+        "detail": "All nine page metadata titles, social preview titles and visible shared brand identity use Bulle Bleue - APAiL."
+      },
+      {
+        "name": "Homepage copy and narrative",
+        "result": "PASS",
+        "detail": "Owner-provided welcome and Se retrouver copy, Wed 14h30 / Sat 15h and outings; chapter counters removed; Se retrouver is followed immediately by Ils en parlent."
+      },
+      {
+        "name": "Selected imagery",
+        "result": "PASS",
+        "detail": "Owner-selected se retrouver.jpg.jpeg appears in Se retrouver; gathering.jpeg remains the closing documentary image; drawings 1–9 render in the sticky artwork."
+      },
+      {
+        "name": "Testimonial truthfulness",
+        "result": "PASS",
+        "detail": "Only Miette's supplied AG 2026 quotation is attributed. Three profile cards explicitly say Témoignage à recueillir; no invented quote or photo in testimonial section."
+      },
+      {
+        "name": "Jouer/créer collage",
+        "result": "PASS",
+        "detail": "Four drawings 6–9 form the collage inspired by section-jouer-creer.html; homepage contains no assets/posts documentary photo references."
+      },
+      {
+        "name": "Secondary page photo distribution",
+        "result": "PASS",
+        "detail": "Eight assets/posts photos remain on Qui sommes-nous and three undated group/outing photos remain on Actualités, separately from dated articles."
+      },
+      {
+        "name": "Typography",
+        "result": "PASS",
+        "detail": "Fredoka, Atkinson Hyperlegible and Caveat CSS families loaded through the owner-selected free Google Fonts CSS stylesheet with fallbacks."
+      },
+      {
+        "name": "Engagement and accessibility foundations",
+        "result": "PASS",
+        "detail": "Derrière la Bulle contains the two requested actions; mobile horizontal collage/card scrolling, sticky-header anchor offset, reduced-motion and no-JS fallbacks remain."
       }
     ]
   }

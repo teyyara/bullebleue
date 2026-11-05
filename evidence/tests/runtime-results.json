@@ -1,52 +1,25 @@
 {
-  "test_run": "loop-001-chromium-in-memory",
-  "observed_at": "2026-11-02",
+  "test_run": "loop-019-responsive-owner-homepage-and-scroll-scene-regression",
+  "observed_at": "2026-11-05",
   "browser": "Chromium 144.0.7559.96",
-  "runner": "Python Playwright in Linux container",
+  "runner": "GitHub Actions hosted Ubuntu; Python 3.13; Node.js 22; Playwright 1.57; Chromium.",
   "execution_mode": "page.set_content using actual local index.html and styles.css, with actual script.js added to page",
-  "status": "PASS — CANDIDATE-LEVEL RUNTIME ONLY",
+  "status": "PASS — LOOP 019 PYTHON, NODE, PLAYWRIGHT AND MANUAL VISUAL REVIEW",
   "checks": [
     {
-      "name": "Primary document content",
+      "name": "JavaScript syntax",
       "result": "PASS",
-      "detail": "h1, main, document title and mailto contact present."
+      "detail": "node --check script.js and node --check tests/test_menu.js"
     },
     {
-      "name": "Mobile nav open",
+      "name": "Menu and scroll-scene interaction",
       "result": "PASS",
-      "detail": "Toggle updates aria-expanded and opens navigation."
+      "detail": "Mobile menu open/close, Escape/focus and outside-click behavior; IntersectionObserver highlights the appropriate illustration across narrative, testimonial and activity scenes."
     },
     {
-      "name": "Escape closes menu",
+      "name": "Reduced motion",
       "result": "PASS",
-      "detail": "Escape closes menu and restores focus to toggle."
-    },
-    {
-      "name": "Anchor navigation closes menu",
-      "result": "PASS",
-      "detail": "Selecting a nav link closes mobile navigation."
-    },
-    {
-      "name": "Responsive overflow sweep",
-      "result": "PASS",
-      "viewports": [
-        320,
-        360,
-        390,
-        430,
-        760,
-        761,
-        768,
-        1024,
-        1440,
-        1920
-      ],
-      "detail": "No horizontal overflow at tested viewport widths."
-    },
-    {
-      "name": "Browser console/page errors",
-      "result": "PASS",
-      "detail": "No console or uncaught page errors observed."
+      "detail": "No observer/reveal motion is required for content visibility when prefers-reduced-motion is active."
     }
   ],
   "limitations": [
@@ -1003,6 +976,78 @@
       "Firefox/WebKit/Safari, manual screen-reader, physical-device, Lighthouse, ZAP and hosted checks remain outstanding.",
       "Association-owner visual/content acceptance remains outstanding.",
       "No production deployment was performed or authorized."
+    ]
+  },
+  "loop_019": {
+    "test_run": "loop-019-responsive-owner-homepage-and-scroll-scene-regression",
+    "observed_at": "2026-11-05",
+    "runner": "GitHub Actions; Python 3.13; Node.js 22; Playwright 1.57; Chromium 143.",
+    "status": "PASS",
+    "commit": "4babf6711d208a738f5eb5b7d9c13438380e83bc",
+    "workflow": {
+      "run_id": 42068155012,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/42068155012",
+      "conclusion": "success"
+    },
+    "python_validator": "PASS — tests/validate_site.py",
+    "node": "PASS — script and test syntax; mobile navigation, Escape/focus, scene changes across Se retrouver / testimonials / activities, and reduced-motion regression.",
+    "browser": {
+      "status": "PASS",
+      "suite": "tests/test_browser.py",
+      "pages": 9,
+      "viewports": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "page_viewport_runs": 45,
+      "checks": [
+        "all nine public pages rendered at five viewport widths",
+        "nine supplied drawings included in the sticky homepage artwork",
+        "scroll observer changes highlighted drawing across welcome, Se retrouver, testimonials, activities and Derrière la Bulle scenes",
+        "exact homepage owner copy, authentic Miette attribution and three clearly-labelled testimonial prompts",
+        "owner-selected Se retrouver photograph and gathering.jpeg closing image load",
+        "four-drawing collage present; horizontal mobile swipe behavior",
+        "eight activity photos on Qui sommes-nous and three undated group/outing photos on Actualités; no assets/posts photos on homepage",
+        "all local images load and no horizontal overflow",
+        "shared navigation, keyboard/escape/focus behavior",
+        "reduced-motion and no-JavaScript visibility",
+        "no unexpected external requests, failed requests, page errors or console errors"
+      ],
+      "screenshots": [
+        "artifacts/loop019-browser/home-story-01-desktop.png",
+        "artifacts/loop019-browser/home-story-01-mobile.png",
+        "artifacts/loop019-browser/home-se-retrouver-desktop.png",
+        "artifacts/loop019-browser/home-se-retrouver-mobile.png",
+        "artifacts/loop019-browser/home-testimonials-desktop.png",
+        "artifacts/loop019-browser/home-testimonials-mobile.png",
+        "artifacts/loop019-browser/home-jouer-creer-desktop.png",
+        "artifacts/loop019-browser/home-jouer-creer-mobile.png",
+        "artifacts/loop019-browser/home-derriere-desktop.png",
+        "artifacts/loop019-browser/home-derriere-mobile.png",
+        "artifacts/loop019-browser/home-closing-desktop.png",
+        "artifacts/loop019-browser/home-closing-mobile.png",
+        "artifacts/loop019-browser/news-desktop.png",
+        "artifacts/loop019-browser/news-mobile.png",
+        "artifacts/loop019-browser/about-desktop.png",
+        "artifacts/loop019-browser/about-mobile.png"
+      ]
+    },
+    "visual_review": {
+      "status": "PASS — MANUAL REVIEW",
+      "screenshot_artifact_id": 13434598876,
+      "artifact_sha256": "cebc95f16cadd2417477bb2536e9d67c2ac8aa295b477b3035d48f88fc0616a8",
+      "artifact_screenshot_count": 18,
+      "manually_opened_screenshots": 10,
+      "detail": "Opened and visually inspected desktop/mobile captures of welcome, Se retrouver, Ils en parlent, Jouer/créer and Derrière la Bulle."
+    },
+    "limitations": [
+      "Firefox/WebKit/Safari, manual screen-reader, physical-device, Lighthouse, ZAP and hosted performance/security checks remain outstanding.",
+      "Transparent individual character cut-outs from drawings 6–9 have not yet been produced.",
+      "The association owner's final visual/content acceptance remains outstanding.",
+      "No production deployment was performed or authorised."
     ]
   }
 }
