@@ -10,7 +10,7 @@ Static HTML, CSS and vanilla JavaScript. No package manager, build step, remote 
 
 ## Site map
 
-- `index.html` — sticky illustrated background with three successive scroll chapters, followed by two user-supplied activity photographs.
+- `index.html` — a sticky, colourful collage of five drawings supplied by the association, three successive scroll chapters, then two close-up activity photographs. The owner-selected gathering.jpeg is tracked for the closing section but remains unpublished pending image-specific participant/guardian releases.
 - `qui-sommes-nous.html` — La Bulle Bleue, its audience and activities, Les Bleuettes, APAiL history and reported solidarity work.
 - `actualites.html` — three featured dated stories in editorial cards.
 - `actualite-2026-10-26.html` — 26 October 2026, games at La Bulle Bleue.
@@ -24,7 +24,7 @@ The five primary navigation links are Accueil, Qui sommes-nous ?, Actualités, A
 
 ## Homepage motion and accessibility
 
-The same original local SVG drawing stays sticky behind three text chapters as visitors scroll. Below it, a small gallery uses two user-supplied close-up photographs of shared tabletop activities; the photographs are not presented as dated event evidence. JavaScript uses IntersectionObserver only as progressive enhancement. All content is visible by default, and reduced-motion users do not receive hidden story states or scroll transitions. The sticky experience and new gallery still require current-browser visual review.
+Five local drawings supplied in the repository now form a playful, sticker-like collage behind the three sticky homepage text chapters. The site uses informal system-font fallbacks, hand-drawn accents, organic bubble silhouettes, gentle rotations and a brighter supporting palette while preserving the sampled blue logo as its anchor. No remote font or runtime dependency is introduced. The two close-up tabletop photographs remain in the responsive gallery. The owner-selected assets/gathering.jpeg is a recognizable group photograph; it is not displayed until image-specific participant/guardian releases are documented. JavaScript remains progressive enhancement; no-JavaScript and reduced-motion content stays visible.
 
 ## News content and imagery
 
@@ -76,3 +76,7 @@ Run the structural, Node and browser checks locally:
 The read-only GitHub Actions workflow at `.github/workflows/quality.yml` runs these checks on pushes and pull requests to `main`; it has no deployment step. The Playwright suite checks all nine pages at 320, 390, 768, 1024 and 1440 px, including images, overflow, keyboard navigation, sticky-story transitions, reduced motion and no-JavaScript fallback. Its six visual-review screenshots wait for the relevant story text transition and explicitly decode lazy gallery images before capture; it records each of the three story chapters plus desktop/mobile gallery views.
 
 A committed workflow or test is not itself a passing result: check the actual workflow run before treating the Python or browser checks as passed. A passing source/unit test does not replace manual accessibility inspection or owner acceptance. No production deployment has been performed or authorized.
+
+## Current owner feedback and TODO
+
+The playful bubble-style art direction and five-drawing homepage collage are tracked in [TODO.md](TODO.md). The owner-selected gathering.jpeg is reserved for the homepage closing area but remains unpublished until image-specific participant/guardian releases are documented.

@@ -107,7 +107,7 @@ def main() -> None:
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     base_url = f"http://127.0.0.1:{server.server_port}"
-    screenshot_dir = ROOT / "artifacts" / "loop015-browser"
+    screenshot_dir = ROOT / "artifacts" / "loop017-browser"
     screenshot_dir.mkdir(parents=True, exist_ok=True)
     measurements: list[dict] = []
 
@@ -151,6 +151,8 @@ def main() -> None:
                     assert_no_horizontal_overflow(page, width, path)
                     image_count = check_images(page, path)
                     if path == "index.html":
+                        drawing_count = page.locator(".story-art .drawing-sticker").count()
+                        assert drawing_count == 5, f"homepage must display all five supplied drawings, found {drawing_count}"
                         photo_cards = page.locator(".home-photo-card")
                         assert photo_cards.count() == 2, "homepage photo gallery must show two cards"
                         assert page.locator(".home-photo-card img[alt]").count() == 2, (
@@ -306,6 +308,7 @@ def main() -> None:
                     "HTTP routes and local image loads",
                     "shared navigation order",
                     "mobile menu Escape/focus behavior",
+                    "five supplied drawings render in the sticky art collage",
                     "sticky art and chapter transitions",
                     "reduced-motion content visibility",
                     "no-JavaScript content visibility",
@@ -315,12 +318,12 @@ def main() -> None:
                 ],
                 "measurements": measurements,
                 "screenshots": [
-                    "artifacts/loop015-browser/home-story-01-desktop.png",
-                    "artifacts/loop015-browser/home-story-02-desktop.png",
-                    "artifacts/loop015-browser/home-story-03-desktop.png",
-                    "artifacts/loop015-browser/home-gallery-desktop.png",
-                    "artifacts/loop015-browser/home-story-01-mobile.png",
-                    "artifacts/loop015-browser/home-gallery-mobile.png",
+                    "artifacts/loop017-browser/home-story-01-desktop.png",
+                    "artifacts/loop017-browser/home-story-02-desktop.png",
+                    "artifacts/loop017-browser/home-story-03-desktop.png",
+                    "artifacts/loop017-browser/home-gallery-desktop.png",
+                    "artifacts/loop017-browser/home-story-01-mobile.png",
+                    "artifacts/loop017-browser/home-gallery-mobile.png",
                 ],
             },
             ensure_ascii=False,

@@ -1,5 +1,5 @@
 {
-  "requirements_version": "1.0",
+  "requirements_version": "1.1",
   "candidate": "bullebleue-loop-016-verified-apail-legal-identity-v1",
   "requirements": [
     {
@@ -433,6 +433,33 @@
       "validation": "python tests/validate_site.py in GitHub Actions run 41665188280; the exact name, RNA/SIREN, address-conflict caveat and source links were asserted.",
       "status": "PASS — PYTHON STRUCTURAL VALIDATOR AND FULL CI RUN SUCCEEDED",
       "confidence": "HIGH for published 2019 JOAFE name and registry identifiers; current registered-office address remains unresolved."
+    },
+    {
+      "id": "REQ-049",
+      "requirement": "Adopt the association owner's playful, childlike and arts-led website direction across all public pages.",
+      "acceptance": "Shared CSS uses informal local system-font stacks, warmer playful accent colours, organic/bubble-like geometry instead of rigid rectangles for cards/panels/photo frames and pill-shaped actions; content remains readable and responsive. No remote font or paid dependency is added.",
+      "risk": "R1",
+      "validation": "Pending Loop 017 structural and Playwright checks; manual owner acceptance remains open.",
+      "status": "IMPLEMENTED — VALIDATION PENDING",
+      "confidence": "HIGH for implemented CSS source; rendered review pending."
+    },
+    {
+      "id": "REQ-050",
+      "requirement": "Replace the placeholder homepage hero background with all five owner-supplied drawings in a creative sticky collage.",
+      "acceptance": "index.html references exactly assets/dessin1.jpeg through assets/dessin5.jpeg as decorative collage elements behind all three scroll chapters; hero-community.svg is no longer used on the homepage; all five images load across responsive browser checks.",
+      "risk": "R1",
+      "validation": "Pending Loop 017 structural validator and Playwright browser run.",
+      "status": "IMPLEMENTED — VALIDATION PENDING",
+      "confidence": "HIGH for local image path/source inspection; browser run pending."
+    },
+    {
+      "id": "REQ-051",
+      "requirement": "Place the owner-selected gathering.jpeg in the final DERRIÈRE LA BULLE/contact section only after image-specific participant and guardian releases are documented.",
+      "acceptance": "The photograph is added to the closing section in an organic composition only after the association documents appropriate permission from each recognizable participant and a guardian for any identifiable minor; alt text and responsive treatment are included.",
+      "risk": "R2",
+      "validation": "Blocked: the photograph contains recognizable people and no image-specific participant/guardian releases are documented in the repository.",
+      "status": "BLOCKED — DO NOT PUBLISH UNTIL RELEASES ARE DOCUMENTED",
+      "confidence": "HIGH that the image contains recognizable people; release status unknown."
     }
   ]
 }

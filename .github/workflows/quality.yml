@@ -55,7 +55,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: bulle-bleue-loop015-visual-review
-          path: artifacts/loop015-browser/
+          name: bulle-bleue-loop017-visual-review
+          path: artifacts/loop017-browser/
           if-no-files-found: ignore
           retention-days: 7

@@ -1,8 +1,8 @@
 {
-  "contract_version": "1.0",
-  "status": "ACTIVE QUALITY BASELINE — LOOP 013 ADDS REPEATABLE STATIC/NODE/BROWSER CHECKS",
-  "change_request": "CR-006",
-  "supersedes": "0.6",
+  "contract_version": "1.1",
+  "status": "ACTIVE QUALITY BASELINE — LOOP 017 ADOPTS OWNER-REQUESTED PLAYFUL BUBBLE ART DIRECTION; GATHERING PHOTO HELD PENDING RELEASES",
+  "change_request": "CR-010",
+  "supersedes": "1.0",
   "project": "La Bulle Bleue — Chalon-sur-Saône",
   "business_objective": "Create an informative, welcoming and visually distinctive website explaining La Bulle Bleue and APAiL, representing publicly reported activities without overpromising and helping visitors contact the association.",
   "target_audience": [
@@ -51,9 +51,9 @@
   ],
   "brand": {
     "official_assets_supplied": true,
-    "direction": "Editorial, understated, human and welcoming; professional local-association identity rather than a generic pastel/illustrated landing-page template.",
+    "direction": "Joyful, playful, childlike and arts-led; bubble-like organic shapes replace rigid rectangles, informal handwritten-style headings and rounded body typography replace the restrained professional treatment, while the supplied blue logo remains recognisable.",
     "logo_status": "Official transparent PNG supplied by the user at assets/logo final.png; integrated in all six page headers and footers in Loop 010.",
-    "palette_status": "IMPLEMENTED — the user-uploaded transparent logo was sampled directly in Loop 011. The CSS now uses the extracted navy/cobalt/blue/sky/ice family; pale near-white page surfaces are documented as derived tints.",
+    "palette_status": "The original blue logo palette remains the identity anchor. Loop 017 adds a clearly supplementary owner-requested palette of coral, lemon, mint, lilac and warm paper; these accents are design additions, not claims about an official published palette.",
     "logo_derived_system": {
       "palette": "Logo-derived cool blues with icy light surfaces; the former clay/ochre palette has been removed.",
       "sampling_method": "RGBA source 1052×1024; transparent pixels excluded; alpha-weighted 8-cluster colour analysis on a deterministic sample of 120,000 visible pixels. Reported shares are approximate visible-pixel cluster shares; each hex is the nearest actual source pixel to its cluster centre.",
@@ -133,17 +133,22 @@
         "--paper-light": "#FCFDFF",
         "--muted": "#405989"
       }
+    },
+    "typography": {
+      "heading": "Friendly handwritten-style system stack (Comic Sans MS / Chalkboard SE / Comic Neue where available); no remote font service.",
+      "body": "Rounded and readable system stack (Trebuchet MS / Arial Rounded / Verdana); preserve comfortable paragraph measure and contrast.",
+      "note": "Font availability varies by device; no font binary or third-party runtime request is required."
     }
   },
   "visual_requirements": {
-    "hero": "Deep navy-to-cobalt/primary-blue gradient; icy logo highlights replace all warm gold/clay details.",
+    "hero": "Sticky homepage art is a layered, playful collage of all five user-supplied drawings (assets/dessin1.jpeg through assets/dessin5.jpeg), arranged as irregular sticker-like shapes behind the three scrolling story chapters. The previous placeholder SVG is no longer used.",
     "activities": "Short, scannable numbered editorial rows across four broadly evidenced activity categories.",
     "welcome": "One compact welcome and first-contact panel; no duplicated approach / volunteer / first-step sections.",
     "association": "Short APAiL origin panel with verified 1995 and 2021 dates.",
     "contact": "Cobalt/primary-blue gradient with pale icy text and highlights.",
-    "background": "Cool, very light icy-blue and near-white surfaces with low-opacity blue texture, cobalt borders and small sky-blue highlights. No beige, rust or ochre palette remains.",
+    "background": "Warm paper base with soft bubbles and supporting pastel accents (coral, lemon, mint and lilac) around the logo-derived blues. Keep the official logo legible and avoid a corporate card-grid appearance.",
     "stories": "Separate dated activity-story mosaic removed in Loop 006 to reduce page length and avoid reliance on an unverified Facebook mirror.",
-    "asset_policy": "The user reports that the owner authorised use of assets published on the Facebook page. Use local repository assets. Loop 010 uses only close-up activity photographs without identifiable faces; photos showing identifiable participants, including children, remain unpublished pending confirmation of image-specific participant/guardian consent.",
+    "asset_policy": "User-reported owner authorisation permits use of supplied association-page assets. Identifiable people-forward photographs remain withheld until specific participant/guardian releases are documented; this applies to gathering.jpeg.",
     "images": [
       {
         "path": "assets/logo final.png",
@@ -177,10 +182,13 @@
       }
     ],
     "palette": "Use only the sampled logo blues plus documented pale near-white tints derived from the logo; no warm clay/ochre accents.",
-    "homepage": "One large original local SVG drawing forms a sticky background across three scroll chapters. Successive text panels change as the visitor scrolls; the former separate hero photo and home image mosaic are removed. Use the sampled logo blues and dark overlay for contrast.",
+    "homepage": "All five supplied drawings create the sticky backdrop for three scrolling story chapters. The old hero-community.svg placeholder is retired from the page. Existing two tabletop close-up photos remain in their later gallery.",
     "news": "Exactly three rectangular editorial cards with a compact landscape illustration, visible date, small category/caption, short text and a distinct Voir plus link. Each links to a dedicated detail article.",
     "articles": "A clean article template with date, headline, short deck, one labelled illustration, concise text, provenance note and return-to-news link.",
-    "navigation": "Five clear primary destinations. Mentions légales remains in the shared footer."
+    "navigation": "Five clear primary destinations. Mentions légales remains in the shared footer.",
+    "cards": "Avoid rigid rectangles. Use organic, uneven bubble-like silhouettes, soft dotted or hand-drawn outlines, pill controls, gentle rotations and generous readable spacing throughout all nine public pages.",
+    "typography": "Friendly handwritten-style headline fallback and rounded, readable body fallback; informal and fun rather than formal/professional. No remote font dependency.",
+    "home_closing_photo": "The owner selected assets/gathering.jpeg for the closing DERRIÈRE LA BULLE/contact area. Its identifiable group subjects require image-specific participant/guardian releases; until those releases are documented, the photograph must not be displayed publicly. Track the placement in TODO.md."
   },
   "motion": {
     "effects": [
@@ -286,7 +294,11 @@
     "Local links and assets resolve; CSS retains logo-derived palette, responsive breakpoints and reduced-motion support.",
     "No paid dependencies, CMS, tracking, new backend or deployment.",
     "Quality workflow is committed and runs structural Python, Node syntax, Node interaction and Chromium browser checks; workflow result is separately verified before a PASS is recorded.",
-    "Local Playwright browser coverage checks all nine pages at five responsive widths and records sticky-story/reduced-motion/no-JavaScript behavior."
+    "Local Playwright browser coverage checks all nine pages at five responsive widths and records sticky-story/reduced-motion/no-JavaScript behavior.",
+    "Cards, panels, photo frames and primary actions use playful organic/bubble-like shapes rather than rigid rectangles across the nine public pages.",
+    "Headline and body typography feels informal, friendly and childlike while remaining readable; no remote font or paid dependency is added.",
+    "The homepage sticky backdrop uses all five supplied drawings and no longer references the placeholder hero-community.svg.",
+    "The owner-selected gathering.jpeg is placed in the closing homepage section only after image-specific participant/guardian releases are documented."
   ],
   "business_outcome_hypotheses": [
     "Specific activity stories may help families understand the initiative",
@@ -322,5 +334,13 @@
   "candidate": "bullebleue-loop-016-verified-apail-legal-identity-v1",
   "definition_of_done_loop_014": "Preserve the sticky illustrated homepage background and its three scroll chapters; add a responsive, accessible gallery using two exact user-supplied close-up activity photographs that show no recognizable faces; do not assign the photos to dated news events; keep identifiable group/children photos unpublished pending image-specific releases; update the source validator, browser regression, asset register, provenance, decisions, requirements, README and change request; checkpoint on main, verify exact remote readback, record unobserved Python/browser/CI results honestly, and do not deploy.",
   "definition_of_done_loop_015": "Visually inspect the latest Loop 014 Playwright screenshots; correct screenshot capture so each of the three sticky-story chapters is captured only once its text is fully visible, and capture the two supplied-photo gallery at desktop and mobile after lazy images load/decode; keep captures faithful to real sticky viewport behavior, update CI artifact paths, browser suite output, README, requirements, decision/evidence/status records; run full CI, inspect the resulting six screenshot files, commit final evidence to main and verify remote checkpoint; no deployment.",
-  "definition_of_done_loop_016": "Research APAiL legal identity through official JOAFE and municipal sources plus current registry-derived identifiers; update Mentions légales with the exact dated JOAFE denomination and RNA/SIREN references; document the conflict between 14 quai Gambetta and 14 boulevard de la République without claiming either as the present registered office; retain publication manager and host as unknown; update requirements, provenance, assumptions, decisions, README and change request; extend static validation; run full quality CI, checkpoint and verify remote main; do not deploy."
+  "definition_of_done_loop_016": "Research APAiL legal identity through official JOAFE and municipal sources plus current registry-derived identifiers; update Mentions légales with the exact dated JOAFE denomination and RNA/SIREN references; document the conflict between 14 quai Gambetta and 14 boulevard de la République without claiming either as the present registered office; retain publication manager and host as unknown; update requirements, provenance, assumptions, decisions, README and change request; extend static validation; run full quality CI, checkpoint and verify remote main; do not deploy.",
+  "definition_of_done_loop_017": [
+    "Owner-requested playful bubble geometry and informal typography are implemented across shared page components without harming text readability.",
+    "All five supplied drawings are used in a responsive sticky collage behind the three homepage story chapters; the prior hero SVG is not referenced by the homepage.",
+    "The selected gathering.jpeg is recorded for the closing section but remains unpublished until image-specific participant/guardian releases are evidenced.",
+    "Static validator and Node tests pass; Playwright verifies nine pages at 320/390/768/1024/1440 px, five drawing assets, local image loads, no overflow, keyboard navigation, story transitions, reduced-motion and no-JavaScript fallbacks.",
+    "Six current-candidate desktop/mobile homepage screenshots are uploaded; manual visual inspection and owner acceptance remain separate release gates.",
+    "No deployment is performed."
+  ]
 }

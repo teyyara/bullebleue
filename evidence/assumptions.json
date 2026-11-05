@@ -152,6 +152,22 @@
       "confidence": "HIGH",
       "impact_if_wrong": "HIGH",
       "resolution": "Keep the current registered-office address unpublished as a definitive fact until APAiL confirms it or supplies a current official notice/INSEE situation statement."
+    },
+    {
+      "id": "ASSUMP-020",
+      "assumption": "The new playful visual direction and five-drawing homepage collage reflect the association owner's preferred aesthetic.",
+      "source": "Owner feedback relayed by the project user on 2026-11-05; exact drawing assets present in the repository.",
+      "confidence": "HIGH",
+      "impact_if_wrong": "MEDIUM",
+      "resolution": "Adopted in Loop 017; full visual acceptance remains with the association owner."
+    },
+    {
+      "id": "ASSUMP-021",
+      "assumption": "The owner-selected gathering.jpeg may be displayed on the public homepage only if the association has image-specific releases for recognizable participants and guardians of identifiable minors.",
+      "source": "Visual inspection of assets/gathering.jpeg and existing asset-consent policy; the image is selected by the association owner but no releases are recorded.",
+      "confidence": "HIGH that people are recognizable; UNKNOWN for releases",
+      "impact_if_wrong": "HIGH",
+      "resolution": "Do not publish gathering.jpeg; retain it as a blocked closing-section TODO until participant/guardian release evidence is documented."
     }
   ]
 }

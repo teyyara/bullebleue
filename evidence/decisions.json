@@ -325,6 +325,48 @@
       "tradeoffs": "The legal page is more informative but still cannot be signed off until APAiL confirms the address, publication manager and hosting provider.",
       "risk": "R2",
       "evidence": "Official JOAFE announcement 20190009/1308; Ville de Chalon association directory; public RNA/SIRENE-derived listing updated 2026-06-24."
+    },
+    {
+      "id": "DEC-026",
+      "context": "The association owner explicitly rejected rigid rectangles and asked for a joyful, childlike, arts-led design across the whole website.",
+      "options": [
+        "Keep the restrained professional editorial system",
+        "Use rounded corners only on selected cards",
+        "Adopt a consistent playful design language with irregular bubble geometry, pill actions, informal local typography and supporting pastel accents"
+      ],
+      "chosen": "Adopt the playful, arts-led visual direction across all nine public pages while retaining the supplied blue logo as the identity anchor.",
+      "reason": "This directly reflects the owner's feedback; local system fonts preserve the zero-remote-dependency policy and readability.",
+      "tradeoffs": "The informal font will vary by device; final owner visual acceptance remains necessary.",
+      "risk": "R1",
+      "evidence": "Owner feedback dated 2026-11-05 and Loop 017 CSS implementation."
+    },
+    {
+      "id": "DEC-027",
+      "context": "The owner asked to replace the homepage placeholder art with the five drawings uploaded in the repository.",
+      "options": [
+        "Keep the SVG placeholder",
+        "Use only the panorama",
+        "Create a layered collage from all five user-supplied drawings"
+      ],
+      "chosen": "Use all five drawings in an organic, sticker-like collage behind the three sticky story chapters.",
+      "reason": "It makes the children's artwork the centre of the visual identity and fulfils the exact asset request.",
+      "tradeoffs": "Image cropping/placement is responsive CSS and requires visual review on multiple viewports.",
+      "risk": "R1",
+      "evidence": "Direct visual inspection of all five JPEGs and exact main-branch asset paths."
+    },
+    {
+      "id": "DEC-028",
+      "context": "The owner selected gathering.jpeg for the final homepage contact area; it contains recognizable group subjects.",
+      "options": [
+        "Publish immediately because the owner selected it",
+        "Omit it permanently",
+        "Track the placement and hold publication until image-specific participant/guardian releases are documented"
+      ],
+      "chosen": "Keep the selected photograph out of public HTML until the association documents appropriate participant and guardian releases.",
+      "reason": "The site's existing privacy rule explicitly protects identifiable participants and minors; owner selection alone does not evidence consent from each pictured person.",
+      "tradeoffs": "The requested closing-photo placement is not yet complete and remains a visible TODO/blocker.",
+      "risk": "R2",
+      "evidence": "Visual inspection of assets/gathering.jpeg; asset register; owner feedback dated 2026-11-05."
     }
   ]
 }

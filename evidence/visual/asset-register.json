@@ -1,16 +1,7 @@
 {
-  "version": "1.5",
-  "policy": "Loop 014 preserves the original sticky illustrated homepage story and adds a clearly labelled two-photo gallery using user-supplied close-up documentary images of tabletop activities. The selected frames do not show recognizable faces and are not assigned to specific dated posts. Identifiable group/children photographs remain withheld pending image-specific releases.",
+  "version": "1.6",
+  "policy": "Loop 017 follows the owner's playful art direction: five user-supplied drawings form a sticky homepage collage and the site-wide geometry becomes bubble-like. The owner selected gathering.jpeg for the closing section, but the group photograph visibly contains recognizable people; it remains unpublished pending image-specific participant/guardian releases. Existing close-up activity images without recognizable faces remain in the homepage gallery.",
   "assets": [
-    {
-      "path": "assets/illustrations/hero-community.svg",
-      "use": "Hero illustration",
-      "description": "Illustrative community-room scene with table games, plants and stylized non-identifiable silhouettes.",
-      "width": 1000,
-      "height": 760,
-      "documentary": false,
-      "status": "IN USE — index.html sticky homepage backdrop; recoloured with logo-derived blues."
-    },
     {
       "path": "assets/illustrations/games.svg",
       "use": "Games activity card and story",
@@ -139,26 +130,72 @@
       "description": "Close-up of geometric pieces arranged around a table; no identifiable faces visible.",
       "documentary": true,
       "status": "IN USE — homepage documentary photo gallery (Loop 014); close-up activity frame with no recognizable face visible."
+    },
+    {
+      "path": "assets/dessin1.jpeg",
+      "use": "Homepage sticky story collage — panoramic mural",
+      "description": "Panoramic hand-drawn community mural, used as the largest floating artwork in the homepage collage.",
+      "documentary": false,
+      "status": "IN USE — Loop 017 homepage drawing collage."
+    },
+    {
+      "path": "assets/dessin2.jpeg",
+      "use": "Homepage sticky story collage — floating character drawing",
+      "description": "Hand-drawn football character, displayed as an irregular sticker in the homepage collage.",
+      "documentary": false,
+      "status": "IN USE — Loop 017 homepage drawing collage."
+    },
+    {
+      "path": "assets/dessin3.jpeg",
+      "use": "Homepage sticky story collage — floating character drawing",
+      "description": "Hand-drawn running character, displayed as an irregular sticker in the homepage collage.",
+      "documentary": false,
+      "status": "IN USE — Loop 017 homepage drawing collage."
+    },
+    {
+      "path": "assets/dessin4.jpeg",
+      "use": "Homepage sticky story collage — floating character drawing",
+      "description": "Hand-drawn character in a brown outfit, displayed as an irregular sticker in the homepage collage.",
+      "documentary": false,
+      "status": "IN USE — Loop 017 homepage drawing collage."
+    },
+    {
+      "path": "assets/dessin5.jpeg",
+      "use": "Homepage sticky story collage — floating character drawing",
+      "description": "Hand-drawn upside-down acrobat character, displayed as an irregular sticker in the homepage collage.",
+      "documentary": false,
+      "status": "IN USE — Loop 017 homepage drawing collage."
+    },
+    {
+      "path": "assets/gathering.jpeg",
+      "use": "Owner-selected closing homepage photograph",
+      "description": "Group event photograph with recognizable adults and young people; selected by the association owner for the DERRIÈRE LA BULLE/contact area.",
+      "documentary": true,
+      "status": "OWNER-SELECTED — NOT PUBLISHED; image-specific participant/guardian releases are not documented."
     }
   ],
   "permissions": {
     "external_press_photos": "NOT USED",
-    "social_media_photos": "USER-REPORTED OWNER AUTHORISATION; two close-up documentary photos from the supplied Facebook-page assets are used in the homepage gallery. Identifiable group/children photos remain withheld pending image-specific releases.",
-    "identifiable_people": "Identifiable participant/group photographs remain unused in Loop 014; the two published close-ups show tabletop games and hands, without recognizable faces.",
+    "social_media_photos": "USER-REPORTED OWNER AUTHORISATION. Two close-up documentary photos without recognizable faces remain in use. gathering.jpeg has been selected by the owner for a future closing-section placement but is not published pending image-specific participant/guardian releases.",
+    "identifiable_people": "Recognizable group/children photographs remain out of public templates pending image-specific participant/guardian releases; this includes owner-selected gathering.jpeg.",
     "user_supplied_facebook_page": "Exact Facebook URL remains linked. User supplied the official transparent logo and original page images in the repository.",
     "current_page_images": [
-      "assets/illustrations/hero-community.svg",
       "assets/illustrations/games.svg",
       "assets/illustrations/culture.svg",
       "assets/illustrations/discovery.svg",
       "assets/logo final.png",
       "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg",
-      "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg"
+      "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg",
+      "assets/dessin1.jpeg",
+      "assets/dessin2.jpeg",
+      "assets/dessin3.jpeg",
+      "assets/dessin4.jpeg",
+      "assets/dessin5.jpeg"
     ],
     "current_monogram": "RETIRED — replaced with assets/logo final.png",
     "owner_authorization": "USER-REPORTED: owner authorised reuse of Facebook-page assets.",
-    "participant_image_releases": "NOT INDEPENDENTLY DOCUMENTED — the two selected close-up frames do not show recognizable faces; identifiable participant/group photographs remain unpublished pending image-specific releases.",
+    "participant_image_releases": "NOT INDEPENDENTLY DOCUMENTED for recognizable people in gathering.jpeg and other group/children photographs. The two existing tabletop close-ups do not show recognizable faces.",
     "logo_palette": "SAMPLED IN LOOP 011 from the uploaded transparent RGBA logo; Loop 012 SVG illustrations use the sampled blue family."
   },
-  "optimization": "The homepage scene is a local SVG loaded eagerly as a sticky decorative backdrop. Two user-supplied documentary close-ups are displayed in a local responsive gallery with lazy loading and intrinsic aspect-ratio framing. Three local SVG news illustrations remain clearly labelled as illustrations. The logo remains local. No remote image host or font dependency is introduced."
+  "optimization": "The homepage sticky collage uses five local JPEG drawings loaded eagerly so the artwork is present before the scroll chapter reveals it. Two local user-supplied close-up documentary images remain lazy-loaded in the later gallery. Three local SVG news illustrations remain labelled as illustrations. No remote image host, remote font, tracking or paid dependency is introduced."
 }

@@ -109,7 +109,14 @@ def main():
     home = parsed["index.html"][0]
     assert len(home) < 9000, "homepage must remain concise"
     assert home.count('class="story-step"') == 3, "homepage has exactly three scroll chapters"
-    assert 'src="/assets/illustrations/hero-community.svg"' in home, "sticky story illustration remains"
+    drawings = ("dessin1.jpeg", "dessin2.jpeg", "dessin3.jpeg", "dessin4.jpeg", "dessin5.jpeg")
+    assert home.count('class="drawing-sticker') == 5, "homepage collage uses exactly five supplied drawings"
+    for drawing in drawings:
+        assert f'src="/assets/{drawing}"' in home, f"missing supplied homepage drawing: {drawing}"
+    assert "hero-community.svg" not in home, "placeholder SVG hero is retired"
+    assert "assets/gathering.jpeg" not in home, "recognizable group photo must remain unpublished until image-specific releases are documented"
+    assert (ROOT / "TODO.md").is_file(), "owner design feedback must remain tracked in TODO.md"
+    assert "gathering.jpeg" in (ROOT / "TODO.md").read_text(encoding="utf-8"), "owner-selected closing photo must remain tracked pending releases"
     gallery_photos = (
         "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg",
         "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg",
@@ -149,6 +156,9 @@ def main():
     css = (ROOT / "styles.css").read_text(encoding="utf-8")
     js = (ROOT / "script.js").read_text(encoding="utf-8")
     assert ".story-art{position:sticky" in css and "html.has-scroll-story .story-step.is-current .story-panel" in css
+    assert "--joy-coral:#FF8D83" in css and "--playful-font:" in css
+    assert "border-radius:999px" in css and ".drawing-mural" in css and ".drawing-sticker--five" in css
+    assert "Comic Sans MS" in css and "Trebuchet MS" in css
     assert ".home-photo-inner{display:grid" in css and ".home-photo-grid{display:grid" in css
     assert "@media(max-width:760px)" in css and ".home-photo-grid{grid-template-columns:1fr" in css
     assert "@media(prefers-reduced-motion:reduce)" in css and "@media(max-width:760px)" in css
@@ -162,7 +172,7 @@ def main():
 
     favicon = (ROOT / "assets/favicon.svg").read_text(encoding="utf-8")
     assert all(c in favicon for c in ("#06195E", "#1642A5", "#1C60CF", "#2084DE", "#F3F7FE"))
-    print("PASS: 9 pages, shared accessible navigation, 3 dated article routes, 3-card news overview, scroll-story, reduced-motion fallback, local assets and logo palette.")
+    print("PASS: 9 pages, shared navigation, 3 dated articles, playful bubble design system, five-drawing sticky collage, responsive photo gallery, reduced-motion fallback, local assets and logo palette.")
 
 if __name__ == "__main__":
     main()

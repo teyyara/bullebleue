@@ -1,5 +1,5 @@
 {
-  "content_provenance_version": "0.8",
+  "content_provenance_version": "0.9",
   "items": [
     {
       "content": "La Bulle Bleue is an APAiL initiative in Chalon-sur-Saône.",
@@ -161,6 +161,21 @@
       "content": "APAiL legal identity and registry references used in Mentions légales: JOAFE denomination published 27 February 2019 is “A.P.AI.L. : AMITIÉ PARTAGE AIDE LOGISTIQUE, MATÉRIELLE ET MORALE”; public registry-derived listing associates RNA W712002504 and SIREN 519 970 743. Address comparison: JOAFE modification and Ville de Chalon association directory list 14 quai Gambetta; SIRENE-derived public listing updated 24 June 2026 shows 14 boulevard de la République.",
       "classification": "Publicly sourced legal-identity research. JOAFE announcement URL: https://www.journal-officiel.gouv.fr/associations/detail-annonce/associations_b/20190009/1308 ; municipal directory: https://www.chalon.fr/annuaires-de-batimentsstructures/cartographie-des-associations-256/apail-aide-logistique-materielle-et-morale-2052.html ; registry-derived record: https://www.pappers.fr/entreprise/apail-amitie-partage-aide-lutte-contre-l-inegalite-519970743 .",
       "confidence": "HIGH for the exact 2019 JOAFE denomination and published RNA/SIREN identifiers. HIGH that public listings conflict on address. CURRENT REGISTERED OFFICE IS NOT RESOLVED; do not publish either address as the current registered office without association confirmation. No publication manager or hosting provider was verified."
+    },
+    {
+      "content": "Homepage sticky drawing collage: assets/dessin1.jpeg, assets/dessin2.jpeg, assets/dessin3.jpeg, assets/dessin4.jpeg and assets/dessin5.jpeg.",
+      "classification": "User-supplied artwork files already present in the public repository, visually inspected on 2026-11-05; used as decorative illustration assets rather than documentary claims.",
+      "confidence": "HIGH for supplied asset provenance and visible artwork."
+    },
+    {
+      "content": "Owner-selected closing-section photograph assets/gathering.jpeg.",
+      "classification": "User-supplied group photograph selected by the association owner for the DERRIÈRE LA BULLE/contact close. Visible people are recognizable; no image-specific participant/guardian releases are documented. It is intentionally not displayed in public HTML.",
+      "confidence": "HIGH for visible subject matter and owner selection; UNKNOWN for participant/guardian releases."
+    },
+    {
+      "content": "Loop 017 playful design system.",
+      "classification": "Owner-requested design direction implemented by CSS: organic bubble geometry, pill actions, informal local system-font stack and supplementary pastel accents around the sampled logo-blue anchor. These accents are design choices, not an officially published palette.",
+      "confidence": "HIGH for implementation provenance."
     }
   ]
 }
