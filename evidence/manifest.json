@@ -1,9 +1,9 @@
 {
-  "manifest_version": "2.1",
+  "manifest_version": "2.2",
   "run_id": "bullebleue-20261102-001",
   "loop": 17,
   "candidate": "bullebleue-loop-017-playful-bubble-complete-photo-gallery-v2",
-  "candidate_status": "OWNER-REQUESTED PLAYFUL BUBBLE ART DIRECTION; FIVE-DRAWING STICKY COLLAGE; ALL ELEVEN OWNER-SUPPLIED ASSETS/POSTS PHOTOS IN HOMEPAGE ALBUM; GATHERING.JPEG IN CLOSING CONTACT AREA; OWNER VERBAL AUTHORIZATION ACCEPTED; PYTHON/NODE/PLAYWRIGHT CORE PHOTO CI PASS; EXTRA CLOSING SCREENSHOT CAPTURE RUN IN PROGRESS; NOT DEPLOYED",
+  "candidate_status": "OWNER-REQUESTED PLAYFUL BUBBLE ART DIRECTION; FIVE-DRAWING STICKY COLLAGE; ALL ELEVEN OWNER-SUPPLIED ASSETS/POSTS PHOTOS IN HOMEPAGE ALBUM; GATHERING.JPEG IN CLOSING CONTACT AREA; OWNER VERBAL AUTHORIZATION ACCEPTED; PYTHON/NODE/PLAYWRIGHT CI PASS; EIGHT SCREENSHOTS MANUALLY REVIEWED; NOT DEPLOYED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
   "implementation_checkpoint_commit": "445858d7daa1f7e273a4283d74b98d2beb921e82",
@@ -21,8 +21,8 @@
     "assets/illustrations/discovery.svg": "3584a19294dd93f1a418004dddc358aec49a847f",
     "assets/illustrations/culture.svg": "778b27484a79db0d1b64abe785ae4b0696b4df2d",
     "assets/illustrations/solidarity.svg": "e80525d8acc48b3d429912d6229023db54a45e2e",
-    "evidence/tests/static-results.json": "cffc5ed9ca9f5753ff4697359cfbd74fafb703ce",
-    "evidence/tests/runtime-results.json": "a98f708c6c425dbd1cbd0cd36cdd89585809685f",
+    "evidence/tests/static-results.json": "9b1783f36bf24e88a389f6265d2eff13f8c61cf6",
+    "evidence/tests/runtime-results.json": "3d8de66385a30ee6fea48a2e5c0d3e693a3b8a74",
     "evidence/requirements.json": "2a6f22fc7f60e26f0a49fdfd76c545fa0c31b06d",
     "evidence/product-contract.json": "9026044cd58138fbab901447925bdd2aba9e65b0",
     "evidence/research/keyphrase-dossier.md": "097b39681be69b04ebdca9334aa283d003ad69f7",
@@ -56,8 +56,8 @@
     "adherer.html": "25bab14f258987327204dda0d03cbf422e1eab95",
     "mentions-legales.html": "69269bbecd193f090650ddcd8b2bd559ea93e1ef",
     "evidence/change-requests/CR-006.md": "67417f3ef178ce7dc1780e7227fbf3d0ea5449a8",
-    ".aeos/state.json": "a38ebfcaa79924ab823c05ef483734834150a64f",
-    "AEOS_STATUS.md": "a0c41ac130d59ad94b51cdcec37128e6236bf521",
+    ".aeos/state.json": "e8be2eab22cd5bee7164618b1669ba14b5e9f63b",
+    "AEOS_STATUS.md": "c18c8a917a5bb2c60f540cdd8c97ae3092e567ac",
     "project.config.json": "a39a345caed97eae1a96128f06ea86485522d8d4",
     ".github/workflows/quality.yml": "a2c87b7ddc2c8b30386296d679b51c523285e322",
     "tests/test_browser.py": "606cbca15ec43e3e08cd2486c60fb10b85c66dcd",
@@ -614,8 +614,8 @@
       "project_decision": "ACCEPTED — all eleven assets/posts photos and gathering.jpeg are in use; no additional permission hold is imposed."
     },
     "validation": {
-      "workflow_run": 41944690393,
-      "workflow_url": "https://github.com/teyyara/bullebleue/actions/runs/41944690393",
+      "workflow_run": 41945343097,
+      "workflow_url": "https://github.com/teyyara/bullebleue/actions/runs/41945343097",
       "conclusion": "success",
       "python": "PASS",
       "node": "PASS",
@@ -639,13 +639,14 @@
       ]
     },
     "screenshot_artifact": {
-      "id": 13377109238,
+      "id": 13378776302,
       "name": "bulle-bleue-loop017-visual-review",
-      "url": "https://github.com/teyyara/bullebleue/actions/runs/41944690393/artifacts/13377109238",
-      "digest": "sha256:4333abc554d2d0cc3d9e03990676218d6bb0141cef8c2ed8b7e944085cf6f96d",
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41945343097/artifacts/13378776302",
+      "digest": "sha256:ee837978e5761fc1bdc9d037678c7e02e7ca723380e8c3df329ca5eb5ba2f660",
       "uploaded": true,
-      "screenshot_count": 6,
-      "manual_review": "Not marked PASS; the artifact contains three desktop story states, mobile story and desktop/mobile full gallery captures."
+      "screenshot_count": 8,
+      "manually_reviewed": true,
+      "review": "All eight images opened and inspected: three desktop story states, mobile story, desktop/mobile full eleven-photo gallery, and desktop/mobile gathering.jpeg closing composition."
     },
     "screenshot_refinement": {
       "workflow_run": 41945343097,

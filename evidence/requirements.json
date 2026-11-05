@@ -1,6 +1,6 @@
 {
   "requirements_version": "1.2",
-  "candidate": "bullebleue-loop-016-verified-apail-legal-identity-v1",
+  "candidate": "bullebleue-loop-017-playful-bubble-complete-photo-gallery-v2",
   "requirements": [
     {
       "id": "REQ-001",
@@ -439,36 +439,36 @@
       "requirement": "Adopt the association owner's playful, childlike and arts-led website direction across all public pages.",
       "acceptance": "Shared CSS uses informal local system-font stacks, warmer playful accent colours, organic/bubble-like geometry instead of rigid rectangles for cards/panels/photo frames and pill-shaped actions; content remains readable and responsive. No remote font or paid dependency is added.",
       "risk": "R1",
-      "validation": "Pending Loop 017 structural and Playwright checks; manual owner acceptance remains open.",
-      "status": "IMPLEMENTED — VALIDATION PENDING",
-      "confidence": "HIGH for implemented CSS source; rendered review pending."
+      "validation": "PASS — final GitHub Actions run 41945343097; structural validator, Node checks, Playwright nine pages × five viewports, and eight manually reviewed screenshots.",
+      "status": "PASS — AUTOMATED VALIDATION; OWNER ACCEPTANCE PENDING",
+      "confidence": "HIGH — final exact main-branch implementation and eight screenshots inspected."
     },
     {
       "id": "REQ-050",
       "requirement": "Replace the placeholder homepage hero background with all five owner-supplied drawings in a creative sticky collage.",
       "acceptance": "index.html references exactly assets/dessin1.jpeg through assets/dessin5.jpeg as decorative collage elements behind all three scroll chapters; hero-community.svg is no longer used on the homepage; all five images load across responsive browser checks.",
       "risk": "R1",
-      "validation": "Pending Loop 017 structural validator and Playwright browser run.",
-      "status": "IMPLEMENTED — VALIDATION PENDING",
-      "confidence": "HIGH for local image path/source inspection; browser run pending."
+      "validation": "PASS — final GitHub Actions run 41945343097; structural validator, Node checks, Playwright nine pages × five viewports, and eight manually reviewed screenshots.",
+      "status": "PASS — AUTOMATED VALIDATION; OWNER ACCEPTANCE PENDING",
+      "confidence": "HIGH — final exact main-branch implementation and eight screenshots inspected."
     },
     {
       "id": "REQ-051",
       "requirement": "Place the owner-selected gathering.jpeg in the final DERRIÈRE LA BULLE/contact section.",
       "acceptance": "The supplied assets/gathering.jpeg appears as a prominent, organic photo composition beside the closing contact content, with descriptive alt text and responsive treatment. The owner supplied the photograph and verbally authorised its visible use on the website; that authorization is the project's permission basis.",
       "risk": "R1",
-      "validation": "Static validator asserts one gathering.jpeg in the closing photo composition; Playwright verifies it loads on the homepage across the maintained viewport matrix.",
-      "status": "IMPLEMENTED — VALIDATION PENDING",
-      "confidence": "HIGH — owner supplied image and verbal website-use authorization were relayed by the project user; browser CI pending."
+      "validation": "PASS — final GitHub Actions run 41945343097; structural validator, Node checks, Playwright nine pages × five viewports, and eight manually reviewed screenshots.",
+      "status": "PASS — AUTOMATED VALIDATION; OWNER ACCEPTANCE PENDING",
+      "confidence": "HIGH — final exact main-branch implementation and eight screenshots inspected."
     },
     {
       "id": "REQ-052",
       "requirement": "Include every supplied assets/posts photograph in the public homepage photo album.",
       "acceptance": "All eleven JPG files in assets/posts are referenced as individual figures in the homepage responsive photo album, each with descriptive French alternative text and a short caption; images are local and lazy-loaded.",
       "risk": "R1",
-      "validation": "Structural validator checks all eleven exact paths and the 11-card count; Playwright checks all eleven have alt text and all local images load across nine pages/five viewports.",
-      "status": "IMPLEMENTED — VALIDATION PENDING",
-      "confidence": "HIGH — exact image paths and source captions are in the homepage; browser run pending."
+      "validation": "PASS — final GitHub Actions run 41945343097; structural validator, Node checks, Playwright nine pages × five viewports, and eight manually reviewed screenshots.",
+      "status": "PASS — AUTOMATED VALIDATION; OWNER ACCEPTANCE PENDING",
+      "confidence": "HIGH — final exact main-branch implementation and eight screenshots inspected."
     }
   ]
 }

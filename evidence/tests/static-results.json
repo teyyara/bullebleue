@@ -631,11 +631,11 @@
   "loop_017_photo_gallery": {
     "test_run": "loop-017-owner-authorised-complete-photo-set-static-validation",
     "observed_at": "2026-11-05",
-    "status": "PASS — PYTHON STRUCTURAL VALIDATOR",
-    "commit": "c77448d327ac24c804f863ee96aae3e7e03439cb",
+    "status": "PASS — PYTHON STRUCTURAL VALIDATOR ON FINAL LOOP 017",
+    "commit": "78db0157e231932c16ad654f6fd735839c4ee1e7",
     "workflow": {
-      "run_id": 41944690393,
-      "url": "https://github.com/teyyara/bullebleue/actions/runs/41944690393",
+      "run_id": 41945343097,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41945343097",
       "conclusion": "success"
     },
     "checks": [

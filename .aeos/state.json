@@ -28,8 +28,7 @@
     "The published apail@live.fr mailbox deliverability is untested.",
     "Cross-browser Firefox/WebKit/Safari, manual screen-reader, physical-device, Lighthouse, ZAP and hosted performance/security checks remain outstanding.",
     "Domain/hosting configuration is unknown; production deployment remains unauthorized.",
-    "Final visual/content acceptance from the association owner remains outstanding.",
-    "An additional screenshot-only CI run (41945343097) adds desktop/mobile captures of the closing gathering.jpeg composition; Chromium installation remains in progress. The complete-photo site and responsive browser matrix passed in run 41944690393; no closing screenshot review is claimed until the capture run completes."
+    "Final visual/content acceptance from the association owner remains outstanding."
   ],
   "evidence_manifest_reconciliation_commit": "e910d0ac3b200bd0c50f41015000c0c3ad2ed132",
   "change_request_cr001": {
@@ -152,8 +151,8 @@
     "manually_reviewed": true,
     "review": "All six images opened and inspected: three desktop story states, mobile story, and desktop/mobile gallery."
   },
-  "latest_loop_17_visual_review": "PASS — all six final-candidate screenshots from artifact 13377971069 manually opened and inspected; sticky five-drawing collage, story panels, gallery, mobile layout and pill navigation reviewed.",
-  "latest_loop_17_status": "WAITING_FOR_CONTINUE — playful bubble direction, five drawings, eleven-photo gallery and closing gathering photo implemented; core photo implementation CI PASS; screenshot-only closing-composition capture refinement still in progress; no deployment.",
+  "latest_loop_17_visual_review": "PASS — eight screenshots downloaded, opened and inspected: three desktop story chapters, mobile story, desktop/mobile eleven-photo gallery, and desktop/mobile gathering.jpeg closing composition.",
+  "latest_loop_17_status": "WAITING_FOR_CONTINUE — playful bubble direction, five drawings, all eleven assets/posts photos and gathering.jpeg implemented; Python/Node/Playwright CI PASS; eight final screenshots manually inspected; no deployment.",
   "latest_loop_17_photo_implementation_commit": "445858d7daa1f7e273a4283d74b98d2beb921e82",
   "latest_loop_17_browser_assertion_fix_commit": "c77448d327ac24c804f863ee96aae3e7e03439cb",
   "latest_loop_17_visual_capture_refinement_commit": "78db0157e231932c16ad654f6fd735839c4ee1e7",
@@ -162,5 +161,9 @@
   "latest_loop_17_photo_artifact_id": 13377109238,
   "latest_loop_17_visual_capture_refinement_run": 41945343097,
   "latest_loop_17_visual_capture_refinement_status": "IN PROGRESS at Chromium installation as of 2026-11-05; no result or artifact is claimed.",
-  "latest_loop_17_permission": "Association owner supplied all eleven assets/posts photographs plus gathering.jpeg and verbally authorised their visible use on the website; this is accepted as the project permission basis. No additional permission hold remains."
+  "latest_loop_17_permission": "Association owner supplied all eleven assets/posts photographs plus gathering.jpeg and verbally authorised their visible use on the website; accepted as the project permission basis. No additional permission hold remains.",
+  "latest_loop_17_final_ci_run": 41945343097,
+  "latest_loop_17_final_ci_status": "PASS — full Python, Node and Playwright workflow on commit 78db0157e231932c16ad654f6fd735839c4ee1e7.",
+  "latest_loop_17_final_screenshot_artifact_id": 13378776302,
+  "latest_loop_17_final_screenshot_digest": "sha256:ee837978e5761fc1bdc9d037678c7e02e7ca723380e8c3df329ca5eb5ba2f660"
 }

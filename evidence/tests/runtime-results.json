@@ -889,11 +889,11 @@
     "test_run": "loop-017-owner-authorised-complete-photo-set-responsive-browser-regression",
     "observed_at": "2026-11-05",
     "runner": "GitHub Actions; Python 3.13; Node.js 22; Playwright 1.57.0; Chromium 143.0.7499.4.",
-    "status": "PASS — PYTHON, NODE AND PLAYWRIGHT",
-    "commit": "c77448d327ac24c804f863ee96aae3e7e03439cb",
+    "status": "PASS — PYTHON, NODE, PLAYWRIGHT AND MANUAL SCREENSHOT REVIEW",
+    "commit": "78db0157e231932c16ad654f6fd735839c4ee1e7",
     "workflow": {
-      "run_id": 41944690393,
-      "url": "https://github.com/teyyara/bullebleue/actions/runs/41944690393",
+      "run_id": 41945343097,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41945343097",
       "conclusion": "success"
     },
     "python_validator": "PASS",
@@ -919,22 +919,25 @@
         "sticky story transitions",
         "reduced-motion and no-JavaScript fallbacks",
         "no failed/external requests or browser errors"
+      ],
+      "screenshots": [
+        "artifacts/loop017-browser/home-story-01-desktop.png",
+        "artifacts/loop017-browser/home-story-02-desktop.png",
+        "artifacts/loop017-browser/home-story-03-desktop.png",
+        "artifacts/loop017-browser/home-gallery-desktop.png",
+        "artifacts/loop017-browser/home-closing-desktop.png",
+        "artifacts/loop017-browser/home-story-01-mobile.png",
+        "artifacts/loop017-browser/home-gallery-mobile.png",
+        "artifacts/loop017-browser/home-closing-mobile.png"
       ]
-    }
-  },
-  "loop_017_screenshot_refinement": {
-    "test_run": "loop-017-dedicated-closing-photo-visual-capture",
-    "observed_at": "2026-11-05",
-    "commit": "78db0157e231932c16ad654f6fd735839c4ee1e7",
-    "workflow": {
-      "run_id": 41945343097,
-      "url": "https://github.com/teyyara/bullebleue/actions/runs/41945343097",
-      "status": "IN PROGRESS"
     },
-    "status": "PENDING — Chromium installation has not completed; no closing-composition screenshots or result claimed.",
-    "scope": [
-      "desktop and mobile full 11-photo gallery element captures",
-      "desktop and mobile gathering.jpeg closing-contact composition captures"
-    ]
+    "artifact": {
+      "id": 13378776302,
+      "name": "bulle-bleue-loop017-visual-review",
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41945343097/artifacts/13378776302",
+      "sha256": "ee837978e5761fc1bdc9d037678c7e02e7ca723380e8c3df329ca5eb5ba2f660",
+      "count": 8,
+      "manual_review": "PASS — all eight PNG screenshots manually opened and inspected."
+    }
   }
 }
