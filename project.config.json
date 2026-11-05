@@ -31,7 +31,7 @@
     "analytics": false,
     "third_party_tracking": false
   },
-  "current_candidate": "bullebleue-loop-020-organic-news-blob-contours-v1",
-  "status": "LOOP 020: TRUE ORGANIC ACTUALITÉS BUBBLES WITH MATCHING IMAGE CONTOURS; DESKTOP/MOBILE REVIEW; PYTHON/NODE/PLAYWRIGHT PASS; NOT DEPLOYED",
+  "current_candidate": "bullebleue-loop-021-restore-authorization-validator-wording-v1",
+  "status": "LOOP 021: RESTORED VALIDATOR-COMPATIBLE VERBAL IMAGE AUTHORIZATION WORDING; PYTHON/NODE/PLAYWRIGHT PASS; NO SITE REDESIGN; NOT DEPLOYED",
   "contract_version": "1.5"
 }

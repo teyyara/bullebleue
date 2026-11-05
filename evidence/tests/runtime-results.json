@@ -1,10 +1,10 @@
 {
-  "test_run": "loop-019-responsive-owner-homepage-and-scroll-scene-regression",
+  "test_run": "loop-021-full-quality-regression-after-validator-wording-fix",
   "observed_at": "2026-11-05",
   "browser": "Chromium 144.0.7559.96",
   "runner": "GitHub Actions hosted Ubuntu; Python 3.13; Node.js 22; Playwright 1.57; Chromium.",
   "execution_mode": "page.set_content using actual local index.html and styles.css, with actual script.js added to page",
-  "status": "PASS — LOOP 019 PYTHON, NODE, PLAYWRIGHT AND MANUAL VISUAL REVIEW",
+  "status": "PASS — LOOP 021 PYTHON, NODE AND PLAYWRIGHT",
   "checks": [
     {
       "name": "JavaScript syntax",
@@ -1090,6 +1090,40 @@
       "screenshot_count": 18,
       "manually_opened_screenshots": 2,
       "detail": "Final desktop/mobile Actualités screenshots manually inspected; smooth bubble shapes, matching image masks and clear desktop labels confirmed."
+    }
+  },
+  "loop_021": {
+    "test_run": "loop-021-full-quality-regression-after-validator-wording-fix",
+    "observed_at": "2026-11-05",
+    "runner": "GitHub Actions; Python 3.13; Node.js 22; Playwright 1.57; Chromium.",
+    "status": "PASS",
+    "commit": "6b18ef0ad08cde38389d9a784d6ec30d34156508",
+    "workflow": {
+      "run_id": 42075194025,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/42075194025",
+      "conclusion": "success"
+    },
+    "python_validator": "PASS",
+    "node": "PASS — JavaScript syntax, mobile navigation and story/reduced-motion interaction tests.",
+    "browser": {
+      "status": "PASS",
+      "suite": "tests/test_browser.py",
+      "pages": 9,
+      "viewports": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "page_viewport_runs": 45,
+      "checks": [
+        "all nine pages at five viewport widths",
+        "no horizontal overflow",
+        "all local images load",
+        "no failed requests, page errors or console errors",
+        "existing organic Actualités contours and desktop Illustration labels remain covered by the suite"
+      ]
     }
   }
 }

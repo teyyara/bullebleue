@@ -84,3 +84,8 @@ A committed workflow or test is not itself a passing result: check the actual wo
 ## Current owner feedback and TODO
 
 The playful bubble-style art direction, organic Actualités shapes and nine-drawing homepage collage are tracked in [TODO.md](TODO.md). The homepage stays light, while all eleven assets/posts photographs appear on the two relevant secondary pages under the association owner's verbal website-use authorization.
+
+
+## Quality-gate maintenance
+
+The structural validator checks that the TODO records the association owner's verbal website-image authorization using the literal phrase “verbally authorized”. Keep that exact wording when editing the checklist; it documents the same owner-provided permission basis and is also a regression assertion.

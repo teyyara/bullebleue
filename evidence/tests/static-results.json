@@ -1,7 +1,7 @@
 {
-  "test_run": "loop-019-owner-homepage-content-typography-and-photo-distribution",
+  "test_run": "loop-021-restore-authorization-validator-wording",
   "observed_at": "2026-11-05",
-  "status": "PASS — LOOP 019 PYTHON STRUCTURAL VALIDATOR",
+  "status": "PASS — LOOP 021 PYTHON STRUCTURAL VALIDATOR",
   "checks": [
     {
       "name": "Public identity",
@@ -794,5 +794,17 @@
         "detail": "Three dated routes and undated community strip unchanged."
       }
     ]
+  },
+  "loop_021": {
+    "test_run": "loop-021-restore-authorization-validator-wording",
+    "observed_at": "2026-11-05",
+    "status": "PASS",
+    "commit": "6b18ef0ad08cde38389d9a784d6ec30d34156508",
+    "workflow": {
+      "run_id": 42075194025,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/42075194025",
+      "conclusion": "success"
+    },
+    "check": "The TODO retains the literal phrase 'verbally authorized' required by tests/validate_site.py; structural validation passed."
   }
 }

@@ -3,6 +3,10 @@
 **Last updated:** 5 November 2026  
 **Repository:** teyyara/bullebleue · main
 
+## Loop 021 — Restore validator-compatible owner authorization wording
+- [x] Keep the explicit project record that the association owner has verbally authorized use of the supplied images for the public website.
+- [x] Restore the exact phrase “verbally authorized” required by `tests/validate_site.py`; this is a documentation/validator compatibility correction only.
+
 ## Loop 020 — True organic Actualités bubbles
 - [x] Three distinct smooth Bézier bubble silhouettes replace rounded-rectangle-like article surfaces.
 - [x] Matching organic contours applied to all three illustration frames.

@@ -1,19 +1,19 @@
 {
-  "manifest_version": "2.6",
+  "manifest_version": "2.7",
   "run_id": "bullebleue-20261102-001",
-  "loop": 20,
-  "candidate": "bullebleue-loop-020-organic-news-blob-contours-v1",
-  "candidate_status": "LOOP 020 COMPLETE — THREE DISTINCT SMOOTH ORGANIC ACTUALITÉS BUBBLES AND MATCHING IMAGE CONTOURS; PYTHON/NODE/PLAYWRIGHT PASS; DESKTOP/MOBILE SCREENSHOTS MANUALLY REVIEWED; NOT DEPLOYED",
+  "loop": 21,
+  "candidate": "bullebleue-loop-021-restore-authorization-validator-wording-v1",
+  "candidate_status": "LOOP 021 COMPLETE — RESTORED EXACT OWNER IMAGE-AUTHORIZATION WORDING REQUIRED BY STRUCTURAL VALIDATOR; PYTHON/NODE/PLAYWRIGHT PASS; NO WEBSITE CODE CHANGE; NOT DEPLOYED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "3d7d8683d0ec471e03a31ac2ba4aeb7f200571a9",
+  "implementation_checkpoint_commit": "6b18ef0ad08cde38389d9a784d6ec30d34156508",
   "remote_git_blob_objects": {
-    ".aeos/state.json": "6f676aa455e678215917bc6b17feb029907e29ff",
+    ".aeos/state.json": "518a2b9292fa6a94a83df71d03fedc8fe6812090",
     ".github/workflows/quality.yml": "d80a3ab7b91efa28a36c6864bd987c607c3ff1aa",
-    "AEOS_STATUS.md": "a4013e1ce8a31210a34d44613b1ff3ac63269bf4",
+    "AEOS_STATUS.md": "c57b39e7fdb0997428485a69b1ff9e5800b9a3bf",
     "Bulle_Bleue_APAiL_contenu_facebook.md": "dec4ee6c3f4e0ea7c092ebe1760c4a35033e05bf",
-    "README.md": "35b0820dc73361a332862867b182024d32ab184d",
-    "TODO.md": "db5cae23e7f8a9d7fd0cf6f4500cb78e48644cae",
+    "README.md": "a7ea635cd5c4ff24aec1b20ee7953b2f119c4b73",
+    "TODO.md": "6adffc8ecefb3d1afde880165bce961d06472c04",
     "actualite-2026-10-10.html": "2123a7a72e299520043daa1f7fef1b7f0bb26e0c",
     "actualite-2026-10-17.html": "678a603e372e9b00e6ecbd857269d610d786a4b7",
     "actualite-2026-10-26.html": "e8fdaf165fc35e31ac868864a9da6d09533b66c8",
@@ -77,13 +77,13 @@
     "evidence/research/keyphrase-dossier.md": "097b39681be69b04ebdca9334aa283d003ad69f7",
     "evidence/risk.json": "ec4e01229f0f7360967b1fd29b19c8c4ee97632d",
     "evidence/screenshots/README.md": "a1ae6cda8cb215ceb24c4f18a2bab9682b5a3e97",
-    "evidence/tests/runtime-results.json": "3e8a5dffdadb50e81b94d6c4bfa8407164bb3772",
-    "evidence/tests/static-results.json": "b83e9c0fb9df2a701ad260af2af4d26a8dc2e90e",
+    "evidence/tests/runtime-results.json": "80e6320b40dcd0d4ba909e11844cdc7f589e16ab",
+    "evidence/tests/static-results.json": "9a7fa95377556f880ecc8d7240693af19a53acc5",
     "evidence/visual/asset-register.json": "102afb724b6779a077b8f08caf5132d9bb78389d",
     "evidence/visual/logo-palette.json": "3caad866c35f42749c36abadb6ccc4dbeb4fdd11",
     "index.html": "300db915de71fed48fbc3bccf1d9d94dd9fd62d4",
     "mentions-legales.html": "69a5e2a41f032ec0e7449942092b166ab7af9400",
-    "project.config.json": "248fe01a98660c372d4ffb0f68d138abe1b1b34c",
+    "project.config.json": "0f28a6c9e0415e370a73db437836b8a78fa1b0bd",
     "qui-sommes-nous.html": "18e16c12f2a3f66d6613d67558033e4adbefdc51",
     "robots.txt": "c2a49f4fb82f19ffa9089fcf8630e5a2870d3feb",
     "script.js": "e84c4c425ac4dd3fb28a3702cb49039087ef7ca7",
@@ -170,7 +170,9 @@
     "Association-owner final visual/content acceptance remains pending.",
     "Transparent character cut-outs from drawings 6–9 have not been produced; complete original drawings are used.",
     "Only Miette's quotation is currently supplied as an authentic testimonial; other cards invite future contributions.",
-    "Owner-supplied photos are authorised according to verbal confirmation."
+    "Owner-supplied photos are authorised according to verbal confirmation.",
+    "Firefox/WebKit/Safari, manual screen-reader, physical-device, Lighthouse, ZAP and hosted performance/security checks remain outstanding.",
+    "Production deployment remains unauthorized and hosting is unconfigured."
   ],
   "loop_002": {
     "change": "Only process Escape when the mobile navigation is expanded; preserve focus for unrelated or closed-menu Escape events.",
@@ -684,7 +686,7 @@
   },
   "latest_loop_17_final_commit": "78db0157e231932c16ad654f6fd735839c4ee1e7",
   "status_metadata_reconciliation": "PASS — remote Git blob map reconciled with main at Loop 018 checkpoint; manifest does not self-reference.",
-  "remote_git_blob_objects_note": "Exact remote blob IDs for all tracked files except evidence/manifest.json itself; self-reference omitted to avoid a recursive hash.",
+  "remote_git_blob_objects_note": "Exact Git blob IDs for all tracked files except evidence/manifest.json itself; self-reference is omitted to avoid a recursive hash.",
   "loop_019": {
     "code_checkpoint_commit": "4babf6711d208a738f5eb5b7d9c13438380e83bc",
     "commits": [
@@ -743,6 +745,24 @@
       "manually_reviewed_count": 2
     },
     "visual_review": "Final Actualités desktop/mobile screenshots manually inspected; cards read as organic bubbles and labels remain clear.",
+    "status": "WAITING_FOR_CONTINUE — no deployment."
+  },
+  "loop_021": {
+    "code_checkpoint_commit": "6b18ef0ad08cde38389d9a784d6ec30d34156508",
+    "root_cause": "The TODO item used 'authorised' while tests/validate_site.py checks the literal 'verbally authorized'.",
+    "fix": "Restored the expected phrase without changing permission scope or website content.",
+    "quality_run": 42075194025,
+    "quality_url": "https://github.com/teyyara/bullebleue/actions/runs/42075194025",
+    "quality_conclusion": "success",
+    "python_validator": "PASS",
+    "node": "PASS",
+    "browser": "PASS — nine pages × five viewports (45).",
+    "screenshot_artifact": {
+      "id": 13438196192,
+      "name": "bulle-bleue-loop020-visual-review",
+      "sha256": "f0864b5d7ec9248e8a58dfa1b380be79a48b3e6b508b15efc707057e26e817cb",
+      "manually_reviewed": false
+    },
     "status": "WAITING_FOR_CONTINUE — no deployment."
   }
 }

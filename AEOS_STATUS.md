@@ -3,38 +3,35 @@
 **Active keyphrase:** make a full website for: Bulle Bleue à Chalon-sur-Saône  
 **Run ID:** bullebleue-20261102-001  
 **Rulebook:** AEOS v3  
-**Current loop:** LOOP 020  
-**Candidate:** bullebleue-loop-020-organic-news-blob-contours-v1  
+**Current loop:** LOOP 021  
+**Candidate:** bullebleue-loop-021-restore-authorization-validator-wording-v1  
 **Repository:** teyyara/bullebleue · main  
-**Implementation checkpoint:** 3d7d8683d0ec471e03a31ac2ba4aeb7f200571a9  
+**Implementation checkpoint:** 6b18ef0ad08cde38389d9a784d6ec30d34156508  
 **Status:** WAITING_FOR_CONTINUE
 
-## Delivered in Loop 020
-- Three dated Actualités cards now read as organic bubbles rather than rounded rectangles.
-- Each card has its own smooth Bézier contour (96 points) and distinct pastel surface.
-- Illustration frames use matching organic contours; dates, categories, headlines and CTAs remain readable.
-- Desktop Illustration labels move upper-right; mobile labels remain lower-right.
-- Dated routes and the separate undated three-photo community strip are unchanged.
+## Delivered in Loop 021
+- Restored the exact words “verbally authorized” in the existing TODO item that documents the association owner's permission for the supplied website images.
+- Root cause was a spelling mismatch only: the checklist used “authorised”, while the structural validator checks the exact American-English phrase “verbally authorized”.
+- No image, website copy, styling, permission scope or other source code changed.
 
 ## Verification
-- Final code checkpoint: `3d7d8683d0ec471e03a31ac2ba4aeb7f200571a9`.
-- GitHub Actions **PASS**: [run 42072524668](https://github.com/teyyara/bullebleue/actions/runs/42072524668).
-- Python structural validator **PASS**; Node syntax/interaction tests **PASS**.
-- Playwright Chromium **PASS** — nine pages × five widths (45); unique card/image contours, desktop badge placement, no overflow or browser errors.
-- Visual artifact: [Loop 020 screenshots 13436352631](https://github.com/teyyara/bullebleue/actions/runs/42072524668/artifacts/13436352631) (18 screenshots).
-- Final Actualités desktop/mobile screenshots manually inspected.
+- GitHub Actions **PASS**: [run 42075194025](https://github.com/teyyara/bullebleue/actions/runs/42075194025).
+- Python structural validator: **PASS**.
+- Node syntax/menu/story/reduced-motion tests: **PASS**.
+- Playwright Chromium: **PASS** — nine pages × five viewport widths (45); no overflow, failed image loads, page errors or console errors.
+- Screenshot artifact [13438196192](https://github.com/teyyara/bullebleue/actions/runs/42075194025/artifacts/13438196192) uploaded by the workflow. It was not manually inspected; no visual change was made in this loop.
 
-## Open items
-1. Final owner visual/content acceptance.
-2. Genuine young-person, parent and volunteer testimonials if supplied.
-3. Transparent cut-outs from drawings 6–9; complete originals currently used.
-4. Confirm registered office, publication manager and hosting provider.
-5. Confirm membership terms and renewal conditions.
-6. Confirm current venue/location.
-7. Test `apail@live.fr` deliverability without an unsolicited message.
-8. Firefox/WebKit/Safari, screen-reader, physical-device, Lighthouse, ZAP and hosted checks.
+## Next actionable TODO
+Prepare transparent individual character cut-outs from drawings 6–9. The website currently uses the complete supplied drawings; separate transparent cut-outs have not yet been produced.
+
+## Other open items
+- Obtain authentic young-person, parent and volunteer testimonials if supplied.
+- Obtain final association-owner visual/content acceptance.
+- Confirm registered office, publication manager, hosting provider, membership terms and current venue.
+- Test `apail@live.fr` deliverability without an unsolicited message.
+- Complete Firefox/WebKit/Safari, screen-reader, physical-device, Lighthouse, ZAP and hosted security/performance checks.
 
 No production deployment has been performed or authorised. Hosting remains unconfigured.
 
 ## Progression control
-Loop 020 is checkpointed on main. Exactly one standalone `CONTINUE` authorises LOOP 021.
+Loop 021 is checkpointed on main. Exactly one standalone `CONTINUE` authorises LOOP 022.

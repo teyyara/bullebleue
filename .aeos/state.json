@@ -10,15 +10,15 @@
   "branch": "main",
   "branch_policy": "single branch",
   "bootstrap_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b",
-  "latest_loop_checkpoint_commit": "3d7d8683d0ec471e03a31ac2ba4aeb7f200571a9",
+  "latest_loop_checkpoint_commit": "6b18ef0ad08cde38389d9a784d6ec30d34156508",
   "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
   "status_metadata_commit": "e910d0ac3b200bd0c50f41015000c0c3ad2ed132",
   "last_known_good_release_commit": null,
-  "current_loop": 20,
-  "current_candidate": "bullebleue-loop-020-organic-news-blob-contours-v1",
+  "current_loop": 21,
+  "current_candidate": "bullebleue-loop-021-restore-authorization-validator-wording-v1",
   "state": "WAITING_FOR_CONTINUE",
   "remote_checkpoint_verified": true,
-  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 021.",
+  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 022.",
   "deployment": "NOT CONFIGURED / NOT AUTHORIZED",
   "paid_dependencies": [],
   "open_blockers": [
@@ -224,5 +224,24 @@
     "review": "Final Actualités desktop/mobile screenshots were manually inspected; bubble contours are distinct and soft, image frames match and desktop labels remain clear."
   },
   "latest_loop_20_visual_review": "PASS — final desktop/mobile Actualités screenshots manually opened and inspected.",
-  "latest_loop_20_status": "WAITING_FOR_CONTINUE — organic Actualités cards and frames implemented; final Python/Node/Playwright CI and visual review PASS; no deployment."
+  "latest_loop_20_status": "WAITING_FOR_CONTINUE — organic Actualités cards and frames implemented; final Python/Node/Playwright CI and visual review PASS; no deployment.",
+  "latest_loop_21_fix_commit": "6b18ef0ad08cde38389d9a784d6ec30d34156508",
+  "latest_loop_21_quality_run": 42075194025,
+  "latest_loop_21_quality_url": "https://github.com/teyyara/bullebleue/actions/runs/42075194025",
+  "latest_loop_21_quality_status": "PASS — Python structural validator, Node syntax/menu/story/reduced-motion tests, and Playwright Chromium nine pages × five viewports; screenshots uploaded.",
+  "latest_loop_21_root_cause": "The Loop 020 TODO rewrite used 'authorised', while tests/validate_site.py asserts the literal phrase 'verbally authorized'. The validator stopped on this documentary spelling mismatch; no website source or image permission state failed.",
+  "latest_loop_21_resolution": "Restored the exact validator-compatible spelling in the existing owner-authorisation checklist line; no asset set, copy or permission scope was changed.",
+  "latest_loop_21_python_validator": "PASS",
+  "latest_loop_21_node_test": "PASS",
+  "latest_loop_21_browser": "PASS — nine public pages × five viewport widths (45 combinations), no horizontal overflow, failed image loads, page errors or console errors.",
+  "latest_loop_21_screenshot_artifact": {
+    "id": 13438196192,
+    "name": "bulle-bleue-loop020-visual-review",
+    "url": "https://github.com/teyyara/bullebleue/actions/runs/42075194025/artifacts/13438196192",
+    "sha256": "f0864b5d7ec9248e8a58dfa1b380be79a48b3e6b508b15efc707057e26e817cb",
+    "uploaded": true,
+    "manually_reviewed": false,
+    "review": "The workflow preserved its standard screenshot artifact. No additional manual screenshot review was required for this documentation-only correction."
+  },
+  "latest_loop_21_status": "WAITING_FOR_CONTINUE — documentation/validator compatibility corrected; full CI PASS; no site redesign or deployment."
 }
