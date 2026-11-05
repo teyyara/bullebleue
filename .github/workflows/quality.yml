@@ -56,6 +56,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: bulle-bleue-loop022-visual-review
-          path: artifacts/loop020-browser/
+          path: artifacts/loop022-browser/
           if-no-files-found: ignore
           retention-days: 7

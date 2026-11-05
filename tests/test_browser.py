@@ -160,7 +160,7 @@ def main() -> None:
                             actual = page.locator(f".story-art .drawing-character-group--{drawing} .character-cutout").count()
                             assert actual == expected, f"drawing {drawing}: expected {expected} character cut-outs, got {actual}"
                         group_style = cutout_groups.first.evaluate("(el) => getComputedStyle(el)")
-                        assert group_style.borderTopWidth == "0px" and group_style.backgroundColor == "rgba(0, 0, 0, 0)", "cut-out groups must not retain paper-card borders/backgrounds"
+                        assert group_style["borderTopWidth"] == "0px" and group_style["backgroundColor"] == "rgba(0, 0, 0, 0)", "cut-out groups must not retain paper-card borders/backgrounds"
                         assert page.locator('img[src*="/assets/posts/"]').count() == 0, "homepage must stay light and contain no activity gallery"
                         heading_font = page.locator(".story-panel h1").evaluate("(el) => getComputedStyle(el).fontFamily")
                         assert "Fredoka" in heading_font, f"owner-specified Fredoka heading font is missing: {heading_font}"
