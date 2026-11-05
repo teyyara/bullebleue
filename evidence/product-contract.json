@@ -52,7 +52,7 @@
   "brand": {
     "official_assets_supplied": true,
     "direction": "Joyful, playful, childlike and arts-led; bubble-like organic shapes replace rigid rectangles, informal handwritten-style headings and rounded body typography replace the restrained professional treatment, while the supplied blue logo remains recognisable.",
-    "logo_status": "Official transparent PNG supplied by the user at assets/logo final.png; integrated in all six page headers and footers in Loop 010.",
+    "logo_status": "Official transparent PNG supplied by the association owner; integrated in all public page headers and footers. The shared text brand is Bulle Bleue - APAiL.",
     "palette_status": "The original blue logo palette remains the identity anchor. Loop 017 adds a clearly supplementary owner-requested palette of coral, lemon, mint, lilac and warm paper; these accents are design additions, not claims about an official published palette.",
     "logo_derived_system": {
       "palette": "Logo-derived cool blues with icy light surfaces; the former clay/ochre palette has been removed.",
@@ -138,7 +138,7 @@
       "heading": "Fredoka 600",
       "body": "Atkinson Hyperlegible 400/700",
       "handwritten_accents": "Caveat 600, reserved for captions and small notes",
-      "note": "Free Google Fonts CSS delivery with system fallbacks; no paid font dependency."
+      "note": "Google Fonts CSS requests Fredoka, Atkinson Hyperlegible and Caveat; system fallbacks preserve readable content when remote font delivery is unavailable. No paid fonts or binary font assets are included."
     },
     "owner_photo_permission": "The association owner supplied the photograph assets and verbally authorised their visible use on the website, as relayed by the project user on 2026-11-05. This is accepted as the project's permission basis."
   },
@@ -159,58 +159,58 @@
       },
       {
         "path": "assets/posts/735543787_1361390089428172_5312506833854343201_n.jpg",
-        "use": "Homepage photo album",
-        "status": "IN USE — owner supplied and verbally authorised."
+        "use": "Qui sommes-nous activity gallery",
+        "status": "IN USE — owner supplied and verbally authorised; secondary-page placement only."
       },
       {
         "path": "assets/posts/783036041_1408453024721878_3578205087320603775_n.jpg",
-        "use": "Homepage photo album",
-        "status": "IN USE — owner supplied and verbally authorised."
+        "use": "Qui sommes-nous activity gallery",
+        "status": "IN USE — owner supplied and verbally authorised; secondary-page placement only."
       },
       {
         "path": "assets/posts/830754903_1438852398348607_8575046537706443389_n.jpg",
-        "use": "Homepage photo album",
-        "status": "IN USE — owner supplied and verbally authorised."
+        "use": "Actualités undated community image strip",
+        "status": "IN USE — owner supplied and verbally authorised; secondary-page placement only."
       },
       {
         "path": "assets/posts/844190417_1446490757584771_1709901819062193861_n.jpg",
-        "use": "Homepage photo album",
-        "status": "IN USE — owner supplied and verbally authorised."
+        "use": "Actualités undated community image strip",
+        "status": "IN USE — owner supplied and verbally authorised; secondary-page placement only."
       },
       {
         "path": "assets/posts/854414257_1451277357106111_100552518532689623_n.jpg",
-        "use": "Homepage photo album",
-        "status": "IN USE — owner supplied and verbally authorised."
+        "use": "Actualités undated community image strip",
+        "status": "IN USE — owner supplied and verbally authorised; secondary-page placement only."
       },
       {
         "path": "assets/posts/858642199_1459855032915010_3703135960600555271_n.jpg",
-        "use": "Homepage photo album",
-        "status": "IN USE — owner supplied and verbally authorised."
+        "use": "Qui sommes-nous activity gallery",
+        "status": "IN USE — owner supplied and verbally authorised; secondary-page placement only."
       },
       {
         "path": "assets/posts/860039147_1459854696248377_603952803324221168_n.jpg",
-        "use": "Homepage photo album",
-        "status": "IN USE — owner supplied and verbally authorised."
+        "use": "Qui sommes-nous activity gallery",
+        "status": "IN USE — owner supplied and verbally authorised; secondary-page placement only."
       },
       {
         "path": "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg",
-        "use": "Homepage photo album",
-        "status": "IN USE — owner supplied and verbally authorised."
+        "use": "Qui sommes-nous activity gallery",
+        "status": "IN USE — owner supplied and verbally authorised; secondary-page placement only."
       },
       {
         "path": "assets/posts/861826539_1459854896248357_2220258804161137760_n.jpg",
-        "use": "Homepage photo album",
-        "status": "IN USE — owner supplied and verbally authorised."
+        "use": "Qui sommes-nous activity gallery",
+        "status": "IN USE — owner supplied and verbally authorised; secondary-page placement only."
       },
       {
         "path": "assets/posts/863353686_1459854766248370_1734709857082262774_n.jpg",
-        "use": "Homepage photo album",
-        "status": "IN USE — owner supplied and verbally authorised."
+        "use": "Qui sommes-nous activity gallery",
+        "status": "IN USE — owner supplied and verbally authorised; secondary-page placement only."
       },
       {
         "path": "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg",
-        "use": "Homepage photo album",
-        "status": "IN USE — owner supplied and verbally authorised."
+        "use": "Qui sommes-nous activity gallery",
+        "status": "IN USE — owner supplied and verbally authorised; secondary-page placement only."
       },
       {
         "path": "assets/gathering.jpeg",
@@ -251,7 +251,7 @@
     "cards": "Avoid rigid rectangles. Use organic, uneven bubble-like silhouettes, soft dotted or hand-drawn outlines, pill controls, gentle rotations and generous readable spacing throughout all nine public pages.",
     "typography": "Fredoka 600 for titles; Atkinson Hyperlegible 400 and 700 for body copy; Caveat 600 only for captions and small notes.",
     "home_closing_photo": "Place assets/gathering.jpeg prominently beside the DERRIÈRE LA BULLE/contact content at the end of the homepage. The owner supplied the image and verbally authorised its visible use on the website.",
-    "photo_gallery": "Display all eleven local photos from assets/posts in a playful organic gallery with descriptive alt text and short captions. The owner supplied the photographs and verbally authorised their website use.",
+    "photo_gallery": "The eleven assets/posts images are intentionally distributed to relevant secondary pages: eight activity images on Qui sommes-nous and three explicitly undated group/outing images on Actualités. No assets/posts documentary photo appears on the homepage.",
     "about_photos": "Eight supplied activity photographs appear beside the activities content on Qui sommes-nous in a compact responsive gallery; descriptive French alt text and short captions identify the activity, not the people.",
     "photo_distribution": "Distribute the eleven assets/posts photos away from the homepage: 8 activity photos on Qui sommes-nous, 3 group/outing photos in a separate undated strip on Actualités. Do not imply the three Actualités photos depict the three dated stories.",
     "colour_contrast": "Use explicit deep navy/blue text on pale cream/pastel backgrounds and light text only on dark blue gradients. Page-intro has a pale background and must use dark text. Avoid low-contrast pale-blue title emphasis on pale surfaces; keep the solidarity note on a pale surface with dark text.",

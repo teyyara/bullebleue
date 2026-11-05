@@ -110,7 +110,7 @@ def main():
     assert len(home) < 18000, "homepage should remain airy and concise"
     assert home.count('class="story-step ') == 3, "homepage has exactly three scroll chapters"
     drawings = ("dessin1.jpeg", "dessin2.jpeg", "dessin3.jpeg", "dessin4.jpeg", "dessin5.jpeg", "dessin6.jpeg", "dessin7.jpeg", "dessin8.jpeg", "dessin9.jpeg")
-    assert home.count('class="drawing-sticker') == 9, "homepage collage uses exactly five supplied drawings"
+    assert home.count('class="drawing-sticker') == 9, "homepage collage uses exactly nine supplied drawings"
     for drawing in drawings:
         assert f'src="/assets/{drawing}"' in home, f"missing supplied homepage drawing: {drawing}"
     assert "hero-community.svg" not in home, "placeholder SVG hero is retired"

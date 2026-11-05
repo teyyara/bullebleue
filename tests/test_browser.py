@@ -261,6 +261,22 @@ def main() -> None:
                 path=str(screenshot_dir / "home-closing-desktop.png")
             )
 
+            # Owner-added homepage sections and their scroll-reactive artwork states.
+            for selector, scene, filename in (
+                ("#se-retrouver", "se-retrouver", "home-se-retrouver-desktop.png"),
+                ("#ils-en-parlent", "temoignages", "home-testimonials-desktop.png"),
+                ("#jouer-creer", "jouer", "home-jouer-creer-desktop.png"),
+                (".story-step--derriere", "derriere", "home-derriere-desktop.png"),
+            ):
+                section = page.locator(selector)
+                section.scroll_into_view_if_needed()
+                page.wait_for_function(
+                    "(scene) => document.querySelector('.story-art').dataset.scene === scene",
+                    arg=scene,
+                    timeout=6000,
+                )
+                section.screenshot(path=str(screenshot_dir / filename))
+
             # Inspect the actual news cards and undated community strip, not just the homepage.
             page.goto(f"{base_url}/actualites.html", wait_until="networkidle")
             prepare_screenshot_images(page)
@@ -300,6 +316,22 @@ def main() -> None:
             mobile_closing.screenshot(
                 path=str(screenshot_dir / "home-closing-mobile.png")
             )
+
+            # Mobile screenshots cover all new owner-requested homepage sections and scene changes.
+            for selector, scene, filename in (
+                ("#se-retrouver", "se-retrouver", "home-se-retrouver-mobile.png"),
+                ("#ils-en-parlent", "temoignages", "home-testimonials-mobile.png"),
+                ("#jouer-creer", "jouer", "home-jouer-creer-mobile.png"),
+                (".story-step--derriere", "derriere", "home-derriere-mobile.png"),
+            ):
+                section = page.locator(selector)
+                section.scroll_into_view_if_needed()
+                page.wait_for_function(
+                    "(scene) => document.querySelector('.story-art').dataset.scene === scene",
+                    arg=scene,
+                    timeout=6000,
+                )
+                section.screenshot(path=str(screenshot_dir / filename))
 
             # Reduced-motion users keep every story panel readable without JS motion classes.
             reduced = context.new_page()
