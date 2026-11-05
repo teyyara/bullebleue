@@ -1,6 +1,6 @@
 {
-  "requirements_version": "1.5",
-  "candidate": "bullebleue-loop-018-airy-photo-distribution-and-bubble-art-direction-v1",
+  "requirements_version": "1.6",
+  "candidate": "bullebleue-loop-020-organic-news-blob-contours-v1",
   "requirements": [
     {
       "id": "REQ-001",
@@ -558,6 +558,15 @@
       "risk": "R1",
       "validation": "Source inspection, browser scene assertions, reduced-motion and screenshot review",
       "status": "IMPLEMENTED — CHARACTER CUT-OUTS STILL OPEN",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "REQ-063",
+      "requirement": "Render the three Actualités stories as visibly organic bubble shapes.",
+      "acceptance": "Each card background has a distinct smooth organic clip path, each illustration frame has its own matching contour, text remains readable, desktop labels stay in-frame and mobile remains usable.",
+      "risk": "R1",
+      "validation": "Python source checks, Playwright contour uniqueness at five widths, desktop badge geometry and manual desktop/mobile screenshot review.",
+      "status": "IMPLEMENTED — LOOP 020",
       "confidence": "HIGH"
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "decisions_version": "0.2",
+  "decisions_version": "0.3",
   "decisions": [
     {
       "id": "DEC-001",
@@ -420,6 +420,19 @@
       "tradeoffs": "The three supporting cards are invitation prompts rather than quotations until real material is supplied.",
       "risk": "R1",
       "evidence": "Owner feedback received 2026-11-05."
+    },
+    {
+      "id": "DEC-033",
+      "context": "Actualités cards continued to look like rounded rectangles despite asymmetric radii.",
+      "options": [
+        "Continue adjusting radii",
+        "Use smooth sampled Bézier contours"
+      ],
+      "chosen": "Use three distinct sampled organic silhouettes with matching clipped illustration frames and safe badge placement.",
+      "reason": "The user asked for bubble-shaped news cards; smooth contours create the difference while preserving readable content and responsive layout.",
+      "tradeoffs": "Clip-path is progressive enhancement; border-radius remains fallback. Desktop tags move upper-right.",
+      "risk": "R1",
+      "evidence": "Loop 019/020 desktop/mobile screenshot review and Playwright assertions."
     }
   ]
 }

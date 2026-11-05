@@ -1,8 +1,8 @@
 {
-  "contract_version": "1.4",
+  "contract_version": "1.5",
   "status": "ACTIVE QUALITY BASELINE — LOOP 018 CORRECTS PHOTO DISTRIBUTION, ORGANIC NEWS BUBBLES AND CONTRAST-SAFE PLAYFUL PALETTE",
-  "change_request": "CR-012 — Owner homepage copy, authentic testimonials, supplied art direction and typography",
-  "supersedes": "1.3",
+  "change_request": "CR-013 — smooth organic Actualités bubble silhouettes",
+  "supersedes": "1.4",
   "project": "La Bulle Bleue — Chalon-sur-Saône",
   "business_objective": "Create an informative, welcoming and visually distinctive website explaining La Bulle Bleue and APAiL, representing publicly reported activities without overpromising and helping visitors contact the association.",
   "target_audience": [
@@ -258,7 +258,9 @@
     "news_card_shape": "Article cards must visibly read as organic bubbles/blobs, not merely rounded rectangles. Use asymmetrical shapes, varied card contour and inset organic image frames with mobile stacking.",
     "typography_provider": "Free Google Fonts CSS. Keep sans-serif system fallbacks and ensure all essential content stays readable if fonts fail to load.",
     "testimonials": "Place immediately after Se retrouver. Feature the exact Miette quote supplied by the owner (AG 2026) and no invented attributed statements. The three young-person, parent and volunteer cards are invitation prompts until genuine quotes arrive. No face photographs in this section.",
-    "typography_old_note": "The previous system-font-only direction was superseded by CR-012. Google Fonts CSS is now used for owner-selected families; fallbacks remain local."
+    "typography_old_note": "The previous system-font-only direction was superseded by CR-012. Google Fonts CSS is now used for owner-selected families; fallbacks remain local.",
+    "news_cards": "The three dated Actualités stories must appear as visibly organic asymmetric bubble silhouettes—not rounded rectangles. Each card has its own smooth cubic-Bézier contour and distinct pastel surface. Each illustration frame follows a matching organic contour. Date/category metadata, headline, summary and CTA remain readable. Desktop remains three columns; mobile stacks one column.",
+    "news_card_badges": "The Illustration tag stays fully visible within the organic image frame: upper-right desktop, lower-right mobile."
   },
   "motion": {
     "effects": [
@@ -363,7 +365,9 @@
     "Ils en parlent immediately follows Se retrouver; only Miette's real quote is attributed; all other cards are labelled as future testimony prompts.",
     "Jouer/créer uses the four new child drawings in an organic collage with mobile horizontal swipe; homepage assets/posts photographs remain absent.",
     "DERRIÈRE LA BULLE uses latest owner-supplied association/volunteer copy with Devenir bénévole and Adhérer à l’APAiL actions.",
-    "Fredoka 600, Atkinson Hyperlegible 400/700 and Caveat 600 are used throughout the site."
+    "Fredoka 600, Atkinson Hyperlegible 400/700 and Caveat 600 are used throughout the site.",
+    "Three dated Actualités cards use distinct smooth organic bubble silhouettes with matching organic illustration frames.",
+    "Illustration labels stay within the clipped image frame at desktop and mobile."
   ],
   "business_outcome_hypotheses": [
     "Specific activity stories may help families understand the initiative",
@@ -427,5 +431,14 @@
     "Apply Fredoka 600, Atkinson Hyperlegible 400/700 and Caveat 600; retain responsive and reduced-motion fallbacks.",
     "Run static, Node and Playwright checks across all nine routes and five viewport widths; review new desktop and mobile screenshots.",
     "Checkpoint to main, verify remote state and record test evidence; do not deploy."
+  ],
+  "definition_of_done_loop_020": [
+    "Record CR-013 and update the contract, requirements, decisions, TODO, README and evidence.",
+    "Use three distinct smooth organic card contours and matching image frames.",
+    "Keep illustration tags visible on desktop and mobile.",
+    "Add source/browser assertions for unique contours and desktop badge positioning.",
+    "Run Python, Node and Playwright on nine pages and five viewports.",
+    "Inspect final desktop/mobile Actualités screenshots.",
+    "Checkpoint on main and do not deploy."
   ]
 }
