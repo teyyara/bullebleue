@@ -12,7 +12,7 @@
   "bootstrap_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b",
   "latest_loop_checkpoint_commit": "28583458561c261c593bd2a88f06412c66c337b3",
   "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
-  "status_metadata_commit": "28583458561c261c593bd2a88f06412c66c337b3",
+  "status_metadata_commit": "ead64dcff8c71ccc5d7121a9ed0f548045cc06b0",
   "last_known_good_release_commit": null,
   "current_loop": 22,
   "current_candidate": "bullebleue-loop-022-transparent-drawing-character-cutouts-v1",
@@ -265,5 +265,7 @@
     "review": "Seven relevant desktop/mobile captures were opened, including the welcome story, Se retrouver and Jouer/créer. The complete original drawing sheets remain on the activity collage; the new SVG cut-outs load and do not introduce responsive overflow."
   },
   "latest_loop_22_cutout_inventory": "20 independent SVG assets: drawing 6 (6); drawing 7 (4); drawing 8 (1); drawing 9 (9). Drawing 7 pasted football photograph and cropped edge fragment excluded.",
-  "latest_loop_22_status": "WAITING_FOR_CONTINUE — twenty transparent character cut-outs implemented, complete original sheets preserved, Python/Node/Playwright PASS and seven relevant screenshots manually reviewed; no deployment."
+  "latest_loop_22_status": "WAITING_FOR_CONTINUE — twenty transparent character cut-outs implemented, complete original sheets preserved, Python/Node/Playwright PASS and seven relevant screenshots manually reviewed; no deployment.",
+  "latest_loop_22_metadata_batch_commit": "ead64dcff8c71ccc5d7121a9ed0f548045cc06b0",
+  "latest_loop_22_metadata_reconciliation_note": "The final manifest reconciliation follows the Loop 022 metadata batch on main; the manifest file is excluded from its own Git blob map."
 }

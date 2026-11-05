@@ -1,24 +1,44 @@
 {
   "manifest_version": "2.7",
   "run_id": "bullebleue-20261102-001",
-  "loop": 21,
-  "candidate": "bullebleue-loop-021-restore-authorization-validator-wording-v1",
-  "candidate_status": "LOOP 021 COMPLETE — RESTORED EXACT OWNER IMAGE-AUTHORIZATION WORDING REQUIRED BY STRUCTURAL VALIDATOR; PYTHON/NODE/PLAYWRIGHT PASS; NO WEBSITE CODE CHANGE; NOT DEPLOYED",
+  "loop": 22,
+  "candidate": "bullebleue-loop-022-transparent-drawing-character-cutouts-v1",
+  "candidate_status": "LOOP 022 COMPLETE — TWENTY TRANSPARENT CHARACTER CUT-OUTS FROM DRAWINGS 6–9; COMPLETE ORIGINAL SHEETS PRESERVED; PYTHON/NODE/PLAYWRIGHT AND MANUAL SCREENSHOT REVIEW PASS; NOT DEPLOYED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "6b18ef0ad08cde38389d9a784d6ec30d34156508",
+  "implementation_checkpoint_commit": "28583458561c261c593bd2a88f06412c66c337b3",
   "remote_git_blob_objects": {
-    ".aeos/state.json": "518a2b9292fa6a94a83df71d03fedc8fe6812090",
-    ".github/workflows/quality.yml": "d80a3ab7b91efa28a36c6864bd987c607c3ff1aa",
-    "AEOS_STATUS.md": "c57b39e7fdb0997428485a69b1ff9e5800b9a3bf",
+    ".aeos/state.json": "61b360941ea3cc51ef10e91e061b166868d7b66c",
+    ".github/workflows/quality.yml": "d7e9c95b41d8aa3efa747134782afc2501b2b694",
+    "AEOS_STATUS.md": "176c9bbdbc7dcfb413bbf3373c3f06b7956fbe88",
     "Bulle_Bleue_APAiL_contenu_facebook.md": "dec4ee6c3f4e0ea7c092ebe1760c4a35033e05bf",
-    "README.md": "a7ea635cd5c4ff24aec1b20ee7953b2f119c4b73",
-    "TODO.md": "6adffc8ecefb3d1afde880165bce961d06472c04",
+    "README.md": "c3919ef6690e05df532ee6ccc682a923548afd15",
+    "TODO.md": "9ea09a5a9bc03b281b03610ee0a215d23208d277",
     "actualite-2026-10-10.html": "2123a7a72e299520043daa1f7fef1b7f0bb26e0c",
     "actualite-2026-10-17.html": "678a603e372e9b00e6ecbd857269d610d786a4b7",
     "actualite-2026-10-26.html": "e8fdaf165fc35e31ac868864a9da6d09533b66c8",
     "actualites.html": "82f02f796e228eaf0d5b52d7270d80d90d7465d3",
     "adherer.html": "a90b436c6005923b655107b6c971b29f6af19368",
+    "assets/characters/dessin6-01.svg": "a6fbb0e7c40ce1ff1b0e1d4420178bb4cb7d7e8c",
+    "assets/characters/dessin6-02.svg": "fc276f4b377ad3049c4bf7ee92e2e8511496ef17",
+    "assets/characters/dessin6-03.svg": "482e09e36c5074430f2d50402897b58764ed149d",
+    "assets/characters/dessin6-04.svg": "42dee8c9446bb5fddc5818dc0648be40123e290d",
+    "assets/characters/dessin6-05.svg": "341cb99b7036675d3fccb51eec1da048a65f4b40",
+    "assets/characters/dessin6-06.svg": "eae110a483c19894e155c0361836176d8dd390f6",
+    "assets/characters/dessin7-01.svg": "e1a6c0d6796f4d78775aab07b8f348022c63c551",
+    "assets/characters/dessin7-02.svg": "376b88e15484622652092c2d34ccd7f721e979f8",
+    "assets/characters/dessin7-03.svg": "c3c6080e76eb6f81e467ea2565dc5a1e82fe0894",
+    "assets/characters/dessin7-04.svg": "e01cade2a70ce489cd2b1ece452ae196ac205f6f",
+    "assets/characters/dessin8-01.svg": "8ea44dc0fa22723a0de2f73d17990968ed08a2ac",
+    "assets/characters/dessin9-01.svg": "90976457bb585b4004b96a1814cf1dda02b2d561",
+    "assets/characters/dessin9-02.svg": "ae15e99fa826b400363b40d7370aa6f9ee119fd5",
+    "assets/characters/dessin9-03.svg": "a3aede3c25adec1f5d86d6b520dba811e6c81ef1",
+    "assets/characters/dessin9-04.svg": "db8192b9237da943e2789881224e3c669edd39df",
+    "assets/characters/dessin9-05.svg": "1d37067d6bb7a32b4aa61c05b57600539081fee4",
+    "assets/characters/dessin9-06.svg": "d580860f43efacc7293080ffe35c30d266f59f6f",
+    "assets/characters/dessin9-07.svg": "9a7e044e7f48475c4ceb30da33ad1ddb3db1dc6f",
+    "assets/characters/dessin9-08.svg": "fdf9cdca80e2b8125bd63cef9db8fa370f305fc9",
+    "assets/characters/dessin9-09.svg": "98286e71931218d86433703a2d1c7d600c0975ed",
     "assets/designmergeavecbackground.jpeg": "61b449a88f54ff88449693ed5b5e306349ebe9d9",
     "assets/dessin1.jpeg": "781b687669e1d3ca704ed267ca00879ae67729ef",
     "assets/dessin2.jpeg": "e552aebaa0a3c147b1ad91c25096e4e6617da4ae",
@@ -55,7 +75,7 @@
     "contact.html": "cd305275f4bcb3ff55414a100030c1c291a94494",
     "evidence/AEOS-RULEBOOK.md": "0b9f693dc989ef4f59261d404d7ed1dc2663a506",
     "evidence/assumptions.json": "a8d948e5d8ac6fb30a0d90c9849bc61386e30b32",
-    "evidence/build.json": "010e674d4fe2aaf4521ee0937c96f26b12d297ba",
+    "evidence/build.json": "7066f208aa5fe088d0f99b283beb60208249fdaa",
     "evidence/change-requests/CR-001.md": "829b01124d2a9548ddd0f4f8b282b06938fcc612",
     "evidence/change-requests/CR-002.md": "2750f8218da89eb4dfe79b4f8ae7f8fcc7dc87a5",
     "evidence/change-requests/CR-003.md": "be518026d30c328dc3da41f7f86704bb1ac80041",
@@ -68,29 +88,30 @@
     "evidence/change-requests/CR-011.md": "c85666d46c8630c608b4eee45f78505b484daca8",
     "evidence/change-requests/CR-012.md": "dc1b2bfa984e18978bf35c53e7961ec81cc52661",
     "evidence/change-requests/CR-013.md": "aa38384b56775e62b97d104436a8dcc520ac7e5c",
-    "evidence/content-provenance.json": "f82b6446a0820e31eb68645645cce457b5ebf5a6",
-    "evidence/decisions.json": "b22ecde5130be91571575b8784a7957d0dab1185",
+    "evidence/change-requests/CR-014.md": "85b84516d1b89c0bda56707c8dcac9f0a7d347fa",
+    "evidence/content-provenance.json": "ad32d4714cd3359d98e69973d7a4f5603472b9dd",
+    "evidence/decisions.json": "23a76b0e2257464fbeee52d0451622a51ff7f293",
     "evidence/learning.json": "718972df9dd6b519e158d864712713dc9fd83d11",
     "evidence/product-contract-proposal-0.2.json": "d8608b78aa3e234907b193f2fd28a346ce82783a",
     "evidence/product-contract.json": "ccfd58d411583d7b76f945c50c816392d0e3b90f",
-    "evidence/requirements.json": "05e0544183cc5b7910987740fdc2641007b963e6",
+    "evidence/requirements.json": "4ce4d35b6c86af06eb032e536409d1e6d3e2d82b",
     "evidence/research/keyphrase-dossier.md": "097b39681be69b04ebdca9334aa283d003ad69f7",
     "evidence/risk.json": "ec4e01229f0f7360967b1fd29b19c8c4ee97632d",
     "evidence/screenshots/README.md": "a1ae6cda8cb215ceb24c4f18a2bab9682b5a3e97",
-    "evidence/tests/runtime-results.json": "80e6320b40dcd0d4ba909e11844cdc7f589e16ab",
-    "evidence/tests/static-results.json": "9a7fa95377556f880ecc8d7240693af19a53acc5",
-    "evidence/visual/asset-register.json": "102afb724b6779a077b8f08caf5132d9bb78389d",
+    "evidence/tests/runtime-results.json": "dd00a84a02f34214ebd793de8c9c3a6668d958d9",
+    "evidence/tests/static-results.json": "17d42d08ab4bceea8b382f4eccb7a1eb5187c9c8",
+    "evidence/visual/asset-register.json": "bc6d243b6c157fb94a3006cc9a74504dfbde3dd0",
     "evidence/visual/logo-palette.json": "3caad866c35f42749c36abadb6ccc4dbeb4fdd11",
-    "index.html": "300db915de71fed48fbc3bccf1d9d94dd9fd62d4",
+    "index.html": "038e7e97755711e4713a40fa30c8171dd93a7b35",
     "mentions-legales.html": "69a5e2a41f032ec0e7449942092b166ab7af9400",
-    "project.config.json": "0f28a6c9e0415e370a73db437836b8a78fa1b0bd",
+    "project.config.json": "1ffd6527c136249d0ff2cc905dd3347d22d7273c",
     "qui-sommes-nous.html": "18e16c12f2a3f66d6613d67558033e4adbefdc51",
     "robots.txt": "c2a49f4fb82f19ffa9089fcf8630e5a2870d3feb",
     "script.js": "e84c4c425ac4dd3fb28a3702cb49039087ef7ca7",
-    "styles.css": "6e40853059c045d52ca695d9f61eba7d24a7900c",
-    "tests/test_browser.py": "b519cf7ccc44a11d63886b23b2e553ef6e4f0ef2",
+    "styles.css": "a057cc6550a91555de11cd584cb437995d02cfd7",
+    "tests/test_browser.py": "0a77cacf91fb8fb068a795d83f97ec40c92ccf6e",
     "tests/test_menu.js": "4506ecd2b4e57db7cb6484ff4d9e47f19c918d7d",
-    "tests/validate_site.py": "259d915513bbaa3cef038f469dd091b7ef0fe934"
+    "tests/validate_site.py": "b1379c959a3c9d1672f6b1f536fa8d3df81a21ea"
   },
   "local_screenshot_evidence": {
     "loop_006": {
@@ -145,6 +166,25 @@
       "sha256": "577b1aa9ac8ca741fd092db1aed3321b959ba0f902f6712d009238cbc2c900c8",
       "screenshot_count": 18,
       "manually_reviewed_count": 2
+    },
+    "loop_022": {
+      "status": "Loop 022 responsive Chromium screenshots uploaded and manually reviewed.",
+      "artifact_id": 13440433219,
+      "name": "bulle-bleue-loop022-visual-review",
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/42082401519/artifacts/13440433219",
+      "sha256": "81b759fdce230ef884f2a0561ee26a297a0f521bc812a41a4526dd704bff1aa8",
+      "screenshot_count": 18,
+      "manually_reviewed_count": 7,
+      "reviewed_files": [
+        "home-story-01-desktop.png",
+        "home-story-01-mobile.png",
+        "home-story-02-desktop.png",
+        "home-story-03-desktop.png",
+        "home-se-retrouver-mobile.png",
+        "home-jouer-creer-desktop.png",
+        "home-jouer-creer-mobile.png"
+      ],
+      "review": "Manually opened the current desktop/mobile homepage welcome and Se retrouver views plus the desktop/mobile Jouer/créer collage and sticky-story views. Original sheets remain on the collage; new cut-outs load correctly and introduce no layout overflow."
     }
   },
   "runtime_environment": {
@@ -430,8 +470,8 @@
     },
     "production": "NOT DEPLOYED; deployment remains unauthorized."
   },
-  "status_metadata_commit": "a69272294cfbcfafccec7512cc86a9f42d89fbac",
-  "evidence_manifest_reconciliation_commit": "e910d0ac3b200bd0c50f41015000c0c3ad2ed132",
+  "status_metadata_commit": "ead64dcff8c71ccc5d7121a9ed0f548045cc06b0",
+  "evidence_manifest_reconciliation_commit": "ead64dcff8c71ccc5d7121a9ed0f548045cc06b0",
   "loop_011": {
     "objective": "Use the uploaded transparent association logo as the source of truth for the website's full artistic colour direction.",
     "logo_sampling": {
@@ -686,7 +726,7 @@
   },
   "latest_loop_17_final_commit": "78db0157e231932c16ad654f6fd735839c4ee1e7",
   "status_metadata_reconciliation": "PASS — remote Git blob map reconciled with main at Loop 018 checkpoint; manifest does not self-reference.",
-  "remote_git_blob_objects_note": "Exact Git blob IDs for all tracked files except evidence/manifest.json itself; self-reference is omitted to avoid a recursive hash.",
+  "remote_git_blob_objects_note": "Verified against the recursive Git tree on main after Loop 022 metadata commit ead64dcff8c71ccc5d7121a9ed0f548045cc06b0. Every remote tracked blob path is mapped exactly once except evidence/manifest.json, which is intentionally excluded from its own mapping.",
   "loop_019": {
     "code_checkpoint_commit": "4babf6711d208a738f5eb5b7d9c13438380e83bc",
     "commits": [
@@ -764,5 +804,37 @@
       "manually_reviewed": false
     },
     "status": "WAITING_FOR_CONTINUE — no deployment."
+  },
+  "loop_022": {
+    "implementation_commit": "9893ddbd831fc63890b0006487f75458ed9bc8f7",
+    "browser_test_fix_commit": "6164cc4c9a87d3420b0c89fda2086f07245e12e8",
+    "screenshot_path_fix_commit": "28583458561c261c593bd2a88f06412c66c337b3",
+    "implementation_checkpoint_commit": "28583458561c261c593bd2a88f06412c66c337b3",
+    "metadata_batch_commit": "ead64dcff8c71ccc5d7121a9ed0f548045cc06b0",
+    "candidate": "bullebleue-loop-022-transparent-drawing-character-cutouts-v1",
+    "quality_run": 42082401519,
+    "quality_url": "https://github.com/teyyara/bullebleue/actions/runs/42082401519",
+    "quality_status": "PASS",
+    "python_validator": "PASS",
+    "node_tests": "PASS",
+    "playwright": "PASS — nine pages × five viewports (45 combinations), twenty cut-outs loaded, original drawing sheets retained, zero overflow or browser errors.",
+    "character_cutouts": {
+      "total": 20,
+      "by_source_drawing": {
+        "6": 6,
+        "7": 4,
+        "8": 1,
+        "9": 9
+      },
+      "format": "SVG with hand-traced clip paths over untouched local source JPEGs",
+      "excluded_from_drawing_7": [
+        "pasted football photograph",
+        "cropped edge fragment"
+      ]
+    },
+    "screenshot_artifact_id": 13440433219,
+    "screenshots": 18,
+    "manually_reviewed_screenshots": 7,
+    "production_deployed": false
   }
 }
