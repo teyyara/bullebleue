@@ -811,5 +811,78 @@
       "Cross-browser, manual assistive technology, physical-device, Lighthouse, ZAP and hosted checks remain outstanding.",
       "No deployment performed or authorized."
     ]
+  },
+  "loop_017": {
+    "test_run": "loop-017-owner-playful-art-direction-and-browser-regression",
+    "observed_at": "2026-11-05",
+    "runner": "GitHub Actions; Python 3.13; Node.js 22; Playwright 1.57.0; Chromium 143.0.7499.4.",
+    "status": "PASS — PYTHON, NODE, PLAYWRIGHT AND MANUAL SCREENSHOT REVIEW",
+    "commit": "c57a2a87c55267dbb8409cfd522b8d5134ff608e",
+    "workflow": {
+      "run_id": 41943584141,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41943584141",
+      "conclusion": "success"
+    },
+    "python_validator": {
+      "status": "PASS",
+      "command": "python tests/validate_site.py"
+    },
+    "node": {
+      "status": "PASS",
+      "commands": [
+        "node --check script.js",
+        "node --check tests/test_menu.js",
+        "node tests/test_menu.js"
+      ],
+      "detail": "Syntax and menu/story/reduced-motion regression passed."
+    },
+    "browser": {
+      "status": "PASS",
+      "suite": "tests/test_browser.py",
+      "pages": 9,
+      "viewports": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "page_viewport_runs": 45,
+      "checks": [
+        "no horizontal overflow",
+        "all local images loaded",
+        "five supplied drawings render in the sticky collage",
+        "computed heading font stack ends in sans-serif",
+        "header contact action is pill-shaped",
+        "shared navigation and mobile Escape/focus behavior",
+        "sticky artwork and all three story chapters",
+        "reduced-motion visibility",
+        "no-JavaScript content visibility",
+        "no failed/external requests or console/page errors"
+      ],
+      "screenshots": [
+        "artifacts/loop017-browser/home-story-01-desktop.png",
+        "artifacts/loop017-browser/home-story-02-desktop.png",
+        "artifacts/loop017-browser/home-story-03-desktop.png",
+        "artifacts/loop017-browser/home-gallery-desktop.png",
+        "artifacts/loop017-browser/home-story-01-mobile.png",
+        "artifacts/loop017-browser/home-gallery-mobile.png"
+      ]
+    },
+    "artifact": {
+      "id": 13377971069,
+      "name": "bulle-bleue-loop017-visual-review",
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41943584141/artifacts/13377971069",
+      "sha256": "66874453373635887f693e89adf47ba85d971de5fbac3e481eabb42ed70090f8",
+      "screenshot_count": 6,
+      "uploaded": true,
+      "manual_review": "PASS — all six images opened and visually inspected."
+    },
+    "limitations": [
+      "Firefox/WebKit/Safari, manual screen-reader, physical-device, Lighthouse, ZAP and hosted performance/security checks remain outstanding.",
+      "Association-owner visual/content acceptance remains outstanding.",
+      "gathering.jpeg remains unpublished pending participant/guardian release evidence.",
+      "No production deployment was performed or authorized."
+    ]
   }
 }

@@ -1,38 +1,38 @@
 {
-  "manifest_version": "1.9",
+  "manifest_version": "2.0",
   "run_id": "bullebleue-20261102-001",
-  "loop": 16,
-  "candidate": "bullebleue-loop-016-verified-apail-legal-identity-v1",
-  "candidate_status": "JOAFE-PUBLISHED DENOMINATION AND RNA/SIREN IDENTIFIERS ADDED; REGISTERED-OFFICE ADDRESS CONFLICT EXPLICITLY DISCLOSED; PYTHON/NODE/PLAYWRIGHT CI PASS; PUBLICATION MANAGER/HOST/OWNER CONFIRMATION PENDING; NOT RELEASE CERTIFIED",
+  "loop": 17,
+  "candidate": "bullebleue-loop-017-playful-bubble-art-direction-v1",
+  "candidate_status": "OWNER-REQUESTED PLAYFUL BUBBLE ART DIRECTION AND FIVE-DRAWING STICKY COLLAGE IMPLEMENTED; PYTHON/NODE/PLAYWRIGHT CI PASS; SIX SCREENSHOTS MANUALLY REVIEWED; GATHERING PHOTO HELD PENDING PARTICIPANT/GUARDIAN RELEASES; OWNER ACCEPTANCE PENDING; NOT DEPLOYED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "3990f99b3ee422783dacd6b94f6664b73ed81c4b",
+  "implementation_checkpoint_commit": "c57a2a87c55267dbb8409cfd522b8d5134ff608e",
   "remote_git_blob_objects": {
-    "index.html": "de828d2fc49f4931645a965650b42383be86c8d5",
-    "styles.css": "98433a44165db5837d44d2c725bf2a77833315f9",
+    "index.html": "e9df5120d51d6e04d23d5d05939882e922fee8a9",
+    "styles.css": "27a459d8d0c8385244781c85c781c2922aed1a80",
     "script.js": "cdd53cf6de635f3217ada8c14eb2ee4ae5a70d4d",
     "assets/favicon.svg": "8afd81a5cb62be5651bdae4d31e53c83c1c4b9b6",
     "menu_regression_test_js": "493debf5b26c01e0b166d555b4dab53845a52f28",
     "tests/test_menu.js": "d2d4a14519309811297651d79f28bc667646f5fb",
-    "tests/validate_site.py": "602a42ef94df4d51ff1936c575f3d70332a4bd69",
+    "tests/validate_site.py": "6c7c1e9829b56283093986f85f60719832926b0c",
     "assets/illustrations/hero-community.svg": "be16475b8fe6e28faab3b2441943a531f109b697",
     "assets/illustrations/games.svg": "a4de76c67db92ea8922508109aab9ed4fcffc77f",
     "assets/illustrations/garden.svg": "4e15f67d6cebaf017411b9e49255e15aaa9ae7fa",
     "assets/illustrations/discovery.svg": "3584a19294dd93f1a418004dddc358aec49a847f",
     "assets/illustrations/culture.svg": "778b27484a79db0d1b64abe785ae4b0696b4df2d",
     "assets/illustrations/solidarity.svg": "e80525d8acc48b3d429912d6229023db54a45e2e",
-    "evidence/tests/static-results.json": "f64ec61b9567437f81fd954a61a994fa7eeb016b",
-    "evidence/tests/runtime-results.json": "0b4d735f888fea334b760315d35dd0ce9d626e8d",
-    "evidence/requirements.json": "be9384a8b5e8709de0e8ad153dfdcbc169ec8132",
-    "evidence/product-contract.json": "bb2373e08c2874feea5a7d1add252dbcabafe898",
+    "evidence/tests/static-results.json": "cffc5ed9ca9f5753ff4697359cfbd74fafb703ce",
+    "evidence/tests/runtime-results.json": "a98f708c6c425dbd1cbd0cd36cdd89585809685f",
+    "evidence/requirements.json": "0f411d9359dff965f4813ebccc63c47d088920b0",
+    "evidence/product-contract.json": "fc251997f33fb33fbc5d0b1acd77e83a7a0c7502",
     "evidence/research/keyphrase-dossier.md": "097b39681be69b04ebdca9334aa283d003ad69f7",
-    "evidence/decisions.json": "b4081a2557f531bf01916d380b2e4fb11d86eb6d",
-    "evidence/content-provenance.json": "837709ea308a2ea442754336aedbe41e98d265a2",
-    "evidence/visual/asset-register.json": "88b7804fa6af0c01bbdbabd449b97a3e86cd054e",
-    "README.md": "64f7114b259f7ab10525b9194309bec4356f3bdf",
+    "evidence/decisions.json": "ef120af4ae6f21b5bda64137a25d685dc1c172c6",
+    "evidence/content-provenance.json": "48bdc1913fec8794bc3d668d753fc276d8b77950",
+    "evidence/visual/asset-register.json": "911b1a4e0e501b56766cbc908f8cc6b4e682e211",
+    "README.md": "5a859b8632056aa44807f60caabd08e54e2df71d",
     "evidence/change-requests/CR-002.md": "2750f8218da89eb4dfe79b4f8ae7f8fcc7dc87a5",
     "evidence/change-requests/CR-003.md": "be518026d30c328dc3da41f7f86704bb1ac80041",
-    "evidence/assumptions.json": "8a0fad9ffea6bfe245bd3dc4f1eca8edf2c7b684",
+    "evidence/assumptions.json": "8eadf403b1cb506bcf576744fb47ba772ed36cc2",
     "actualites.html": "2248d19df8002597085528af5e140ae57a6784ad",
     "contact.html": "c2aaae49cd4a3802281a7a191fcb5fa0ad8e608b",
     "evidence/change-requests/CR-005.md": "99bffbed3c781672ec023d52df2e806b3e426152",
@@ -56,13 +56,21 @@
     "adherer.html": "25bab14f258987327204dda0d03cbf422e1eab95",
     "mentions-legales.html": "69269bbecd193f090650ddcd8b2bd559ea93e1ef",
     "evidence/change-requests/CR-006.md": "67417f3ef178ce7dc1780e7227fbf3d0ea5449a8",
-    ".aeos/state.json": "44b4d1807d137a594e19e7985a1b4e52f7a1a035",
-    "AEOS_STATUS.md": "8cd3705db9478ef61c1f5ae59329660ae3ab5546",
-    "project.config.json": "1193ef509628c35c1f7151fbf46271dd513ffb7f",
-    ".github/workflows/quality.yml": "5ac49f21b50b420440f444c29ae2a83c63b7940f",
-    "tests/test_browser.py": "57acf40b567b7b4787e2ea131fbf2b46c71c541a",
+    ".aeos/state.json": "a38ebfcaa79924ab823c05ef483734834150a64f",
+    "AEOS_STATUS.md": "a0c41ac130d59ad94b51cdcec37128e6236bf521",
+    "project.config.json": "6d0b8736a6857c34ad4ddb1ad8c7f32100d69587",
+    ".github/workflows/quality.yml": "a2c87b7ddc2c8b30386296d679b51c523285e322",
+    "tests/test_browser.py": "725faa4a3705734a91f2122fb7c992be44b6cb70",
     "evidence/change-requests/CR-007.md": "076bd89bef7e14cdfdba67823a60749dba82c10a",
-    "evidence/change-requests/CR-009.md": "4f4e9574686db28269404569bd6968a592256d28"
+    "evidence/change-requests/CR-009.md": "4f4e9574686db28269404569bd6968a592256d28",
+    "TODO.md": "dc5e125cd863c6694c773da55a5eedd90cadd699",
+    "evidence/change-requests/CR-010.md": "0960d430199bf291d6fce9226f3a6489e579f20a",
+    "assets/dessin1.jpeg": "781b687669e1d3ca704ed267ca00879ae67729ef",
+    "assets/dessin2.jpeg": "e552aebaa0a3c147b1ad91c25096e4e6617da4ae",
+    "assets/dessin3.jpeg": "cb5cca706622eeef0a9a06e5d238cf4eac1beffe",
+    "assets/dessin4.jpeg": "0c1d29d121c949118e5790ef84e372d9b172a165",
+    "assets/dessin5.jpeg": "86da806c76d6d389b674bf24b4f9cec54a1ead15",
+    "assets/gathering.jpeg": "b6cd6365e147d11ecfe430b019832929b619aadc"
   },
   "local_screenshot_evidence": {
     "loop_006": {
@@ -132,7 +140,11 @@
     "Cross-browser, assistive technology, physical-device, Lighthouse, ZAP and hosted production checks remain outstanding.",
     "Loop 016 legal identity research verified a JOAFE-published denomination and registry-listed RNA/SIREN identifiers. The current registered-office address remains unresolved because public records conflict; the publication manager and hosting provider remain unconfirmed.",
     "Cross-browser, assistive technology, physical-device, Lighthouse, ZAP and hosted production checks remain outstanding.",
-    "Recognizable participant/group and children photographs remain unpublished pending image-specific participant/guardian releases."
+    "Recognizable participant/group and children photographs remain unpublished pending image-specific participant/guardian releases.",
+    "Loop 017 screenshot review covers six homepage story/gallery screenshots; it does not constitute full manual visual review of every non-homepage page.",
+    "The association owner's final acceptance remains pending.",
+    "gathering.jpeg remains unpublished pending image-specific participant/guardian releases.",
+    "Firefox/WebKit/Safari, manual screen-reader, physical-device, Lighthouse, ZAP and hosted checks remain outstanding."
   ],
   "loop_002": {
     "change": "Only process Escape when the mobile navigation is expanded; preserve focus for unrelated or closed-menu Escape events.",
@@ -586,5 +598,59 @@
     },
     "ui_visual_change": "NONE — legal-notice content and source links changed only; no manual visual re-review required for homepage/story/gallery",
     "deployment": "NOT PERFORMED"
+  },
+  "loop_017": {
+    "objective": "Implement the association owner's playful, childlike, arts-led direction across the site and replace the homepage placeholder with all five supplied drawings; track gathering.jpeg for the closing contact area without publishing it absent image-specific releases.",
+    "commits": {
+      "initial_implementation": "2c2701e9c2f7a4917c9961774afe9f585a0abbc8",
+      "typography_and_pill_refinement": "954618fd3b67222e24f111d347eceab5b9a1f07b",
+      "final_heading_scale": "c57a2a87c55267dbb8409cfd522b8d5134ff608e"
+    },
+    "workflow": {
+      "run_id": 41943584141,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41943584141",
+      "conclusion": "success"
+    },
+    "validation": {
+      "python": "PASS",
+      "node": "PASS",
+      "playwright": "PASS",
+      "pages": 9,
+      "viewport_widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "page_viewport_runs": 45,
+      "checks": [
+        "responsive overflow",
+        "local image loads",
+        "five drawing assets",
+        "computed sans-serif heading fallback",
+        "pill-shaped header contact action",
+        "navigation and keyboard menu",
+        "all three sticky story chapters",
+        "reduced motion",
+        "no JavaScript visibility",
+        "no failed/external requests or browser errors"
+      ]
+    },
+    "screenshots": {
+      "artifact_id": 13377971069,
+      "name": "bulle-bleue-loop017-visual-review",
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41943584141/artifacts/13377971069",
+      "sha256": "66874453373635887f693e89adf47ba85d971de5fbac3e481eabb42ed70090f8",
+      "count": 6,
+      "manual_review": "PASS — all six PNG screenshots manually opened and inspected."
+    },
+    "photo_gate": {
+      "asset": "assets/gathering.jpeg",
+      "status": "BLOCKED — NOT PUBLISHED",
+      "reason": "Recognizable group photograph; image-specific participant/guardian releases are not documented. The photo stays out of public HTML until the association supplies release evidence."
+    },
+    "status": "WAITING_FOR_CONTINUE",
+    "deployment": "NOT PERFORMED / NOT AUTHORIZED"
   }
 }

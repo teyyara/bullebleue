@@ -593,5 +593,39 @@
       }
     ],
     "limitation": "This resolves only the publicly verifiable identity fields. The current registered office, publication manager, hosting provider and final legal sign-off remain pending APAiL confirmation."
+  },
+  "loop_017": {
+    "test_run": "loop-017-owner-playful-art-direction-static-validation",
+    "observed_at": "2026-11-05",
+    "status": "PASS — PYTHON STRUCTURAL VALIDATOR",
+    "commit": "c57a2a87c55267dbb8409cfd522b8d5134ff608e",
+    "workflow": {
+      "run_id": 41943584141,
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/41943584141",
+      "conclusion": "success"
+    },
+    "checks": [
+      {
+        "name": "Owner visual direction",
+        "result": "PASS",
+        "detail": "Site-wide CSS applies organic bubble panels and pill actions, informal local font stacks and playful supporting accents."
+      },
+      {
+        "name": "Five-drawing homepage collage",
+        "result": "PASS",
+        "detail": "The five supplied JPEG drawings replace the homepage placeholder SVG in the sticky story backdrop."
+      },
+      {
+        "name": "Closing photograph consent gate",
+        "result": "PASS — HELD SAFELY",
+        "detail": "gathering.jpeg remains outside public HTML until image-specific participant/guardian release evidence is documented."
+      },
+      {
+        "name": "Site structure",
+        "result": "PASS",
+        "detail": "Nine public pages, shared navigation, dated article routes, responsive gallery, reduced-motion fallback and local assets pass structural checks."
+      }
+    ],
+    "limitation": "Automated validation does not replace final owner approval or image-release confirmation."
   }
 }
