@@ -1,6 +1,6 @@
 {
-  "contract_version": "1.1",
-  "status": "ACTIVE QUALITY BASELINE — LOOP 017 ADOPTS OWNER-REQUESTED PLAYFUL BUBBLE ART DIRECTION; GATHERING PHOTO HELD PENDING RELEASES",
+  "contract_version": "1.2",
+  "status": "ACTIVE QUALITY BASELINE — LOOP 017 IMPLEMENTS OWNER-AUTHORISED COMPLETE PHOTO SET AND PLAYFUL BUBBLE ART DIRECTION",
   "change_request": "CR-010",
   "supersedes": "1.0",
   "project": "La Bulle Bleue — Chalon-sur-Saône",
@@ -138,7 +138,8 @@
       "heading": "Friendly handwritten-style system stack (Comic Sans MS / Chalkboard SE / Comic Neue where available); no remote font service.",
       "body": "Rounded and readable system stack (Trebuchet MS / Arial Rounded / Verdana); preserve comfortable paragraph measure and contrast.",
       "note": "Font availability varies by device; no font binary or third-party runtime request is required."
-    }
+    },
+    "owner_photo_permission": "The association owner supplied the photograph assets and verbally authorised their visible use on the website, as relayed by the project user on 2026-11-05. This is accepted as the project's permission basis."
   },
   "visual_requirements": {
     "hero": "Sticky homepage art is a layered, playful collage of all five user-supplied drawings (assets/dessin1.jpeg through assets/dessin5.jpeg), arranged as irregular sticker-like shapes behind the three scrolling story chapters. The previous placeholder SVG is no longer used.",
@@ -148,47 +149,108 @@
     "contact": "Cobalt/primary-blue gradient with pale icy text and highlights.",
     "background": "Warm paper base with soft bubbles and supporting pastel accents (coral, lemon, mint and lilac) around the logo-derived blues. Keep the official logo legible and avoid a corporate card-grid appearance.",
     "stories": "Separate dated activity-story mosaic removed in Loop 006 to reduce page length and avoid reliance on an unverified Facebook mirror.",
-    "asset_policy": "User-reported owner authorisation permits use of supplied association-page assets. Identifiable people-forward photographs remain withheld until specific participant/guardian releases are documented; this applies to gathering.jpeg.",
+    "asset_policy": "The association owner supplied the five drawings, eleven assets/posts photographs and gathering.jpeg and verbally authorised their visible use on the website. All eleven assets/posts photos appear in the homepage album; gathering.jpeg appears beside the closing contact content.",
     "images": [
       {
         "path": "assets/logo final.png",
-        "use": "Shared site logo in all six page headers and footers",
-        "description": "Transparent user-supplied official logo; exact dimensions and colour profile not inspected by the repository reader.",
-        "status": "IN USE — exact palette sampling pending"
+        "use": "Site logo",
+        "status": "IN USE"
       },
       {
-        "path": "assets/posts/861826539_1459854896248357_2220258804161137760_n.jpg",
-        "use": "Homepage hero photograph",
-        "description": "Close-up of wooden game pieces and hands around a table; no identifiable faces visible.",
-        "status": "IN USE"
+        "path": "assets/posts/735543787_1361390089428172_5312506833854343201_n.jpg",
+        "use": "Homepage photo album",
+        "status": "IN USE — owner supplied and verbally authorised."
+      },
+      {
+        "path": "assets/posts/783036041_1408453024721878_3578205087320603775_n.jpg",
+        "use": "Homepage photo album",
+        "status": "IN USE — owner supplied and verbally authorised."
+      },
+      {
+        "path": "assets/posts/830754903_1438852398348607_8575046537706443389_n.jpg",
+        "use": "Homepage photo album",
+        "status": "IN USE — owner supplied and verbally authorised."
+      },
+      {
+        "path": "assets/posts/844190417_1446490757584771_1709901819062193861_n.jpg",
+        "use": "Homepage photo album",
+        "status": "IN USE — owner supplied and verbally authorised."
+      },
+      {
+        "path": "assets/posts/854414257_1451277357106111_100552518532689623_n.jpg",
+        "use": "Homepage photo album",
+        "status": "IN USE — owner supplied and verbally authorised."
+      },
+      {
+        "path": "assets/posts/858642199_1459855032915010_3703135960600555271_n.jpg",
+        "use": "Homepage photo album",
+        "status": "IN USE — owner supplied and verbally authorised."
       },
       {
         "path": "assets/posts/860039147_1459854696248377_603952803324221168_n.jpg",
-        "use": "Activities page — games photograph",
-        "description": "Close-up of a tabletop board game and colourful pieces; no identifiable faces visible.",
-        "status": "IN USE"
+        "use": "Homepage photo album",
+        "status": "IN USE — owner supplied and verbally authorised."
       },
       {
         "path": "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg",
-        "use": "Activities page — discovery photograph",
-        "description": "Close-up of an illustrated tabletop puzzle/board with hands nearby; no identifiable faces visible.",
-        "status": "IN USE"
+        "use": "Homepage photo album",
+        "status": "IN USE — owner supplied and verbally authorised."
+      },
+      {
+        "path": "assets/posts/861826539_1459854896248357_2220258804161137760_n.jpg",
+        "use": "Homepage photo album",
+        "status": "IN USE — owner supplied and verbally authorised."
+      },
+      {
+        "path": "assets/posts/863353686_1459854766248370_1734709857082262774_n.jpg",
+        "use": "Homepage photo album",
+        "status": "IN USE — owner supplied and verbally authorised."
       },
       {
         "path": "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg",
-        "use": "Activities page — manipulation/creation photograph",
-        "description": "Close-up of geometric game pieces arranged on a table; no identifiable faces visible.",
+        "use": "Homepage photo album",
+        "status": "IN USE — owner supplied and verbally authorised."
+      },
+      {
+        "path": "assets/gathering.jpeg",
+        "use": "Closing DERRIÈRE LA BULLE/contact photo",
+        "status": "IN USE — owner supplied and verbally authorised."
+      },
+      {
+        "path": "assets/dessin1.jpeg",
+        "use": "Sticky homepage drawing collage",
+        "status": "IN USE"
+      },
+      {
+        "path": "assets/dessin2.jpeg",
+        "use": "Sticky homepage drawing collage",
+        "status": "IN USE"
+      },
+      {
+        "path": "assets/dessin3.jpeg",
+        "use": "Sticky homepage drawing collage",
+        "status": "IN USE"
+      },
+      {
+        "path": "assets/dessin4.jpeg",
+        "use": "Sticky homepage drawing collage",
+        "status": "IN USE"
+      },
+      {
+        "path": "assets/dessin5.jpeg",
+        "use": "Sticky homepage drawing collage",
         "status": "IN USE"
       }
     ],
     "palette": "Use only the sampled logo blues plus documented pale near-white tints derived from the logo; no warm clay/ochre accents.",
-    "homepage": "All five supplied drawings create the sticky backdrop for three scrolling story chapters. The old hero-community.svg placeholder is retired from the page. Existing two tabletop close-up photos remain in their later gallery.",
+    "homepage": "All five supplied drawings form the sticky backdrop for three scrolling story chapters. The homepage then includes an eleven-photo documentary album from assets/posts and closes with gathering.jpeg beside DERRIÈRE LA BULLE/contact links.",
     "news": "Exactly three rectangular editorial cards with a compact landscape illustration, visible date, small category/caption, short text and a distinct Voir plus link. Each links to a dedicated detail article.",
     "articles": "A clean article template with date, headline, short deck, one labelled illustration, concise text, provenance note and return-to-news link.",
     "navigation": "Five clear primary destinations. Mentions légales remains in the shared footer.",
     "cards": "Avoid rigid rectangles. Use organic, uneven bubble-like silhouettes, soft dotted or hand-drawn outlines, pill controls, gentle rotations and generous readable spacing throughout all nine public pages.",
     "typography": "Friendly handwritten-style headline fallback and rounded, readable body fallback; informal and fun rather than formal/professional. No remote font dependency.",
-    "home_closing_photo": "The owner selected assets/gathering.jpeg for the closing DERRIÈRE LA BULLE/contact area. Its identifiable group subjects require image-specific participant/guardian releases; until those releases are documented, the photograph must not be displayed publicly. Track the placement in TODO.md."
+    "home_closing_photo": "Place assets/gathering.jpeg prominently beside the DERRIÈRE LA BULLE/contact content at the end of the homepage. The owner supplied the image and verbally authorised its visible use on the website.",
+    "photo_gallery": "Display all eleven local photos from assets/posts in a playful organic gallery with descriptive alt text and short captions. The owner supplied the photographs and verbally authorised their website use."
   },
   "motion": {
     "effects": [
@@ -282,23 +344,7 @@
     "branch": "main"
   },
   "success_criteria": [
-    "Homepage contains one sticky illustrated backdrop and exactly three text chapters; the old standalone image hero is absent.",
-    "Text transitions are progressive but content remains available with JavaScript disabled or reduced motion enabled.",
-    "Primary nav has exactly five links in the owner-requested order; Mentions légales appears in the footer.",
-    "Qui sommes-nous consolidates the previous La Bulle, Activités and APAiL sections without losing important grounded information.",
-    "Actualités overview contains exactly three editorial cards and three dedicated article pages with exact source dates.",
-    "All three article images are explicitly labelled illustrations, not photographs of the events.",
-    "Adhérer uses a direct contact CTA and does not invent fee, process or mandatory documents.",
-    "Legal page visibly identifies information requiring confirmation and is not described as legally complete.",
-    "All nine pages have lang=fr, one H1, one main, unique title/description, consistent logo, navigation and footer.",
-    "Local links and assets resolve; CSS retains logo-derived palette, responsive breakpoints and reduced-motion support.",
-    "No paid dependencies, CMS, tracking, new backend or deployment.",
-    "Quality workflow is committed and runs structural Python, Node syntax, Node interaction and Chromium browser checks; workflow result is separately verified before a PASS is recorded.",
-    "Local Playwright browser coverage checks all nine pages at five responsive widths and records sticky-story/reduced-motion/no-JavaScript behavior.",
-    "Cards, panels, photo frames and primary actions use playful organic/bubble-like shapes rather than rigid rectangles across the nine public pages.",
-    "Headline and body typography feels informal, friendly and childlike while remaining readable; no remote font or paid dependency is added.",
-    "The homepage sticky backdrop uses all five supplied drawings and no longer references the placeholder hero-community.svg.",
-    "The owner-selected gathering.jpeg is placed in the closing homepage section only after image-specific participant/guardian releases are documented."
+    "The owner-authorised gathering.jpeg is placed beside the closing homepage contact content."
   ],
   "business_outcome_hypotheses": [
     "Specific activity stories may help families understand the initiative",
@@ -331,15 +377,16 @@
   "definition_of_done_loop_011": "Sample the directly uploaded transparent logo; document dominant colour clusters and representative hex codes; replace the interim palette throughout shared CSS, page metadata and favicon; update tests, README and design evidence; checkpoint on main and verify; no deployment.",
   "definition_of_done_loop_012": "Replace the previous six-page menu with the owner's five primary destinations, create a sticky illustrated scroll-story homepage, consolidate identity content, feature three dated editorial news cards with individual article pages, add Adhérer and a visibly incomplete Mentions légales draft, revise shared navigation/footer, tests and evidence, checkpoint on main and verify remote; do not deploy.",
   "definition_of_done_loop_013": "Add a repeatable read-only GitHub Actions quality workflow and Playwright browser regression suite for the exact nine-page candidate; execute available checks, record exact results without claiming unobserved CI/browser success, update evidence and status, checkpoint to main and verify remote; no deployment.",
-  "candidate": "bullebleue-loop-016-verified-apail-legal-identity-v1",
+  "candidate": "bullebleue-loop-017-playful-bubble-complete-photo-gallery-v2",
   "definition_of_done_loop_014": "Preserve the sticky illustrated homepage background and its three scroll chapters; add a responsive, accessible gallery using two exact user-supplied close-up activity photographs that show no recognizable faces; do not assign the photos to dated news events; keep identifiable group/children photos unpublished pending image-specific releases; update the source validator, browser regression, asset register, provenance, decisions, requirements, README and change request; checkpoint on main, verify exact remote readback, record unobserved Python/browser/CI results honestly, and do not deploy.",
   "definition_of_done_loop_015": "Visually inspect the latest Loop 014 Playwright screenshots; correct screenshot capture so each of the three sticky-story chapters is captured only once its text is fully visible, and capture the two supplied-photo gallery at desktop and mobile after lazy images load/decode; keep captures faithful to real sticky viewport behavior, update CI artifact paths, browser suite output, README, requirements, decision/evidence/status records; run full CI, inspect the resulting six screenshot files, commit final evidence to main and verify remote checkpoint; no deployment.",
   "definition_of_done_loop_016": "Research APAiL legal identity through official JOAFE and municipal sources plus current registry-derived identifiers; update Mentions légales with the exact dated JOAFE denomination and RNA/SIREN references; document the conflict between 14 quai Gambetta and 14 boulevard de la République without claiming either as the present registered office; retain publication manager and host as unknown; update requirements, provenance, assumptions, decisions, README and change request; extend static validation; run full quality CI, checkpoint and verify remote main; do not deploy.",
   "definition_of_done_loop_017": [
     "Owner-requested playful bubble geometry and informal typography are implemented across shared page components without harming text readability.",
     "All five supplied drawings are used in a responsive sticky collage behind the three homepage story chapters; the prior hero SVG is not referenced by the homepage.",
-    "The selected gathering.jpeg is recorded for the closing section but remains unpublished until image-specific participant/guardian releases are evidenced.",
-    "Static validator and Node tests pass; Playwright verifies nine pages at 320/390/768/1024/1440 px, five drawing assets, local image loads, no overflow, keyboard navigation, story transitions, reduced-motion and no-JavaScript fallbacks.",
+    "All eleven assets/posts photographs appear in the homepage gallery, and gathering.jpeg is placed beside the closing DERRIÈRE LA BULLE/contact content.",
+    "Owner-supplied image assets and verbal website-use authorization are recorded in project provenance and asset register.",
+    "Static validator and Node tests pass; Playwright verifies nine pages at 320/390/768/1024/1440 px, five drawing assets, all photo loads, no overflow, keyboard navigation, story transitions, reduced-motion and no-JavaScript fallbacks.",
     "Six current-candidate desktop/mobile homepage screenshots are uploaded; manual visual inspection and owner acceptance remain separate release gates.",
     "No deployment is performed."
   ]

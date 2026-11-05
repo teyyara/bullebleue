@@ -107,24 +107,22 @@ def main():
         assert not (ROOT / obsolete).exists(), f"obsolete page still published: {obsolete}"
 
     home = parsed["index.html"][0]
-    assert len(home) < 9000, "homepage must remain concise"
+    assert len(home) < 14000, "homepage remains concise relative to its curated local photo gallery"
     assert home.count('class="story-step"') == 3, "homepage has exactly three scroll chapters"
     drawings = ("dessin1.jpeg", "dessin2.jpeg", "dessin3.jpeg", "dessin4.jpeg", "dessin5.jpeg")
     assert home.count('class="drawing-sticker') == 5, "homepage collage uses exactly five supplied drawings"
     for drawing in drawings:
         assert f'src="/assets/{drawing}"' in home, f"missing supplied homepage drawing: {drawing}"
     assert "hero-community.svg" not in home, "placeholder SVG hero is retired"
-    assert "assets/gathering.jpeg" not in home, "recognizable group photo must remain unpublished until image-specific releases are documented"
+    assert home.count('src="/assets/gathering.jpeg"') == 1, "owner-selected gathering photo is used once in the closing area"
+    assert home.count('class="home-after-photo"') == 1, "closing contact area includes the gathering photograph composition"
     assert (ROOT / "TODO.md").is_file(), "owner design feedback must remain tracked in TODO.md"
-    assert "gathering.jpeg" in (ROOT / "TODO.md").read_text(encoding="utf-8"), "owner-selected closing photo must remain tracked pending releases"
-    gallery_photos = (
-        "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg",
-        "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg",
-    )
-    assert home.count('class="home-photo-card"') == 2, "homepage has exactly two selected documentary photos"
+    assert "verbally authorized" in (ROOT / "TODO.md").read_text(encoding="utf-8"), "owner's verbal image-use authorization is recorded"
+    gallery_photos = ["735543787_1361390089428172_5312506833854343201_n.jpg","783036041_1408453024721878_3578205087320603775_n.jpg","830754903_1438852398348607_8575046537706443389_n.jpg","844190417_1446490757584771_1709901819062193861_n.jpg","854414257_1451277357106111_100552518532689623_n.jpg","858642199_1459855032915010_3703135960600555271_n.jpg","860039147_1459854696248377_603952803324221168_n.jpg","860071516_1459854822915031_8736563633377469815_n.jpg","861826539_1459854896248357_2220258804161137760_n.jpg","863353686_1459854766248370_1734709857082262774_n.jpg","863442942_1459854946248352_2630610521884942198_n.jpg"]
+    assert home.count('class="home-photo-card"') == 11, "homepage gallery contains all eleven supplied photos"
     for photo in gallery_photos:
-        assert f'src="/{photo}"' in home, f"missing supplied homepage photo: {photo}"
-    assert "photographies, issues des publications de la bulle bleue" in home.lower(), "gallery provenance is visible"
+        assert f'src="/assets/posts/{photo}"' in home, f"missing owner-authorised homepage photo: {photo}"
+    assert "album de la vie de l’association" in home.lower(), "gallery introduction is visible"
     assert "home-hero-photo" not in home
     assert all(h in home for h in ("Qui sommes-nous ?", "actualites.html", "adherer.html", "contact.html"))
 
@@ -175,7 +173,7 @@ def main():
 
     favicon = (ROOT / "assets/favicon.svg").read_text(encoding="utf-8")
     assert all(c in favicon for c in ("#06195E", "#1642A5", "#1C60CF", "#2084DE", "#F3F7FE"))
-    print("PASS: 9 pages, shared navigation, 3 dated articles, playful bubble design system, five-drawing sticky collage, responsive photo gallery, reduced-motion fallback, local assets and logo palette.")
+    print("PASS: 9 pages, shared navigation, playful bubble design system, five-drawing sticky collage, eleven-photo activity gallery, owner-authorised closing photograph, reduced-motion fallback, local assets and logo palette.")
 
 if __name__ == "__main__":
     main()

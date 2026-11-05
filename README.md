@@ -10,7 +10,7 @@ Static HTML, CSS and vanilla JavaScript. No package manager, build step, remote 
 
 ## Site map
 
-- `index.html` — a sticky, colourful collage of five drawings supplied by the association, three successive scroll chapters, then two close-up activity photographs. The owner-selected gathering.jpeg is tracked for the closing section but remains unpublished pending image-specific participant/guardian releases.
+- `index.html` — a sticky, colourful collage of five drawings supplied by the association, three successive scroll chapters, then an eleven-photo activity album and the owner-supplied gathering.jpeg beside the final DERRIÈRE LA BULLE/contact content.
 - `qui-sommes-nous.html` — La Bulle Bleue, its audience and activities, Les Bleuettes, APAiL history and reported solidarity work.
 - `actualites.html` — three featured dated stories in editorial cards.
 - `actualite-2026-10-26.html` — 26 October 2026, games at La Bulle Bleue.
@@ -24,7 +24,7 @@ The five primary navigation links are Accueil, Qui sommes-nous ?, Actualités, A
 
 ## Homepage motion and accessibility
 
-Five local drawings supplied in the repository now form a playful, sticker-like collage behind the three sticky homepage text chapters. The site uses informal system-font fallbacks, hand-drawn accents, organic bubble silhouettes, gentle rotations and a brighter supporting palette while preserving the sampled blue logo as its anchor. No remote font or runtime dependency is introduced. The two close-up tabletop photographs remain in the responsive gallery. The owner-selected assets/gathering.jpeg is a recognizable group photograph; it is not displayed until image-specific participant/guardian releases are documented. JavaScript remains progressive enhancement; no-JavaScript and reduced-motion content stays visible.
+Five local drawings supplied in the repository now form a playful, sticker-like collage behind the three sticky homepage text chapters. The site uses informal system-font fallbacks, hand-drawn accents, organic bubble silhouettes, gentle rotations and a brighter supporting palette while preserving the sampled blue logo as its anchor. No remote font or runtime dependency is introduced. All eleven photographs in assets/posts are displayed in the responsive homepage album, and assets/gathering.jpeg appears beside the closing contact content. The association owner supplied the photo set and verbally authorised its visible use on the website, as relayed by the project user on 2026-11-05. JavaScript remains progressive enhancement; no-JavaScript and reduced-motion content stays visible.
 
 ## News content and imagery
 
@@ -59,7 +59,7 @@ The primary content source is `Bulle_Bleue_APAiL_contenu_facebook.md`, the user-
 
 Membership fees, current membership forms and process are not evidenced; the Adhérer page asks visitors to contact APAiL for current information. The legal page now records the association denomination published in the JOAFE modification notice of 27 February 2019 and the public RNA/SIREN identifiers. The registered-office address remains deliberately unconfirmed: the JOAFE notice and municipal directory list 14 quai Gambetta, while a 2026 SIRENE-derived record lists 14 boulevard de la République. The publication responsible person and actual hosting provider remain unknown. The Mentions légales page is still incomplete and must be validated by APAiL before publication.
 
-The homepage uses two close-up activity photographs from the supplied Facebook-page assets; no recognizable faces are visible in the selected frames. Group, children’s and other identifiable participant photographs remain unpublished until image-specific releases are documented. The owner-reported asset permission is recorded in the asset register.
+The homepage publishes the eleven supplied assets/posts photos in the responsive album and uses gathering.jpeg in the closing section. The association owner supplied all images and verbally authorised their visible use on the website, as relayed by the project user; this is recorded as the project's permission basis.
 
 ## Validation
 
@@ -79,4 +79,4 @@ A committed workflow or test is not itself a passing result: check the actual wo
 
 ## Current owner feedback and TODO
 
-The playful bubble-style art direction and five-drawing homepage collage are tracked in [TODO.md](TODO.md). The owner-selected gathering.jpeg is reserved for the homepage closing area but remains unpublished until image-specific participant/guardian releases are documented.
+The playful bubble-style art direction and five-drawing homepage collage are tracked in [TODO.md](TODO.md). All eleven assets/posts photographs and gathering.jpeg are displayed under the association owner's verbal website-use authorization.

@@ -163,11 +163,11 @@
     },
     {
       "id": "ASSUMP-021",
-      "assumption": "The owner-selected gathering.jpeg may be displayed on the public homepage only if the association has image-specific releases for recognizable participants and guardians of identifiable minors.",
-      "source": "Visual inspection of assets/gathering.jpeg and existing asset-consent policy; the image is selected by the association owner but no releases are recorded.",
-      "confidence": "HIGH that people are recognizable; UNKNOWN for releases",
-      "impact_if_wrong": "HIGH",
-      "resolution": "Do not publish gathering.jpeg; retain it as a blocked closing-section TODO until participant/guardian release evidence is documented."
+      "assumption": "The association owner supplied the image set and verbally authorized its visible use on the website.",
+      "source": "Owner feedback relayed by the project user on 2026-11-05: the association owner supplied the photographs, the assets are also public on the association Facebook page, and the owner explicitly gave verbal permission to use them visibly on this website.",
+      "confidence": "HIGH — direct owner authorization is reported by the project user.",
+      "impact_if_wrong": "MEDIUM",
+      "resolution": "RESOLVED IN LOOP 017: accept the owner's verbal authorization as the project permission basis; include all eleven assets/posts photographs and gathering.jpeg. No further permission is requested by this workflow."
     }
   ]
 }

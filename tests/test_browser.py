@@ -158,10 +158,11 @@ def main() -> None:
                         contact_radius = page.locator("#navigation .nav-contact").evaluate("(el) => getComputedStyle(el).borderRadius")
                         assert contact_radius == "999px", f"header contact action must be fully pill-shaped: {contact_radius}"
                         photo_cards = page.locator(".home-photo-card")
-                        assert photo_cards.count() == 2, "homepage photo gallery must show two cards"
-                        assert page.locator(".home-photo-card img[alt]").count() == 2, (
-                            "homepage gallery photos require descriptive alternative text"
+                        assert photo_cards.count() == 11, "homepage photo gallery must show all eleven supplied assets/posts photos"
+                        assert page.locator(".home-photo-card img[alt]").count() == 11, (
+                            "all eleven homepage photos require descriptive alternative text"
                         )
+                        assert page.locator(".home-after-photo img").count() == 1, "gathering.jpeg must appear in the closing composition"
 
                     nav_links = page.locator("#navigation a").evaluate_all(
                         "(links) => links.map((link) => link.getAttribute('href'))"
@@ -313,6 +314,7 @@ def main() -> None:
                     "shared navigation order",
                     "mobile menu Escape/focus behavior",
                     "five supplied drawings render in the sticky art collage",
+                    "eleven supplied activity photographs and gathering.jpeg load across responsive checks",
                     "sticky art and chapter transitions",
                     "reduced-motion content visibility",
                     "no-JavaScript content visibility",

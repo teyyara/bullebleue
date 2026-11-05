@@ -356,17 +356,17 @@
     },
     {
       "id": "DEC-028",
-      "context": "The owner selected gathering.jpeg for the final homepage contact area; it contains recognizable group subjects.",
+      "context": "The owner supplied all photo assets and the project user clarified that the association owner verbally authorised their visible use on the website.",
       "options": [
-        "Publish immediately because the owner selected it",
-        "Omit it permanently",
-        "Track the placement and hold publication until image-specific participant/guardian releases are documented"
+        "Exclude people-forward photos until additional written releases are collected",
+        "Use only close-up activity photos",
+        "Treat the owner's verbal permission as the project authorization and include the entire supplied image set"
       ],
-      "chosen": "Keep the selected photograph out of public HTML until the association documents appropriate participant and guardian releases.",
-      "reason": "The site's existing privacy rule explicitly protects identifiable participants and minors; owner selection alone does not evidence consent from each pictured person.",
-      "tradeoffs": "The requested closing-photo placement is not yet complete and remains a visible TODO/blocker.",
-      "risk": "R2",
-      "evidence": "Visual inspection of assets/gathering.jpeg; asset register; owner feedback dated 2026-11-05."
+      "chosen": "Accept the association owner's verbal website-use authorization, as relayed by the user, and include all eleven assets/posts photographs plus gathering.jpeg.",
+      "reason": "The owner supplied the photos and directly authorized their use. The project now treats this verbal authorization as sufficient and does not impose an additional permission gate.",
+      "tradeoffs": "The owner remains responsible for the association's supplied content and its authorization; the website describes photographs without naming individuals.",
+      "risk": "R1",
+      "evidence": "User clarification on 2026-11-05: owner supplied all images and verbally authorized visible website use; all relevant paths are committed in the repository."
     }
   ]
 }

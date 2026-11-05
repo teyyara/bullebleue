@@ -1,5 +1,5 @@
 {
-  "content_provenance_version": "0.9",
+  "content_provenance_version": "1.0",
   "items": [
     {
       "content": "La Bulle Bleue is an APAiL initiative in Chalon-sur-Saône.",
@@ -168,14 +168,19 @@
       "confidence": "HIGH for supplied asset provenance and visible artwork."
     },
     {
-      "content": "Owner-selected closing-section photograph assets/gathering.jpeg.",
-      "classification": "User-supplied group photograph selected by the association owner for the DERRIÈRE LA BULLE/contact close. Visible people are recognizable; no image-specific participant/guardian releases are documented. It is intentionally not displayed in public HTML.",
-      "confidence": "HIGH for visible subject matter and owner selection; UNKNOWN for participant/guardian releases."
+      "content": "Closing-section photograph assets/gathering.jpeg.",
+      "classification": "Image supplied by the association owner and selected for the closing DERRIÈRE LA BULLE/contact section; the owner verbally authorised visible use on the website, as relayed by the project user.",
+      "confidence": "HIGH for asset provenance and user-reported owner authorization."
     },
     {
       "content": "Loop 017 playful design system.",
       "classification": "Owner-requested design direction implemented by CSS: organic bubble geometry, pill actions, informal local system-font stack and supplementary pastel accents around the sampled logo-blue anchor. These accents are design choices, not an officially published palette.",
       "confidence": "HIGH for implementation provenance."
+    },
+    {
+      "content": "All eleven homepage activity/community photographs from assets/posts/ are displayed in the photo album; assets/gathering.jpeg is displayed beside the closing DERRIÈRE LA BULLE/contact content.",
+      "classification": "Documentary photographs supplied by the association owner. The project user confirms the owner verbally authorised their visible use on the website on 2026-11-05. Captions describe activities and scenes without naming individuals.",
+      "confidence": "HIGH for file provenance, visible content and user-reported owner authorization."
     }
   ]
 }

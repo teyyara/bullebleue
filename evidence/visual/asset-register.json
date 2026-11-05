@@ -1,6 +1,6 @@
 {
-  "version": "1.6",
-  "policy": "Loop 017 follows the owner's playful art direction: five user-supplied drawings form a sticky homepage collage and the site-wide geometry becomes bubble-like. The owner selected gathering.jpeg for the closing section, but the group photograph visibly contains recognizable people; it remains unpublished pending image-specific participant/guardian releases. Existing close-up activity images without recognizable faces remain in the homepage gallery.",
+  "version": "1.7",
+  "policy": "Loop 017 uses the complete photo set supplied by the association owner. The owner supplied the images and verbally authorised their visible use on the website, as relayed by the project user on 2026-11-05. All eleven assets/posts images appear in the homepage gallery; assets/gathering.jpeg appears beside the closing DERRIÈRE LA BULLE/contact content. No additional permission gate is imposed by this project workflow.",
   "assets": [
     {
       "path": "assets/illustrations/games.svg",
@@ -59,77 +59,77 @@
       "use": "Creative workshop / craft activity",
       "description": "A person holds a large craft hoop/ribbon with others and workshop materials visible; identifiable faces.",
       "documentary": true,
-      "status": "REVIEWED — NOT PLACED; identifiable participants"
+      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
     },
     {
       "path": "assets/posts/783036041_1408453024721878_3578205087320603775_n.jpg",
       "use": "Drawing and visual-art workshop",
       "description": "Participants draw at a table with coloured pens; identifiable faces.",
       "documentary": true,
-      "status": "REVIEWED — NOT PLACED; identifiable participants"
+      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
     },
     {
       "path": "assets/posts/830754903_1438852398348607_8575046537706443389_n.jpg",
       "use": "Garden and conviviality",
       "description": "Group seated around a garden table; many identifiable faces.",
       "documentary": true,
-      "status": "REVIEWED — NOT PLACED; identifiable group"
+      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
     },
     {
       "path": "assets/posts/844190417_1446490757584771_1709901819062193861_n.jpg",
       "use": "Group event",
       "description": "Indoor group photograph with identifiable adults and children.",
       "documentary": true,
-      "status": "REVIEWED — NOT PLACED; identifiable participants/minors"
+      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
     },
     {
       "path": "assets/posts/854414257_1451277357106111_100552518532689623_n.jpg",
       "use": "Group outing / community event",
       "description": "Outdoor evening group photograph with identifiable faces.",
       "documentary": true,
-      "status": "REVIEWED — NOT PLACED; identifiable group"
+      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
     },
     {
       "path": "assets/posts/858642199_1459855032915010_3703135960600555271_n.jpg",
       "use": "Games and play area",
       "description": "Two children playing a wooden block-tower game; faces partly visible.",
       "documentary": true,
-      "status": "REVIEWED — NOT PLACED; identifiable children"
+      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
     },
     {
       "path": "assets/posts/860039147_1459854696248377_603952803324221168_n.jpg",
       "use": "Activities page — games photograph",
       "description": "Close-up of tabletop game pieces and a board; no identifiable faces visible.",
       "documentary": true,
-      "status": "ARCHIVED — retained locally; current activities page consolidated into Qui sommes-nous."
+      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
     },
     {
       "path": "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg",
       "use": "Activities page — discovery photograph",
       "description": "Close-up of an illustrated tabletop puzzle/board with hands nearby; no identifiable faces visible.",
       "documentary": true,
-      "status": "IN USE — homepage documentary photo gallery (Loop 014); close-up activity frame with no recognizable face visible."
+      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
     },
     {
       "path": "assets/posts/861826539_1459854896248357_2220258804161137760_n.jpg",
       "use": "Homepage hero photograph",
       "description": "Close-up of wooden geometric game pieces and hands around a table; no identifiable faces visible.",
       "documentary": true,
-      "status": "ARCHIVED — retained locally; no longer used on current homepage."
+      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
     },
     {
       "path": "assets/posts/863353686_1459854766248370_1734709857082262774_n.jpg",
       "use": "Arts and creative activity",
       "description": "Participants assemble illustrated face pieces at a table; partial profiles/identifiable people visible.",
       "documentary": true,
-      "status": "REVIEWED — NOT PLACED; identifiable participants"
+      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
     },
     {
       "path": "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg",
       "use": "Activities page — manipulation/creation photograph",
       "description": "Close-up of geometric pieces arranged around a table; no identifiable faces visible.",
       "documentary": true,
-      "status": "IN USE — homepage documentary photo gallery (Loop 014); close-up activity frame with no recognizable face visible."
+      "status": "IN USE — homepage documentary photo gallery (Loop 017); covered by association-owner verbal website-use authorization."
     },
     {
       "path": "assets/dessin1.jpeg",
@@ -168,24 +168,34 @@
     },
     {
       "path": "assets/gathering.jpeg",
-      "use": "Owner-selected closing homepage photograph",
+      "use": "Homepage closing DERRIÈRE LA BULLE/contact photo",
       "description": "Group event photograph with recognizable adults and young people; selected by the association owner for the DERRIÈRE LA BULLE/contact area.",
       "documentary": true,
-      "status": "OWNER-SELECTED — NOT PUBLISHED; image-specific participant/guardian releases are not documented."
+      "status": "IN USE — Loop 017 closing homepage photo; covered by association-owner verbal website-use authorization."
     }
   ],
   "permissions": {
     "external_press_photos": "NOT USED",
-    "social_media_photos": "USER-REPORTED OWNER AUTHORISATION. Two close-up documentary photos without recognizable faces remain in use. gathering.jpeg has been selected by the owner for a future closing-section placement but is not published pending image-specific participant/guardian releases.",
-    "identifiable_people": "Recognizable group/children photographs remain out of public templates pending image-specific participant/guardian releases; this includes owner-selected gathering.jpeg.",
+    "social_media_photos": "OWNER-SUPPLIED AND VERBALLY AUTHORISED: the association owner supplied the photo set (including all assets/posts photographs and gathering.jpeg) and authorised their visible use on this website, as relayed by the project user on 2026-11-05.",
+    "identifiable_people": "The supplied group, activity and children/young-people photographs are included in the website under the association owner's verbal authorization, as relayed by the project user. Captions describe activities and scenes without naming individuals.",
     "user_supplied_facebook_page": "Exact Facebook URL remains linked. User supplied the official transparent logo and original page images in the repository.",
     "current_page_images": [
       "assets/illustrations/games.svg",
       "assets/illustrations/culture.svg",
       "assets/illustrations/discovery.svg",
       "assets/logo final.png",
+      "assets/posts/735543787_1361390089428172_5312506833854343201_n.jpg",
+      "assets/posts/783036041_1408453024721878_3578205087320603775_n.jpg",
+      "assets/posts/830754903_1438852398348607_8575046537706443389_n.jpg",
+      "assets/posts/844190417_1446490757584771_1709901819062193861_n.jpg",
+      "assets/posts/854414257_1451277357106111_100552518532689623_n.jpg",
+      "assets/posts/858642199_1459855032915010_3703135960600555271_n.jpg",
+      "assets/posts/860039147_1459854696248377_603952803324221168_n.jpg",
       "assets/posts/860071516_1459854822915031_8736563633377469815_n.jpg",
+      "assets/posts/861826539_1459854896248357_2220258804161137760_n.jpg",
+      "assets/posts/863353686_1459854766248370_1734709857082262774_n.jpg",
       "assets/posts/863442942_1459854946248352_2630610521884942198_n.jpg",
+      "assets/gathering.jpeg",
       "assets/dessin1.jpeg",
       "assets/dessin2.jpeg",
       "assets/dessin3.jpeg",
@@ -193,9 +203,9 @@
       "assets/dessin5.jpeg"
     ],
     "current_monogram": "RETIRED — replaced with assets/logo final.png",
-    "owner_authorization": "USER-REPORTED: owner authorised reuse of Facebook-page assets.",
-    "participant_image_releases": "NOT INDEPENDENTLY DOCUMENTED for recognizable people in gathering.jpeg and other group/children photographs. The two existing tabletop close-ups do not show recognizable faces.",
+    "owner_authorization": "CONFIRMED AT PROJECT LEVEL: according to the project user, the association owner supplied all photo assets and verbally authorised visible use on the website. Accepted as sufficient permission for this project; no additional authorization request is pending.",
+    "participant_image_releases": "No additional release document is required by the project workflow: the user confirms the association owner supplied the images and verbally authorised their visible use. Captions avoid names and identity claims.",
     "logo_palette": "SAMPLED IN LOOP 011 from the uploaded transparent RGBA logo; Loop 012 SVG illustrations use the sampled blue family."
   },
-  "optimization": "The homepage sticky collage uses five local JPEG drawings loaded eagerly so the artwork is present before the scroll chapter reveals it. Two local user-supplied close-up documentary images remain lazy-loaded in the later gallery. Three local SVG news illustrations remain labelled as illustrations. No remote image host, remote font, tracking or paid dependency is introduced."
+  "optimization": "The homepage sticky collage uses five local JPEG drawings loaded eagerly. Eleven locally supplied assets/posts photos are displayed in a responsive album using lazy loading and descriptive alt text. The locally supplied gathering.jpeg is placed beside the closing contact content. No remote image host, remote font, tracking or paid dependency is introduced."
 }
