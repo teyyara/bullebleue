@@ -12,7 +12,7 @@
   "bootstrap_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b",
   "latest_loop_checkpoint_commit": "9ed9300149d213dfabb13e310a9ff50ed16e4928",
   "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
-  "status_metadata_commit": "ead64dcff8c71ccc5d7121a9ed0f548045cc06b0",
+  "status_metadata_commit": "9b23469df13ff08fadd6487f181142f6d6a62619",
   "last_known_good_release_commit": null,
   "current_loop": 23,
   "current_candidate": "bullebleue-loop-023-fine-design-polish-v1",
@@ -287,5 +287,7 @@
     "manually_reviewed_count": 7,
     "review": "Manually reviewed About desktop/mobile, Adhérer desktop/mobile, Contact desktop, Mentions légales desktop and Actualités desktop. Confirmed removal of audience numbering, clean audience cards, centered narrow columns, Contact card alignment and shared bottom baseline for Adhérer actions. Three article pages and all secondary pages have desktop/mobile captures."
   },
-  "latest_loop_23_status": "WAITING_FOR_CONTINUE — detailed spacing/alignment polish implemented; decorative audience numbering removed; centered columns and bottom baselines refined; full Python/Node/Playwright PASS; 30 screenshots uploaded and seven manually reviewed; no deployment."
+  "latest_loop_23_status": "WAITING_FOR_CONTINUE — detailed spacing/alignment polish implemented; decorative audience numbering removed; centered columns and bottom baselines refined; full Python/Node/Playwright PASS; 30 screenshots uploaded and seven manually reviewed; no deployment.",
+  "latest_loop_23_metadata_batch_commit": "9b23469df13ff08fadd6487f181142f6d6a62619",
+  "latest_loop_23_manifest_reconciliation_note": "Manifest rebuilt from the recursive main tree after Loop 023 metadata batch; manifest itself is excluded from its own Git blob map."
 }

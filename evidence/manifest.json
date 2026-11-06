@@ -1,19 +1,19 @@
 {
-  "manifest_version": "2.7",
+  "manifest_version": "2.8",
   "run_id": "bullebleue-20261102-001",
-  "loop": 22,
-  "candidate": "bullebleue-loop-022-transparent-drawing-character-cutouts-v1",
-  "candidate_status": "LOOP 022 COMPLETE — TWENTY TRANSPARENT CHARACTER CUT-OUTS FROM DRAWINGS 6–9; COMPLETE ORIGINAL SHEETS PRESERVED; PYTHON/NODE/PLAYWRIGHT AND MANUAL SCREENSHOT REVIEW PASS; NOT DEPLOYED",
+  "loop": 23,
+  "candidate": "bullebleue-loop-023-fine-design-polish-v1",
+  "candidate_status": "LOOP 023 COMPLETE — FINE DESIGN POLISH: REMOVED DECORATIVE AUDIENCE NUMBERING; CENTERED ADHÉRER/LEGAL CONTENT; ALIGNED CONTACT AND ADHÉRER CARD DETAILS; PYTHON/NODE/PLAYWRIGHT PASS; 30 SCREENSHOTS CAPTURED, SEVEN MANUALLY REVIEWED; NOT DEPLOYED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "28583458561c261c593bd2a88f06412c66c337b3",
+  "implementation_checkpoint_commit": "9ed9300149d213dfabb13e310a9ff50ed16e4928",
   "remote_git_blob_objects": {
-    ".aeos/state.json": "61b360941ea3cc51ef10e91e061b166868d7b66c",
-    ".github/workflows/quality.yml": "d7e9c95b41d8aa3efa747134782afc2501b2b694",
-    "AEOS_STATUS.md": "176c9bbdbc7dcfb413bbf3373c3f06b7956fbe88",
+    ".aeos/state.json": "4e139ed3abff492d1648eb1d9fcb0c6eb78e8118",
+    ".github/workflows/quality.yml": "23d99a5e977282a8ac026fe0fc153c82303e377c",
+    "AEOS_STATUS.md": "6d4ccd4adff8d439e086a4fb4e9f6afc72bb7997",
     "Bulle_Bleue_APAiL_contenu_facebook.md": "dec4ee6c3f4e0ea7c092ebe1760c4a35033e05bf",
     "README.md": "c3919ef6690e05df532ee6ccc682a923548afd15",
-    "TODO.md": "9ea09a5a9bc03b281b03610ee0a215d23208d277",
+    "TODO.md": "820bf8198b0a56f3ec0205db1768b4515e055963",
     "actualite-2026-10-10.html": "2123a7a72e299520043daa1f7fef1b7f0bb26e0c",
     "actualite-2026-10-17.html": "678a603e372e9b00e6ecbd857269d610d786a4b7",
     "actualite-2026-10-26.html": "e8fdaf165fc35e31ac868864a9da6d09533b66c8",
@@ -75,7 +75,7 @@
     "contact.html": "cd305275f4bcb3ff55414a100030c1c291a94494",
     "evidence/AEOS-RULEBOOK.md": "0b9f693dc989ef4f59261d404d7ed1dc2663a506",
     "evidence/assumptions.json": "a8d948e5d8ac6fb30a0d90c9849bc61386e30b32",
-    "evidence/build.json": "7066f208aa5fe088d0f99b283beb60208249fdaa",
+    "evidence/build.json": "c1b0e1b31ccb3e9ea4fc9edea67cf982318e3c99",
     "evidence/change-requests/CR-001.md": "829b01124d2a9548ddd0f4f8b282b06938fcc612",
     "evidence/change-requests/CR-002.md": "2750f8218da89eb4dfe79b4f8ae7f8fcc7dc87a5",
     "evidence/change-requests/CR-003.md": "be518026d30c328dc3da41f7f86704bb1ac80041",
@@ -89,29 +89,30 @@
     "evidence/change-requests/CR-012.md": "dc1b2bfa984e18978bf35c53e7961ec81cc52661",
     "evidence/change-requests/CR-013.md": "aa38384b56775e62b97d104436a8dcc520ac7e5c",
     "evidence/change-requests/CR-014.md": "85b84516d1b89c0bda56707c8dcac9f0a7d347fa",
+    "evidence/change-requests/CR-015.md": "261cee604132553430e67714666ee606ca5a51a9",
     "evidence/content-provenance.json": "ad32d4714cd3359d98e69973d7a4f5603472b9dd",
-    "evidence/decisions.json": "23a76b0e2257464fbeee52d0451622a51ff7f293",
+    "evidence/decisions.json": "c726a8e4d2ba8951ed55e9c12858478e7a58fc86",
     "evidence/learning.json": "718972df9dd6b519e158d864712713dc9fd83d11",
     "evidence/product-contract-proposal-0.2.json": "d8608b78aa3e234907b193f2fd28a346ce82783a",
     "evidence/product-contract.json": "ccfd58d411583d7b76f945c50c816392d0e3b90f",
-    "evidence/requirements.json": "4ce4d35b6c86af06eb032e536409d1e6d3e2d82b",
+    "evidence/requirements.json": "1458716f9e8450dc9f34b661286be7bf0c97e07a",
     "evidence/research/keyphrase-dossier.md": "097b39681be69b04ebdca9334aa283d003ad69f7",
     "evidence/risk.json": "ec4e01229f0f7360967b1fd29b19c8c4ee97632d",
     "evidence/screenshots/README.md": "a1ae6cda8cb215ceb24c4f18a2bab9682b5a3e97",
-    "evidence/tests/runtime-results.json": "dd00a84a02f34214ebd793de8c9c3a6668d958d9",
-    "evidence/tests/static-results.json": "17d42d08ab4bceea8b382f4eccb7a1eb5187c9c8",
+    "evidence/tests/runtime-results.json": "e29c4026fc8d5c5e25879995548de15fef30c74e",
+    "evidence/tests/static-results.json": "e8a1eb552e8f9742414f25a9e367b78c85ba1f25",
     "evidence/visual/asset-register.json": "bc6d243b6c157fb94a3006cc9a74504dfbde3dd0",
     "evidence/visual/logo-palette.json": "3caad866c35f42749c36abadb6ccc4dbeb4fdd11",
     "index.html": "038e7e97755711e4713a40fa30c8171dd93a7b35",
     "mentions-legales.html": "69a5e2a41f032ec0e7449942092b166ab7af9400",
-    "project.config.json": "1ffd6527c136249d0ff2cc905dd3347d22d7273c",
-    "qui-sommes-nous.html": "18e16c12f2a3f66d6613d67558033e4adbefdc51",
+    "project.config.json": "7a42286678ddccbd24f050cf4e9e344de8bcce86",
+    "qui-sommes-nous.html": "5a8e12bcee110be203c5477d856b523abac6e864",
     "robots.txt": "c2a49f4fb82f19ffa9089fcf8630e5a2870d3feb",
     "script.js": "e84c4c425ac4dd3fb28a3702cb49039087ef7ca7",
-    "styles.css": "a057cc6550a91555de11cd584cb437995d02cfd7",
-    "tests/test_browser.py": "0a77cacf91fb8fb068a795d83f97ec40c92ccf6e",
+    "styles.css": "e1b953962cf1e5be871b12530a266241893acf93",
+    "tests/test_browser.py": "dc98ac87f2ac2d9d30fc25b9fae6cda72f79d069",
     "tests/test_menu.js": "4506ecd2b4e57db7cb6484ff4d9e47f19c918d7d",
-    "tests/validate_site.py": "b1379c959a3c9d1672f6b1f536fa8d3df81a21ea"
+    "tests/validate_site.py": "2d859ae4c56be05a3c33d62d776805b6f56f125f"
   },
   "local_screenshot_evidence": {
     "loop_006": {
@@ -185,6 +186,25 @@
         "home-jouer-creer-mobile.png"
       ],
       "review": "Manually opened the current desktop/mobile homepage welcome and Se retrouver views plus the desktop/mobile Jouer/créer collage and sticky-story views. Original sheets remain on the collage; new cut-outs load correctly and introduce no layout overflow."
+    },
+    "loop_023": {
+      "status": "Loop 023 responsive Chromium screenshots uploaded; 30 images retained and seven representative desktop/mobile views manually inspected.",
+      "artifact_id": 13507472174,
+      "name": "bulle-bleue-loop023-visual-review",
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/42229730798/artifacts/13507472174",
+      "sha256": "9d2cac3e860284e23476baef2fb3ce3505784b78b1cb146229c3e69722a6557e",
+      "screenshot_count": 30,
+      "manually_reviewed_count": 7,
+      "reviewed_files": [
+        "about-desktop.png",
+        "about-mobile.png",
+        "adhesion-desktop.png",
+        "adhesion-mobile.png",
+        "contact-desktop.png",
+        "mentions-legales-desktop.png",
+        "news-desktop.png"
+      ],
+      "review": "Manually reviewed About desktop/mobile, Adhérer desktop/mobile, Contact desktop, Mentions légales desktop and Actualités desktop. Confirmed removal of audience numbering, clean audience cards, centered narrow columns, aligned Contact cards and shared bottom baseline for Adhérer desktop actions. All three individual article pages and the secondary pages have desktop/mobile captures."
     }
   },
   "runtime_environment": {
@@ -470,8 +490,8 @@
     },
     "production": "NOT DEPLOYED; deployment remains unauthorized."
   },
-  "status_metadata_commit": "ead64dcff8c71ccc5d7121a9ed0f548045cc06b0",
-  "evidence_manifest_reconciliation_commit": "ead64dcff8c71ccc5d7121a9ed0f548045cc06b0",
+  "status_metadata_commit": "9b23469df13ff08fadd6487f181142f6d6a62619",
+  "evidence_manifest_reconciliation_commit": "9b23469df13ff08fadd6487f181142f6d6a62619",
   "loop_011": {
     "objective": "Use the uploaded transparent association logo as the source of truth for the website's full artistic colour direction.",
     "logo_sampling": {
@@ -726,7 +746,7 @@
   },
   "latest_loop_17_final_commit": "78db0157e231932c16ad654f6fd735839c4ee1e7",
   "status_metadata_reconciliation": "PASS — remote Git blob map reconciled with main at Loop 018 checkpoint; manifest does not self-reference.",
-  "remote_git_blob_objects_note": "Verified against the recursive Git tree on main after Loop 022 metadata commit ead64dcff8c71ccc5d7121a9ed0f548045cc06b0. Every remote tracked blob path is mapped exactly once except evidence/manifest.json, which is intentionally excluded from its own mapping.",
+  "remote_git_blob_objects_note": "Verified against the recursive Git tree on main after Loop 023 metadata commit 9b23469df13ff08fadd6487f181142f6d6a62619. Every remote tracked blob path is mapped exactly once except evidence/manifest.json, which is intentionally excluded from its own mapping.",
   "loop_019": {
     "code_checkpoint_commit": "4babf6711d208a738f5eb5b7d9c13438380e83bc",
     "commits": [
@@ -834,6 +854,33 @@
     },
     "screenshot_artifact_id": 13440433219,
     "screenshots": 18,
+    "manually_reviewed_screenshots": 7,
+    "production_deployed": false
+  },
+  "loop_023": {
+    "implementation_commit": "dfdeca6eb47f8ef46277e902f20b768095c7679d",
+    "contact_assertion_fix_commit": "9e50e3dcf59425a740b46c0b9bbe4486b80c1411",
+    "adhesion_action_alignment_commit": "9ed9300149d213dfabb13e310a9ff50ed16e4928",
+    "implementation_checkpoint_commit": "9ed9300149d213dfabb13e310a9ff50ed16e4928",
+    "metadata_batch_commit": "9b23469df13ff08fadd6487f181142f6d6a62619",
+    "candidate": "bullebleue-loop-023-fine-design-polish-v1",
+    "quality_run": 42229730798,
+    "quality_url": "https://github.com/teyyara/bullebleue/actions/runs/42229730798",
+    "quality_status": "PASS",
+    "python_validator": "PASS",
+    "node_tests": "PASS",
+    "playwright": "PASS — nine pages × five viewport widths (45 combinations); no horizontal overflow, failed images, page errors or console errors. Removed numbering, centered columns and desktop Contact/Adhérer baselines asserted.",
+    "design_changes": [
+      "Removed decorative About audience 01/02 labels; preserved 1995/2021 historical years.",
+      "Restyled audience groups as responsive cards.",
+      "Centered Adhérer closing note and legal column.",
+      "Aligned Contact card bottoms and lower callouts.",
+      "Aligned Adhérer desktop card actions while preserving mobile stacking.",
+      "Refined breadcrumb, section, legal-list and Actualités card spacing."
+    ],
+    "screenshot_artifact_id": 13507472174,
+    "screenshot_artifact_sha256": "9d2cac3e860284e23476baef2fb3ce3505784b78b1cb146229c3e69722a6557e",
+    "screenshot_count": 30,
     "manually_reviewed_screenshots": 7,
     "production_deployed": false
   }
