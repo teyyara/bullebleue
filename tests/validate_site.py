@@ -223,6 +223,11 @@ def main():
     assert ".about-audience-list>div>span" not in css, "obsolete numbered-list styling must be removed"
     assert ".join-bottom{width:100%;margin-inline:auto;text-align:center}" in css
     assert ".legal-page{width:100%;max-width:900px;margin-inline:auto}" in css
+    # LOOP 024: remove page-relative floating dots and give the seven About topics a deliberate responsive card layout.
+    assert "body{background-image:none}" in css, "document-level floating background dots must be removed"
+    assert ".about-activities .activity-words{" in css and "grid-template-columns:repeat(2,minmax(0,1fr))" in css
+    assert "border:0;" in css[css.index(".about-activities .activity-words{"):css.index(".about-activities .activity-words li{")], "About activity wrapper must not retain its old divider"
+    assert all(topic in about for topic in ("Jeux de société & baby-foot", "Musique, chant, théâtre & contes", "Dessin & arts plastiques", "Cuisine, goûters & fêtes", "Jardinage & temps dehors", "Sorties culturelles & découvertes", "Médiation animale & rencontres entre parents")), "all seven original About activity topics must remain unchanged"
     # LOOP 022: original sheets stay in the four-card collage; the sticky illustration uses 20 transparent per-character assets.
     expected_cutouts = {6: 6, 7: 4, 8: 1, 9: 9}
     cutout_files = sorted((ROOT / "assets/characters").glob("dessin*.svg"))

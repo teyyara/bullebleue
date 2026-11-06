@@ -1290,3 +1290,37 @@ p,li,figcaption,small,input,button{font-family:var(--body-font)}
 .join-main,.join-details{display:flex;flex-direction:column;align-items:flex-start;padding:clamp(25px,3.6vw,40px)}
 .join-main>p:not(.section-kicker),.join-details>p{width:100%}
 .join-main>.button,.join-details>.inline-arrow{margin-top:auto;align-self:flex-start}
+
+
+/* LOOP 024 — keep playful details attached to their components and give About activity topics room. */
+body{background-image:none}
+.about-activities .activity-words{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px 14px;
+  margin:0;
+  padding:0;
+  border:0;
+  list-style:none;
+}
+.about-activities .activity-words li{
+  display:flex;
+  min-width:0;
+  min-height:64px;
+  align-items:center;
+  padding:13px 16px;
+  border:3px solid #fff;
+  border-radius:26px 32px 24px 30px / 28px 24px 31px 23px;
+  background:rgba(255,254,250,.94);
+  box-shadow:0 6px 0 rgba(22,66,165,.05),0 10px 22px rgba(6,25,94,.055);
+  color:var(--joy-ink);
+  font-size:13px;
+  font-weight:700;
+  line-height:1.4;
+}
+.about-activities .activity-words li:nth-child(3n+2){background:#F0FFF6}
+.about-activities .activity-words li:nth-child(3n){background:#F4F0FF}
+@media(max-width:760px){
+  .about-activities{gap:22px}
+  .about-activities .activity-words{grid-template-columns:1fr;gap:10px}
+}

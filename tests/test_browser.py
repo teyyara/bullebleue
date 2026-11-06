@@ -107,7 +107,7 @@ def main() -> None:
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     base_url = f"http://127.0.0.1:{server.server_port}"
-    screenshot_dir = ROOT / "artifacts" / "loop023-browser"
+    screenshot_dir = ROOT / "artifacts" / "loop024-browser"
     screenshot_dir.mkdir(parents=True, exist_ok=True)
     measurements: list[dict] = []
 
@@ -149,6 +149,8 @@ def main() -> None:
                         f"{path}: route did not return HTTP 200"
                     )
                     assert_no_horizontal_overflow(page, width, path)
+                    body_background = page.locator("body").evaluate("(el) => getComputedStyle(el).backgroundImage")
+                    assert body_background == "none", f"{path}: page-level decorative dots must not float beside unrelated content: {body_background}"
                     image_count = check_images(page, path)
                     if path == "index.html":
                         drawing_count = page.locator(".story-art .drawing-sticker").count()
@@ -181,6 +183,15 @@ def main() -> None:
                         assert "1995" in page.locator(".timeline-points").inner_text() and "2021" in page.locator(".timeline-points").inner_text(), "historical timeline dates must remain"
                         activity_cards = page.locator(".community-photo-grid--activities .community-photo-card")
                         assert activity_cards.count() == 8, "about page must hold eight activity photos"
+                        activity_topics = page.locator(".about-activities .activity-words li")
+                        assert activity_topics.count() == 7, "About must keep all seven activity topics"
+                        activity_list = page.locator(".about-activities .activity-words")
+                        assert activity_list.evaluate("(el) => getComputedStyle(el).borderTopWidth") == "0px", "About activity cards must not sit on a stray divider line"
+                        grid_columns = activity_list.evaluate("(el) => getComputedStyle(el).gridTemplateColumns.trim().split(/\\s+/).length")
+                        assert grid_columns == (1 if width <= 760 else 2), f"About activity cards must use a clean mobile stack and two-column wider grid, got {grid_columns} columns at {width}px"
+                        assert float(activity_list.evaluate("(el) => getComputedStyle(el).rowGap.replace('px','')")) >= 10, "About activity cards need visible vertical breathing room"
+                        assert float(activity_list.evaluate("(el) => getComputedStyle(el).columnGap.replace('px','')")) >= (0 if width <= 760 else 12), "About activity cards need a clear horizontal gutter"
+                        assert activity_topics.first.evaluate("(el) => getComputedStyle(el).borderTopWidth") == "3px", "each activity topic must have its own clean card border"
                         assert page.locator(".page-intro").evaluate("(el) => getComputedStyle(el).color") == "rgb(20, 41, 104)", "pastel page intro must use deep readable navy text"
                         assert page.locator(".page-intro-lede").evaluate("(el) => getComputedStyle(el).color") == "rgb(52, 72, 120)", "page intro lede must not inherit white text on a light background"
                         assert page.locator(".solidarity-note > p:not(.section-kicker)").first.evaluate("(el) => getComputedStyle(el).color") == "rgb(62, 82, 122)", "solidarity note body text must use readable dark text on its pastel surface"
@@ -455,28 +466,28 @@ def main() -> None:
                 ],
                 "measurements": measurements,
                 "screenshots": [
-                    "artifacts/loop023-browser/home-story-01-desktop.png",
-                    "artifacts/loop023-browser/home-story-02-desktop.png",
-                    "artifacts/loop023-browser/home-story-03-desktop.png",
-                    "artifacts/loop023-browser/news-desktop.png",
-                    "artifacts/loop023-browser/news-mobile.png",
-                    "artifacts/loop023-browser/about-desktop.png",
-                    "artifacts/loop023-browser/about-mobile.png",
-                    "artifacts/loop023-browser/home-closing-desktop.png",
-                    "artifacts/loop023-browser/home-story-01-mobile.png",
-                    "artifacts/loop023-browser/home-closing-mobile.png",
-                    "artifacts/loop023-browser/article-26-octobre-desktop.png",
-                    "artifacts/loop023-browser/article-26-octobre-mobile.png",
-                    "artifacts/loop023-browser/article-17-octobre-desktop.png",
-                    "artifacts/loop023-browser/article-17-octobre-mobile.png",
-                    "artifacts/loop023-browser/article-10-octobre-desktop.png",
-                    "artifacts/loop023-browser/article-10-octobre-mobile.png",
-                    "artifacts/loop023-browser/adhesion-desktop.png",
-                    "artifacts/loop023-browser/adhesion-mobile.png",
-                    "artifacts/loop023-browser/contact-desktop.png",
-                    "artifacts/loop023-browser/contact-mobile.png",
-                    "artifacts/loop023-browser/mentions-legales-desktop.png",
-                    "artifacts/loop023-browser/mentions-legales-mobile.png",
+                    "artifacts/loop024-browser/home-story-01-desktop.png",
+                    "artifacts/loop024-browser/home-story-02-desktop.png",
+                    "artifacts/loop024-browser/home-story-03-desktop.png",
+                    "artifacts/loop024-browser/news-desktop.png",
+                    "artifacts/loop024-browser/news-mobile.png",
+                    "artifacts/loop024-browser/about-desktop.png",
+                    "artifacts/loop024-browser/about-mobile.png",
+                    "artifacts/loop024-browser/home-closing-desktop.png",
+                    "artifacts/loop024-browser/home-story-01-mobile.png",
+                    "artifacts/loop024-browser/home-closing-mobile.png",
+                    "artifacts/loop024-browser/article-26-octobre-desktop.png",
+                    "artifacts/loop024-browser/article-26-octobre-mobile.png",
+                    "artifacts/loop024-browser/article-17-octobre-desktop.png",
+                    "artifacts/loop024-browser/article-17-octobre-mobile.png",
+                    "artifacts/loop024-browser/article-10-octobre-desktop.png",
+                    "artifacts/loop024-browser/article-10-octobre-mobile.png",
+                    "artifacts/loop024-browser/adhesion-desktop.png",
+                    "artifacts/loop024-browser/adhesion-mobile.png",
+                    "artifacts/loop024-browser/contact-desktop.png",
+                    "artifacts/loop024-browser/contact-mobile.png",
+                    "artifacts/loop024-browser/mentions-legales-desktop.png",
+                    "artifacts/loop024-browser/mentions-legales-mobile.png",
                 ],
             },
             ensure_ascii=False,
