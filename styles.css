@@ -1285,3 +1285,8 @@ p,li,figcaption,small,input,button{font-family:var(--body-font)}
   .join-bottom{max-width:100%;padding-inline:2px}
   .news-card h2{min-height:0}
 }
+
+/* Keep the paired Adhérer card actions on one desktop baseline. */
+.join-main,.join-details{display:flex;flex-direction:column;align-items:flex-start;padding:clamp(25px,3.6vw,40px)}
+.join-main>p:not(.section-kicker),.join-details>p{width:100%}
+.join-main>.button,.join-details>.inline-arrow{margin-top:auto;align-self:flex-start}

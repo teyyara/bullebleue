@@ -187,6 +187,10 @@ def main() -> None:
                     if path == "adherer.html":
                         centering_error = page.locator(".join-bottom").evaluate("(el) => { const r = el.getBoundingClientRect(); const p = el.parentElement.getBoundingClientRect(); return Math.abs((r.left + r.right) / 2 - (p.left + p.right) / 2); }")
                         assert centering_error < 2, f"Adhérer closing note must be centered, offset={centering_error}px"
+                        if width >= 981:
+                            primary_action = page.locator(".join-main > .button").bounding_box()
+                            details_action = page.locator(".join-details > .inline-arrow").bounding_box()
+                            assert abs((primary_action["y"] + primary_action["height"]) - (details_action["y"] + details_action["height"])) < 3, "Adhérer card actions must share a bottom baseline on desktop"
                     if path == "mentions-legales.html":
                         centering_error = page.locator(".legal-page").evaluate("(el) => { const r = el.getBoundingClientRect(); const p = el.parentElement.getBoundingClientRect(); return Math.abs((r.left + r.right) / 2 - (p.left + p.right) / 2); }")
                         assert centering_error < 2, f"legal text column must be centered, offset={centering_error}px"
@@ -446,6 +450,7 @@ def main() -> None:
                     "desktop and mobile actualites pages captured, including three un-dated community photos",
                     "desktop and mobile qui-sommes-nous pages captured, including eight activity photos",
                     "desktop and mobile closing gathering.jpeg composition screenshots captured and image decode verified",
+                    "About audience cards omit decorative numbering; centered Adhérer/legal layouts and bottom-aligned desktop Contact/Adhérer card details",
                     "only Google Fonts requests are permitted externally; no failed requests or console errors",
                 ],
                 "measurements": measurements,
