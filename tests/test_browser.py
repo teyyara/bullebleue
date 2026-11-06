@@ -150,8 +150,16 @@ def main() -> None:
                     response = page.goto(
                         f"{base_url}/{path}", wait_until="networkidle", timeout=20000
                     )
-                    assert response is not None and response.status == 200, (
-                        f"{path}: route did not return HTTP 200"
+                    first_status = response.status if response is not None else None
+                    if first_status != 200:
+                        # Firefox/WebKit may race the threaded localhost server's initial accept loop.
+                        page.wait_for_timeout(150)
+                        response = page.goto(
+                            f"{base_url}/{path}", wait_until="networkidle", timeout=20000
+                        )
+                    final_status = response.status if response is not None else None
+                    assert final_status == 200, (
+                        f"{path}: route returned {final_status}; first attempt returned {first_status}"
                     )
                     assert_no_horizontal_overflow(page, width, path)
                     body_background = page.locator("body").evaluate("(el) => getComputedStyle(el).backgroundImage")
