@@ -166,7 +166,7 @@ def main() -> None:
                         for drawing, expected in {6: 6, 7: 4, 8: 1, 9: 9}.items():
                             actual = page.locator(f".story-art .drawing-character-group--{drawing} .character-cutout").count()
                             assert actual == expected, f"drawing {drawing}: expected {expected} character cut-outs, got {actual}"
-                        group_style = cutout_groups.first.evaluate("(el) => getComputedStyle(el)")
+                        group_style = cutout_groups.first.evaluate("(el) => ({ borderTopWidth: getComputedStyle(el).borderTopWidth, backgroundColor: getComputedStyle(el).backgroundColor })")
                         assert group_style["borderTopWidth"] == "0px" and group_style["backgroundColor"] == "rgba(0, 0, 0, 0)", "cut-out groups must not retain paper-card borders/backgrounds"
                         assert page.locator('img[src*="/assets/posts/"]').count() == 0, "homepage must stay light and contain no activity gallery"
                         heading_font = page.locator(".story-panel h1").evaluate("(el) => getComputedStyle(el).fontFamily")
