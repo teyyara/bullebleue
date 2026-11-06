@@ -1,19 +1,19 @@
 {
-  "manifest_version": "2.9",
+  "manifest_version": "2.10",
   "run_id": "bullebleue-20261102-001",
-  "loop": 24,
-  "candidate": "bullebleue-loop-024-about-page-and-sitewide-detail-polish-v1",
-  "candidate_status": "LOOP 024 COMPLETE — ABOUT ACTIVITY TOPICS SPACED AS RESPONSIVE CARDS; DOCUMENT-LEVEL FLOATING DOTS REMOVED; PYTHON/NODE/PLAYWRIGHT PASS; 30 SCREENSHOTS CAPTURED, SIX REVIEWED; NOT DEPLOYED",
+  "loop": 25,
+  "candidate": "bullebleue-loop-025-cross-browser-responsive-validation-v1",
+  "candidate_status": "LOOP 025 COMPLETE — RESPONSIVE PLAYWRIGHT REGRESSION PASSED IN CHROMIUM, FIREFOX AND WEBKIT; 9 PAGES × 5 VIEWPORTS × 3 ENGINES = 135 PASSED COMBINATIONS; 30 CHROMIUM SCREENSHOTS, TWO REVIEWED; NATIVE SAFARI/ASSISTIVE TECHNOLOGY REMAIN OPEN; NOT DEPLOYED",
   "repository": "teyyara/bullebleue",
   "branch": "main",
-  "implementation_checkpoint_commit": "b9eb8125898841021c94f818902001364f201ee6",
+  "implementation_checkpoint_commit": "1b7fd73d494321db421c065470226452d3b1d797",
   "remote_git_blob_objects": {
-    ".aeos/state.json": "c66743223da86994e9db025d69625831ef0c3b54",
-    ".github/workflows/quality.yml": "7d3928905d2493cbc786072846a9848e5bd97b85",
-    "AEOS_STATUS.md": "a145af7a20331956bda1e56ed9036a0a6366142f",
+    ".aeos/state.json": "09b7cfddfd559f75ebac16f80e86c340bd0371f0",
+    ".github/workflows/quality.yml": "55c688123ec52b15b7060ad192d52844d5b5cfbe",
+    "AEOS_STATUS.md": "e23a8f5a31a999ac584b0caf1c6daf6af3768f4c",
     "Bulle_Bleue_APAiL_contenu_facebook.md": "dec4ee6c3f4e0ea7c092ebe1760c4a35033e05bf",
     "README.md": "c3919ef6690e05df532ee6ccc682a923548afd15",
-    "TODO.md": "048614879d7380247fa0d8a60ce21f837abce86d",
+    "TODO.md": "40adc0762692780383a10a7453528ff53425adbb",
     "actualite-2026-10-10.html": "2123a7a72e299520043daa1f7fef1b7f0bb26e0c",
     "actualite-2026-10-17.html": "678a603e372e9b00e6ecbd857269d610d786a4b7",
     "actualite-2026-10-26.html": "e8fdaf165fc35e31ac868864a9da6d09533b66c8",
@@ -75,7 +75,7 @@
     "contact.html": "cd305275f4bcb3ff55414a100030c1c291a94494",
     "evidence/AEOS-RULEBOOK.md": "0b9f693dc989ef4f59261d404d7ed1dc2663a506",
     "evidence/assumptions.json": "a8d948e5d8ac6fb30a0d90c9849bc61386e30b32",
-    "evidence/build.json": "e2f08a203254b0f7f06246b70e6e82b42db84a71",
+    "evidence/build.json": "b2dd88f108c38fc5d82c30d4691779d360051259",
     "evidence/change-requests/CR-001.md": "829b01124d2a9548ddd0f4f8b282b06938fcc612",
     "evidence/change-requests/CR-002.md": "2750f8218da89eb4dfe79b4f8ae7f8fcc7dc87a5",
     "evidence/change-requests/CR-003.md": "be518026d30c328dc3da41f7f86704bb1ac80041",
@@ -91,29 +91,30 @@
     "evidence/change-requests/CR-014.md": "85b84516d1b89c0bda56707c8dcac9f0a7d347fa",
     "evidence/change-requests/CR-015.md": "261cee604132553430e67714666ee606ca5a51a9",
     "evidence/change-requests/CR-016.md": "f3ff6348a6a4618fb1d2bb8775427189a71e9215",
+    "evidence/change-requests/CR-017.md": "9176b5de117a05243f4221542b5bc0b52d541227",
     "evidence/content-provenance.json": "ad32d4714cd3359d98e69973d7a4f5603472b9dd",
-    "evidence/decisions.json": "d4ab141a0e11d3208167f66048f3369886821dad",
+    "evidence/decisions.json": "e00e31ad2acaf60c5561e2d336111e1e1920bd6b",
     "evidence/learning.json": "718972df9dd6b519e158d864712713dc9fd83d11",
     "evidence/product-contract-proposal-0.2.json": "d8608b78aa3e234907b193f2fd28a346ce82783a",
     "evidence/product-contract.json": "ccfd58d411583d7b76f945c50c816392d0e3b90f",
-    "evidence/requirements.json": "880da0ff8094258a29d84d4ed752be817d7a101c",
+    "evidence/requirements.json": "1dac449417d15faf4e9369be6f6c7886653f412e",
     "evidence/research/keyphrase-dossier.md": "097b39681be69b04ebdca9334aa283d003ad69f7",
     "evidence/risk.json": "ec4e01229f0f7360967b1fd29b19c8c4ee97632d",
     "evidence/screenshots/README.md": "a1ae6cda8cb215ceb24c4f18a2bab9682b5a3e97",
-    "evidence/tests/runtime-results.json": "ac65e11090168a8baf988cec27bab3d17fdbbb3b",
-    "evidence/tests/static-results.json": "21fd499ac69fc82405d7c684869a93af24b69d6b",
+    "evidence/tests/runtime-results.json": "ee8104e4ebc1df3e4a7e603bf367583fb69cedd5",
+    "evidence/tests/static-results.json": "b2d79436da8408caf4b990f2c05de2302dbd5a37",
     "evidence/visual/asset-register.json": "bc6d243b6c157fb94a3006cc9a74504dfbde3dd0",
     "evidence/visual/logo-palette.json": "3caad866c35f42749c36abadb6ccc4dbeb4fdd11",
     "index.html": "038e7e97755711e4713a40fa30c8171dd93a7b35",
     "mentions-legales.html": "69a5e2a41f032ec0e7449942092b166ab7af9400",
-    "project.config.json": "26176bc6bb9e0c614f654166af2fff6a80f12177",
+    "project.config.json": "6ce3b978c5b4fa80e38ef7f27fa9b7bdeba2c7e6",
     "qui-sommes-nous.html": "5a8e12bcee110be203c5477d856b523abac6e864",
     "robots.txt": "c2a49f4fb82f19ffa9089fcf8630e5a2870d3feb",
     "script.js": "e84c4c425ac4dd3fb28a3702cb49039087ef7ca7",
     "styles.css": "96f58c3a58e0bd625f0d1e546686fb832ad3f87e",
-    "tests/test_browser.py": "13fd108747f4168f610f63da898b6a8929b745fb",
+    "tests/test_browser.py": "379c22bed4e5206d934205ccd77defbd8d78e8d8",
     "tests/test_menu.js": "4506ecd2b4e57db7cb6484ff4d9e47f19c918d7d",
-    "tests/validate_site.py": "b534f4b0ee3384fc89084430f7c2609d5ce387d9"
+    "tests/validate_site.py": "cd62e3eab3560e99222a473242523fb701a1f583"
   },
   "local_screenshot_evidence": {
     "loop_006": {
@@ -224,6 +225,20 @@
         "mentions-legales-mobile.png"
       ],
       "review": "About desktop/mobile activity cards and removal of the detached floating dot verified. Actualités, Contact, Adhérer and Mentions légales representative layouts also visually reviewed."
+    },
+    "loop_025": {
+      "status": "Loop 025 Chromium screenshot artifact uploaded; Firefox and WebKit suites passed without duplicate screenshot archives.",
+      "artifact_id": 13511744695,
+      "name": "bulle-bleue-loop025-visual-review",
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/42237625691/artifacts/13511744695",
+      "sha256": "df4ba9266ff90e49826d9c417f22ebd02df5f7e9c6016d0aae7382c15f424a47",
+      "screenshot_count": 30,
+      "manually_reviewed_count": 2,
+      "reviewed_files": [
+        "about-desktop.png",
+        "about-mobile.png"
+      ],
+      "review": "Opened and inspected About desktop and mobile screenshots to confirm no visual change from test-only cross-browser work."
     }
   },
   "runtime_environment": {
@@ -232,7 +247,7 @@
     "node": "22",
     "playwright": "1.57",
     "chromium": "143.0.7499.4 (build v1200)",
-    "last_verified_commit": "b9eb8125898841021c94f818902001364f201ee6",
+    "last_verified_commit": "1b7fd73d494321db421c065470226452d3b1d797",
     "last_verified_at": "2026-11-06",
     "browser": "Chromium (GitHub Actions)"
   },
@@ -241,7 +256,6 @@
   "production_deployed": false,
   "limitations": [
     "The manifest maps remote Git blob objects, not a production artifact digest.",
-    "Firefox/WebKit/Safari, manual screen-reader, physical-device, Lighthouse, ZAP and hosted checks remain outstanding.",
     "No hosting domain is configured; production deployment is not authorised and has not occurred.",
     "Legal notices await confirmation of registered office, publication manager and hosting provider.",
     "Membership fee/procedure/forms/renewals remain unconfirmed.",
@@ -249,8 +263,8 @@
     "Association-owner final visual/content acceptance remains pending.",
     "Only Miette's quotation is currently supplied as an authentic testimonial; other cards invite future contributions.",
     "Owner-supplied photos are authorised according to verbal confirmation.",
-    "Firefox/WebKit/Safari, manual screen-reader, physical-device, Lighthouse, ZAP and hosted performance/security checks remain outstanding.",
-    "Production deployment remains unauthorized and hosting is unconfigured."
+    "Production deployment remains unauthorized and hosting is unconfigured.",
+    "Native macOS/iOS Safari remains untested; Playwright WebKit was tested on Ubuntu."
   ],
   "loop_002": {
     "change": "Only process Escape when the mobile navigation is expanded; preserve focus for unrelated or closed-menu Escape events.",
@@ -508,8 +522,8 @@
     },
     "production": "NOT DEPLOYED; deployment remains unauthorized."
   },
-  "status_metadata_commit": "0168ce7c66959c28e80ab659ac5bd1d0452dd775",
-  "evidence_manifest_reconciliation_commit": "0168ce7c66959c28e80ab659ac5bd1d0452dd775",
+  "status_metadata_commit": "3c6cac41768e3fb521c3f19042a6a3bd3b460cb4",
+  "evidence_manifest_reconciliation_commit": "3c6cac41768e3fb521c3f19042a6a3bd3b460cb4",
   "loop_011": {
     "objective": "Use the uploaded transparent association logo as the source of truth for the website's full artistic colour direction.",
     "logo_sampling": {
@@ -763,8 +777,8 @@
     "deployment": "NOT PERFORMED / NOT AUTHORIZED"
   },
   "latest_loop_17_final_commit": "78db0157e231932c16ad654f6fd735839c4ee1e7",
-  "status_metadata_reconciliation": "PASS — final Loop 024 tree mapped to the remote main Git blobs; manifest excludes itself.",
-  "remote_git_blob_objects_note": "Verified against the final recursive Git tree on main after Loop 024 reconciliation. 106 tracked blob paths are mapped exactly once; evidence/manifest.json is intentionally excluded from its own map.",
+  "status_metadata_reconciliation": "PASS — final Loop 025 tree mapped to all remote non-manifest Git blobs; manifest excludes itself.",
+  "remote_git_blob_objects_note": "Verified against the final recursive Git tree on main after Loop 025 metadata. 107 tracked blob paths are mapped exactly once; evidence/manifest.json is intentionally excluded from its own map.",
   "loop_019": {
     "code_checkpoint_commit": "4babf6711d208a738f5eb5b7d9c13438380e83bc",
     "commits": [
@@ -930,6 +944,49 @@
     },
     "remote_blob_map_count": 106,
     "manual_review": "PASS — six representative desktop/mobile captures opened and inspected.",
+    "deployment": "NOT CONFIGURED / NOT AUTHORIZED / NOT PERFORMED"
+  },
+  "loop_025": {
+    "test_run": "loop-025-cross-browser-responsive-regression",
+    "implementation_commit": "1b7fd73d494321db421c065470226452d3b1d797",
+    "quality_run": 42237625691,
+    "quality_url": "https://github.com/teyyara/bullebleue/actions/runs/42237625691",
+    "status": "PASS",
+    "python": "PASS",
+    "node": "PASS",
+    "browser_engines": {
+      "chromium": {
+        "status": "PASS",
+        "page_viewport_runs": 45
+      },
+      "firefox": {
+        "status": "PASS",
+        "page_viewport_runs": 45
+      },
+      "webkit": {
+        "status": "PASS",
+        "page_viewport_runs": 45
+      },
+      "total_page_viewport_runs": 135
+    },
+    "screenshot_artifact": {
+      "id": 13511744695,
+      "name": "bulle-bleue-loop025-visual-review",
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/42237625691/artifacts/13511744695",
+      "sha256": "df4ba9266ff90e49826d9c417f22ebd02df5f7e9c6016d0aae7382c15f424a47",
+      "screenshot_count": 30,
+      "uploaded": true,
+      "manually_reviewed_count": 2,
+      "reviewed_files": [
+        "about-desktop.png",
+        "about-mobile.png"
+      ]
+    },
+    "manual_review": "PASS — About desktop and mobile Chromium screenshots opened and inspected.",
+    "limitations": [
+      "Playwright WebKit on Ubuntu is not native macOS/iOS Safari.",
+      "Screen-reader and manual assistive-technology checks, physical mobile devices, Lighthouse, ZAP and hosted security/performance checks remain outstanding."
+    ],
     "deployment": "NOT CONFIGURED / NOT AUTHORIZED / NOT PERFORMED"
   }
 }

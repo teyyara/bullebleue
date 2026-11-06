@@ -10,15 +10,15 @@
   "branch": "main",
   "branch_policy": "single branch",
   "bootstrap_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b",
-  "latest_loop_checkpoint_commit": "b9eb8125898841021c94f818902001364f201ee6",
+  "latest_loop_checkpoint_commit": "1b7fd73d494321db421c065470226452d3b1d797",
   "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
-  "status_metadata_commit": "0168ce7c66959c28e80ab659ac5bd1d0452dd775",
+  "status_metadata_commit": "3c6cac41768e3fb521c3f19042a6a3bd3b460cb4",
   "last_known_good_release_commit": null,
-  "current_loop": 24,
-  "current_candidate": "bullebleue-loop-024-about-page-and-sitewide-detail-polish-v1",
+  "current_loop": 25,
+  "current_candidate": "bullebleue-loop-025-cross-browser-responsive-validation-v1",
   "state": "WAITING_FOR_CONTINUE",
   "remote_checkpoint_verified": true,
-  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 025.",
+  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 026.",
   "deployment": "NOT CONFIGURED / NOT AUTHORIZED",
   "paid_dependencies": [],
   "open_blockers": [
@@ -26,11 +26,11 @@
     "Membership amount, current procedure, documents and renewal conditions remain unknown.",
     "The 30 Rempart Saint-Vincent / rue Leriche venue/location reference was transcribed from the 11 March 2024 Facebook presentation and still needs current association confirmation. The weekly times Wednesday 14:30 and Saturday 15:00 now come from the owner's direct 5 November 2026 feedback and are the latest homepage copy.",
     "The published apail@live.fr mailbox deliverability is untested.",
-    "Cross-browser Firefox/WebKit/Safari, manual screen-reader, physical-device, Lighthouse, ZAP and hosted performance/security checks remain outstanding.",
     "Domain/hosting configuration is unknown; production deployment remains unauthorized.",
-    "Final visual/content acceptance from the association owner remains outstanding."
+    "Final visual/content acceptance from the association owner remains outstanding.",
+    "Native macOS/iOS Safari validation remains outstanding; Playwright WebKit passed on Linux. Manual screen-reader, physical-device, Lighthouse, ZAP and hosted performance/security checks also remain outstanding."
   ],
-  "evidence_manifest_reconciliation_commit": "0168ce7c66959c28e80ab659ac5bd1d0452dd775",
+  "evidence_manifest_reconciliation_commit": "3c6cac41768e3fb521c3f19042a6a3bd3b460cb4",
   "change_request_cr001": {
     "received": "2026-11-02",
     "status": "ADOPTED AND IMPLEMENTED IN LOOP 003",
@@ -316,5 +316,28 @@
   },
   "latest_loop_24_status": "WAITING_FOR_CONTINUE — About activity list restyled as responsive cards; detached document-background dots removed; full Python/Node/Playwright PASS; 30 screenshots captured and six manually reviewed; no deployment.",
   "latest_loop_24_metadata_batch_commit": "0168ce7c66959c28e80ab659ac5bd1d0452dd775",
-  "latest_loop_24_manifest_reconciliation_note": "Manifest rebuilt from the final recursive main tree; all tracked blobs mapped once except evidence/manifest.json itself."
+  "latest_loop_24_manifest_reconciliation_note": "Manifest rebuilt from the final recursive main tree; all tracked blobs mapped once except evidence/manifest.json itself.",
+  "latest_loop_25_implementation_commit": "1b7fd73d494321db421c065470226452d3b1d797",
+  "latest_loop_25_quality_run": 42237625691,
+  "latest_loop_25_quality_url": "https://github.com/teyyara/bullebleue/actions/runs/42237625691",
+  "latest_loop_25_quality_status": "PASS — Python structural validator; Node syntax/menu/story/reduced-motion tests; Chromium, Firefox and Playwright WebKit each passed the nine-page × five-viewport matrix (135 combinations total); no overflow, failed local images, unexpected requests or browser errors.",
+  "latest_loop_25_python_validator": "PASS — selectable Playwright engine and GitHub Actions install/run configuration asserted.",
+  "latest_loop_25_node_test": "PASS — JavaScript syntax, navigation, sticky story and reduced-motion regression.",
+  "latest_loop_25_browser": "PASS — Chromium 45 combinations, Firefox 45 combinations, WebKit 45 combinations; all nine routes at 320/390/768/1024/1440 px; no overflow, failed images, unexpected requests, console or page errors.",
+  "latest_loop_25_screenshot_artifact": {
+    "id": 13511744695,
+    "name": "bulle-bleue-loop025-visual-review",
+    "url": "https://github.com/teyyara/bullebleue/actions/runs/42237625691/artifacts/13511744695",
+    "sha256": "df4ba9266ff90e49826d9c417f22ebd02df5f7e9c6016d0aae7382c15f424a47",
+    "screenshot_count": 30,
+    "uploaded": true,
+    "manually_reviewed_count": 2,
+    "reviewed_files": [
+      "about-desktop.png",
+      "about-mobile.png"
+    ]
+  },
+  "latest_loop_25_status": "WAITING_FOR_CONTINUE — Playwright responsive regression extended to Chromium, Firefox and WebKit; all three engines pass 135 combinations total; 30 Chromium screenshots captured and About desktop/mobile reviewed; native Safari/assistive-technology checks remain open; no deployment.",
+  "latest_loop_25_metadata_batch_commit": "3c6cac41768e3fb521c3f19042a6a3bd3b460cb4",
+  "latest_loop_25_manifest_reconciliation_note": "Manifest rebuilt from the final recursive main tree; every non-manifest blob is mapped exactly once."
 }
