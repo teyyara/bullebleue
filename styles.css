@@ -638,9 +638,9 @@ html.has-scroll-story .story-step.is-current .story-panel{opacity:1;transform:tr
 .timeline-points span{color:var(--muted);font-size:12px}
 .about-two-col{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
 .about-two-col h2,.solidarity-note h2{margin:0 0 14px;font-size:clamp(34px,4vw,47px);line-height:1.04}
-.about-audience-list{display:grid;gap:0;border-top:1px solid var(--line)}
-.about-audience-list>div{display:grid;grid-template-columns:40px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}
-.about-audience-list>div>span{color:var(--blue);font-size:10px;font-weight:750;letter-spacing:.12em}
+.about-audience-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:clamp(12px,1.4vw,18px);border:0}
+.about-audience-list>div{display:flex;min-width:0;min-height:100%;flex-direction:column;align-items:flex-start;gap:10px;padding:22px 20px 23px;border:3px solid #fff;border-top:4px solid var(--blue);background:rgba(255,255,255,.88);box-shadow:0 9px 0 rgba(22,66,165,.045),0 14px 28px rgba(6,25,94,.055)}
+.about-audience-list>div:nth-child(2){border-top-color:var(--accent)}
 .about-audience-list strong{font-family:var(--serif);font-size:24px;font-weight:500}
 .about-audience-list p{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.65}
 .about-activities{display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:start}
@@ -1255,3 +1255,33 @@ p,li,figcaption,small,input,button{font-family:var(--body-font)}
 /* LOOP 022 — transparent, independently positioned character cut-outs. The complete source sheets remain in Jouer/créer. */
 .story-art>.drawing-character-group{height:auto;max-height:none;aspect-ratio:var(--source-ratio);overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none;filter:none;object-fit:unset}
 .story-art>.drawing-character-group>.character-cutout{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:auto;max-width:none;display:block;border:0;border-radius:0;background:transparent;box-shadow:none;object-fit:contain;opacity:1;filter:drop-shadow(0 4px 3px rgba(20,41,104,.16));pointer-events:none;transition:none}
+
+
+/* LOOP 023 — alignment, spacing and leftover numbering polish. */
+.page-intro .breadcrumbs{margin-bottom:clamp(21px,2vw,28px)}
+.page-section{padding-block:clamp(50px,5vw,62px)}
+.about-audience-list strong{font-size:clamp(20px,2vw,24px);line-height:1.1}
+.about-audience-list p{margin:0;color:var(--joy-muted);font-size:13px;line-height:1.65}
+.join-bottom{width:100%;margin-inline:auto;text-align:center}
+.join-bottom .section-kicker{justify-content:center}
+.join-bottom h2,.join-bottom>p:last-child{margin-inline:auto}
+.join-bottom>p:last-child{max-width:650px}
+.legal-page{width:100%;max-width:900px;margin-inline:auto}
+.legal-page section{padding-block:clamp(22px,2.2vw,28px)}
+.legal-page dl>div{grid-template-columns:minmax(190px,.8fr) minmax(0,1.2fr);gap:clamp(16px,2vw,24px);padding:16px 18px}
+.contact-primary,.contact-location{display:flex;flex-direction:column;align-items:stretch}
+.contact-primary>.button{align-self:flex-start;width:fit-content}
+.contact-secondary{width:100%;margin-top:auto}
+.contact-warning{width:100%;margin-top:auto}
+.news-meta{align-items:flex-start;min-height:30px}
+.news-meta span{max-width:48%;text-align:right;line-height:1.45}
+.news-card h2{min-height:2.16em}
+@media(max-width:760px){
+  .page-intro .breadcrumbs{margin-bottom:20px}
+  .page-section{padding-block:42px}
+  .about-audience-list{grid-template-columns:1fr;gap:12px}
+  .about-audience-list>div{min-height:0;padding:19px 18px 20px}
+  .legal-page dl>div{grid-template-columns:1fr;gap:5px;padding:14px 15px}
+  .join-bottom{max-width:100%;padding-inline:2px}
+  .news-card h2{min-height:0}
+}

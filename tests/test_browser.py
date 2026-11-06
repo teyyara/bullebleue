@@ -107,7 +107,7 @@ def main() -> None:
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     base_url = f"http://127.0.0.1:{server.server_port}"
-    screenshot_dir = ROOT / "artifacts" / "loop022-browser"
+    screenshot_dir = ROOT / "artifacts" / "loop023-browser"
     screenshot_dir.mkdir(parents=True, exist_ok=True)
     measurements: list[dict] = []
 
@@ -175,11 +175,25 @@ def main() -> None:
                         assert "Mercredi · 14h30" in page.locator(".se-schedule-grid").inner_text()
                         assert "Samedi · 15h" in page.locator(".se-schedule-grid").inner_text()
                     if path == "qui-sommes-nous.html":
+                        audience_cards = page.locator(".about-audience-list > div")
+                        assert audience_cards.count() == 2, "About page must retain both audience groups"
+                        assert page.locator(".about-audience-list > div > span").count() == 0, "decorative 01/02 audience numbering must not remain"
+                        assert "1995" in page.locator(".timeline-points").inner_text() and "2021" in page.locator(".timeline-points").inner_text(), "historical timeline dates must remain"
                         activity_cards = page.locator(".community-photo-grid--activities .community-photo-card")
                         assert activity_cards.count() == 8, "about page must hold eight activity photos"
                         assert page.locator(".page-intro").evaluate("(el) => getComputedStyle(el).color") == "rgb(20, 41, 104)", "pastel page intro must use deep readable navy text"
                         assert page.locator(".page-intro-lede").evaluate("(el) => getComputedStyle(el).color") == "rgb(52, 72, 120)", "page intro lede must not inherit white text on a light background"
                         assert page.locator(".solidarity-note > p:not(.section-kicker)").first.evaluate("(el) => getComputedStyle(el).color") == "rgb(62, 82, 122)", "solidarity note body text must use readable dark text on its pastel surface"
+                    if path == "adherer.html":
+                        centering_error = page.locator(".join-bottom").evaluate("(el) => { const r = el.getBoundingClientRect(); const p = el.parentElement.getBoundingClientRect(); return Math.abs((r.left + r.right) / 2 - (p.left + p.right) / 2); }")
+                        assert centering_error < 2, f"Adhérer closing note must be centered, offset={centering_error}px"
+                    if path == "mentions-legales.html":
+                        centering_error = page.locator(".legal-page").evaluate("(el) => { const r = el.getBoundingClientRect(); const p = el.parentElement.getBoundingClientRect(); return Math.abs((r.left + r.right) / 2 - (p.left + p.right) / 2); }")
+                        assert centering_error < 2, f"legal text column must be centered, offset={centering_error}px"
+                    if path == "contact.html":
+                        primary = page.locator(".contact-primary").bounding_box()
+                        location = page.locator(".contact-location").bounding_box()
+                        assert abs((primary["y"] + primary["height"]) - (location["y"] + location["height"])) < 2, "contact cards must end on the same baseline"
                     if path == "actualites.html":
                         assert page.locator(".community-photo-grid--gatherings .community-photo-card").count() == 3, "news page has three un-dated community images"
                         assert page.locator(".news-card").count() == 3, "news page keeps its three dated stories"
@@ -356,6 +370,24 @@ def main() -> None:
                 page.wait_for_timeout(650)
                 page.screenshot(path=str(screenshot_dir / filename))
 
+            # Secondary page detail captures: all article routes and the Adhérer, Contact and legal layouts.
+            for path, stem in (
+                ("actualite-2026-10-26.html", "article-26-octobre"),
+                ("actualite-2026-10-17.html", "article-17-octobre"),
+                ("actualite-2026-10-10.html", "article-10-octobre"),
+                ("adherer.html", "adhesion"),
+                ("contact.html", "contact"),
+                ("mentions-legales.html", "mentions-legales"),
+            ):
+                for width, height, suffix in ((1440, 900, "desktop"), (390, 844, "mobile")):
+                    page.set_viewport_size({"width": width, "height": height})
+                    page.goto(f"{base_url}/{path}", wait_until="networkidle")
+                    prepare_screenshot_images(page)
+                    page.screenshot(
+                        path=str(screenshot_dir / f"{stem}-{suffix}.png"),
+                        full_page=True,
+                    )
+
             # Reduced-motion users keep every story panel readable without JS motion classes.
             reduced = context.new_page()
             reduced.emulate_media(reduced_motion="reduce")
@@ -418,16 +450,28 @@ def main() -> None:
                 ],
                 "measurements": measurements,
                 "screenshots": [
-                    "artifacts/loop022-browser/home-story-01-desktop.png",
-                    "artifacts/loop022-browser/home-story-02-desktop.png",
-                    "artifacts/loop022-browser/home-story-03-desktop.png",
-                    "artifacts/loop022-browser/news-desktop.png",
-                    "artifacts/loop022-browser/news-mobile.png",
-                    "artifacts/loop022-browser/about-desktop.png",
-                    "artifacts/loop022-browser/about-mobile.png",
-                    "artifacts/loop022-browser/home-closing-desktop.png",
-                    "artifacts/loop022-browser/home-story-01-mobile.png",
-                    "artifacts/loop022-browser/home-closing-mobile.png",
+                    "artifacts/loop023-browser/home-story-01-desktop.png",
+                    "artifacts/loop023-browser/home-story-02-desktop.png",
+                    "artifacts/loop023-browser/home-story-03-desktop.png",
+                    "artifacts/loop023-browser/news-desktop.png",
+                    "artifacts/loop023-browser/news-mobile.png",
+                    "artifacts/loop023-browser/about-desktop.png",
+                    "artifacts/loop023-browser/about-mobile.png",
+                    "artifacts/loop023-browser/home-closing-desktop.png",
+                    "artifacts/loop023-browser/home-story-01-mobile.png",
+                    "artifacts/loop023-browser/home-closing-mobile.png",
+                    "artifacts/loop023-browser/article-26-octobre-desktop.png",
+                    "artifacts/loop023-browser/article-26-octobre-mobile.png",
+                    "artifacts/loop023-browser/article-17-octobre-desktop.png",
+                    "artifacts/loop023-browser/article-17-octobre-mobile.png",
+                    "artifacts/loop023-browser/article-10-octobre-desktop.png",
+                    "artifacts/loop023-browser/article-10-octobre-mobile.png",
+                    "artifacts/loop023-browser/adhesion-desktop.png",
+                    "artifacts/loop023-browser/adhesion-mobile.png",
+                    "artifacts/loop023-browser/contact-desktop.png",
+                    "artifacts/loop023-browser/contact-mobile.png",
+                    "artifacts/loop023-browser/mentions-legales-desktop.png",
+                    "artifacts/loop023-browser/mentions-legales-mobile.png",
                 ],
             },
             ensure_ascii=False,

@@ -216,6 +216,13 @@ def main():
     for drawing in ("dessin6.jpeg", "dessin7.jpeg", "dessin8.jpeg", "dessin9.jpeg"):
         assert f'src="/assets/{drawing}"' in home, f"new owner drawing missing: {drawing}"
     assert "Prendre confiance" in home and "bb-collage" in home and "assets/posts/" not in home
+    # LOOP 023: remove decorative sequence numbering and keep the About audience groups clean.
+    assert "<span>01</span>" not in about and "<span>02</span>" not in about, "decorative audience numbering must be removed"
+    assert "Les enfants" in about and "Les adolescents & adultes" in about
+    assert "1995" in about and "2021" in about, "historical milestone years are factual content, not decorative numbering"
+    assert ".about-audience-list>div>span" not in css, "obsolete numbered-list styling must be removed"
+    assert ".join-bottom{width:100%;margin-inline:auto;text-align:center}" in css
+    assert ".legal-page{width:100%;max-width:900px;margin-inline:auto}" in css
     # LOOP 022: original sheets stay in the four-card collage; the sticky illustration uses 20 transparent per-character assets.
     expected_cutouts = {6: 6, 7: 4, 8: 1, 9: 9}
     cutout_files = sorted((ROOT / "assets/characters").glob("dessin*.svg"))
