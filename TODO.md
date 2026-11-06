@@ -3,6 +3,14 @@
 **Last updated:** 6 November 2026  
 **Repository:** teyyara/bullebleue · main
 
+## Loop 024 — About page and sitewide detail polish
+- [x] Reworked all seven “Jouer, créer, découvrir” activity topics as clearly spaced cards with even gutters and readable line wrapping.
+- [x] Removed the old divider behind the About activity cards.
+- [x] Changed the responsive activity grid to two columns on wider screens and one column on mobile.
+- [x] Removed fixed document-level decorative dots that appeared detached from content on long pages; retained intentional component-level decoration.
+- [x] Added structural and Playwright assertions for the About layout and page-wide background treatment.
+- [x] Python, Node and Playwright PASS across nine pages × five viewport widths (45 combinations); 30 screenshots captured and six manually reviewed.
+
 ## Loop 023 — Fine design polish: spacing, numbering and alignment
 - [x] Removed the decorative 01/02 labels beside the About page audience groups; preserved the factual 1995 and 2021 timeline dates.
 - [x] Restyled the two audience groups as consistent cards on desktop/tablet and a clean single-column stack on mobile.

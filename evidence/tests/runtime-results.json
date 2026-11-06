@@ -1,10 +1,10 @@
 {
-  "test_run": "loop-023-full-quality-regression-fine-design-polish",
+  "test_run": "loop-024-responsive-about-and-sitewide-micro-polish",
   "observed_at": "2026-11-06",
   "browser": "Chromium 143.0.7499.4",
   "runner": "GitHub Actions hosted Ubuntu; Python 3.13; Node.js 22; Playwright 1.57; Chromium.",
   "execution_mode": "page.set_content using actual local HTML, CSS and script; Playwright checked all nine pages at five viewport widths.",
-  "status": "PASS — LOOP 023 PYTHON, NODE AND PLAYWRIGHT",
+  "status": "PASS — LOOP 024 PYTHON, NODE AND PLAYWRIGHT",
   "checks": [
     {
       "name": "JavaScript syntax and interaction",
@@ -25,6 +25,16 @@
       "name": "Visual review evidence",
       "result": "PASS",
       "detail": "Thirty screenshots captured: homepage states, about, news, three individual article routes, Adhérer, Contact and Mentions légales at desktop/mobile sizes. Seven relevant desktop/mobile captures manually reviewed."
+    },
+    {
+      "name": "About activity cards and document background",
+      "result": "PASS",
+      "detail": "Seven activity topics render as individually bordered cards, with two columns above 760 px and one column at 760 px and below; list divider is absent; document-level floating dots are absent across all nine routes."
+    },
+    {
+      "name": "Responsive visual review",
+      "result": "PASS",
+      "detail": "Thirty desktop/mobile screenshots captured. Manually reviewed About desktop/mobile, Actualités desktop, Contact desktop, Adhérer desktop and Mentions légales mobile."
     }
   ],
   "limitations": [
@@ -1169,6 +1179,63 @@
     },
     "limitations": [
       "Hosted production route, Firefox, WebKit/Safari, screen readers, axe-core, Lighthouse, ZAP and physical mobile devices were not tested."
+    ]
+  },
+  "loop_024": {
+    "test_run": "loop-024-full-quality-regression-about-and-sitewide-detail-polish",
+    "observed_at": "2026-11-06",
+    "run_id": 42233632591,
+    "url": "https://github.com/teyyara/bullebleue/actions/runs/42233632591",
+    "status": "PASS",
+    "python": "PASS — body background and seven About topic source checks.",
+    "node": "PASS — JavaScript syntax, navigation, sticky story and reduced-motion tests.",
+    "playwright": "PASS — nine pages × five viewport widths (45 combinations); responsive About activity cards, no divider, no document-level floating dots, no overflow, no failed requests or browser errors.",
+    "browser": {
+      "status": "PASS",
+      "suite": "tests/test_browser.py",
+      "pages": 9,
+      "viewports": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "page_viewport_runs": 45,
+      "checks": [
+        "no horizontal overflow",
+        "all local images load",
+        "shared navigation and mobile keyboard interactions",
+        "sticky story, reduced-motion and no-JavaScript fallbacks",
+        "all seven About activity topics remain present",
+        "About list divider removed and topic cards spaced",
+        "two-column wider-screen and one-column mobile activity layout",
+        "no page-level floating dots across all nine routes",
+        "no unexpected external requests, failed requests, page errors or console errors"
+      ]
+    },
+    "screenshot_artifact": {
+      "id": 13508939018,
+      "name": "bulle-bleue-loop024-visual-review",
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/42233632591/artifacts/13508939018",
+      "sha256": "c650473c4f778ead3e3c788d7f25f8310e54ae8c5faf01c5629a87ea8759094f",
+      "screenshot_count": 30,
+      "uploaded": true,
+      "manually_reviewed_count": 6,
+      "reviewed_files": [
+        "about-desktop.png",
+        "about-mobile.png",
+        "news-desktop.png",
+        "contact-desktop.png",
+        "adhesion-desktop.png",
+        "mentions-legales-mobile.png"
+      ],
+      "review": "Manually opened and reviewed all six listed captures. The About activity card gutters and wrapping read cleanly at desktop and mobile; the stray document-positioned dot is gone; the News, Contact, Adhérer and legal layouts remain coherent."
+    },
+    "limitations": [
+      "Direct localhost/file URL navigation returned ERR_BLOCKED_BY_ADMINISTRATOR; runtime test used in-memory page.set_content.",
+      "Not a hosted website or production route smoke test.",
+      "Firefox, WebKit, actual Safari, screen readers, axe-core, Lighthouse, ZAP and real mobile devices not tested."
     ]
   }
 }

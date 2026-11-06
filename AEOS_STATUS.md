@@ -3,11 +3,28 @@
 **Active keyphrase:** make a full website for: Bulle Bleue à Chalon-sur-Saône  
 **Run ID:** bullebleue-20261102-001  
 **Rulebook:** AEOS v3  
-**Current loop:** LOOP 023  
-**Candidate:** bullebleue-loop-023-fine-design-polish-v1  
+**Current loop:** LOOP 024  
+**Candidate:** bullebleue-loop-024-about-page-and-sitewide-detail-polish-v1  
 **Repository:** teyyara/bullebleue · main  
-**Implementation checkpoint:** 9ed9300149d213dfabb13e310a9ff50ed16e4928  
+**Implementation checkpoint:** b9eb8125898841021c94f818902001364f201ee6  
 **Status:** WAITING_FOR_CONTINUE
+
+## Delivered in Loop 024
+- Rebuilt the seven topics under “Jouer, créer, découvrir” as roomy, individually bordered cards, with a balanced two-column desktop layout and a single-column mobile stack.
+- Removed the leftover horizontal divider from the About activity list; all seven activity labels and surrounding owner-supplied copy remain unchanged.
+- Removed the fixed-position decorative dots from the whole-document background so they no longer drift beside unrelated content on long pages. Decorations attached to illustrations, cards and sections remain intact.
+- Added structural and browser regression checks for the seven About topics, responsive grid, card gutters, divider removal and page-background treatment.
+- Captured 30 screenshots across the nine public page routes and manually inspected six representative desktop/mobile views.
+
+## Verification
+- GitHub Actions **PASS**: [run 42233632591](https://github.com/teyyara/bullebleue/actions/runs/42233632591).
+- Python structural validator: **PASS**.
+- Node syntax/menu/story/reduced-motion tests: **PASS**.
+- Playwright Chromium: **PASS** — nine pages × five viewports (45 combinations); no horizontal overflow, failed local images, failed requests, page errors or console errors. New responsive About-card and document-background assertions passed.
+- Screenshot artifact: [13508939018](https://github.com/teyyara/bullebleue/actions/runs/42233632591/artifacts/13508939018), 30 screenshots. Six captures manually opened and reviewed: About desktop/mobile, Actualités desktop, Contact desktop, Adhérer desktop and Mentions légales mobile.
+
+## Next actionable TODO
+Continue with owner-dependent items only when the association supplies or confirms the missing facts and genuine testimonial material. Do not invent testimonials, legal details, membership terms or venue information.
 
 ## Delivered in Loop 023
 - Removed the decorative “01” and “02” sequence labels from the About page audience groups; the historical 1995 and 2021 timeline milestones remain as factual dates.
@@ -37,4 +54,4 @@ Collect authentic young-person, parent and volunteer testimonials if the owner w
 No production deployment has been performed or authorised. Hosting remains unconfigured.
 
 ## Progression control
-Loop 023 is checkpointed on main. Exactly one standalone CONTINUE authorises LOOP 024.
+Loop 024 is checkpointed on main. Exactly one standalone CONTINUE authorises LOOP 025.

@@ -1,6 +1,6 @@
 {
-  "requirements_version": "1.8",
-  "candidate": "bullebleue-loop-023-fine-design-polish-v1",
+  "requirements_version": "1.9",
+  "candidate": "bullebleue-loop-024-about-page-and-sitewide-detail-polish-v1",
   "requirements": [
     {
       "id": "REQ-001",
@@ -585,6 +585,15 @@
       "risk": "R1",
       "validation": "Structural source assertions, Playwright nine pages × five viewports, desktop/mobile screenshot review across all nine page routes.",
       "status": "IMPLEMENTED — LOOP 023",
+      "confidence": "HIGH for markup, computed layout and screenshot evidence."
+    },
+    {
+      "id": "REQ-066",
+      "requirement": "Keep About-page activity examples visually distinct, evenly spaced and responsive, while preventing document-level decorative dots from floating beside unrelated content.",
+      "acceptance": "All seven activity topics remain unchanged and display as individual clearly bordered cards with a two-column wider-screen layout and one-column mobile layout; the old list divider is absent; no page-level background dots drift across document sections; local illustrations and intentional card accents remain intact.",
+      "risk": "R1",
+      "validation": "Python source assertions; Playwright computed-style checks at five viewport widths on all nine pages; desktop/mobile screenshot review.",
+      "status": "IMPLEMENTED — LOOP 024",
       "confidence": "HIGH for markup, computed layout and screenshot evidence."
     }
   ]

@@ -1,7 +1,7 @@
 {
-  "test_run": "loop-023-fine-design-polish",
+  "test_run": "loop-024-about-page-and-sitewide-design-polish",
   "observed_at": "2026-11-06",
-  "status": "PASS — LOOP 023 PYTHON STRUCTURAL VALIDATOR",
+  "status": "PASS — LOOP 024 PYTHON STRUCTURAL VALIDATOR",
   "checks": [
     {
       "name": "Decorative numbering cleanup",
@@ -22,6 +22,11 @@
       "name": "Existing project content and photo safeguards",
       "result": "PASS",
       "detail": "Owner-provided content, image distribution, authentic-only Miette testimonial, four original drawing sheets and twenty transparent drawing cut-outs remain unchanged."
+    },
+    {
+      "name": "About activity cards and floating background cleanup",
+      "result": "PASS",
+      "detail": "All seven original About activity labels remain; the parent divider is removed; activity cards use a two-column wider-screen and single-column mobile grid with clear gutters; the page-level body background no longer paints free-floating dots."
     }
   ],
   "loop_003": {
@@ -811,6 +816,18 @@
       "1995/2021 factual history milestones retained",
       "Both centered container style rules present",
       "Existing owner copy, permission record, imagery and testimonial safeguards retained"
+    ]
+  },
+  "loop_024": {
+    "test_run": "loop-024-about-page-and-sitewide-design-polish",
+    "status": "PASS",
+    "runner": "GitHub Actions Python 3.13",
+    "command": "python tests/validate_site.py",
+    "checks": [
+      "Page-level floating-dot background override present",
+      "About activity wrapper has no legacy divider",
+      "All seven original activity topics remain unchanged",
+      "Responsive card treatment and existing visual/content safeguards retained"
     ]
   }
 }

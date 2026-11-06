@@ -1,5 +1,5 @@
 {
-  "decisions_version": "0.5",
+  "decisions_version": "0.6",
   "decisions": [
     {
       "id": "DEC-001",
@@ -460,6 +460,20 @@
       "tradeoffs": "The Contact and Adhérer callouts are aligned in side-by-side desktop layouts; mobile intentionally stacks them vertically. The original playful editorial visual language and page content are preserved.",
       "risk": "R1",
       "evidence": "CR-015, browser assertions, 30 screenshots from Loop 023 CI artifact; seven desktop/mobile captures manually reviewed."
+    },
+    {
+      "id": "DEC-036",
+      "context": "The user reported remaining imperfections, especially on Qui sommes-nous. Review of Loop 023 desktop/mobile screenshots showed that the seven About activity labels were compressed by a legacy divider/list treatment and a fixed-position body background dot floated beside the volunteer section on the long page.",
+      "options": [
+        "Retain the divider and document-positioned circles",
+        "Remove the page-level dots and render About topics as separated, individually bordered cards",
+        "Replace the About content and add new illustrations"
+      ],
+      "chosen": "Remove the document-level decorative dots while preserving section- and component-attached decoration. Present the seven About activity topics as roomy cards in two columns on wider screens and one column on mobile, without changing their wording.",
+      "reason": "The defects were caused by legacy presentation rules rather than content. A narrow scoped override fixes the source of the artefacts while retaining the association's existing playful colour palette and owner-provided content.",
+      "tradeoffs": "The body uses its solid warm paper colour instead of fixed-position dot decoration. Intentional decorative shapes on the news cards, illustrations and section backgrounds remain.",
+      "risk": "R1",
+      "evidence": "CR-016, REQ-066, Python validator, Loop 024 Playwright assertions and 30 responsive Chromium captures; six desktop/mobile captures manually reviewed."
     }
   ]
 }
