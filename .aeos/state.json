@@ -10,15 +10,15 @@
   "branch": "main",
   "branch_policy": "single branch",
   "bootstrap_commit": "9702981ecd01b431a4220d9d9b5905ad2fe4f43b",
-  "latest_loop_checkpoint_commit": "9ed9300149d213dfabb13e310a9ff50ed16e4928",
+  "latest_loop_checkpoint_commit": "b9eb8125898841021c94f818902001364f201ee6",
   "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
-  "status_metadata_commit": "9b23469df13ff08fadd6487f181142f6d6a62619",
+  "status_metadata_commit": "0168ce7c66959c28e80ab659ac5bd1d0452dd775",
   "last_known_good_release_commit": null,
-  "current_loop": 23,
-  "current_candidate": "bullebleue-loop-023-fine-design-polish-v1",
+  "current_loop": 24,
+  "current_candidate": "bullebleue-loop-024-about-page-and-sitewide-detail-polish-v1",
   "state": "WAITING_FOR_CONTINUE",
   "remote_checkpoint_verified": true,
-  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 022.",
+  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 025.",
   "deployment": "NOT CONFIGURED / NOT AUTHORIZED",
   "paid_dependencies": [],
   "open_blockers": [
@@ -30,7 +30,7 @@
     "Domain/hosting configuration is unknown; production deployment remains unauthorized.",
     "Final visual/content acceptance from the association owner remains outstanding."
   ],
-  "evidence_manifest_reconciliation_commit": "e910d0ac3b200bd0c50f41015000c0c3ad2ed132",
+  "evidence_manifest_reconciliation_commit": "0168ce7c66959c28e80ab659ac5bd1d0452dd775",
   "change_request_cr001": {
     "received": "2026-11-02",
     "status": "ADOPTED AND IMPLEMENTED IN LOOP 003",
@@ -289,5 +289,32 @@
   },
   "latest_loop_23_status": "WAITING_FOR_CONTINUE — detailed spacing/alignment polish implemented; decorative audience numbering removed; centered columns and bottom baselines refined; full Python/Node/Playwright PASS; 30 screenshots uploaded and seven manually reviewed; no deployment.",
   "latest_loop_23_metadata_batch_commit": "9b23469df13ff08fadd6487f181142f6d6a62619",
-  "latest_loop_23_manifest_reconciliation_note": "Manifest rebuilt from the recursive main tree after Loop 023 metadata batch; manifest itself is excluded from its own Git blob map."
+  "latest_loop_23_manifest_reconciliation_note": "Manifest rebuilt from the recursive main tree after Loop 023 metadata batch; manifest itself is excluded from its own Git blob map.",
+  "latest_loop_24_implementation_commit": "b9eb8125898841021c94f818902001364f201ee6",
+  "latest_loop_24_quality_run": 42233632591,
+  "latest_loop_24_quality_url": "https://github.com/teyyara/bullebleue/actions/runs/42233632591",
+  "latest_loop_24_quality_status": "PASS — Python structural validator; Node syntax/menu/story/reduced-motion tests; Playwright Chromium nine pages × five viewport widths (45 combinations); no overflow, failed local images, unexpected requests or browser errors.",
+  "latest_loop_24_python_validator": "PASS — seven original About activity topics retained; no legacy divider; responsive card styles and document-level background dot removal asserted.",
+  "latest_loop_24_node_test": "PASS — JavaScript syntax, navigation, sticky story and reduced-motion regression.",
+  "latest_loop_24_browser": "PASS — nine public pages × five widths (45 runs); About activity list uses two columns above 760 px and one column on mobile; seven cards individually bordered and separated; page-level floating dots absent on all routes; media and interaction checks passed.",
+  "latest_loop_24_screenshot_artifact": {
+    "id": 13508939018,
+    "name": "bulle-bleue-loop024-visual-review",
+    "url": "https://github.com/teyyara/bullebleue/actions/runs/42233632591/artifacts/13508939018",
+    "sha256": "c650473c4f778ead3e3c788d7f25f8310e54ae8c5faf01c5629a87ea8759094f",
+    "screenshot_count": 30,
+    "uploaded": true,
+    "manually_reviewed_count": 6,
+    "reviewed_files": [
+      "about-desktop.png",
+      "about-mobile.png",
+      "news-desktop.png",
+      "contact-desktop.png",
+      "adhesion-desktop.png",
+      "mentions-legales-mobile.png"
+    ]
+  },
+  "latest_loop_24_status": "WAITING_FOR_CONTINUE — About activity list restyled as responsive cards; detached document-background dots removed; full Python/Node/Playwright PASS; 30 screenshots captured and six manually reviewed; no deployment.",
+  "latest_loop_24_metadata_batch_commit": "0168ce7c66959c28e80ab659ac5bd1d0452dd775",
+  "latest_loop_24_manifest_reconciliation_note": "Manifest rebuilt from the final recursive main tree; all tracked blobs mapped once except evidence/manifest.json itself."
 }
