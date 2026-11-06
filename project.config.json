@@ -31,7 +31,7 @@
     "analytics": false,
     "third_party_tracking": false
   },
-  "current_candidate": "bullebleue-loop-024-about-page-and-sitewide-detail-polish-v1",
-  "status": "LOOP 024: ABOUT PAGE ACTIVITY CARD SPACING AND RESPONSIVE GRID POLISH; REMOVED FLOATING DOCUMENT BACKGROUND DOTS; PYTHON/NODE/PLAYWRIGHT PASS; VISUAL REVIEW PASS; NOT DEPLOYED",
+  "current_candidate": "bullebleue-loop-025-cross-browser-responsive-validation-v1",
+  "status": "LOOP 025: RESPONSIVE REGRESSION NOW RUNS IN CHROMIUM, FIREFOX AND PLAYWRIGHT WEBKIT; ALL THREE ENGINES PASS ACROSS 9 PAGES × 5 VIEWPORTS (135 COMBINATIONS); NATIVE SAFARI/ASSISTIVE-TECHNOLOGY CHECKS REMAIN OPEN; NOT DEPLOYED",
   "contract_version": "1.5"
 }

@@ -3,6 +3,15 @@
 **Last updated:** 6 November 2026  
 **Repository:** teyyara/bullebleue · main
 
+## Loop 025 — Cross-browser responsive regression
+- [x] Made the existing Playwright browser suite selectable between Chromium, Firefox and WebKit.
+- [x] Updated CI to install and run all three engines against all nine public pages at 320, 390, 768, 1024 and 1440 px.
+- [x] Kept all existing layout, image, navigation, sticky-story, reduced-motion and browser-error assertions active in each engine.
+- [x] Corrected the computed-style test to return explicit properties consistently across browser engines.
+- [x] Added a diagnostic retry to the local route response check; a persistent non-200 response still fails.
+- [x] Python, Node and all three Playwright engine suites PASS: 135 page/viewport combinations, with no overflow, failed local image, unexpected request or browser error.
+- [x] Captured 30 Chromium screenshots; manually reviewed the About desktop and mobile views.
+
 ## Loop 024 — About page and sitewide detail polish
 - [x] Reworked all seven “Jouer, créer, découvrir” activity topics as clearly spaced cards with even gutters and readable line wrapping.
 - [x] Removed the old divider behind the About activity cards.
@@ -63,5 +72,6 @@
 - [ ] Confirm membership fee, procedure, forms and renewals.
 - [ ] Confirm current venue/location; weekly times came from owner feedback.
 - [ ] Test apail@live.fr deliverability without an unsolicited message.
-- [ ] Firefox/WebKit/Safari, screen-reader, physical-device, Lighthouse, ZAP and hosted checks.
+- [x] Playwright Chromium, Firefox and WebKit responsive matrix across all nine pages and five viewport widths.
+- [ ] Verify on native macOS/iOS Safari; complete screen-reader, physical-device, Lighthouse, ZAP and hosted checks.
 - [ ] No production deployment until explicitly authorised and hosting confirmed.

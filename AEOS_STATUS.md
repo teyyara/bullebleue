@@ -3,11 +3,28 @@
 **Active keyphrase:** make a full website for: Bulle Bleue à Chalon-sur-Saône  
 **Run ID:** bullebleue-20261102-001  
 **Rulebook:** AEOS v3  
-**Current loop:** LOOP 024  
-**Candidate:** bullebleue-loop-024-about-page-and-sitewide-detail-polish-v1  
+**Current loop:** LOOP 025  
+**Candidate:** bullebleue-loop-025-cross-browser-responsive-validation-v1  
 **Repository:** teyyara/bullebleue · main  
-**Implementation checkpoint:** b9eb8125898841021c94f818902001364f201ee6  
+**Implementation checkpoint:** 1b7fd73d494321db421c065470226452d3b1d797  
 **Status:** WAITING_FOR_CONTINUE
+
+## Delivered in Loop 025
+- Extended the responsive Playwright suite so the same browser checks can run in Chromium, Firefox and WebKit using the `BROWSER_ENGINE` selector.
+- Updated GitHub Actions to install all three engines and run the full suite separately for each engine; the Chromium run retains the 30-image visual-review artifact while the Firefox/WebKit runs provide independent runtime coverage.
+- Made a computed-style assertion engine-neutral and added one diagnostic retry to the local HTTP route check; persistent non-200 responses still fail.
+- Python structural validator and Node menu/story/reduced-motion tests: **PASS**.
+- Chromium: **PASS**, nine pages × five viewports (45 combinations).
+- Firefox: **PASS**, nine pages × five viewports (45 combinations).
+- Playwright WebKit: **PASS**, nine pages × five viewports (45 combinations).
+- Combined responsive browser matrix: **135 page/viewport combinations**, with no horizontal overflow, missing local images, failed requests or browser/page errors.
+- Screenshot artifact: [13511744695](https://github.com/teyyara/bullebleue/actions/runs/42237625691/artifacts/13511744695), 30 Chromium screenshots. About desktop and mobile captures manually opened and reviewed.
+
+## Important coverage boundary
+Playwright WebKit on the Ubuntu CI runner is Safari-family engine coverage, not a test of native Safari on macOS or iOS. Native Safari, physical mobile devices, manual screen-reader testing, Lighthouse, ZAP and hosted checks remain open.
+
+## Next actionable TODO
+Continue with owner-dependent items only when APAiL supplies or confirms missing facts and genuine testimonial material. Do not invent testimonials, legal details, membership terms or venue information.
 
 ## Delivered in Loop 024
 - Rebuilt the seven topics under “Jouer, créer, découvrir” as roomy, individually bordered cards, with a balanced two-column desktop layout and a single-column mobile stack.
@@ -49,9 +66,9 @@ Collect authentic young-person, parent and volunteer testimonials if the owner w
 - Obtain final association-owner visual/content acceptance.
 - Confirm registered office, publication manager, hosting provider, membership terms and current venue.
 - Test apail@live.fr deliverability without an unsolicited message.
-- Complete Firefox/WebKit/Safari, screen-reader, physical-device, Lighthouse, ZAP and hosted security/performance checks.
+- Playwright Firefox and WebKit have passed in Loop 025. Verify on native macOS/iOS Safari; complete screen-reader, physical-device, Lighthouse, ZAP and hosted security/performance checks.
 
 No production deployment has been performed or authorised. Hosting remains unconfigured.
 
 ## Progression control
-Loop 024 is checkpointed on main. Exactly one standalone CONTINUE authorises LOOP 025.
+Loop 025 is checkpointed on main. Exactly one standalone CONTINUE authorises LOOP 026.

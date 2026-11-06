@@ -1,7 +1,7 @@
 {
-  "test_run": "loop-024-about-page-and-sitewide-design-polish",
+  "test_run": "loop-025-cross-browser-structural-validation",
   "observed_at": "2026-11-06",
-  "status": "PASS — LOOP 024 PYTHON STRUCTURAL VALIDATOR",
+  "status": "PASS — LOOP 025 PYTHON STRUCTURAL VALIDATOR",
   "checks": [
     {
       "name": "Decorative numbering cleanup",
@@ -27,6 +27,11 @@
       "name": "About activity cards and floating background cleanup",
       "result": "PASS",
       "detail": "All seven original About activity labels remain; the parent divider is removed; activity cards use a two-column wider-screen and single-column mobile grid with clear gutters; the page-level body background no longer paints free-floating dots."
+    },
+    {
+      "name": "Cross-engine test infrastructure",
+      "result": "PASS",
+      "detail": "The browser suite selects Chromium, Firefox or WebKit through BROWSER_ENGINE; GitHub Actions installs and invokes each engine, preserving Chromium screenshots as the sole visual artifact."
     }
   ],
   "loop_003": {
@@ -828,6 +833,18 @@
       "About activity wrapper has no legacy divider",
       "All seven original activity topics remain unchanged",
       "Responsive card treatment and existing visual/content safeguards retained"
+    ]
+  },
+  "loop_025": {
+    "test_run": "loop-025-cross-browser-structural-validation",
+    "status": "PASS",
+    "runner": "GitHub Actions Python 3.13",
+    "command": "python tests/validate_site.py",
+    "checks": [
+      "BROWSER_ENGINE selector and Playwright engine selection present",
+      "CI installs Chromium, Firefox and WebKit",
+      "CI runs all three engine variants sequentially",
+      "Native Safari distinction is recorded rather than overclaimed"
     ]
   }
 }

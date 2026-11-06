@@ -1,10 +1,10 @@
 {
-  "test_run": "loop-024-responsive-about-and-sitewide-micro-polish",
+  "test_run": "loop-025-cross-browser-responsive-regression",
   "observed_at": "2026-11-06",
-  "browser": "Chromium 143.0.7499.4",
+  "browser": "Playwright 1.57.0; Chromium, Firefox and WebKit on GitHub Actions Ubuntu 24.04.",
   "runner": "GitHub Actions hosted Ubuntu; Python 3.13; Node.js 22; Playwright 1.57; Chromium.",
   "execution_mode": "page.set_content using actual local HTML, CSS and script; Playwright checked all nine pages at five viewport widths.",
-  "status": "PASS — LOOP 024 PYTHON, NODE AND PLAYWRIGHT",
+  "status": "PASS — LOOP 025 CHROMIUM, FIREFOX AND WEBKIT",
   "checks": [
     {
       "name": "JavaScript syntax and interaction",
@@ -35,6 +35,16 @@
       "name": "Responsive visual review",
       "result": "PASS",
       "detail": "Thirty desktop/mobile screenshots captured. Manually reviewed About desktop/mobile, Actualités desktop, Contact desktop, Adhérer desktop and Mentions légales mobile."
+    },
+    {
+      "name": "Three-engine responsive matrix",
+      "result": "PASS",
+      "detail": "Chromium, Firefox and Playwright WebKit each passed the same nine-page × five-viewport suite (45 combinations per engine; 135 combinations total). All route, layout, local media, navigation, keyboard menu, sticky-story, reduced-motion, no-JavaScript and browser/request-error assertions remained active."
+    },
+    {
+      "name": "Browser-engine neutral assertions",
+      "result": "PASS",
+      "detail": "The computed-style test returns explicit serializable CSS properties instead of relying on CSSStyleDeclaration object enumeration. The local route assertion retains a single diagnostic retry, followed by a strict HTTP 200 requirement."
     }
   ],
   "limitations": [
@@ -1236,6 +1246,62 @@
       "Direct localhost/file URL navigation returned ERR_BLOCKED_BY_ADMINISTRATOR; runtime test used in-memory page.set_content.",
       "Not a hosted website or production route smoke test.",
       "Firefox, WebKit, actual Safari, screen readers, axe-core, Lighthouse, ZAP and real mobile devices not tested."
+    ]
+  },
+  "loop_025": {
+    "test_run": "loop-025-cross-browser-responsive-regression",
+    "observed_at": "2026-11-06",
+    "run_id": 42237625691,
+    "url": "https://github.com/teyyara/bullebleue/actions/runs/42237625691",
+    "status": "PASS",
+    "python": "PASS — structural validator and cross-engine workflow configuration.",
+    "node": "PASS — JavaScript syntax/menu/story/reduced-motion regression.",
+    "playwright": {
+      "status": "PASS",
+      "pages": 9,
+      "viewports": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "page_viewport_runs_per_engine": 45,
+      "total_page_viewport_runs": 135,
+      "engines": {
+        "chromium": "PASS",
+        "firefox": "PASS",
+        "webkit": "PASS"
+      },
+      "checks": [
+        "no horizontal overflow",
+        "HTTP routes and local images",
+        "shared navigation order and mobile keyboard menu",
+        "all page-specific About, Adhérer, Contact, legal and Actualités assertions",
+        "sticky artwork/story transitions",
+        "reduced-motion content visibility",
+        "no-JavaScript content visibility",
+        "no failed requests, unexpected external requests, page errors or console errors"
+      ]
+    },
+    "screenshot_artifact": {
+      "id": 13511744695,
+      "name": "bulle-bleue-loop025-visual-review",
+      "url": "https://github.com/teyyara/bullebleue/actions/runs/42237625691/artifacts/13511744695",
+      "sha256": "df4ba9266ff90e49826d9c417f22ebd02df5f7e9c6016d0aae7382c15f424a47",
+      "screenshot_count": 30,
+      "uploaded": true,
+      "manually_reviewed_count": 2,
+      "reviewed_files": [
+        "about-desktop.png",
+        "about-mobile.png"
+      ],
+      "review": "Opened and inspected About desktop and mobile Chromium captures; no unintended visual changes from the test-only loop."
+    },
+    "limitations": [
+      "Playwright WebKit ran on Linux; this is not a native Safari macOS/iOS validation.",
+      "Screen-reader and manual assistive-technology checks; physical mobile devices; Lighthouse; ZAP; and hosted security/performance checks remain outstanding.",
+      "No production deployment or hosted route smoke test was performed."
     ]
   }
 }

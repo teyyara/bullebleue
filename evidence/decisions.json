@@ -1,5 +1,5 @@
 {
-  "decisions_version": "0.6",
+  "decisions_version": "0.7",
   "decisions": [
     {
       "id": "DEC-001",
@@ -474,6 +474,19 @@
       "tradeoffs": "The body uses its solid warm paper colour instead of fixed-position dot decoration. Intentional decorative shapes on the news cards, illustrations and section backgrounds remain.",
       "risk": "R1",
       "evidence": "CR-016, REQ-066, Python validator, Loop 024 Playwright assertions and 30 responsive Chromium captures; six desktop/mobile captures manually reviewed."
+    },
+    {
+      "id": "DEC-037",
+      "context": "The responsive browser regression had only launched Chromium, while Firefox, WebKit/Safari-family and assistive-technology checks remained open.",
+      "options": [
+        "Keep the existing Chromium-only CI suite",
+        "Run the same responsive regression in Chromium, Firefox and Playwright WebKit; separately retain native Safari and assistive-technology testing as future checks"
+      ],
+      "chosen": "Make the Playwright engine configurable through BROWSER_ENGINE and run the complete nine-page/five-viewport regression sequentially in Chromium, Firefox and WebKit in GitHub Actions. Keep visual screenshots from Chromium only to avoid duplicate artifacts.",
+      "reason": "The same assertions across independent browser engines catch engine-specific CSS serialization, navigation, rendering and interaction differences without changing site content or dependencies. A real Safari/iOS pass cannot be inferred from Playwright WebKit running on Linux.",
+      "tradeoffs": "The CI job takes longer and downloads three browser engines. WebKit is Safari-family engine coverage, not native macOS/iOS Safari. Native devices and assistive technology remain separate validation items.",
+      "risk": "R1",
+      "evidence": "CR-017, REQ-067, GitHub Actions run 42237625691; 9 routes × 5 viewport widths × 3 engines; Chromium screenshot artifact 13511744695."
     }
   ]
 }

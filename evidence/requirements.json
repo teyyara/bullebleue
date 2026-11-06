@@ -1,6 +1,6 @@
 {
-  "requirements_version": "1.9",
-  "candidate": "bullebleue-loop-024-about-page-and-sitewide-detail-polish-v1",
+  "requirements_version": "1.10",
+  "candidate": "bullebleue-loop-025-cross-browser-responsive-validation-v1",
   "requirements": [
     {
       "id": "REQ-001",
@@ -595,6 +595,15 @@
       "validation": "Python source assertions; Playwright computed-style checks at five viewport widths on all nine pages; desktop/mobile screenshot review.",
       "status": "IMPLEMENTED — LOOP 024",
       "confidence": "HIGH for markup, computed layout and screenshot evidence."
+    },
+    {
+      "id": "REQ-067",
+      "requirement": "Validate responsive website behaviour in multiple independent browser engines rather than Chromium alone.",
+      "acceptance": "The same nine public pages are checked at 320, 390, 768, 1024 and 1440 px using Playwright Chromium, Firefox and WebKit. Each engine must pass route status, no-horizontal-overflow, local image loading, shared navigation, keyboard menu, About/news layout assertions, sticky-story transitions, reduced-motion/no-JavaScript fallbacks and no browser/page/request errors.",
+      "risk": "R1",
+      "validation": "GitHub Actions cross-engine Playwright regression suite, Python structural validator and Node interaction tests; Chromium visual artifact retained separately.",
+      "status": "IMPLEMENTED — LOOP 025",
+      "confidence": "HIGH for Playwright browser engines and tested viewports; native Safari/iOS remains untested."
     }
   ]
 }
