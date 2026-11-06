@@ -228,6 +228,12 @@ def main():
     assert ".about-activities .activity-words{" in css and "grid-template-columns:repeat(2,minmax(0,1fr))" in css
     assert "border:0;" in css[css.index(".about-activities .activity-words{"):css.index(".about-activities .activity-words li{")], "About activity wrapper must not retain its old divider"
     assert all(topic in about for topic in ("Jeux de société & baby-foot", "Musique, chant, théâtre & contes", "Dessin & arts plastiques", "Cuisine, goûters & fêtes", "Jardinage & temps dehors", "Sorties culturelles & découvertes", "Médiation animale & rencontres entre parents")), "all seven original About activity topics must remain unchanged"
+    # LOOP 025: validate cross-engine Playwright coverage rather than Chromium-only assumptions.
+    browser_suite = (ROOT / "tests/test_browser.py").read_text(encoding="utf-8")
+    workflow = (ROOT / ".github/workflows/quality.yml").read_text(encoding="utf-8")
+    assert 'os.environ.get("BROWSER_ENGINE", "chromium")' in browser_suite and "getattr(playwright, BROWSER_ENGINE)" in browser_suite, "browser regression must support selectable browser engines"
+    assert all(f"BROWSER_ENGINE: {engine}" in workflow for engine in ("chromium", "firefox", "webkit")), "CI must run the responsive suite in all three Playwright engines"
+    assert "playwright install --with-deps chromium firefox webkit" in workflow, "CI must install Chromium, Firefox and WebKit"
     # LOOP 022: original sheets stay in the four-card collage; the sticky illustration uses 20 transparent per-character assets.
     expected_cutouts = {6: 6, 7: 4, 8: 1, 9: 9}
     cutout_files = sorted((ROOT / "assets/characters").glob("dessin*.svg"))

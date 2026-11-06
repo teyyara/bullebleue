@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import threading
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -11,6 +12,10 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
+BROWSER_ENGINE = os.environ.get("BROWSER_ENGINE", "chromium").strip().lower()
+if BROWSER_ENGINE not in {"chromium", "firefox", "webkit"}:
+    raise ValueError(f"Unsupported BROWSER_ENGINE: {BROWSER_ENGINE}")
+
 PAGES = (
     "index.html",
     "qui-sommes-nous.html",
@@ -107,13 +112,13 @@ def main() -> None:
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     base_url = f"http://127.0.0.1:{server.server_port}"
-    screenshot_dir = ROOT / "artifacts" / "loop024-browser"
+    screenshot_dir = ROOT / "artifacts" / f"loop025-browser-{BROWSER_ENGINE}"
     screenshot_dir.mkdir(parents=True, exist_ok=True)
     measurements: list[dict] = []
 
     try:
         with sync_playwright() as playwright:
-            browser = playwright.chromium.launch(headless=True)
+            browser = getattr(playwright, BROWSER_ENGINE).launch(headless=True)
             context = browser.new_context()
             page = context.new_page()
             console_errors: list[str] = []
@@ -443,6 +448,7 @@ def main() -> None:
         json.dumps(
             {
                 "status": "PASS",
+                "browser_engine": BROWSER_ENGINE,
                 "pages": len(PAGES),
                 "viewports": [width for width, _ in VIEWPORTS],
                 "page_viewport_runs": len(measurements),
@@ -466,28 +472,28 @@ def main() -> None:
                 ],
                 "measurements": measurements,
                 "screenshots": [
-                    "artifacts/loop024-browser/home-story-01-desktop.png",
-                    "artifacts/loop024-browser/home-story-02-desktop.png",
-                    "artifacts/loop024-browser/home-story-03-desktop.png",
-                    "artifacts/loop024-browser/news-desktop.png",
-                    "artifacts/loop024-browser/news-mobile.png",
-                    "artifacts/loop024-browser/about-desktop.png",
-                    "artifacts/loop024-browser/about-mobile.png",
-                    "artifacts/loop024-browser/home-closing-desktop.png",
-                    "artifacts/loop024-browser/home-story-01-mobile.png",
-                    "artifacts/loop024-browser/home-closing-mobile.png",
-                    "artifacts/loop024-browser/article-26-octobre-desktop.png",
-                    "artifacts/loop024-browser/article-26-octobre-mobile.png",
-                    "artifacts/loop024-browser/article-17-octobre-desktop.png",
-                    "artifacts/loop024-browser/article-17-octobre-mobile.png",
-                    "artifacts/loop024-browser/article-10-octobre-desktop.png",
-                    "artifacts/loop024-browser/article-10-octobre-mobile.png",
-                    "artifacts/loop024-browser/adhesion-desktop.png",
-                    "artifacts/loop024-browser/adhesion-mobile.png",
-                    "artifacts/loop024-browser/contact-desktop.png",
-                    "artifacts/loop024-browser/contact-mobile.png",
-                    "artifacts/loop024-browser/mentions-legales-desktop.png",
-                    "artifacts/loop024-browser/mentions-legales-mobile.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/home-story-01-desktop.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/home-story-02-desktop.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/home-story-03-desktop.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/news-desktop.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/news-mobile.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/about-desktop.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/about-mobile.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/home-closing-desktop.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/home-story-01-mobile.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/home-closing-mobile.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/article-26-octobre-desktop.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/article-26-octobre-mobile.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/article-17-octobre-desktop.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/article-17-octobre-mobile.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/article-10-octobre-desktop.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/article-10-octobre-mobile.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/adhesion-desktop.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/adhesion-mobile.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/contact-desktop.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/contact-mobile.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/mentions-legales-desktop.png",
+                    "artifacts/loop025-browser-${BROWSER_ENGINE}/mentions-legales-mobile.png",
                 ],
             },
             ensure_ascii=False,

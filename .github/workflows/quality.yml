@@ -18,7 +18,7 @@ jobs:
   quality:
     name: Static, interaction and browser checks
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -45,17 +45,29 @@ jobs:
       - name: Install browser-test dependency
         run: python -m pip install "playwright==1.57.0"
 
-      - name: Install Chromium
-        run: python -m playwright install --with-deps chromium
+      - name: Install Chromium, Firefox and WebKit
+        run: python -m playwright install --with-deps chromium firefox webkit
 
-      - name: Run responsive browser checks
+      - name: Run responsive checks — Chromium
+        env:
+          BROWSER_ENGINE: chromium
         run: python tests/test_browser.py
 
-      - name: Preserve browser screenshots
+      - name: Run responsive checks — Firefox
+        env:
+          BROWSER_ENGINE: firefox
+        run: python tests/test_browser.py
+
+      - name: Run responsive checks — WebKit
+        env:
+          BROWSER_ENGINE: webkit
+        run: python tests/test_browser.py
+
+      - name: Preserve Chromium visual review screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: bulle-bleue-loop024-visual-review
-          path: artifacts/loop024-browser/
+          name: bulle-bleue-loop025-visual-review
+          path: artifacts/loop025-browser-chromium/
           if-no-files-found: ignore
           retention-days: 7
