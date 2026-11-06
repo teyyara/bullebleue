@@ -190,10 +190,10 @@ def main() -> None:
                     if path == "mentions-legales.html":
                         centering_error = page.locator(".legal-page").evaluate("(el) => { const r = el.getBoundingClientRect(); const p = el.parentElement.getBoundingClientRect(); return Math.abs((r.left + r.right) / 2 - (p.left + p.right) / 2); }")
                         assert centering_error < 2, f"legal text column must be centered, offset={centering_error}px"
-                    if path == "contact.html":
+                    if path == "contact.html" and width >= 981:
                         primary = page.locator(".contact-primary").bounding_box()
                         location = page.locator(".contact-location").bounding_box()
-                        assert abs((primary["y"] + primary["height"]) - (location["y"] + location["height"])) < 2, "contact cards must end on the same baseline"
+                        assert abs((primary["y"] + primary["height"]) - (location["y"] + location["height"])) < 2, "side-by-side contact cards must end on the same baseline"
                     if path == "actualites.html":
                         assert page.locator(".community-photo-grid--gatherings .community-photo-card").count() == 3, "news page has three un-dated community images"
                         assert page.locator(".news-card").count() == 3, "news page keeps its three dated stories"
