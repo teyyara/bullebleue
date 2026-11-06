@@ -1,5 +1,5 @@
 {
-  "decisions_version": "0.4",
+  "decisions_version": "0.5",
   "decisions": [
     {
       "id": "DEC-001",
@@ -447,6 +447,19 @@
       "tradeoffs": "Silhouette boundaries are hand-traced approximations; external JPEG image references inside the SVGs preserve the source pixels without duplicating the originals. The full drawing sheets remain available as documentary artwork.",
       "risk": "R1",
       "evidence": "CR-014, twenty SVG assets, source-preservation structural assertions and Loop 022 Chromium screenshots."
+    },
+    {
+      "id": "DEC-035",
+      "context": "The user requested a fine visual cleanup, especially spacing, leftover numbering and centering. Baseline screenshots showed decorative 01/02 labels on About audience cards, a left-anchored capped-width Adhérer note/legal column, unequal lower callout positions in Contact and misaligned Adhérer actions.",
+      "options": [
+        "Keep the existing micro-layouts unchanged",
+        "Apply a focused spacing/alignment polish, remove only decorative audience numbering, and keep historical dates intact"
+      ],
+      "chosen": "Remove About's decorative 01/02 labels, present the audience groups as responsive cards, center Adhérer/legal narrow content columns, align Contact lower callouts and align Adhérer desktop actions; refine page/card spacing and title/metadata baselines.",
+      "reason": "The request targets visual finish rather than content redesign. Historical timeline years 1995 and 2021 are factual and remain visible; the numbering removed was decorative sequence chrome only.",
+      "tradeoffs": "The Contact and Adhérer callouts are aligned in side-by-side desktop layouts; mobile intentionally stacks them vertically. The original playful editorial visual language and page content are preserved.",
+      "risk": "R1",
+      "evidence": "CR-015, browser assertions, 30 screenshots from Loop 023 CI artifact; seven desktop/mobile captures manually reviewed."
     }
   ]
 }

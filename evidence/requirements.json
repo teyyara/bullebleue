@@ -1,6 +1,6 @@
 {
-  "requirements_version": "1.7",
-  "candidate": "bullebleue-loop-022-transparent-drawing-character-cutouts-v1",
+  "requirements_version": "1.8",
+  "candidate": "bullebleue-loop-023-fine-design-polish-v1",
   "requirements": [
     {
       "id": "REQ-001",
@@ -577,6 +577,15 @@
       "validation": "Structural SVG/source assertions, Playwright image-load and count checks at five viewport widths, desktop/mobile screenshot review.",
       "status": "IMPLEMENTED — LOOP 022",
       "confidence": "HIGH for source references, counts, rendering and asset preservation; silhouette accuracy is based on manual vector traces."
+    },
+    {
+      "id": "REQ-065",
+      "requirement": "Polish small visual details across the website: remove leftover decorative numbering, improve spacing and align/center related elements consistently.",
+      "acceptance": "About audience cards contain no decorative sequence numbers; factual historical years remain; cards align and stack cleanly responsively; Adhérer closing note and legal reading column are centered; Contact cards and lower notes align; Adhérer card actions share a desktop bottom baseline and stack naturally on mobile; breadcrumb/section/legal/news spacing refinements do not introduce overflow.",
+      "risk": "R1",
+      "validation": "Structural source assertions, Playwright nine pages × five viewports, desktop/mobile screenshot review across all nine page routes.",
+      "status": "IMPLEMENTED — LOOP 023",
+      "confidence": "HIGH for markup, computed layout and screenshot evidence."
     }
   ]
 }

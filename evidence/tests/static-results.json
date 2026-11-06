@@ -1,32 +1,27 @@
 {
-  "test_run": "loop-022-transparent-character-cutouts",
-  "observed_at": "2026-11-05",
-  "status": "PASS — LOOP 022 PYTHON STRUCTURAL VALIDATOR",
+  "test_run": "loop-023-fine-design-polish",
+  "observed_at": "2026-11-06",
+  "status": "PASS — LOOP 023 PYTHON STRUCTURAL VALIDATOR",
   "checks": [
     {
-      "name": "Transparent character assets",
+      "name": "Decorative numbering cleanup",
       "result": "PASS",
-      "detail": "Exactly twenty independently addressable SVG cut-outs are present: six from drawing 6, four from drawing 7, one from drawing 8 and nine from drawing 9. Each asset has one hand-traced clip path and references its original local JPEG."
+      "detail": "The About page no longer includes the decorative 01/02 audience sequence labels; the factual 1995 and 2021 milestone years remain."
     },
     {
-      "name": "Original artwork preservation",
+      "name": "Centered constrained layouts",
       "result": "PASS",
-      "detail": "All four complete source JPEGs remain in the Jouer/créer collage. The SVG files reference rather than replace or redraw the supplied pixels."
+      "detail": "The Adhérer closing note and legal reading column have centered max-width layout rules."
     },
     {
-      "name": "Drawing 7 character selection",
+      "name": "Responsive audience cards",
       "result": "PASS",
-      "detail": "The pasted football photograph and cropped edge fragment are excluded from the drawn-character asset set."
+      "detail": "The two audience groups use equal-width cards at wider sizes and a clean single-column stack on mobile."
     },
     {
-      "name": "Homepage implementation",
+      "name": "Existing project content and photo safeguards",
       "result": "PASS",
-      "detail": "Four transparent groups replace the rectangular sheet stickers in the sticky homepage art; all twenty cut-outs are individually positioned and decorative."
-    },
-    {
-      "name": "Existing owner content and image permission",
-      "result": "PASS",
-      "detail": "The exact phrase 'verbally authorized' remains in the TODO; owner-approved copy, genuine Miette quote, original photography distribution and no-invented-testimonials safeguards remain unchanged."
+      "detail": "Owner-provided content, image distribution, authentic-only Miette testimonial, four original drawing sheets and twenty transparent drawing cut-outs remain unchanged."
     }
   ],
   "loop_003": {
@@ -805,5 +800,17 @@
       "The exact 'verbally authorized' owner-image permission wording remains present"
     ],
     "notes": "Python structural validation passed on implementation commit 28583458561c261c593bd2a88f06412c66c337b3."
+  },
+  "loop_023": {
+    "test_run": "loop-023-fine-design-polish",
+    "status": "PASS",
+    "runner": "GitHub Actions Python 3.13",
+    "command": "python tests/validate_site.py",
+    "checks": [
+      "Decorative audience-number markup removed",
+      "1995/2021 factual history milestones retained",
+      "Both centered container style rules present",
+      "Existing owner copy, permission record, imagery and testimonial safeguards retained"
+    ]
   }
 }

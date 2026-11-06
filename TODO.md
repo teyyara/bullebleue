@@ -1,7 +1,18 @@
 # Bulle Bleue - APAiL — Owner feedback and production TODO
 
-**Last updated:** 5 November 2026  
+**Last updated:** 6 November 2026  
 **Repository:** teyyara/bullebleue · main
+
+## Loop 023 — Fine design polish: spacing, numbering and alignment
+- [x] Removed the decorative 01/02 labels beside the About page audience groups; preserved the factual 1995 and 2021 timeline dates.
+- [x] Restyled the two audience groups as consistent cards on desktop/tablet and a clean single-column stack on mobile.
+- [x] Centered the capped-width Adhérer closing note and legal-information reading column.
+- [x] Aligned the Contact page's two main cards and their lower information callouts.
+- [x] Aligned the Adhérer email button and companion contact link on a shared desktop baseline; preserved natural mobile stacking.
+- [x] Refined breadcrumb spacing, page-section rhythm, legal definition-list spacing, audience-card typography and Actualités card metadata/title alignment.
+- [x] Added structural and responsive browser assertions; Python, Node and Playwright PASS across nine pages × five viewport widths.
+- [x] Captured 30 desktop/mobile screenshots across all pages; manually reviewed seven relevant views.
+
 
 ## Loop 022 — Transparent character cut-outs from drawings 6–9
 - [x] Created 20 individually addressable transparent SVG character cut-outs: six from drawing 6, four clearly drawn figures from drawing 7, one from drawing 8 and nine from drawing 9.

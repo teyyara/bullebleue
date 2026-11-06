@@ -1,30 +1,30 @@
 {
-  "test_run": "loop-022-full-quality-regression-transparent-character-cutouts",
-  "observed_at": "2026-11-05",
+  "test_run": "loop-023-full-quality-regression-fine-design-polish",
+  "observed_at": "2026-11-06",
   "browser": "Chromium 143.0.7499.4",
   "runner": "GitHub Actions hosted Ubuntu; Python 3.13; Node.js 22; Playwright 1.57; Chromium.",
   "execution_mode": "page.set_content using actual local HTML, CSS and script; Playwright checked all nine pages at five viewport widths.",
-  "status": "PASS — LOOP 022 PYTHON, NODE AND PLAYWRIGHT",
+  "status": "PASS — LOOP 023 PYTHON, NODE AND PLAYWRIGHT",
   "checks": [
     {
       "name": "JavaScript syntax and interaction",
       "result": "PASS",
-      "detail": "node --check script.js and node --check tests/test_menu.js; menu keyboard/outside-click, sticky story/scroll-scene and reduced-motion tests passed."
+      "detail": "node --check script.js and node --check tests/test_menu.js; mobile navigation, sticky story, scroll scenes and reduced-motion checks passed."
     },
     {
-      "name": "Transparent cut-out rendering",
+      "name": "Numbering, centering and card alignment",
       "result": "PASS",
-      "detail": "All twenty SVG cut-outs (6/4/1/9) loaded in Chromium; each of the four story groups contained its expected count; groups had no paper-card border or opaque background."
+      "detail": "About decorative numbering absent; historical years retained; Adhérer closing note and legal column centered; Contact cards share a desktop bottom baseline; Adhérer actions share a desktop bottom baseline."
     },
     {
-      "name": "Original drawing preservation",
+      "name": "Responsive layout and media",
       "result": "PASS",
-      "detail": "The four complete original JPEG drawing sheets remain in the Jouer/créer collage."
+      "detail": "Nine pages × five viewport widths (320, 390, 768, 1024 and 1440 px; 45 combinations). Mobile Contact/Adhérer cards stack; no horizontal overflow, failed local image loads, failed non-Google-Fonts requests, page errors or console errors."
     },
     {
-      "name": "Responsive layout and image loading",
+      "name": "Visual review evidence",
       "result": "PASS",
-      "detail": "Nine pages × five viewport widths (320, 390, 768, 1024 and 1440 px; 45 combinations). No horizontal overflow, failed local image loads, failed non-Google-Fonts requests, page errors or console errors."
+      "detail": "Thirty screenshots captured: homepage states, about, news, three individual article routes, Adhérer, Contact and Mentions légales at desktop/mobile sizes. Seven relevant desktop/mobile captures manually reviewed."
     }
   ],
   "limitations": [
@@ -1149,6 +1149,26 @@
     },
     "limitations": [
       "Hosted route, production deployment, Firefox, WebKit/Safari, screen readers, axe-core, Lighthouse, ZAP and physical mobile devices were not tested."
+    ]
+  },
+  "loop_023": {
+    "test_run": "loop-023-full-quality-regression-fine-design-polish",
+    "observed_at": "2026-11-06",
+    "run_id": 42229730798,
+    "url": "https://github.com/teyyara/bullebleue/actions/runs/42229730798",
+    "status": "PASS",
+    "python": "PASS — structure, number removal and centering selectors.",
+    "node": "PASS — JavaScript syntax, navigation, story and reduced-motion.",
+    "playwright": "PASS — nine pages × five viewports (45 combinations); centering, desktop card baselines, mobile stacking, local media, no overflow or browser errors.",
+    "screenshot_artifact": {
+      "id": 13507472174,
+      "name": "bulle-bleue-loop023-visual-review",
+      "sha256": "9d2cac3e860284e23476baef2fb3ce3505784b78b1cb146229c3e69722a6557e",
+      "screenshot_count": 30,
+      "manually_reviewed_count": 7
+    },
+    "limitations": [
+      "Hosted production route, Firefox, WebKit/Safari, screen readers, axe-core, Lighthouse, ZAP and physical mobile devices were not tested."
     ]
   }
 }
