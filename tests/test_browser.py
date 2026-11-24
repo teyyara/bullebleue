@@ -19,6 +19,7 @@ PAGES = (
 )
 VIEWPORTS = ((320,760),(390,844),(768,1024),(1024,768),(1440,900))
 NAV = ["index.html","qui-sommes-nous.html","actualites.html","adherer.html","facile-a-lire.html","contact.html"]
+assert len(NAV) == len(set(NAV)), "shared navigation destinations must be unique"
 
 class QuietHandler(SimpleHTTPRequestHandler):
     def log_message(self, fmt, *args): pass
