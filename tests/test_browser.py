@@ -70,6 +70,10 @@ def main():
                     assert page.locator("main#contenu").count()==1
                     assert page.locator("h1").count()==1
                     assert page.locator("#nav a").evaluate_all("(a)=>a.map(x=>x.getAttribute('href'))")==NAV, f"{path}: shared nav order changed"
+                    if width <= 620:
+                        a11y_control = page.locator("#a11y-open")
+                        assert a11y_control.evaluate("(el)=>el.getBoundingClientRect().width <= 52"), f"{path}: mobile accessibility control should stay compact"
+                        assert page.get_by_role("button", name="Accessibilité").count() == 1, f"{path}: mobile accessibility control must keep its accessible name"
                     # Only pages designed around photography require a content image.
                     # Contact, legal, membership, easy-read, accessibility and 404 pages
                     # are intentionally text-led; do not add decorative images just for CI.
