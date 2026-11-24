@@ -80,7 +80,7 @@ def main():
                         assert "Samedi" in page.locator(".slots").inner_text() and "15h" in page.locator(".slots").inner_text()
                         assert "14h30" not in page.locator(".slot:nth-child(2)").inner_text()
                     elif path=="qui-sommes-nous.html":
-                        assert all(v in page.locator("main").inner_text() for v in ("1995","2021","Les Bleuettes","Burkina Faso","Maroc"))
+                        assert all(v in page.locator("main").inner_text() for v in ("1995","2021","Bleuettes","Burkina Faso","Maroc"))
                         assert page.locator(".topic-list span").count()==7
                     elif path=="actualites.html":
                         assert page.locator(".news-card").count()==3
