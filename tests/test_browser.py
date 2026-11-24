@@ -86,10 +86,12 @@ def main():
                         assert "Tous différents" in page.locator("h1").inner_text()
                         assert page.locator(".oval img").evaluate("(i)=>i.naturalWidth")>0
                         assert page.locator(".gal figure").count()==6
-                        assert page.locator(".voices article").count()==3
+                        assert page.locator(".voices").count()==0
+                        assert "Témoignage à recueillir" not in page.locator("main").inner_text()
                         assert page.locator(".quote cite").inner_text()=="— Miette, participante"
                         assert "Samedi" in page.locator(".slots").inner_text() and "15h" in page.locator(".slots").inner_text()
                         assert "14h30" not in page.locator(".slot:nth-child(2)").inner_text()
+                        assert "avant de vous déplacer" in page.locator("main").inner_text()
                     elif path=="qui-sommes-nous.html":
                         assert all(v in page.locator("main").inner_text() for v in ("1995","2021","Bleuettes","Burkina Faso","Maroc"))
                         assert page.locator(".topic-list span").count()==7
@@ -98,6 +100,18 @@ def main():
                     elif path.startswith("actualite-"):
                         assert page.locator(".article-visual img").evaluate("(i)=>i.naturalWidth")>0
                         assert page.get_by_role("link",name="← Retour aux actualités").count()==1
+                        if path=="actualite-2026-10-17.html":
+                            article_text=page.locator("main").inner_text()
+                            assert "2027" in article_text and "16 octobre 2026" in article_text
+                        if path=="actualite-2026-10-10.html":
+                            assert "dix membres" in page.locator("main").inner_text()
+                    elif path=="contact.html":
+                        contact_text=page.locator("main").inner_text()
+                        assert "30 Rempart Saint-Vincent" in contact_text and "30 Rempart Saint-Pierre" in contact_text
+                        assert "Adresse actuelle non confirmée" in contact_text
+                    elif path=="mentions-legales.html":
+                        legal_text=page.locator("main").inner_text()
+                        assert "Vercel Inc." in legal_text and "2 mars 2019" in legal_text
                     elif path=="accessibilite.html":
                         assert page.locator("#signaler").count()==1
                     elif path=="facile-a-lire.html":

@@ -1,3 +1,14 @@
+## Delivered in Loop 027 — factual accuracy audit
+- Removed uncollected testimonial prompts from the homepage; only Miette's sourced quotation remains.
+- Corrected the volunteer group name to “les Bleuettes”.
+- Marked published weekly times as subject to confirmation before travel; kept the source-supplied Wednesday 14h30 and Saturday 15h without claiming independent current confirmation.
+- Corrected the October 2026 Chalon dans la Rue story: the 16 October launch opened preparations for the 40th anniversary in 2027.
+- Narrowed the Association Valentin Haüy article to the specific activities reported by the ten participants.
+- Disclosed conflicting visitor-address reports from 2024 and 2025, without guessing the current venue.
+- Distinguished the 27 February 2019 association declaration from the 2 March 2019 JOAFE publication/update and identified Vercel as the hosting/deployment platform.
+- The registered-office address and legal publication manager remain association-confirmation items.
+
+
 ## Delivered in Loop 026 — owner mockup v3 refinement
 - The current site was found to already contain the full first-pass v3 mockup implementation. This loop makes targeted polish changes rather than rebuilding the site.
 - The complete mockup archive was inspected. Its mural, locally hosted fonts, navy/blue-grey palette and accessibility direction are already integrated in the v3 candidate.
@@ -13,11 +24,11 @@
 **Active keyphrase:** make a full website for: Bulle Bleue à Chalon-sur-Saône  
 **Run ID:** bullebleue-20261102-001  
 **Rulebook:** AEOS v3  
-**Current loop:** LOOP 026  
-**Candidate:** bullebleue-loop-026-mockup-v3-polish  
+**Current loop:** LOOP 027  
+**Candidate:** bullebleue-loop-026-mockup-v3-polish · accuracy audit  
 **Repository:** teyyara/bullebleue · main  
 **Implementation checkpoint:** 1b7fd73d494321db421c065470226452d3b1d797  
-**Status:** PREVIEW BRANCH IMPLEMENTED — AUTOMATED VERIFICATION PENDING
+**Status:** ACCURACY FIXES IMPLEMENTED ON PREVIEW BRANCH — VERIFICATION PENDING
 
 ## Delivered in Loop 025
 - Extended the responsive Playwright suite so the same browser checks can run in Chromium, Firefox and WebKit using the `BROWSER_ENGINE` selector.

@@ -126,7 +126,9 @@ def main():
     assert "Mercredi" in home and "14h30" in home and "Samedi" in home and "15h" in home
     assert "14h30</span></p><h3>Pour les ados" not in home, "the Saturday time must remain the owner's confirmed 15:00"
     assert home.count("— Miette, participante") == 1 and "jauge de positif et d’amour" in home
-    assert home.count("Témoignage à recueillir") == 3, "unverified testimonials must remain prompts"
+    assert "les « Bleuettes »" in home and "les « Bleuets »" not in home, "the volunteer group is called les Bleuettes"
+    assert "Les horaires ci-dessus sont repris des informations publiées" in home and "avant de vous déplacer" in home
+    assert "Témoignage à recueillir" not in home and 'class="voices"' not in home, "uncollected testimonial prompts must not appear on the public homepage"
     assert "/mockup-v3/img/mural.jpg" in home and home.count("<figure>") >= 10
     assert all(x in about for x in ("1995", "2021", "Les bénévoles, les Bleuettes", "Sapala", "Burkina Faso", "Maroc"))
     for topic in ("Jeux de société & baby-foot", "Musique, chant, théâtre & contes", "Dessin & arts plastiques", "Cuisine, goûters & fêtes", "Jardinage & temps dehors", "Sorties culturelles & découvertes", "Médiation animale & rencontres entre parents"):
@@ -137,14 +139,26 @@ def main():
     for page in ("actualite-2026-10-26.html", "actualite-2026-10-17.html", "actualite-2026-10-10.html"):
         assert "Publication Facebook" in parsed[page][0] and "Retour aux actualités" in parsed[page][0]
     assert "modalités d’adhésion" in parsed["adherer.html"][0] and "<form" not in parsed["adherer.html"][0]
-    assert "Information à confirmer" in parsed["contact.html"][0]
-    assert "À confirmer directement par l’association" in parsed["mentions-legales.html"][0]
+    contact = parsed["contact.html"][0]
+    assert "Adresse actuelle non confirmée" in contact and "30 Rempart Saint-Vincent" in contact and "30 Rempart Saint-Pierre" in contact
+    assert "13 octobre 2025" in contact
+    legal = parsed["mentions-legales.html"][0]
+    assert "À confirmer directement par l’association" in legal
+    assert "27 février 2019" in legal and "2 mars 2019" in legal
+    assert "Vercel Inc." in legal and "440 N Barranca Avenue" in legal
     assert "ne revendique donc pas le label officiel FALC" in parsed["facile-a-lire.html"][0]
+    assert "Les horaires peuvent changer" in parsed["facile-a-lire.html"][0]
+    assert "Ces horaires peuvent évoluer" in about
+    article17 = parsed["actualite-2026-10-17.html"][0]
+    assert "prévus en 2027" in article17 and "16 octobre 2026" in article17
+    assert "chalondanslarue.com/activites/chalon_dans_la_rue_rentree/219" in article17
+    article10 = parsed["actualite-2026-10-10.html"][0]
+    assert "Découvrir des gestes du quotidien sans la vue" in article10 and "dix membres" in article10
     assert 'id="signaler"' in parsed["accessibilite.html"][0]
     assert "Page introuvable" in parsed["404.html"][0]
     todo = (ROOT / "TODO.md").read_text(encoding="utf-8")
     assert "verbally authorized" in todo, "owner-provided photo permission record must be retained"
-    print(json.dumps({"status":"PASS","pages":len(PAGES),"local_links_checked":len(all_links),"mockup_fonts":8,"mockup_images":15,"checks":["all twelve routes have French metadata, one h1 and one main","shared working navigation and active state","no placeholder links or broken local files/fragments","mockup v3 local stylesheet, fonts, mural and photo assets present","no Google Fonts network dependency","Saturday session remains 15:00","only the genuine Miette quotation is attributed","all seven About activity topics and historical milestones remain","three news items retain dedicated article routes","membership/legal/contact facts remain conservative and accurate","FALC and accessibility pages are included"]},ensure_ascii=False))
+    print(json.dumps({"status":"PASS","pages":len(PAGES),"local_links_checked":len(all_links),"mockup_fonts":8,"mockup_images":15,"checks":["all twelve routes have French metadata, one h1 and one main","shared working navigation and active state","no placeholder links or broken local files/fragments","mockup v3 local stylesheet, fonts, mural and photo assets present","no Google Fonts network dependency","published session times are marked for confirmation","only the genuine Miette quotation is attributed","uncollected testimonials are absent","historical venue conflicts are disclosed","festival 40th anniversary is correctly dated to 2027","JOAFE declaration and publication dates are distinguished","actual Vercel hosting provider is identified","all seven About activity topics and historical milestones remain","three news items retain dedicated article routes","membership/legal/contact facts remain conservative and accurate","FALC and accessibility pages are included"]},ensure_ascii=False))
 
 if __name__ == "__main__":
     main()

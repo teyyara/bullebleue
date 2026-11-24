@@ -1,7 +1,19 @@
 # Bulle Bleue - APAiL — Owner feedback and production TODO
 
-**Last updated:** 6 November 2026  
+**Last updated:** 24 November 2026  
 **Repository:** teyyara/bullebleue · main
+
+## Loop 027 — Page-by-page factual accuracy audit
+- [x] Removed the three empty testimonial prompts; kept only Miette's supplied quotation and attribution.
+- [x] Corrected the volunteer-group name to “les Bleuettes”.
+- [x] Marked Wednesday 14h30 / Saturday 15h as published information that must be reconfirmed before travel.
+- [x] Corrected the Chalon dans la Rue anniversary context: the 16 October 2026 launch began preparations for the 40th anniversary in 2027.
+- [x] Narrowed the Association Valentin Haüy story to the ten members' reported activities (playing, moving and writing without sight).
+- [x] Disclosed the conflicting 2024 and 2025 venue references instead of presenting either street address as current.
+- [x] Corrected the JOAFE declaration/publication date distinction and identified Vercel as the deployment/hosting platform.
+- [ ] Confirm all current opening hours and the visitor entrance with APAiL.
+- [ ] Have APAiL validate the legal notices, registered office, publication manager and hosting wording before production.
+- [ ] Run the updated structural, JavaScript and three-engine responsive checks; inspect refreshed screenshots.
 
 ## Loop 026 — Owner mockup v3 refinement (preview branch)
 - [x] Inspected the complete `bulle-bleue-site-v3.zip` reference, including all mockup pages, styles, scripts, local typefaces and image assets.
