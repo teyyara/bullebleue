@@ -98,6 +98,7 @@ def main():
                         assert "Tous différents" in page.locator("h1").inner_text()
                         assert page.locator(".oval img").evaluate("(i)=>i.naturalWidth")>0
                         assert page.locator(".gal figure").count()==6
+                        assert page.locator(".derriere .photo img").get_attribute("src")=="/assets/gathering.jpeg"
                         assert page.locator(".voices").count()==0
                         assert "Témoignage à recueillir" not in page.locator("main").inner_text()
                         assert page.locator(".quote cite").inner_text()=="— Miette, participante"
@@ -111,6 +112,7 @@ def main():
                             assert page.locator(".history-stats").evaluate("(el)=>getComputedStyle(el).gridTemplateColumns.split(' ').length")==2
                     elif path=="actualites.html":
                         assert page.locator(".news-card").count()==3
+                        assert page.locator(".news-card .listen").count()==0, "read-aloud control must not be inserted into the first news card"
                         assert page.locator(".news-card").first.evaluate("(el)=>getComputedStyle(el).overflow")=="visible"
                         assert page.locator(".news-card").first.evaluate("(el)=>getComputedStyle(el,'::after').content") not in ("none","normal","")
                     elif path.startswith("actualite-"):

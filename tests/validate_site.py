@@ -132,6 +132,7 @@ def main():
     assert "Les horaires ci-dessus sont repris des informations publiées" in home and "avant de vous déplacer" in home
     assert "Témoignage à recueillir" not in home and 'class="voices"' not in home, "uncollected testimonial prompts must not appear on the public homepage"
     assert "/mockup-v3/img/mural.jpg" in home and home.count("<figure>") >= 10
+    assert 'src="/assets/gathering.jpeg"' in home, "the closing homepage image should use the association gathering photo"
     assert all(x in about for x in ("1995", "2021", "Les bénévoles, les Bleuettes", "Sapala", "Burkina Faso", "Maroc"))
     for topic in ("Jeux de société & baby-foot", "Musique, chant, théâtre & contes", "Dessin & arts plastiques", "Cuisine, goûters & fêtes", "Jardinage & temps dehors", "Sorties culturelles & découvertes", "Médiation animale & rencontres entre parents"):
         assert topic in about, f"About page topic missing: {topic}"
