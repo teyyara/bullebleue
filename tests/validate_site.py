@@ -104,9 +104,11 @@ def main():
 
     css = (ROOT / "styles.css").read_text(encoding="utf-8")
     theme = (ROOT / "site-v3-overrides.css").read_text(encoding="utf-8")
+    polish = (ROOT / "site-v4-polish.css").read_text(encoding="utf-8")
     mockup_css = (ROOT / "mockup-v3/css/style.css").read_text(encoding="utf-8")
     assert '@import url("/mockup-v3/css/style.css")' in css
     assert '@import url("/site-v3-overrides.css")' in css
+    assert '@import url("/site-v4-polish.css")' in css
     assert "@font-face" in mockup_css and "Atkinson Hyperlegible Next" in mockup_css
     assert all((ROOT / "mockup-v3/fonts" / name).is_file() for name in (
         "atkinson-hyperlegible-next-latin-400-normal.woff2",
@@ -136,6 +138,9 @@ def main():
     assert news.count('class="news-card"') == 3
     assert theme.count(".news-card:nth-child(") >= 2, "Actualités cards must retain distinct organic shapes"
     assert "border-radius:44px 30px 48px 28px" in theme, "news cards must not fall back to standard rectangular cards"
+    assert ".news-card::after" in polish and "overflow:visible" in polish, "news tiles must keep their speech-bubble tail and organic silhouette"
+    assert ".site-page > .inner-hero" in polish and ".site-page .article-head" in polish, "content headers must not inherit sticky navigation styles"
+    assert ".contact-grid" in polish and "contact-grid" in parsed["contact.html"][0], "contact panels must not stretch into empty space"
     for page in ("actualite-2026-10-26.html", "actualite-2026-10-17.html", "actualite-2026-10-10.html"):
         assert "Publication Facebook" in parsed[page][0] and "Retour aux actualités" in parsed[page][0]
     assert "modalités d’adhésion" in parsed["adherer.html"][0] and "<form" not in parsed["adherer.html"][0]

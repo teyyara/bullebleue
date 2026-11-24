@@ -69,6 +69,18 @@ def main():
                     assert_no_overflow(page,width,path)
                     assert page.locator("main#contenu").count()==1
                     assert page.locator("h1").count()==1
+                    # Content headers must not inherit sticky site-navigation behaviour.
+                    intro_header=page.locator("main.site-page > header.inner-hero")
+                    if intro_header.count():
+                        assert intro_header.evaluate("(el)=>getComputedStyle(el).position")=="relative", f"{path}: page intro must scroll with content"
+                    article_header=page.locator("main.site-page .article-head")
+                    if article_header.count():
+                        assert article_header.evaluate("(el)=>getComputedStyle(el).position")=="relative", f"{path}: article title must scroll with content"
+                    listen_buttons=page.locator("main .listen")
+                    if page.locator("main [data-listen]").count():
+                        assert listen_buttons.count()>=1, f"{path}: read-aloud control missing"
+                        assert listen_buttons.first.get_attribute("aria-label")=="Écouter cette partie", f"{path}: compact listen control needs an accessible label"
+                        assert listen_buttons.first.evaluate("(el)=>el.getBoundingClientRect().height")<=38, f"{path}: listen control should not dominate the heading"
                     assert page.locator("#nav a").evaluate_all("(a)=>a.map(x=>x.getAttribute('href'))")==NAV, f"{path}: shared nav order changed"
                     if width <= 620:
                         a11y_control = page.locator("#a11y-open")
@@ -95,8 +107,12 @@ def main():
                     elif path=="qui-sommes-nous.html":
                         assert all(v in page.locator("main").inner_text() for v in ("1995","2021","Bleuettes","Burkina Faso","Maroc"))
                         assert page.locator(".topic-list span").count()==7
+                        if width==390:
+                            assert page.locator(".history-stats").evaluate("(el)=>getComputedStyle(el).gridTemplateColumns.split(' ').length")==2
                     elif path=="actualites.html":
                         assert page.locator(".news-card").count()==3
+                        assert page.locator(".news-card").first.evaluate("(el)=>getComputedStyle(el).overflow")=="visible"
+                        assert page.locator(".news-card").first.evaluate("(el)=>getComputedStyle(el,'::after').content") not in ("none","normal","")
                     elif path.startswith("actualite-"):
                         assert page.locator(".article-visual img").evaluate("(i)=>i.naturalWidth")>0
                         assert page.get_by_role("link",name="← Retour aux actualités").count()==1
@@ -107,6 +123,10 @@ def main():
                             assert "dix membres" in page.locator("main").inner_text()
                     elif path=="contact.html":
                         contact_text=page.locator("main").inner_text()
+                        if width>=1024:
+                            left_height=page.locator(".contact-grid .content-card").nth(0).evaluate("(el)=>el.getBoundingClientRect().height")
+                            right_height=page.locator(".contact-grid .content-card").nth(1).evaluate("(el)=>el.getBoundingClientRect().height")
+                            assert left_height<right_height*.9, f"contact page: email panel is stretched by empty space ({left_height}px vs {right_height}px)"
                         assert "30 Rempart Saint-Vincent" in contact_text and "30 Rempart Saint-Pierre" in contact_text
                         assert "Adresse actuelle non confirmée" in contact_text
                     elif path=="mentions-legales.html":
