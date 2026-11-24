@@ -40,12 +40,17 @@
 .closing-panel h2{margin-bottom:12px}
 .closing-panel .acts{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px}
 .news-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.news-card{border:1px solid #D9E1ED;border-radius:24px;background:#fff;overflow:hidden;min-width:0;box-shadow:0 8px 24px rgba(34,60,132,.07);transition:transform .2s ease,box-shadow .2s ease}
+/* Irregular, soft bubbles replace the standard rectangular news tiles. */
+.news-card{border:2px solid #D9E1ED;border-radius:44px 30px 48px 28px / 34px 46px 30px 42px;background:#E6ECF4;overflow:hidden;min-width:0;box-shadow:0 8px 24px rgba(34,60,132,.07);transition:transform .2s ease,box-shadow .2s ease}
+.news-card:nth-child(2){border-radius:30px 48px 32px 46px / 44px 32px 48px 34px;background:#F3F5F8}
+.news-card:nth-child(3){border-radius:48px 30px 42px 34px / 32px 48px 34px 46px;background:#E4E8EF}
 .news-card>a{display:flex;flex-direction:column;height:100%;color:inherit;text-decoration:none}
 .news-card>a:hover{color:inherit}
 .news-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(34,60,132,.12)}
-.news-card figure{margin:0;background:#F3F5F8;padding:16px}
-.news-card figure img{display:block;width:100%;height:210px;object-fit:contain}
+.news-card figure{margin:0;background:transparent;padding:16px}
+.news-card figure img{display:block;width:100%;height:210px;object-fit:contain;border-radius:28px 18px 32px 20px;background:rgba(255,255,255,.68)}
+.news-card:nth-child(2) figure img{border-radius:18px 30px 20px 28px}
+.news-card:nth-child(3) figure img{border-radius:30px 18px 28px 20px}
 .news-card-copy{padding:22px 22px 24px;display:flex;flex-direction:column;align-items:flex-start;flex:1}
 .news-card-copy .eyebrow{font-size:.8rem;margin-bottom:12px}
 .news-card-copy h2{font-size:1.55rem;line-height:1.16;margin:0 0 12px}

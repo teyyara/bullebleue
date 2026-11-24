@@ -14,11 +14,11 @@
   "latest_loop_2_checkpoint_commit": "998ae654471a71c9ce11aa48e1951764fe72e517",
   "status_metadata_commit": "3c6cac41768e3fb521c3f19042a6a3bd3b460cb4",
   "last_known_good_release_commit": null,
-  "current_loop": 25,
-  "current_candidate": "bullebleue-loop-025-cross-browser-responsive-validation-v1",
-  "state": "WAITING_FOR_CONTINUE",
+  "current_loop": 26,
+  "current_candidate": "bullebleue-loop-026-mockup-v3-polish",
+  "state": "IN_PROGRESS",
   "remote_checkpoint_verified": true,
-  "next_action": "Wait for one standalone CONTINUE; then execute exactly LOOP 026.",
+  "next_action": "Run the structural validator and Node/Chromium/Firefox/WebKit regression suite on loop026-mockup-v3-polish; inspect screenshots before proposing a PR merge.",
   "deployment": "NOT CONFIGURED / NOT AUTHORIZED",
   "paid_dependencies": [],
   "open_blockers": [
@@ -339,5 +339,7 @@
   },
   "latest_loop_25_status": "WAITING_FOR_CONTINUE — Playwright responsive regression extended to Chromium, Firefox and WebKit; all three engines pass 135 combinations total; 30 Chromium screenshots captured and About desktop/mobile reviewed; native Safari/assistive-technology checks remain open; no deployment.",
   "latest_loop_25_metadata_batch_commit": "3c6cac41768e3fb521c3f19042a6a3bd3b460cb4",
-  "latest_loop_25_manifest_reconciliation_note": "Manifest rebuilt from the final recursive main tree; every non-manifest blob is mapped exactly once."
+  "latest_loop_25_manifest_reconciliation_note": "Manifest rebuilt from the final recursive main tree; every non-manifest blob is mapped exactly once.",
+  "loop_026_branch": "loop026-mockup-v3-polish",
+  "loop_026_summary": "Inspected the complete owner-supplied v3 archive and refined the existing v3 implementation on a preview branch: one Contact CTA per page, three organic Actualités bubbles, and page-aware image test coverage. Full verification pending."
 }

@@ -1,13 +1,23 @@
+## Delivered in Loop 026 — owner mockup v3 refinement
+- The current site was found to already contain the full first-pass v3 mockup implementation. This loop makes targeted polish changes rather than rebuilding the site.
+- The complete mockup archive was inspected. Its mural, locally hosted fonts, navy/blue-grey palette and accessibility direction are already integrated in the v3 candidate.
+- Removed the duplicate Contact navigation item from all twelve routes. The Contact page's current-page marker remains on the single orange CTA.
+- Replaced the Actualités teasers' standard rectangular treatment with three distinct organic bubble contours and soft pale surfaces.
+- Updated regression coverage so text-led utility routes do not need decorative images, and so unique navigation destinations and organic card styling remain protected.
+- Kept owner-confirmed Wednesday 14h30 and Saturday 15h sessions; no FALC certification, full WCAG audit, legal office or membership terms are invented.
+- Changes are isolated on `loop026-mockup-v3-polish`; no merge or manual deployment has been performed.
+- Automated verification and screenshot review are pending.
+
 # AEOS Status — Bulle Bleue - APAiL
 
 **Active keyphrase:** make a full website for: Bulle Bleue à Chalon-sur-Saône  
 **Run ID:** bullebleue-20261102-001  
 **Rulebook:** AEOS v3  
-**Current loop:** LOOP 025  
-**Candidate:** bullebleue-loop-025-cross-browser-responsive-validation-v1  
+**Current loop:** LOOP 026  
+**Candidate:** bullebleue-loop-026-mockup-v3-polish  
 **Repository:** teyyara/bullebleue · main  
 **Implementation checkpoint:** 1b7fd73d494321db421c065470226452d3b1d797  
-**Status:** WAITING_FOR_CONTINUE
+**Status:** PREVIEW BRANCH IMPLEMENTED — AUTOMATED VERIFICATION PENDING
 
 ## Delivered in Loop 025
 - Extended the responsive Playwright suite so the same browser checks can run in Chromium, Firefox and WebKit using the `BROWSER_ENGINE` selector.

@@ -18,7 +18,7 @@ PAGES = (
     "mentions-legales.html", "facile-a-lire.html", "accessibilite.html", "404.html",
 )
 VIEWPORTS = ((320,760),(390,844),(768,1024),(1024,768),(1440,900))
-NAV = ["index.html","qui-sommes-nous.html","actualites.html","adherer.html","facile-a-lire.html","contact.html","contact.html"]
+NAV = ["index.html","qui-sommes-nous.html","actualites.html","adherer.html","facile-a-lire.html","contact.html"]
 
 class QuietHandler(SimpleHTTPRequestHandler):
     def log_message(self, fmt, *args): pass
@@ -69,7 +69,13 @@ def main():
                     assert page.locator("main#contenu").count()==1
                     assert page.locator("h1").count()==1
                     assert page.locator("#nav a").evaluate_all("(a)=>a.map(x=>x.getAttribute('href'))")==NAV, f"{path}: shared nav order changed"
-                    load_all_images(page)  # Some mockup pages are intentionally text-led and contain no bitmap images.
+                    # Only pages designed around photography require a content image.
+                    # Contact, legal, membership, easy-read, accessibility and 404 pages
+                    # are intentionally text-led; do not add decorative images just for CI.
+                    if path in ("index.html", "qui-sommes-nous.html", "actualites.html") or path.startswith("actualite-"):
+                        assert load_all_images(page)>=1, f"{path}: no content images rendered"
+                    else:
+                        load_all_images(page)
                     assert page.locator("form").count()==0, f"{path}: unintended data collection form"
                     if path=="index.html":
                         assert "Tous différents" in page.locator("h1").inner_text()

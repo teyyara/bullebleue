@@ -130,6 +130,8 @@ def main():
     for topic in ("Jeux de société & baby-foot", "Musique, chant, théâtre & contes", "Dessin & arts plastiques", "Cuisine, goûters & fêtes", "Jardinage & temps dehors", "Sorties culturelles & découvertes", "Médiation animale & rencontres entre parents"):
         assert topic in about, f"About page topic missing: {topic}"
     assert news.count('class="news-card"') == 3
+    assert theme.count(".news-card:nth-child(") >= 2, "Actualités cards must retain distinct organic shapes"
+    assert "border-radius:44px 30px 48px 28px" in theme, "news cards must not fall back to standard rectangular cards"
     for page in ("actualite-2026-10-26.html", "actualite-2026-10-17.html", "actualite-2026-10-10.html"):
         assert "Publication Facebook" in parsed[page][0] and "Retour aux actualités" in parsed[page][0]
     assert "modalités d’adhésion" in parsed["adherer.html"][0] and "<form" not in parsed["adherer.html"][0]
