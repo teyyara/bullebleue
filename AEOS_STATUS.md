@@ -1,3 +1,11 @@
+## Delivered in Loop 029 — site-wide visual cleanup
+- Replaced the stretched footer on all twelve routes with a structured brand area and grouped discovery, participation, and accessibility/legal navigation.
+- Added a clear email action, responsive link columns, and a compact copyright/location row.
+- Removed repeated inline audio controls after every section heading; full-page speech playback remains available from the Accessibility panel.
+- Added structural and responsive regression checks for the shared footer and reading flow.
+- Browser validation and refreshed screenshots pending.
+- No merge or manual deployment yet.
+
 ## Delivered in Loop 027 — factual accuracy audit
 - Removed uncollected testimonial prompts from the homepage; only Miette's sourced quotation remains.
 - Corrected the volunteer group name to “les Bleuettes”.

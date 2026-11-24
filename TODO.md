@@ -3,6 +3,15 @@
 **Last updated:** 24 November 2026  
 **Repository:** teyyara/bullebleue · main
 
+## Loop 029 — Site-wide visual cleanup
+- [x] Replace the stretched flex footer on all twelve routes with a structured brand area and grouped navigation.
+- [x] Add clear Découvrir, Participer and Informations utiles link groups, an email action, and a compact copyright/location row.
+- [x] Remove the repeated per-section “Écouter” pills; retain full-page speech playback in the Accessibility panel.
+- [x] Add static and responsive regression checks for the shared footer and uncluttered reading flow.
+- [ ] Complete the refreshed Chromium/Firefox/WebKit responsive run and inspect the new screenshots.
+- [ ] Merge the reviewed, green pull request into main as requested; no manual Vercel deployment.
+
+
 ## Loop 027 — Page-by-page factual accuracy audit
 - [x] Removed the three empty testimonial prompts; kept only Miette's supplied quotation and attribution.
 - [x] Corrected the volunteer-group name to “les Bleuettes”.

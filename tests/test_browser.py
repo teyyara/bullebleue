@@ -76,11 +76,17 @@ def main():
                     article_header=page.locator("main.site-page .article-head")
                     if article_header.count():
                         assert article_header.evaluate("(el)=>getComputedStyle(el).position")=="relative", f"{path}: article title must scroll with content"
-                    listen_buttons=page.locator("main .listen")
-                    if page.locator("main [data-listen]").count():
-                        assert listen_buttons.count()>=1, f"{path}: read-aloud control missing"
-                        assert listen_buttons.first.get_attribute("aria-label")=="Écouter cette partie", f"{path}: compact listen control needs an accessible label"
-                        assert listen_buttons.first.evaluate("(el)=>el.getBoundingClientRect().height")<=38, f"{path}: listen control should not dominate the heading"
+                    # Speech playback stays in the Accessibility panel rather than
+                    # appearing as a repeated pill after every section heading.
+                    assert page.locator("main .listen").count()==0, f"{path}: repeated section audio controls should not clutter the reading flow"
+                    footer=page.locator("footer.pied")
+                    assert footer.count()==1
+                    assert footer.locator(".footer-brand .logo").count()==1
+                    assert footer.locator(".footer-group").count()==3
+                    assert footer.locator(".footer-navigation a").count()==9
+                    assert footer.get_by_role("link",name="Écrire à l’APAiL").count()==1
+                    if width<=620:
+                        assert footer.locator(".footer-navigation").evaluate("(el)=>getComputedStyle(el).gridTemplateColumns.split(' ').length")==2, f"{path}: footer groups should use a balanced two-column mobile layout"
                     assert page.locator("#nav a").evaluate_all("(a)=>a.map(x=>x.getAttribute('href'))")==NAV, f"{path}: shared nav order changed"
                     if width <= 620:
                         a11y_control = page.locator("#a11y-open")

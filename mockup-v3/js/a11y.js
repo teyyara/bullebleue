@@ -102,12 +102,7 @@
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panel.hidden){toggle(false);open.focus()}});
   window.addEventListener('pagehide',function(){stop(true)});
 
-  /* bouton « Écouter » au début de chaque section marquée data-listen */
-  if(canSpeak)document.querySelectorAll('[data-listen]').forEach(function(sec){
-    var h=sec.querySelector('h1,h2');if(!h)return;
-    var b=listenButton('Écouter',function(){return textOf(sec)});
-    var anchor=h.closest('.center')||h;
-    anchor.insertAdjacentElement('afterend',b);
-  });
+  /* La lecture à voix haute reste accessible depuis le panneau dédié.
+     Ne pas répéter un bouton sous chaque titre : cela alourdit le parcours visuel. */
   applyAll();refresh();
 })();

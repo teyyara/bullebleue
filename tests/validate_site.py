@@ -78,6 +78,14 @@ def main():
         assert parser.nav_links == list(NAV), f"{page}: shared navigation order changed: {parser.nav_links}"
         assert len(parser.nav_links) == len(set(parser.nav_links)), f"{page}: duplicate navigation destination"
         assert parser.nav_links.count("contact.html") == 1, f"{page}: Contact must appear exactly once"
+        footer = re.search(r'<footer class="pied">([\\s\\S]*?)</footer>', html)
+        assert footer, f"{page}: shared footer is required"
+        footer_html = footer.group(1)
+        assert 'class="footer-brand"' in footer_html and 'class="footer-navigation"' in footer_html
+        assert footer_html.count('class="footer-group"') == 3
+        for destination in ("index.html","qui-sommes-nous.html","actualites.html","adherer.html","contact.html","facile-a-lire.html","accessibilite.html","mentions-legales.html"):
+            assert f'href="{destination}"' in footer_html, f"{page}: footer destination missing: {destination}"
+        assert "mailto:apail@live.fr" in footer_html and "facebook.com/p/Bulle-Bleue-APAiL" in footer_html
         assert parser.nav_current == CURRENT.get(page, []), f"{page}: incorrect active navigation: {parser.nav_current}"
         assert 'href="#"' not in html, f"{page}: placeholder link remains"
         assert 'href="#" ' not in html, f"{page}: placeholder link remains"
@@ -109,6 +117,7 @@ def main():
     assert '@import url("/mockup-v3/css/style.css")' in css
     assert '@import url("/site-v3-overrides.css")' in css
     assert '@import url("/site-v4-polish.css")' in css
+    assert '@import url("/site-v5-polish.css")' in css
     assert "@font-face" in mockup_css and "Atkinson Hyperlegible Next" in mockup_css
     assert all((ROOT / "mockup-v3/fonts" / name).is_file() for name in (
         "atkinson-hyperlegible-next-latin-400-normal.woff2",
