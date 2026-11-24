@@ -1,21 +1,22 @@
 (() => {
-  const toggle = document.querySelector('.menu-toggle');
-  const navigation = document.querySelector('#navigation');
+  const toggle = document.querySelector('.menu-toggle') || document.querySelector('.burger');
+  const navigation = document.querySelector('#navigation') || document.querySelector('#nav');
   const year = document.querySelector('#year');
 
   if (year) year.textContent = String(new Date().getFullYear());
 
   if (toggle && navigation) {
+    const openClass = navigation.id === 'nav' ? 'open' : 'is-open';
     const closeMenu = () => {
       toggle.setAttribute('aria-expanded', 'false');
       toggle.setAttribute('aria-label', 'Ouvrir le menu');
-      navigation.classList.remove('is-open');
+      navigation.classList.remove(openClass);
     };
     toggle.addEventListener('click', () => {
       const isOpen = toggle.getAttribute('aria-expanded') === 'true';
       toggle.setAttribute('aria-expanded', String(!isOpen));
       toggle.setAttribute('aria-label', isOpen ? 'Ouvrir le menu' : 'Fermer le menu');
-      navigation.classList.toggle('is-open', !isOpen);
+      navigation.classList.toggle(openClass, !isOpen);
     });
     navigation.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
     document.addEventListener('keydown', (event) => {
