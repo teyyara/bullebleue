@@ -1,0 +1,49 @@
+name: Import owner mockup v3 assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/import-mockup-assets.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  import-assets:
+    name: Add supplied v3 fonts, images and base stylesheet
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out current main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Extract owner-provided mockup and install its assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/mockup-v3
+          unzip -q bulle-bleue-site-v3.zip -d /tmp/mockup-v3
+          mkdir -p mockup-v3/css mockup-v3/fonts mockup-v3/img mockup-v3/js
+          cp /tmp/mockup-v3/css/style.css mockup-v3/css/style.css
+          cp /tmp/mockup-v3/fonts/*.woff2 mockup-v3/fonts/
+          cp /tmp/mockup-v3/img/* mockup-v3/img/
+          cp /tmp/mockup-v3/js/a11y.js mockup-v3/js/a11y.js
+          cp /tmp/mockup-v3/js/boot.js mockup-v3/js/boot.js
+          cp /tmp/mockup-v3/favicon.svg mockup-v3/favicon.svg
+          echo "Imported file inventory:"
+          find mockup-v3 -type f -printf '%P\t%s bytes\n' | sort
+          echo "Image integrity:"
+          find mockup-v3/img -type f -print0 | while IFS= read -r -d '' file; do file "$file"; done
+
+      - name: Commit the inspected owner assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mockup-v3
+          git commit -m "assets: import inspected owner mockup v3 design assets"
+          git push origin HEAD:main
