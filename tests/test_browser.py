@@ -86,7 +86,8 @@ def main():
                     assert footer.locator(".footer-navigation a").count()==9
                     assert footer.get_by_role("link",name="Écrire à l’APAiL").count()==1
                     if width<=620:
-                        assert footer.locator(".footer-navigation").evaluate("(el)=>getComputedStyle(el).gridTemplateColumns.split(' ').length")==2, f"{path}: footer groups should use a balanced two-column mobile layout"
+                        mobile_footer_layout=footer.locator(".footer-navigation").evaluate("(el)=>{const groups=[...el.children].map(x=>x.getBoundingClientRect());return {display:getComputedStyle(el).display,firstRow:Math.abs(groups[0].top-groups[1].top)<2,thirdBelow:groups[2].top>groups[1].top+12};}")
+                        assert mobile_footer_layout["display"]=="grid" and mobile_footer_layout["firstRow"] and mobile_footer_layout["thirdBelow"], f"{path}: footer groups should form two balanced columns on mobile: {mobile_footer_layout}"
                     assert page.locator("#nav a").evaluate_all("(a)=>a.map(x=>x.getAttribute('href'))")==NAV, f"{path}: shared nav order changed"
                     if width <= 620:
                         a11y_control = page.locator("#a11y-open")
