@@ -57,18 +57,6 @@ footer.pied .footer-contact:hover{
 .footer-navigation{
   display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;min-width:0;
 }
-/* The original mobile-menu selector targets every nav element, not only #nav.
-   Reassert the footer navigation as a normal visible grid at tablet/mobile widths. */
-.js .footer-navigation{
-  display:grid;
-  position:static;
-  inset:auto;
-  background:transparent;
-  padding:0;
-  flex-direction:initial;
-  align-items:start;
-  border:0;
-}
 .footer-group{min-width:0}
 .footer-group h2{
   margin:3px 0 14px;color:#fff;

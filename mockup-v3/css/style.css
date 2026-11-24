@@ -209,7 +209,7 @@ footer.pied{border-top:10px solid var(--tan)}
 @media (max-width:860px){.hero .card{border-radius:48% 52% 46% 54% / 28px;padding:44px 28px 40px;transform:none}.hero .mobilefresque{border:0;box-shadow:none;border-radius:58% 42% 52% 48% / 62% 54% 46% 38%}}
 @media (min-width:1100px){.deco{display:block}.hero .card{margin-left:0}}
 @media (max-width:860px){
- .js .burger{display:inline-block}.js nav{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;padding:12px 20px 18px;flex-direction:column;align-items:stretch;border-bottom:2px dotted var(--line)}.js nav.open{display:flex}
+ .js .burger{display:inline-block}.js #nav{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;padding:12px 20px 18px;flex-direction:column;align-items:stretch;border-bottom:2px dotted var(--line)}.js #nav.open{display:flex}
  .two,.jouer .grid,.derriere .two{grid-template-columns:1fr}.slots,.voices,.year{grid-template-columns:1fr}.gal{grid-template-columns:1fr 1fr}
  .hero .card{padding:30px 24px}.retrouver .big{padding:32px 22px}
  .hero .mobilefresque{display:block;margin:26px 0 0;height:210px;border-radius:50%/60%;overflow:hidden;border:6px solid #fff;box-shadow:0 8px 22px rgba(34,60,132,.18);position:relative;background:var(--hl)}

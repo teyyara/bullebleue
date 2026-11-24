@@ -151,7 +151,7 @@ def main():
     assert ".news-card::after" in polish and "overflow:visible" in polish, "news tiles must keep their speech-bubble tail and organic silhouette"
     assert ".site-page > .inner-hero" in polish and ".site-page .article-head" in polish, "content headers must not inherit sticky navigation styles"
     assert ".contact-grid" in polish and "contact-grid" in parsed["contact.html"][0], "contact panels must not stretch into empty space"
-    assert ".js .footer-navigation" in polish, "mobile menu styles must not hide the footer navigation"
+    assert ".js #nav{" in mockup_css and ".js #nav.open{" in mockup_css and ".js nav{" not in mockup_css, "mobile menu rules must target only the header navigation"
     for page in ("actualite-2026-10-26.html", "actualite-2026-10-17.html", "actualite-2026-10-10.html"):
         assert "Publication Facebook" in parsed[page][0] and "Retour aux actualités" in parsed[page][0]
     assert "modalités d’adhésion" in parsed["adherer.html"][0] and "<form" not in parsed["adherer.html"][0]
