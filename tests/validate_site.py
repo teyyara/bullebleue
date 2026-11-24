@@ -146,6 +146,7 @@ def main():
     assert "À confirmer directement par l’association" in legal
     assert "27 février 2019" in legal and "2 mars 2019" in legal
     assert "Vercel Inc." in legal and "440 N Barranca Avenue" in legal
+    assert "privacy-notice" in legal and "1er juin 2026" in legal
     assert "ne revendique donc pas le label officiel FALC" in parsed["facile-a-lire.html"][0]
     assert "Les horaires peuvent changer" in parsed["facile-a-lire.html"][0]
     assert "Ces horaires peuvent évoluer" in about
