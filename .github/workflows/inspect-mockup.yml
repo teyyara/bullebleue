@@ -1,0 +1,47 @@
+name: Export mockup archive for inspection
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "bulle-bleue-site-v3.zip"
+      - ".github/workflows/inspect-mockup.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  export-mockup:
+    name: Extract mockup archive without changing the website
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out uploaded mockup
+        uses: actions/checkout@v4
+
+      - name: Inventory and safely extract archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f bulle-bleue-site-v3.zip
+          echo "Archive metadata:"
+          ls -lh bulle-bleue-site-v3.zip
+          echo "Full archive listing:"
+          unzip -Z -1 bulle-bleue-site-v3.zip
+          mkdir -p /tmp/bulle-bleue-site-v3
+          unzip -q bulle-bleue-site-v3.zip -d /tmp/bulle-bleue-site-v3
+          echo "Extracted file inventory:"
+          find /tmp/bulle-bleue-site-v3 -type f -printf '%P\t%s bytes\n' | sort
+          echo "Summary:"
+          printf 'files='
+          find /tmp/bulle-bleue-site-v3 -type f | wc -l
+          printf 'directories='
+          find /tmp/bulle-bleue-site-v3 -type d | wc -l
+
+      - name: Upload extracted mockup for full visual inspection
+        uses: actions/upload-artifact@v4
+        with:
+          name: bulle-bleue-site-v3-extracted
+          path: /tmp/bulle-bleue-site-v3/
+          if-no-files-found: error
+          retention-days: 7
