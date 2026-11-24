@@ -1,0 +1,137 @@
+/* Loop 029 — site-wide footer and reading-flow polish. */
+
+/* A shared, deliberate footer hierarchy replaces the old flex row on every route. */
+footer.pied{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  padding:58px 0 20px;
+  color:#fff;
+  background:
+    radial-gradient(circle at 92% 12%,rgba(255,255,255,.075) 0 88px,transparent 90px),
+    radial-gradient(circle at 100% 100%,rgba(255,255,255,.045) 0 170px,transparent 172px),
+    #203A80;
+}
+footer.pied::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  width:340px;
+  height:340px;
+  left:-230px;
+  top:-245px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:50%;
+  box-shadow:0 0 0 28px rgba(255,255,255,.025),0 0 0 58px rgba(255,255,255,.02);
+}
+.footer-shell{width:min(1120px,100%);margin:0 auto;padding:0 24px}
+.footer-main{
+  display:grid;
+  grid-template-columns:minmax(220px,.95fr) minmax(0,2.05fr);
+  align-items:start;
+  gap:clamp(40px,6vw,92px);
+  padding:0 0 42px;
+}
+.footer-brand{min-width:0;max-width:300px}
+.footer-brand .logo{display:inline-flex;min-height:48px;margin:0;color:#fff}
+.footer-brand .logo i{
+  width:42px;height:42px;flex:0 0 auto;
+  background:radial-gradient(circle at 32% 28%,#203A80 0 7%,#fff 8% 100%);
+}
+.footer-brand .logo b{font-size:1.28rem}
+.footer-brand .logo small{font-size:.78rem}
+.footer-brand>p{
+  max-width:27ch;margin:20px 0 24px;
+  color:rgba(255,255,255,.86);font-size:1.02rem;line-height:1.65;
+}
+footer.pied .footer-contact{
+  display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  min-height:46px;margin:0;padding:0 20px;border-radius:999px;
+  background:var(--cta);color:#1F2430;text-decoration:none;font-weight:800;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+  box-shadow:0 4px 0 rgba(0,0,0,.14);
+}
+footer.pied .footer-contact:hover{
+  transform:translateY(-2px);background:#FFA13F;box-shadow:0 6px 13px rgba(0,0,0,.18);
+}
+.footer-navigation{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;min-width:0;
+}
+.footer-group{min-width:0}
+.footer-group h2{
+  margin:3px 0 14px;color:#fff;
+  font:800 .95rem/1.25 'Atkinson Hyperlegible Next',Verdana,sans-serif;
+  letter-spacing:.075em;text-transform:uppercase;
+}
+.footer-group ul{display:grid;gap:4px;margin:0;padding:0;list-style:none}
+footer.pied .footer-group a{
+  display:inline-flex;align-items:center;width:fit-content;max-width:100%;
+  min-height:36px;margin:0;padding:3px 0;color:rgba(255,255,255,.88);
+  font-size:.98rem;line-height:1.4;font-weight:600;text-decoration:none;
+  text-underline-offset:4px;border-bottom:1px solid transparent;
+  transition:color .16s ease,border-color .16s ease;
+}
+footer.pied .footer-group a:hover{color:#fff;border-color:rgba(255,255,255,.72)}
+footer.pied a:focus-visible{
+  outline:3px solid #fff;outline-offset:4px;border-radius:4px;box-shadow:none;
+}
+.footer-bottom{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding-top:18px;border-top:1px solid rgba(255,255,255,.24);
+  color:rgba(255,255,255,.72);
+}
+.footer-bottom small,.footer-bottom span{margin:0;font-size:.88rem;line-height:1.5}
+.footer-bottom span{color:rgba(255,255,255,.8)}
+
+/* Consistent finishing details on the content-led routes. */
+.site-page .inner-hero{padding-bottom:26px}
+.site-page .inner-hero .inner-lead{font-size:1.18rem;line-height:1.65}
+.site-section p,.site-page p{line-height:1.68}
+.site-section-soft{background:#F1F4F8}
+.info-card,.content-card,.access-features article{
+  border:1px solid rgba(191,205,225,.58);
+  box-shadow:0 5px 18px rgba(34,60,132,.045);
+}
+.notice{box-shadow:0 3px 12px rgba(34,60,132,.04)}
+.btn{transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn.pri,.btn.cta{box-shadow:0 4px 0 rgba(34,60,132,.13)}
+.btn:focus-visible,.lnk:focus-visible{outline:3px solid var(--cta);outline-offset:4px}
+.article-head{margin-bottom:28px}
+.article-visual{overflow:hidden}
+.article-visual img{border-radius:18px}
+.article-copy{line-height:1.72}
+.article-copy p{max-width:64ch}
+.source-note{font-size:.9rem}
+
+/* Tablet and mobile: footer links form clear groups instead of wrapping as one long line. */
+@media(max-width:860px){
+  footer.pied{padding-top:48px}
+  .footer-main{grid-template-columns:minmax(190px,.8fr) minmax(0,1.7fr);gap:34px}
+  .footer-navigation{gap:18px}
+}
+@media(max-width:620px){
+  footer.pied{padding:38px 0 18px}
+  .footer-shell{padding:0 20px}
+  .footer-main{grid-template-columns:1fr;gap:34px;padding-bottom:30px}
+  .footer-brand{max-width:100%}
+  .footer-brand>p{max-width:34ch;margin:14px 0 18px}
+  .footer-navigation{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:26px 20px;padding-top:24px;border-top:1px solid rgba(255,255,255,.2);
+  }
+  .footer-group h2{font-size:.85rem;margin-bottom:10px}
+  footer.pied .footer-group a{font-size:.92rem;min-height:36px}
+  .footer-group:last-child{grid-column:1/-1}
+  .footer-group:last-child ul{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 12px}
+  .footer-group:last-child a{font-size:.86rem}
+  .footer-bottom{align-items:flex-start;flex-direction:column;gap:6px;padding-top:14px}
+}
+@media(max-width:360px){
+  .footer-navigation{gap:22px 12px}
+  .footer-group:last-child ul{grid-template-columns:1fr 1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  footer.pied .footer-contact,.footer-group a,.btn{transition:none}
+  footer.pied .footer-contact:hover,.btn:hover{transform:none}
+}

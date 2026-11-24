@@ -1,0 +1,182 @@
+/* Loop 028 — quieter reading controls, clearer page rhythm and genuinely organic news bubbles. */
+
+/* Content headers must never inherit the sticky behaviour of the site's top navigation. */
+.site-page > .inner-hero,
+.site-page .article-head{
+  position:relative;
+  top:auto;
+  z-index:1;
+  display:block;
+  background:transparent;
+  border:0;
+  box-shadow:none;
+}
+.site-page > .inner-hero{
+  padding-top:54px;
+  padding-bottom:28px;
+  border-bottom:1px solid var(--line);
+}
+.site-page .article-head{
+  padding:12px 0 26px;
+}
+
+/* Keep the read-aloud feature, without letting it compete with every heading. */
+.listen{
+  min-height:36px;
+  gap:7px;
+  padding:0 12px;
+  margin:2px 0 12px;
+  border:1px solid rgba(34,60,132,.34);
+  background:#F8FAFD;
+  color:var(--navy);
+  font-size:.9rem;
+  line-height:1;
+  box-shadow:0 2px 7px rgba(34,60,132,.05);
+  transition:background .18s ease,border-color .18s ease,transform .18s ease;
+}
+.listen svg{width:16px;height:16px;flex:0 0 auto}
+.listen:hover{background:var(--t1);border-color:var(--navy);transform:translateY(-1px)}
+.listen[aria-pressed="true"]{background:var(--navy);color:#fff}
+.a11y-panel .listen{margin:0;min-height:42px;padding-inline:14px}
+
+/* More consistent pacing on long information pages. */
+.inner-hero h1{font-size:clamp(2.35rem,5.35vw,3.75rem);line-height:1.07}
+.site-section{padding:44px 0}
+.article-page{padding-top:42px;padding-bottom:66px}
+.article-head h1{font-size:clamp(2.3rem,5.2vw,3.6rem)}
+.article-layout{gap:34px}
+.legal-content>section{padding:22px 0}
+
+/* The contact details should determine their own heights, not stretch into an empty block. */
+.contact-grid{
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+  align-items:start;
+}
+.contact-grid .content-card{
+  height:auto;
+  align-self:start;
+}
+.contact-grid .contact-links{
+  margin-top:18px;
+  padding-top:0;
+}
+
+/* Actualités — three individual speech-bubble silhouettes, not rounded rectangles. */
+.news-grid{gap:28px 24px;align-items:stretch;padding:10px 8px 18px}
+.news-card{
+  position:relative;
+  isolation:isolate;
+  overflow:visible;
+  border:1.5px solid #D4DFEE;
+  border-radius:76px 52px 70px 42px / 62px 46px 64px 52px;
+  padding:0 0 4px;
+  background:#E6ECF4;
+  box-shadow:0 10px 26px rgba(34,60,132,.08);
+  transform:rotate(-.35deg);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.news-card:nth-child(2){
+  border-radius:52px 78px 48px 72px / 70px 48px 66px 52px;
+  background:#F1F4F8;
+  transform:rotate(.45deg);
+}
+.news-card:nth-child(3){
+  border-radius:82px 46px 62px 76px / 54px 72px 48px 68px;
+  background:#E4EAF2;
+  transform:rotate(-.2deg);
+}
+.news-card::after{
+  content:"";
+  position:absolute;
+  z-index:0;
+  left:27%;
+  bottom:-10px;
+  width:30px;
+  height:24px;
+  background:inherit;
+  border-right:1.5px solid #D4DFEE;
+  border-bottom:1.5px solid #D4DFEE;
+  border-radius:0 0 22px 0;
+  transform:rotate(28deg);
+}
+.news-card:nth-child(2)::after{
+  left:auto;
+  right:25%;
+  transform:scaleX(-1) rotate(28deg);
+}
+.news-card:nth-child(3)::after{
+  left:54%;
+  transform:rotate(40deg);
+}
+.news-card>a{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  min-height:100%;
+  height:100%;
+  color:inherit;
+  text-decoration:none;
+}
+.news-card>a:hover{color:inherit}
+.news-card:hover{box-shadow:0 15px 32px rgba(34,60,132,.13);transform:translateY(-4px) rotate(-.35deg)}
+.news-card:nth-child(2):hover{transform:translateY(-4px) rotate(.45deg)}
+.news-card:nth-child(3):hover{transform:translateY(-4px) rotate(-.2deg)}
+.news-card:focus-within{outline:3px solid var(--navy);outline-offset:5px}
+.news-card figure{margin:0;background:transparent;padding:20px 20px 2px}
+.news-card figure img{
+  display:block;
+  width:100%;
+  height:194px;
+  object-fit:cover;
+  border:4px solid rgba(255,255,255,.72);
+  border-radius:46% 54% 42% 58% / 38% 34% 66% 62%;
+  background:transparent;
+  box-shadow:0 5px 16px rgba(34,60,132,.07);
+}
+.news-card:nth-child(2) figure img{border-radius:56% 44% 52% 48% / 34% 42% 58% 66%}
+.news-card:nth-child(3) figure img{border-radius:42% 58% 48% 52% / 42% 34% 66% 58%}
+.news-card-copy{padding:17px 25px 30px;display:flex;flex-direction:column;align-items:flex-start;flex:1}
+.news-card-copy .eyebrow{font-size:.76rem;line-height:1.4;letter-spacing:.075em;margin-bottom:10px;min-height:2.7em}
+.news-card-copy h2{font-size:1.48rem;line-height:1.15;margin:0 0 12px}
+.news-card-copy p:not(.eyebrow){font-size:1rem;line-height:1.55;margin:0 0 16px}
+.news-card-copy .lnk{margin-top:auto}
+
+/* About page: keep the milestones and activity topics compact on narrow screens. */
+@media(max-width:860px){
+  .site-page > .inner-hero{padding-top:40px;padding-bottom:22px}
+  .site-section{padding:34px 0}
+  .article-page{padding-top:34px;padding-bottom:56px}
+}
+@media(max-width:620px){
+  .site-page > .inner-hero{padding:30px 18px 18px}
+  .inner-hero h1{font-size:clamp(2.15rem,9.3vw,3rem)}
+  .site-section{padding:28px 0}
+  .contact-grid{grid-template-columns:1fr}
+  .contact-grid .content-card{width:100%}
+  .news-grid{gap:24px;padding:8px 5px 18px}
+  .news-card{border-radius:70px 48px 66px 42px / 54px 48px 62px 52px}
+  .news-card:nth-child(2){border-radius:48px 72px 48px 68px / 64px 48px 62px 52px}
+  .news-card:nth-child(3){border-radius:76px 44px 60px 70px / 50px 66px 46px 64px}
+  .news-card figure{padding:18px 18px 0}
+  .news-card figure img{height:176px}
+  .news-card-copy{padding:16px 25px 28px}
+  .news-card-copy h2{font-size:1.42rem}
+  .history-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .history-stats>div{padding:18px 13px;min-height:112px}
+  .history-stats strong{font-size:2.35rem}
+  .history-stats span{font-size:.92rem;line-height:1.35}
+  .topic-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .topic-list span{justify-content:center;min-width:0;min-height:0;padding:10px 9px;text-align:center;font-size:.88rem;line-height:1.3}
+  .article-page{padding-top:28px;padding-bottom:48px}
+  .article-head{padding:6px 0 20px}
+  .article-head h1{font-size:clamp(2rem,8.5vw,2.7rem)}
+  .legal-content>section{padding:20px 0}
+}
+@media(max-width:360px){
+  .history-stats,.topic-list{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .listen,.news-card{transition:none}
+  .listen:hover,.news-card:hover{transform:none}
+}

@@ -18,7 +18,8 @@ PAGES = (
     "mentions-legales.html", "facile-a-lire.html", "accessibilite.html", "404.html",
 )
 VIEWPORTS = ((320,760),(390,844),(768,1024),(1024,768),(1440,900))
-NAV = ["index.html","qui-sommes-nous.html","actualites.html","adherer.html","facile-a-lire.html","contact.html","contact.html"]
+NAV = ["index.html","qui-sommes-nous.html","actualites.html","adherer.html","facile-a-lire.html","contact.html"]
+assert len(NAV) == len(set(NAV)), "shared navigation destinations must be unique"
 
 class QuietHandler(SimpleHTTPRequestHandler):
     def log_message(self, fmt, *args): pass
@@ -68,25 +69,78 @@ def main():
                     assert_no_overflow(page,width,path)
                     assert page.locator("main#contenu").count()==1
                     assert page.locator("h1").count()==1
+                    # Content headers must not inherit sticky site-navigation behaviour.
+                    intro_header=page.locator("main.site-page > header.inner-hero")
+                    if intro_header.count():
+                        assert intro_header.evaluate("(el)=>getComputedStyle(el).position")=="relative", f"{path}: page intro must scroll with content"
+                    article_header=page.locator("main.site-page .article-head")
+                    if article_header.count():
+                        assert article_header.evaluate("(el)=>getComputedStyle(el).position")=="relative", f"{path}: article title must scroll with content"
+                    # Speech playback stays in the Accessibility panel rather than
+                    # appearing as a repeated pill after every section heading.
+                    assert page.locator("main .listen").count()==0, f"{path}: repeated section audio controls should not clutter the reading flow"
+                    footer=page.locator("footer.pied")
+                    assert footer.count()==1
+                    assert footer.locator(".footer-brand .logo").count()==1
+                    assert footer.locator(".footer-group").count()==3
+                    assert footer.locator(".footer-navigation a").count()==9
+                    assert footer.get_by_role("link",name="Écrire à l’APAiL").count()==1
+                    if width<=620:
+                        mobile_footer_layout=footer.locator(".footer-navigation").evaluate("(el)=>{const nav=el.getBoundingClientRect(),g=[...el.children].map(x=>x.getBoundingClientRect());const overlap=Math.min(g[0].bottom,g[1].bottom)-Math.max(g[0].top,g[1].top);return {display:getComputedStyle(el).display,sideBySide:g[1].left>g[0].left&&g[0].right<=g[1].left+4,verticalOverlap:overlap>0,thirdBelow:g[2].top>Math.max(g[0].bottom,g[1].bottom),thirdSpans:g[2].width>=nav.width*.9};}")
+                        assert mobile_footer_layout["display"]=="grid" and mobile_footer_layout["sideBySide"] and mobile_footer_layout["verticalOverlap"] and mobile_footer_layout["thirdBelow"] and mobile_footer_layout["thirdSpans"], f"{path}: footer groups should form two balanced columns on mobile: {mobile_footer_layout}"
                     assert page.locator("#nav a").evaluate_all("(a)=>a.map(x=>x.getAttribute('href'))")==NAV, f"{path}: shared nav order changed"
-                    load_all_images(page)  # Some mockup pages are intentionally text-led and contain no bitmap images.
+                    if width <= 620:
+                        a11y_control = page.locator("#a11y-open")
+                        assert a11y_control.evaluate("(el)=>el.getBoundingClientRect().width <= 52"), f"{path}: mobile accessibility control should stay compact"
+                        assert page.get_by_role("button", name="Accessibilité").count() == 1, f"{path}: mobile accessibility control must keep its accessible name"
+                    # Only pages designed around photography require a content image.
+                    # Contact, legal, membership, easy-read, accessibility and 404 pages
+                    # are intentionally text-led; do not add decorative images just for CI.
+                    if path in ("index.html", "qui-sommes-nous.html", "actualites.html") or path.startswith("actualite-"):
+                        assert load_all_images(page)>=1, f"{path}: no content images rendered"
+                    else:
+                        load_all_images(page)
                     assert page.locator("form").count()==0, f"{path}: unintended data collection form"
                     if path=="index.html":
                         assert "Tous différents" in page.locator("h1").inner_text()
                         assert page.locator(".oval img").evaluate("(i)=>i.naturalWidth")>0
                         assert page.locator(".gal figure").count()==6
-                        assert page.locator(".voices article").count()==3
+                        assert page.locator(".derriere .photo img").get_attribute("src")=="/assets/gathering.jpeg"
+                        assert page.locator(".voices").count()==0
+                        assert "Témoignage à recueillir" not in page.locator("main").inner_text()
                         assert page.locator(".quote cite").inner_text()=="— Miette, participante"
                         assert "Samedi" in page.locator(".slots").inner_text() and "15h" in page.locator(".slots").inner_text()
                         assert "14h30" not in page.locator(".slot:nth-child(2)").inner_text()
+                        assert "avant de vous déplacer" in page.locator("main").inner_text()
                     elif path=="qui-sommes-nous.html":
                         assert all(v in page.locator("main").inner_text() for v in ("1995","2021","Bleuettes","Burkina Faso","Maroc"))
                         assert page.locator(".topic-list span").count()==7
+                        if width==390:
+                            assert page.locator(".history-stats").evaluate("(el)=>getComputedStyle(el).gridTemplateColumns.split(' ').length")==2
                     elif path=="actualites.html":
                         assert page.locator(".news-card").count()==3
+                        assert page.locator(".news-card .listen").count()==0, "read-aloud control must not be inserted into the first news card"
+                        assert page.locator(".news-card").first.evaluate("(el)=>getComputedStyle(el).overflow")=="visible"
+                        assert page.locator(".news-card").first.evaluate("(el)=>getComputedStyle(el,'::after').content") not in ("none","normal","")
                     elif path.startswith("actualite-"):
                         assert page.locator(".article-visual img").evaluate("(i)=>i.naturalWidth")>0
                         assert page.get_by_role("link",name="← Retour aux actualités").count()==1
+                        if path=="actualite-2026-10-17.html":
+                            article_text=page.locator("main").inner_text()
+                            assert "2027" in article_text and "16 octobre 2026" in article_text
+                        if path=="actualite-2026-10-10.html":
+                            assert "dix membres" in page.locator("main").inner_text()
+                    elif path=="contact.html":
+                        contact_text=page.locator("main").inner_text()
+                        if width>=1024:
+                            left_height=page.locator(".contact-grid .content-card").nth(0).evaluate("(el)=>el.getBoundingClientRect().height")
+                            right_height=page.locator(".contact-grid .content-card").nth(1).evaluate("(el)=>el.getBoundingClientRect().height")
+                            assert left_height<right_height*.9, f"contact page: email panel is stretched by empty space ({left_height}px vs {right_height}px)"
+                        assert "30 Rempart Saint-Vincent" in contact_text and "30 Rempart Saint-Pierre" in contact_text
+                        assert "Adresse actuelle non confirmée" in contact_text
+                    elif path=="mentions-legales.html":
+                        legal_text=page.locator("main").inner_text()
+                        assert "Vercel Inc." in legal_text and "2 mars 2019" in legal_text
                     elif path=="accessibilite.html":
                         assert page.locator("#signaler").count()==1
                     elif path=="facile-a-lire.html":

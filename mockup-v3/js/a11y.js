@@ -44,7 +44,7 @@
     if(current){current.setAttribute('aria-pressed','false');setLabel(current,false);current=null}
     if(!silent)say('Lecture arrêtée.');
   }
-  function setLabel(btn,on){var t=btn.querySelector('.listen-t');if(t)t.textContent=on?'Arrêter la lecture':(btn.getAttribute('data-label')||'Écouter')}
+  function setLabel(btn,on){var t=btn.querySelector('.listen-t');if(t)t.textContent=on?'Arrêter la lecture':(btn.getAttribute('data-label')||'Écouter');btn.setAttribute('aria-label',on?'Arrêter la lecture':(btn.getAttribute('data-aria-label')||btn.getAttribute('data-label')||'Écouter'))}
   function speak(text,btn){
     if(current===btn){stop();return}
     stop(true);
@@ -60,6 +60,8 @@
   var ICON='<svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>';
   function listenButton(label,getText){
     var b=document.createElement('button');b.type='button';b.className='listen';b.setAttribute('aria-pressed','false');b.setAttribute('data-label',label);
+    var accessibleLabel=label==='Écouter'?'Écouter cette partie':label;
+    b.setAttribute('data-aria-label',accessibleLabel);b.setAttribute('aria-label',accessibleLabel);b.setAttribute('title',accessibleLabel);
     b.innerHTML=ICON+'<span class="listen-t">'+label+'</span>';
     b.addEventListener('click',function(){speak(getText(),b)});return b;
   }
@@ -100,12 +102,7 @@
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panel.hidden){toggle(false);open.focus()}});
   window.addEventListener('pagehide',function(){stop(true)});
 
-  /* bouton « Écouter » au début de chaque section marquée data-listen */
-  if(canSpeak)document.querySelectorAll('[data-listen]').forEach(function(sec){
-    var h=sec.querySelector('h1,h2');if(!h)return;
-    var b=listenButton('Écouter cette partie',function(){return textOf(sec)});
-    var anchor=h.closest('.center')||h;
-    anchor.insertAdjacentElement('afterend',b);
-  });
+  /* La lecture à voix haute reste accessible depuis le panneau dédié.
+     Ne pas répéter un bouton sous chaque titre : cela alourdit le parcours visuel. */
   applyAll();refresh();
 })();

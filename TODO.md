@@ -1,7 +1,38 @@
 # Bulle Bleue - APAiL — Owner feedback and production TODO
 
-**Last updated:** 6 November 2026  
+**Last updated:** 24 November 2026  
 **Repository:** teyyara/bullebleue · main
+
+## Loop 029 — Site-wide visual cleanup
+- [x] Replace the stretched flex footer on all twelve routes with a structured brand area and grouped navigation.
+- [x] Add clear Découvrir, Participer and Informations utiles link groups, an email action, and a compact copyright/location row.
+- [x] Remove the repeated per-section “Écouter” pills; retain full-page speech playback in the Accessibility panel.
+- [x] Add static and responsive regression checks for the shared footer and uncluttered reading flow.
+- [ ] Complete the refreshed Chromium/Firefox/WebKit responsive run and inspect the new screenshots.
+- [ ] Merge the reviewed, green pull request into main as requested; no manual Vercel deployment.
+
+
+## Loop 027 — Page-by-page factual accuracy audit
+- [x] Removed the three empty testimonial prompts; kept only Miette's supplied quotation and attribution.
+- [x] Corrected the volunteer-group name to “les Bleuettes”.
+- [x] Marked Wednesday 14h30 / Saturday 15h as published information that must be reconfirmed before travel.
+- [x] Corrected the Chalon dans la Rue anniversary context: the 16 October 2026 launch began preparations for the 40th anniversary in 2027.
+- [x] Narrowed the Association Valentin Haüy story to the ten members' reported activities (playing, moving and writing without sight).
+- [x] Disclosed the conflicting 2024 and 2025 venue references instead of presenting either street address as current.
+- [x] Corrected the JOAFE declaration/publication date distinction and identified Vercel as the deployment/hosting platform.
+- [ ] Confirm all current opening hours and the visitor entrance with APAiL.
+- [ ] Have APAiL validate the legal notices, registered office, publication manager and hosting wording before production.
+- [ ] Run the updated structural, JavaScript and three-engine responsive checks; inspect refreshed screenshots.
+
+## Loop 026 — Owner mockup v3 refinement (preview branch)
+- [x] Inspected the complete `bulle-bleue-site-v3.zip` reference, including all mockup pages, styles, scripts, local typefaces and image assets.
+- [x] Integrated the mockup's mural, local fonts, warm/readable type hierarchy, palette and accessibility options in the v3 candidate already present on `main`.
+- [x] Removed the duplicate “Nous contacter” link from all 12 routes, keeping a single CTA and preserving the active state on Contact.
+- [x] Restored three distinct organic bubble silhouettes for the Actualités teasers, retaining their original links, content and images.
+- [x] Corrected the image regression rule so text-led utility pages are not required to contain decorative photos.
+- [x] Kept owner-confirmed session times (Wednesday 14h30, Saturday 15h), the genuine Miette quotation, existing association stories and all legal/content caveats.
+- [ ] Finish Chromium/Firefox/WebKit and structural validation on the preview branch; inspect the generated screenshots.
+- [ ] Receive final association-owner visual approval before any merge or production deployment.
 
 ## Loop 025 — Cross-browser responsive regression
 - [x] Made the existing Playwright browser suite selectable between Chromium, Firefox and WebKit.
