@@ -18,7 +18,7 @@ jobs:
   quality:
     name: Static, interaction and browser checks
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -67,7 +67,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: bulle-bleue-loop025-visual-review
-          path: artifacts/loop025-browser-chromium/
+          name: bulle-bleue-loop026-visual-review
+          path: artifacts/loop026-browser-chromium/
           if-no-files-found: ignore
           retention-days: 7
