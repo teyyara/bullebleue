@@ -22,7 +22,7 @@ CURRENT = {
     "index.html": [("index.html", "page")],
     "qui-sommes-nous.html": [("qui-sommes-nous.html", "page")],
     "actualites.html": [("actualites.html", "page")],
-    "actualite-2026-10-26.html": [("actualites.html", "location")],
+    "actualite-2026-10-26.html": [("actualites.html", "page")],
     "actualite-2026-10-17.html": [("actualites.html", "location")],
     "actualite-2026-10-10.html": [("actualites.html", "location")],
     "adherer.html": [("adherer.html", "page")],
