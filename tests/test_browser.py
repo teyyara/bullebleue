@@ -176,6 +176,17 @@ def main():
             reduced=context.new_page();reduced.emulate_media(reduced_motion="reduce")
             reduced.goto(f"{base}/index.html",wait_until="networkidle")
             assert reduced.locator("h1").is_visible()
+            assert reduced.evaluate("getComputedStyle(document.documentElement).scrollBehavior")=="auto", "system reduced-motion must disable smooth scrolling"
+
+            # In-page anchors must leave their destination clear of the sticky header.
+            anchor_page=context.new_page()
+            anchor_page.set_viewport_size({"width":390,"height":844})
+            anchor_page.emulate_media(reduced_motion="reduce")
+            anchor_page.goto(f"{base}/index.html",wait_until="networkidle")
+            anchor_page.locator('a[href="#se-retrouver"]').click()
+            anchor_page.wait_for_function("()=>{const target=document.querySelector('#se-retrouver');const header=document.querySelector('body>header');return target&&header&&target.getBoundingClientRect().top>=header.getBoundingClientRect().bottom+6}")
+            anchor_offset=anchor_page.evaluate("()=>({top:document.querySelector('#se-retrouver').getBoundingClientRect().top,header:document.querySelector('body>header').getBoundingClientRect().bottom})")
+            assert anchor_offset["top"]<=120, f"anchor offset should stay visually compact: {anchor_offset}"
             nojs=browser.new_context(java_script_enabled=False).new_page()
             nojs.goto(f"{base}/index.html",wait_until="networkidle")
             assert nojs.locator("h1").is_visible()

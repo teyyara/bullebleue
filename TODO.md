@@ -1,7 +1,15 @@
 # Bulle Bleue - APAiL — Owner feedback and production TODO
 
-**Last updated:** 24 November 2026  
+**Last updated:** 25 November 2026  
 **Repository:** teyyara/bullebleue · main
+
+## Loop 030 — Anchor and accessibility clarity
+- [x] Correct the Accessibility page so it does not claim the floating control stays bottom-left on phones.
+- [x] Add sticky-header clearance to in-page anchor destinations.
+- [x] Respect the operating system's reduced-motion preference for smooth scrolling, including when JavaScript is unavailable.
+- [x] Add browser coverage for anchor placement and reduced-motion scrolling.
+- [ ] Inspect refreshed screenshots and confirm all three browser engines pass.
+
 
 ## Loop 029 — Site-wide visual cleanup
 - [x] Replace the stretched flex footer on all twelve routes with a structured brand area and grouped navigation.

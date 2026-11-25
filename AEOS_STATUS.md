@@ -1,3 +1,10 @@
+## Delivered in Loop 030 — anchor and accessibility clarity
+- Updated the Accessibility page location note to match both desktop and phone layouts.
+- Added a consistent scroll offset so in-page links do not land underneath the sticky header.
+- Added a CSS reduced-motion fallback for smooth scrolling that also works without JavaScript.
+- Added browser regression checks for anchor clearance and reduced-motion behavior.
+- Validation and refreshed screenshots pending.
+
 ## Delivered in Loop 029 — site-wide visual cleanup
 - Replaced the stretched footer on all twelve routes with a structured brand area and grouped discovery, participation, and accessibility/legal navigation.
 - Added a clear email action, responsive link columns, and a compact copyright/location row.

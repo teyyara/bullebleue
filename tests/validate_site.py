@@ -118,6 +118,7 @@ def main():
     assert '@import url("/site-v3-overrides.css")' in css
     assert '@import url("/site-v4-polish.css")' in css
     assert '@import url("/site-v5-polish.css")' in css
+    assert '@import url("/site-v6-polish.css")' in css
     assert "@font-face" in mockup_css and "Atkinson Hyperlegible Next" in mockup_css
     assert all((ROOT / "mockup-v3/fonts" / name).is_file() for name in (
         "atkinson-hyperlegible-next-latin-400-normal.woff2",
@@ -172,6 +173,8 @@ def main():
     article10 = parsed["actualite-2026-10-10.html"][0]
     assert "Découvrir des gestes du quotidien sans la vue" in article10 and "dix membres" in article10
     assert 'id="signaler"' in parsed["accessibilite.html"][0]
+    access_page = parsed["accessibilite.html"][0]
+    assert "disponible en bas de l’écran" in access_page and "en bas à gauche" not in access_page
     assert "Page introuvable" in parsed["404.html"][0]
     todo = (ROOT / "TODO.md").read_text(encoding="utf-8")
     assert "verbally authorized" in todo, "owner-provided photo permission record must be retained"
