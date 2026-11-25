@@ -4,11 +4,6 @@
 html{
   scroll-padding-top:5.5rem;
 }
-main[id],
-main [id]{
-  scroll-margin-top:5.5rem;
-}
-
 /* Respect the operating-system preference even before scripts run or without JavaScript. */
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
