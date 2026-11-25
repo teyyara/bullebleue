@@ -119,6 +119,7 @@ def main():
     assert '@import url("/site-v4-polish.css")' in css
     assert '@import url("/site-v5-polish.css")' in css
     assert '@import url("/site-v6-polish.css")' in css
+    assert '@import url("/site-v7-polish.css")' in css
     assert "@font-face" in mockup_css and "Atkinson Hyperlegible Next" in mockup_css
     assert all((ROOT / "mockup-v3/fonts" / name).is_file() for name in (
         "atkinson-hyperlegible-next-latin-400-normal.woff2",
@@ -176,6 +177,10 @@ def main():
     access_page = parsed["accessibilite.html"][0]
     assert "disponible en bas de l’écran" in access_page and "en bas à gauche" not in access_page
     assert "Page introuvable" in parsed["404.html"][0]
+    for page in PAGES:
+        html = (ROOT / page).read_text(encoding="utf-8")
+        assert html.count('/assets/logo%20final.png') == 2, f"{page}: actual association logo must appear in header and footer"
+        assert 'href="/assets/favicon.svg"' in html, f"{page}: updated favicon must appear in document head"
     todo = (ROOT / "TODO.md").read_text(encoding="utf-8")
     assert "verbally authorized" in todo, "owner-provided photo permission record must be retained"
     print(json.dumps({"status":"PASS","pages":len(PAGES),"local_links_checked":len(all_links),"mockup_fonts":8,"mockup_images":15,"checks":["all twelve routes have French metadata, one h1 and one main","shared working navigation and active state","no placeholder links or broken local files/fragments","mockup v3 local stylesheet, fonts, mural and photo assets present","no Google Fonts network dependency","published session times are marked for confirmation","only the genuine Miette quotation is attributed","uncollected testimonials are absent","historical venue conflicts are disclosed","festival 40th anniversary is correctly dated to 2027","JOAFE declaration and publication dates are distinguished","actual Vercel hosting provider is identified","all seven About activity topics and historical milestones remain","three news items retain dedicated article routes","membership/legal/contact facts remain conservative and accurate","FALC and accessibility pages are included"]},ensure_ascii=False))

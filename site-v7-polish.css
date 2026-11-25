@@ -1,0 +1,18 @@
+/* Loop 031 — use the association's supplied brand mark consistently. */
+.bar .logo{flex:0 1 auto;min-width:0;gap:0}
+.bar .logo .brand-logo{
+  display:block;width:180px;height:48px;max-width:100%;
+  object-fit:contain;object-position:left center;
+}
+.footer-brand .logo{
+  display:inline-flex;width:fit-content;max-width:100%;
+  min-height:56px;margin:0;
+}
+.footer-brand .logo .brand-logo{
+  display:block;width:210px;height:56px;max-width:100%;
+  object-fit:contain;object-position:left center;
+}
+@media(max-width:620px){
+  .bar .logo .brand-logo{width:154px;height:44px}
+  .footer-brand .logo .brand-logo{width:194px;height:52px}
+}

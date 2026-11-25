@@ -3,6 +3,13 @@
 **Last updated:** 25 November 2026  
 **Repository:** teyyara/bullebleue · main
 
+## Loop 031 — Real brand assets across all routes
+- [x] Replace the generic CSS-dot wordmark with the association's supplied transparent logo in the shared header and footer on all twelve routes.
+- [x] Switch every route from the older placeholder favicon to the current Bulle Bleue bubble favicon.
+- [x] Add static checks for logo/favicon paths and browser checks that both logo instances load successfully.
+- [ ] Inspect desktop and mobile captures for logo sizing, crop and spacing; verify Chromium, Firefox and WebKit.
+
+
 ## Loop 030 — Anchor and accessibility clarity
 - [x] Correct the Accessibility page so it does not claim the floating control stays bottom-left on phones.
 - [x] Add sticky-header clearance to in-page anchor destinations.

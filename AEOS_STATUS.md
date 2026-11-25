@@ -1,3 +1,9 @@
+## Delivered in Loop 031 — real brand assets across all routes
+- Replaced the generic CSS-dot logo with the supplied association PNG in the shared header and footer across all twelve routes.
+- Updated each route to use the current bubble favicon from `/assets/favicon.svg`.
+- Added static assertions for shared logo/favicon paths and browser assertions that both logo images load.
+- Responsive visual review and cross-browser validation pending.
+
 ## Delivered in Loop 030 — anchor and accessibility clarity
 - Updated the Accessibility page location note to match both desktop and phone layouts.
 - Added a consistent scroll offset so in-page links do not land underneath the sticky header.
