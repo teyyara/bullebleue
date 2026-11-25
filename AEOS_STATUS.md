@@ -1,4 +1,10 @@
 ## Delivered in Loop 031 — real brand assets across all routes
+- Replaced the generic CSS-dot symbol with the association's supplied bubble emblem and retained a clear “Bulle Bleue / APAiL” wordmark beside it in the shared header and footer on all twelve routes.
+- Updated each route to use the current bubble favicon from `/assets/favicon.svg`.
+- Added static path checks and browser checks that both emblems load and the wordmark remains readable.
+- Cross-browser visual verification pending.
+
+## Delivered in Loop 031 — real brand assets across all routes
 - Replaced the generic CSS-dot logo with the supplied association PNG in the shared header and footer across all twelve routes.
 - Updated each route to use the current bubble favicon from `/assets/favicon.svg`.
 - Added static assertions for shared logo/favicon paths and browser assertions that both logo images load.

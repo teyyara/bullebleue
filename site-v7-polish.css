@@ -1,18 +1,34 @@
-/* Loop 031 — use the association's supplied brand mark consistently. */
-.bar .logo{flex:0 1 auto;min-width:0;gap:0}
-.bar .logo .brand-logo{
-  display:block;width:180px;height:48px;max-width:100%;
-  object-fit:contain;object-position:left center;
+/* Loop 031 — use the supplied bubble emblem with a readable wordmark. */
+.bar .logo{
+  flex:0 1 auto;
+  min-width:0;
+  gap:10px;
 }
+.bar .logo .brand-mark{
+  display:block;
+  width:42px;
+  height:42px;
+  flex:0 0 auto;
+  object-fit:contain;
+}
+.bar .logo b{font-size:1.12rem}
+.bar .logo small{font-size:.72rem}
 .footer-brand .logo{
-  display:inline-flex;width:fit-content;max-width:100%;
-  min-height:56px;margin:0;
+  display:inline-flex;
+  width:fit-content;
+  max-width:100%;
+  min-height:56px;
+  margin:0;
+  gap:10px;
 }
-.footer-brand .logo .brand-logo{
-  display:block;width:210px;height:56px;max-width:100%;
-  object-fit:contain;object-position:left center;
+.footer-brand .logo .brand-mark{
+  display:block;
+  width:48px;
+  height:48px;
+  flex:0 0 auto;
+  object-fit:contain;
 }
 @media(max-width:620px){
-  .bar .logo .brand-logo{width:154px;height:44px}
-  .footer-brand .logo .brand-logo{width:194px;height:52px}
+  .bar .logo .brand-mark{width:38px;height:38px}
+  .footer-brand .logo .brand-mark{width:44px;height:44px}
 }

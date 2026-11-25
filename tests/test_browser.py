@@ -69,9 +69,10 @@ def main():
                     assert_no_overflow(page,width,path)
                     assert page.locator("main#contenu").count()==1
                     assert page.locator("h1").count()==1
-                    brand=page.locator("img.brand-logo")
-                    assert brand.count()==2, f"{path}: supplied association logo must appear in header and footer"
-                    assert brand.evaluate_all("(imgs)=>imgs.every(i=>i.complete && i.naturalWidth>0)"), f"{path}: association logo image must load"
+                    brand=page.locator("img.brand-mark")
+                    assert brand.count()==2, f"{path}: association emblem must appear in header and footer"
+                    assert brand.evaluate_all("(imgs)=>imgs.every(i=>i.complete && i.naturalWidth>0)"), f"{path}: association emblem image must load"
+                    assert page.locator("header .logo b").inner_text()=="Bulle Bleue" and page.locator("header .logo small").inner_text()=="APAiL", f"{path}: readable association wordmark must accompany the emblem"
                     assert page.locator('link[rel="icon"]').get_attribute("href")=="/assets/favicon.svg", f"{path}: current bubble favicon must be used"
                     # Content headers must not inherit sticky site-navigation behaviour.
                     intro_header=page.locator("main.site-page > header.inner-hero")
