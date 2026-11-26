@@ -1,3 +1,10 @@
+## Delivered in Loop 037 — neural French reader as the default
+- Changed the accessibility reader's initial selection from the mechanical eSpeak NG voice to the on-device neural French Pocket TTS voice.
+- Kept the approximately 134 MB model/runtime download disclosed and deferred until the visitor starts reading.
+- Preserved eSpeak NG as an explicit lightweight fallback and made the reset control restore the neural voice selection.
+- Added browser assertions for the default voice selection, first-use download disclosure, fallback selection and reset behaviour.
+- Physical-device listening and older-mobile performance checks remain pending; automated tests do not establish subjective voice quality.
+
 ## Delivered in Loop 031 — real brand assets across all routes
 - Replaced the generic CSS-dot symbol with the association's supplied bubble emblem and retained a clear “Bulle Bleue / APAiL” wordmark beside it in the shared header and footer on all twelve routes.
 - Updated each route to use the current bubble favicon from `/assets/favicon.svg`.
