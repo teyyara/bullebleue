@@ -2,7 +2,7 @@
 // Regression tests adapted from jean-is/jean (MIT) for Bulle Bleue's local French voice reader.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { expand, tokenizer, prepare, chunks } from '../mockup-v3/js/voice/pocket.mjs'
+import { expand, tokenizer, prepare, chunks, teacherForcedSequence, packLatents, advanceDecoderSteps } from '../mockup-v3/js/voice/pocket.mjs'
 import { number, spelled } from '../mockup-v3/js/voice/words.mjs'
 
 const bytes = Array.from({ length: 256 }, (_, b) => [`<0x${b.toString(16).toUpperCase().padStart(2, '0')}>`, 0])
@@ -35,6 +35,36 @@ test('sentences end at the tokenizer’s marks, a decimal point not one, and joi
   const text = 'pi is 3.14 today. yes.'
   assert.deepEqual(chunks(text, tokens, rules).map((c) => tokens.decode(c.ids)), ['Pi is 3.14 today. yes.'])
   assert.deepEqual(chunks(text, tokens, rules, 6).map((c) => tokens.decode(c.ids)), ['Pi is 3.14 today.', 'Yes.'])
+})
+
+test('teacher forcing continues from the previous chunk instead of starting a new voice', () => {
+  const frames = [1, 2, 3].map((value) => new Float32Array(32).fill(value))
+  const { sequence, firstInput } = teacherForcedSequence(frames)
+  assert.equal(sequence.length, 96)
+  assert.ok([...sequence.slice(0, 32)].every(Number.isNaN), 'the first prefill frame must be BOS')
+  assert.deepEqual([...sequence.slice(32, 64)], [...frames[0]])
+  assert.deepEqual([...sequence.slice(64, 96)], [...frames[1]])
+  assert.deepEqual([...firstInput], [...frames[2]], 'the final previous frame becomes the next generation input')
+  assert.deepEqual([...packLatents(frames)], [...frames.flatMap((frame) => [...frame])])
+})
+
+test('Mimi decoder position advances by sixteen steps for every warm-up or generated latent', () => {
+  const state = { position: { data: BigInt64Array.of(24n) } }
+  advanceDecoderSteps([{ key: 'step', input_name: 'position' }], state, 12 * 16)
+  assert.equal(state.position.data[0], 216n)
+})
+
+test('Mimi step advancement also supports numeric state arrays', () => {
+  const state = { position: { data: Float32Array.of(2) } }
+  advanceDecoderSteps([{ key: 'step', input_name: 'position' }], state, 48)
+  assert.equal(state.position.data[0], 50)
+})
+
+test('long multi-sentence passages are grouped into smaller continuation chunks by default', () => {
+  const text = Array.from({ length: 30 }, () => 'hello.').join(' ')
+  const parts = chunks(text, tokens, rules)
+  assert.ok(parts.length > 1, 'long passages should not be sent as one oversized chunk')
+  assert.ok(parts.every((part) => part.ids.length <= 25), 'teacher-forced chunks should use the 25-token budget')
 })
 
 test('8-bit weights expand per channel into fp32, along the first axis or the last', () => {
