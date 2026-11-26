@@ -154,3 +154,16 @@ footer.pied .footer-group a{min-height:44px;font-size:1rem}
     overflow-wrap:anywhere;
   }
 }
+
+
+/* Large accessibility text must keep section headings within the phone's
+   actual reading width, including the dyslexia font's wider letterforms. */
+@media(max-width:360px){
+  .fs-3 h2,
+  .dys h2{
+    width:auto;
+    max-width:calc(100vw - 40px);
+    min-width:0;
+    overflow-wrap:break-word;
+  }
+}
