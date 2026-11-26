@@ -1,7 +1,21 @@
 # Bulle Bleue - APAiL — Owner feedback and production TODO
 
-**Last updated:** 25 November 2026  
+**Last updated:** 26 November 2026  
 **Repository:** teyyara/bullebleue · main
+
+## Loop 032 — Mobile accessibility and calmer presentation
+- [x] Move the Accessibility control into the mobile header beside Menu; remove the fixed bottom overlay on phones.
+- [x] Put Accessibility first in keyboard order immediately after “Aller au contenu”; retain visible focus and Escape/focus restoration.
+- [x] Give header and footer logo links the accessible name “La Bulle Bleue, APAiL, accueil”.
+- [x] Keep the homepage mural in the opening composition only; it no longer stays fixed over later sections.
+- [x] Make “Les sorties” an ordinary text list rather than non-functional button-like pills.
+- [x] Prevent the homepage title from overflowing with increased letter spacing, dyslexia font or very large text settings.
+- [x] Increase small labels and footer text to at least 16 px and remove unnecessary all-caps styling.
+- [x] Use the predictable “Nous contacter” label for general contact actions and remove arrows from internal links.
+- [x] Add Open Graph image metadata for social previews using the owner-selected group photograph.
+- [x] Remove decorative bubbles and pale geometric backplates in “Mode calme” while preserving content and documentary photos.
+- [ ] Convert photographic assets to WebP and verify the actual transfer-size reduction; binary processing is not available in this repository-edit session.
+- [ ] Complete screen-reader and real-device checks with people who use the relevant accessibility settings.
 
 ## Loop 031 — Real brand assets across all routes
 - [x] Replace the generic CSS-dot wordmark with the association's supplied transparent logo in the shared header and footer on all twelve routes.
