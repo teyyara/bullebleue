@@ -45,20 +45,6 @@ def main():
         with sync_playwright() as p:
             browser=getattr(p,ENGINE).launch(headless=True)
             context=browser.new_context()
-            context.add_init_script("""(() => {
-              class MockWorker {
-                constructor(){this.listeners={};}
-                addEventListener(type,fn){(this.listeners[type]||(this.listeners[type]=[])).push(fn);}
-                emit(data){(this.listeners.message||[]).forEach(fn=>fn({data}));}
-                postMessage(message){
-                  if(message.type==="load"){setTimeout(()=>this.emit({id:message.id,type:"ready"}),0);return;}
-                  if(message.type==="speak"){const audio=new Float32Array(2400).fill(0.01);this.emit({id:message.id,type:"chunk",audio,rate:24000});this.emit({id:message.id,type:"done"});}
-                  if(message.type==="abort")this.emit({id:message.of,type:"done"});
-                }
-                terminate(){}
-              }
-              window.Worker=MockWorker;
-            })();""")
             page=context.new_page()
             page.on("console",lambda m:console_errors.append(m.text) if m.type=="error" else None)
             page.on("pageerror",lambda e:console_errors.append(str(e)))
@@ -169,12 +155,13 @@ def main():
                         assert page.locator("#signaler").count()==1
                         page.locator("#a11y-open").click()
                         assert page.locator("#a11y-panel").is_visible()
-                        assert page.locator("#a11y-natural-enable").count()==0
-                        assert page.locator("#a11y-light-enable").count()==0
+                        assert page.locator("#a11y-voice-choice").count()==1
+                        assert page.locator("#a11y-voice .listen").count()==2
+                        assert page.locator("#a11y-voice .listen").all_disabled()
                         assert page.locator("#a11y-voice-status").count()==1
                         voice_status=page.locator("#a11y-voice-status").inner_text()
-                        assert "Voix naturelle prête" in voice_status or "Téléchargement automatique" in voice_status, f"the natural voice should report its automatic preload state: {voice_status}"
-                        assert "eSpeak" not in page.locator("#a11y-panel").inner_text() and "voix légère" not in page.locator("#a11y-panel").inner_text()
+                        assert "enregistrements audio ne sont pas encore disponibles" in voice_status, f"missing generated MP3s should be reported clearly: {voice_status}"
+                        assert "Pocket TTS" not in page.locator("#a11y-panel").inner_text()
                         page.locator("#a11y-close").click()
                         assert page.locator("#a11y-panel").is_hidden()
                     elif path=="facile-a-lire.html":
@@ -216,87 +203,55 @@ def main():
             a11y.locator("#a11y-reset").click()
             assert "calm" not in (a11y.locator("html").get_attribute("class") or "")
 
-            # Pocket TTS is the sole voice and its model download begins on page entry.
-            streamed_context=browser.new_context()
-            streamed=streamed_context.new_page()
-            streamed.add_init_script("""(() => {
-              const state=window.__naturalBufferTest={starts:[],workerMessages:0,loads:0,speakCalls:0,generationDone:false};
-              class MockWorker {
-                constructor(){this.listeners={};this.timers=new Map();}
-                addEventListener(type,fn){(this.listeners[type]||(this.listeners[type]=[])).push(fn);}
-                emit(data){(this.listeners.message||[]).forEach(fn=>fn({data}));}
-                postMessage(message){
-                  state.workerMessages++;
-                  if(message.type==="load"){
-                    state.loads++;state.loadStartedBeforeAnyRead=state.speakCalls===0;
-                    setTimeout(()=>this.emit({id:message.id,type:"ready"}),0);return;
-                  }
-                  if(message.type==="abort"){
-                    (this.timers.get(message.of)||[]).forEach(clearTimeout);
-                    this.emit({id:message.of,type:"done"});return;
-                  }
-                  if(message.type==="speak"){
-                    state.speakCalls++;state.generationDone=false;
-                    const delays=[0,30,30,30,30,700,30];let elapsed=0;const timers=[];
-                    this.emit({id:message.id,type:"progress",phase:"synthesis",part:1,parts:7});
-                    delays.forEach((delay,index)=>{
-                      elapsed+=delay;
-                      timers.push(setTimeout(()=>{
-                        this.emit({id:message.id,type:"chunk",audio:new Float32Array(12000).fill(0.02),rate:24000});
-                        if(index===delays.length-1)setTimeout(()=>{state.generationDone=true;this.emit({id:message.id,type:"done"});},0);
-                      },elapsed));
-                    });
-                    this.timers.set(message.id,timers);
-                  }
-                }
-                terminate(){}
+            # Static Azure Speech files: no worker, model download or browser synthesis.
+            audio_context=browser.new_context()
+            audio_page=audio_context.new_page()
+            audio_page.add_init_script("""(() => {
+              const state=window.__staticVoiceTest={played:[],paused:0,loads:0,workerConstructed:0};
+              const manifest={version:1,locale:"fr-FR",voices:{
+                denise:{label:"Denise · voix féminine",sample:"/assets/speech/fr-FR/denise/sample.mp3",pages:{"index.html":"/assets/speech/fr-FR/denise/pages/index.mp3"}},
+                henri:{label:"Henri · voix masculine",sample:"/assets/speech/fr-FR/henri/sample.mp3",pages:{"index.html":"/assets/speech/fr-FR/henri/pages/index.mp3"}}
+              }};
+              const originalFetch=window.fetch.bind(window);
+              window.fetch=(input,init)=>{
+                const url=typeof input==="string"?input:input.url;
+                if(url.endsWith("/assets/speech/fr-FR/manifest.json"))
+                  return Promise.resolve({ok:true,json:()=>Promise.resolve(manifest)});
+                return originalFetch(input,init);
+              };
+              class FakeAudio extends EventTarget {
+                constructor(){super();this.src="";this.paused=true;this.ended=false;this.playbackRate=1;this.preload="none";}
+                play(){this.paused=false;state.played.push(this.src);this.dispatchEvent(new Event("playing"));return Promise.resolve();}
+                pause(){if(!this.paused){this.paused=true;state.paused++;this.dispatchEvent(new Event("pause"));}}
+                removeAttribute(name){if(name==="src")this.src="";}
+                load(){state.loads++;}
               }
-              window.Worker=MockWorker;
-              class MockAudioContext {
-                constructor(){this.started=performance.now();this.state="running";this.destination={};}
-                get currentTime(){return (performance.now()-this.started)/1000;}
-                resume(){return Promise.resolve();}
-                createBuffer(channels,length,rate){return {duration:length/rate,copyToChannel(){}};}
-                createBufferSource(){
-                  const source={buffer:null,playbackRate:{value:1},onended:null,connect(){},start(when){
-                    state.starts.push({start:when,duration:source.buffer.duration/source.playbackRate.value,generationDone:state.generationDone});
-                    setTimeout(()=>source.onended&&source.onended(),0);
-                  },stop(){state.stops=(state.stops||0)+1;setTimeout(()=>source.onended&&source.onended(),0);}};
-                  return source;
-                }
-              }
-              window.AudioContext=MockAudioContext;
-              Object.defineProperty(window,'speechSynthesis',{configurable:true,value:{speak(){state.nativeCalls=(state.nativeCalls||0)+1;},cancel(){}}});
+              window.Audio=FakeAudio;
+              window.Worker=class {constructor(){state.workerConstructed++;throw new Error("A neural worker must not be started.");}};
             })();""")
-            streamed.goto(f"{base}/index.html",wait_until="networkidle")
-            streamed.wait_for_function("window.__naturalBufferTest.loads===1",timeout=5000)
-            preload_state=streamed.evaluate("()=>({loads:window.__naturalBufferTest.loads,speaks:window.__naturalBufferTest.speakCalls,beforeRead:window.__naturalBufferTest.loadStartedBeforeAnyRead})")
-            assert preload_state=={"loads":1,"speaks":0,"beforeRead":True}, f"the neural model must begin loading automatically on page entry: {preload_state}"
-            streamed.locator("#a11y-open").click()
-            assert streamed.locator("#a11y-voice .listen").count()==2, "the panel should offer a short sample and full-page reading"
-            assert streamed.locator("#a11y-light-enable").count()==0, "the retired TTS control must be removed"
-            assert "eSpeak" not in streamed.locator("#a11y-panel").inner_text() and "voix légère" not in streamed.locator("#a11y-panel").inner_text()
-            streamed.locator("#a11y-voice .listen").first.click()
-            streamed.wait_for_function("window.__naturalBufferTest.starts.length>0 && document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')==='true'",timeout=10000)
-            early_state=streamed.evaluate("()=>({starts:window.__naturalBufferTest.starts,generationDone:window.__naturalBufferTest.generationDone,status:document.querySelector('#a11y-voice-status').textContent})")
-            assert early_state["starts"][0]["generationDone"] is False, f"playback must begin after the short startup buffer, before the full passage is generated: {early_state}"
-            streamed.wait_for_function("document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')==='false'",timeout=10000)
-            buffered_state=streamed.evaluate("()=>({starts:window.__naturalBufferTest.starts,nativeCalls:window.__naturalBufferTest.nativeCalls||0,speakCalls:window.__naturalBufferTest.speakCalls})")
-            assert len(buffered_state["starts"])>1, f"longer speech should be scheduled in multiple continuous batches: {buffered_state}"
-            assert abs(sum(item["duration"] for item in buffered_state["starts"])-3.5)<0.01, f"all seven 0.5-second packets must reach playback: {buffered_state}"
-            for before,after in zip(buffered_state["starts"],buffered_state["starts"][1:]):
-                assert abs(after["start"]-(before["start"]+before["duration"]))<0.001, f"audio batches must be scheduled without gaps: {buffered_state}"
-            assert buffered_state["nativeCalls"]==0 and buffered_state["speakCalls"]==1, f"only Pocket TTS should synthesize the reading: {buffered_state}"
-
-            # Full-page reading must also begin before synthesis of the entire page has finished.
-            page_start_count=streamed.evaluate("()=>window.__naturalBufferTest.starts.length")
-            streamed.locator("#a11y-voice .listen").nth(1).click()
-            streamed.wait_for_function(f"window.__naturalBufferTest.starts.length>{page_start_count} && document.querySelectorAll('#a11y-voice .listen')[1].getAttribute('aria-pressed')==='true'",timeout=10000)
-            page_state=streamed.evaluate("()=>({starts:window.__naturalBufferTest.starts,speakCalls:window.__naturalBufferTest.speakCalls,generationDone:window.__naturalBufferTest.generationDone})")
-            assert page_state["starts"][page_start_count]["generationDone"] is False, f"full-page playback must not wait for all page synthesis: {page_state}"
-            streamed.wait_for_function("document.querySelectorAll('#a11y-voice .listen')[1].getAttribute('aria-pressed')==='false'",timeout=10000)
-            assert page_state["speakCalls"]==2, f"the sample and page reader should each use Pocket TTS: {page_state}"
-            streamed_context.close()
+            audio_page.goto(f"{base}/index.html",wait_until="networkidle")
+            audio_page.locator("#a11y-open").click()
+            audio_page.wait_for_function("document.querySelector('#a11y-voice-choice').options.length===2 && !document.querySelector('#a11y-voice .listen').disabled")
+            assert audio_page.locator("#a11y-voice-choice option").count()==2
+            sample_button=audio_page.locator("#a11y-voice .listen").nth(0)
+            page_button=audio_page.locator("#a11y-voice .listen").nth(1)
+            sample_button.click()
+            audio_page.wait_for_function("window.__staticVoiceTest.played.length===1")
+            assert audio_page.evaluate("()=>window.__staticVoiceTest.played[0].endsWith('/denise/sample.mp3')")
+            assert sample_button.get_attribute("aria-pressed")=="true"
+            sample_button.click()
+            assert sample_button.inner_text().strip()=="Reprendre"
+            sample_button.click()
+            assert audio_page.evaluate("()=>window.__staticVoiceTest.played.length===2")
+            page_button.click()
+            assert audio_page.evaluate("()=>window.__staticVoiceTest.played.slice(-1)[0].endsWith('/denise/pages/index.mp3')")
+            audio_page.locator("#a11y-voice-choice").select_option("henri")
+            sample_button.click()
+            assert audio_page.evaluate("()=>window.__staticVoiceTest.played.slice(-1)[0].endsWith('/henri/sample.mp3')")
+            audio_page.locator('[data-audio="stop"]').click()
+            assert sample_button.get_attribute("aria-pressed")=="false"
+            assert audio_page.evaluate("()=>window.__staticVoiceTest.workerConstructed===0"), "the old local neural model must never start"
+            audio_context.close()
 
             # Increased letter/word spacing and dyslexia settings must not clip the homepage title.
             spacing=context.new_page()
