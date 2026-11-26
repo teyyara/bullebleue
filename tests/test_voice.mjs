@@ -33,8 +33,20 @@ test('a chunk is prepared as pocket-tts does: characters replaced, semicolons, a
 
 test('sentences end at the tokenizer’s marks, a decimal point not one, and join up to the token limit', () => {
   const text = 'pi is 3.14 today. yes.'
-  assert.deepEqual(chunks(text, tokens, rules).map((c) => tokens.decode(c.ids)), ['Pi is 3.14 today. yes.'])
-  assert.deepEqual(chunks(text, tokens, rules, 6).map((c) => tokens.decode(c.ids)), ['Pi is 3.14 today.', 'Yes.'])
+  assert.deepEqual(chunks(text, tokens, rules).map((c) => c.text), ['Pi is 3.14 today. yes.'])
+  assert.deepEqual(chunks(text, tokens, rules, 6).map((c) => c.text), ['Pi is 3.14 today.', 'Yes.'])
+})
+
+test('a comma split is kept as a comma in the next teacher-forced context', () => {
+  const left = Array.from({ length: 18 }, () => 'hello').join(' ')
+  const right = Array.from({ length: 18 }, () => 'hello').join(' ')
+  const parts = chunks(left + ', ' + right + '.', tokens, rules, 25)
+  assert.equal(parts.length, 2)
+  assert.ok(parts[0].text.endsWith(','), 'the first raw fragment must retain its comma')
+  assert.ok(!parts[0].text.endsWith('.'), 'a comma fragment must not be stored with an artificial full stop')
+  const continuation = continuationPrompt(parts[0].text, parts[1].text, tokens, rules)
+  assert.match(continuation.text, /, hello/)
+  assert.equal((continuation.text.match(/\./g) || []).length, 1, 'only the final prompt should receive terminal punctuation')
 })
 
 test('the next prompt includes the previous text for continuous intonation', () => {
@@ -72,7 +84,7 @@ test('long multi-sentence passages are grouped into smaller continuation chunks 
   const text = Array.from({ length: 30 }, () => 'hello.').join(' ')
   const parts = chunks(text, tokens, rules)
   assert.ok(parts.length > 1, 'long passages should not be sent as one oversized chunk')
-  assert.ok(parts.every((part) => part.ids.length <= 25), 'teacher-forced chunks should use the 25-token budget')
+  assert.ok(parts.every((part) => tokens.encode(prepare(part.text, rules).text).length <= 25), 'teacher-forced chunks should use the 25-token budget')
 })
 
 test('8-bit weights expand per channel into fp32, along the first axis or the last', () => {
