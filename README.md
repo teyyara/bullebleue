@@ -10,7 +10,7 @@ Static HTML, CSS and vanilla JavaScript. No package manager, build step, analyti
 
 ## Site map
 
-- `index.html` — a sticky, colourful story collage that changes its highlighted artwork as visitors scroll, including twenty independently positioned transparent character cut-outs from drawings 6–9; owner-authored welcome, Se retrouver, Ils en parlent, Jouer/créer and DERRIÈRE LA BULLE sections; the owner-supplied se retrouver.jpg group photo and gathering.jpeg closing photograph. The eleven assets/posts photographs remain on Qui sommes-nous and Actualités, not the homepage.
+- `index.html` — the homepage story with supplied mural artwork, kept at the top rather than fixed over later reading sections; owner-authored welcome, Se retrouver, Ils en parlent, Jouer/créer and DERRIÈRE LA BULLE sections; the owner-supplied se retrouver.jpg group photo and gathering.jpeg closing photograph. The eleven assets/posts photographs remain on Qui sommes-nous and Actualités, not the homepage.
 - `qui-sommes-nous.html` — La Bulle Bleue, its audience and activities, Les Bleuettes, APAiL history and reported solidarity work.
 - `actualites.html` — three featured dated stories in editorial cards.
 - `actualite-2026-10-26.html` — 26 October 2026, games at La Bulle Bleue.
@@ -24,11 +24,11 @@ The five primary navigation links are Accueil, Qui sommes-nous ?, Actualités, A
 
 ## Homepage motion and accessibility
 
-Nine supplied drawing groups form a playful, sticker-like collage behind the homepage story. Drawings 6–9 contribute twenty independently positioned transparent character cut-outs to the sticky artwork; their four untouched complete JPEG sheets remain in the adapted Jouer/créer collage, which scrolls horizontally on mobile. The highlighted drawing group changes as the visitor moves between homepage sections. The cut-outs use hand-traced SVG clip paths over the original local JPEG pixels; they are not redraws or generated replacements. The site uses Fredoka 600 for headings, Atkinson Hyperlegible 400/700 for reading text and Caveat 600 for handwritten accents. Google Fonts is the only free remote font service; all illustration and documentary images remain local. The eleven assets/posts photographs stay off the homepage: eight remain on Qui sommes-nous and three in an undated strip on Actualités. Only se retrouver.jpg.jpeg and gathering.jpeg are documentary photos on the homepage. The association owner supplied the photo set and verbally authorised its visible use on the website, as relayed by the project user on 2026-11-05. JavaScript remains progressive enhancement; no-JavaScript and reduced-motion content stays visible.
+The supplied mural and character artwork appear in the opening homepage composition only; the mural no longer remains fixed over later sections. The four complete original drawing sheets remain in the Jouer/créer collage, which scrolls horizontally on mobile. The “Mode calme” setting removes background bubbles and geometric backplates without hiding page content or documentary photographs. The cut-outs use hand-traced SVG clip paths over the original local JPEG pixels; they are not redraws or generated replacements. The site uses Fredoka 600 for headings, Atkinson Hyperlegible 400/700 for reading text and Caveat 600 for handwritten accents. Google Fonts is the only free remote font service; all illustration and documentary images remain local. The eleven assets/posts photographs stay off the homepage: eight remain on Qui sommes-nous and three in an undated strip on Actualités. Only se retrouver.jpg.jpeg and gathering.jpeg are documentary photos on the homepage. The association owner supplied the photo set and verbally authorised its visible use on the website, as relayed by the project user on 2026-11-05. JavaScript remains progressive enhancement; no-JavaScript and reduced-motion content stays visible.
 
 ## Actualités card art direction
 
-The three dated story cards use distinct, smooth organic bubble silhouettes with matching illustration frames rather than rounded-rectangle surfaces. “Illustration” labels stay safely inside their frames at desktop and mobile.
+The three dated story cards use distinct, smooth organic bubble silhouettes with matching illustration frames rather than rounded-rectangle surfaces. “Illustration” labels stay safely inside their frames at desktop and mobile. Their visual treatment becomes simpler in “Mode calme”.
 
 ## News content and imagery
 
@@ -89,3 +89,8 @@ The playful bubble-style art direction, organic Actualités shapes and nine-draw
 ## Quality-gate maintenance
 
 The structural validator checks that the TODO records the association owner's verbal website-image authorization using the literal phrase “verbally authorized”. Keep that exact wording when editing the checklist; it documents the same owner-provided permission basis and is also a regression assertion.
+
+
+## Accessibility toolbar and social sharing
+
+The Accessibility control is first in keyboard order after the skip link. On phones it sits in the shared header beside Menu instead of covering the reading area; on desktop it remains available at the lower left. General contact links use the predictable label “Nous contacter”. Open Graph image metadata uses the owner-selected group photograph through the public repository image URL. Photo-to-WebP conversion remains an open optimization item pending binary-safe conversion and size checks.
