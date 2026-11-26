@@ -158,7 +158,7 @@ def main():
                         assert page.locator("#a11y-natural-enable").count()==1
                         assert "134 Mo" in page.locator("#a11y-natural-enable").inner_text()
                         assert page.locator("#a11y-voice-status").count()==1
-                        assert page.locator("#a11y-light-enable").is_hidden()
+                        assert page.locator("#a11y-light-enable").is_visible(), "the lightweight fallback should be available while the natural voice is selected"
                         page.locator("#a11y-close").click()
                         assert page.locator("#a11y-panel").is_hidden()
                     elif path=="facile-a-lire.html":
@@ -248,6 +248,60 @@ def main():
             default_voice.locator("#a11y-reset").click()
             assert default_voice.locator("#a11y-natural-enable").get_attribute("aria-pressed")=="true", "reset should restore the neural voice default"
             default_voice.close()
+
+            # Simulate a neural worker that delivers short packets with a delayed
+            # packet in the middle. The Web Audio scheduler must prebuffer and then
+            # schedule joined buffers without a silence at packet boundaries.
+            streamed=context.new_page()
+            streamed.add_init_script("""(() => {
+              const state=window.__naturalBufferTest={starts:[],workerMessages:0};
+              class MockWorker {
+                constructor(){this.listeners={};}
+                addEventListener(type,fn){(this.listeners[type]||(this.listeners[type]=[])).push(fn);}
+                emit(data){(this.listeners.message||[]).forEach(fn=>fn({data}));}
+                postMessage(message){
+                  state.workerMessages++;
+                  if(message.type==="load"){setTimeout(()=>this.emit({id:message.id,type:"ready"}),0);return;}
+                  if(message.type==="abort")return;
+                  if(message.type==="speak"){
+                    const delays=[0,30,30,30,30,700,30];
+                    let elapsed=0;
+                    delays.forEach((delay,index)=>{
+                      elapsed+=delay;
+                      setTimeout(()=>{
+                        this.emit({id:message.id,type:"chunk",audio:new Float32Array(12000).fill(0.02),rate:24000});
+                        if(index===delays.length-1)setTimeout(()=>this.emit({id:message.id,type:"done"}),0);
+                      },elapsed);
+                    });
+                  }
+                }
+                terminate(){}
+              }
+              window.Worker=MockWorker;
+              class MockAudioContext {
+                constructor(){this.started=performance.now();this.state="running";this.destination={};}
+                get currentTime(){return (performance.now()-this.started)/1000;}
+                resume(){return Promise.resolve();}
+                createBuffer(channels,length,rate){return {duration:length/rate,copyToChannel(){}};}
+                createBufferSource(){
+                  const source={buffer:null,playbackRate:{value:1},connect(){},start(when){
+                    state.starts.push({start:when,duration:source.buffer.duration/source.playbackRate.value});
+                  },stop(){}};
+                  return source;
+                }
+              }
+              window.AudioContext=MockAudioContext;
+            })();""")
+            streamed.goto(f"{base}/index.html",wait_until="networkidle")
+            streamed.locator("#a11y-open").click()
+            streamed.locator("#a11y-voice .listen").first.click()
+            streamed.wait_for_function("window.__naturalBufferTest.starts.length>=2 && document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')==='false'",timeout=10000)
+            buffered_state=streamed.evaluate("()=>window.__naturalBufferTest.starts")
+            assert len(buffered_state)>=2, f"the sample should be split into multiple buffered playback blocks: {buffered_state}"
+            for previous,next_block in zip(buffered_state,buffered_state[1:]):
+                gap=next_block["start"]-(previous["start"]+previous["duration"])
+                assert abs(gap)<0.01, f"neural audio blocks should be scheduled continuously, without packet-edge silence: {buffered_state} (gap {gap}s)"
+            streamed.close()
 
             speech=context.new_page()
             speech.add_init_script(audio_mock)
