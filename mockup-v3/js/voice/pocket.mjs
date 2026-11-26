@@ -67,6 +67,9 @@ export function tokenizer({ model: { vocab, unk_id: unknown } }) {
 const FINAL = '.!?…'
 const WEAK = ',;:-–—'
 const CLOSERS = '"\'”’)]»'
+const OPENERS = "\"'“‘([«"
+const ENDS_WITH_DECIMAL_NUMBER = /\d[.,]\d+\W*$/
+const TITLES = new Set(['Mr.','Mrs.','Ms.','Dr.','Prof.','Rev.','vs.','e.g.','i.e.'])
 /** @param {string} text @param {string} set */
 const trimEnd = (text, set) => {
   while (text && set.includes(text.at(-1) ?? '')) text = text.slice(0, -1)
@@ -86,7 +89,11 @@ export function prepare(text, rules) {
   text = text.replaceAll('\n', ' ').replaceAll('\r', ' ').replaceAll('  ', ' ')
   if (rules.semicolons) text = text.replaceAll(';', ',')
   const words = text.split(/\s+/).filter(Boolean).length
-  if (rules.capitalize && text[0] !== text[0].toUpperCase()) text = text[0].toUpperCase() + text.slice(1)
+  if (rules.capitalize) {
+    let start = 0
+    while (start < text.length && OPENERS.includes(text[start])) start++
+    if (start < text.length && text[start] !== text[start].toUpperCase()) text = text.slice(0, start) + text[start].toUpperCase() + text.slice(start + 1)
+  }
   if (rules.final) {
     const core = trimEnd(text, `${CLOSERS} `)
     const closers = text.slice(core.length).trim()
@@ -144,41 +151,82 @@ export function advanceDecoderSteps(parts, state, amount) {
 }
 
 /**
- * Split at sentence marks, respecting decimal points; prefer comma boundaries for
- * long sentences, and group text into Pocket TTS' 25-token teacher-forced chunks.
- * Every chunk after the first is continued using the previous chunk's text and latents.
+ * Pocket TTS sentence chunking, adapted from Kyutai's text_chunking.py.
+ * Long sentences are split only at commas/semicolons/colons, with decimal
+ * punctuation and titles protected. Raw text is retained for continuation.
  * @param {string} text @param {Tokenizer} tokens @param {Rules} rules
  */
-export function chunks(text, tokens, rules, most = 25) {
-  const all = tokens.encode(prepare(text, rules).text.trim())
-  /** @param {number[]} list @param {number[]} marks @param {boolean} [decimals] */
-  const cut = (list, marks, decimals) => {
-    const at = [0]
-    let after = false
-    list.forEach((id, i) => {
-      if (marks.includes(id)) return void (after = true)
-      if (after && !(decimals && decimal(tokens.decode(list.slice(0, i)), tokens.decode(list.slice(i))))) at.push(i)
-      after = false
-    })
-    at.push(list.length)
-    return at.slice(1).map((end, i) => /** @type {[number, string]} */ ([end - at[i], tokens.decode(list.slice(at[i], end))]))
+function innerPunctuation(list, start, tokens) {
+  const after = tokens.decode(list.slice(start - 1, start + 1))
+  if (after.length >= 2 && /[\p{L}\p{N}]/u.test(after[1])) return true
+  const windowStart = Math.max(0, start - 6)
+  const words = tokens.decode(list.slice(windowStart, start)).split(/\s+/).filter(Boolean)
+  return words.length > 0 && TITLES.has(words[words.length - 1]) && (words.length > 1 || windowStart === 0)
+}
+const MAX_CLOSER_TOKENS = 8
+const CLOSERS_OR_PARTIAL = CLOSERS + '\uFFFD'
+function skipClosers(list, start, tokens) {
+  const punctuation = tokens.decode(list.slice(start - 1, start))
+  let kept = start
+  const stop = Math.min(list.length, start + MAX_CLOSER_TOKENS)
+  for (let end = start + 1; end <= stop; end++) {
+    const window = tokens.decode(list.slice(start - 1, end))
+    const after = window.slice(punctuation.length)
+    if (!after || [...after].some((c) => !CLOSERS_OR_PARTIAL.includes(c))) break
+    if (!after.includes('\uFFFD')) kept = end
   }
-  const pieces = cut(all, tokens.encode('.!...?').slice(1), true).flatMap(([count, sentence]) => {
-    const parts = count > most ? cut(tokens.encode(sentence.trim()), tokens.encode(',;:').slice(1)) : []
-    return parts.length > 1 ? parts : [/** @type {[number, string]} */ ([count, sentence])]
+  return kept
+}
+function boundaryIndices(list, marks, tokens, ignoreInner = false) {
+  const boundarySet = new Set(marks), indices = [0]
+  let previousBoundary = false
+  list.forEach((token, index) => {
+    if (boundarySet.has(token)) { previousBoundary = true; return }
+    if (previousBoundary && !(ignoreInner && innerPunctuation(list, index, tokens))) {
+      const start = skipClosers(list, index, tokens)
+      if (start < list.length) indices.push(start)
+    }
+    previousBoundary = false
   })
-  /** @type {[number, string][]} */
-  const joined = []
-  for (const [, piece] of pieces) {
-    const last = joined.at(-1)
-    const candidate = last ? `${last[1]} ${piece}` : piece
-    const actualTokens = tokens.encode(prepare(candidate, rules).text).length
-    if (last && actualTokens <= most) joined[joined.length - 1] = [actualTokens, candidate]
-    else joined.push([tokens.encode(prepare(piece, rules).text).length, piece])
+  indices.push(list.length)
+  return indices
+}
+function segments(list, boundaries, tokens) {
+  const out = []
+  for (let i = 0; i < boundaries.length - 1; i++) {
+    const start = boundaries[i], end = boundaries[i + 1]
+    out.push([end - start, tokens.decode(list.slice(start, end))])
   }
-  // Count the prepared, re-encoded prompt rather than summing sentence token
-  // counts: the joined sentence boundary can change SentencePiece tokenization.
-  return joined.map(([, chunk]) => prepare(chunk, rules)).map(({ text, after }) => ({ ids: tokens.encode(text), after }))
+  return out
+}
+export function chunks(text, tokens, rules, most = 25) {
+  const preparedText = prepare(text, rules).text.trim()
+  const all = tokens.encode(preparedText)
+  const sentenceMarks = tokens.encode('.!...?').slice(1)
+  const sentenceParts = segments(all, boundaryIndices(all, sentenceMarks, tokens, true), tokens)
+  const fallbackMarks = tokens.encode(',;:').slice(1)
+  const refined = sentenceParts.flatMap(([count, sentence]) => {
+    if (count <= most) return [[count, sentence]]
+    const localTokens = tokens.encode(sentence.trim())
+    const local = segments(localTokens, boundaryIndices(localTokens, fallbackMarks, tokens, true), tokens)
+    return local.length > 1 ? local : [[count, sentence]]
+  })
+  const glued = []
+  for (const [count, part] of refined) {
+    const last = glued[glued.length - 1]
+    if (last && ENDS_WITH_DECIMAL_NUMBER.test(last[1])) {
+      glued[glued.length - 1] = [last[0] + count, last[1].trimEnd() + ' ' + part.trimStart()]
+    } else glued.push([count, part])
+  }
+  const grouped = []
+  for (const [, part] of glued) {
+    const last = grouped[grouped.length - 1]
+    const candidate = last ? last.text + ' ' + part : part
+    const actualCount = tokens.encode(prepare(candidate, rules).text).length
+    if (last && actualCount <= most) { last.text = candidate; last.count = actualCount }
+    else grouped.push({ text: part, count: tokens.encode(prepare(part, rules).text).length })
+  }
+  return grouped.map(({ text }) => ({ text: text.trim(), after: prepare(text, rules).after }))
 }
 
 /** Whether a sentence mark is a decimal point: a digit before it and after. @param {string} before @param {string} next */
