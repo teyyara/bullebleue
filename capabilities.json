@@ -1,5 +1,5 @@
 {
-  "observed_at": "2026-11-02",
+  "observed_at": "2026-11-26",
   "environment": {
     "os": "Linux container",
     "python": "3.13.5",
@@ -38,7 +38,7 @@
     "contrast_checks": true,
     "axe_core": false,
     "nvda": false,
-    "voiceover": false,
+    "voiceover": "not available in this session",
     "manual_screen_reader_testing": false
   },
   "quality_and_security": {
@@ -55,5 +55,13 @@
     "production_smoke": false,
     "field_rum": false,
     "rollback_target": "NOT CONFIGURED"
+  },
+  "optional_speech": {
+    "engine": "Kyutai Pocket TTS Q8 ONNX French",
+    "execution": "on-device, one-thread WebAssembly worker",
+    "download_bytes_approx": 134000000,
+    "explicit_opt_in": true,
+    "fallback": "Spellophone/eSpeak NG",
+    "real_device_audio_review": false
   }
 }
