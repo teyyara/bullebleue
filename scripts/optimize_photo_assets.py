@@ -147,7 +147,8 @@ def main() -> None:
         '    assert webp_report["summary"]["reduction_percent"] > 0, "WebP must reduce transfer size"\n'
         '    assert webp_report["summary"]["images_converted"] >= 10, "rendered photos and logo should use WebP"\n'
         '    for image in webp_report["images"]:\n'
-        '        assert (ROOT / image["webp"]).is_file(), f"missing WebP derivative: {image[\\'webp\\']}"\n'
+        '        webp_path = image["webp"]\n'
+        '        assert (ROOT / webp_path).is_file(), f"missing WebP derivative: {webp_path}"\n'
     )
     if marker in validator and "webp_report =" not in validator:
         validator = validator.replace(marker, addition)
