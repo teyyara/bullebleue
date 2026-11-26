@@ -48,7 +48,7 @@ jobs:
           git add '*.html' '*.css' 'assets/*.webp' 'mockup-v3/img/*.webp' \
             'evidence/visual/asset-register.json' \
             'evidence/visual/webp-optimization-report.json' \
-            'tests/validate_site.py' 'TODO.md' 'README.md'
+            'tests/validate_site.py' 'tests/test_browser.py' 'TODO.md' 'README.md'
           if git diff --cached --quiet; then
             echo "No image optimization changes to commit."
             exit 0
