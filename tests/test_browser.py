@@ -45,6 +45,20 @@ def main():
         with sync_playwright() as p:
             browser=getattr(p,ENGINE).launch(headless=True)
             context=browser.new_context()
+            context.add_init_script("""(() => {
+              class MockWorker {
+                constructor(){this.listeners={};}
+                addEventListener(type,fn){(this.listeners[type]||(this.listeners[type]=[])).push(fn);}
+                emit(data){(this.listeners.message||[]).forEach(fn=>fn({data}));}
+                postMessage(message){
+                  if(message.type==="load"){setTimeout(()=>this.emit({id:message.id,type:"ready"}),0);return;}
+                  if(message.type==="speak"){const audio=new Float32Array(2400).fill(0.01);this.emit({id:message.id,type:"chunk",audio,rate:24000});this.emit({id:message.id,type:"done"});}
+                  if(message.type==="abort")this.emit({id:message.of,type:"done"});
+                }
+                terminate(){}
+              }
+              window.Worker=MockWorker;
+            })();""")
             page=context.new_page()
             page.on("console",lambda m:console_errors.append(m.text) if m.type=="error" else None)
             page.on("pageerror",lambda e:console_errors.append(str(e)))
@@ -200,82 +214,36 @@ def main():
             a11y.locator("#a11y-reset").click()
             assert "calm" not in (a11y.locator("html").get_attribute("class") or "")
 
-            # French read-aloud uses its own browser-side eSpeak engine. The device
-            # deliberately exposes English only; the native speech API must never be called.
-            speech_module_url="https://cdn.jsdelivr.net/npm/@spelling-creator/spellophone@0.2.1/dist/browser.js"
-            speech_module="""export async function createEspeak(options) {
-              const state=globalThis.__localSpeechTest;
-              state.engineOptions=options;
-              if(state.failEngine) throw new Error('mock engine network failure');
-              return {
-                async loadVoice(language){state.voice=language;},
-                synthesize(text,options){
-                  state.sent.push({text,options});
-                  return {samples:new Int16Array([1600,800,-300,-900,400,1200]),sampleRate:22050};
-                }
-              };
-            }
-            export function toFloat32(samples){return Float32Array.from(samples,value=>value/32768);}
-            """
-            audio_mock="""(() => {
-              const state=window.__localSpeechTest={engineOptions:null,voice:null,sent:[],starts:0,stops:0,nativeCalls:0,autoEnd:true,failEngine:false};
-              Object.defineProperty(window,'speechSynthesis',{configurable:true,value:{
-                getVoices(){return [{name:'English only',lang:'en-US',localService:true}];},
-                speak(){state.nativeCalls++;},cancel(){}
-              }});
-              class MockAudioContext {
-                constructor(){this.state='running';this.destination={};state.contexts=(state.contexts||0)+1;}
-                resume(){state.resumed=(state.resumed||0)+1;return Promise.resolve();}
-                createBuffer(channels,length,sampleRate){return {numberOfChannels:channels,length,sampleRate,copyToChannel(values){state.lastBuffer=Array.from(values);}};}
-                createBufferSource(){
-                  const source={buffer:null,onended:null,connect(){},start(){state.starts++;if(state.autoEnd)setTimeout(()=>this.onended&&this.onended(),0);},
-                    stop(){state.stops++;setTimeout(()=>this.onended&&this.onended(),0);}};
-                  state.sources=state.sources||[];state.sources.push(source);return source;
-                }
-              }
-              Object.defineProperty(window,'AudioContext',{configurable:true,value:MockAudioContext});
-            })();"""
-            # The neural French reader is the default; confirm it is selected
-            # and that the lightweight voice remains available as a fallback.
-            default_voice=context.new_page()
-            default_voice.goto(f"{base}/index.html",wait_until="networkidle")
-            default_voice.locator("#a11y-open").click()
-            assert default_voice.locator("#a11y-natural-enable").get_attribute("aria-pressed")=="true", "the on-device neural voice should be the default selection"
-            assert default_voice.locator("#a11y-light-enable").is_visible(), "the lightweight fallback should remain selectable"
-            assert "134 Mo" in default_voice.locator("#a11y-voice-status").inner_text(), "the first-use model download must be disclosed before playback"
-            default_voice.locator("#a11y-light-enable").click()
-            assert default_voice.locator("#a11y-natural-enable").get_attribute("aria-pressed")=="false"
-            default_voice.locator("#a11y-reset").click()
-            assert default_voice.locator("#a11y-natural-enable").get_attribute("aria-pressed")=="true", "reset should restore the neural voice default"
-            default_voice.close()
-
-            # Simulate neural audio arriving in small packets, including one slow
-            # inference interval. Playback must wait for generation to finish, join
-            # every packet into one AudioBuffer and start exactly one audio source.
-            streamed=context.new_page()
+            # Pocket TTS is the sole voice and its model download begins on page entry.
+            streamed_context=browser.new_context()
+            streamed=streamed_context.new_page()
             streamed.add_init_script("""(() => {
-              const state=window.__naturalBufferTest={starts:[],workerMessages:0,generationDone:false};
+              const state=window.__naturalBufferTest={starts:[],workerMessages:0,loads:0,speakCalls:0,generationDone:false};
               class MockWorker {
-                constructor(){this.listeners={};}
+                constructor(){this.listeners={};this.timers=new Map();}
                 addEventListener(type,fn){(this.listeners[type]||(this.listeners[type]=[])).push(fn);}
                 emit(data){(this.listeners.message||[]).forEach(fn=>fn({data}));}
                 postMessage(message){
                   state.workerMessages++;
-                  if(message.type==="load"){setTimeout(()=>this.emit({id:message.id,type:"ready"}),0);return;}
-                  if(message.type==="abort")return;
+                  if(message.type==="load"){
+                    state.loads++;state.loadStartedBeforeAnyRead=state.speakCalls===0;
+                    setTimeout(()=>this.emit({id:message.id,type:"ready"}),0);return;
+                  }
+                  if(message.type==="abort"){
+                    (this.timers.get(message.of)||[]).forEach(clearTimeout);
+                    this.emit({id:message.of,type:"done"});return;
+                  }
                   if(message.type==="speak"){
-                    const delays=[0,30,30,30,30,700,30];
-                    let elapsed=0;
+                    state.speakCalls++;
+                    const delays=[0,30,30,30,30,700,30];let elapsed=0;const timers=[];
                     delays.forEach((delay,index)=>{
                       elapsed+=delay;
-                      setTimeout(()=>{
+                      timers.push(setTimeout(()=>{
                         this.emit({id:message.id,type:"chunk",audio:new Float32Array(12000).fill(0.02),rate:24000});
-                        if(index===delays.length-1)setTimeout(()=>{
-                          state.generationDone=true;
-                          this.emit({id:message.id,type:"done"});
-                        },0);
-                      },elapsed);
+                        if(index===delays.length-1)setTimeout(()=>{state.generationDone=true;this.emit({id:message.id,type:"done"});},0);
+                      },elapsed));
                     });
+                    this.timers.set(message.id,timers);
                   }
                 }
                 terminate(){}
@@ -290,105 +258,29 @@ def main():
                   const source={buffer:null,playbackRate:{value:1},onended:null,connect(){},start(when){
                     state.starts.push({start:when,duration:source.buffer.duration/source.playbackRate.value,generationDone:state.generationDone});
                     setTimeout(()=>source.onended&&source.onended(),0);
-                  },stop(){setTimeout(()=>source.onended&&source.onended(),0);}};
+                  },stop(){state.stops=(state.stops||0)+1;setTimeout(()=>source.onended&&source.onended(),0);}};
                   return source;
                 }
               }
               window.AudioContext=MockAudioContext;
+              Object.defineProperty(window,'speechSynthesis',{configurable:true,value:{speak(){state.nativeCalls=(state.nativeCalls||0)+1;},cancel(){}}});
             })();""")
             streamed.goto(f"{base}/index.html",wait_until="networkidle")
+            streamed.wait_for_function("window.__naturalBufferTest.loads===1",timeout=5000)
+            preload_state=streamed.evaluate("()=>({loads:window.__naturalBufferTest.loads,speaks:window.__naturalBufferTest.speakCalls,beforeRead:window.__naturalBufferTest.loadStartedBeforeAnyRead})")
+            assert preload_state=={"loads":1,"speaks":0,"beforeRead":True}, f"the neural model must begin loading automatically on page entry: {preload_state}"
             streamed.locator("#a11y-open").click()
+            assert streamed.locator("#a11y-voice .listen").count()==2, "the panel should offer a short sample and full-page reading"
+            assert streamed.locator("#a11y-light-enable").count()==0, "the retired TTS control must be removed"
+            assert "eSpeak" not in streamed.locator("#a11y-panel").inner_text() and "voix légère" not in streamed.locator("#a11y-panel").inner_text()
             streamed.locator("#a11y-voice .listen").first.click()
             streamed.wait_for_function("window.__naturalBufferTest.starts.length===1 && document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')==='false'",timeout=10000)
-            buffered_state=streamed.evaluate("()=>window.__naturalBufferTest.starts")
-            assert len(buffered_state)==1, f"the complete passage should play from one uninterrupted audio source: {buffered_state}"
-            assert buffered_state[0]["generationDone"], "playback must not start while the neural model is still generating later packets"
-            assert abs(buffered_state[0]["duration"]-3.5)<0.01, f"the single buffer must contain all seven 0.5-second packets: {buffered_state}"
-            streamed.close()
-
-            speech=context.new_page()
-            speech.add_init_script(audio_mock)
-            speech.add_init_script("try{localStorage.setItem('bb-a11y',JSON.stringify({voice:'light'}))}catch(e){}")
-            speech.route(speech_module_url,lambda route:route.fulfill(status=200,content_type="application/javascript",headers={"Access-Control-Allow-Origin":"*","Cache-Control":"no-store"},body=speech_module))
-            speech.goto(f"{base}/index.html",wait_until="networkidle")
-            speech.locator("#a11y-open").click()
-            read_buttons=speech.locator("#a11y-voice .listen")
-            assert read_buttons.count()==2, "the panel should offer a short sample and full-page reading"
-            sample_button=read_buttons.nth(0)
-            assert sample_button.get_attribute("data-label")=="Écouter un exemple"
-            read_button=read_buttons.nth(1)
-            assert read_button.get_attribute("data-label")=="Écouter toute la page"
-            sample_button.click()
-            speech.wait_for_function("window.__localSpeechTest.sent.length>0 && window.__localSpeechTest.starts>0")
-            speech.wait_for_function("document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')==='false'")
-            sample_text=speech.evaluate("()=>window.__localSpeechTest.sent.map(item=>item.text).join(' ')")
-            assert "Bonjour" in sample_text and "Bulle Bleue" in sample_text, f"the short preview should use a representative French sample: {sample_text}"
-            sample_count=speech.evaluate("()=>window.__localSpeechTest.sent.length")
-            start_count=speech.evaluate("()=>window.__localSpeechTest.starts")
-            read_button.click()
-            speech.wait_for_function("(counts)=>window.__localSpeechTest.sent.length>counts.sent && window.__localSpeechTest.starts>counts.starts",arg={"sent":sample_count,"starts":start_count})
-            speech.wait_for_function("document.querySelector('#a11y-voice .listen:last-child').getAttribute('aria-pressed')==='false' && document.querySelector('[role=status]').textContent.includes('Lecture terminée.')")
-            local_playback=speech.evaluate("()=>({options:window.__localSpeechTest.engineOptions,voice:window.__localSpeechTest.voice,sent:window.__localSpeechTest.sent,starts:window.__localSpeechTest.starts,nativeCalls:window.__localSpeechTest.nativeCalls,lastBuffer:window.__localSpeechTest.lastBuffer})")
-            assert local_playback["options"]["cdn"]=="jsdelivr" and "fr" in local_playback["options"]["languages"], f"the French engine must load its French language data: {local_playback}"
-            assert local_playback["voice"]=="fr-fr", f"the dedicated French (France) eSpeak voice must be selected: {local_playback}"
-            assert local_playback["sent"] and any(item["text"].strip() for item in local_playback["sent"]), f"page text should be synthesized into audio: {local_playback}"
-            assert all(125<=item["options"]["rate"]<=210 for item in local_playback["sent"]), f"speech speed must map to valid eSpeak rates: {local_playback}"
-            assert local_playback["starts"]>0 and local_playback["nativeCalls"]==0 and local_playback["lastBuffer"], f"French audio must play through Web Audio without using system voices: {local_playback}"
-
-            # Playback can be cancelled during a long reading. No later chunk may start.
-            cancelled=context.new_page()
-            cancelled.add_init_script(audio_mock.replace("autoEnd:true","autoEnd:false"))
-            cancelled.add_init_script("try{localStorage.setItem('bb-a11y',JSON.stringify({voice:'light'}))}catch(e){}")
-            cancelled.route(speech_module_url,lambda route:route.fulfill(status=200,content_type="application/javascript",headers={"Access-Control-Allow-Origin":"*","Cache-Control":"no-store"},body=speech_module))
-            cancelled.goto(f"{base}/index.html",wait_until="networkidle")
-            cancelled.locator("#a11y-open").click()
-            cancel_button=cancelled.locator("#a11y-voice .listen").last
-            cancel_button.click()
-            cancelled.wait_for_function("window.__localSpeechTest.starts===1")
-            cancel_button.click()
-            cancelled.wait_for_function("window.__localSpeechTest.stops===1 && document.querySelector('#a11y-voice .listen:last-child').getAttribute('aria-pressed')==='false'")
-            cancelled.wait_for_timeout(150)
-            cancel_state=cancelled.evaluate("()=>({starts:window.__localSpeechTest.starts,stops:window.__localSpeechTest.stops,status:document.querySelector('[role=status]').textContent})")
-            assert cancel_state["starts"]==1 and cancel_state["stops"]==1 and cancel_state["status"]=="Lecture arrêtée.", f"cancelling local audio must stop the current chunk and prevent later chunks: {cancel_state}"
-
-            # A CDN/network failure is announced accessibly and never falls back to English.
-            unavailable=context.new_page()
-            unavailable.add_init_script(audio_mock.replace("failEngine:false","failEngine:true"))
-            unavailable.add_init_script("try{localStorage.setItem('bb-a11y',JSON.stringify({voice:'light'}))}catch(e){}")
-            unavailable.route(speech_module_url,lambda route:route.fulfill(status=200,content_type="application/javascript",headers={"Access-Control-Allow-Origin":"*","Cache-Control":"no-store"},body=speech_module))
-            unavailable.goto(f"{base}/index.html",wait_until="networkidle")
-            unavailable.locator("#a11y-open").click()
-            unavailable.locator("#a11y-voice .listen").last.click()
-            unavailable.wait_for_function("document.querySelector('[role=status]').textContent.includes('Vérifiez votre connexion')",timeout=5000)
-            failed_playback=unavailable.evaluate("()=>({button:document.querySelector('#a11y-voice .listen:last-child').getAttribute('aria-pressed'),nativeCalls:window.__localSpeechTest.nativeCalls,status:document.querySelector('[role=status]').textContent})")
-            assert failed_playback["button"]=="false" and failed_playback["nativeCalls"]==0, f"failed local engine loading should reset its control without English fallback: {failed_playback}"
-
-            # One real Chromium smoke test exercises the pinned jsDelivr package,
-            # the WASM engine, French dictionary download and a genuine Web Audio source.
-            if ENGINE=="chromium":
-                live_context=browser.new_context()
-                live_speech=live_context.new_page()
-                live_speech.add_init_script("""(() => {
-                  const state=window.__liveTtsAudio={starts:0,nativeCalls:0};
-                  Object.defineProperty(window,'speechSynthesis',{configurable:true,value:{
-                    getVoices(){return [{name:'English only',lang:'en-US'}];},
-                    speak(){state.nativeCalls++;},cancel(){}
-                  }});
-                  const proto=window.AudioBufferSourceNode&&window.AudioBufferSourceNode.prototype;
-                  if(proto){
-                    const original=proto.start;
-                    proto.start=function(){state.starts++;return original.apply(this,arguments);};
-                  }
-                })();""")
-                live_speech.goto(f"{base}/index.html",wait_until="networkidle",timeout=30000)
-                live_speech.locator("#a11y-open").click()
-                live_speech.locator("#a11y-voice .listen").click()
-                live_speech.wait_for_function("window.__liveTtsAudio.starts>0",timeout=90000)
-                live_state=live_speech.evaluate("()=>({starts:window.__liveTtsAudio.starts,nativeCalls:window.__liveTtsAudio.nativeCalls,button:document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed'),status:document.querySelector('[role=status]').textContent})")
-                assert live_state["starts"]>0 and live_state["nativeCalls"]==0 and live_state["button"]=="true", f"real eSpeak NG package must synthesize French and start Web Audio with no French system voice: {live_state}"
-                live_speech.locator("#a11y-voice .listen").click()
-                live_speech.wait_for_function("document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')==='false'")
-                live_context.close()
+            buffered_state=streamed.evaluate("()=>({starts:window.__naturalBufferTest.starts,nativeCalls:window.__naturalBufferTest.nativeCalls||0,speakCalls:window.__naturalBufferTest.speakCalls})")
+            assert len(buffered_state["starts"])==1, f"the complete passage should play from one uninterrupted audio source: {buffered_state}"
+            assert buffered_state["starts"][0]["generationDone"], "playback must not start while the neural model is still generating later packets"
+            assert abs(buffered_state["starts"][0]["duration"]-3.5)<0.01, f"the single buffer must contain all seven 0.5-second packets: {buffered_state}"
+            assert buffered_state["nativeCalls"]==0 and buffered_state["speakCalls"]==1, f"only Pocket TTS should synthesize the reading: {buffered_state}"
+            streamed_context.close()
 
             # Increased letter/word spacing and dyslexia settings must not clip the homepage title.
             spacing=context.new_page()
