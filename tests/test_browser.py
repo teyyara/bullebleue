@@ -169,10 +169,12 @@ def main():
                         assert page.locator("#signaler").count()==1
                         page.locator("#a11y-open").click()
                         assert page.locator("#a11y-panel").is_visible()
-                        assert page.locator("#a11y-natural-enable").count()==1
-                        assert "134 Mo" in page.locator("#a11y-natural-enable").inner_text()
+                        assert page.locator("#a11y-natural-enable").count()==0
+                        assert page.locator("#a11y-light-enable").count()==0
                         assert page.locator("#a11y-voice-status").count()==1
-                        assert page.locator("#a11y-light-enable").is_visible(), "the lightweight fallback should be available while the natural voice is selected"
+                        voice_status=page.locator("#a11y-voice-status").inner_text()
+                        assert "Voix naturelle prête" in voice_status or "Téléchargement automatique" in voice_status, f"the natural voice should report its automatic preload state: {voice_status}"
+                        assert "eSpeak" not in page.locator("#a11y-panel").inner_text() and "voix légère" not in page.locator("#a11y-panel").inner_text()
                         page.locator("#a11y-close").click()
                         assert page.locator("#a11y-panel").is_hidden()
                     elif path=="facile-a-lire.html":
