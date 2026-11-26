@@ -71,3 +71,6 @@ footer.pied .footer-group a{min-height:44px;font-size:1rem}
   .jouer{padding:40px 0}
   .sortiesec .gal{margin-top:26px}
 }
+
+/* Calm mode also removes the decorative underline beneath the outings heading. */
+.calm .sorties h2::after{display:none!important}
