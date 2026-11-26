@@ -156,6 +156,14 @@ def main() -> None:
         raise RuntimeError("Mural WebP validator path was not updated")
     VALIDATOR.write_text(validator, encoding="utf-8")
 
+    browser_test = ROOT / "tests/test_browser.py"
+    browser_text = browser_test.read_text(encoding="utf-8")
+    browser_text = browser_text.replace(
+        'get_attribute("src")=="/assets/gathering.jpeg"',
+        'get_attribute("src")=="/assets/gathering.webp"',
+    )
+    browser_test.write_text(browser_text, encoding="utf-8")
+
     print(json.dumps({"status":"PASS", "images":len(rows), "original_bytes":before,
         "webp_bytes":after, "saved_bytes":saved, "reduction_percent":percent,
         "updated_sources":changed}, ensure_ascii=False))
