@@ -7,4 +7,4 @@
 - **Code de préparation et d'inférence adapté** : `jean-is/jean`, licence MIT. Les changements locaux couvrent le lecteur français, son worker et le téléchargement/cache pour Bulle Bleue.
 - **ONNX Runtime Web 1.31.1** : licence MIT, chargé depuis jsDelivr avec une version épinglée.
 
-La voix légère reste fondée sur Spellophone et eSpeak NG (GNU GPL version 3 ou ultérieure). Aucun texte de page ni audio généré n'est envoyé à un service de synthèse vocale. Le modèle et le moteur sont téléchargés depuis Hugging Face et jsDelivr ; l'inférence et la lecture sont ensuite exécutées dans le navigateur.
+Pocket TTS est l'unique moteur de lecture intégré au site. Aucun texte de page ni audio généré n'est envoyé à un service de synthèse vocale. Le modèle et ONNX Runtime Web sont téléchargés depuis Hugging Face et jsDelivr ; l'inférence et la lecture sont ensuite exécutées dans le navigateur.
