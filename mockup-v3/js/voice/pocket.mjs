@@ -104,6 +104,19 @@ export function prepare(text, rules) {
  * @param {string} text @param {Tokenizer} tokens @param {Rules} rules
  */
 /**
+ * Prepare the next chunk with its predecessor as context, matching Pocket TTS'
+ * teacher-forced continuation path.
+ * @param {string} previous
+ * @param {string} current
+ * @param {ReturnType<typeof tokenizer>} tokens
+ * @param {Rules} rules
+ */
+export function continuationPrompt(previous, current, tokens, rules) {
+  const text = prepare(previous ? `${previous} ${current}` : current, rules).text
+  return { text, ids: tokens.encode(text) }
+}
+
+/**
  * Pack the previous chunk's generated latents the way Pocket TTS expects for
  * teacher-forced continuation: BOS followed by every old frame except the last.
  * The final old frame becomes the first autoregressive input for the new chunk.
