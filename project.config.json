@@ -27,11 +27,14 @@
   },
   "cost_policy": {
     "zero_paid_dependencies": true,
-    "external_runtime_dependencies": [],
+    "external_runtime_dependencies": [
+      "Optional jsDelivr CDN runtime: onnxruntime-web@1.31.1",
+      "Optional Hugging Face model: jean-is/pocket-tts-q8-ONNX (pinned revision and SHA-256 manifest)"
+    ],
     "analytics": false,
     "third_party_tracking": false
   },
-  "current_candidate": "bullebleue-loop-025-cross-browser-responsive-validation-v1",
-  "status": "LOOP 025: RESPONSIVE REGRESSION NOW RUNS IN CHROMIUM, FIREFOX AND PLAYWRIGHT WEBKIT; ALL THREE ENGINES PASS ACROSS 9 PAGES × 5 VIEWPORTS (135 COMBINATIONS); NATIVE SAFARI/ASSISTIVE-TECHNOLOGY CHECKS REMAIN OPEN; NOT DEPLOYED",
+  "current_candidate": "bullebleue-loop-036-natural-french-voice-v2",
+  "status": "LOOP 036: OPTIONAL ON-DEVICE POCKET TTS FRENCH VOICE ADDED; LIGHTWEIGHT ESPEAK FALLBACK RETAINED; AUTOMATED VALIDATION RUNNING; REAL-DEVICE LISTENING AND PERFORMANCE APPROVAL STILL OPEN; NOT DEPLOYED",
   "contract_version": "1.5"
 }
