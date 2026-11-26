@@ -133,7 +133,7 @@
        waiting for the whole document and avoids creating one source per tiny
        model packet. */
     var pendingParts=[],pendingSamples=0,totalSamples=0,sampleRate=24000;
-    var started=false,synthesisDone=false,settled=false;
+    var started=false,announced=false,synthesisDone=false,settled=false,activeSources=[];
     var startBufferSamples=Math.round(sampleRate*0.75);
     var batchSamples=Math.round(sampleRate*0.42);
     var playbackRate=({lent:0.9,rapide:1.1})[prefs.speed]||1;
@@ -141,7 +141,7 @@
     if(naturalStatus)naturalStatus.textContent='Préparation du premier extrait… la lecture commencera dès qu’il sera prêt.';
     return new Promise(function(resolve,reject){
       function settle(){
-        if(settled||!synthesisDone||pendingSamples||naturalSources.length)return;
+        if(settled||!synthesisDone||pendingSamples||activeSources.length)return;
         settled=true;
         if(!totalSamples)reject(new Error('Pocket TTS did not return any audio samples.'));
         else resolve();
@@ -160,19 +160,22 @@
         var startAt=Math.max(naturalScheduleAt,audioContext.currentTime+0.04);
         naturalScheduleAt=startAt+buffer.duration/playbackRate;
         naturalSources.push(source);
+        activeSources.push(source);
         source.onended=function(){
           naturalSources=naturalSources.filter(function(one){return one!==source});
+          activeSources=activeSources.filter(function(one){return one!==source});
           settle();
         };
         try{
           source.start(startAt);
-          if(!started){
-            started=true;
+          if(!announced){
+            announced=true;
             say('Lecture démarrée avec la voix naturelle.');
           }
           if(naturalStatus)naturalStatus.textContent='Lecture en cours · la suite du texte est préparée.';
         }catch(error){
           naturalSources=naturalSources.filter(function(one){return one!==source});
+          activeSources=activeSources.filter(function(one){return one!==source});
           reject(error);
         }
       }
@@ -205,6 +208,9 @@
         if(run===playbackRun&&current===btn){
           if(!started&&pendingSamples)started=true;
           flush(true);
+        }else{
+          pendingParts=[];
+          pendingSamples=0;
         }
         settle();
       }).catch(function(error){
