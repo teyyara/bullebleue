@@ -1,6 +1,15 @@
+## Loop 041 — Natural-only reader, smoother continuation and automatic preload
+- [x] Remove the previous lightweight voice engine, its controls, imports and automatic fallback; Pocket TTS is the only read-aloud voice.
+- [x] Start downloading the pinned French Pocket TTS model automatically on every page entry; reuse the browser cache on later visits where storage is retained.
+- [x] Correct chunk handoff: preserve each raw text fragment so a comma/colon does not become an artificial full stop in the next teacher-forced prompt.
+- [x] Port Kyutai's boundary checks for sentence punctuation, decimals, titles and closing quotes while retaining the 25-token teacher-forced chunk budget.
+- [x] Retain whole-passage synthesis into one Web Audio buffer, so audio playback never outruns model generation.
+- [x] Update the accessibility disclosure, voice attribution, static validation and browser/unit regression coverage.
+- [ ] Listen to a long full-page passage on the user's and association owner's physical devices; verify natural pauses and measure first-load time/memory on slower phones.
+
 # Bulle Bleue - APAiL — Owner feedback and production TODO
 
-## Loop 040 — No streaming underruns during neural playback
+## Loop 040 — No streaming underruns during neural playback (superseded by Loop 041)
 - [x] Stop playing generated PCM while the one-thread model is still working; device-specific inference speed could empty a streaming buffer between word groups.
 - [x] Collect every PCM packet for the selected passage, join them into one Float32 audio buffer, then play it from one Web Audio source.
 - [x] Keep stop/cancel and the speed controls; make the reader announce that audio is being prepared before playback begins.
