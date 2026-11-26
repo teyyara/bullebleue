@@ -235,8 +235,23 @@ def main():
               }
               Object.defineProperty(window,'AudioContext',{configurable:true,value:MockAudioContext});
             })();"""
+            # The neural French reader is the default; confirm it is selected
+            # and that the lightweight voice remains available as a fallback.
+            default_voice=context.new_page()
+            default_voice.goto(f"{base}/index.html",wait_until="networkidle")
+            default_voice.locator("#a11y-open").click()
+            assert default_voice.locator("#a11y-natural-enable").get_attribute("aria-pressed")=="true", "the on-device neural voice should be the default selection"
+            assert default_voice.locator("#a11y-light-enable").is_visible(), "the lightweight fallback should remain selectable"
+            assert "134 Mo" in default_voice.locator("#a11y-voice-status").inner_text(), "the first-use model download must be disclosed before playback"
+            default_voice.locator("#a11y-light-enable").click()
+            assert default_voice.locator("#a11y-natural-enable").get_attribute("aria-pressed")=="false"
+            default_voice.locator("#a11y-reset").click()
+            assert default_voice.locator("#a11y-natural-enable").get_attribute("aria-pressed")=="true", "reset should restore the neural voice default"
+            default_voice.close()
+
             speech=context.new_page()
             speech.add_init_script(audio_mock)
+            speech.add_init_script("try{localStorage.setItem('bb-a11y',JSON.stringify({voice:'light'}))}catch(e){}")
             speech.route(speech_module_url,lambda route:route.fulfill(status=200,content_type="application/javascript",headers={"Access-Control-Allow-Origin":"*","Cache-Control":"no-store"},body=speech_module))
             speech.goto(f"{base}/index.html",wait_until="networkidle")
             speech.locator("#a11y-open").click()
@@ -255,6 +270,7 @@ def main():
             # Playback can be cancelled during a long reading. No later chunk may start.
             cancelled=context.new_page()
             cancelled.add_init_script(audio_mock.replace("autoEnd:true","autoEnd:false"))
+            cancelled.add_init_script("try{localStorage.setItem('bb-a11y',JSON.stringify({voice:'light'}))}catch(e){}")
             cancelled.route(speech_module_url,lambda route:route.fulfill(status=200,content_type="application/javascript",headers={"Access-Control-Allow-Origin":"*","Cache-Control":"no-store"},body=speech_module))
             cancelled.goto(f"{base}/index.html",wait_until="networkidle")
             cancelled.locator("#a11y-open").click()
@@ -270,6 +286,7 @@ def main():
             # A CDN/network failure is announced accessibly and never falls back to English.
             unavailable=context.new_page()
             unavailable.add_init_script(audio_mock.replace("failEngine:false","failEngine:true"))
+            unavailable.add_init_script("try{localStorage.setItem('bb-a11y',JSON.stringify({voice:'light'}))}catch(e){}")
             unavailable.route(speech_module_url,lambda route:route.fulfill(status=200,content_type="application/javascript",headers={"Access-Control-Allow-Origin":"*","Cache-Control":"no-store"},body=speech_module))
             unavailable.goto(f"{base}/index.html",wait_until="networkidle")
             unavailable.locator("#a11y-open").click()
