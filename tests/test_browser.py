@@ -111,7 +111,7 @@ def main():
                         assert "Tous différents" in page.locator("h1").inner_text()
                         assert page.locator(".oval img").evaluate("(i)=>i.naturalWidth")>0
                         assert page.locator(".gal figure").count()==6
-                        assert page.locator(".derriere .photo img").get_attribute("src")=="/assets/gathering.jpeg"
+                        assert page.locator(".derriere .photo img").get_attribute("src")=="/assets/gathering.webp"
                         assert page.locator(".voices").count()==0
                         assert "Témoignage à recueillir" not in page.locator("main").inner_text()
                         assert page.locator(".quote cite").inner_text()=="— Miette, participante"
