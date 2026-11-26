@@ -86,3 +86,28 @@ footer.pied .footer-group a{min-height:44px;font-size:1rem}
     line-height:1.12;
   }
 }
+
+
+/* Very narrow phones: keep the photo grid and section heading inside the
+   reading width even with the 160% text setting and the dyslexia font. */
+@media(max-width:360px){
+  .retrouver .big>h2{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    margin-left:0;
+  }
+  .gal{
+    grid-template-columns:minmax(0,1fr);
+    min-width:0;
+  }
+  .gal>figure{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+  .gal figcaption{
+    max-width:100%;
+    overflow-wrap:anywhere;
+  }
+}
