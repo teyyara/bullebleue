@@ -197,26 +197,22 @@ def main():
     assert "Découvrir des gestes du quotidien sans la vue" in article10 and "dix membres" in article10
     assert 'id="signaler"' in parsed["accessibilite.html"][0]
     access_page = parsed["accessibilite.html"][0]
-    assert "134 Mo" in access_page and "Pocket TTS" in access_page
-    assert "automatiquement dès l’ouverture de la page" in access_page
-    assert "ne sont pas envoyés à un service de synthèse vocale" in access_page
-    for href in ("kyutai.org/pocket-tts", "huggingface.co/KevinAHM/pocket-tts-onnx", "huggingface.co/jean-is/pocket-tts-q8-ONNX", "github.com/jean-is/jean", "github.com/microsoft/onnxruntime"):
-        assert href in access_page, f"Accessibility page must credit the neural voice engine and its licence: {href}"
-    assert "eSpeak NG" not in access_page and "voix légère" not in access_page and "Spellophone" not in access_page
+    assert "Azure Speech" in access_page and "Denise" in access_page and "Henri" in access_page
+    assert "français (France)" in access_page.lower()
+    assert "fichier MP3" in access_page and "aucun modèle vocal n’est téléchargé" in access_page
+    assert "Pocket TTS" not in access_page and "eSpeak NG" not in access_page and "Spellophone" not in access_page
     speech_js = (ROOT / "mockup-v3/js/a11y.js").read_text(encoding="utf-8")
-    assert "reader-worker.mjs" in speech_js and "type:'module'" in speech_js
-    assert "loadNaturalVoice().catch" in speech_js and "navigator.storage.persist" in speech_js
-    assert "playNatural(text,btn,run)" in speech_js and "AudioContext" in speech_js
-    assert "spellophone" not in speech_js.lower() and "eSpeak" not in speech_js and "speechEngine" not in speech_js
-    assert "speechSynthesis.speak" not in speech_js and "getVoices()" not in speech_js, "French reading must be generated locally by Pocket TTS only"
-    voice_dir = ROOT / "mockup-v3/js/voice"
-    for file in ("pocket.mjs", "words.mjs", "reader-worker.mjs", "NOTICE.md"):
-        assert (voice_dir / file).is_file(), f"missing natural voice module: {file}"
-    worker = (voice_dir / "reader-worker.mjs").read_text(encoding="utf-8")
-    assert "onnxruntime-web@1.31.1" in worker and "jean-is/pocket-tts-q8-ONNX" in worker
-    assert "MANIFEST_HASH" in worker and "SHA-256" in worker and "env.wasm.numThreads=1" in worker
-    assert "caches?.open(CACHE_NAME)" in worker and "type:'chunk'" in worker
-    assert (ROOT / "tests/test_voice.mjs").is_file(), "natural voice tokenizer and French text tests are required"
+    assert "/assets/speech/fr-FR/manifest.json" in speech_js and "new Audio()" in speech_js
+    assert "reader-worker.mjs" not in speech_js and "AudioContext" not in speech_js
+    assert "loadSpeechManifest()" in speech_js and "playbackRate" in speech_js
+    assert "speechSynthesis.speak" not in speech_js and "getVoices()" not in speech_js
+    assert (ROOT / "scripts/generate_azure_speech.py").is_file()
+    assert (ROOT / "tests/test_azure_speech.py").is_file()
+    assert (ROOT / "docs/azure-speech-setup.md").is_file()
+    assert (ROOT / ".github/workflows/generate-french-audio.yml").is_file()
+    for old_voice_file in ("pocket.mjs", "words.mjs", "reader-worker.mjs", "NOTICE.md"):
+        assert not (ROOT / "mockup-v3/js/voice" / old_voice_file).exists(), f"retired local model remains: {old_voice_file}"
+    assert not (ROOT / "tests/test_voice.mjs").exists(), "retired Pocket TTS tests should be removed"
     access_page = parsed["accessibilite.html"][0]
     assert "dans l’en-tête" in access_page and "en bas à gauche" in access_page
     assert "Page introuvable" in parsed["404.html"][0]
