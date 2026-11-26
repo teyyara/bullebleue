@@ -1,5 +1,12 @@
 # Bulle Bleue - APAiL — Owner feedback and production TODO
 
+## Loop 040 — No streaming underruns during neural playback
+- [x] Stop playing generated PCM while the one-thread model is still working; device-specific inference speed could empty a streaming buffer between word groups.
+- [x] Collect every PCM packet for the selected passage, join them into one Float32 audio buffer, then play it from one Web Audio source.
+- [x] Keep stop/cancel and the speed controls; make the reader announce that audio is being prepared before playback begins.
+- [x] Replace the delayed-packet browser test with a regression that proves playback waits until generation is complete and starts one source containing all packets.
+- [ ] Listen to a long passage on the user's device to confirm the voice is now uninterrupted; check memory and preparation time on slower phones.
+
 ## Loop 039 — Continuous speech across model chunks
 - [x] Identify the deeper cause: every Pocket TTS text chunk previously restarted the Flow language model and Mimi audio decoder from the voice prompt, producing audible resets and unstable intonation.
 - [x] Port Pocket TTS teacher-forced continuation: pass the previous chunk's text and generated latent frames into the next chunk instead of starting afresh.
@@ -9,11 +16,11 @@
 - [ ] Listen to a long page on the user's device to verify word-to-word flow, natural intonation and paragraph transitions.
 - [ ] Check performance on a slower mobile device; teacher-forced continuation adds a short model prefill at chunk boundaries.
 
-## Loop 038 — Continuous neural speech playback (packet buffering; incomplete on its own)
+## Loop 038 — Continuous neural speech playback (packet buffering; superseded)
 - [x] Confirm the dropout cause: short neural PCM packets were scheduled immediately, so slower model-generation intervals could empty the audio queue.
 - [x] Buffer a rolling 2.25 seconds of generated audio before starting playback, then combine packets into larger Web Audio buffers.
 - [x] Schedule buffered blocks back-to-back and keep a reserve ahead of the playback cursor; retain stop/cancel behaviour.
-- Note: this reduced packet-edge underruns but did not solve the user's reported word-to-word cuts. The deeper per-text-chunk model/decoder reset was addressed in Loop 039.
+- Note: the streaming buffer reduced some packet-edge underruns but was not enough for devices whose speech generation ran slower than playback. Loop 040 now waits for the complete passage and plays one joined buffer.
 - [x] Add a browser regression that simulates a deliberately delayed model packet and verifies there is no silent gap between scheduled blocks.
 - [x] Correct the accessibility regression assertion so the lightweight fallback is expected to be visible while the neural voice is selected.
 - [ ] Listen to a long page on the user's and association owner's physical devices to confirm the interruptions are gone and the initial buffering delay is acceptable.
