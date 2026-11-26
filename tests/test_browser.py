@@ -192,36 +192,42 @@ def main():
             a11y.locator("#a11y-reset").click()
             assert "calm" not in (a11y.locator("html").get_attribute("class") or "")
 
-            # French speech synthesis: voice lists may be empty on page load,
-            # so the first user-triggered read must refresh and explicitly choose
-            # a French (France) voice instead of retaining the browser's English default.
+            # Wait for voiceschanged when the list is empty at page load and at
+            # click time. Prefer a local fr-FR voice over other French/English choices.
             speech=context.new_page()
             speech.add_init_script("""(() => {
               const english={name:'English US',lang:'en-US',localService:true};
               const frenchCanada={name:'French Canada',lang:'fr-CA',localService:true};
               const frenchFrance={name:'French France',lang:'fr-FR',localService:true};
               const voices=[english,frenchCanada,frenchFrance,{name:'French France remote',lang:'fr-FR',localService:false}];
-              let calls=0;
-              const utterances=[];
+              let loaded=false,calls=0;
+              const utterances=[],listeners=[];
               class MockUtterance { constructor(text){this.text=text;this.lang='';this.voice=null;this.rate=1;} }
-              Object.defineProperty(window,'SpeechSynthesisUtterance',{configurable:true,value:MockUtterance});
-              Object.defineProperty(window,'speechSynthesis',{configurable:true,value:{
-                getVoices(){calls++;return calls===1?[]:voices;},
-                addEventListener(){},cancel(){},
+              const synthesis={
+                getVoices(){calls++;return loaded?voices:[];},
+                addEventListener(name,fn){if(name==='voiceschanged')listeners.push(fn);},
+                removeEventListener(name,fn){if(name==='voiceschanged'){const i=listeners.indexOf(fn);if(i>=0)listeners.splice(i,1);}},
+                cancel(){},
                 speak(u){utterances.push({text:u.text,lang:u.lang,voiceName:u.voice?.name||null,voiceLang:u.voice?.lang||null});if(u.onend)u.onend();}
-              }});
-              window.__speechTest={utterances,get calls(){return calls;}};
+              };
+              Object.defineProperty(window,'SpeechSynthesisUtterance',{configurable:true,value:MockUtterance});
+              Object.defineProperty(window,'speechSynthesis',{configurable:true,value:synthesis});
+              window.__speechTest={utterances,get calls(){return calls;},emitVoices(){loaded=true;listeners.slice().forEach(fn=>fn());}};
             })();""")
             speech.goto(f"{base}/index.html",wait_until="networkidle")
             speech.locator("#a11y-open").click()
-            speech.locator("#a11y-voice .listen").click()
-            speech.wait_for_function("window.__speechTest && window.__speechTest.utterances.length>0")
+            read_button=speech.locator("#a11y-voice .listen")
+            read_button.click()
+            speech.wait_for_function("document.querySelector('[role=status]').textContent.includes('Recherche')")
+            assert speech.evaluate("window.__speechTest.utterances.length") == 0, "reading must wait instead of using the browser's default English voice"
+            speech.evaluate("window.__speechTest.emitVoices()")
+            speech.wait_for_function("window.__speechTest.utterances.length>0")
             french_playback=speech.evaluate("()=>({calls:window.__speechTest.calls,utterances:window.__speechTest.utterances})")
-            assert french_playback["calls"]>=2, f"speech synthesis must refresh voices when the user starts reading: {french_playback}"
-            assert all(u["lang"].lower().startswith("fr") and u["voiceLang"].lower()=="fr-fr" and u["voiceName"]=="French France" for u in french_playback["utterances"]), f"read-aloud must explicitly use a local French (France) voice: {french_playback}"
+            assert french_playback["calls"]>=3, f"speech synthesis must refresh voices after a delayed voiceschanged event: {french_playback}"
+            assert all(u["lang"].lower()=="fr-fr" and u["voiceLang"].lower()=="fr-fr" and u["voiceName"]=="French France" for u in french_playback["utterances"]), f"read-aloud must explicitly use a local French (France) voice: {french_playback}"
 
-            # When no French voice exists, keep the utterance language French and
-            # explain that the device's default voice may be used.
+            # When the device exposes no French voice, do not play with an English
+            # default voice. Explain how the visitor can add a French speech voice.
             no_french=context.new_page()
             no_french.add_init_script("""(() => {
               const utterances=[];
@@ -229,7 +235,7 @@ def main():
               Object.defineProperty(window,'SpeechSynthesisUtterance',{configurable:true,value:MockUtterance});
               Object.defineProperty(window,'speechSynthesis',{configurable:true,value:{
                 getVoices(){return [{name:'English US',lang:'en-US',localService:true}];},
-                addEventListener(){},cancel(){},
+                addEventListener(){},removeEventListener(){},cancel(){},
                 speak(u){utterances.push({lang:u.lang,voiceName:u.voice?.name||null});if(u.onend)u.onend();}
               }});
               window.__speechTest={utterances};
@@ -237,11 +243,33 @@ def main():
             no_french.goto(f"{base}/index.html",wait_until="networkidle")
             no_french.locator("#a11y-open").click()
             no_french.locator("#a11y-voice .listen").click()
-            no_french.wait_for_function("window.__speechTest && window.__speechTest.utterances.length>0")
-            no_french.wait_for_function("document.querySelector('[role=status]').textContent.includes('Aucune voix française')")
-            fallback=no_french.evaluate("()=>({utterances:window.__speechTest.utterances,status:document.querySelector('[role=status]').textContent})")
-            assert all(u["lang"].lower()=="fr-fr" and u["voiceName"] is None for u in fallback["utterances"]), f"English voice must never be explicitly selected as a French reading voice: {fallback}"
-            assert "Aucune voix française" in fallback["status"], f"users should be told when their device has no French voice: {fallback}"
+            no_french.wait_for_function("document.querySelector('[role=status]').textContent.includes('Lecture indisponible')",timeout=5000)
+            fallback=no_french.evaluate("()=>({utterances:window.__speechTest.utterances,status:document.querySelector('[role=status]').textContent,button:document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')})")
+            assert fallback["utterances"]==[], f"an English default voice must never be used for French content: {fallback}"
+            assert fallback["button"]=="false" and "Ajoutez une voix française" in fallback["status"], f"the unavailable-voice state should reset the button and explain the fix: {fallback}"
+
+            # The visitor can cancel while the browser's voice list is still loading.
+            cancelled=context.new_page()
+            cancelled.add_init_script("""(() => {
+              const utterances=[],listeners=[];
+              class MockUtterance { constructor(text){this.text=text;this.lang='';this.voice=null;this.rate=1;} }
+              Object.defineProperty(window,'SpeechSynthesisUtterance',{configurable:true,value:MockUtterance});
+              Object.defineProperty(window,'speechSynthesis',{configurable:true,value:{
+                getVoices(){return [];},addEventListener(name,fn){if(name==='voiceschanged')listeners.push(fn);},
+                removeEventListener(name,fn){const i=listeners.indexOf(fn);if(i>=0)listeners.splice(i,1);},
+                cancel(){},speak(u){utterances.push(u);}
+              }});
+              window.__speechTest={utterances};
+            })();""")
+            cancelled.goto(f"{base}/index.html",wait_until="networkidle")
+            cancelled.locator("#a11y-open").click()
+            cancel_button=cancelled.locator("#a11y-voice .listen")
+            cancel_button.click()
+            cancelled.wait_for_function("document.querySelector('[role=status]').textContent.includes('Recherche')")
+            cancel_button.click()
+            cancelled.wait_for_function("document.querySelector('[role=status]').textContent.includes('Lecture arrêtée')")
+            cancelled.wait_for_timeout(2100)
+            assert cancelled.evaluate("window.__speechTest.utterances.length") == 0, "cancelling voice discovery must not start speech later"
 
             # Increased letter/word spacing and dyslexia settings must not clip the homepage title.
             spacing=context.new_page()

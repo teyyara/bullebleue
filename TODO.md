@@ -6,8 +6,8 @@
 ## Loop 034 — French read-aloud voice selection
 - [x] Refresh the browser voice list when playback starts, not only when the page loads.
 - [x] Prefer a local French (France) voice, then another French voice; never explicitly assign an English voice to French text.
-- [x] Keep the utterance language set to the chosen French locale and explain when no French voice is installed.
-- [x] Add browser regression tests for delayed French voice availability, French (France) preference and the no-French-voice fallback.
+- [x] Wait briefly for the browser’s delayed voice list; never start playback with an English default when no French voice is available.
+- [x] Add browser regression tests for delayed French voice availability, French (France) preference, refusal of English fallback and cancelling voice discovery.
 - [ ] Confirm read-aloud pronunciation on the association owner’s and user’s actual devices; available voices depend on each device and browser.
 
 ## Loop 033 — Mobile footer and outbound-link clarity

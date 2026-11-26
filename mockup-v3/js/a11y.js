@@ -17,7 +17,7 @@
 
   /* ---------- lecture à voix haute ---------- */
   var synth=window.speechSynthesis, canSpeak=!!(synth&&window.SpeechSynthesisUtterance);
-  var voice=null, current=null, live;
+  var voice=null, current=null, live, voiceWait=null;
   function pickVoice(){
     if(!canSpeak){voice=null;return null}
     var available=[];
@@ -35,6 +35,47 @@
   }
   if(canSpeak){pickVoice();if(synth.addEventListener)synth.addEventListener('voiceschanged',pickVoice);else synth.onvoiceschanged=pickVoice}
 
+  /* Do not let a French sentence fall through to an English system voice.
+     Some browsers populate their voice list asynchronously after page load.
+     Wait briefly for voiceschanged; if no French voice appears, stop without
+     speaking and let the visitor know how to fix the device configuration. */
+  function clearVoiceWait(){
+    if(!voiceWait)return;
+    var pending=voiceWait;
+    voiceWait=null;
+    if(pending.timer)window.clearTimeout(pending.timer);
+    if(pending.handler&&synth.removeEventListener)synth.removeEventListener('voiceschanged',pending.handler);
+    if(pending.chained&&synth.onvoiceschanged===pending.chained)synth.onvoiceschanged=pending.previous||null;
+  }
+  function whenFrenchVoiceReady(callback){
+    var available=pickVoice();
+    if(available){callback(available);return}
+    say('Recherche d’une voix française…');
+    var pending={timer:null,handler:null,previous:null,chained:null};
+    function finish(selected){
+      if(voiceWait!==pending)return;
+      clearVoiceWait();
+      callback(selected||null);
+    }
+    pending.handler=function(){
+      var selected=pickVoice();
+      if(selected)finish(selected);
+    };
+    voiceWait=pending;
+    if(synth.addEventListener)synth.addEventListener('voiceschanged',pending.handler);
+    else{
+      pending.previous=synth.onvoiceschanged;
+      pending.chained=function(event){
+        if(typeof pending.previous==='function')pending.previous.call(synth,event);
+        pending.handler();
+      };
+      synth.onvoiceschanged=pending.chained;
+    }
+    pending.timer=window.setTimeout(function(){finish(pickVoice())},2000);
+    /* Close the race where voices became available while the listener was added. */
+    pending.handler();
+  }
+
   function textOf(el){
     var c=el.cloneNode(true);
     c.querySelectorAll('.listen,.a11y-ui,[aria-hidden="true"],script,style,button,svg,.sr-only').forEach(function(n){n.remove()});
@@ -50,6 +91,7 @@
   function say(msg){if(live){live.textContent='';setTimeout(function(){live.textContent=msg},50)}}
   function stop(silent){
     if(!canSpeak)return;
+    clearVoiceWait();
     synth.cancel();
     if(current){current.setAttribute('aria-pressed','false');setLabel(current,false);current=null}
     if(!silent)say('Lecture arrêtée.');
@@ -58,20 +100,24 @@
   function speak(text,btn){
     if(current===btn){stop();return}
     stop(true);
-    /* Voice lists can be empty during page load and populate only afterwards.
-       Refresh on every user request so the first utterance also gets the
-       installed French voice instead of the browser's default voice. */
-    var frenchVoice=pickVoice();
     current=btn;btn.setAttribute('aria-pressed','true');setLabel(btn,true);
-    say(frenchVoice?'Lecture démarrée.':'Aucune voix française détectée sur cet appareil. La lecture utilise la voix par défaut du navigateur.');
-    var list=chunks(text);
-    list.forEach(function(c,i){
-      var u=new SpeechSynthesisUtterance(c);
-      u.lang=frenchVoice&&frenchVoice.lang?frenchVoice.lang:'fr-FR';
-      if(frenchVoice)u.voice=frenchVoice;
-      u.rate=({lent:0.6,rapide:1.4})[prefs.speed]||0.95;
-      if(i===list.length-1){u.onend=u.onerror=function(){if(current===btn){btn.setAttribute('aria-pressed','false');setLabel(btn,false);current=null}}}
-      synth.speak(u);
+    whenFrenchVoiceReady(function(frenchVoice){
+      if(current!==btn)return;
+      if(!frenchVoice){
+        current=null;btn.setAttribute('aria-pressed','false');setLabel(btn,false);
+        say('Lecture indisponible : aucune voix française n’a été trouvée. Ajoutez une voix française dans les réglages de votre appareil, puis réessayez.');
+        return;
+      }
+      say('Lecture démarrée.');
+      var list=chunks(text);
+      list.forEach(function(c,i){
+        var u=new SpeechSynthesisUtterance(c);
+        u.lang=frenchVoice.lang||'fr-FR';
+        u.voice=frenchVoice;
+        u.rate=({lent:0.6,rapide:1.4})[prefs.speed]||0.95;
+        if(i===list.length-1){u.onend=u.onerror=function(){if(current===btn){btn.setAttribute('aria-pressed','false');setLabel(btn,false);current=null}}}
+        synth.speak(u);
+      });
     });
   }
   var ICON='<svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>';
