@@ -3,15 +3,24 @@
 **Last updated:** 26 November 2026  
 **Repository:** teyyara/bullebleue · main
 
+## Loop 037 — Make neural French speech the default
+- [x] Select Pocket TTS as the default read-aloud voice instead of making visitors discover and activate it after hearing eSpeak NG.
+- [x] Keep the approximately 134 MB first-use download disclosed in the accessibility panel and Accessibility page; load it only when the visitor starts reading.
+- [x] Keep eSpeak NG available as an explicit lightweight fallback for slower devices or visitors who prefer not to download the model.
+- [x] Make “Tout remettre par défaut” restore the natural voice selection.
+- [x] Add browser regression coverage for the default voice, first-use disclosure, fallback selection and reset behaviour.
+- [ ] Listen on the user's and association owner's physical devices to approve the French timbre, pronunciation, pace and volume; automated checks cannot judge whether the voice sounds pleasant.
+- [ ] Measure load time and playback responsiveness on older mobile devices and slower connections before treating voice quality as accepted.
+
 ## Loop 036 — More natural French read-aloud
-- [x] Add an optional neural French voice using Pocket TTS in a one-thread WebAssembly worker; page text stays on the visitor's device.
-- [x] Keep the lightweight eSpeak NG voice available as the default and as a fallback.
-- [x] Make the approximately 134 MB first-use model/runtime download explicit; load only after the visitor chooses the natural voice.
+- [x] Add an on-device neural French voice using Pocket TTS in a one-thread WebAssembly worker; page text stays on the visitor's device.
+- [x] Keep the lightweight eSpeak NG voice available as a fallback.
+- [x] Make the approximately 134 MB first-use model/runtime download explicit; load only after the visitor starts reading with the neural voice selected.
 - [x] Pin the model revision and manifest checksum, verify downloaded model files, and cache the model locally when browser storage permits.
 - [x] Add source and licence credits for Kyutai Pocket TTS, the ONNX graphs, the French Voice-Zero state, the browser pack, Jean's MIT implementation and ONNX Runtime.
 - [x] Add French text-normalization/tokenization regression tests and accessibility-panel browser assertions.
 - [ ] Listen on the user's and association owner's physical devices to approve the French timbre, pronunciation, pace and volume; automated checks cannot judge whether the voice sounds pleasant.
-- [ ] Measure load time and playback responsiveness on older mobile devices and slower connections before making the natural voice the default.
+- [ ] Measure load time and playback responsiveness on older mobile devices and slower connections.
 
 ## Loop 035 — Device-independent French read-aloud
 - [x] Replace reliance on installed browser/device voices with eSpeak NG in WebAssembly through the Spellophone browser package (pinned at 0.2.1).
