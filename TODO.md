@@ -1,5 +1,13 @@
 # Bulle Bleue - APAiL — Owner feedback and production TODO
 
+## Loop 038 — Continuous neural speech playback
+- [x] Confirm the dropout cause: short neural PCM packets were scheduled immediately, so slower model-generation intervals could empty the audio queue.
+- [x] Buffer a rolling 2.25 seconds of generated audio before starting playback, then combine packets into larger Web Audio buffers.
+- [x] Schedule buffered blocks back-to-back and keep a reserve ahead of the playback cursor; retain stop/cancel behaviour.
+- [x] Add a browser regression that simulates a deliberately delayed model packet and verifies there is no silent gap between scheduled blocks.
+- [x] Correct the accessibility regression assertion so the lightweight fallback is expected to be visible while the neural voice is selected.
+- [ ] Listen to a long page on the user's and association owner's physical devices to confirm the interruptions are gone and the initial buffering delay is acceptable.
+
 **Last updated:** 26 November 2026  
 **Repository:** teyyara/bullebleue · main
 
