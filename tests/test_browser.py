@@ -238,6 +238,7 @@ def main():
             no_french.locator("#a11y-open").click()
             no_french.locator("#a11y-voice .listen").click()
             no_french.wait_for_function("window.__speechTest && window.__speechTest.utterances.length>0")
+            no_french.wait_for_function("document.querySelector('[role=status]').textContent.includes('Aucune voix française')")
             fallback=no_french.evaluate("()=>({utterances:window.__speechTest.utterances,status:document.querySelector('[role=status]').textContent})")
             assert all(u["lang"].lower()=="fr-fr" and u["voiceName"] is None for u in fallback["utterances"]), f"English voice must never be explicitly selected as a French reading voice: {fallback}"
             assert "Aucune voix française" in fallback["status"], f"users should be told when their device has no French voice: {fallback}"
