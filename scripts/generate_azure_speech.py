@@ -123,6 +123,7 @@ def extract_main_text(html: str) -> str:
     parser.close()
     text = re.sub(r"\s+", " ", " ".join(parser.parts)).strip()
     text = re.sub(r"([.!?…:;])\s*\.\s*", r"\1 ", text)
+    text = text.strip()
     text = re.sub(r"\s+\.", ".", text)
     if not text:
         raise ValueError("No readable text was found inside main#contenu.")
