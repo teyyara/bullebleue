@@ -114,11 +114,9 @@ def main() -> None:
 
     register = json.loads(REGISTER.read_text(encoding="utf-8"))
     register["webp_derivatives"] = rows
-    previous_optimization = re.sub(
-        r"\\s*WebP derivatives are used for \\d+ rendered raster assets; originals remain unchanged\\. Combined transfer-size reduction: [\\d,.]+% \\([\\d,]+ to [\\d,]+ bytes\\)\\.",
-        "",
-        str(register.get("optimization", "")),
-    ).strip()
+    previous_optimization = str(register.get("optimization", ""))
+    if " WebP derivatives are used for " in previous_optimization:
+        previous_optimization = previous_optimization.split(" WebP derivatives are used for ", 1)[0].rstrip()
     register["optimization"] = (
         previous_optimization
         + f" WebP derivatives are used for {len(rows)} rendered raster assets; originals remain unchanged. "
@@ -132,15 +130,12 @@ def main() -> None:
     if old in todo:
         todo = todo.replace(old, new)
     else:
-        todo, count = re.subn(
-            r"^- \\[x\\] Create WebP derivatives for .*; original uploads retained\\.$",
-            new,
-            todo,
-            count=1,
-            flags=re.MULTILINE,
-        )
-        if count != 1:
+        lines = todo.splitlines()
+        matches = [i for i, line in enumerate(lines) if line.startswith("- [x] Create WebP derivatives for ")]
+        if len(matches) != 1:
             raise RuntimeError("WebP TODO entry not found")
+        lines[matches[0]] = new
+        todo = "\\n".join(lines) + "\\n"
     TODO.write_text(todo, encoding="utf-8")
 
     readme = README.read_text(encoding="utf-8")
