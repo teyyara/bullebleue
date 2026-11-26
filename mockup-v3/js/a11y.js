@@ -81,6 +81,11 @@
       voiceSelect.value=speechManifest.voices[preferred]?preferred:Object.keys(speechManifest.voices)[0];
       prefs.ttsVoice=voiceSelect.value;
     }
+    if(speechManifest.status!=='ready'){
+      buttons.forEach(function(button){button.disabled=true});
+      setSpeechStatus('Les enregistrements audio sont en attente de génération. Les deux voix françaises sont sélectionnables après la préparation des fichiers.');
+      return;
+    }
     buttons.forEach(function(button){
       var voice=speechManifest.voices[voiceSelect.value];
       var source=button.getAttribute('data-audio')==='sample'?voice.sample:(voice.pages||{})[pageKey()];
