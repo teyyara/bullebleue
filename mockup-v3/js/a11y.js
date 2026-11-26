@@ -336,7 +336,11 @@
   rows+='<div class="a11y-row"><div class="a11y-group"><a href="accessibilite.html#signaler" class="a11y-link">Signaler un problème</a></div><div class="a11y-group" style="margin-top:12px"><button type="button" class="reset" id="a11y-reset">Tout remettre par défaut</button><button type="button" class="reset" id="a11y-close">Fermer</button></div></div>';
   panel.innerHTML=rows;
   if(canSpeak){naturalButton=panel.querySelector('#a11y-natural-enable');naturalLightButton=panel.querySelector('#a11y-light-enable');naturalStatus=panel.querySelector('#a11y-voice-status');}
-  if(canSpeak){panel.querySelector('#a11y-voice').insertBefore(listenButton('Écouter toute la page',function(){return textOf(document.getElementById('contenu'))}),panel.querySelector('#a11y-voice').firstChild)}
+  if(canSpeak){
+    var voiceControls=panel.querySelector('#a11y-voice');
+    voiceControls.appendChild(listenButton('Écouter un exemple',function(){return 'Bonjour et bienvenue à la Bulle Bleue. Ici, on prend le temps de se retrouver, de s’écouter et de créer ensemble. Chacun vient comme il est.'}));
+    voiceControls.appendChild(listenButton('Écouter toute la page',function(){return textOf(document.getElementById('contenu'))}));
+  }
   live=document.createElement('p');live.className='sr-only';live.setAttribute('role','status');live.setAttribute('aria-live','polite');
   wrap.appendChild(open);wrap.appendChild(panel);wrap.appendChild(live);open.setAttribute('aria-label','Accessibilité');open.setAttribute('title','Accessibilité');var headerBar=document.querySelector('header .bar');if(headerBar)headerBar.insertBefore(wrap,headerBar.firstElementChild);else document.body.insertBefore(wrap,document.body.firstChild);
 
