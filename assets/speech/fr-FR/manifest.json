@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "locale": "fr-FR",
+  "status": "pending",
+  "voices": {
+    "denise": {
+      "label": "Denise · voix féminine",
+      "voiceName": "fr-FR-DeniseNeural",
+      "sample": null,
+      "pages": {}
+    },
+    "henri": {
+      "label": "Henri · voix masculine",
+      "voiceName": "fr-FR-HenriNeural",
+      "sample": null,
+      "pages": {}
+    }
+  }
+}
