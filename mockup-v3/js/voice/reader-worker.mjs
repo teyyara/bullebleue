@@ -3,7 +3,7 @@
  * Model and voice attribution: see NOTICE.md.
  */
 import { InferenceSession, Tensor, env } from 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.31.1/dist/ort.webgpu.bundle.min.mjs';
-import { expand, tokenizer, chunks } from './pocket.mjs';
+import { expand, tokenizer, chunks, prepare, teacherForcedSequence, packLatents, advanceDecoderSteps } from './pocket.mjs';
 import { spelled } from './words.mjs';
 
 const RUNTIME='https://cdn.jsdelivr.net/npm/onnxruntime-web@1.31.1/dist/';
@@ -106,12 +106,23 @@ const state=(manifest,from={})=>Object.fromEntries(manifest.map((part)=>{
 }));
 async function speak({text,lang},id){
   const voice=await language(lang,id);
-  for(const {ids,after} of chunks(spelled(text,voice.lang),voice.tokens,voice.rules)){
+  /* Match Pocket TTS' continuation mode. Each bounded text chunk carries its
+     predecessor's latent frames into the next chunk, so the voice, intonation
+     and Mimi decoder do not restart at every sentence boundary. */
+  let previousText='',previousLatents=[];
+  for(const part of chunks(spelled(text,voice.lang),voice.tokens,voice.rules,25)){
     if(aborted.has(id))return;
-    await say(voice,ids,after,id);
+    const partText=voice.tokens.decode(part.ids);
+    const promptIds=previousLatents.length
+      ? voice.tokens.encode(prepare(previousText+' '+partText,voice.rules).text)
+      : part.ids;
+    const generatedLatents=[];
+    await say(voice,promptIds,part.after,id,previousLatents,generatedLatents);
+    previousText=partText;
+    previousLatents=generatedLatents;
   }
 }
-async function say({sessions,voice,rules},ids,after,id){
+async function say({sessions,voice,rules},ids,after,id,forcedLatents=[],generatedLatents=[]){
   const {manifest,decoder}=shared;
   let flow=state(manifest.flow,voice);
   const step=async(sequence,text)=>{
@@ -120,18 +131,30 @@ async function say({sessions,voice,rules},ids,after,id){
     return out;
   };
   const {embeddings}=await sessions.text_conditioner.run({token_ids:new Tensor('int64',BigInt64Array.from(ids,BigInt),[1,ids.length])});
-  await step(new Float32Array(0),embeddings);
+  const forced=teacherForcedSequence(forcedLatents);
+  await step(forced.sequence,embeddings);
   const none=new Tensor('float32',new Float32Array(0),[1,0,1024]);
-  let mimi=state(manifest.mimi),decoded=0,end=-1,previous=new Float32Array(32).fill(NaN);
+  let mimi=state(manifest.mimi),decoded=0,end=-1,previous=forced.firstInput||new Float32Array(32).fill(NaN);
   const pending=[];
-  const decode=async()=>{
-    const latent=new Float32Array(pending.length*32);
-    pending.forEach((part,index)=>latent.set(part,index*32));
-    const out=await decoder.run({latent:new Tensor('float32',latent,[1,pending.length,32]),...mimi});
+  const continuing=forcedLatents.length>0;
+
+  /* A fresh Mimi state otherwise clicks at each text chunk. Warm it with the
+     previous chunk's last 12 latent frames and discard that warm-up audio, just
+     as the upstream Pocket TTS implementation does. */
+  if(continuing){
+    const warmup=forcedLatents.slice(-12);
+    const out=await decoder.run({latent:new Tensor('float32',packLatents(warmup),[1,warmup.length,32]),...mimi});
     mimi=Object.fromEntries(manifest.mimi.map((part)=>[part.input_name,out[part.output_name]]));
+    advanceDecoderSteps(manifest.mimi,mimi,16*warmup.length);
+  }
+  const decode=async()=>{
+    const frameCount=pending.length;
+    const out=await decoder.run({latent:new Tensor('float32',packLatents(pending),[1,frameCount,32]),...mimi});
+    mimi=Object.fromEntries(manifest.mimi.map((part)=>[part.input_name,out[part.output_name]]));
+    advanceDecoderSteps(manifest.mimi,mimi,16*frameCount);
     const audio=out.audio_frame.data.slice();
-    if(!decoded)for(let i=0;i<Math.min(120,audio.length);i++)audio[i]*=i/120;
-    decoded+=pending.length;pending.length=0;
+    if(!decoded&&!continuing)for(let i=0;i<Math.min(120,audio.length);i++)audio[i]*=i/120;
+    decoded+=frameCount;pending.length=0;
     self.postMessage({id,type:'chunk',audio,rate:manifest.rate},[audio.buffer]);
   };
   const limit=Math.ceil((ids.length/3+2)*12.5);
@@ -144,6 +167,8 @@ async function say({sessions,voice,rules},ids,after,id){
       c:out.conditioning,s:new Tensor('float32',[0],[1,1]),t:new Tensor('float32',[1],[1,1]),x:new Tensor('float32',noise,[1,32])
     });
     for(let i=0;i<32;i++)noise[i]+=flow_dir.data[i];
+    const generated=noise.slice();
+    generatedLatents.push(generated);
     pending.push((previous=noise));
     if(pending.length>=(decoded===0?2:decoded<24?4:12))await decode();
     await breathe();
