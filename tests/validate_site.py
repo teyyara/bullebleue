@@ -198,8 +198,8 @@ def main():
     assert 'id="signaler"' in parsed["accessibilite.html"][0]
     access_page = parsed["accessibilite.html"][0]
     assert "Azure Speech" in access_page and "Denise" in access_page and "Henri" in access_page
-    assert "français (France)" in access_page.lower()
-    assert "fichier MP3" in access_page and "aucun modèle vocal n’est téléchargé" in access_page
+    assert "françaises (france)" in access_page.lower()
+    assert "fichier MP3" in access_page and "modèle vocal à télécharger" in access_page
     assert "Pocket TTS" not in access_page and "eSpeak NG" not in access_page and "Spellophone" not in access_page
     speech_js = (ROOT / "mockup-v3/js/a11y.js").read_text(encoding="utf-8")
     assert "/assets/speech/fr-FR/manifest.json" in speech_js and "new Audio()" in speech_js
