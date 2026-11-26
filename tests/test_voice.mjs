@@ -2,7 +2,7 @@
 // Regression tests adapted from jean-is/jean (MIT) for Bulle Bleue's local French voice reader.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { expand, tokenizer, prepare, chunks, teacherForcedSequence, packLatents, advanceDecoderSteps } from '../mockup-v3/js/voice/pocket.mjs'
+import { expand, tokenizer, prepare, chunks, continuationPrompt, teacherForcedSequence, packLatents, advanceDecoderSteps } from '../mockup-v3/js/voice/pocket.mjs'
 import { number, spelled } from '../mockup-v3/js/voice/words.mjs'
 
 const bytes = Array.from({ length: 256 }, (_, b) => [`<0x${b.toString(16).toUpperCase().padStart(2, '0')}>`, 0])
@@ -35,6 +35,14 @@ test('sentences end at the tokenizer’s marks, a decimal point not one, and joi
   const text = 'pi is 3.14 today. yes.'
   assert.deepEqual(chunks(text, tokens, rules).map((c) => tokens.decode(c.ids)), ['Pi is 3.14 today. yes.'])
   assert.deepEqual(chunks(text, tokens, rules, 6).map((c) => tokens.decode(c.ids)), ['Pi is 3.14 today.', 'Yes.'])
+})
+
+test('the next prompt includes the previous text for continuous intonation', () => {
+  const first = continuationPrompt('', 'hello world.', tokens, rules)
+  const next = continuationPrompt('hello world.', 'hello world?', tokens, rules)
+  assert.equal(first.text, 'Hello world.')
+  assert.equal(next.text, 'Hello world. hello world?')
+  assert.equal(tokens.decode(next.ids), next.text)
 })
 
 test('teacher forcing continues from the previous chunk instead of starting a new voice', () => {
