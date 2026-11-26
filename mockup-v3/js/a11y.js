@@ -3,6 +3,8 @@
 (function(){
   var root=document.documentElement, KEY='bb-a11y', prefs={};
   try{prefs=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  /* Start with the neural French voice: eSpeak remains an explicit lightweight fallback. */
+  if(!prefs.voice)prefs.voice='natural';
   function save(){try{localStorage.setItem(KEY,JSON.stringify(prefs))}catch(e){}}
   var mq=function(q){return window.matchMedia&&matchMedia(q).matches};
   if(prefs.hc===undefined&&mq('(prefers-contrast: more)'))prefs.hc=true;
@@ -131,8 +133,11 @@
       : (naturalLoading?'Chargement de la voix naturelle…':'Télécharger et activer la voix naturelle (≈ 134 Mo)');
     naturalButton.setAttribute('aria-pressed',String(prefs.voice==='natural'));
     if(naturalLightButton)naturalLightButton.hidden=prefs.voice!=='natural';
-    if(naturalStatus&&!naturalLoading&&!naturalReady&&!prefs.voice){
-      naturalStatus.textContent='Voix légère active. Le téléchargement de la voix naturelle est facultatif.';
+    if(naturalStatus&&!naturalLoading){
+      if(prefs.voice==='natural')naturalStatus.textContent=naturalReady
+        ? 'Voix naturelle activée. Le texte est synthétisé directement sur cet appareil.'
+        : 'Voix naturelle sélectionnée. Le premier chargement représente environ 134 Mo ; il commence à la première écoute.';
+      else naturalStatus.textContent='Voix légère active. Elle se charge rapidement, mais son timbre est plus synthétique.';
     }
   }
   function ensureNaturalWorker(){
@@ -348,7 +353,7 @@
     else if(b.hasAttribute('data-k')){var k=b.getAttribute('data-k');prefs[k]=!prefs[k]}
     else if(b.id==='a11y-natural-enable'){enableNaturalVoice();return;}
     else if(b.id==='a11y-light-enable'){prefs.voice='light';save();stop(true);refresh();say('Voix légère activée.');return;}
-    else if(b.id==='a11y-reset'){prefs={hc:false,rm:false,voice:'light'};stop(true)}
+    else if(b.id==='a11y-reset'){prefs={hc:false,rm:false,voice:'natural'};stop(true)}
     else if(b.id==='a11y-close'){toggle(false);open.focus();return}
     save();applyAll();refresh();
   });
