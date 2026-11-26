@@ -197,7 +197,7 @@ def main():
     assert "Découvrir des gestes du quotidien sans la vue" in article10 and "dix membres" in article10
     assert 'id="signaler"' in parsed["accessibilite.html"][0]
     access_page = parsed["accessibilite.html"][0]
-    assert "vous n’avez pas besoin d’installer une voix française" in access_page
+    assert "Vous n’avez pas besoin d’installer une voix française" in access_page
     assert "ne sont pas envoyés à un service de synthèse vocale" in access_page
     for href in ("github.com/Spelling-Creator/spellophone", "github.com/espeak-ng/espeak-ng", "gnu.org/licenses/gpl-3.0.html"):
         assert href in access_page, f"Accessibility page must credit the browser speech engine and its licence: {href}"
