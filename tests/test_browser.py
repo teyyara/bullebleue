@@ -181,7 +181,7 @@ def main():
             a11y.locator("#a11y-open").click()
             a11y.locator("#a11y-reset").click()
             assert "dys" not in (a11y.locator("html").get_attribute("class") or "")
-            a11y.locator("#a11y-open").click()
+            assert not panel.is_hidden(), "reset should leave the accessibility panel open"
             a11y.locator('[data-k="calm"]').click()
             assert "calm" in (a11y.locator("html").get_attribute("class") or "")
             assert a11y.evaluate("getComputedStyle(document.querySelector('.hero .blob')).display==='none' && getComputedStyle(document.querySelector('.retrouver .big'),'::before').display==='none' && getComputedStyle(document.querySelector('.deco')).display==='none'"), "calm mode should remove homepage decorative backgrounds"
