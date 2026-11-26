@@ -1,0 +1,214 @@
+{
+  "version": 1,
+  "policy": "Original uploads are retained. HTML/CSS use WebP derivatives; Open Graph continues to use JPEG.",
+  "summary": {
+    "images_converted": 17,
+    "original_total_bytes": 3056544,
+    "webp_total_bytes": 2201886,
+    "bytes_saved": 854658,
+    "reduction_percent": 28.0
+  },
+  "images": [
+    {
+      "source": "assets/logo final.png",
+      "webp": "assets/logo final.webp",
+      "width": 1052,
+      "height": 1024,
+      "source_bytes": 1062882,
+      "webp_bytes": 491716,
+      "saved_bytes": 571166,
+      "saved_percent": 53.7,
+      "encoding": "lossless"
+    },
+    {
+      "source": "assets/gathering.jpeg",
+      "webp": "assets/gathering.webp",
+      "width": 1077,
+      "height": 625,
+      "source_bytes": 162057,
+      "webp_bytes": 137950,
+      "saved_bytes": 24107,
+      "saved_percent": 14.9,
+      "encoding": "quality 84 (fallback 78)"
+    },
+    {
+      "source": "mockup-v3/img/mural.jpg",
+      "webp": "mockup-v3/img/mural.webp",
+      "width": 1600,
+      "height": 682,
+      "source_bytes": 206606,
+      "webp_bytes": 161728,
+      "saved_bytes": 44878,
+      "saved_percent": 21.7,
+      "encoding": "quality 84 (fallback 78)"
+    },
+    {
+      "source": "mockup-v3/img/c10.jpg",
+      "webp": "mockup-v3/img/c10.webp",
+      "width": 180,
+      "height": 252,
+      "source_bytes": 12101,
+      "webp_bytes": 9510,
+      "saved_bytes": 2591,
+      "saved_percent": 21.4,
+      "encoding": "quality 84 (fallback 78)"
+    },
+    {
+      "source": "mockup-v3/img/c8.jpg",
+      "webp": "mockup-v3/img/c8.webp",
+      "width": 198,
+      "height": 255,
+      "source_bytes": 12952,
+      "webp_bytes": 9390,
+      "saved_bytes": 3562,
+      "saved_percent": 27.5,
+      "encoding": "quality 84 (fallback 78)"
+    },
+    {
+      "source": "mockup-v3/img/p1.jpg",
+      "webp": "mockup-v3/img/p1.webp",
+      "width": 1000,
+      "height": 750,
+      "source_bytes": 81907,
+      "webp_bytes": 58270,
+      "saved_bytes": 23637,
+      "saved_percent": 28.9,
+      "encoding": "quality 84 (fallback 78)"
+    },
+    {
+      "source": "mockup-v3/img/p3.jpg",
+      "webp": "mockup-v3/img/p3.webp",
+      "width": 1000,
+      "height": 750,
+      "source_bytes": 122970,
+      "webp_bytes": 99200,
+      "saved_bytes": 23770,
+      "saved_percent": 19.3,
+      "encoding": "quality 84 (fallback 78)"
+    },
+    {
+      "source": "mockup-v3/img/p5.jpg",
+      "webp": "mockup-v3/img/p5.webp",
+      "width": 800,
+      "height": 533,
+      "source_bytes": 44321,
+      "webp_bytes": 36112,
+      "saved_bytes": 8209,
+      "saved_percent": 18.5,
+      "encoding": "quality 84 (fallback 78)"
+    },
+    {
+      "source": "mockup-v3/img/p6.jpg",
+      "webp": "mockup-v3/img/p6.webp",
+      "width": 1000,
+      "height": 750,
+      "source_bytes": 172613,
+      "webp_bytes": 164154,
+      "saved_bytes": 8459,
+      "saved_percent": 4.9,
+      "encoding": "quality 84 (fallback 78)"
+    },
+    {
+      "source": "mockup-v3/img/p7.jpg",
+      "webp": "mockup-v3/img/p7.webp",
+      "width": 750,
+      "height": 1000,
+      "source_bytes": 192910,
+      "webp_bytes": 165302,
+      "saved_bytes": 27608,
+      "saved_percent": 14.3,
+      "encoding": "quality 84 (fallback 78)"
+    },
+    {
+      "source": "mockup-v3/img/p8.jpg",
+      "webp": "mockup-v3/img/p8.webp",
+      "width": 1000,
+      "height": 750,
+      "source_bytes": 243496,
+      "webp_bytes": 224866,
+      "saved_bytes": 18630,
+      "saved_percent": 7.7,
+      "encoding": "quality 84 (fallback 78)"
+    },
+    {
+      "source": "mockup-v3/img/p9.jpg",
+      "webp": "mockup-v3/img/p9.webp",
+      "width": 750,
+      "height": 1000,
+      "source_bytes": 137167,
+      "webp_bytes": 124514,
+      "saved_bytes": 12653,
+      "saved_percent": 9.2,
+      "encoding": "quality 84 (fallback 78)"
+    },
+    {
+      "source": "mockup-v3/img/p10.jpg",
+      "webp": "mockup-v3/img/p10.webp",
+      "width": 823,
+      "height": 1000,
+      "source_bytes": 113073,
+      "webp_bytes": 89072,
+      "saved_bytes": 24001,
+      "saved_percent": 21.2,
+      "encoding": "quality 84 (fallback 78)"
+    },
+    {
+      "source": "mockup-v3/img/p11.jpg",
+      "webp": "mockup-v3/img/p11.webp",
+      "width": 1000,
+      "height": 580,
+      "source_bytes": 160210,
+      "webp_bytes": 157996,
+      "saved_bytes": 2214,
+      "saved_percent": 1.4,
+      "encoding": "quality 84 (fallback 78)"
+    },
+    {
+      "source": "mockup-v3/img/p12.jpg",
+      "webp": "mockup-v3/img/p12.webp",
+      "width": 1000,
+      "height": 661,
+      "source_bytes": 114684,
+      "webp_bytes": 98054,
+      "saved_bytes": 16630,
+      "saved_percent": 14.5,
+      "encoding": "quality 84 (fallback 78)"
+    },
+    {
+      "source": "mockup-v3/img/p13.jpg",
+      "webp": "mockup-v3/img/p13.webp",
+      "width": 1000,
+      "height": 750,
+      "source_bytes": 132921,
+      "webp_bytes": 113342,
+      "saved_bytes": 19579,
+      "saved_percent": 14.7,
+      "encoding": "quality 84 (fallback 78)"
+    },
+    {
+      "source": "mockup-v3/img/p14.jpg",
+      "webp": "mockup-v3/img/p14.webp",
+      "width": 1000,
+      "height": 728,
+      "source_bytes": 83674,
+      "webp_bytes": 60710,
+      "saved_bytes": 22964,
+      "saved_percent": 27.4,
+      "encoding": "quality 84 (fallback 78)"
+    }
+  ],
+  "updated_source_files": [
+    "mentions-legales.html",
+    "accessibilite.html",
+    "actualite-2026-10-26.html",
+    "actualite-2026-10-10.html",
+    "actualite-2026-10-17.html",
+    "contact.html",
+    "facile-a-lire.html",
+    "qui-sommes-nous.html",
+    "actualites.html",
+    "index.html",
+    "adherer.html",
+    "404.html"
+  ]
+}

@@ -134,7 +134,7 @@ def main():
         "caveat-latin-500-normal.woff2",
         "opendyslexic-latin-400-normal.woff2",
     ))
-    assert (ROOT / "mockup-v3/img/mural.jpg").is_file()
+    assert (ROOT / "mockup-v3/img/mural.webp").is_file()
     assert "fonts.googleapis.com" not in css + theme + mockup_css
     assert "googleapis.com" not in "".join((ROOT / p).read_text(encoding="utf-8") for p in PAGES)
 
@@ -148,8 +148,8 @@ def main():
     assert "les « Bleuettes »" in home and "les « Bleuets »" not in home, "the volunteer group is called les Bleuettes"
     assert "Les horaires ci-dessus sont repris des informations publiées" in home and "avant de vous déplacer" in home
     assert "Témoignage à recueillir" not in home and 'class="voices"' not in home, "uncollected testimonial prompts must not appear on the public homepage"
-    assert "/mockup-v3/img/mural.jpg" in home and home.count("<figure>") >= 10
-    assert 'src="/assets/gathering.jpeg"' in home, "the closing homepage image should use the association gathering photo"
+    assert "/mockup-v3/img/mural.webp" in home and home.count("<figure>") >= 10
+    assert 'src="/assets/gathering.webp"' in home, "the closing homepage image should use the association gathering photo"
     assert all(x in about for x in ("1995", "2021", "Les bénévoles, les Bleuettes", "Sapala", "Burkina Faso", "Maroc"))
     for topic in ("Jeux de société & baby-foot", "Musique, chant, théâtre & contes", "Dessin & arts plastiques", "Cuisine, goûters & fêtes", "Jardinage & temps dehors", "Sorties culturelles & découvertes", "Médiation animale & rencontres entre parents"):
         assert topic in about, f"About page topic missing: {topic}"
@@ -185,12 +185,19 @@ def main():
     assert "Page introuvable" in parsed["404.html"][0]
     for page in PAGES:
         html = (ROOT / page).read_text(encoding="utf-8")
-        assert html.count('/assets/logo%20final.png') == 2, f"{page}: actual association logo must appear in header and footer"
+        assert html.count('/assets/logo%20final.webp') == 2, f"{page}: actual association logo must appear in header and footer"
         assert html.count('aria-label="La Bulle Bleue, APAiL, accueil"') == 2, f"{page}: both logo links need the full accessible name"
         assert 'property="og:image" content="https://raw.githubusercontent.com/teyyara/bullebleue/main/assets/gathering.jpeg"' in html, f"{page}: social preview image metadata is missing"
         assert 'href="/assets/favicon.svg"' in html, f"{page}: updated favicon must appear in document head"
     todo = (ROOT / "TODO.md").read_text(encoding="utf-8")
     assert "verbally authorized" in todo, "owner-provided photo permission record must be retained"
+    webp_report = json.loads((ROOT / "evidence/visual/webp-optimization-report.json").read_text(encoding="utf-8"))
+    assert webp_report["summary"]["reduction_percent"] > 0, "WebP must reduce transfer size"
+    assert webp_report["summary"]["images_converted"] >= 10, "rendered photos and logo should use WebP"
+    for image in webp_report["images"]:
+        webp_path = image["webp"]
+        assert (ROOT / webp_path).is_file(), f"missing WebP derivative: {webp_path}"
+
     calm_css = (ROOT / "site-v8-accessibility.css").read_text(encoding="utf-8")
     assert ".calm .hero .blob" in calm_css and ".calm .retrouver .big::before" in calm_css and ".calm .sorties h2::after" in calm_css, "calm mode must remove homepage bubbles, pale backplates and decorative flourishes"
     assert ".hero{overflow-x:clip}" in calm_css and ".voix{padding:36px 0}" in calm_css, "mobile hero clipping and tighter section rhythm must remain in place"
