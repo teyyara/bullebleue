@@ -189,9 +189,10 @@ def main():
                 spacing.goto(f"{base}/index.html",wait_until="networkidle")
                 for classes in (["sp"],["dys","fs-3"]):
                     spacing.evaluate("(values)=>document.documentElement.classList.add(...values)",classes)
-                    title_metrics=spacing.evaluate("()=>{const h=document.querySelector('.hero .card h1'),r=h.getBoundingClientRect();const over=[...document.body.querySelectorAll('*')].map(e=>{const b=e.getBoundingClientRect();return {tag:e.tagName,cls:typeof e.className==='string'?e.className:'',right:Math.round(b.right),left:Math.round(b.left),w:Math.round(b.width)}}).filter(x=>x.w>0&&(x.right>innerWidth+1||x.left< -1)).slice(0,8);return {doc:document.documentElement.scrollWidth,inner:innerWidth,right:r.right,scroll:h.scrollWidth,client:h.clientWidth,over};}")
+                    title_metrics=spacing.evaluate("()=>{const h=document.querySelector('.hero .card h1'),r=h.getBoundingClientRect();const over=[...document.body.querySelectorAll('*')].map(e=>{const b=e.getBoundingClientRect();return {tag:e.tagName,cls:typeof e.className==='string'?e.className:'',right:Math.round(b.right),left:Math.round(b.left),w:Math.round(b.width)}}).filter(x=>x.w>0&&(x.right>innerWidth+1||x.left< -1)).slice(0,8);return {doc:document.documentElement.scrollWidth,inner:innerWidth,right:r.right,scroll:h.scrollWidth,client:h.clientWidth,wrap:getComputedStyle(h).overflowWrap,word:getComputedStyle(h).wordBreak,hyphens:getComputedStyle(h).hyphens,over};}")
                     assert title_metrics["right"]<=width+1, f"hero title overflows with accessibility spacing: {title_metrics}"
                     assert title_metrics["scroll"]<=title_metrics["client"]+1, f"hero title is clipped with accessibility spacing: {title_metrics}"
+                    assert title_metrics["wrap"]=="normal" and title_metrics["word"]=="normal" and title_metrics["hyphens"]=="none", f"hero title should wrap at spaces, not split words: {title_metrics}"
                     if title_metrics["doc"]>width+1:
                         print("Other elements extend beyond the viewport with text spacing:",title_metrics["over"])
                     spacing.evaluate("()=>document.documentElement.classList.remove('sp','dys','fs-3')")
