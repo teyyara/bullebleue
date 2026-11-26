@@ -13,7 +13,8 @@
 - [x] Increase small labels and footer text to at least 16 px and remove unnecessary all-caps styling.
 - [x] Use the predictable “Nous contacter” label for general contact actions and remove arrows from internal links.
 - [x] Add Open Graph image metadata for social previews using the owner-selected group photograph.
-- [x] Remove decorative bubbles and pale geometric backplates in “Mode calme” while preserving content and documentary photos.
+- [x] Remove decorative bubbles, pale geometric backplates and the outings flourish in “Mode calme” while preserving content and documentary photos.
+- [x] Clip the mobile mural at the viewport edge under increased text spacing and reduce excess vertical gaps between homepage sections.
 - [ ] Convert photographic assets to WebP and verify the actual transfer-size reduction; binary processing is not available in this repository-edit session.
 - [ ] Complete screen-reader and real-device checks with people who use the relevant accessibility settings.
 
