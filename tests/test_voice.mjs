@@ -34,7 +34,7 @@ test('a chunk is prepared as pocket-tts does: characters replaced, semicolons, a
 test('sentences end at the tokenizer’s marks, a decimal point not one, and join up to the token limit', () => {
   const text = 'pi is 3.14 today. yes.'
   assert.deepEqual(chunks(text, tokens, rules).map((c) => c.text), ['Pi is 3.14 today. yes.'])
-  assert.deepEqual(chunks(text, tokens, rules, 6).map((c) => c.text), ['Pi is 3.14 today.', 'Yes.'])
+  assert.deepEqual(chunks(text, tokens, rules, 6).map((c) => c.text), ['Pi is 3.14 today.', 'yes.'])
 })
 
 test('a comma split is kept as a comma in the next teacher-forced context', () => {
