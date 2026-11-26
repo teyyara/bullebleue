@@ -214,25 +214,58 @@
     });
   }
   function playNatural(text,btn,run){
-    naturalScheduleAt=audioContext.currentTime+0.06;naturalSources=[];
+    /* Pocket TTS produces small PCM packets while its one-thread worker is still
+       generating the next frames. Starting every packet immediately can exhaust
+       the speaker queue and create a tiny silence after each packet. Keep a rolling
+       reserve, join packets into larger buffers, then schedule them back-to-back. */
+    var BUFFER_AHEAD=2.25;
+    var pending=[],pendingSamples=0,pendingRate=24000,started=false;
+    var playbackRate=({lent:0.9,rapide:1.1})[prefs.speed]||1;
+    naturalScheduleAt=audioContext.currentTime;naturalSources=[];
+    function schedulePending(force){
+      if(!pending.length||run!==playbackRun||current!==btn)return;
+      var now=audioContext.currentTime;
+      var lead=started?naturalScheduleAt-now:0;
+      var queuedSeconds=pendingSamples/pendingRate/playbackRate;
+      if(!force&&(!started?queuedSeconds<BUFFER_AHEAD:lead>BUFFER_AHEAD))return;
+      try{
+        var samples=new Float32Array(pendingSamples),offset=0;
+        pending.forEach(function(part){samples.set(part,offset);offset+=part.length});
+        pending=[];pendingSamples=0;
+        var buffer=audioContext.createBuffer(1,samples.length,pendingRate);
+        buffer.copyToChannel(samples,0);
+        var source=audioContext.createBufferSource();
+        source.buffer=buffer;source.playbackRate.value=playbackRate;
+        source.connect(audioContext.destination);
+        var startAt=Math.max(naturalScheduleAt,now+0.06);
+        source.start(startAt);
+        naturalScheduleAt=startAt+buffer.duration/playbackRate;
+        naturalSources.push(source);
+        source.onended=function(){
+          var index=naturalSources.indexOf(source);
+          if(index!==-1)naturalSources.splice(index,1);
+        };
+        if(!started){
+          started=true;
+          say('Lecture démarrée avec la voix naturelle.');
+        }
+      }catch(error){
+        if(window.console&&console.error)console.error('Natural voice audio buffer failed:',error);
+      }
+    }
     var request=requestNatural('speak',{text:text,lang:'fr'},null,function(message){
       if(run!==playbackRun||current!==btn)return;
       try{
         var samples=message.audio instanceof Float32Array?message.audio:new Float32Array(message.audio);
-        var buffer=audioContext.createBuffer(1,samples.length,message.rate||24000);
-        buffer.copyToChannel(samples,0);
-        var source=audioContext.createBufferSource();
-        source.buffer=buffer;source.playbackRate.value=({lent:0.9,rapide:1.1})[prefs.speed]||1;
-        source.connect(audioContext.destination);
-        var startAt=Math.max(naturalScheduleAt,audioContext.currentTime+0.04);
-        source.start(startAt);
-        naturalScheduleAt=startAt+buffer.duration/source.playbackRate.value;
-        naturalSources.push(source);
+        pendingRate=message.rate||pendingRate;
+        pending.push(samples);pendingSamples+=samples.length;
+        schedulePending(false);
       }catch(error){if(window.console&&console.error)console.error('Natural voice audio chunk failed:',error)}
     });
     naturalSpeakJob=request.id;
     return request.promise.then(function(){
       if(naturalSpeakJob===request.id)naturalSpeakJob=0;
+      schedulePending(true);
       var wait=Math.max(0,naturalScheduleAt-audioContext.currentTime)*1000;
       return new Promise(function(resolve){setTimeout(resolve,wait+60)});
     });
@@ -273,7 +306,7 @@
       say(naturalReady?'Lecture avec la voix naturelle…':'Préparation de la voix naturelle française…');
       Promise.all([loadNaturalVoice(),resume]).then(function(){
         if(current!==btn||run!==playbackRun)return;
-        say('Lecture démarrée avec la voix naturelle.');
+        say('Préparation du flux audio…');
         return playNatural(text,btn,run);
       }).then(function(){
         if(current===btn&&run===playbackRun)finishReading(btn,run);
