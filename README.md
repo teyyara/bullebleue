@@ -95,6 +95,8 @@ The structural validator checks that the TODO records the association owner's ve
 
 The Accessibility control is first in keyboard order after the skip link. On phones it sits in the shared header beside Menu instead of covering the reading area; on desktop it remains available at the lower left. General contact links use the predictable label “Nous contacter”. Open Graph image metadata uses the owner-selected group photograph through the public repository image URL. Photo-to-WebP conversion remains an open optimization item pending binary-safe conversion and size checks.
 
+Read-aloud defaults to the on-device neural French Pocket TTS voice. Its first-use download (approximately 134 MB) starts only when the visitor begins reading and is disclosed in the accessibility panel. The smaller eSpeak NG voice remains an explicit lightweight fallback. Both engines synthesize in the browser; page text is not sent to a speech API.
+
 ## Image delivery
 
 The 17 raster assets rendered by the public pages now have WebP variants (3,056,544 bytes combined before, 1,754,162 bytes after; 42.6% smaller). Original supplied images remain available in the repository. The Open Graph sharing image deliberately remains JPEG for compatibility. Per-image measurements are in evidence/visual/webp-optimization-report.json.
