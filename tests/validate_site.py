@@ -86,6 +86,7 @@ def main():
         for destination in ("index.html","qui-sommes-nous.html","actualites.html","adherer.html","contact.html","facile-a-lire.html","accessibilite.html","mentions-legales.html"):
             assert f'href="{destination}"' in footer_html, f"{page}: footer destination missing: {destination}"
         assert "mailto:apail@live.fr" in footer_html and "facebook.com/p/Bulle-Bleue-APAiL" in footer_html
+        assert re.search(r'<a class="footer-contact"[^>]*>Nous contacter</a>', footer_html), f"{page}: footer contact action needs the shared label"
         assert parser.nav_current == CURRENT.get(page, []), f"{page}: incorrect active navigation: {parser.nav_current}"
         assert 'href="#"' not in html, f"{page}: placeholder link remains"
         assert 'href="#" ' not in html, f"{page}: placeholder link remains"
@@ -120,6 +121,7 @@ def main():
     assert '@import url("/site-v5-polish.css")' in css
     assert '@import url("/site-v6-polish.css")' in css
     assert '@import url("/site-v7-polish.css")' in css
+    assert '@import url("/site-v8-accessibility.css")' in css
     assert "@font-face" in mockup_css and "Atkinson Hyperlegible Next" in mockup_css
     assert all((ROOT / "mockup-v3/fonts" / name).is_file() for name in (
         "atkinson-hyperlegible-next-latin-400-normal.woff2",
@@ -175,11 +177,13 @@ def main():
     assert "Découvrir des gestes du quotidien sans la vue" in article10 and "dix membres" in article10
     assert 'id="signaler"' in parsed["accessibilite.html"][0]
     access_page = parsed["accessibilite.html"][0]
-    assert "disponible en bas de l’écran" in access_page and "en bas à gauche" not in access_page
+    assert "dans l’en-tête" in access_page and "en bas à gauche" in access_page
     assert "Page introuvable" in parsed["404.html"][0]
     for page in PAGES:
         html = (ROOT / page).read_text(encoding="utf-8")
         assert html.count('/assets/logo%20final.png') == 2, f"{page}: actual association logo must appear in header and footer"
+        assert html.count('aria-label="La Bulle Bleue, APAiL, accueil"') == 2, f"{page}: both logo links need the full accessible name"
+        assert 'property="og:image" content="https://raw.githubusercontent.com/teyyara/bullebleue/main/assets/gathering.jpeg"' in html, f"{page}: social preview image metadata is missing"
         assert 'href="/assets/favicon.svg"' in html, f"{page}: updated favicon must appear in document head"
     todo = (ROOT / "TODO.md").read_text(encoding="utf-8")
     assert "verbally authorized" in todo, "owner-provided photo permission record must be retained"
