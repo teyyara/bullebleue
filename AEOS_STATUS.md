@@ -1,3 +1,11 @@
+## Delivered in Loop 042 — pre-generated French (France) audio
+- Replaced the in-browser Pocket TTS/WebAssembly engine with static MP3 playback. Visitors no longer download a speech model or wait for neural synthesis while reading.
+- Prepared a manual GitHub Actions generator for two standard French (France) Neural voices: Denise and Henri. It creates short auditions and one full-page recording per page and voice.
+- Azure credentials are read only from repository Actions secrets. They are not included in page source, generated assets or the manifest; Azure is not contacted during visitor playback.
+- Added a small manifest-driven accessible audio player with voice selection, play/pause, stop and speed controls.
+- Offline tests cover page text extraction, abbreviation expansion, SSML escaping, locale/voice selection and MP3 request headers.
+- Remaining setup: create the Azure Speech F0 resource, add the two repository secrets and run the generation workflow. Physical listening is required to choose the preferred voice.
+
 ## Delivered in Loop 041 — natural-only reading and automatic model preload
 - Removed the former lightweight voice engine, its controls and automatic fallback path. Pocket TTS is the sole read-aloud voice.
 - The pinned French model download now starts immediately on page entry and uses the Cache API on later visits when the browser retains the files; persistent storage is requested where supported.
