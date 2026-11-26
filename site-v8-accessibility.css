@@ -43,3 +43,15 @@ footer.pied .footer-group a{min-height:44px;font-size:1rem}
  .burger{min-height:44px;padding:0 12px}
  .a11y-panel{left:auto;right:12px;top:calc(72px + env(safe-area-inset-top));bottom:auto;width:min(380px,calc(100vw - 24px));max-height:calc(100vh - 88px);max-height:calc(100dvh - 88px - env(safe-area-inset-top))}
 }
+/* Browser extensions may increase letter/word spacing without toggling the
+   built-in preference. Keep the hero title fluid in that case too. */
+.hero .card h1 {
+  display:block;
+  width:auto;
+  max-width:100%;
+  margin-left:0;
+  white-space:normal;
+  word-break:normal;
+  overflow-wrap:normal;
+  hyphens:none;
+}
