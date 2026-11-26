@@ -198,14 +198,17 @@ def main():
     assert 'id="signaler"' in parsed["accessibilite.html"][0]
     access_page = parsed["accessibilite.html"][0]
     assert "134 Mo" in access_page and "Pocket TTS" in access_page
+    assert "automatiquement dès l’ouverture de la page" in access_page
     assert "ne sont pas envoyés à un service de synthèse vocale" in access_page
-    for href in ("github.com/Spelling-Creator/spellophone", "github.com/espeak-ng/espeak-ng", "kyutai.org/pocket-tts", "huggingface.co/KevinAHM/pocket-tts-onnx", "huggingface.co/jean-is/pocket-tts-q8-ONNX", "github.com/jean-is/jean"):
-        assert href in access_page, f"Accessibility page must credit the voice engine and its licence: {href}"
+    for href in ("kyutai.org/pocket-tts", "huggingface.co/KevinAHM/pocket-tts-onnx", "huggingface.co/jean-is/pocket-tts-q8-ONNX", "github.com/jean-is/jean", "github.com/microsoft/onnxruntime"):
+        assert href in access_page, f"Accessibility page must credit the neural voice engine and its licence: {href}"
+    assert "eSpeak NG" not in access_page and "voix légère" not in access_page and "Spellophone" not in access_page
     speech_js = (ROOT / "mockup-v3/js/a11y.js").read_text(encoding="utf-8")
-    assert "https://cdn.jsdelivr.net/npm/@spelling-creator/spellophone@0.2.1/dist/" in speech_js
-    assert "loadVoice('fr-fr')" in speech_js and "AudioContext" in speech_js and ".synthesize(" in speech_js
-    assert "reader-worker.mjs" in speech_js and "type:'module'" in speech_js and "a11y-natural-enable" in speech_js
-    assert "speechSynthesis.speak" not in speech_js and "getVoices()" not in speech_js, "French reading must not depend on voices installed on the device"
+    assert "reader-worker.mjs" in speech_js and "type:'module'" in speech_js
+    assert "loadNaturalVoice().catch" in speech_js and "navigator.storage.persist" in speech_js
+    assert "playNatural(text,btn,run)" in speech_js and "AudioContext" in speech_js
+    assert "spellophone" not in speech_js.lower() and "eSpeak" not in speech_js and "speechEngine" not in speech_js
+    assert "speechSynthesis.speak" not in speech_js and "getVoices()" not in speech_js, "French reading must be generated locally by Pocket TTS only"
     voice_dir = ROOT / "mockup-v3/js/voice"
     for file in ("pocket.mjs", "words.mjs", "reader-worker.mjs", "NOTICE.md"):
         assert (voice_dir / file).is_file(), f"missing natural voice module: {file}"
@@ -237,6 +240,7 @@ def main():
     assert ".hero{overflow-x:clip}" in calm_css and ".voix{padding:36px 0}" in calm_css, "mobile hero clipping and tighter section rhythm must remain in place"
     voice_css = (ROOT / "site-v9-voice.css").read_text(encoding="utf-8")
     assert ".a11y-voice-quality" in voice_css and ".voice-status" in voice_css
+    assert "#a11y-light-enable" not in voice_css and "#a11y-natural-enable" not in voice_css
     assert '@import url("/site-v9-voice.css")' in css
     print(json.dumps({"status":"PASS","pages":len(PAGES),"local_links_checked":len(all_links),"mockup_fonts":8,"mockup_images":15,"checks":["all twelve routes have French metadata, one h1 and one main","shared working navigation and active state","no placeholder links or broken local files/fragments","mockup v3 local stylesheet, fonts, mural and photo assets present","no Google Fonts network dependency","published session times are marked for confirmation","only the genuine Miette quotation is attributed","uncollected testimonials are absent","historical venue conflicts are disclosed","festival 40th anniversary is correctly dated to 2027","JOAFE declaration and publication dates are distinguished","actual Vercel hosting provider is identified","all seven About activity topics and historical milestones remain","three news items retain dedicated article routes","membership/legal/contact facts remain conservative and accurate","FALC and accessibility pages are included"]},ensure_ascii=False))
 
