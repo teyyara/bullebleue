@@ -78,7 +78,8 @@ def main():
         eyebrow_labels = re.findall(r'<([a-z0-9]+)[^>]*class="[^"]*\beyebrow\b[^"]*"[^>]*>(.*?)</\1>', html, re.S)
         for _, markup in eyebrow_labels:
             label = re.sub(r"<[^>]+>", "", markup).strip()
-            assert not label.isupper(), f"{page}: section label should not be all uppercase: {label}"
+            readable_label = re.sub(r"\s*[·|]\s*\d.*$", "", label).strip()
+            assert not readable_label.isupper(), f"{page}: section label should not be all uppercase: {label}"
         assert parser.nav_links == list(NAV), f"{page}: shared navigation order changed: {parser.nav_links}"
         assert len(parser.nav_links) == len(set(parser.nav_links)), f"{page}: duplicate navigation destination"
         assert parser.nav_links.count("contact.html") == 1, f"{page}: Contact must appear exactly once"
@@ -104,7 +105,7 @@ def main():
             parts = urlsplit(href)
             external = parts.scheme.lower() in ("http", "https") or bool(parts.netloc)
             if external:
-                assert "↗" in anchor_body, f"{page}: external link needs a visible ↗ cue: {href}"
+                assert re.search(r'<span[^>]*aria-hidden="true"[^>]*>↗</span>', anchor_body, re.I), f"{page}: external link needs a visible, assistive-technology-hidden ↗ cue: {href}"
                 assert re.search(r'\btarget=["\']_blank["\']', anchor_attrs, re.I), f"{page}: external link should open in a new tab: {href}"
                 rel = re.search(r'\brel=["\']([^"\']+)["\']', anchor_attrs, re.I)
                 assert rel and {"noopener", "noreferrer"}.issubset(set(rel.group(1).lower().split())), f"{page}: external link needs noopener noreferrer: {href}"

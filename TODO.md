@@ -3,6 +3,13 @@
 **Last updated:** 26 November 2026  
 **Repository:** teyyara/bullebleue · main
 
+## Loop 033 — Mobile footer and outbound-link clarity
+- [x] Give the mobile “Informations utiles” destinations two balanced columns instead of three narrow columns.
+- [x] Add a consistent ↗ indicator to every outbound web destination and hide the decorative glyph from assistive technology.
+- [x] Normalize the Actualités bubble categories to sentence case.
+- [x] Add regression assertions for outbound-link cues, safe new-tab behavior, 16 px/44 px footer links and the mobile footer grid.
+- [ ] Run the final structural, interaction and three-engine responsive suite; inspect the refreshed screenshot set.
+
 ## Loop 032 — Mobile accessibility and calmer presentation
 - [x] Move the Accessibility control into the mobile header beside Menu; remove the fixed bottom overlay on phones.
 - [x] Put Accessibility first in keyboard order immediately after “Aller au contenu”; retain visible focus and Escape/focus restoration.

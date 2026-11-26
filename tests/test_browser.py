@@ -90,6 +90,8 @@ def main():
                     assert footer.locator(".footer-group").count()==3
                     assert footer.locator(".footer-navigation a").count()==9
                     assert footer.locator(".footer-contact").inner_text().strip()=="Nous contacter"
+                    assert footer.locator(".footer-group a").evaluate_all("(links)=>links.every(a=>parseFloat(getComputedStyle(a).fontSize)>=16 && a.getBoundingClientRect().height>=44)"), f"{path}: footer navigation links must remain at least 16 px and 44 px tall"
+                    assert footer.locator(".footer-bottom small, .footer-bottom span").evaluate_all("(items)=>items.every(el=>parseFloat(getComputedStyle(el).fontSize)>=16)"), f"{path}: footer legal/location text must remain at least 16 px"
                     if width<=620:
                         mobile_footer_layout=footer.locator(".footer-navigation").evaluate("(el)=>{const nav=el.getBoundingClientRect(),g=[...el.children].map(x=>x.getBoundingClientRect());const overlap=Math.min(g[0].bottom,g[1].bottom)-Math.max(g[0].top,g[1].top);return {display:getComputedStyle(el).display,sideBySide:g[1].left>g[0].left&&g[0].right<=g[1].left+4,verticalOverlap:overlap>0,thirdBelow:g[2].top>Math.max(g[0].bottom,g[1].bottom),thirdSpans:g[2].width>=nav.width*.9};}")
                         assert mobile_footer_layout["display"]=="grid" and mobile_footer_layout["sideBySide"] and mobile_footer_layout["verticalOverlap"] and mobile_footer_layout["thirdBelow"] and mobile_footer_layout["thirdSpans"], f"{path}: footer groups should form two balanced columns on mobile: {mobile_footer_layout}"
