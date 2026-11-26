@@ -1,3 +1,10 @@
+## Delivered in Loop 038 — continuous neural speech playback
+- Buffered a rolling 2.25 seconds of generated Pocket TTS audio before playback and joined small inference packets into larger Web Audio buffers.
+- Schedule queued buffers continuously rather than starting each model packet as soon as it arrives; stop/cancel still halts scheduled audio.
+- Added a simulated delayed-packet browser test that asserts adjacent scheduled blocks have no silence between them.
+- Corrected the accessibility fallback visibility assertion to match the neural-default selection.
+- Physical-device listening on a long page remains necessary to confirm that the buffering reserve is sufficient on older/slower devices.
+
 ## Delivered in Loop 037 — neural French reader as the default
 - Changed the accessibility reader's initial selection from the mechanical eSpeak NG voice to the on-device neural French Pocket TTS voice.
 - Kept the approximately 134 MB model/runtime download disclosed and deferred until the visitor starts reading.
