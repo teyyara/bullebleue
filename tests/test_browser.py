@@ -157,7 +157,7 @@ def main():
                         assert page.locator("#a11y-panel").is_visible()
                         assert page.locator("#a11y-voice-choice").count()==1
                         assert page.locator("#a11y-voice .listen").count()==2
-                        assert page.locator("#a11y-voice .listen").all_disabled()
+                        assert all(button.is_disabled() for button in page.locator("#a11y-voice .listen").all())
                         assert page.locator("#a11y-voice-status").count()==1
                         voice_status=page.locator("#a11y-voice-status").inner_text()
                         assert "enregistrements audio ne sont pas encore disponibles" in voice_status, f"missing generated MP3s should be reported clearly: {voice_status}"
