@@ -197,14 +197,23 @@ def main():
     assert "Découvrir des gestes du quotidien sans la vue" in article10 and "dix membres" in article10
     assert 'id="signaler"' in parsed["accessibilite.html"][0]
     access_page = parsed["accessibilite.html"][0]
-    assert "Vous n’avez pas besoin d’installer une voix française" in access_page
+    assert "134 Mo" in access_page and "Pocket TTS" in access_page
     assert "ne sont pas envoyés à un service de synthèse vocale" in access_page
-    for href in ("github.com/Spelling-Creator/spellophone", "github.com/espeak-ng/espeak-ng", "gnu.org/licenses/gpl-3.0.html"):
-        assert href in access_page, f"Accessibility page must credit the browser speech engine and its licence: {href}"
+    for href in ("github.com/Spelling-Creator/spellophone", "github.com/espeak-ng/espeak-ng", "kyutai.org/pocket-tts", "huggingface.co/KevinAHM/pocket-tts-onnx", "huggingface.co/jean-is/pocket-tts-q8-ONNX", "github.com/jean-is/jean"):
+        assert href in access_page, f"Accessibility page must credit the voice engine and its licence: {href}"
     speech_js = (ROOT / "mockup-v3/js/a11y.js").read_text(encoding="utf-8")
     assert "https://cdn.jsdelivr.net/npm/@spelling-creator/spellophone@0.2.1/dist/" in speech_js
     assert "loadVoice('fr-fr')" in speech_js and "AudioContext" in speech_js and ".synthesize(" in speech_js
+    assert "reader-worker.mjs" in speech_js and "type:'module'" in speech_js and "a11y-natural-enable" in speech_js
     assert "speechSynthesis.speak" not in speech_js and "getVoices()" not in speech_js, "French reading must not depend on voices installed on the device"
+    voice_dir = ROOT / "mockup-v3/js/voice"
+    for file in ("pocket.mjs", "words.mjs", "reader-worker.mjs", "NOTICE.md"):
+        assert (voice_dir / file).is_file(), f"missing natural voice module: {file}"
+    worker = (voice_dir / "reader-worker.mjs").read_text(encoding="utf-8")
+    assert "onnxruntime-web@1.31.1" in worker and "jean-is/pocket-tts-q8-ONNX" in worker
+    assert "MANIFEST_HASH" in worker and "SHA-256" in worker and "env.wasm.numThreads=1" in worker
+    assert "caches.open(CACHE_NAME)" in worker and "type:'chunk'" in worker
+    assert (ROOT / "tests/test_voice.mjs").is_file(), "natural voice tokenizer and French text tests are required"
     access_page = parsed["accessibilite.html"][0]
     assert "dans l’en-tête" in access_page and "en bas à gauche" in access_page
     assert "Page introuvable" in parsed["404.html"][0]
@@ -226,6 +235,9 @@ def main():
     calm_css = (ROOT / "site-v8-accessibility.css").read_text(encoding="utf-8")
     assert ".calm .hero .blob" in calm_css and ".calm .retrouver .big::before" in calm_css and ".calm .sorties h2::after" in calm_css, "calm mode must remove homepage bubbles, pale backplates and decorative flourishes"
     assert ".hero{overflow-x:clip}" in calm_css and ".voix{padding:36px 0}" in calm_css, "mobile hero clipping and tighter section rhythm must remain in place"
+    voice_css = (ROOT / "site-v9-voice.css").read_text(encoding="utf-8")
+    assert ".a11y-voice-quality" in voice_css and ".voice-status" in voice_css
+    assert '@import url("/site-v9-voice.css")' in css
     print(json.dumps({"status":"PASS","pages":len(PAGES),"local_links_checked":len(all_links),"mockup_fonts":8,"mockup_images":15,"checks":["all twelve routes have French metadata, one h1 and one main","shared working navigation and active state","no placeholder links or broken local files/fragments","mockup v3 local stylesheet, fonts, mural and photo assets present","no Google Fonts network dependency","published session times are marked for confirmation","only the genuine Miette quotation is attributed","uncollected testimonials are absent","historical venue conflicts are disclosed","festival 40th anniversary is correctly dated to 2027","JOAFE declaration and publication dates are distinguished","actual Vercel hosting provider is identified","all seven About activity topics and historical milestones remain","three news items retain dedicated article routes","membership/legal/contact facts remain conservative and accurate","FALC and accessibility pages are included"]},ensure_ascii=False))
 
 if __name__ == "__main__":
