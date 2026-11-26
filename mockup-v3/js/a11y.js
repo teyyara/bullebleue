@@ -81,7 +81,7 @@
   panel.innerHTML=rows;
   if(canSpeak){panel.querySelector('#a11y-voice').insertBefore(listenButton('Écouter toute la page',function(){return textOf(document.getElementById('contenu'))}),panel.querySelector('#a11y-voice').firstChild)}
   live=document.createElement('p');live.className='sr-only';live.setAttribute('role','status');live.setAttribute('aria-live','polite');
-  wrap.appendChild(open);wrap.appendChild(panel);wrap.appendChild(live);document.body.appendChild(wrap);
+  wrap.appendChild(open);wrap.appendChild(panel);wrap.appendChild(live);open.setAttribute('aria-label','Accessibilité');open.setAttribute('title','Accessibilité');var headerBar=document.querySelector('header .bar');if(headerBar)headerBar.insertBefore(wrap,headerBar.firstElementChild);else document.body.insertBefore(wrap,document.body.firstChild);
 
   function refresh(){
     panel.querySelectorAll('[data-fs]').forEach(function(b){b.setAttribute('aria-pressed',String((+b.getAttribute('data-fs'))===(prefs.fs||0)))});
