@@ -177,7 +177,7 @@ footer.pied .footer-group a{min-height:44px;font-size:1rem}
   .dys .hero .card h1{
     width:auto;
     max-width:100%;
-    font-size:clamp(1.3rem,9vw,1.9rem);
+    font-size:clamp(1.2rem,8vw,1.8rem);
     line-height:1.2;
     letter-spacing:0;
   }
