@@ -140,7 +140,7 @@ def main() -> None:
         readme += note
     README.write_text(readme, encoding="utf-8")
 
-    validator = VALIDATOR.read_text(encoding="utf-8").replace("mockup-v3/img/mural.jpg", "mockup-v3/img/mural.webp")
+    validator = VALIDATOR.read_text(encoding="utf-8").replace("mockup-v3/img/mural.jpg", "mockup-v3/img/mural.webp").replace('src="/assets/gathering.jpeg"', 'src="/assets/gathering.webp"').replace('src="/assets/logo%20final.png"', 'src="/assets/logo%20final.webp"')
     marker = '    assert "verbally authorized" in todo, "owner-provided photo permission record must be retained"'
     addition = marker + '\n' + (
         '    webp_report = json.loads((ROOT / "evidence/visual/webp-optimization-report.json").read_text(encoding="utf-8"))\n'
