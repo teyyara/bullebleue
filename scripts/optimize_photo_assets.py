@@ -135,7 +135,7 @@ def main() -> None:
         if len(matches) != 1:
             raise RuntimeError("WebP TODO entry not found")
         lines[matches[0]] = new
-        todo = "\\n".join(lines) + "\\n"
+        todo = "\n".join(lines) + "\n"
     TODO.write_text(todo, encoding="utf-8")
 
     readme = README.read_text(encoding="utf-8")
