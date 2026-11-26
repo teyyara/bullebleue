@@ -29,6 +29,8 @@ def encode_webp(source: Path, destination: Path, lossless: bool) -> tuple[int, i
         alpha = "A" in image.getbands() or "transparency" in opened.info
         image = image.convert("RGBA" if alpha else "RGB")
         if lossless:
+            # Header/footer render at 36–48 px; 256 px keeps >5x source detail.
+            image.thumbnail((256, 256), Image.Resampling.LANCZOS)
             image.save(destination, "WEBP", lossless=True, method=6, exact=True, icc_profile=icc)
         else:
             image.save(destination, "WEBP", quality=84, method=6, exact=True, icc_profile=icc)
@@ -70,17 +72,20 @@ def main() -> None:
         if not source.is_file():
             raise FileNotFoundError(source)
         destination = source.with_suffix(".webp")
+        with Image.open(source) as original:
+            original_width, original_height = original.size
         width, height = encode_webp(source, destination, lossless=source.suffix.lower() == ".png")
         before, after = source.stat().st_size, destination.stat().st_size
         replacements[source.relative_to(ROOT).as_posix()] = destination.relative_to(ROOT).as_posix()
         rows.append({
             "source": source.relative_to(ROOT).as_posix(),
             "webp": destination.relative_to(ROOT).as_posix(),
+            "source_width": original_width, "source_height": original_height,
             "width": width, "height": height,
             "source_bytes": before, "webp_bytes": after,
             "saved_bytes": before-after,
             "saved_percent": round((1-after/before)*100, 1),
-            "encoding": "lossless" if source.suffix.lower() == ".png" else "quality 84 (fallback 78)",
+            "encoding": "lossless at 256 px max" if source.suffix.lower() == ".png" else "quality 84 (fallback 78)",
         })
 
     changed = []
@@ -109,8 +114,13 @@ def main() -> None:
 
     register = json.loads(REGISTER.read_text(encoding="utf-8"))
     register["webp_derivatives"] = rows
+    previous_optimization = re.sub(
+        r"\\s*WebP derivatives are used for \\d+ rendered raster assets; originals remain unchanged\\. Combined transfer-size reduction: [\\d,.]+% \\([\\d,]+ to [\\d,]+ bytes\\)\\.",
+        "",
+        str(register.get("optimization", "")),
+    ).strip()
     register["optimization"] = (
-        str(register.get("optimization", "")).rstrip()
+        previous_optimization
         + f" WebP derivatives are used for {len(rows)} rendered raster assets; originals remain unchanged. "
         + f"Combined transfer-size reduction: {percent}% ({before:,} to {after:,} bytes)."
     ).strip()
@@ -121,8 +131,16 @@ def main() -> None:
     new = f"- [x] Create WebP derivatives for {len(rows)} rendered raster assets and measure the result: {before:,} bytes to {after:,} bytes ({percent}% smaller); original uploads retained."
     if old in todo:
         todo = todo.replace(old, new)
-    elif "Create WebP derivatives for" not in todo:
-        raise RuntimeError("WebP TODO entry not found")
+    else:
+        todo, count = re.subn(
+            r"^- \\[x\\] Create WebP derivatives for .*; original uploads retained\\.$",
+            new,
+            todo,
+            count=1,
+            flags=re.MULTILINE,
+        )
+        if count != 1:
+            raise RuntimeError("WebP TODO entry not found")
     TODO.write_text(todo, encoding="utf-8")
 
     readme = README.read_text(encoding="utf-8")
