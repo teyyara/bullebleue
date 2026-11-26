@@ -1,0 +1,57 @@
+name: Generate French page audio
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: generate-french-page-audio
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    name: Generate static French (France) MP3 recordings
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      AZURE_SPEECH_KEY: ${{ secrets.AZURE_SPEECH_KEY }}
+      AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Verify Azure secrets are configured
+        shell: bash
+        run: |
+          if [ -z "$AZURE_SPEECH_KEY" ] || [ -z "$AZURE_SPEECH_REGION" ]; then
+            echo "::error::Add AZURE_SPEECH_KEY and AZURE_SPEECH_REGION as repository Actions secrets first."
+            exit 1
+          fi
+
+      - name: Test the generator offline
+        run: python tests/test_azure_speech.py
+
+      - name: Generate both French voices for every page
+        run: python scripts/generate_azure_speech.py
+
+      - name: Commit generated MP3s and manifest
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/speech/fr-FR
+          if git diff --cached --quiet; then
+            echo "Audio assets are already up to date."
+            exit 0
+          fi
+          git commit -m "Generate French page audio recordings"
+          git push origin HEAD:main
