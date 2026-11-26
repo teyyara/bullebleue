@@ -212,7 +212,7 @@ def main():
     worker = (voice_dir / "reader-worker.mjs").read_text(encoding="utf-8")
     assert "onnxruntime-web@1.31.1" in worker and "jean-is/pocket-tts-q8-ONNX" in worker
     assert "MANIFEST_HASH" in worker and "SHA-256" in worker and "env.wasm.numThreads=1" in worker
-    assert "caches.open(CACHE_NAME)" in worker and "type:'chunk'" in worker
+    assert "caches?.open(CACHE_NAME)" in worker and "type:'chunk'" in worker
     assert (ROOT / "tests/test_voice.mjs").is_file(), "natural voice tokenizer and French text tests are required"
     access_page = parsed["accessibilite.html"][0]
     assert "dans l’en-tête" in access_page and "en bas à gauche" in access_page
