@@ -3,8 +3,8 @@
 (function(){
   var root=document.documentElement, KEY='bb-a11y', prefs={};
   try{prefs=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
-  /* Start with the neural French voice: eSpeak remains an explicit lightweight fallback. */
-  if(!prefs.voice)prefs.voice='natural';
+  // Pocket TTS is the sole read-aloud engine; discard the former light-voice setting.
+  delete prefs.voice;
   function save(){try{localStorage.setItem(KEY,JSON.stringify(prefs))}catch(e){}}
   var mq=function(q){return window.matchMedia&&matchMedia(q).matches};
   if(prefs.hc===undefined&&mq('(prefers-contrast: more)'))prefs.hc=true;
@@ -18,40 +18,13 @@
   }
 
   /* ---------- lecture à voix haute ---------- */
-  /* eSpeak NG runs in this browser through WebAssembly. No system French voice
-     is required, and neither the text nor the generated audio leaves the device. */
+  /* Pocket TTS runs in a dedicated worker; text and generated audio stay on-device. */
   var AudioContextCtor=window.AudioContext||window.webkitAudioContext;
   var canSpeak=!!AudioContextCtor;
   var current=null,live,audioContext=null,activeSource=null,playbackRun=0;
-  var speechEngine=null,speechEnginePromise=null;
   var naturalWorker=null,naturalJobId=0,naturalJobs=Object.create(null);
   var naturalLoadPromise=null,naturalReady=false,naturalLoading=false,naturalSpeakJob=0;
-  var naturalSources=[],naturalScheduleAt=0,naturalButton=null,naturalLightButton=null,naturalStatus=null;
-  var TTS_BASE='https://cdn.jsdelivr.net/npm/@spelling-creator/spellophone@0.2.1/dist/';
-
-  function loadFrenchEngine(){
-    if(speechEngine)return Promise.resolve(speechEngine);
-    if(!speechEnginePromise){
-      speechEnginePromise=import(TTS_BASE+'browser.js').then(function(api){
-        return api.createEspeak({
-          cdn:'jsdelivr',
-          languages:['fr'],
-          fallback:function(){return import(TTS_BASE+'wasm2js.js')}
-        }).then(function(engine){
-          return engine.loadVoice('fr-fr').then(function(){
-            return {engine:engine,toFloat32:api.toFloat32};
-          });
-        });
-      }).then(function(ready){
-        speechEngine=ready;
-        return ready;
-      }).catch(function(error){
-        speechEnginePromise=null;
-        throw error;
-      });
-    }
-    return speechEnginePromise;
-  }
+  var naturalSources=[],naturalScheduleAt=0,naturalStatus=null,naturalLoadError=null;
 
   function textOf(el){
     var c=el.cloneNode(true);
@@ -59,11 +32,6 @@
     c.querySelectorAll('h1,h2,h3,p,li,figcaption,.day,.when').forEach(function(n){n.appendChild(document.createTextNode('. '))});
     c.querySelectorAll('abbr[title]').forEach(function(a){a.textContent=a.getAttribute('title')});
     return c.textContent.replace(/\s+/g,' ').replace(/([.!?…:;])\s*\.\s/g,'$1 ').replace(/\s+\./g,'.').trim();
-  }
-  function chunks(t){
-    var parts=t.match(/[^.!?…]+[.!?…]*\s*/g)||[t],out=[],cur='';
-    parts.forEach(function(p){if((cur+p).length>180&&cur){out.push(cur);cur=p}else cur+=p});
-    if(cur)out.push(cur);return out;
   }
   function say(msg){if(live){live.textContent='';setTimeout(function(){live.textContent=msg},50)}}
   function setLabel(btn,on){
@@ -93,52 +61,13 @@
     }
     if(!silent)say('Lecture arrêtée.');
   }
-  function playChunk(ready,part,run,rate){
-    return new Promise(function(resolve,reject){
-      if(run!==playbackRun||!current){resolve();return}
-      try{
-        var result=ready.engine.synthesize(part,{rate:rate});
-        if(!result||!result.samples||!result.samples.length){resolve();return}
-        var buffer=audioContext.createBuffer(1,result.samples.length,result.sampleRate);
-        buffer.copyToChannel(ready.toFloat32(result.samples),0);
-        var source=audioContext.createBufferSource();
-        source.buffer=buffer;
-        source.connect(audioContext.destination);
-        activeSource=source;
-        var ended=false;
-        source.onended=function(){
-          if(ended)return;
-          ended=true;
-          if(activeSource===source)activeSource=null;
-          resolve();
-        };
-        source.start(0);
-      }catch(error){reject(error)}
-    });
-  }
-  function playChunks(ready,list,index,btn,run,rate){
-    if(run!==playbackRun||current!==btn)return Promise.resolve();
-    if(index>=list.length){finishReading(btn,run);return Promise.resolve()}
-    return playChunk(ready,list[index],run,rate).then(function(){
-      return playChunks(ready,list,index+1,btn,run,rate);
-    });
-  }
-
   /* ---------- voix neuronale française, calculée sur l'appareil ---------- */
   function refreshNaturalControls(){
-    if(!naturalButton)return;
-    naturalButton.disabled=naturalLoading;
-    naturalButton.textContent=naturalReady
-      ? (prefs.voice==='natural'?'Voix naturelle activée':'Activer la voix naturelle')
-      : (naturalLoading?'Chargement de la voix naturelle…':'Télécharger et activer la voix naturelle (≈ 134 Mo)');
-    naturalButton.setAttribute('aria-pressed',String(prefs.voice==='natural'));
-    if(naturalLightButton)naturalLightButton.hidden=prefs.voice!=='natural';
-    if(naturalStatus&&!naturalLoading){
-      if(prefs.voice==='natural')naturalStatus.textContent=naturalReady
-        ? 'Voix naturelle activée. Le texte est synthétisé directement sur cet appareil.'
-        : 'Voix naturelle sélectionnée. Le premier chargement représente environ 134 Mo ; il commence à la première écoute.';
-      else naturalStatus.textContent='Voix légère active. Elle se charge rapidement, mais son timbre est plus synthétique.';
-    }
+    if(!naturalStatus)return;
+    if(naturalLoading)naturalStatus.textContent='Téléchargement automatique de la voix française en cours…';
+    else if(naturalReady)naturalStatus.textContent='Voix naturelle prête. La synthèse se fait directement sur cet appareil.';
+    else if(naturalLoadError)naturalStatus.textContent='Le téléchargement de la voix naturelle a échoué. Vérifiez la connexion puis rechargez la page.';
+    else naturalStatus.textContent='La voix naturelle française se télécharge automatiquement à l’ouverture de la page (environ 134 Mo au premier chargement).';
   }
   function ensureNaturalWorker(){
     if(naturalWorker)return;
@@ -156,7 +85,7 @@
       var error=new Error(event.message||'Le moteur de voix naturelle ne peut pas démarrer.');
       Object.keys(naturalJobs).forEach(function(id){naturalJobs[id].reject(error);delete naturalJobs[id]});
       try{naturalWorker.terminate()}catch(e){}
-      naturalWorker=null;naturalLoadPromise=null;naturalReady=false;naturalLoading=false;
+      naturalWorker=null;naturalLoadPromise=null;naturalReady=false;naturalLoading=false;naturalLoadError=error;
       refreshNaturalControls();
     });
   }
@@ -171,7 +100,7 @@
   function loadNaturalVoice(){
     if(naturalReady)return Promise.resolve();
     if(naturalLoadPromise)return naturalLoadPromise;
-    naturalLoading=true;refreshNaturalControls();
+    naturalLoading=true;naturalLoadError=null;refreshNaturalControls();
     var lastMegabyte=-4,request;
     try{
       request=requestNatural('load',{lang:'fr'},function(message){
@@ -184,7 +113,7 @@
         }
       });
     }catch(error){
-      naturalLoading=false;refreshNaturalControls();return Promise.reject(error);
+      naturalLoading=false;naturalLoadError=error;refreshNaturalControls();return Promise.reject(error);
     }
     naturalLoadPromise=request.promise.then(function(){
       naturalReady=true;naturalLoading=false;
@@ -192,26 +121,11 @@
       refreshNaturalControls();
     }).catch(function(error){
       naturalLoading=false;naturalLoadPromise=null;
-      if(naturalStatus)naturalStatus.textContent='La voix naturelle n’a pas pu être chargée. Vérifiez votre connexion ; la voix légère reste disponible.';
+      naturalLoadError=error;
+      if(naturalStatus)naturalStatus.textContent='Le téléchargement de la voix naturelle a échoué. Vérifiez la connexion puis rechargez la page.';
       refreshNaturalControls();throw error;
     });
     return naturalLoadPromise;
-  }
-  function enableNaturalVoice(){
-    if(naturalReady){
-      prefs.voice='natural';save();refreshNaturalControls();
-      if(naturalStatus)naturalStatus.textContent='Voix naturelle activée. Appuyez sur « Écouter toute la page » pour l’essayer.';
-      say('Voix naturelle activée.');return;
-    }
-    if(naturalStatus)naturalStatus.textContent='Premier chargement : environ 134 Mo. Les fichiers du modèle seront mis en cache lorsque le navigateur le permet.';
-    say('Téléchargement de la voix naturelle française. Le premier chargement représente environ 134 mégaoctets.');
-    loadNaturalVoice().then(function(){
-      prefs.voice='natural';save();refreshNaturalControls();
-      if(naturalStatus)naturalStatus.textContent='Voix naturelle prête et activée. Appuyez sur « Écouter toute la page » pour l’essayer.';
-      say('La voix naturelle est prête.');
-    }).catch(function(error){
-      if(window.console&&console.error)console.error('Pocket TTS unavailable:',error);
-    });
   }
   function playNatural(text,btn,run){
     /* The one-thread neural model can synthesize more slowly than the visitor's
@@ -283,8 +197,8 @@
       say('Aucun texte à lire sur cette page.');
       return;
     }
-    /* Create/resume audio synchronously in the click gesture; browsers may
-       otherwise block playback after the asynchronous engine download. */
+    /* Resume AudioContext inside the user gesture. Model downloading starts
+       automatically on page entry and never attempts to autoplay sound. */
     var resume=Promise.resolve();
     try{
       if(!audioContext||audioContext.state==='closed')audioContext=new AudioContextCtor();
@@ -294,47 +208,22 @@
       say('La lecture audio n’est pas disponible dans ce navigateur.');
       return;
     }
-    if(prefs.voice==='natural'){
-      say(naturalReady?'Lecture avec la voix naturelle…':'Préparation de la voix naturelle française…');
-      Promise.all([loadNaturalVoice(),resume]).then(function(){
-        if(current!==btn||run!==playbackRun)return;
-        say('Préparation du flux audio…');
-        return playNatural(text,btn,run);
-      }).then(function(){
-        if(current===btn&&run===playbackRun)finishReading(btn,run);
-      }).catch(function(error){
-        if(window.console&&console.error)console.error('Natural French voice failed; using the lightweight voice:',error);
-        if(current!==btn||run!==playbackRun)return;
-        stopNatural();
-        say('La voix naturelle est indisponible. Utilisation de la voix légère.');
-        return Promise.all([loadFrenchEngine(),resume]).then(function(values){
-          if(current!==btn||run!==playbackRun)return;
-          var rate=({lent:130,rapide:210})[prefs.speed]||165;
-          return playChunks(values[0],chunks(text),0,btn,run,rate);
-        }).catch(function(fallbackError){
-          if(window.console&&console.error)console.error('French fallback unavailable:',fallbackError);
-          if(current===btn&&run===playbackRun){
-            current=null;btn.setAttribute('aria-pressed','false');setLabel(btn,false);
-            say('Aucune voix de lecture n’a pu être chargée. Vérifiez votre connexion, puis réessayez.');
-          }
-        });
-      });
-      return;
-    }
-    say('Chargement de la voix française…');
-    Promise.all([loadFrenchEngine(),resume]).then(function(values){
+    say(naturalReady?'Préparation de la lecture avec la voix naturelle…':'La voix naturelle française se prépare…');
+    Promise.all([loadNaturalVoice(),resume]).then(function(){
       if(current!==btn||run!==playbackRun)return;
-      say('Lecture démarrée.');
-      var rate=({lent:130,rapide:210})[prefs.speed]||165;
-      return playChunks(values[0],chunks(text),0,btn,run,rate);
+      return playNatural(text,btn,run);
+    }).then(function(){
+      if(current===btn&&run===playbackRun)finishReading(btn,run);
     }).catch(function(error){
-      if(window.console&&console.error)console.error('French read-aloud unavailable:',error);
-      if(current===btn&&run===playbackRun){
-        current=null;
-        btn.setAttribute('aria-pressed','false');
-        setLabel(btn,false);
-        say('La voix française n’a pas pu être chargée. Vérifiez votre connexion, puis réessayez.');
-      }
+      if(window.console&&console.error)console.error('Pocket TTS French voice failed:',error);
+      if(current!==btn||run!==playbackRun)return;
+      stopNatural();
+      current=null;
+      btn.setAttribute('aria-pressed','false');
+      setLabel(btn,false);
+      naturalLoadError=error;
+      refreshNaturalControls();
+      say('La voix naturelle n’a pas pu être chargée. Vérifiez votre connexion puis réessayez.');
     });
   }
   var ICON='<svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>';
@@ -357,10 +246,10 @@
    '<div class="a11y-row"><span id="l-opt">Lecture et confort</span><div class="a11y-group" role="group" aria-labelledby="l-opt">'+
      '<button type="button" data-k="dys">Police pour la dyslexie</button><button type="button" data-k="sp">Texte plus aéré</button><button type="button" data-k="hc">Contraste renforcé</button><button type="button" data-k="rm">Sans animation</button><button type="button" data-k="calm">Mode calme (moins de décor)</button></div></div>';
   if(canSpeak)rows+='<div class="a11y-row"><span id="l-voix">Lecture à voix haute</span><div class="a11y-group" id="a11y-voice"></div><div class="a11y-group" role="group" aria-label="Vitesse de la voix" style="margin-top:8px"><button type="button" data-sp="lent">Lente</button><button type="button" data-sp="normal">Normale</button><button type="button" data-sp="rapide">Rapide</button></div></div>';
-  if(canSpeak)rows+='<div class="a11y-row a11y-voice-quality"><span id="l-voice-quality">Qualité de la voix</span><p class="voice-help">La voix naturelle Pocket TTS est sélectionnée par défaut. Son premier téléchargement représente environ 134 Mo ; ensuite, la synthèse se fait directement sur cet appareil. Le passage est préparé en entier avant le début de la lecture, pour éviter les coupures sur les appareils plus lents. La voix légère eSpeak NG reste disponible comme solution rapide, mais son timbre est plus mécanique.</p><div class="a11y-group" role="group" aria-labelledby="l-voice-quality"><button type="button" id="a11y-natural-enable">Télécharger et activer la voix naturelle (≈ 134 Mo)</button><button type="button" id="a11y-light-enable" hidden>Utiliser la voix légère</button></div><p class="voice-status" id="a11y-voice-status" aria-live="polite"></p></div>';
+  if(canSpeak)rows+='<div class="a11y-row a11y-voice-quality"><span id="l-voice-quality">Voix naturelle française</span><p class="voice-help">Pocket TTS est la seule voix de lecture. Son téléchargement (environ 134 Mo) commence automatiquement à l’ouverture de la page et les fichiers sont conservés dans le cache du navigateur lorsque celui-ci le permet. Le passage est entièrement préparé avant que le son commence.</p><p class="voice-status" id="a11y-voice-status" aria-live="polite"></p></div>';
   rows+='<div class="a11y-row"><div class="a11y-group"><a href="accessibilite.html#signaler" class="a11y-link">Signaler un problème</a></div><div class="a11y-group" style="margin-top:12px"><button type="button" class="reset" id="a11y-reset">Tout remettre par défaut</button><button type="button" class="reset" id="a11y-close">Fermer</button></div></div>';
   panel.innerHTML=rows;
-  if(canSpeak){naturalButton=panel.querySelector('#a11y-natural-enable');naturalLightButton=panel.querySelector('#a11y-light-enable');naturalStatus=panel.querySelector('#a11y-voice-status');}
+  if(canSpeak){naturalStatus=panel.querySelector('#a11y-voice-status');}
   if(canSpeak){
     var voiceControls=panel.querySelector('#a11y-voice');
     voiceControls.appendChild(listenButton('Écouter un exemple',function(){return 'Bonjour et bienvenue à la Bulle Bleue. Ici, on prend le temps de se retrouver, de s’écouter et de créer ensemble. Chacun vient comme il est.'}));
@@ -380,9 +269,7 @@
     if(b.hasAttribute('data-fs'))prefs.fs=+b.getAttribute('data-fs');
     else if(b.hasAttribute('data-sp')){prefs.speed=b.getAttribute('data-sp');if(current){var c=current;stop(true);c.click()}}
     else if(b.hasAttribute('data-k')){var k=b.getAttribute('data-k');prefs[k]=!prefs[k]}
-    else if(b.id==='a11y-natural-enable'){enableNaturalVoice();return;}
-    else if(b.id==='a11y-light-enable'){prefs.voice='light';save();stop(true);refresh();say('Voix légère activée.');return;}
-    else if(b.id==='a11y-reset'){prefs={hc:false,rm:false,voice:'natural'};stop(true)}
+    else if(b.id==='a11y-reset'){prefs={hc:false,rm:false};stop(true)}
     else if(b.id==='a11y-close'){toggle(false);open.focus();return}
     save();applyAll();refresh();
   });
@@ -394,4 +281,12 @@
   /* La lecture à voix haute reste accessible depuis le panneau dédié.
      Ne pas répéter un bouton sous chaque titre : cela alourdit le parcours visuel. */
   applyAll();refresh();
+  /* Begin downloading the pinned model immediately on page entry. */
+  if(canSpeak){
+    if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catch(function(){});
+    loadNaturalVoice().catch(function(error){
+      if(window.console&&console.warn)console.warn('Pocket TTS preload failed:',error);
+      refreshNaturalControls();
+    });
+  }
 })();
