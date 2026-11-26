@@ -1,12 +1,11 @@
-## Loop 041 — Natural-only reader, smoother continuation and automatic preload
-- [x] Remove the previous lightweight voice engine, its controls, imports and automatic fallback; Pocket TTS is the only read-aloud voice.
-- [x] Start downloading the pinned French Pocket TTS model automatically on every page entry; reuse the browser cache on later visits where storage is retained.
-- [x] Correct chunk handoff: preserve each raw text fragment so a comma/colon does not become an artificial full stop in the next teacher-forced prompt.
-- [x] Port Kyutai's boundary checks for sentence punctuation, decimals, titles and closing quotes while retaining the 25-token teacher-forced chunk budget.
-- [x] Start page playback after a short 0.75-second PCM buffer, then schedule compact audio batches in order as later text segments are synthesized.
-- [x] Show synthesis progress by text segment and update the accessibility disclosure, attribution, static validation and browser/unit regression coverage.
-- [x] Verify both sample and full-page reading start before the worker finishes the entire passage, while scheduled audio batches remain contiguous.
-- [ ] Listen to a long full-page passage on the user's and association owner's physical devices; verify natural pauses and measure first-load time/memory on slower phones.
+## Loop 042 — Pre-generated French (France) page narration
+- [x] Retire the browser-side Pocket TTS model, WebAssembly runtime, tokenization code and live PCM synthesis path.
+- [x] Replace live generation with a static MP3 player that downloads no speech model and does not call Azure during visitor playback.
+- [x] Prepare voice audition and full-page audio generation for standard French (France) Neural voices Denise and Henri.
+- [x] Add a private, manual GitHub Actions generation workflow that reads Azure credentials only from repository Actions secrets.
+- [x] Add offline tests for HTML text extraction, SSML voice selection and the Azure MP3 request contract.
+- [ ] Create the Azure Speech F0 resource, add AZURE_SPEECH_KEY and AZURE_SPEECH_REGION as repository secrets, then run the generation workflow to publish the actual MP3 files.
+- [ ] Listen to both auditions on desktop and mobile, choose the preferred voice with the association owner, and verify every page recording after generation.
 
 # Bulle Bleue - APAiL — Owner feedback and production TODO
 
