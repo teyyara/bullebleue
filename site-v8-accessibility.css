@@ -10,7 +10,7 @@
 ul.chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));justify-content:start;justify-items:start;gap:10px 32px;max-width:820px;margin:0;padding:0 0 0 1.35em;list-style:disc}
 .chips li,.chips li:nth-child(n){display:list-item;list-style:disc;min-height:0;padding:2px 0;border:0!important;border-radius:0!important;background:transparent!important;color:#2A3350;font:400 1.125rem/1.55 'Atkinson Hyperlegible Next',Verdana,sans-serif;transform:none!important;box-shadow:none!important}
 @media(max-width:620px){ul.chips{grid-template-columns:1fr;gap:6px}}
-.sp .hero .card h1,.dys .hero .card h1,.fs-2 .hero .card h1,.fs-3 .hero .card h1{width:auto;max-width:100%;margin-left:0;white-space:normal;word-break:normal;overflow-wrap:break-word;hyphens:none;line-height:1.18;font-size:clamp(1.65rem,4.2vw,3rem)}
+.sp .hero .card h1,.dys .hero .card h1,.fs-2 .hero .card h1,.fs-3 .hero .card h1{width:auto;max-width:100%;margin-left:0;white-space:normal;word-break:normal;overflow-wrap:normal;hyphens:none;line-height:1.18;font-size:clamp(1.65rem,4.2vw,3rem)}
 .sp .hero .card h1{line-height:1.25}
 .dys .hero .card,.fs-2 .hero .card,.fs-3 .hero .card{padding-left:24px;padding-right:24px}
 @media(max-width:620px){.sp .hero .card h1,.dys .hero .card h1,.fs-2 .hero .card h1,.fs-3 .hero .card h1{font-size:clamp(1.45rem,6vw,2.15rem)}}
