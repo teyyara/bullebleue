@@ -1,9 +1,19 @@
 # Bulle Bleue - APAiL — Owner feedback and production TODO
 
-## Loop 038 — Continuous neural speech playback
+## Loop 039 — Continuous speech across model chunks
+- [x] Identify the deeper cause: every Pocket TTS text chunk previously restarted the Flow language model and Mimi audio decoder from the voice prompt, producing audible resets and unstable intonation.
+- [x] Port Pocket TTS teacher-forced continuation: pass the previous chunk's text and generated latent frames into the next chunk instead of starting afresh.
+- [x] Warm the Mimi decoder with the previous chunk's final 12 latent frames and advance its decoder position before generating the next audio block.
+- [x] Use the model's 25-token teacher-forced chunk budget and keep the existing rolling audio buffer for packet delivery.
+- [x] Add unit regressions for continuation text, BOS/latent packing, Mimi step advancement and chunk sizing.
+- [ ] Listen to a long page on the user's device to verify word-to-word flow, natural intonation and paragraph transitions.
+- [ ] Check performance on a slower mobile device; teacher-forced continuation adds a short model prefill at chunk boundaries.
+
+## Loop 038 — Continuous neural speech playback (packet buffering; incomplete on its own)
 - [x] Confirm the dropout cause: short neural PCM packets were scheduled immediately, so slower model-generation intervals could empty the audio queue.
 - [x] Buffer a rolling 2.25 seconds of generated audio before starting playback, then combine packets into larger Web Audio buffers.
 - [x] Schedule buffered blocks back-to-back and keep a reserve ahead of the playback cursor; retain stop/cancel behaviour.
+- Note: this reduced packet-edge underruns but did not solve the user's reported word-to-word cuts. The deeper per-text-chunk model/decoder reset was addressed in Loop 039.
 - [x] Add a browser regression that simulates a deliberately delayed model packet and verifies there is no silent gap between scheduled blocks.
 - [x] Correct the accessibility regression assertion so the lightweight fallback is expected to be visible while the neural voice is selected.
 - [ ] Listen to a long page on the user's and association owner's physical devices to confirm the interruptions are gone and the initial buffering delay is acceptable.
