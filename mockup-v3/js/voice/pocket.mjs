@@ -103,7 +103,41 @@ export function prepare(text, rules) {
  * so a cut at a comma was heard as a stop and a fresh start, which most French sentences of 30 words had.
  * @param {string} text @param {Tokenizer} tokens @param {Rules} rules
  */
-export function chunks(text, tokens, rules, most = 100) {
+/**
+ * Pack the previous chunk's generated latents the way Pocket TTS expects for
+ * teacher-forced continuation: BOS followed by every old frame except the last.
+ * The final old frame becomes the first autoregressive input for the new chunk.
+ * @param {Float32Array[]} frames
+ */
+export function teacherForcedSequence(frames) {
+  if (!frames?.length) return { sequence: new Float32Array(0), firstInput: null }
+  const sequence = new Float32Array(frames.length * 32)
+  sequence.fill(NaN, 0, 32)
+  for (let i = 0; i < frames.length - 1; i++) sequence.set(frames[i], (i + 1) * 32)
+  return { sequence, firstInput: frames[frames.length - 1].slice() }
+}
+
+/** Join a set of 32-value latent frames for the decoder's [1, frames, 32] input. */
+export function packLatents(frames) {
+  const packed = new Float32Array(frames.length * 32)
+  frames.forEach((frame, index) => packed.set(frame, index * 32))
+  return packed
+}
+
+/** Advance ONNX decoder step counters after decoding latent frames, as Mimi requires. */
+export function advanceDecoderSteps(parts, state, amount) {
+  for (const part of parts) {
+    if (part.key !== 'step') continue
+    const tensor = state[part.input_name]
+    const values = tensor?.data ?? tensor
+    if (!values || typeof values.length !== 'number') continue
+    for (let i = 0; i < values.length; i++) {
+      values[i] += typeof values[i] === 'bigint' ? BigInt(amount) : amount
+    }
+  }
+}
+
+export function chunks(text, tokens, rules, most = 25) {
   const all = tokens.encode(prepare(text, rules).text.trim())
   /** @param {number[]} list @param {number[]} marks @param {boolean} [decimals] */
   const cut = (list, marks, decimals) => {
