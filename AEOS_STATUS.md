@@ -1,3 +1,10 @@
+## Delivered in Loop 040 — prepare the whole passage before playback
+- Removed the real-time streaming playback path: Pocket TTS PCM packets are collected until the requested passage is fully synthesized.
+- Joined the complete passage into one Float32 PCM buffer and play it through a single Web Audio source, so slower inference on the visitor's device cannot interrupt playback between packets.
+- Preserved teacher-forced model continuation (Loop 039), the voice speed choices and stop/cancel behaviour.
+- Replaced the delayed-packet test with a browser regression proving no source begins until generation ends and that all packets are joined into one source.
+- Full passage playback now has an initial preparation wait; physical-device listening and memory/performance checks remain open.
+
 ## Delivered in Loop 039 — teacher-forced continuity across speech chunks
 - Replaced independent chunk restarts with Pocket TTS continuation: the next chunk receives the previous chunk's text and generated latent frames.
 - Warmed each fresh Mimi decoder state with the previous chunk's final 12 latent frames and advanced its decoder step counter before new audio is decoded.
