@@ -210,6 +210,7 @@ def generate() -> None:
     manifest = {
         "version": 1,
         "locale": "fr-FR",
+        "status": "ready",
         "engine": "Azure Speech Neural",
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "voices": {},
