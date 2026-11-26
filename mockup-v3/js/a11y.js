@@ -214,60 +214,52 @@
     });
   }
   function playNatural(text,btn,run){
-    /* Pocket TTS produces small PCM packets while its one-thread worker is still
-       generating the next frames. Starting every packet immediately can exhaust
-       the speaker queue and create a tiny silence after each packet. Keep a rolling
-       reserve, join packets into larger buffers, then schedule them back-to-back. */
-    var BUFFER_AHEAD=2.25;
-    var pending=[],pendingSamples=0,pendingRate=24000,started=false;
+    /* The one-thread neural model can synthesize more slowly than the visitor's
+       device plays audio. Streaming its PCM packets therefore risks repeated
+       underruns. Collect the whole passage first, join it into one PCM buffer,
+       and only then start one uninterrupted Web Audio source. */
+    var parts=[],totalSamples=0,sampleRate=24000;
     var playbackRate=({lent:0.9,rapide:1.1})[prefs.speed]||1;
     naturalScheduleAt=audioContext.currentTime;naturalSources=[];
-    function schedulePending(force){
-      if(!pending.length||run!==playbackRun||current!==btn)return;
-      var now=audioContext.currentTime;
-      var lead=started?naturalScheduleAt-now:0;
-      var queuedSeconds=pendingSamples/pendingRate/playbackRate;
-      if(!force&&(!started?queuedSeconds<BUFFER_AHEAD:lead>BUFFER_AHEAD))return;
-      try{
-        var samples=new Float32Array(pendingSamples),offset=0;
-        pending.forEach(function(part){samples.set(part,offset);offset+=part.length});
-        pending=[];pendingSamples=0;
-        var buffer=audioContext.createBuffer(1,samples.length,pendingRate);
-        buffer.copyToChannel(samples,0);
-        var source=audioContext.createBufferSource();
-        source.buffer=buffer;source.playbackRate.value=playbackRate;
-        source.connect(audioContext.destination);
-        var startAt=Math.max(naturalScheduleAt,now+0.06);
-        source.start(startAt);
-        naturalScheduleAt=startAt+buffer.duration/playbackRate;
-        naturalSources.push(source);
-        source.onended=function(){
-          var index=naturalSources.indexOf(source);
-          if(index!==-1)naturalSources.splice(index,1);
-        };
-        if(!started){
-          started=true;
-          say('Lecture démarrée avec la voix naturelle.');
-        }
-      }catch(error){
-        if(window.console&&console.error)console.error('Natural voice audio buffer failed:',error);
-      }
-    }
+    if(naturalStatus)naturalStatus.textContent='Préparation de la lecture… le son commencera lorsque tout le passage sera prêt.';
     var request=requestNatural('speak',{text:text,lang:'fr'},null,function(message){
       if(run!==playbackRun||current!==btn)return;
       try{
         var samples=message.audio instanceof Float32Array?message.audio:new Float32Array(message.audio);
-        pendingRate=message.rate||pendingRate;
-        pending.push(samples);pendingSamples+=samples.length;
-        schedulePending(false);
-      }catch(error){if(window.console&&console.error)console.error('Natural voice audio chunk failed:',error)}
+        if(!samples.length)return;
+        sampleRate=message.rate||sampleRate;
+        parts.push(samples);
+        totalSamples+=samples.length;
+      }catch(error){if(window.console&&console.error)console.error('Natural voice audio packet failed:',error)}
     });
     naturalSpeakJob=request.id;
     return request.promise.then(function(){
       if(naturalSpeakJob===request.id)naturalSpeakJob=0;
-      schedulePending(true);
-      var wait=Math.max(0,naturalScheduleAt-audioContext.currentTime)*1000;
-      return new Promise(function(resolve){setTimeout(resolve,wait+60)});
+      if(run!==playbackRun||current!==btn)return;
+      if(!totalSamples)throw new Error('Pocket TTS did not return any audio samples.');
+      var samples=new Float32Array(totalSamples),offset=0;
+      parts.forEach(function(part){samples.set(part,offset);offset+=part.length});
+      parts.length=0;
+      var buffer=audioContext.createBuffer(1,samples.length,sampleRate);
+      buffer.copyToChannel(samples,0);
+      var source=audioContext.createBufferSource();
+      source.buffer=buffer;
+      source.playbackRate.value=playbackRate;
+      source.connect(audioContext.destination);
+      naturalSources=[source];
+      var startAt=audioContext.currentTime+0.08;
+      naturalScheduleAt=startAt+buffer.duration/playbackRate;
+      return new Promise(function(resolve,reject){
+        source.onended=function(){
+          naturalSources=[];
+          resolve();
+        };
+        try{
+          source.start(startAt);
+          say('Lecture démarrée avec la voix naturelle.');
+          if(naturalStatus)naturalStatus.textContent='Lecture en cours.';
+        }catch(error){naturalSources=[];reject(error)}
+      });
     });
   }
   function stopNatural(){
