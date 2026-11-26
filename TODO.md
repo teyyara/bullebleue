@@ -3,8 +3,9 @@
 - [x] Start downloading the pinned French Pocket TTS model automatically on every page entry; reuse the browser cache on later visits where storage is retained.
 - [x] Correct chunk handoff: preserve each raw text fragment so a comma/colon does not become an artificial full stop in the next teacher-forced prompt.
 - [x] Port Kyutai's boundary checks for sentence punctuation, decimals, titles and closing quotes while retaining the 25-token teacher-forced chunk budget.
-- [x] Retain whole-passage synthesis into one Web Audio buffer, so audio playback never outruns model generation.
-- [x] Update the accessibility disclosure, voice attribution, static validation and browser/unit regression coverage.
+- [x] Start page playback after a short 0.75-second PCM buffer, then schedule compact audio batches in order as later text segments are synthesized.
+- [x] Show synthesis progress by text segment and update the accessibility disclosure, attribution, static validation and browser/unit regression coverage.
+- [x] Verify both sample and full-page reading start before the worker finishes the entire passage, while scheduled audio batches remain contiguous.
 - [ ] Listen to a long full-page passage on the user's and association owner's physical devices; verify natural pauses and measure first-load time/memory on slower phones.
 
 # Bulle Bleue - APAiL — Owner feedback and production TODO

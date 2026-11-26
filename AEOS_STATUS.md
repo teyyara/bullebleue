@@ -3,7 +3,9 @@
 - The pinned French model download now starts immediately on page entry and uses the Cache API on later visits when the browser retains the files; persistent storage is requested where supported.
 - Corrected artificial sentence endings at chunk handoffs: the worker retains each raw text fragment so a comma/colon stays in the continuation prompt instead of becoming a false full stop.
 - Ported Kyutai's tokenizer-aware segmentation checks for sentence punctuation, decimals, abbreviations/titles and closing quotes, retaining the 25-token teacher-forced budget.
-- Kept full-passage PCM collection and one-source playback to prevent model-generation underruns.
+- Replaced the full-passage wait with a 0.75-second startup buffer, compact PCM batching and sequential Web Audio scheduling while subsequent text chunks are synthesized.
+- Added worker progress messages for the current text segment and browser regressions for early sample/full-page playback plus gap-free scheduling under delayed packet delivery.
+- The first sound no longer waits for the whole page; devices with unusually slow inference can still pause when the buffer runs low.
 - Physical-device listening is still needed before claiming subjective perfection.
 
 ## Delivered in Loop 040 — prepare the whole passage before playback
