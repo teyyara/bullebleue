@@ -3,12 +3,18 @@
 **Last updated:** 26 November 2026  
 **Repository:** teyyara/bullebleue · main
 
-## Loop 034 — French read-aloud voice selection
-- [x] Refresh the browser voice list when playback starts, not only when the page loads.
-- [x] Prefer a local French (France) voice, then another French voice; never explicitly assign an English voice to French text.
-- [x] Wait briefly for the browser’s delayed voice list; never start playback with an English default when no French voice is available.
-- [x] Add browser regression tests for delayed French voice availability, French (France) preference, refusal of English fallback and cancelling voice discovery.
-- [ ] Confirm read-aloud pronunciation on the association owner’s and user’s actual devices; available voices depend on each device and browser.
+## Loop 035 — Device-independent French read-aloud
+- [x] Replace reliance on installed browser/device voices with eSpeak NG in WebAssembly through the Spellophone browser package (pinned at 0.2.1).
+- [x] Select the French (France) voice internally; playback works even when the device exposes only English system voices.
+- [x] Synthesize French text into audio samples in the browser and play them with Web Audio; no text or generated audio is sent to a speech API.
+- [x] Load the engine and French language data lazily from the pinned jsDelivr package on first use, with browser caching and a wasm2js fallback where WebAssembly is blocked.
+- [x] Document the first-use download, synthetic voice quality, privacy behavior, source projects and GPL licence.
+- [x] Add browser regressions for an English-only device voice list, actual local audio playback, cancellation and a failed engine download.
+- [ ] Listen on the association owner’s and user’s physical devices to approve the French pronunciation, pace and volume; eSpeak is intentionally lightweight and sounds more synthetic than a neural voice.
+
+## Loop 034 — Initial device-voice fallback investigation (superseded)
+- [x] Confirm that browser speechSynthesis only exposes voices installed or supplied by the device/browser and therefore cannot guarantee French playback.
+- [x] Replace the device-dependent approach with the local WebAssembly speech engine above.
 
 ## Loop 033 — Mobile footer and outbound-link clarity
 - [x] Give the mobile “Informations utiles” destinations two balanced columns instead of three narrow columns.

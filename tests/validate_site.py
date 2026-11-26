@@ -197,6 +197,15 @@ def main():
     assert "Découvrir des gestes du quotidien sans la vue" in article10 and "dix membres" in article10
     assert 'id="signaler"' in parsed["accessibilite.html"][0]
     access_page = parsed["accessibilite.html"][0]
+    assert "vous n’avez pas besoin d’installer une voix française" in access_page
+    assert "ne sont pas envoyés à un service de synthèse vocale" in access_page
+    for href in ("github.com/Spelling-Creator/spellophone", "github.com/espeak-ng/espeak-ng", "gnu.org/licenses/gpl-3.0.html"):
+        assert href in access_page, f"Accessibility page must credit the browser speech engine and its licence: {href}"
+    speech_js = (ROOT / "mockup-v3/js/a11y.js").read_text(encoding="utf-8")
+    assert "https://cdn.jsdelivr.net/npm/@spelling-creator/spellophone@0.2.1/dist/" in speech_js
+    assert "loadVoice('fr-fr')" in speech_js and "AudioContext" in speech_js and ".synthesize(" in speech_js
+    assert "speechSynthesis.speak" not in speech_js and "getVoices()" not in speech_js, "French reading must not depend on voices installed on the device"
+    access_page = parsed["accessibilite.html"][0]
     assert "dans l’en-tête" in access_page and "en bas à gauche" in access_page
     assert "Page introuvable" in parsed["404.html"][0]
     for page in PAGES:

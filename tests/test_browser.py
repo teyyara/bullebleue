@@ -192,84 +192,83 @@ def main():
             a11y.locator("#a11y-reset").click()
             assert "calm" not in (a11y.locator("html").get_attribute("class") or "")
 
-            # Wait for voiceschanged when the list is empty at page load and at
-            # click time. Prefer a local fr-FR voice over other French/English choices.
-            speech=context.new_page()
-            speech.add_init_script("""(() => {
-              const english={name:'English US',lang:'en-US',localService:true};
-              const frenchCanada={name:'French Canada',lang:'fr-CA',localService:true};
-              const frenchFrance={name:'French France',lang:'fr-FR',localService:true};
-              const voices=[english,frenchCanada,frenchFrance,{name:'French France remote',lang:'fr-FR',localService:false}];
-              let loaded=false,calls=0;
-              const utterances=[],listeners=[];
-              class MockUtterance { constructor(text){this.text=text;this.lang='';this.voice=null;this.rate=1;} }
-              const synthesis={
-                getVoices(){calls++;return loaded?voices:[];},
-                addEventListener(name,fn){if(name==='voiceschanged')listeners.push(fn);},
-                removeEventListener(name,fn){if(name==='voiceschanged'){const i=listeners.indexOf(fn);if(i>=0)listeners.splice(i,1);}},
-                cancel(){},
-                speak(u){utterances.push({text:u.text,lang:u.lang,voiceName:u.voice?.name||null,voiceLang:u.voice?.lang||null});if(u.onend)u.onend();}
+            # French read-aloud uses its own browser-side eSpeak engine. The device
+            # deliberately exposes English only; the native speech API must never be called.
+            speech_module_url="https://cdn.jsdelivr.net/npm/@spelling-creator/spellophone@0.2.1/dist/browser.js"
+            speech_module="""export async function createEspeak(options) {
+              const state=globalThis.__localSpeechTest;
+              state.engineOptions=options;
+              if(state.failEngine) throw new Error('mock engine network failure');
+              return {
+                async loadVoice(language){state.voice=language;},
+                synthesize(text,options){
+                  state.sent.push({text,options});
+                  return {samples:new Int16Array([1600,800,-300,-900,400,1200]),sampleRate:22050};
+                }
               };
-              Object.defineProperty(window,'SpeechSynthesisUtterance',{configurable:true,value:MockUtterance});
-              Object.defineProperty(window,'speechSynthesis',{configurable:true,value:synthesis});
-              window.__speechTest={utterances,get calls(){return calls;},emitVoices(){loaded=true;listeners.slice().forEach(fn=>fn());}};
-            })();""")
+            }
+            export function toFloat32(samples){return Float32Array.from(samples,value=>value/32768);}
+            """
+            audio_mock="""(() => {
+              const state=window.__localSpeechTest={engineOptions:null,voice:null,sent:[],starts:0,stops:0,nativeCalls:0,autoEnd:true,failEngine:false};
+              Object.defineProperty(window,'speechSynthesis',{configurable:true,value:{
+                getVoices(){return [{name:'English only',lang:'en-US',localService:true}];},
+                speak(){state.nativeCalls++;},cancel(){}
+              }});
+              class MockAudioContext {
+                constructor(){this.state='running';this.destination={};state.contexts=(state.contexts||0)+1;}
+                resume(){state.resumed=(state.resumed||0)+1;return Promise.resolve();}
+                createBuffer(channels,length,sampleRate){return {numberOfChannels:channels,length,sampleRate,copyToChannel(values){state.lastBuffer=Array.from(values);}};}
+                createBufferSource(){
+                  const source={buffer:null,onended:null,connect(){},start(){state.starts++;if(state.autoEnd)setTimeout(()=>this.onended&&this.onended(),0);},
+                    stop(){state.stops++;setTimeout(()=>this.onended&&this.onended(),0);}};
+                  state.sources=state.sources||[];state.sources.push(source);return source;
+                }
+              }
+              Object.defineProperty(window,'AudioContext',{configurable:true,value:MockAudioContext});
+            })();"""
+            speech=context.new_page()
+            speech.add_init_script(audio_mock)
+            speech.route(speech_module_url,lambda route:route.fulfill(status=200,content_type="application/javascript",headers={"Access-Control-Allow-Origin":"*","Cache-Control":"no-store"},body=speech_module))
             speech.goto(f"{base}/index.html",wait_until="networkidle")
             speech.locator("#a11y-open").click()
             read_button=speech.locator("#a11y-voice .listen")
+            assert read_button.count()==1, "read-aloud must be offered even without a French system voice"
             read_button.click()
-            speech.wait_for_function("document.querySelector('[role=status]').textContent.includes('Recherche')")
-            assert speech.evaluate("window.__speechTest.utterances.length") == 0, "reading must wait instead of using the browser's default English voice"
-            speech.evaluate("window.__speechTest.emitVoices()")
-            speech.wait_for_function("window.__speechTest.utterances.length>0")
-            french_playback=speech.evaluate("()=>({calls:window.__speechTest.calls,utterances:window.__speechTest.utterances})")
-            assert french_playback["calls"]>=3, f"speech synthesis must refresh voices after a delayed voiceschanged event: {french_playback}"
-            assert all(u["lang"].lower()=="fr-fr" and u["voiceLang"].lower()=="fr-fr" and u["voiceName"]=="French France" for u in french_playback["utterances"]), f"read-aloud must explicitly use a local French (France) voice: {french_playback}"
+            speech.wait_for_function("window.__localSpeechTest.sent.length>0 && window.__localSpeechTest.starts>0")
+            speech.wait_for_function("document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')==='false' && document.querySelector('[role=status]').textContent.includes('Lecture terminée.')")
+            local_playback=speech.evaluate("()=>({options:window.__localSpeechTest.engineOptions,voice:window.__localSpeechTest.voice,sent:window.__localSpeechTest.sent,starts:window.__localSpeechTest.starts,nativeCalls:window.__localSpeechTest.nativeCalls,lastBuffer:window.__localSpeechTest.lastBuffer})")
+            assert local_playback["options"]["cdn"]=="jsdelivr" and "fr" in local_playback["options"]["languages"], f"the French engine must load its French language data: {local_playback}"
+            assert local_playback["voice"]=="fr-fr", f"the dedicated French (France) eSpeak voice must be selected: {local_playback}"
+            assert local_playback["sent"] and any(item["text"].strip() for item in local_playback["sent"]), f"page text should be synthesized into audio: {local_playback}"
+            assert all(125<=item["options"]["rate"]<=210 for item in local_playback["sent"]), f"speech speed must map to valid eSpeak rates: {local_playback}"
+            assert local_playback["starts"]>0 and local_playback["nativeCalls"]==0 and local_playback["lastBuffer"], f"French audio must play through Web Audio without using system voices: {local_playback}"
 
-            # When the device exposes no French voice, do not play with an English
-            # default voice. Explain how the visitor can add a French speech voice.
-            no_french=context.new_page()
-            no_french.add_init_script("""(() => {
-              const utterances=[];
-              class MockUtterance { constructor(text){this.text=text;this.lang='';this.voice=null;this.rate=1;} }
-              Object.defineProperty(window,'SpeechSynthesisUtterance',{configurable:true,value:MockUtterance});
-              Object.defineProperty(window,'speechSynthesis',{configurable:true,value:{
-                getVoices(){return [{name:'English US',lang:'en-US',localService:true}];},
-                addEventListener(){},removeEventListener(){},cancel(){},
-                speak(u){utterances.push({lang:u.lang,voiceName:u.voice?.name||null});if(u.onend)u.onend();}
-              }});
-              window.__speechTest={utterances};
-            })();""")
-            no_french.goto(f"{base}/index.html",wait_until="networkidle")
-            no_french.locator("#a11y-open").click()
-            no_french.locator("#a11y-voice .listen").click()
-            no_french.wait_for_function("document.querySelector('[role=status]').textContent.includes('Lecture indisponible')",timeout=5000)
-            fallback=no_french.evaluate("()=>({utterances:window.__speechTest.utterances,status:document.querySelector('[role=status]').textContent,button:document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')})")
-            assert fallback["utterances"]==[], f"an English default voice must never be used for French content: {fallback}"
-            assert fallback["button"]=="false" and "Ajoutez une voix française" in fallback["status"], f"the unavailable-voice state should reset the button and explain the fix: {fallback}"
-
-            # The visitor can cancel while the browser's voice list is still loading.
+            # Playback can be cancelled during a long reading. No later chunk may start.
             cancelled=context.new_page()
-            cancelled.add_init_script("""(() => {
-              const utterances=[],listeners=[];
-              class MockUtterance { constructor(text){this.text=text;this.lang='';this.voice=null;this.rate=1;} }
-              Object.defineProperty(window,'SpeechSynthesisUtterance',{configurable:true,value:MockUtterance});
-              Object.defineProperty(window,'speechSynthesis',{configurable:true,value:{
-                getVoices(){return [];},addEventListener(name,fn){if(name==='voiceschanged')listeners.push(fn);},
-                removeEventListener(name,fn){const i=listeners.indexOf(fn);if(i>=0)listeners.splice(i,1);},
-                cancel(){},speak(u){utterances.push(u);}
-              }});
-              window.__speechTest={utterances};
-            })();""")
+            cancelled.add_init_script(audio_mock.replace("autoEnd:true","autoEnd:false"))
+            cancelled.route(speech_module_url,lambda route:route.fulfill(status=200,content_type="application/javascript",headers={"Access-Control-Allow-Origin":"*","Cache-Control":"no-store"},body=speech_module))
             cancelled.goto(f"{base}/index.html",wait_until="networkidle")
             cancelled.locator("#a11y-open").click()
             cancel_button=cancelled.locator("#a11y-voice .listen")
             cancel_button.click()
-            cancelled.wait_for_function("document.querySelector('[role=status]').textContent.includes('Recherche')")
+            cancelled.wait_for_function("window.__localSpeechTest.starts===1")
             cancel_button.click()
-            cancelled.wait_for_function("document.querySelector('[role=status]').textContent.includes('Lecture arrêtée')")
-            cancelled.wait_for_timeout(2100)
-            assert cancelled.evaluate("window.__speechTest.utterances.length") == 0, "cancelling voice discovery must not start speech later"
+            cancelled.wait_for_function("window.__localSpeechTest.stops===1 && document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')==='false'")
+            cancelled.wait_for_timeout(150)
+            cancel_state=cancelled.evaluate("()=>({starts:window.__localSpeechTest.starts,stops:window.__localSpeechTest.stops,status:document.querySelector('[role=status]').textContent})")
+            assert cancel_state["starts"]==1 and cancel_state["stops"]==1 and cancel_state["status"]=="Lecture arrêtée.", f"cancelling local audio must stop the current chunk and prevent later chunks: {cancel_state}"
+
+            # A CDN/network failure is announced accessibly and never falls back to English.
+            unavailable=context.new_page()
+            unavailable.add_init_script(audio_mock.replace("failEngine:false","failEngine:true"))
+            unavailable.route(speech_module_url,lambda route:route.fulfill(status=200,content_type="application/javascript",headers={"Access-Control-Allow-Origin":"*","Cache-Control":"no-store"},body=speech_module))
+            unavailable.goto(f"{base}/index.html",wait_until="networkidle")
+            unavailable.locator("#a11y-open").click()
+            unavailable.locator("#a11y-voice .listen").click()
+            unavailable.wait_for_function("document.querySelector('[role=status]').textContent.includes('Vérifiez votre connexion')",timeout=5000)
+            failed_playback=unavailable.evaluate("()=>({button:document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed'),nativeCalls:window.__localSpeechTest.nativeCalls,status:document.querySelector('[role=status]').textContent})")
+            assert failed_playback["button"]=="false" and failed_playback["nativeCalls"]==0, f"failed local engine loading should reset its control without English fallback: {failed_playback}"
 
             # Increased letter/word spacing and dyslexia settings must not clip the homepage title.
             spacing=context.new_page()

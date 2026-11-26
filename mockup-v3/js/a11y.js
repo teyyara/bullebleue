@@ -16,64 +16,36 @@
   }
 
   /* ---------- lecture à voix haute ---------- */
-  var synth=window.speechSynthesis, canSpeak=!!(synth&&window.SpeechSynthesisUtterance);
-  var voice=null, current=null, live, voiceWait=null;
-  function pickVoice(){
-    if(!canSpeak){voice=null;return null}
-    var available=[];
-    try{available=synth.getVoices()||[]}catch(e){}
-    var french=available.filter(function(x){return /^fr(?:[-_]|$)/i.test(String(x.lang||''))});
-    var frFR=french.filter(function(x){return /^fr[-_]FR$/i.test(String(x.lang||''))});
-    /* Prefer a local French (France) voice, then any French (France) voice.
-       If that locale is unavailable, use another French voice rather than
-       accidentally pinning the browser's default English voice. */
-    voice=frFR.filter(function(x){return x.localService})[0]||
-      frFR[0]||
-      french.filter(function(x){return x.localService})[0]||
-      french[0]||null;
-    return voice;
-  }
-  if(canSpeak){pickVoice();if(synth.addEventListener)synth.addEventListener('voiceschanged',pickVoice);else synth.onvoiceschanged=pickVoice}
+  /* eSpeak NG runs in this browser through WebAssembly. No system French voice
+     is required, and neither the text nor the generated audio leaves the device. */
+  var AudioContextCtor=window.AudioContext||window.webkitAudioContext;
+  var canSpeak=!!AudioContextCtor;
+  var current=null,live,audioContext=null,activeSource=null,playbackRun=0;
+  var speechEngine=null,speechEnginePromise=null;
+  var TTS_BASE='https://cdn.jsdelivr.net/npm/@spelling-creator/spellophone@0.2.1/dist/';
 
-  /* Do not let a French sentence fall through to an English system voice.
-     Some browsers populate their voice list asynchronously after page load.
-     Wait briefly for voiceschanged; if no French voice appears, stop without
-     speaking and let the visitor know how to fix the device configuration. */
-  function clearVoiceWait(){
-    if(!voiceWait)return;
-    var pending=voiceWait;
-    voiceWait=null;
-    if(pending.timer)window.clearTimeout(pending.timer);
-    if(pending.handler&&synth.removeEventListener)synth.removeEventListener('voiceschanged',pending.handler);
-    if(pending.chained&&synth.onvoiceschanged===pending.chained)synth.onvoiceschanged=pending.previous||null;
-  }
-  function whenFrenchVoiceReady(callback){
-    var available=pickVoice();
-    if(available){callback(available);return}
-    say('Recherche d’une voix française…');
-    var pending={timer:null,handler:null,previous:null,chained:null};
-    function finish(selected){
-      if(voiceWait!==pending)return;
-      clearVoiceWait();
-      callback(selected||null);
+  function loadFrenchEngine(){
+    if(speechEngine)return Promise.resolve(speechEngine);
+    if(!speechEnginePromise){
+      speechEnginePromise=import(TTS_BASE+'browser.js').then(function(api){
+        return api.createEspeak({
+          cdn:'jsdelivr',
+          languages:['fr'],
+          fallback:function(){return import(TTS_BASE+'wasm2js.js')}
+        }).then(function(engine){
+          return engine.loadVoice('fr-fr').then(function(){
+            return {engine:engine,toFloat32:api.toFloat32};
+          });
+        });
+      }).then(function(ready){
+        speechEngine=ready;
+        return ready;
+      }).catch(function(error){
+        speechEnginePromise=null;
+        throw error;
+      });
     }
-    pending.handler=function(){
-      var selected=pickVoice();
-      if(selected)finish(selected);
-    };
-    voiceWait=pending;
-    if(synth.addEventListener)synth.addEventListener('voiceschanged',pending.handler);
-    else{
-      pending.previous=synth.onvoiceschanged;
-      pending.chained=function(event){
-        if(typeof pending.previous==='function')pending.previous.call(synth,event);
-        pending.handler();
-      };
-      synth.onvoiceschanged=pending.chained;
-    }
-    pending.timer=window.setTimeout(function(){finish(pickVoice())},2000);
-    /* Close the race where voices became available while the listener was added. */
-    pending.handler();
+    return speechEnginePromise;
   }
 
   function textOf(el){
@@ -89,35 +61,99 @@
     if(cur)out.push(cur);return out;
   }
   function say(msg){if(live){live.textContent='';setTimeout(function(){live.textContent=msg},50)}}
+  function setLabel(btn,on){
+    var t=btn.querySelector('.listen-t');
+    if(t)t.textContent=on?'Arrêter la lecture':(btn.getAttribute('data-label')||'Écouter');
+    btn.setAttribute('aria-label',on?'Arrêter la lecture':(btn.getAttribute('data-aria-label')||btn.getAttribute('data-label')||'Écouter'));
+  }
+  function finishReading(btn,run){
+    if(current!==btn||run!==playbackRun)return;
+    current=null;
+    btn.setAttribute('aria-pressed','false');
+    setLabel(btn,false);
+    say('Lecture terminée.');
+  }
   function stop(silent){
-    if(!canSpeak)return;
-    clearVoiceWait();
-    synth.cancel();
-    if(current){current.setAttribute('aria-pressed','false');setLabel(current,false);current=null}
+    playbackRun++;
+    if(activeSource){
+      var source=activeSource;
+      activeSource=null;
+      try{source.stop(0)}catch(e){}
+    }
+    if(current){
+      current.setAttribute('aria-pressed','false');
+      setLabel(current,false);
+      current=null;
+    }
     if(!silent)say('Lecture arrêtée.');
   }
-  function setLabel(btn,on){var t=btn.querySelector('.listen-t');if(t)t.textContent=on?'Arrêter la lecture':(btn.getAttribute('data-label')||'Écouter');btn.setAttribute('aria-label',on?'Arrêter la lecture':(btn.getAttribute('data-aria-label')||btn.getAttribute('data-label')||'Écouter'))}
+  function playChunk(ready,part,run,rate){
+    return new Promise(function(resolve,reject){
+      if(run!==playbackRun||!current){resolve();return}
+      try{
+        var result=ready.engine.synthesize(part,{rate:rate});
+        if(!result||!result.samples||!result.samples.length){resolve();return}
+        var buffer=audioContext.createBuffer(1,result.samples.length,result.sampleRate);
+        buffer.copyToChannel(ready.toFloat32(result.samples),0);
+        var source=audioContext.createBufferSource();
+        source.buffer=buffer;
+        source.connect(audioContext.destination);
+        activeSource=source;
+        var ended=false;
+        source.onended=function(){
+          if(ended)return;
+          ended=true;
+          if(activeSource===source)activeSource=null;
+          resolve();
+        };
+        source.start(0);
+      }catch(error){reject(error)}
+    });
+  }
+  function playChunks(ready,list,index,btn,run,rate){
+    if(run!==playbackRun||current!==btn)return Promise.resolve();
+    if(index>=list.length){finishReading(btn,run);return Promise.resolve()}
+    return playChunk(ready,list[index],run,rate).then(function(){
+      return playChunks(ready,list,index+1,btn,run,rate);
+    });
+  }
   function speak(text,btn){
     if(current===btn){stop();return}
     stop(true);
-    current=btn;btn.setAttribute('aria-pressed','true');setLabel(btn,true);
-    whenFrenchVoiceReady(function(frenchVoice){
-      if(current!==btn)return;
-      if(!frenchVoice){
-        current=null;btn.setAttribute('aria-pressed','false');setLabel(btn,false);
-        say('Lecture indisponible : aucune voix française n’a été trouvée. Ajoutez une voix française dans les réglages de votre appareil, puis réessayez.');
-        return;
-      }
+    var run=playbackRun;
+    current=btn;
+    btn.setAttribute('aria-pressed','true');
+    setLabel(btn,true);
+    if(!text){
+      finishReading(btn,run);
+      say('Aucun texte à lire sur cette page.');
+      return;
+    }
+    /* Create/resume audio synchronously in the click gesture; browsers may
+       otherwise block playback after the asynchronous engine download. */
+    var resume=Promise.resolve();
+    try{
+      if(!audioContext||audioContext.state==='closed')audioContext=new AudioContextCtor();
+      if(audioContext.state==='suspended'&&audioContext.resume)resume=audioContext.resume();
+    }catch(error){
+      current=null;btn.setAttribute('aria-pressed','false');setLabel(btn,false);
+      say('La lecture audio n’est pas disponible dans ce navigateur.');
+      return;
+    }
+    say('Chargement de la voix française…');
+    Promise.all([loadFrenchEngine(),resume]).then(function(values){
+      if(current!==btn||run!==playbackRun)return;
       say('Lecture démarrée.');
-      var list=chunks(text);
-      list.forEach(function(c,i){
-        var u=new SpeechSynthesisUtterance(c);
-        u.lang=frenchVoice.lang||'fr-FR';
-        u.voice=frenchVoice;
-        u.rate=({lent:0.6,rapide:1.4})[prefs.speed]||0.95;
-        if(i===list.length-1){u.onend=u.onerror=function(){if(current===btn){btn.setAttribute('aria-pressed','false');setLabel(btn,false);current=null}}}
-        synth.speak(u);
-      });
+      var rate=({lent:130,rapide:210})[prefs.speed]||165;
+      return playChunks(values[0],chunks(text),0,btn,run,rate);
+    }).catch(function(error){
+      if(window.console&&console.error)console.error('French read-aloud unavailable:',error);
+      if(current===btn&&run===playbackRun){
+        current=null;
+        btn.setAttribute('aria-pressed','false');
+        setLabel(btn,false);
+        say('La voix française n’a pas pu être chargée. Vérifiez votre connexion, puis réessayez.');
+      }
     });
   }
   var ICON='<svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>';
