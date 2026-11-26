@@ -275,13 +275,19 @@ def main():
             for width,height in ((320,812),(1440,900)):
                 spacing.set_viewport_size({"width":width,"height":height})
                 spacing.goto(f"{base}/index.html",wait_until="networkidle")
+                load_all_images(spacing)
                 for classes in (["sp"],["dys","fs-3"]):
                     spacing.evaluate("(values)=>document.documentElement.classList.add(...values)",classes)
-                    title_metrics=spacing.evaluate("()=>{const h=document.querySelector('.hero .card h1'),r=h.getBoundingClientRect();const over=[...document.body.querySelectorAll('*')].map(e=>{const b=e.getBoundingClientRect();return {tag:e.tagName,cls:typeof e.className==='string'?e.className:'',right:Math.round(b.right),left:Math.round(b.left),w:Math.round(b.width)}}).filter(x=>x.w>0&&(x.right>innerWidth+1||x.left< -1)).slice(0,8);return {doc:document.documentElement.scrollWidth,inner:innerWidth,right:r.right,scroll:h.scrollWidth,client:h.clientWidth,wrap:getComputedStyle(h).overflowWrap,word:getComputedStyle(h).wordBreak,hyphens:getComputedStyle(h).hyphens,over};}")
-                    assert title_metrics["doc"]<=width+1, f"page develops horizontal overflow with accessibility spacing: {title_metrics}"
-                    assert title_metrics["right"]<=width+1, f"hero title overflows with accessibility spacing: {title_metrics}"
-                    assert title_metrics["scroll"]<=title_metrics["client"]+1, f"hero title is clipped with accessibility spacing: {title_metrics}"
-                    assert title_metrics["wrap"]=="normal" and title_metrics["word"]=="normal" and title_metrics["hyphens"]=="none", f"hero title should wrap at spaces, not split words: {title_metrics}"
+                    # The dyslexia setting swaps in a local font. Wait for that font
+                    # and two layout frames before measuring, so the check catches a
+                    # real overflow rather than a late font/image layout shift.
+                    spacing.evaluate("()=>document.fonts.ready")
+                    spacing.evaluate("()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))")
+                    title_metrics=spacing.evaluate("()=>{const h=document.querySelector('.hero .card h1'),r=h.getBoundingClientRect();const over=[...document.body.querySelectorAll('*')].map(e=>{const b=e.getBoundingClientRect();return {tag:e.tagName,cls:typeof e.className==='string'?e.className:'',right:Math.round(b.right),left:Math.round(b.left),w:Math.round(b.width)}}).filter(x=>x.w>0&&(x.right>innerWidth+1||x.left< -1)).slice(0,8);return {classes:document.documentElement.className,doc:document.documentElement.scrollWidth,inner:innerWidth,right:r.right,scroll:h.scrollWidth,client:h.clientWidth,wrap:getComputedStyle(h).overflowWrap,word:getComputedStyle(h).wordBreak,hyphens:getComputedStyle(h).hyphens,over};}")
+                    assert title_metrics["doc"]<=width+1, f"page develops horizontal overflow with accessibility spacing ({classes}): {title_metrics}"
+                    assert title_metrics["right"]<=width+1, f"hero title overflows with accessibility spacing ({classes}): {title_metrics}"
+                    assert title_metrics["scroll"]<=title_metrics["client"]+1, f"hero title is clipped with accessibility spacing ({classes}): {title_metrics}"
+                    assert title_metrics["wrap"]=="normal" and title_metrics["word"]=="normal" and title_metrics["hyphens"]=="none", f"hero title should wrap at spaces, not split words ({classes}): {title_metrics}"
                     spacing.evaluate("()=>document.documentElement.classList.remove('sp','dys','fs-3')")
             spacing.close()
 
