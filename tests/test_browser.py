@@ -153,6 +153,14 @@ def main():
                         assert "Vercel Inc." in legal_text and "2 mars 2019" in legal_text
                     elif path=="accessibilite.html":
                         assert page.locator("#signaler").count()==1
+                        page.locator("#a11y-open").click()
+                        assert page.locator("#a11y-panel").is_visible()
+                        assert page.locator("#a11y-natural-enable").count()==1
+                        assert "134 Mo" in page.locator("#a11y-natural-enable").inner_text()
+                        assert page.locator("#a11y-voice-status").count()==1
+                        assert page.locator("#a11y-light-enable").is_hidden()
+                        page.locator("#a11y-close").click()
+                        assert page.locator("#a11y-panel").is_hidden()
                     elif path=="facile-a-lire.html":
                         assert "Mercredi" in page.locator("main").inner_text() and "Samedi" in page.locator("main").inner_text()
                     measurements.append({"page":path,"width":width,"height":height,"images":page.locator("img").count(),"widths":page.evaluate("()=>[document.documentElement.scrollWidth,document.body.scrollWidth]")})
