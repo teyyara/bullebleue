@@ -275,6 +275,7 @@
       }).catch(function(error){
         if(window.console&&console.error)console.error('Natural French voice failed; using the lightweight voice:',error);
         if(current!==btn||run!==playbackRun)return;
+        stopNatural();
         say('La voix naturelle est indisponible. Utilisation de la voix légère.');
         return Promise.all([loadFrenchEngine(),resume]).then(function(values){
           if(current!==btn||run!==playbackRun)return;
