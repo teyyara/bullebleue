@@ -160,7 +160,7 @@ def main():
                         assert all(button.is_disabled() for button in page.locator("#a11y-voice .listen").all())
                         assert page.locator("#a11y-voice-status").count()==1
                         voice_status=page.locator("#a11y-voice-status").inner_text()
-                        assert "enregistrements audio ne sont pas encore disponibles" in voice_status, f"missing generated MP3s should be reported clearly: {voice_status}"
+                        assert "en attente de génération" in voice_status, f"missing generated MP3s should be reported clearly: {voice_status}"
                         assert "Pocket TTS" not in page.locator("#a11y-panel").inner_text()
                         page.locator("#a11y-close").click()
                         assert page.locator("#a11y-panel").is_hidden()
@@ -208,7 +208,7 @@ def main():
             audio_page=audio_context.new_page()
             audio_page.add_init_script("""(() => {
               const state=window.__staticVoiceTest={played:[],paused:0,loads:0,workerConstructed:0};
-              const manifest={version:1,locale:"fr-FR",voices:{
+              const manifest={version:1,locale:"fr-FR",status:"ready",voices:{
                 denise:{label:"Denise · voix féminine",sample:"/assets/speech/fr-FR/denise/sample.mp3",pages:{"index.html":"/assets/speech/fr-FR/denise/pages/index.mp3"}},
                 henri:{label:"Henri · voix masculine",sample:"/assets/speech/fr-FR/henri/sample.mp3",pages:{"index.html":"/assets/speech/fr-FR/henri/pages/index.mp3"}}
               }};
