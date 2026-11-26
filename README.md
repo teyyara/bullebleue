@@ -97,6 +97,7 @@ The Accessibility control is first in keyboard order after the skip link. On pho
 
 Read-aloud defaults to the on-device neural French Pocket TTS voice. Visitors can try a short French sample before choosing full-page reading. Its first-use download (approximately 134 MB) starts only when they begin playback and is disclosed in the accessibility panel. The smaller eSpeak NG voice remains an explicit lightweight fallback. Both engines synthesize in the browser; page text is not sent to a speech API.
 
+The neural reader keeps a rolling 2.25-second audio reserve, joins short inference packets into larger buffers and schedules those blocks continuously to reduce brief cut-outs when model generation fluctuates. A browser regression simulates a delayed packet and checks that adjacent audio blocks remain gap-free.
 ## Image delivery
 
 The 17 raster assets rendered by the public pages now have WebP variants (3,056,544 bytes combined before, 1,754,162 bytes after; 42.6% smaller). Original supplied images remain available in the repository. The Open Graph sharing image deliberately remains JPEG for compatibility. Per-image measurements are in evidence/visual/webp-optimization-report.json.
