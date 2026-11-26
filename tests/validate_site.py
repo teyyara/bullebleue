@@ -75,6 +75,10 @@ def main():
         parsed[page] = (html, parser)
         assert parser.lang == "fr" and parser.title and parser.description, f"{page}: French metadata required"
         assert parser.h1 == 1 and parser.main == 1, f"{page}: one h1 and one main required"
+        eyebrow_labels = re.findall(r'<([a-z0-9]+)[^>]*class="[^"]*\\beyebrow\\b[^"]*"[^>]*>(.*?)</\\1>', html, re.S)
+        for _, markup in eyebrow_labels:
+            label = re.sub(r"<[^>]+>", "", markup).strip()
+            assert not label.isupper(), f"{page}: section label should not be all uppercase: {label}"
         assert parser.nav_links == list(NAV), f"{page}: shared navigation order changed: {parser.nav_links}"
         assert len(parser.nav_links) == len(set(parser.nav_links)), f"{page}: duplicate navigation destination"
         assert parser.nav_links.count("contact.html") == 1, f"{page}: Contact must appear exactly once"
