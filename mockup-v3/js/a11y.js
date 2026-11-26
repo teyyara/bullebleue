@@ -128,51 +128,88 @@
     return naturalLoadPromise;
   }
   function playNatural(text,btn,run){
-    /* The one-thread neural model can synthesize more slowly than the visitor's
-       device plays audio. Streaming its PCM packets therefore risks repeated
-       underruns. Collect the whole passage first, join it into one PCM buffer,
-       and only then start one uninterrupted Web Audio source. */
-    var parts=[],totalSamples=0,sampleRate=24000;
+    /* Start after a short safety buffer, then schedule compact PCM batches in
+       sequence while the worker synthesizes the rest of the page. This avoids
+       waiting for the whole document and avoids creating one source per tiny
+       model packet. */
+    var pendingParts=[],pendingSamples=0,totalSamples=0,sampleRate=24000;
+    var started=false,synthesisDone=false,settled=false;
+    var startBufferSamples=Math.round(sampleRate*0.75);
+    var batchSamples=Math.round(sampleRate*0.42);
     var playbackRate=({lent:0.9,rapide:1.1})[prefs.speed]||1;
     naturalScheduleAt=audioContext.currentTime;naturalSources=[];
-    if(naturalStatus)naturalStatus.textContent='Préparation de la lecture… le son commencera lorsque tout le passage sera prêt.';
-    var request=requestNatural('speak',{text:text,lang:'fr'},null,function(message){
-      if(run!==playbackRun||current!==btn)return;
-      try{
-        var samples=message.audio instanceof Float32Array?message.audio:new Float32Array(message.audio);
-        if(!samples.length)return;
-        sampleRate=message.rate||sampleRate;
-        parts.push(samples);
-        totalSamples+=samples.length;
-      }catch(error){if(window.console&&console.error)console.error('Natural voice audio packet failed:',error)}
-    });
-    naturalSpeakJob=request.id;
-    return request.promise.then(function(){
-      if(naturalSpeakJob===request.id)naturalSpeakJob=0;
-      if(run!==playbackRun||current!==btn)return;
-      if(!totalSamples)throw new Error('Pocket TTS did not return any audio samples.');
-      var samples=new Float32Array(totalSamples),offset=0;
-      parts.forEach(function(part){samples.set(part,offset);offset+=part.length});
-      parts.length=0;
-      var buffer=audioContext.createBuffer(1,samples.length,sampleRate);
-      buffer.copyToChannel(samples,0);
-      var source=audioContext.createBufferSource();
-      source.buffer=buffer;
-      source.playbackRate.value=playbackRate;
-      source.connect(audioContext.destination);
-      naturalSources=[source];
-      var startAt=audioContext.currentTime+0.08;
-      naturalScheduleAt=startAt+buffer.duration/playbackRate;
-      return new Promise(function(resolve,reject){
+    if(naturalStatus)naturalStatus.textContent='Préparation du premier extrait… la lecture commencera dès qu’il sera prêt.';
+    return new Promise(function(resolve,reject){
+      function settle(){
+        if(settled||!synthesisDone||pendingSamples||naturalSources.length)return;
+        settled=true;
+        if(!totalSamples)reject(new Error('Pocket TTS did not return any audio samples.'));
+        else resolve();
+      }
+      function flush(force){
+        if(!pendingSamples||(!force&&pendingSamples<batchSamples))return;
+        var samples=new Float32Array(pendingSamples),offset=0;
+        pendingParts.forEach(function(part){samples.set(part,offset);offset+=part.length});
+        pendingParts=[];pendingSamples=0;
+        var buffer=audioContext.createBuffer(1,samples.length,sampleRate);
+        buffer.copyToChannel(samples,0);
+        var source=audioContext.createBufferSource();
+        source.buffer=buffer;
+        source.playbackRate.value=playbackRate;
+        source.connect(audioContext.destination);
+        var startAt=Math.max(naturalScheduleAt,audioContext.currentTime+0.04);
+        naturalScheduleAt=startAt+buffer.duration/playbackRate;
+        naturalSources.push(source);
         source.onended=function(){
-          naturalSources=[];
-          resolve();
+          naturalSources=naturalSources.filter(function(one){return one!==source});
+          settle();
         };
         try{
           source.start(startAt);
-          say('Lecture démarrée avec la voix naturelle.');
-          if(naturalStatus)naturalStatus.textContent='Lecture en cours.';
-        }catch(error){naturalSources=[];reject(error)}
+          if(!started){
+            started=true;
+            say('Lecture démarrée avec la voix naturelle.');
+          }
+          if(naturalStatus)naturalStatus.textContent='Lecture en cours · la suite du texte est préparée.';
+        }catch(error){
+          naturalSources=naturalSources.filter(function(one){return one!==source});
+          reject(error);
+        }
+      }
+      var request;
+      try{
+        request=requestNatural('speak',{text:text,lang:'fr'},function(message){
+          if(run!==playbackRun||current!==btn||message.phase!=='synthesis'||!naturalStatus)return;
+          var progress='Partie '+message.part+' sur '+message.parts;
+          naturalStatus.textContent=started?'Lecture en cours · '+progress+' en préparation…':'Préparation du premier extrait · '+progress+'…';
+        },function(message){
+          if(run!==playbackRun||current!==btn)return;
+          try{
+            var samples=message.audio instanceof Float32Array?message.audio:new Float32Array(message.audio);
+            if(!samples.length)return;
+            sampleRate=message.rate||sampleRate;
+            pendingParts.push(samples);
+            pendingSamples+=samples.length;
+            totalSamples+=samples.length;
+            if(!started&&pendingSamples>=startBufferSamples){
+              started=true;
+              flush(true);
+            }else if(started)flush(false);
+          }catch(error){reject(error)}
+        });
+      }catch(error){reject(error);return}
+      naturalSpeakJob=request.id;
+      request.promise.then(function(){
+        if(naturalSpeakJob===request.id)naturalSpeakJob=0;
+        synthesisDone=true;
+        if(run===playbackRun&&current===btn){
+          if(!started&&pendingSamples)started=true;
+          flush(true);
+        }
+        settle();
+      }).catch(function(error){
+        if(naturalSpeakJob===request.id)naturalSpeakJob=0;
+        reject(error);
       });
     });
   }
@@ -246,7 +283,7 @@
    '<div class="a11y-row"><span id="l-opt">Lecture et confort</span><div class="a11y-group" role="group" aria-labelledby="l-opt">'+
      '<button type="button" data-k="dys">Police pour la dyslexie</button><button type="button" data-k="sp">Texte plus aéré</button><button type="button" data-k="hc">Contraste renforcé</button><button type="button" data-k="rm">Sans animation</button><button type="button" data-k="calm">Mode calme (moins de décor)</button></div></div>';
   if(canSpeak)rows+='<div class="a11y-row"><span id="l-voix">Lecture à voix haute</span><div class="a11y-group" id="a11y-voice"></div><div class="a11y-group" role="group" aria-label="Vitesse de la voix" style="margin-top:8px"><button type="button" data-sp="lent">Lente</button><button type="button" data-sp="normal">Normale</button><button type="button" data-sp="rapide">Rapide</button></div></div>';
-  if(canSpeak)rows+='<div class="a11y-row a11y-voice-quality"><span id="l-voice-quality">Voix naturelle française</span><p class="voice-help">Pocket TTS est la seule voix de lecture. Son téléchargement (environ 134 Mo) commence automatiquement à l’ouverture de la page et les fichiers sont conservés dans le cache du navigateur lorsque celui-ci le permet. Le passage est entièrement préparé avant que le son commence.</p><p class="voice-status" id="a11y-voice-status" aria-live="polite"></p></div>';
+  if(canSpeak)rows+='<div class="a11y-row a11y-voice-quality"><span id="l-voice-quality">Voix naturelle française</span><p class="voice-help">Pocket TTS est la seule voix de lecture. Son téléchargement (environ 134 Mo) commence automatiquement à l’ouverture de la page et les fichiers sont conservés dans le cache du navigateur lorsque celui-ci le permet. La lecture commence dès que les premières secondes sont prêtes ; la suite est préparée pendant l’écoute.</p><p class="voice-status" id="a11y-voice-status" aria-live="polite"></p></div>';
   rows+='<div class="a11y-row"><div class="a11y-group"><a href="accessibilite.html#signaler" class="a11y-link">Signaler un problème</a></div><div class="a11y-group" style="margin-top:12px"><button type="button" class="reset" id="a11y-reset">Tout remettre par défaut</button><button type="button" class="reset" id="a11y-close">Fermer</button></div></div>';
   panel.innerHTML=rows;
   if(canSpeak){naturalStatus=panel.querySelector('#a11y-voice-status');}
