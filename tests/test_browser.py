@@ -192,6 +192,56 @@ def main():
             a11y.locator("#a11y-reset").click()
             assert "calm" not in (a11y.locator("html").get_attribute("class") or "")
 
+            # French speech synthesis: voice lists may be empty on page load,
+            # so the first user-triggered read must refresh and explicitly choose
+            # a French (France) voice instead of retaining the browser's English default.
+            speech=context.new_page()
+            speech.add_init_script("""(() => {
+              const english={name:'English US',lang:'en-US',localService:true};
+              const frenchCanada={name:'French Canada',lang:'fr-CA',localService:true};
+              const frenchFrance={name:'French France',lang:'fr-FR',localService:true};
+              const voices=[english,frenchCanada,frenchFrance,{name:'French France remote',lang:'fr-FR',localService:false}];
+              let calls=0;
+              const utterances=[];
+              class MockUtterance { constructor(text){this.text=text;this.lang='';this.voice=null;this.rate=1;} }
+              Object.defineProperty(window,'SpeechSynthesisUtterance',{configurable:true,value:MockUtterance});
+              Object.defineProperty(window,'speechSynthesis',{configurable:true,value:{
+                getVoices(){calls++;return calls===1?[]:voices;},
+                addEventListener(){},cancel(){},
+                speak(u){utterances.push({text:u.text,lang:u.lang,voiceName:u.voice?.name||null,voiceLang:u.voice?.lang||null});if(u.onend)u.onend();}
+              }});
+              window.__speechTest={utterances,get calls(){return calls;}};
+            })();""")
+            speech.goto(f"{base}/index.html",wait_until="networkidle")
+            speech.locator("#a11y-open").click()
+            speech.locator("#a11y-voice .listen").click()
+            speech.wait_for_function("window.__speechTest && window.__speechTest.utterances.length>0")
+            french_playback=speech.evaluate("()=>({calls:window.__speechTest.calls,utterances:window.__speechTest.utterances})")
+            assert french_playback["calls"]>=2, f"speech synthesis must refresh voices when the user starts reading: {french_playback}"
+            assert all(u["lang"].lower().startswith("fr") and u["voiceLang"].lower()=="fr-fr" and u["voiceName"]=="French France" for u in french_playback["utterances"]), f"read-aloud must explicitly use a local French (France) voice: {french_playback}"
+
+            # When no French voice exists, keep the utterance language French and
+            # explain that the device's default voice may be used.
+            no_french=context.new_page()
+            no_french.add_init_script("""(() => {
+              const utterances=[];
+              class MockUtterance { constructor(text){this.text=text;this.lang='';this.voice=null;this.rate=1;} }
+              Object.defineProperty(window,'SpeechSynthesisUtterance',{configurable:true,value:MockUtterance});
+              Object.defineProperty(window,'speechSynthesis',{configurable:true,value:{
+                getVoices(){return [{name:'English US',lang:'en-US',localService:true}];},
+                addEventListener(){},cancel(){},
+                speak(u){utterances.push({lang:u.lang,voiceName:u.voice?.name||null});if(u.onend)u.onend();}
+              }});
+              window.__speechTest={utterances};
+            })();""")
+            no_french.goto(f"{base}/index.html",wait_until="networkidle")
+            no_french.locator("#a11y-open").click()
+            no_french.locator("#a11y-voice .listen").click()
+            no_french.wait_for_function("window.__speechTest && window.__speechTest.utterances.length>0")
+            fallback=no_french.evaluate("()=>({utterances:window.__speechTest.utterances,status:document.querySelector('[role=status]').textContent})")
+            assert all(u["lang"].lower()=="fr-fr" and u["voiceName"] is None for u in fallback["utterances"]), f"English voice must never be explicitly selected as a French reading voice: {fallback}"
+            assert "Aucune voix française" in fallback["status"], f"users should be told when their device has no French voice: {fallback}"
+
             # Increased letter/word spacing and dyslexia settings must not clip the homepage title.
             spacing=context.new_page()
             for width,height in ((320,812),(1440,900)):

@@ -19,9 +19,19 @@
   var synth=window.speechSynthesis, canSpeak=!!(synth&&window.SpeechSynthesisUtterance);
   var voice=null, current=null, live;
   function pickVoice(){
-    if(!canSpeak)return;
-    var v=synth.getVoices().filter(function(x){return /^fr/i.test(x.lang)});
-    voice=v.filter(function(x){return /fr[-_]FR/i.test(x.lang)&&x.localService})[0]||v.filter(function(x){return /fr[-_]FR/i.test(x.lang)})[0]||v[0]||null;
+    if(!canSpeak){voice=null;return null}
+    var available=[];
+    try{available=synth.getVoices()||[]}catch(e){}
+    var french=available.filter(function(x){return /^fr(?:[-_]|$)/i.test(String(x.lang||''))});
+    var frFR=french.filter(function(x){return /^fr[-_]FR$/i.test(String(x.lang||''))});
+    /* Prefer a local French (France) voice, then any French (France) voice.
+       If that locale is unavailable, use another French voice rather than
+       accidentally pinning the browser's default English voice. */
+    voice=frFR.filter(function(x){return x.localService})[0]||
+      frFR[0]||
+      french.filter(function(x){return x.localService})[0]||
+      french[0]||null;
+    return voice;
   }
   if(canSpeak){pickVoice();if(synth.addEventListener)synth.addEventListener('voiceschanged',pickVoice);else synth.onvoiceschanged=pickVoice}
 
@@ -48,11 +58,18 @@
   function speak(text,btn){
     if(current===btn){stop();return}
     stop(true);
-    current=btn;btn.setAttribute('aria-pressed','true');setLabel(btn,true);say('Lecture démarrée.');
+    /* Voice lists can be empty during page load and populate only afterwards.
+       Refresh on every user request so the first utterance also gets the
+       installed French voice instead of the browser's default voice. */
+    var frenchVoice=pickVoice();
+    current=btn;btn.setAttribute('aria-pressed','true');setLabel(btn,true);
+    say(frenchVoice?'Lecture démarrée.':'Aucune voix française détectée sur cet appareil. La lecture utilise la voix par défaut du navigateur.');
     var list=chunks(text);
     list.forEach(function(c,i){
       var u=new SpeechSynthesisUtterance(c);
-      u.lang='fr-FR';if(voice)u.voice=voice;u.rate=({lent:0.6,rapide:1.4})[prefs.speed]||0.95;
+      u.lang=frenchVoice&&frenchVoice.lang?frenchVoice.lang:'fr-FR';
+      if(frenchVoice)u.voice=frenchVoice;
+      u.rate=({lent:0.6,rapide:1.4})[prefs.speed]||0.95;
       if(i===list.length-1){u.onend=u.onerror=function(){if(current===btn){btn.setAttribute('aria-pressed','false');setLabel(btn,false);current=null}}}
       synth.speak(u);
     });
