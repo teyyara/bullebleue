@@ -291,6 +291,33 @@ def main():
             assert reduced.locator("h1").is_visible()
             assert reduced.evaluate("getComputedStyle(document.documentElement).scrollBehavior")=="auto", "system reduced-motion must disable smooth scrolling"
 
+            # One real Chromium smoke test exercises the pinned jsDelivr package,
+            # the WASM engine, French dictionary download and a genuine Web Audio source.
+            if ENGINE=="chromium":
+                live_context=browser.new_context()
+                live_speech=live_context.new_page()
+                live_speech.add_init_script("""(() => {
+                  const state=window.__liveTtsAudio={starts:0,nativeCalls:0};
+                  Object.defineProperty(window,'speechSynthesis',{configurable:true,value:{
+                    getVoices(){return [{name:'English only',lang:'en-US'}];},
+                    speak(){state.nativeCalls++;},cancel(){}
+                  }});
+                  const proto=window.AudioBufferSourceNode&&window.AudioBufferSourceNode.prototype;
+                  if(proto){
+                    const original=proto.start;
+                    proto.start=function(){state.starts++;return original.apply(this,arguments);};
+                  }
+                })();""")
+                live_speech.goto(f"{base}/index.html",wait_until="networkidle",timeout=30000)
+                live_speech.locator("#a11y-open").click()
+                live_speech.locator("#a11y-voice .listen").click()
+                live_speech.wait_for_function("window.__liveTtsAudio.starts>0",timeout=90000)
+                live_state=live_speech.evaluate("()=>({starts:window.__liveTtsAudio.starts,nativeCalls:window.__liveTtsAudio.nativeCalls,button:document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed'),status:document.querySelector('[role=status]').textContent})")
+                assert live_state["starts"]>0 and live_state["nativeCalls"]==0 and live_state["button"]=="true", f"real eSpeak NG package must synthesize French and start Web Audio with no French system voice: {live_state}"
+                live_speech.locator("#a11y-voice .listen").click()
+                live_speech.wait_for_function("document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')==='false'")
+                live_context.close()
+
             # In-page anchors must leave their destination clear of the sticky header.
             anchor_page=context.new_page()
             anchor_page.set_viewport_size({"width":390,"height":844})
