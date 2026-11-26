@@ -182,6 +182,18 @@ def main():
             a11y.locator("#a11y-reset").click()
             assert "dys" not in (a11y.locator("html").get_attribute("class") or "")
 
+            # Increased letter/word spacing and dyslexia settings must not clip the homepage title.
+            spacing=context.new_page()
+            spacing.set_viewport_size({"width":320,"height":812})
+            spacing.goto(f"{base}/index.html",wait_until="networkidle")
+            for classes in (["sp"],["dys","fs-3"]):
+                spacing.evaluate("(values)=>document.documentElement.classList.add(...values)",classes)
+                title_metrics=spacing.evaluate("()=>{const h=document.querySelector('.hero .card h1'),r=h.getBoundingClientRect();return {doc:document.documentElement.scrollWidth,inner:innerWidth,right:r.right,scroll:h.scrollWidth,client:h.clientWidth};}")
+                assert title_metrics["doc"]<=321 and title_metrics["right"]<=321, f"hero title overflows with accessibility spacing: {title_metrics}"
+                assert title_metrics["scroll"]<=title_metrics["client"]+1, f"hero title is clipped with accessibility spacing: {title_metrics}"
+                spacing.evaluate("()=>document.documentElement.classList.remove('sp','dys','fs-3')")
+            spacing.close()
+
             # Reduced-motion and no-JavaScript users still receive all primary content.
             reduced=context.new_page();reduced.emulate_media(reduced_motion="reduce")
             reduced.goto(f"{base}/index.html",wait_until="networkidle")
