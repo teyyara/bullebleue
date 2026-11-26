@@ -210,6 +210,12 @@ def main():
     assert (ROOT / "tests/test_azure_speech.py").is_file()
     assert (ROOT / "docs/azure-speech-setup.md").is_file()
     assert (ROOT / ".github/workflows/generate-french-audio.yml").is_file()
+    speech_manifest_path = ROOT / "assets/speech/fr-FR/manifest.json"
+    assert speech_manifest_path.is_file(), "the pending French audio manifest must prevent missing-resource errors"
+    speech_manifest = json.loads(speech_manifest_path.read_text(encoding="utf-8"))
+    assert speech_manifest["locale"] == "fr-FR" and speech_manifest["status"] == "pending"
+    assert set(speech_manifest["voices"]) == {"denise", "henri"}
+    assert not any(speech_manifest["voices"][key].get("sample") for key in speech_manifest["voices"]), "placeholder manifest must not advertise nonexistent MP3 files"
     for old_voice_file in ("pocket.mjs", "words.mjs", "reader-worker.mjs", "NOTICE.md"):
         assert not (ROOT / "mockup-v3/js/voice" / old_voice_file).exists(), f"retired local model remains: {old_voice_file}"
     assert not (ROOT / "tests/test_voice.mjs").exists(), "retired Pocket TTS tests should be removed"
