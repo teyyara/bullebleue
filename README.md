@@ -97,4 +97,4 @@ The Accessibility control is first in keyboard order after the skip link. On pho
 
 ## Image delivery
 
-The 17 raster assets rendered by the public pages now have WebP variants (3,056,544 bytes combined before, 2,201,886 bytes after; 28.0% smaller). Original supplied images remain available in the repository. The Open Graph sharing image deliberately remains JPEG for compatibility. Per-image measurements are in evidence/visual/webp-optimization-report.json.
+The 17 raster assets rendered by the public pages now have WebP variants (3,056,544 bytes combined before, 1,754,162 bytes after; 42.6% smaller). Original supplied images remain available in the repository. The Open Graph sharing image deliberately remains JPEG for compatibility. Per-image measurements are in evidence/visual/webp-optimization-report.json.

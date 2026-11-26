@@ -15,7 +15,7 @@
 - [x] Add Open Graph image metadata for social previews using the owner-selected group photograph.
 - [x] Remove decorative bubbles, pale geometric backplates and the outings flourish in “Mode calme” while preserving content and documentary photos.
 - [x] Clip the mobile mural at the viewport edge under increased text spacing and reduce excess vertical gaps between homepage sections.
-- [x] Create WebP derivatives for 17 rendered raster assets and measure the result: 3,056,544 bytes to 2,201,886 bytes (28.0% smaller); original uploads retained.
+- [x] Create WebP derivatives for 17 rendered raster assets and measure the result: 3,056,544 bytes to 1,754,162 bytes (42.6% smaller); original uploads retained.
 - [ ] Complete screen-reader and real-device checks with people who use the relevant accessibility settings.
 
 ## Loop 031 — Real brand assets across all routes

@@ -4,25 +4,29 @@
   "summary": {
     "images_converted": 17,
     "original_total_bytes": 3056544,
-    "webp_total_bytes": 2201886,
-    "bytes_saved": 854658,
-    "reduction_percent": 28.0
+    "webp_total_bytes": 1754162,
+    "bytes_saved": 1302382,
+    "reduction_percent": 42.6
   },
   "images": [
     {
       "source": "assets/logo final.png",
       "webp": "assets/logo final.webp",
-      "width": 1052,
-      "height": 1024,
+      "source_width": 1052,
+      "source_height": 1024,
+      "width": 256,
+      "height": 249,
       "source_bytes": 1062882,
-      "webp_bytes": 491716,
-      "saved_bytes": 571166,
-      "saved_percent": 53.7,
-      "encoding": "lossless"
+      "webp_bytes": 43992,
+      "saved_bytes": 1018890,
+      "saved_percent": 95.9,
+      "encoding": "lossless at 256 px max"
     },
     {
       "source": "assets/gathering.jpeg",
       "webp": "assets/gathering.webp",
+      "source_width": 1077,
+      "source_height": 625,
       "width": 1077,
       "height": 625,
       "source_bytes": 162057,
@@ -34,6 +38,8 @@
     {
       "source": "mockup-v3/img/mural.jpg",
       "webp": "mockup-v3/img/mural.webp",
+      "source_width": 1600,
+      "source_height": 682,
       "width": 1600,
       "height": 682,
       "source_bytes": 206606,
@@ -45,6 +51,8 @@
     {
       "source": "mockup-v3/img/c10.jpg",
       "webp": "mockup-v3/img/c10.webp",
+      "source_width": 180,
+      "source_height": 252,
       "width": 180,
       "height": 252,
       "source_bytes": 12101,
@@ -56,6 +64,8 @@
     {
       "source": "mockup-v3/img/c8.jpg",
       "webp": "mockup-v3/img/c8.webp",
+      "source_width": 198,
+      "source_height": 255,
       "width": 198,
       "height": 255,
       "source_bytes": 12952,
@@ -67,6 +77,8 @@
     {
       "source": "mockup-v3/img/p1.jpg",
       "webp": "mockup-v3/img/p1.webp",
+      "source_width": 1000,
+      "source_height": 750,
       "width": 1000,
       "height": 750,
       "source_bytes": 81907,
@@ -78,6 +90,8 @@
     {
       "source": "mockup-v3/img/p3.jpg",
       "webp": "mockup-v3/img/p3.webp",
+      "source_width": 1000,
+      "source_height": 750,
       "width": 1000,
       "height": 750,
       "source_bytes": 122970,
@@ -89,6 +103,8 @@
     {
       "source": "mockup-v3/img/p5.jpg",
       "webp": "mockup-v3/img/p5.webp",
+      "source_width": 800,
+      "source_height": 533,
       "width": 800,
       "height": 533,
       "source_bytes": 44321,
@@ -100,6 +116,8 @@
     {
       "source": "mockup-v3/img/p6.jpg",
       "webp": "mockup-v3/img/p6.webp",
+      "source_width": 1000,
+      "source_height": 750,
       "width": 1000,
       "height": 750,
       "source_bytes": 172613,
@@ -111,6 +129,8 @@
     {
       "source": "mockup-v3/img/p7.jpg",
       "webp": "mockup-v3/img/p7.webp",
+      "source_width": 750,
+      "source_height": 1000,
       "width": 750,
       "height": 1000,
       "source_bytes": 192910,
@@ -122,6 +142,8 @@
     {
       "source": "mockup-v3/img/p8.jpg",
       "webp": "mockup-v3/img/p8.webp",
+      "source_width": 1000,
+      "source_height": 750,
       "width": 1000,
       "height": 750,
       "source_bytes": 243496,
@@ -133,6 +155,8 @@
     {
       "source": "mockup-v3/img/p9.jpg",
       "webp": "mockup-v3/img/p9.webp",
+      "source_width": 750,
+      "source_height": 1000,
       "width": 750,
       "height": 1000,
       "source_bytes": 137167,
@@ -144,6 +168,8 @@
     {
       "source": "mockup-v3/img/p10.jpg",
       "webp": "mockup-v3/img/p10.webp",
+      "source_width": 823,
+      "source_height": 1000,
       "width": 823,
       "height": 1000,
       "source_bytes": 113073,
@@ -155,6 +181,8 @@
     {
       "source": "mockup-v3/img/p11.jpg",
       "webp": "mockup-v3/img/p11.webp",
+      "source_width": 1000,
+      "source_height": 580,
       "width": 1000,
       "height": 580,
       "source_bytes": 160210,
@@ -166,6 +194,8 @@
     {
       "source": "mockup-v3/img/p12.jpg",
       "webp": "mockup-v3/img/p12.webp",
+      "source_width": 1000,
+      "source_height": 661,
       "width": 1000,
       "height": 661,
       "source_bytes": 114684,
@@ -177,6 +207,8 @@
     {
       "source": "mockup-v3/img/p13.jpg",
       "webp": "mockup-v3/img/p13.webp",
+      "source_width": 1000,
+      "source_height": 750,
       "width": 1000,
       "height": 750,
       "source_bytes": 132921,
@@ -188,6 +220,8 @@
     {
       "source": "mockup-v3/img/p14.jpg",
       "webp": "mockup-v3/img/p14.webp",
+      "source_width": 1000,
+      "source_height": 728,
       "width": 1000,
       "height": 728,
       "source_bytes": 83674,
