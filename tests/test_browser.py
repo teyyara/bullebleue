@@ -93,6 +93,8 @@ def main():
                     if width<=620:
                         mobile_footer_layout=footer.locator(".footer-navigation").evaluate("(el)=>{const nav=el.getBoundingClientRect(),g=[...el.children].map(x=>x.getBoundingClientRect());const overlap=Math.min(g[0].bottom,g[1].bottom)-Math.max(g[0].top,g[1].top);return {display:getComputedStyle(el).display,sideBySide:g[1].left>g[0].left&&g[0].right<=g[1].left+4,verticalOverlap:overlap>0,thirdBelow:g[2].top>Math.max(g[0].bottom,g[1].bottom),thirdSpans:g[2].width>=nav.width*.9};}")
                         assert mobile_footer_layout["display"]=="grid" and mobile_footer_layout["sideBySide"] and mobile_footer_layout["verticalOverlap"] and mobile_footer_layout["thirdBelow"] and mobile_footer_layout["thirdSpans"], f"{path}: footer groups should form two balanced columns on mobile: {mobile_footer_layout}"
+                        utility_links_layout=footer.locator(".footer-group:last-child ul").evaluate("(el)=>{const columns=getComputedStyle(el).gridTemplateColumns.trim().split(' ').filter(Boolean).length;const items=[...el.children].map(x=>x.getBoundingClientRect());return {columns,firstRow:Math.abs(items[0].top-items[1].top)<3,secondRow:items[2].top>items[0].top+8};}")
+                        assert utility_links_layout["columns"]==2 and utility_links_layout["firstRow"] and utility_links_layout["secondRow"], f"{path}: utility links should use two readable columns on mobile: {utility_links_layout}"
                     assert page.locator("#nav a").evaluate_all("(a)=>a.map(x=>x.getAttribute('href'))")==NAV, f"{path}: shared nav order changed"
                     if width <= 620:
                         a11y_control = page.locator("#a11y-open")

@@ -95,6 +95,21 @@ def main():
         assert 'href="#"' not in html, f"{page}: placeholder link remains"
         assert 'href="#" ' not in html, f"{page}: placeholder link remains"
         assert 'href="javascript:' not in html.lower(), f"{page}: javascript URL is not allowed"
+        # Outbound pages use a consistent external-link cue and safe new-tab behavior.
+        for anchor_attrs, anchor_body in re.findall(r'<a\b([^>]*)>(.*?)</a>', html, re.S | re.I):
+            destination = re.search(r'\bhref=["\']([^"\']+)["\']', anchor_attrs, re.I)
+            if not destination:
+                continue
+            href = destination.group(1)
+            parts = urlsplit(href)
+            external = parts.scheme.lower() in ("http", "https") or bool(parts.netloc)
+            if external:
+                assert "↗" in anchor_body, f"{page}: external link needs a visible ↗ cue: {href}"
+                assert re.search(r'\btarget=["\']_blank["\']', anchor_attrs, re.I), f"{page}: external link should open in a new tab: {href}"
+                rel = re.search(r'\brel=["\']([^"\']+)["\']', anchor_attrs, re.I)
+                assert rel and {"noopener", "noreferrer"}.issubset(set(rel.group(1).lower().split())), f"{page}: external link needs noopener noreferrer: {href}"
+            else:
+                assert "↗" not in anchor_body, f"{page}: internal or email link should not use an external-link cue: {href}"
         for href in parser.links:
             all_links.append((page, href))
             if href == "#": raise AssertionError(f"{page}: placeholder anchor")
