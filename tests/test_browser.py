@@ -261,9 +261,16 @@ def main():
             assert sample_button.get_attribute("data-label")=="Écouter un exemple"
             read_button=read_buttons.nth(1)
             assert read_button.get_attribute("data-label")=="Écouter toute la page"
-            read_button.click()
+            sample_button.click()
             speech.wait_for_function("window.__localSpeechTest.sent.length>0 && window.__localSpeechTest.starts>0")
-            speech.wait_for_function("document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')==='false' && document.querySelector('[role=status]').textContent.includes('Lecture terminée.')")
+            speech.wait_for_function("document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')==='false'")
+            sample_text=speech.evaluate("()=>window.__localSpeechTest.sent.map(item=>item.text).join(' ')")
+            assert "Bonjour" in sample_text and "Bulle Bleue" in sample_text, f"the short preview should use a representative French sample: {sample_text}"
+            sample_count=speech.evaluate("()=>window.__localSpeechTest.sent.length")
+            start_count=speech.evaluate("()=>window.__localSpeechTest.starts")
+            read_button.click()
+            speech.wait_for_function("(counts)=>window.__localSpeechTest.sent.length>counts.sent && window.__localSpeechTest.starts>counts.starts",[{"sent":sample_count,"starts":start_count}])
+            speech.wait_for_function("document.querySelector('#a11y-voice .listen:last-child').getAttribute('aria-pressed')==='false' && document.querySelector('[role=status]').textContent.includes('Lecture terminée.')")
             local_playback=speech.evaluate("()=>({options:window.__localSpeechTest.engineOptions,voice:window.__localSpeechTest.voice,sent:window.__localSpeechTest.sent,starts:window.__localSpeechTest.starts,nativeCalls:window.__localSpeechTest.nativeCalls,lastBuffer:window.__localSpeechTest.lastBuffer})")
             assert local_playback["options"]["cdn"]=="jsdelivr" and "fr" in local_playback["options"]["languages"], f"the French engine must load its French language data: {local_playback}"
             assert local_playback["voice"]=="fr-fr", f"the dedicated French (France) eSpeak voice must be selected: {local_playback}"
