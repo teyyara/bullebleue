@@ -74,3 +74,15 @@ footer.pied .footer-group a{min-height:44px;font-size:1rem}
 
 /* Calm mode also removes the decorative underline beneath the outings heading. */
 .calm .sorties h2::after{display:none!important}
+
+/* Keep the full association welcome line legible as a two-line headline on desktop. */
+.hero .card h1{
+  font-size:clamp(2.5rem,5.2vw,4rem);
+  line-height:1.12;
+}
+@media(max-width:860px){
+  .hero .card h1{
+    font-size:clamp(1.9rem,7vw,2.7rem);
+    line-height:1.12;
+  }
+}
