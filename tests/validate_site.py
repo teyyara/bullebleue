@@ -75,7 +75,7 @@ def main():
         parsed[page] = (html, parser)
         assert parser.lang == "fr" and parser.title and parser.description, f"{page}: French metadata required"
         assert parser.h1 == 1 and parser.main == 1, f"{page}: one h1 and one main required"
-        eyebrow_labels = re.findall(r'<([a-z0-9]+)[^>]*class="[^"]*\\beyebrow\\b[^"]*"[^>]*>(.*?)</\\1>', html, re.S)
+        eyebrow_labels = re.findall(r'<([a-z0-9]+)[^>]*class="[^"]*\beyebrow\b[^"]*"[^>]*>(.*?)</\1>', html, re.S)
         for _, markup in eyebrow_labels:
             label = re.sub(r"<[^>]+>", "", markup).strip()
             assert not label.isupper(), f"{page}: section label should not be all uppercase: {label}"
