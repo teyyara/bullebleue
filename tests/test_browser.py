@@ -255,8 +255,12 @@ def main():
             speech.route(speech_module_url,lambda route:route.fulfill(status=200,content_type="application/javascript",headers={"Access-Control-Allow-Origin":"*","Cache-Control":"no-store"},body=speech_module))
             speech.goto(f"{base}/index.html",wait_until="networkidle")
             speech.locator("#a11y-open").click()
-            read_button=speech.locator("#a11y-voice .listen")
-            assert read_button.count()==1, "read-aloud must be offered even without a French system voice"
+            read_buttons=speech.locator("#a11y-voice .listen")
+            assert read_buttons.count()==2, "the panel should offer a short sample and full-page reading"
+            sample_button=read_buttons.nth(0)
+            assert sample_button.get_attribute("data-label")=="Écouter un exemple"
+            read_button=read_buttons.nth(1)
+            assert read_button.get_attribute("data-label")=="Écouter toute la page"
             read_button.click()
             speech.wait_for_function("window.__localSpeechTest.sent.length>0 && window.__localSpeechTest.starts>0")
             speech.wait_for_function("document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')==='false' && document.querySelector('[role=status]').textContent.includes('Lecture terminée.')")
@@ -274,7 +278,7 @@ def main():
             cancelled.route(speech_module_url,lambda route:route.fulfill(status=200,content_type="application/javascript",headers={"Access-Control-Allow-Origin":"*","Cache-Control":"no-store"},body=speech_module))
             cancelled.goto(f"{base}/index.html",wait_until="networkidle")
             cancelled.locator("#a11y-open").click()
-            cancel_button=cancelled.locator("#a11y-voice .listen")
+            cancel_button=cancelled.locator("#a11y-voice .listen").last
             cancel_button.click()
             cancelled.wait_for_function("window.__localSpeechTest.starts===1")
             cancel_button.click()
@@ -290,7 +294,7 @@ def main():
             unavailable.route(speech_module_url,lambda route:route.fulfill(status=200,content_type="application/javascript",headers={"Access-Control-Allow-Origin":"*","Cache-Control":"no-store"},body=speech_module))
             unavailable.goto(f"{base}/index.html",wait_until="networkidle")
             unavailable.locator("#a11y-open").click()
-            unavailable.locator("#a11y-voice .listen").click()
+            unavailable.locator("#a11y-voice .listen").last.click()
             unavailable.wait_for_function("document.querySelector('[role=status]').textContent.includes('Vérifiez votre connexion')",timeout=5000)
             failed_playback=unavailable.evaluate("()=>({button:document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed'),nativeCalls:window.__localSpeechTest.nativeCalls,status:document.querySelector('[role=status]').textContent})")
             assert failed_playback["button"]=="false" and failed_playback["nativeCalls"]==0, f"failed local engine loading should reset its control without English fallback: {failed_playback}"
