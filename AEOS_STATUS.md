@@ -1,3 +1,10 @@
+## Delivered in Loop 039 — teacher-forced continuity across speech chunks
+- Replaced independent chunk restarts with Pocket TTS continuation: the next chunk receives the previous chunk's text and generated latent frames.
+- Warmed each fresh Mimi decoder state with the previous chunk's final 12 latent frames and advanced its decoder step counter before new audio is decoded.
+- Used the 25-token continuation chunk budget and retained the rolling audio buffer from Loop 038.
+- Added regression tests for BOS/latent sequence packing, prompt continuation, 16-step-per-latent Mimi position advancement and multi-sentence chunk sizing.
+- Listen to a long page on a physical device to confirm the word-to-word flow and paragraph transitions; measure the extra continuation prefill on slower mobile hardware.
+
 ## Delivered in Loop 038 — continuous neural speech playback
 - Buffered a rolling 2.25 seconds of generated Pocket TTS audio before playback and joined small inference packets into larger Web Audio buffers.
 - Schedule queued buffers continuously rather than starting each model packet as soon as it arrives; stop/cancel still halts scheduled audio.
