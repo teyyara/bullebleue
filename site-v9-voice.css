@@ -1,0 +1,27 @@
+/* Voice quality controls in the accessibility panel. */
+.a11y-panel .a11y-voice-quality .voice-help,
+.a11y-panel .a11y-voice-quality .voice-status {
+  margin: 6px 0 10px;
+  color: #2A3350;
+  font: 400 .98rem/1.5 'Atkinson Hyperlegible Next', Verdana, sans-serif;
+}
+.a11y-panel .a11y-voice-quality .voice-status {
+  min-height: 0;
+  margin-bottom: 0;
+  font-weight: 700;
+}
+.a11y-panel .a11y-voice-quality button:disabled {
+  cursor: progress;
+  opacity: .72;
+}
+.a11y-panel .a11y-voice-quality #a11y-natural-enable {
+  background: #223C84;
+  color: #fff;
+  border-color: #223C84;
+}
+.a11y-panel .a11y-voice-quality #a11y-natural-enable:hover:not(:disabled) {
+  background: #172c68;
+}
+.a11y-panel .a11y-voice-quality #a11y-light-enable {
+  border-color: #9CA9C8;
+}
