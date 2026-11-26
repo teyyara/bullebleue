@@ -8,7 +8,7 @@
 - [x] Keep the approximately 134 MB first-use download disclosed in the accessibility panel and Accessibility page; load it only when the visitor starts reading.
 - [x] Keep eSpeak NG available as an explicit lightweight fallback for slower devices or visitors who prefer not to download the model.
 - [x] Make “Tout remettre par défaut” restore the natural voice selection.
-- [x] Add browser regression coverage for the default voice, first-use disclosure, fallback selection and reset behaviour.
+- [x] Add browser regression coverage for the default voice, first-use disclosure, fallback selection, reset behaviour and the French voice preview.
 - [ ] Listen on the user's and association owner's physical devices to approve the French timbre, pronunciation, pace and volume; automated checks cannot judge whether the voice sounds pleasant.
 - [ ] Measure load time and playback responsiveness on older mobile devices and slower connections before treating voice quality as accepted.
 
