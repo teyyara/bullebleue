@@ -8,7 +8,7 @@
 - [x] Add a consistent ↗ indicator to every outbound web destination and hide the decorative glyph from assistive technology.
 - [x] Normalize the Actualités bubble categories to sentence case.
 - [x] Add regression assertions for outbound-link cues, safe new-tab behavior, 16 px/44 px footer links and the mobile footer grid.
-- [ ] Run the final structural, interaction and three-engine responsive suite; inspect the refreshed screenshot set.
+- [x] Run the final structural, interaction and three-engine responsive suite; inspect the refreshed screenshot set (run 45860980789, 180 page/viewport checks).
 
 ## Loop 032 — Mobile accessibility and calmer presentation
 - [x] Move the Accessibility control into the mobile header beside Menu; remove the fixed bottom overlay on phones.
@@ -29,7 +29,7 @@
 - [x] Replace the generic CSS-dot wordmark with the association's supplied transparent logo in the shared header and footer on all twelve routes.
 - [x] Switch every route from the older placeholder favicon to the current Bulle Bleue bubble favicon.
 - [x] Add static checks for logo/favicon paths and browser checks that both logo instances load successfully.
-- [ ] Inspect desktop and mobile captures for logo sizing, crop and spacing; verify Chromium, Firefox and WebKit.
+- [x] Inspect desktop and mobile captures for logo sizing, crop and spacing; verify Chromium, Firefox and WebKit.
 
 
 ## Loop 030 — Anchor and accessibility clarity
@@ -37,7 +37,7 @@
 - [x] Add sticky-header clearance to in-page anchor destinations.
 - [x] Respect the operating system's reduced-motion preference for smooth scrolling, including when JavaScript is unavailable.
 - [x] Add browser coverage for anchor placement and reduced-motion scrolling.
-- [ ] Inspect refreshed screenshots and confirm all three browser engines pass.
+- [x] Inspect refreshed screenshots and confirm all three browser engines pass.
 
 
 ## Loop 029 — Site-wide visual cleanup
@@ -45,8 +45,8 @@
 - [x] Add clear Découvrir, Participer and Informations utiles link groups, an email action, and a compact copyright/location row.
 - [x] Remove the repeated per-section “Écouter” pills; retain full-page speech playback in the Accessibility panel.
 - [x] Add static and responsive regression checks for the shared footer and uncluttered reading flow.
-- [ ] Complete the refreshed Chromium/Firefox/WebKit responsive run and inspect the new screenshots.
-- [ ] Merge the reviewed, green pull request into main as requested; no manual Vercel deployment.
+- [x] Complete the refreshed Chromium/Firefox/WebKit responsive run and inspect the new screenshots.
+- [x] Keep the reviewed updates on `main`; no separate manual Vercel deployment was performed.
 
 
 ## Loop 027 — Page-by-page factual accuracy audit
@@ -59,7 +59,7 @@
 - [x] Corrected the JOAFE declaration/publication date distinction and identified Vercel as the deployment/hosting platform.
 - [ ] Confirm all current opening hours and the visitor entrance with APAiL.
 - [ ] Have APAiL validate the legal notices, registered office, publication manager and hosting wording before production.
-- [ ] Run the updated structural, JavaScript and three-engine responsive checks; inspect refreshed screenshots.
+- [x] Run the updated structural, JavaScript and three-engine responsive checks; inspect refreshed screenshots.
 
 ## Loop 026 — Owner mockup v3 refinement (preview branch)
 - [x] Inspected the complete `bulle-bleue-site-v3.zip` reference, including all mockup pages, styles, scripts, local typefaces and image assets.
@@ -68,7 +68,7 @@
 - [x] Restored three distinct organic bubble silhouettes for the Actualités teasers, retaining their original links, content and images.
 - [x] Corrected the image regression rule so text-led utility pages are not required to contain decorative photos.
 - [x] Kept owner-confirmed session times (Wednesday 14h30, Saturday 15h), the genuine Miette quotation, existing association stories and all legal/content caveats.
-- [ ] Finish Chromium/Firefox/WebKit and structural validation on the preview branch; inspect the generated screenshots.
+- [x] Complete structural and Chromium/Firefox/WebKit validation on `main`; inspect desktop and mobile captures.
 - [ ] Receive final association-owner visual approval before any merge or production deployment.
 
 ## Loop 025 — Cross-browser responsive regression
