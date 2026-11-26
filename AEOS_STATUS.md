@@ -1,3 +1,11 @@
+## Delivered in Loop 041 — natural-only reading and automatic model preload
+- Removed the former lightweight voice engine, its controls and automatic fallback path. Pocket TTS is the sole read-aloud voice.
+- The pinned French model download now starts immediately on page entry and uses the Cache API on later visits when the browser retains the files; persistent storage is requested where supported.
+- Corrected artificial sentence endings at chunk handoffs: the worker retains each raw text fragment so a comma/colon stays in the continuation prompt instead of becoming a false full stop.
+- Ported Kyutai's tokenizer-aware segmentation checks for sentence punctuation, decimals, abbreviations/titles and closing quotes, retaining the 25-token teacher-forced budget.
+- Kept full-passage PCM collection and one-source playback to prevent model-generation underruns.
+- Physical-device listening is still needed before claiming subjective perfection.
+
 ## Delivered in Loop 040 — prepare the whole passage before playback
 - Removed the real-time streaming playback path: Pocket TTS PCM packets are collected until the requested passage is fully synthesized.
 - Joined the complete passage into one Float32 PCM buffer and play it through a single Web Audio source, so slower inference on the visitor's device cannot interrupt playback between packets.
