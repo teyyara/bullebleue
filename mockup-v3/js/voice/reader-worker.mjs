@@ -112,13 +112,11 @@ async function speak({text,lang},id){
   let previousText='',previousLatents=[];
   for(const part of chunks(spelled(text,voice.lang),voice.tokens,voice.rules,25)){
     if(aborted.has(id))return;
-    const partText=voice.tokens.decode(part.ids);
-    const prompt=previousLatents.length
-      ? continuationPrompt(previousText,partText,voice.tokens,voice.rules)
-      : {text:partText,ids:part.ids};
+    const prompt=continuationPrompt(previousText,part.text,voice.tokens,voice.rules);
     const generatedLatents=[];
     await say(voice,prompt.ids,part.after,id,previousLatents,generatedLatents);
-    previousText=partText;
+    // Preserve original punctuation in the following teacher-forced context.
+    previousText=part.text;
     previousLatents=generatedLatents;
   }
 }
