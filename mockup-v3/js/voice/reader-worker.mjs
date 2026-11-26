@@ -3,7 +3,7 @@
  * Model and voice attribution: see NOTICE.md.
  */
 import { InferenceSession, Tensor, env } from 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.31.1/dist/ort.webgpu.bundle.min.mjs';
-import { expand, tokenizer, chunks, prepare, teacherForcedSequence, packLatents, advanceDecoderSteps } from './pocket.mjs';
+import { expand, tokenizer, chunks, continuationPrompt, teacherForcedSequence, packLatents, advanceDecoderSteps } from './pocket.mjs';
 import { spelled } from './words.mjs';
 
 const RUNTIME='https://cdn.jsdelivr.net/npm/onnxruntime-web@1.31.1/dist/';
@@ -113,11 +113,11 @@ async function speak({text,lang},id){
   for(const part of chunks(spelled(text,voice.lang),voice.tokens,voice.rules,25)){
     if(aborted.has(id))return;
     const partText=voice.tokens.decode(part.ids);
-    const promptIds=previousLatents.length
-      ? voice.tokens.encode(prepare(previousText+' '+partText,voice.rules).text)
-      : part.ids;
+    const prompt=previousLatents.length
+      ? continuationPrompt(previousText,partText,voice.tokens,voice.rules)
+      : {text:partText,ids:part.ids};
     const generatedLatents=[];
-    await say(voice,promptIds,part.after,id,previousLatents,generatedLatents);
+    await say(voice,prompt.ids,part.after,id,previousLatents,generatedLatents);
     previousText=partText;
     previousLatents=generatedLatents;
   }
