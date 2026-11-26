@@ -179,7 +179,6 @@
     button.setAttribute('data-label',label);button.setAttribute('data-audio',kind);
     button.setAttribute('aria-label',label);button.setAttribute('title',label);button.disabled=true;
     button.innerHTML=ICON+'<span class="listen-t">'+label+'</span>';
-    button.addEventListener('click',function(){playAudio(kind,button)});
     return button;
   }
 
