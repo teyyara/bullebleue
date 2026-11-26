@@ -167,3 +167,18 @@ footer.pied .footer-group a{min-height:44px;font-size:1rem}
     overflow-wrap:break-word;
   }
 }
+
+
+/* The maximum text setting must not force a two-word hero line wider than
+   the phone. Preserve the full-size preference for body copy, and scale only
+   this decorative display headline at the narrowest viewport. */
+@media(max-width:360px){
+  .fs-3 .hero .card h1,
+  .dys .hero .card h1{
+    width:auto;
+    max-width:100%;
+    font-size:clamp(1.3rem,9vw,1.9rem);
+    line-height:1.2;
+    letter-spacing:0;
+  }
+}
