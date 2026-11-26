@@ -1,0 +1,62 @@
+name: Optimize rendered image assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/optimize-photo-assets.yml"
+      - "scripts/optimize_photo_assets.py"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: optimize-photo-assets-main
+  cancel-in-progress: false
+
+jobs:
+  optimize:
+    name: Convert rendered raster assets to WebP
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install Pillow
+        run: python -m pip install Pillow
+
+      - name: Convert images and update references
+        run: python scripts/optimize_photo_assets.py
+
+      - name: Run static site integrity checks
+        run: python tests/validate_site.py
+
+      - name: Commit WebP derivatives and measured report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add '*.html' '*.css' 'assets/*.webp' 'mockup-v3/img/*.webp' \
+            'evidence/visual/asset-register.json' \
+            'evidence/visual/webp-optimization-report.json' \
+            'tests/validate_site.py' 'TODO.md' 'README.md'
+          if git diff --cached --quiet; then
+            echo "No image optimization changes to commit."
+            exit 0
+          fi
+          git commit -m "Optimize rendered image assets with WebP"
+          git push origin HEAD:main
+
+      - name: Trigger full browser quality suite for optimized main
+        env:
+          GH_TOKEN: \${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run quality.yml --ref main
