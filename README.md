@@ -95,7 +95,6 @@ The structural validator checks that the TODO records the association owner's ve
 
 The Accessibility control is first in keyboard order after the skip link. On phones it sits in the shared header beside Menu instead of covering the reading area; on desktop it remains available at the lower left. General contact links use the predictable label “Nous contacter”. Open Graph image metadata uses the owner-selected group photograph through the public repository image URL. Photo-to-WebP conversion remains an open optimization item pending binary-safe conversion and size checks.
 
-
 ## Image delivery
 
 The 17 raster assets rendered by the public pages now have WebP variants (3,056,544 bytes combined before, 2,201,886 bytes after; 28.0% smaller). Original supplied images remain available in the repository. The Open Graph sharing image deliberately remains JPEG for compatibility. Per-image measurements are in evidence/visual/webp-optimization-report.json.

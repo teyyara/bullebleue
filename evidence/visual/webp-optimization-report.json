@@ -197,18 +197,5 @@
       "encoding": "quality 84 (fallback 78)"
     }
   ],
-  "updated_source_files": [
-    "mentions-legales.html",
-    "accessibilite.html",
-    "actualite-2026-10-26.html",
-    "actualite-2026-10-10.html",
-    "actualite-2026-10-17.html",
-    "contact.html",
-    "facile-a-lire.html",
-    "qui-sommes-nous.html",
-    "actualites.html",
-    "index.html",
-    "adherer.html",
-    "404.html"
-  ]
+  "updated_source_files": []
 }
