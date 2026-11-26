@@ -236,8 +236,9 @@ def main():
                     this.emit({id:message.of,type:"done"});return;
                   }
                   if(message.type==="speak"){
-                    state.speakCalls++;
+                    state.speakCalls++;state.generationDone=false;
                     const delays=[0,30,30,30,30,700,30];let elapsed=0;const timers=[];
+                    this.emit({id:message.id,type:"progress",phase:"synthesis",part:1,parts:7});
                     delays.forEach((delay,index)=>{
                       elapsed+=delay;
                       timers.push(setTimeout(()=>{
@@ -276,12 +277,25 @@ def main():
             assert streamed.locator("#a11y-light-enable").count()==0, "the retired TTS control must be removed"
             assert "eSpeak" not in streamed.locator("#a11y-panel").inner_text() and "voix légère" not in streamed.locator("#a11y-panel").inner_text()
             streamed.locator("#a11y-voice .listen").first.click()
-            streamed.wait_for_function("window.__naturalBufferTest.starts.length===1 && document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')==='false'",timeout=10000)
+            streamed.wait_for_function("window.__naturalBufferTest.starts.length>0 && document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')==='true'",timeout=10000)
+            early_state=streamed.evaluate("()=>({starts:window.__naturalBufferTest.starts,generationDone:window.__naturalBufferTest.generationDone,status:document.querySelector('#a11y-voice-status').textContent})")
+            assert early_state["starts"][0]["generationDone"] is False, f"playback must begin after the short startup buffer, before the full passage is generated: {early_state}"
+            streamed.wait_for_function("document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')==='false'",timeout=10000)
             buffered_state=streamed.evaluate("()=>({starts:window.__naturalBufferTest.starts,nativeCalls:window.__naturalBufferTest.nativeCalls||0,speakCalls:window.__naturalBufferTest.speakCalls})")
-            assert len(buffered_state["starts"])==1, f"the complete passage should play from one uninterrupted audio source: {buffered_state}"
-            assert buffered_state["starts"][0]["generationDone"], "playback must not start while the neural model is still generating later packets"
-            assert abs(buffered_state["starts"][0]["duration"]-3.5)<0.01, f"the single buffer must contain all seven 0.5-second packets: {buffered_state}"
+            assert len(buffered_state["starts"])>1, f"longer speech should be scheduled in multiple continuous batches: {buffered_state}"
+            assert abs(sum(item["duration"] for item in buffered_state["starts"])-3.5)<0.01, f"all seven 0.5-second packets must reach playback: {buffered_state}"
+            for before,after in zip(buffered_state["starts"],buffered_state["starts"][1:]):
+                assert abs(after["start"]-(before["start"]+before["duration"]))<0.001, f"audio batches must be scheduled without gaps: {buffered_state}"
             assert buffered_state["nativeCalls"]==0 and buffered_state["speakCalls"]==1, f"only Pocket TTS should synthesize the reading: {buffered_state}"
+
+            # Full-page reading must also begin before synthesis of the entire page has finished.
+            page_start_count=streamed.evaluate("()=>window.__naturalBufferTest.starts.length")
+            streamed.locator("#a11y-voice .listen").nth(1).click()
+            streamed.wait_for_function(f"window.__naturalBufferTest.starts.length>{page_start_count} && document.querySelectorAll('#a11y-voice .listen')[1].getAttribute('aria-pressed')==='true'",timeout=10000)
+            page_state=streamed.evaluate("()=>({starts:window.__naturalBufferTest.starts,speakCalls:window.__naturalBufferTest.speakCalls,generationDone:window.__naturalBufferTest.generationDone})")
+            assert page_state["starts"][page_start_count]["generationDone"] is False, f"full-page playback must not wait for all page synthesis: {page_state}"
+            streamed.wait_for_function("document.querySelectorAll('#a11y-voice .listen')[1].getAttribute('aria-pressed')==='false'",timeout=10000)
+            assert page_state["speakCalls"]==2, f"the sample and page reader should each use Pocket TTS: {page_state}"
             streamed_context.close()
 
             # Increased letter/word spacing and dyslexia settings must not clip the homepage title.
