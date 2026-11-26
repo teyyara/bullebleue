@@ -249,12 +249,12 @@ def main():
             assert default_voice.locator("#a11y-natural-enable").get_attribute("aria-pressed")=="true", "reset should restore the neural voice default"
             default_voice.close()
 
-            # Simulate a neural worker that delivers short packets with a delayed
-            # packet in the middle. The Web Audio scheduler must prebuffer and then
-            # schedule joined buffers without a silence at packet boundaries.
+            # Simulate neural audio arriving in small packets, including one slow
+            # inference interval. Playback must wait for generation to finish, join
+            # every packet into one AudioBuffer and start exactly one audio source.
             streamed=context.new_page()
             streamed.add_init_script("""(() => {
-              const state=window.__naturalBufferTest={starts:[],workerMessages:0};
+              const state=window.__naturalBufferTest={starts:[],workerMessages:0,generationDone:false};
               class MockWorker {
                 constructor(){this.listeners={};}
                 addEventListener(type,fn){(this.listeners[type]||(this.listeners[type]=[])).push(fn);}
@@ -270,7 +270,10 @@ def main():
                       elapsed+=delay;
                       setTimeout(()=>{
                         this.emit({id:message.id,type:"chunk",audio:new Float32Array(12000).fill(0.02),rate:24000});
-                        if(index===delays.length-1)setTimeout(()=>this.emit({id:message.id,type:"done"}),0);
+                        if(index===delays.length-1)setTimeout(()=>{
+                          state.generationDone=true;
+                          this.emit({id:message.id,type:"done"});
+                        },0);
                       },elapsed);
                     });
                   }
@@ -284,9 +287,10 @@ def main():
                 resume(){return Promise.resolve();}
                 createBuffer(channels,length,rate){return {duration:length/rate,copyToChannel(){}};}
                 createBufferSource(){
-                  const source={buffer:null,playbackRate:{value:1},connect(){},start(when){
-                    state.starts.push({start:when,duration:source.buffer.duration/source.playbackRate.value});
-                  },stop(){}};
+                  const source={buffer:null,playbackRate:{value:1},onended:null,connect(){},start(when){
+                    state.starts.push({start:when,duration:source.buffer.duration/source.playbackRate.value,generationDone:state.generationDone});
+                    setTimeout(()=>source.onended&&source.onended(),0);
+                  },stop(){setTimeout(()=>source.onended&&source.onended(),0);}};
                   return source;
                 }
               }
@@ -295,12 +299,11 @@ def main():
             streamed.goto(f"{base}/index.html",wait_until="networkidle")
             streamed.locator("#a11y-open").click()
             streamed.locator("#a11y-voice .listen").first.click()
-            streamed.wait_for_function("window.__naturalBufferTest.starts.length>=2 && document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')==='false'",timeout=10000)
+            streamed.wait_for_function("window.__naturalBufferTest.starts.length===1 && document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')==='false'",timeout=10000)
             buffered_state=streamed.evaluate("()=>window.__naturalBufferTest.starts")
-            assert len(buffered_state)>=2, f"the sample should be split into multiple buffered playback blocks: {buffered_state}"
-            for previous,next_block in zip(buffered_state,buffered_state[1:]):
-                gap=next_block["start"]-(previous["start"]+previous["duration"])
-                assert abs(gap)<0.01, f"neural audio blocks should be scheduled continuously, without packet-edge silence: {buffered_state} (gap {gap}s)"
+            assert len(buffered_state)==1, f"the complete passage should play from one uninterrupted audio source: {buffered_state}"
+            assert buffered_state[0]["generationDone"], "playback must not start while the neural model is still generating later packets"
+            assert abs(buffered_state[0]["duration"]-3.5)<0.01, f"the single buffer must contain all seven 0.5-second packets: {buffered_state}"
             streamed.close()
 
             speech=context.new_page()
