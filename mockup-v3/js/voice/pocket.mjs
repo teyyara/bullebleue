@@ -169,12 +169,15 @@ export function chunks(text, tokens, rules, most = 25) {
   })
   /** @type {[number, string][]} */
   const joined = []
-  for (const [n, piece] of pieces) {
+  for (const [, piece] of pieces) {
     const last = joined.at(-1)
-    if (last && last[0] + n <= most) joined[joined.length - 1] = [last[0] + n, `${last[1]} ${piece}`]
-    else joined.push([n, piece])
+    const candidate = last ? `${last[1]} ${piece}` : piece
+    const actualTokens = tokens.encode(prepare(candidate, rules).text).length
+    if (last && actualTokens <= most) joined[joined.length - 1] = [actualTokens, candidate]
+    else joined.push([tokens.encode(prepare(piece, rules).text).length, piece])
   }
-  // prepare() trims each, as pocket-tts does the chunks it joins.
+  // Count the prepared, re-encoded prompt rather than summing sentence token
+  // counts: the joined sentence boundary can change SentencePiece tokenization.
   return joined.map(([, chunk]) => prepare(chunk, rules)).map(({ text, after }) => ({ ids: tokens.encode(text), after }))
 }
 
