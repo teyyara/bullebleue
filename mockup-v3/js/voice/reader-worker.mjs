@@ -110,8 +110,11 @@ async function speak({text,lang},id){
      predecessor's latent frames into the next chunk, so the voice, intonation
      and Mimi decoder do not restart at every sentence boundary. */
   let previousText='',previousLatents=[];
-  for(const part of chunks(spelled(text,voice.lang),voice.tokens,voice.rules,25)){
+  const parts=chunks(spelled(text,voice.lang),voice.tokens,voice.rules,25);
+  for(let index=0;index<parts.length;index++){
+    const part=parts[index];
     if(aborted.has(id))return;
+    self.postMessage({id,type:'progress',phase:'synthesis',part:index+1,parts:parts.length});
     const prompt=continuationPrompt(previousText,part.text,voice.tokens,voice.rules);
     const generatedLatents=[];
     await say(voice,prompt.ids,part.after,id,previousLatents,generatedLatents);
