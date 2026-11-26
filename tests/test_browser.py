@@ -89,7 +89,7 @@ def main():
                     assert footer.locator(".footer-brand .logo").count()==1
                     assert footer.locator(".footer-group").count()==3
                     assert footer.locator(".footer-navigation a").count()==9
-                    assert footer.get_by_role("link",name="Écrire à l’APAiL").count()==1
+                    assert footer.locator(".footer-contact").inner_text().strip()=="Nous contacter"
                     if width<=620:
                         mobile_footer_layout=footer.locator(".footer-navigation").evaluate("(el)=>{const nav=el.getBoundingClientRect(),g=[...el.children].map(x=>x.getBoundingClientRect());const overlap=Math.min(g[0].bottom,g[1].bottom)-Math.max(g[0].top,g[1].top);return {display:getComputedStyle(el).display,sideBySide:g[1].left>g[0].left&&g[0].right<=g[1].left+4,verticalOverlap:overlap>0,thirdBelow:g[2].top>Math.max(g[0].bottom,g[1].bottom),thirdSpans:g[2].width>=nav.width*.9};}")
                         assert mobile_footer_layout["display"]=="grid" and mobile_footer_layout["sideBySide"] and mobile_footer_layout["verticalOverlap"] and mobile_footer_layout["thirdBelow"] and mobile_footer_layout["thirdSpans"], f"{path}: footer groups should form two balanced columns on mobile: {mobile_footer_layout}"
@@ -98,6 +98,7 @@ def main():
                         a11y_control = page.locator("#a11y-open")
                         assert a11y_control.evaluate("(el)=>el.getBoundingClientRect().width <= 52"), f"{path}: mobile accessibility control should stay compact"
                         assert page.get_by_role("button", name="Accessibilité").count() == 1, f"{path}: mobile accessibility control must keep its accessible name"
+                        assert a11y_control.evaluate("(el)=>el.closest('header .bar')!==null && getComputedStyle(el).position!=='fixed'"), f"{path}: mobile Accessibility control must be in the header, not fixed over content"
                     # Only pages designed around photography require a content image.
                     # Contact, legal, membership, easy-read, accessibility and 404 pages
                     # are intentionally text-led; do not add decorative images just for CI.
@@ -164,6 +165,10 @@ def main():
             a11y=context.new_page()
             a11y.goto(f"{base}/index.html",wait_until="networkidle")
             opener=a11y.locator("#a11y-open");assert opener.count()==1
+            a11y.keyboard.press("Tab")
+            assert a11y.evaluate("document.activeElement.matches('.skip')"), "skip link should be first in keyboard order"
+            a11y.keyboard.press("Tab")
+            assert a11y.evaluate("document.activeElement===document.querySelector('#a11y-open')"), "Accessibility should follow the skip link in keyboard order"
             opener.click()
             panel=a11y.locator("#a11y-panel");assert not panel.is_hidden()
             a11y.locator('[data-fs="1"]').click()
@@ -216,6 +221,6 @@ def main():
             browser.close()
     finally:
         server.shutdown();server.server_close();thread.join(timeout=2)
-    print(json.dumps({"status":"PASS","browser_engine":ENGINE,"pages":len(PAGES),"viewports":[w for w,h in VIEWPORTS],"page_viewport_runs":len(measurements),"checks":["all twelve pages return HTTP 200","no horizontal overflow at five viewport widths","all local images decode","shared navigation links and active destinations","mobile navigation opens, closes on Escape and restores focus","no unintended forms or data collection","Saturday time remains 15:00","one real Miette quote and three unfilled testimonial prompts","seven About topics and milestone years","accessibility control state, persisted font settings, Escape/focus and reset","reduced-motion and no-JavaScript content visibility","no failed non-abort requests, unexpected external requests or browser errors"],"screenshots":len(list(out.glob("*.png")))} ,ensure_ascii=False))
+    print(json.dumps({"status":"PASS","browser_engine":ENGINE,"pages":len(PAGES),"viewports":[w for w,h in VIEWPORTS],"page_viewport_runs":len(measurements),"checks":["all twelve pages return HTTP 200","no horizontal overflow at five viewport widths","all local images decode","shared navigation links and active destinations","mobile navigation opens, closes on Escape and restores focus","no unintended forms or data collection","Saturday time remains 15:00","one genuine Miette quote and no empty testimonial prompts","seven About topics and milestone years","accessibility control state, persisted font settings, Escape/focus and reset","reduced-motion and no-JavaScript content visibility","no failed non-abort requests, unexpected external requests or browser errors"],"screenshots":len(list(out.glob("*.png")))} ,ensure_ascii=False))
 
 if __name__=="__main__": main()
