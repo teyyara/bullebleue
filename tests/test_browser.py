@@ -269,7 +269,7 @@ def main():
             sample_count=speech.evaluate("()=>window.__localSpeechTest.sent.length")
             start_count=speech.evaluate("()=>window.__localSpeechTest.starts")
             read_button.click()
-            speech.wait_for_function("(counts)=>window.__localSpeechTest.sent.length>counts.sent && window.__localSpeechTest.starts>counts.starts",[{"sent":sample_count,"starts":start_count}])
+            speech.wait_for_function("(counts)=>window.__localSpeechTest.sent.length>counts.sent && window.__localSpeechTest.starts>counts.starts",{"sent":sample_count,"starts":start_count})
             speech.wait_for_function("document.querySelector('#a11y-voice .listen:last-child').getAttribute('aria-pressed')==='false' && document.querySelector('[role=status]').textContent.includes('Lecture terminée.')")
             local_playback=speech.evaluate("()=>({options:window.__localSpeechTest.engineOptions,voice:window.__localSpeechTest.voice,sent:window.__localSpeechTest.sent,starts:window.__localSpeechTest.starts,nativeCalls:window.__localSpeechTest.nativeCalls,lastBuffer:window.__localSpeechTest.lastBuffer})")
             assert local_playback["options"]["cdn"]=="jsdelivr" and "fr" in local_playback["options"]["languages"], f"the French engine must load its French language data: {local_playback}"
@@ -289,7 +289,7 @@ def main():
             cancel_button.click()
             cancelled.wait_for_function("window.__localSpeechTest.starts===1")
             cancel_button.click()
-            cancelled.wait_for_function("window.__localSpeechTest.stops===1 && document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed')==='false'")
+            cancelled.wait_for_function("window.__localSpeechTest.stops===1 && document.querySelector('#a11y-voice .listen:last-child').getAttribute('aria-pressed')==='false'")
             cancelled.wait_for_timeout(150)
             cancel_state=cancelled.evaluate("()=>({starts:window.__localSpeechTest.starts,stops:window.__localSpeechTest.stops,status:document.querySelector('[role=status]').textContent})")
             assert cancel_state["starts"]==1 and cancel_state["stops"]==1 and cancel_state["status"]=="Lecture arrêtée.", f"cancelling local audio must stop the current chunk and prevent later chunks: {cancel_state}"
@@ -303,7 +303,7 @@ def main():
             unavailable.locator("#a11y-open").click()
             unavailable.locator("#a11y-voice .listen").last.click()
             unavailable.wait_for_function("document.querySelector('[role=status]').textContent.includes('Vérifiez votre connexion')",timeout=5000)
-            failed_playback=unavailable.evaluate("()=>({button:document.querySelector('#a11y-voice .listen').getAttribute('aria-pressed'),nativeCalls:window.__localSpeechTest.nativeCalls,status:document.querySelector('[role=status]').textContent})")
+            failed_playback=unavailable.evaluate("()=>({button:document.querySelector('#a11y-voice .listen:last-child').getAttribute('aria-pressed'),nativeCalls:window.__localSpeechTest.nativeCalls,status:document.querySelector('[role=status]').textContent})")
             assert failed_playback["button"]=="false" and failed_playback["nativeCalls"]==0, f"failed local engine loading should reset its control without English fallback: {failed_playback}"
 
             # One real Chromium smoke test exercises the pinned jsDelivr package,
