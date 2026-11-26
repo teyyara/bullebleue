@@ -55,3 +55,19 @@ footer.pied .footer-group a{min-height:44px;font-size:1rem}
   overflow-wrap:normal;
   hyphens:none;
 }
+
+/* Keep the decorative phone mural clipped to the hero viewport when
+   browser extensions add letter and word spacing to all text. */
+@media(max-width:860px){
+  .hero{overflow-x:clip}
+  .hero .card .mfwrap{max-width:100%;box-sizing:border-box}
+}
+@media(max-width:620px){
+  /* Tighten the tall homepage rhythm without compressing the reading itself. */
+  .hero{padding:34px 0 24px}
+  .voix{padding:36px 0}
+  .voix .lead{margin-bottom:20px}
+  .voix .quote{padding:28px 20px}
+  .jouer{padding:40px 0}
+  .sortiesec .gal{margin-top:26px}
+}
