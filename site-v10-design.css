@@ -200,3 +200,10 @@ header .bar{position:relative;flex-wrap:nowrap;gap:clamp(7px,1vw,14px)}
   }
 }
 
+
+/* Tablet widths keep activity labels in two balanced columns. */
+
+@media(min-width:621px) and (max-width:860px){
+  .sortiesec .chips li,
+  .sortiesec .chips li:nth-child(n){flex-basis:300px}
+}

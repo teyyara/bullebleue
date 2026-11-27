@@ -197,7 +197,7 @@ def main():
             assert a11y.evaluate("document.activeElement.matches('.skip')"), "skip link should be first in keyboard order"
             a11y.keyboard.press("Tab")
             assert a11y.evaluate("document.activeElement.matches('.bar>.logo')"), "the logo should follow the skip link"
-            for _ in range(7):
+            for _ in range(a11y.locator("#nav a").count()+2):
                 a11y.keyboard.press("Tab")
             assert a11y.evaluate("document.activeElement===document.querySelector('#a11y-open')"), "the rightmost Accessibility control should follow the shared navigation"
             opener.click()
