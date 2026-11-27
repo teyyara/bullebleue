@@ -1,11 +1,15 @@
-## Loop 042 — Pre-generated French (France) page narration
-- [x] Retire the browser-side Pocket TTS model, WebAssembly runtime, tokenization code and live PCM synthesis path.
-- [x] Replace live generation with a static MP3 player that downloads no speech model and does not call Azure during visitor playback.
-- [x] Prepare voice audition and full-page audio generation for standard French (France) Neural voices Denise and Henri.
-- [x] Add a private, manual GitHub Actions generation workflow that reads Azure credentials only from repository Actions secrets.
-- [x] Add offline tests for HTML text extraction, SSML voice selection and the Azure MP3 request contract.
-- [ ] Create the Azure Speech F0 resource, add AZURE_SPEECH_KEY and AZURE_SPEECH_REGION as repository secrets, then run the generation workflow to publish the actual MP3 files.
-- [ ] Listen to both auditions on desktop and mobile, choose the preferred voice with the association owner, and verify every page recording after generation.
+## Loop 043 — Fully free Piper French narration
+- [x] Remove the Azure Speech dependency, credentials, billing setup and Azure-specific generation scripts.
+- [x] Use the open-source Piper TTS engine and the French (France) SIWIS medium voice model, with its CC BY 4.0 attribution.
+- [x] Generate the sample and full-page MP3 recordings on a standard public GitHub Actions runner, with no card, API key or paid speech API.
+- [x] Retain the static MP3 player and pending manifest; visitors never download a neural model or run synthesis.
+- [x] Add offline extraction, model metadata and MP3 conversion tests plus browser coverage for the single French voice.
+- [ ] Run the public GitHub Actions workflow to download Piper’s model and generate the real recordings; then listen to the sample and verify voice quality before final sign-off.
+
+## Loop 042 — Static audio player (Azure plan superseded before any audio was generated)
+- [x] Replaced browser-side Pocket TTS with a manifest-driven static MP3 player.
+- [x] Built the page-text extraction and player controls, plus browser coverage.
+- [x] Replaced the Azure proposal with a completely free Piper generation pipeline in Loop 043 before the Azure generation workflow was run.
 
 # Bulle Bleue - APAiL — Owner feedback and production TODO
 
