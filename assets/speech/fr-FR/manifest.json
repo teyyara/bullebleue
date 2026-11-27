@@ -1,16 +1,32 @@
 {
   "version": 1,
   "locale": "fr-FR",
-  "status": "pending",
+  "status": "ready",
   "engine": "Piper TTS",
+  "engineVersion": "1.8.0",
   "model": "fr_FR-siwis-medium",
   "modelLicense": "CC-BY-4.0",
+  "modelSource": "https://huggingface.co/rhasspy/piper-voices",
+  "generatedAt": "2026-11-27T00:22:10.352163+00:00",
   "voices": {
     "siwis": {
       "label": "Siwis · voix féminine · français de France",
       "voiceName": "fr_FR-siwis-medium",
-      "sample": null,
-      "pages": {}
+      "sample": "/assets/speech/fr-FR/siwis/sample.mp3",
+      "pages": {
+        "index.html": "/assets/speech/fr-FR/siwis/pages/index.mp3",
+        "qui-sommes-nous.html": "/assets/speech/fr-FR/siwis/pages/qui-sommes-nous.mp3",
+        "actualites.html": "/assets/speech/fr-FR/siwis/pages/actualites.mp3",
+        "actualite-2026-10-26.html": "/assets/speech/fr-FR/siwis/pages/actualite-2026-10-26.mp3",
+        "actualite-2026-10-17.html": "/assets/speech/fr-FR/siwis/pages/actualite-2026-10-17.mp3",
+        "actualite-2026-10-10.html": "/assets/speech/fr-FR/siwis/pages/actualite-2026-10-10.mp3",
+        "adherer.html": "/assets/speech/fr-FR/siwis/pages/adherer.mp3",
+        "contact.html": "/assets/speech/fr-FR/siwis/pages/contact.mp3",
+        "mentions-legales.html": "/assets/speech/fr-FR/siwis/pages/mentions-legales.mp3",
+        "facile-a-lire.html": "/assets/speech/fr-FR/siwis/pages/facile-a-lire.mp3",
+        "accessibilite.html": "/assets/speech/fr-FR/siwis/pages/accessibilite.mp3",
+        "404.html": "/assets/speech/fr-FR/siwis/pages/404.mp3"
+      }
     }
   }
 }
