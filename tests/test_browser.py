@@ -203,14 +203,13 @@ def main():
             a11y.locator("#a11y-reset").click()
             assert "calm" not in (a11y.locator("html").get_attribute("class") or "")
 
-            # Static Azure Speech files: no worker, model download or browser synthesis.
+            # Static Piper-generated MP3 files: no worker, model download or browser synthesis.
             audio_context=browser.new_context()
             audio_page=audio_context.new_page()
             audio_page.add_init_script("""(() => {
               const state=window.__staticVoiceTest={played:[],paused:0,loads:0,workerConstructed:0};
               const manifest={version:1,locale:"fr-FR",status:"ready",voices:{
-                denise:{label:"Denise · voix féminine",sample:"/assets/speech/fr-FR/denise/sample.mp3",pages:{"index.html":"/assets/speech/fr-FR/denise/pages/index.mp3"}},
-                henri:{label:"Henri · voix masculine",sample:"/assets/speech/fr-FR/henri/sample.mp3",pages:{"index.html":"/assets/speech/fr-FR/henri/pages/index.mp3"}}
+                siwis:{label:"Siwis · voix féminine · français de France",sample:"/assets/speech/fr-FR/siwis/sample.mp3",pages:{"index.html":"/assets/speech/fr-FR/siwis/pages/index.mp3"}}
               }};
               const originalFetch=window.fetch.bind(window);
               window.fetch=(input,init)=>{
@@ -231,23 +230,21 @@ def main():
             })();""")
             audio_page.goto(f"{base}/index.html",wait_until="networkidle")
             audio_page.locator("#a11y-open").click()
-            audio_page.wait_for_function("document.querySelector('#a11y-voice-choice').options.length===2 && !document.querySelector('#a11y-voice .listen').disabled")
-            assert audio_page.locator("#a11y-voice-choice option").count()==2
+            audio_page.wait_for_function("document.querySelector('#a11y-voice-choice').options.length===1 && !document.querySelector('#a11y-voice .listen').disabled")
+            assert audio_page.locator("#a11y-voice-choice option").count()==1
             sample_button=audio_page.locator("#a11y-voice .listen").nth(0)
             page_button=audio_page.locator("#a11y-voice .listen").nth(1)
             sample_button.click()
             audio_page.wait_for_function("window.__staticVoiceTest.played.length===1")
-            assert audio_page.evaluate("()=>window.__staticVoiceTest.played[0].endsWith('/denise/sample.mp3')")
+            assert audio_page.evaluate("()=>window.__staticVoiceTest.played[0].endsWith('/siwis/sample.mp3')")
             assert sample_button.get_attribute("aria-pressed")=="true"
             sample_button.click()
             assert sample_button.inner_text().strip()=="Reprendre"
             sample_button.click()
             assert audio_page.evaluate("()=>window.__staticVoiceTest.played.length===2")
             page_button.click()
-            assert audio_page.evaluate("()=>window.__staticVoiceTest.played.slice(-1)[0].endsWith('/denise/pages/index.mp3')")
-            audio_page.locator("#a11y-voice-choice").select_option("henri")
+            assert audio_page.evaluate("()=>window.__staticVoiceTest.played.slice(-1)[0].endsWith('/siwis/pages/index.mp3')")
             sample_button.click()
-            assert audio_page.evaluate("()=>window.__staticVoiceTest.played.slice(-1)[0].endsWith('/henri/sample.mp3')")
             audio_page.locator('[data-audio="stop"]').click()
             assert sample_button.get_attribute("aria-pressed")=="false"
             assert audio_page.evaluate("()=>window.__staticVoiceTest.workerConstructed===0"), "the old local neural model must never start"
