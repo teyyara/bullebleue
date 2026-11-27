@@ -51,13 +51,34 @@ class PiperGeneratorTests(TestCase):
         self.assertIn("96k", command)
         self.assertEqual(command[-1], "sample.mp3")
 
-    def test_pending_manifest_has_only_the_siwi_voice(self):
+    def test_manifest_supports_pending_and_generated_audio(self):
+        import json
+
         manifest_path = ROOT / "assets/speech/fr-FR/manifest.json"
-        manifest = __import__("json").loads(manifest_path.read_text(encoding="utf-8"))
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         self.assertEqual(manifest["locale"], "fr-FR")
-        self.assertEqual(manifest["status"], "pending")
+        self.assertIn(manifest["status"], {"pending", "ready"})
         self.assertEqual(set(manifest["voices"]), {"siwis"})
-        self.assertEqual(manifest["voices"]["siwis"]["voiceName"], "fr_FR-siwis-medium")
+        voice = manifest["voices"]["siwis"]
+        self.assertEqual(voice["voiceName"], "fr_FR-siwis-medium")
+
+        if manifest["status"] == "pending":
+            self.assertFalse(voice.get("sample"))
+            self.assertFalse(voice.get("pages"))
+            return
+
+        sample = voice.get("sample", "")
+        self.assertTrue(sample.startswith("/assets/speech/fr-FR/siwis/"))
+        sample_path = ROOT / sample.lstrip("/")
+        self.assertTrue(sample_path.is_file())
+        self.assertGreater(sample_path.stat().st_size, 256)
+
+        self.assertEqual(set(voice.get("pages", {})), set(speech.PAGES))
+        for page, asset in voice["pages"].items():
+            self.assertTrue(asset.startswith("/assets/speech/fr-FR/siwis/pages/"), page)
+            audio_path = ROOT / asset.lstrip("/")
+            self.assertTrue(audio_path.is_file(), page)
+            self.assertGreater(audio_path.stat().st_size, 256, page)
 
 
 if __name__ == "__main__":
