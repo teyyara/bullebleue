@@ -3,6 +3,7 @@
   var root=document.documentElement,KEY='bb-a11y',prefs={};
   try{prefs=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(error){}
   delete prefs.voice;
+  delete prefs.ttsVoice;
   prefs.speed=prefs.speed||'normal';
   function save(){try{localStorage.setItem(KEY,JSON.stringify(prefs))}catch(error){}}
   var mq=function(q){return window.matchMedia&&matchMedia(q).matches};
@@ -18,7 +19,7 @@
   /* Read pre-generated French (France) MP3 files; never synthesize in the visitor's browser. */
   var canSpeak=typeof window.Audio==='function';
   var speechManifest=null,speechLoading=false,speechLoadError=null;
-  var speechStatus=null,voiceSelect=null,live=null,audio=null,currentButton=null,playbackRun=0;
+  var speechStatus=null,live=null,audio=null,currentButton=null,playbackRun=0;
   var panel=null;
   function say(message){
     if(live){live.textContent='';window.setTimeout(function(){live.textContent=message},40)}
@@ -56,42 +57,28 @@
     if(!speechStatus||!panel)return;
     var buttons=panel.querySelectorAll('[data-audio="sample"],[data-audio="page"]');
     if(speechLoading){
-      setSpeechStatus('Chargement de la liste des voix françaises…');
+      setSpeechStatus('Chargement audio…');
       buttons.forEach(function(button){button.disabled=true});
-      if(voiceSelect)voiceSelect.disabled=true;
       return;
     }
     if(!speechManifest){
       setSpeechStatus(speechLoadError?
-        'Les enregistrements audio ne sont pas encore disponibles. Ils seront activés après leur génération.':
-        'Les voix françaises (France) sont en cours de préparation.');
+        'Les enregistrements audio ne sont pas disponibles pour le moment.':
+        'Audio indisponible pour le moment.');
       buttons.forEach(function(button){button.disabled=true});
-      if(voiceSelect)voiceSelect.disabled=true;
       return;
-    }
-    if(voiceSelect){
-      voiceSelect.disabled=false;
-      voiceSelect.innerHTML='';
-      Object.keys(speechManifest.voices).forEach(function(key){
-        var option=document.createElement('option');
-        option.value=key;option.textContent=speechManifest.voices[key].label;
-        voiceSelect.appendChild(option);
-      });
-      var preferred=prefs.ttsVoice||'siwis';
-      voiceSelect.value=speechManifest.voices[preferred]?preferred:Object.keys(speechManifest.voices)[0];
-      prefs.ttsVoice=voiceSelect.value;
     }
     if(speechManifest.status!=='ready'){
       buttons.forEach(function(button){button.disabled=true});
-      setSpeechStatus('Les enregistrements audio sont en attente de génération. La voix française Siwis sera disponible après la génération des fichiers.');
+      setSpeechStatus('Les enregistrements audio ne sont pas encore disponibles.');
       return;
     }
     buttons.forEach(function(button){
-      var voice=speechManifest.voices[voiceSelect.value];
+      var voice=speechManifest.voices.siwis;
       var source=button.getAttribute('data-audio')==='sample'?voice.sample:(voice.pages||{})[pageKey()];
       button.disabled=!source;
     });
-    setSpeechStatus('Voix Siwis prête · français de France. Le MP3 est lu directement, sans synthèse sur votre appareil.');
+    setSpeechStatus('Prêt à écouter.');
   }
   function loadSpeechManifest(){
     if(!canSpeak)return;
@@ -135,7 +122,7 @@
       return;
     }
     stop(true);
-    var voice=speechManifest.voices[voiceSelect.value];
+    var voice=speechManifest.voices.siwis;
     var source=kind==='sample'?voice.sample:(voice.pages||{})[pageKey()];
     if(!source){setSpeechStatus('Aucun enregistrement n’est encore disponible pour cette page.');return}
     var url;
@@ -195,13 +182,12 @@
   var rows='<h2 id="a11y-title">Rendre le site plus confortable</h2>'+
     '<div class="a11y-row"><span id="l-fs">Taille du texte</span><div class="a11y-group" role="group" aria-labelledby="l-fs"><button type="button" data-fs="0">Normal</button><button type="button" data-fs="1">Grand</button><button type="button" data-fs="2">Très grand</button><button type="button" data-fs="3">Immense</button></div></div>'+
     '<div class="a11y-row"><span id="l-opt">Lecture et confort</span><div class="a11y-group" role="group" aria-labelledby="l-opt"><button type="button" data-k="dys">Police pour la dyslexie</button><button type="button" data-k="sp">Texte plus aéré</button><button type="button" data-k="hc">Contraste renforcé</button><button type="button" data-k="rm">Sans animation</button><button type="button" data-k="calm">Mode calme (moins de décor)</button></div></div>';
-  if(canSpeak)rows+='<div class="a11y-row"><label id="l-voix" for="a11y-voice-choice">Voix française (France)</label><select id="a11y-voice-choice" class="a11y-select" aria-labelledby="l-voix" disabled><option>Chargement des voix…</option></select><div class="a11y-group" id="a11y-voice" role="group" aria-label="Écoute des enregistrements" style="margin-top:8px"></div><div class="a11y-group" role="group" aria-label="Vitesse de lecture" style="margin-top:8px"><button type="button" data-sp="lent">Lente</button><button type="button" data-sp="normal">Normale</button><button type="button" data-sp="rapide">Rapide</button><button type="button" data-audio="stop">Arrêter</button></div></div>';
-  if(canSpeak)rows+='<div class="a11y-row a11y-voice-quality"><span id="l-voice-quality">Enregistrements audio</span><p class="voice-help">La voix Siwis est préparée à l’avance avec Piper pour le français de France. Votre navigateur lit directement un fichier MP3 : aucun modèle vocal n’est téléchargé et aucune synthèse n’est exécutée sur votre appareil.</p><p class="voice-status" id="a11y-voice-status" aria-live="polite">Chargement des enregistrements…</p></div>';
+  if(canSpeak)rows+='<div class="a11y-row a11y-player-row"><div class="a11y-group" id="a11y-voice" role="group" aria-label="Commandes audio"></div><div class="a11y-group" role="group" aria-label="Vitesse de lecture"><button type="button" data-sp="lent">Lente</button><button type="button" data-sp="normal">Normale</button><button type="button" data-sp="rapide">Rapide</button><button type="button" data-audio="stop">Arrêter</button></div></div>';
+  if(canSpeak)rows+='<p class="sr-only" id="a11y-voice-status" aria-live="polite">Chargement audio…</p>';
   rows+='<div class="a11y-row"><div class="a11y-group"><a href="accessibilite.html#signaler" class="a11y-link">Signaler un problème</a></div><div class="a11y-group" style="margin-top:12px"><button type="button" class="reset" id="a11y-reset">Tout remettre par défaut</button><button type="button" class="reset" id="a11y-close">Fermer</button></div></div>';
   panel.innerHTML=rows;
   if(canSpeak){
     speechStatus=panel.querySelector('#a11y-voice-status');
-    voiceSelect=panel.querySelector('#a11y-voice-choice');
     var controls=panel.querySelector('#a11y-voice');
     controls.appendChild(listenButton('Écouter un exemple','sample'));
     controls.appendChild(listenButton('Écouter toute la page','page'));
@@ -210,7 +196,7 @@
   wrap.appendChild(open);wrap.appendChild(panel);wrap.appendChild(live);
   open.setAttribute('aria-label','Accessibilité');open.setAttribute('title','Accessibilité');
   var headerBar=document.querySelector('header .bar');
-  if(headerBar)headerBar.insertBefore(wrap,headerBar.firstElementChild);else document.body.insertBefore(wrap,document.body.firstChild);
+  if(headerBar)headerBar.appendChild(wrap);else document.body.insertBefore(wrap,document.body.firstChild);
 
   function refresh(){
     panel.querySelectorAll('[data-fs]').forEach(function(button){button.setAttribute('aria-pressed',String((+button.getAttribute('data-fs'))===(prefs.fs||0)))});
@@ -233,12 +219,9 @@
     }else if(button.hasAttribute('data-k')){
       var key=button.getAttribute('data-k');prefs[key]=!prefs[key];
     }else if(button.id==='a11y-reset'){
-      prefs={hc:false,rm:false,ttsVoice:'denise',speed:'normal'};stop(true);
+      prefs={hc:false,rm:false,speed:'normal'};stop(true);
     }else if(button.id==='a11y-close'){toggle(false);open.focus();return}
     save();applyAll();refresh();
-  });
-  panel.addEventListener('change',function(event){
-    if(event.target===voiceSelect){prefs.ttsVoice=voiceSelect.value;save();if(currentButton)stop(true)}
   });
   function toggle(value){
     panel.hidden=!value;open.setAttribute('aria-expanded',String(value));

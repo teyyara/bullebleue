@@ -197,15 +197,19 @@ def main():
     assert "Découvrir des gestes du quotidien sans la vue" in article10 and "dix membres" in article10
     assert 'id="signaler"' in parsed["accessibilite.html"][0]
     access_page = parsed["accessibilite.html"][0]
-    assert "Piper" in access_page and "SIWIS" in access_page and "française (France)" in access_page
+    assert "Piper" in access_page and "SIWIS" in access_page and "français de France" in access_page
     assert "aucun service de synthèse payant" in access_page.lower()
-    assert "fichier mp3" in access_page.lower() and "aucun modèle vocal n’est téléchargé" in access_page
+    assert "fichiers audio" in access_page.lower() and "aucun modèle vocal n’est téléchargé" in access_page
+    assert "134 Mo" not in access_page and "premier téléchargement" not in access_page
     assert "Pocket TTS" not in access_page and "eSpeak NG" not in access_page and "Spellophone" not in access_page
     speech_js = (ROOT / "mockup-v3/js/a11y.js").read_text(encoding="utf-8")
     assert "/assets/speech/fr-FR/manifest.json" in speech_js and "new Audio()" in speech_js
     assert "reader-worker.mjs" not in speech_js and "AudioContext" not in speech_js
     assert "loadSpeechManifest()" in speech_js and "playbackRate" in speech_js
     assert "speechSynthesis.speak" not in speech_js and "getVoices()" not in speech_js
+    assert "speechManifest.voices.siwis" in speech_js and "voiceSelect" not in speech_js
+    assert "Enregistrements audio" not in speech_js and "La voix Siwis est préparée" not in speech_js
+    assert "headerBar.appendChild(wrap)" in speech_js
     assert (ROOT / "scripts/generate_piper_speech.py").is_file()
     assert (ROOT / "tests/test_piper_speech.py").is_file()
     assert (ROOT / "docs/free-piper-speech.md").is_file()
@@ -235,7 +239,7 @@ def main():
         assert not (ROOT / "mockup-v3/js/voice" / old_voice_file).exists(), f"retired local model remains: {old_voice_file}"
     assert not (ROOT / "tests/test_voice.mjs").exists(), "retired Pocket TTS tests should be removed"
     access_page = parsed["accessibilite.html"][0]
-    assert "dans l’en-tête" in access_page and "en bas à gauche" in access_page
+    assert "dans l’en-tête" in access_page and "en haut à droite" in access_page and "en bas à gauche" not in access_page
     assert "Page introuvable" in parsed["404.html"][0]
     for page in PAGES:
         html = (ROOT / page).read_text(encoding="utf-8")
@@ -256,9 +260,14 @@ def main():
     assert ".calm .hero .blob" in calm_css and ".calm .retrouver .big::before" in calm_css and ".calm .sorties h2::after" in calm_css, "calm mode must remove homepage bubbles, pale backplates and decorative flourishes"
     assert ".hero{overflow-x:clip}" in calm_css and ".voix{padding:36px 0}" in calm_css, "mobile hero clipping and tighter section rhythm must remain in place"
     voice_css = (ROOT / "site-v9-voice.css").read_text(encoding="utf-8")
-    assert ".a11y-voice-quality" in voice_css and ".voice-status" in voice_css
+    assert ".a11y-panel button:disabled" in voice_css
     assert "#a11y-light-enable" not in voice_css and "#a11y-natural-enable" not in voice_css
+    design_css = (ROOT / "site-v10-design.css").read_text(encoding="utf-8")
+    assert ".bar>.a11y-ui" in design_css and ".a11y-panel{position:absolute" in design_css
+    assert ".sortiesec ul.chips" in design_css and "text-align:center" in design_css
+    assert ".site-page>.site-section" in design_css and ".article-layout" in design_css
     assert '@import url("/site-v9-voice.css")' in css
+    assert '@import url("/site-v10-design.css")' in css
     print(json.dumps({"status":"PASS","pages":len(PAGES),"local_links_checked":len(all_links),"mockup_fonts":8,"mockup_images":15,"checks":["all twelve routes have French metadata, one h1 and one main","shared working navigation and active state","no placeholder links or broken local files/fragments","mockup v3 local stylesheet, fonts, mural and photo assets present","no Google Fonts network dependency","published session times are marked for confirmation","only the genuine Miette quotation is attributed","uncollected testimonials are absent","historical venue conflicts are disclosed","festival 40th anniversary is correctly dated to 2027","JOAFE declaration and publication dates are distinguished","actual Vercel hosting provider is identified","all seven About activity topics and historical milestones remain","three news items retain dedicated article routes","membership/legal/contact facts remain conservative and accurate","FALC and accessibility pages are included"]},ensure_ascii=False))
 
 if __name__ == "__main__":

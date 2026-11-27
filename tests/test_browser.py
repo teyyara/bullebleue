@@ -67,6 +67,10 @@ def main():
                         response=page.goto(f"{base}/{path}",wait_until="networkidle",timeout=25000)
                     assert response is not None and response.status==200, f"{path}: HTTP {response.status if response else 'no response'}"
                     assert_no_overflow(page,width,path)
+                    a11y_control=page.locator("#a11y-open")
+                    assert a11y_control.count()==1, f"{path}: Accessibility control should exist on every page"
+                    header_alignment=a11y_control.evaluate("(el)=>{const r=el.getBoundingClientRect(),bar=el.closest('.bar').getBoundingClientRect();return {inHeader:!!el.closest('header .bar'),position:getComputedStyle(el).position,rightGap:bar.right-r.right,insideVertically:r.top>=bar.top-1&&r.bottom<=bar.bottom+1};}")
+                    assert header_alignment["inHeader"] and header_alignment["position"]!="fixed" and 0<=header_alignment["rightGap"]<=28 and header_alignment["insideVertically"], f"{path} at {width}px: Accessibility must sit at the far right of the header: {header_alignment}"
                     assert page.locator("main#contenu").count()==1
                     assert page.locator("h1").count()==1
                     brand=page.locator("img.brand-mark")
@@ -99,10 +103,8 @@ def main():
                         assert utility_links_layout["columns"]==2 and utility_links_layout["firstRow"] and utility_links_layout["secondRow"], f"{path}: utility links should use two readable columns on mobile: {utility_links_layout}"
                     assert page.locator("#nav a").evaluate_all("(a)=>a.map(x=>x.getAttribute('href'))")==NAV, f"{path}: shared nav order changed"
                     if width <= 620:
-                        a11y_control = page.locator("#a11y-open")
-                        assert a11y_control.evaluate("(el)=>el.getBoundingClientRect().width <= 52"), f"{path}: mobile accessibility control should stay compact"
+                        assert a11y_control.evaluate("(el)=>el.getBoundingClientRect().width <= 48"), f"{path}: mobile accessibility control should stay compact"
                         assert page.get_by_role("button", name="Accessibilité").count() == 1, f"{path}: mobile accessibility control must keep its accessible name"
-                        assert a11y_control.evaluate("(el)=>el.closest('header .bar')!==null && getComputedStyle(el).position!=='fixed'"), f"{path}: mobile Accessibility control must be in the header, not fixed over content"
                     # Only pages designed around photography require a content image.
                     # Contact, legal, membership, easy-read, accessibility and 404 pages
                     # are intentionally text-led; do not add decorative images just for CI.
@@ -122,6 +124,14 @@ def main():
                         assert "Samedi" in page.locator(".slots").inner_text() and "15h" in page.locator(".slots").inner_text()
                         assert "14h30" not in page.locator(".slot:nth-child(2)").inner_text()
                         assert "avant de vous déplacer" in page.locator("main").inner_text()
+                        chips=page.locator(".sortiesec ul.chips li")
+                        assert chips.count()==7, "all seven outings labels should be present"
+                        assert page.locator(".sortiesec ul.chips").evaluate("(el)=>getComputedStyle(el).display")=="flex"
+                        chip_layout=chips.evaluate_all("(items)=>items.map(el=>{const r=el.getBoundingClientRect(),s=getComputedStyle(el);return {top:r.top,display:s.display,textAlign:s.textAlign,transform:s.transform}})")
+                        assert all(x["display"]=="flex" and x["textAlign"]=="center" and x["transform"]=="none" for x in chip_layout), f"outings labels are not consistently aligned: {chip_layout}"
+                        first_row=sum(1 for x in chip_layout if abs(x["top"]-chip_layout[0]["top"])<3)
+                        expected_columns=3 if width>=1024 else 2 if width>=620 else 1
+                        assert first_row==expected_columns, f"outings should form {expected_columns} balanced columns at {width}px: {chip_layout}"
                     elif path=="qui-sommes-nous.html":
                         assert all(v in page.locator("main").inner_text() for v in ("1995","2021","Bleuettes","Burkina Faso","Maroc"))
                         assert page.locator(".topic-list span").count()==7
@@ -155,13 +165,16 @@ def main():
                         assert page.locator("#signaler").count()==1
                         page.locator("#a11y-open").click()
                         assert page.locator("#a11y-panel").is_visible()
-                        assert page.locator("#a11y-voice-choice").count()==1
+                        assert page.locator("#a11y-voice-choice").count()==0, "the single voice does not need a dropdown"
                         assert page.locator("#a11y-voice .listen").count()==2
-                        assert all(button.is_disabled() for button in page.locator("#a11y-voice .listen").all())
+                        assert all(not button.is_disabled() for button in page.locator("#a11y-voice .listen").all())
                         assert page.locator("#a11y-voice-status").count()==1
-                        voice_status=page.locator("#a11y-voice-status").inner_text()
-                        assert "en attente de génération" in voice_status, f"missing generated MP3s should be reported clearly: {voice_status}"
-                        assert "Pocket TTS" not in page.locator("#a11y-panel").inner_text()
+                        assert "sr-only" in (page.locator("#a11y-voice-status").get_attribute("class") or "")
+                        panel_text=page.locator("#a11y-panel").inner_text()
+                        assert "Enregistrements audio" not in panel_text and "La voix Siwis est préparée" not in panel_text and "Voix Siwis prête" not in panel_text
+                        assert "Pocket TTS" not in panel_text
+                        panel_alignment=page.locator("#a11y-panel").evaluate("(el)=>{const p=el.getBoundingClientRect(),u=el.closest('.a11y-ui').getBoundingClientRect();return {position:getComputedStyle(el).position,belowButton:p.top>=u.bottom};}")
+                        assert panel_alignment["position"]=="absolute" and panel_alignment["belowButton"], f"panel should open beneath its header button: {panel_alignment}
                         page.locator("#a11y-close").click()
                         assert page.locator("#a11y-panel").is_hidden()
                     elif path=="facile-a-lire.html":
@@ -183,7 +196,10 @@ def main():
             a11y.keyboard.press("Tab")
             assert a11y.evaluate("document.activeElement.matches('.skip')"), "skip link should be first in keyboard order"
             a11y.keyboard.press("Tab")
-            assert a11y.evaluate("document.activeElement===document.querySelector('#a11y-open')"), "Accessibility should follow the skip link in keyboard order"
+            assert a11y.evaluate("document.activeElement.matches('.bar>.logo')"), "the logo should follow the skip link"
+            for _ in range(7):
+                a11y.keyboard.press("Tab")
+            assert a11y.evaluate("document.activeElement===document.querySelector('#a11y-open')"), "the rightmost Accessibility control should follow the shared navigation"
             opener.click()
             panel=a11y.locator("#a11y-panel");assert not panel.is_hidden()
             a11y.locator('[data-fs="1"]').click()
@@ -230,8 +246,8 @@ def main():
             })();""")
             audio_page.goto(f"{base}/index.html",wait_until="networkidle")
             audio_page.locator("#a11y-open").click()
-            audio_page.wait_for_function("document.querySelector('#a11y-voice-choice').options.length===1 && !document.querySelector('#a11y-voice .listen').disabled")
-            assert audio_page.locator("#a11y-voice-choice option").count()==1
+            audio_page.wait_for_function("!document.querySelector('#a11y-voice .listen').disabled")
+            assert audio_page.locator("#a11y-voice-choice").count()==0
             sample_button=audio_page.locator("#a11y-voice .listen").nth(0)
             page_button=audio_page.locator("#a11y-voice .listen").nth(1)
             sample_button.click()
