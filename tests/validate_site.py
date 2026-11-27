@@ -211,12 +211,26 @@ def main():
     assert (ROOT / "docs/free-piper-speech.md").is_file()
     assert (ROOT / ".github/workflows/generate-french-audio.yml").is_file()
     speech_manifest_path = ROOT / "assets/speech/fr-FR/manifest.json"
-    assert speech_manifest_path.is_file(), "the pending French audio manifest must prevent missing-resource errors"
+    assert speech_manifest_path.is_file(), "the French audio manifest must prevent missing-resource errors"
     speech_manifest = json.loads(speech_manifest_path.read_text(encoding="utf-8"))
-    assert speech_manifest["locale"] == "fr-FR" and speech_manifest["status"] == "pending"
+    assert speech_manifest["locale"] == "fr-FR" and speech_manifest["status"] in {"pending", "ready"}
     assert set(speech_manifest["voices"]) == {"siwis"}
-    assert speech_manifest["voices"]["siwis"]["voiceName"] == "fr_FR-siwis-medium"
-    assert not speech_manifest["voices"]["siwis"].get("sample"), "placeholder manifest must not advertise nonexistent MP3 files"
+    siwis_voice = speech_manifest["voices"]["siwis"]
+    assert siwis_voice["voiceName"] == "fr_FR-siwis-medium"
+    if speech_manifest["status"] == "pending":
+        assert not siwis_voice.get("sample"), "pending manifest must not advertise nonexistent MP3 files"
+        assert not siwis_voice.get("pages"), "pending manifest must not advertise nonexistent page MP3s"
+    else:
+        sample_audio = siwis_voice.get("sample", "")
+        assert sample_audio.startswith("/assets/speech/fr-FR/siwis/"), "ready manifest must point to the SIWIS audition"
+        sample_file = ROOT / sample_audio.lstrip("/")
+        assert sample_file.is_file() and sample_file.stat().st_size > 256, "ready manifest audition MP3 is missing or empty"
+        page_audio = siwis_voice.get("pages", {})
+        assert set(page_audio) == set(PAGES), "ready manifest must contain audio for every published page"
+        for page, audio_path in page_audio.items():
+            assert audio_path.startswith("/assets/speech/fr-FR/siwis/pages/"), f"{page}: audio must use the SIWIS page-audio directory"
+            audio_file = ROOT / audio_path.lstrip("/")
+            assert audio_file.is_file() and audio_file.stat().st_size > 256, f"{page}: generated MP3 is missing or empty"
     for old_voice_file in ("pocket.mjs", "words.mjs", "reader-worker.mjs", "NOTICE.md"):
         assert not (ROOT / "mockup-v3/js/voice" / old_voice_file).exists(), f"retired local model remains: {old_voice_file}"
     assert not (ROOT / "tests/test_voice.mjs").exists(), "retired Pocket TTS tests should be removed"
