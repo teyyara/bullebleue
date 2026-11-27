@@ -150,3 +150,53 @@ header .bar{position:relative;flex-wrap:nowrap;gap:clamp(7px,1vw,14px)}
  .a11y-panel{width:min(380px,calc(100vw - 24px));max-height:calc(100dvh - 80px - env(safe-area-inset-top));padding:16px}
 }
 @media(prefers-reduced-motion:reduce){.a11y-btn,.a11y-panel,.news-card,.btn{transition:none}}
+
+/* Small-screen accessibility zoom: allow the schedule and its photo to shrink
+   to the available reading width instead of expanding their grid tracks. */
+@media(max-width:620px){
+  .retrouver,
+  .retrouver>.wrap,
+  .retrouver .big,
+  .retrouver .two,
+  .retrouver .two>*,
+  .retrouver .photo,
+  .slots,
+  .slots>.slot{
+    width:100%;
+    min-width:0;
+    max-width:100%;
+    box-sizing:border-box;
+  }
+  .retrouver .two{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .retrouver .photo img{
+    display:block;
+    width:100%;
+    max-width:100%;
+    height:auto;
+    transform:none;
+  }
+  .slots{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .slots>.slot{
+    overflow-wrap:anywhere;
+  }
+  .slots .day,
+  .slots .when,
+  .slots h3,
+  .slots p{
+    width:100%;
+    min-width:0;
+    max-width:100%;
+    white-space:normal;
+    overflow-wrap:anywhere;
+  }
+  .slots .when span{
+    max-width:100%;
+    white-space:normal;
+    overflow-wrap:anywhere;
+  }
+}
+
