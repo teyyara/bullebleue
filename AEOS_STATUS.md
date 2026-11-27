@@ -1,10 +1,10 @@
-## Delivered in Loop 042 — pre-generated French (France) audio
-- Replaced the in-browser Pocket TTS/WebAssembly engine with static MP3 playback. Visitors no longer download a speech model or wait for neural synthesis while reading.
-- Prepared a manual GitHub Actions generator for two standard French (France) Neural voices: Denise and Henri. It creates short auditions and one full-page recording per page and voice.
-- Azure credentials are read only from repository Actions secrets. They are not included in page source, generated assets or the manifest; Azure is not contacted during visitor playback.
-- Added a small manifest-driven accessible audio player with voice selection, play/pause, stop and speed controls.
-- Offline tests cover page text extraction, abbreviation expansion, SSML escaping, locale/voice selection and MP3 request headers.
-- Remaining setup: create the Azure Speech F0 resource, add the two repository secrets and run the generation workflow. Physical listening is required to choose the preferred voice.
+## Delivered in Loop 043 — fully free Piper French (France) audio
+- Replaced the Azure Speech generation plan with Piper TTS. No card, paid speech API, provider account or API key is needed.
+- The generator downloads the SIWIS French (France) medium voice model (about 63 MB) and uses it to create an audition MP3 plus one full-page MP3 per published route.
+- Audio is generated on standard public GitHub Actions runners, which GitHub documents as free for public repositories.
+- The website keeps serving static MP3 files through its accessible audio player; visitors do not download Piper or run speech synthesis.
+- Added a pending single-voice manifest, model attribution, free setup guide, offline tests and browser coverage.
+- Pending: run the public generation workflow and listen to the actual SIWIS recording before claiming voice quality is validated.
 
 ## Delivered in Loop 041 — natural-only reading and automatic model preload
 - Removed the former lightweight voice engine, its controls and automatic fallback path. Pocket TTS is the sole read-aloud voice.
