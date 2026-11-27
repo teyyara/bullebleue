@@ -197,9 +197,20 @@ def main():
             assert a11y.evaluate("document.activeElement.matches('.skip')"), "skip link should be first in keyboard order"
             a11y.keyboard.press("Tab")
             assert a11y.evaluate("document.activeElement.matches('.bar>.logo')"), "the logo should follow the skip link"
-            for _ in range(a11y.locator("#nav a").count()+2):
+            header_tabs=a11y.evaluate("""() => {
+                const bar=document.querySelector('header .bar');
+                const open=document.querySelector('#a11y-open');
+                const focusable=[...bar.querySelectorAll('a[href],button:not([disabled])')]
+                  .filter(el=>el!==document.querySelector('.bar>.logo')
+                    && el.tabIndex>=0
+                    && el.getClientRects().length>0
+                    && getComputedStyle(el).visibility!=='hidden');
+                return focusable.indexOf(open)+1;
+            }""")
+            assert header_tabs>0, "Accessibility control should be keyboard-focusable in the header"
+            for _ in range(header_tabs):
                 a11y.keyboard.press("Tab")
-            assert a11y.evaluate("document.activeElement===document.querySelector('#a11y-open')"), "the rightmost Accessibility control should follow the shared navigation"
+            assert a11y.evaluate("document.activeElement===document.querySelector('#a11y-open')"), "the rightmost Accessibility control should follow the visible header controls"
             opener.click()
             panel=a11y.locator("#a11y-panel");assert not panel.is_hidden()
             a11y.locator('[data-fs="1"]').click()
