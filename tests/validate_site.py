@@ -197,8 +197,8 @@ def main():
     assert "Découvrir des gestes du quotidien sans la vue" in article10 and "dix membres" in article10
     assert 'id="signaler"' in parsed["accessibilite.html"][0]
     access_page = parsed["accessibilite.html"][0]
-    assert "Azure Speech" in access_page and "Denise" in access_page and "Henri" in access_page
-    assert "françaises (france)" in access_page.lower()
+    assert "Piper" in access_page and "SIWIS" in access_page and "française (France)" in access_page
+    assert "aucun service de synthèse payant" in access_page
     assert "fichier MP3" in access_page and "modèle vocal à télécharger" in access_page
     assert "Pocket TTS" not in access_page and "eSpeak NG" not in access_page and "Spellophone" not in access_page
     speech_js = (ROOT / "mockup-v3/js/a11y.js").read_text(encoding="utf-8")
@@ -206,16 +206,17 @@ def main():
     assert "reader-worker.mjs" not in speech_js and "AudioContext" not in speech_js
     assert "loadSpeechManifest()" in speech_js and "playbackRate" in speech_js
     assert "speechSynthesis.speak" not in speech_js and "getVoices()" not in speech_js
-    assert (ROOT / "scripts/generate_azure_speech.py").is_file()
-    assert (ROOT / "tests/test_azure_speech.py").is_file()
-    assert (ROOT / "docs/azure-speech-setup.md").is_file()
+    assert (ROOT / "scripts/generate_piper_speech.py").is_file()
+    assert (ROOT / "tests/test_piper_speech.py").is_file()
+    assert (ROOT / "docs/free-piper-speech.md").is_file()
     assert (ROOT / ".github/workflows/generate-french-audio.yml").is_file()
     speech_manifest_path = ROOT / "assets/speech/fr-FR/manifest.json"
     assert speech_manifest_path.is_file(), "the pending French audio manifest must prevent missing-resource errors"
     speech_manifest = json.loads(speech_manifest_path.read_text(encoding="utf-8"))
     assert speech_manifest["locale"] == "fr-FR" and speech_manifest["status"] == "pending"
-    assert set(speech_manifest["voices"]) == {"denise", "henri"}
-    assert not any(speech_manifest["voices"][key].get("sample") for key in speech_manifest["voices"]), "placeholder manifest must not advertise nonexistent MP3 files"
+    assert set(speech_manifest["voices"]) == {"siwis"}
+    assert speech_manifest["voices"]["siwis"]["voiceName"] == "fr_FR-siwis-medium"
+    assert not speech_manifest["voices"]["siwis"].get("sample"), "placeholder manifest must not advertise nonexistent MP3 files"
     for old_voice_file in ("pocket.mjs", "words.mjs", "reader-worker.mjs", "NOTICE.md"):
         assert not (ROOT / "mockup-v3/js/voice" / old_voice_file).exists(), f"retired local model remains: {old_voice_file}"
     assert not (ROOT / "tests/test_voice.mjs").exists(), "retired Pocket TTS tests should be removed"
