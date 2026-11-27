@@ -41,7 +41,7 @@ jobs:
           node --check script.js
           node --check mockup-v3/js/a11y.js
           node --check tests/test_menu.js
-          python tests/test_azure_speech.py
+          python tests/test_piper_speech.py
           node tests/test_menu.js
 
       - name: Install browser-test dependency
