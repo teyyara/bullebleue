@@ -77,13 +77,13 @@
         option.value=key;option.textContent=speechManifest.voices[key].label;
         voiceSelect.appendChild(option);
       });
-      var preferred=prefs.ttsVoice||'denise';
+      var preferred=prefs.ttsVoice||'siwis';
       voiceSelect.value=speechManifest.voices[preferred]?preferred:Object.keys(speechManifest.voices)[0];
       prefs.ttsVoice=voiceSelect.value;
     }
     if(speechManifest.status!=='ready'){
       buttons.forEach(function(button){button.disabled=true});
-      setSpeechStatus('Les enregistrements audio sont en attente de génération. Les deux voix françaises sont sélectionnables après la préparation des fichiers.');
+      setSpeechStatus('Les enregistrements audio sont en attente de génération. La voix française Siwis sera disponible après la génération des fichiers.');
       return;
     }
     buttons.forEach(function(button){
@@ -91,7 +91,7 @@
       var source=button.getAttribute('data-audio')==='sample'?voice.sample:(voice.pages||{})[pageKey()];
       button.disabled=!source;
     });
-    setSpeechStatus('Voix française (France) prête. Les MP3 sont lus directement, sans synthèse sur votre appareil.');
+    setSpeechStatus('Voix Siwis prête · français de France. Le MP3 est lu directement, sans synthèse sur votre appareil.');
   }
   function loadSpeechManifest(){
     if(!canSpeak)return;
@@ -102,7 +102,7 @@
         return response.json();
       })
       .then(function(manifest){
-        if(!manifest||manifest.locale!=='fr-FR'||!manifest.voices||!manifest.voices.denise||!manifest.voices.henri)
+        if(!manifest||manifest.locale!=='fr-FR'||!manifest.voices||!manifest.voices.siwis)
           throw new Error('Le catalogue audio français est incomplet.');
         speechManifest=manifest;speechLoading=false;speechLoadError=null;
         refreshSpeechControls();
@@ -196,7 +196,7 @@
     '<div class="a11y-row"><span id="l-fs">Taille du texte</span><div class="a11y-group" role="group" aria-labelledby="l-fs"><button type="button" data-fs="0">Normal</button><button type="button" data-fs="1">Grand</button><button type="button" data-fs="2">Très grand</button><button type="button" data-fs="3">Immense</button></div></div>'+
     '<div class="a11y-row"><span id="l-opt">Lecture et confort</span><div class="a11y-group" role="group" aria-labelledby="l-opt"><button type="button" data-k="dys">Police pour la dyslexie</button><button type="button" data-k="sp">Texte plus aéré</button><button type="button" data-k="hc">Contraste renforcé</button><button type="button" data-k="rm">Sans animation</button><button type="button" data-k="calm">Mode calme (moins de décor)</button></div></div>';
   if(canSpeak)rows+='<div class="a11y-row"><label id="l-voix" for="a11y-voice-choice">Voix française (France)</label><select id="a11y-voice-choice" class="a11y-select" aria-labelledby="l-voix" disabled><option>Chargement des voix…</option></select><div class="a11y-group" id="a11y-voice" role="group" aria-label="Écoute des enregistrements" style="margin-top:8px"></div><div class="a11y-group" role="group" aria-label="Vitesse de lecture" style="margin-top:8px"><button type="button" data-sp="lent">Lente</button><button type="button" data-sp="normal">Normale</button><button type="button" data-sp="rapide">Rapide</button><button type="button" data-audio="stop">Arrêter</button></div></div>';
-  if(canSpeak)rows+='<div class="a11y-row a11y-voice-quality"><span id="l-voice-quality">Enregistrements audio</span><p class="voice-help">Deux voix françaises (France), Denise et Henri, sont préparées à l’avance. Votre navigateur lit directement un fichier MP3 : aucun modèle vocal n’est téléchargé et aucune synthèse n’est exécutée sur votre appareil.</p><p class="voice-status" id="a11y-voice-status" aria-live="polite">Chargement des enregistrements…</p></div>';
+  if(canSpeak)rows+='<div class="a11y-row a11y-voice-quality"><span id="l-voice-quality">Enregistrements audio</span><p class="voice-help">La voix Siwis est préparée à l’avance avec Piper pour le français de France. Votre navigateur lit directement un fichier MP3 : aucun modèle vocal n’est téléchargé et aucune synthèse n’est exécutée sur votre appareil.</p><p class="voice-status" id="a11y-voice-status" aria-live="polite">Chargement des enregistrements…</p></div>';
   rows+='<div class="a11y-row"><div class="a11y-group"><a href="accessibilite.html#signaler" class="a11y-link">Signaler un problème</a></div><div class="a11y-group" style="margin-top:12px"><button type="button" class="reset" id="a11y-reset">Tout remettre par défaut</button><button type="button" class="reset" id="a11y-close">Fermer</button></div></div>';
   panel.innerHTML=rows;
   if(canSpeak){
