@@ -174,7 +174,7 @@ def main():
                         assert "Enregistrements audio" not in panel_text and "La voix Siwis est préparée" not in panel_text and "Voix Siwis prête" not in panel_text
                         assert "Pocket TTS" not in panel_text
                         panel_alignment=page.locator("#a11y-panel").evaluate("(el)=>{const p=el.getBoundingClientRect(),u=el.closest('.a11y-ui').getBoundingClientRect();return {position:getComputedStyle(el).position,belowButton:p.top>=u.bottom};}")
-                        assert panel_alignment["position"]=="absolute" and panel_alignment["belowButton"], f"panel should open beneath its header button: {panel_alignment}
+                        assert panel_alignment["position"]=="absolute" and panel_alignment["belowButton"], f"panel should open beneath its header button: {panel_alignment}"
                         page.locator("#a11y-close").click()
                         assert page.locator("#a11y-panel").is_hidden()
                     elif path=="facile-a-lire.html":
