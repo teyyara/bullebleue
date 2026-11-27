@@ -1,4 +1,4 @@
-name: Generate French page audio
+name: Generate free French page audio
 
 on:
   workflow_dispatch:
@@ -12,12 +12,9 @@ concurrency:
 
 jobs:
   generate:
-    name: Generate static French (France) MP3 recordings
+    name: Generate French MP3s with Piper (no API key)
     runs-on: ubuntu-24.04
     timeout-minutes: 30
-    env:
-      AZURE_SPEECH_KEY: ${{ secrets.AZURE_SPEECH_KEY }}
-      AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
     steps:
       - name: Check out main
         uses: actions/checkout@v4
@@ -27,21 +24,23 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.13"
+          python-version: "3.12"
 
-      - name: Verify Azure secrets are configured
-        shell: bash
+      - name: Install Piper
         run: |
-          if [ -z "$AZURE_SPEECH_KEY" ] || [ -z "$AZURE_SPEECH_REGION" ]; then
-            echo "::error::Add AZURE_SPEECH_KEY and AZURE_SPEECH_REGION as repository Actions secrets first."
-            exit 1
-          fi
+          python -m pip install --upgrade pip
+          python -m pip install "piper-tts==1.8.0"
+
+      - name: Install MP3 encoder
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends ffmpeg
 
       - name: Test the generator offline
-        run: python tests/test_azure_speech.py
+        run: python tests/test_piper_speech.py
 
-      - name: Generate both French voices for every page
-        run: python scripts/generate_azure_speech.py
+      - name: Generate the audition and every page
+        run: python scripts/generate_piper_speech.py
 
       - name: Commit generated MP3s and manifest
         shell: bash
@@ -50,8 +49,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add assets/speech/fr-FR
           if git diff --cached --quiet; then
-            echo "Audio assets are already up to date."
+            echo "French audio files are already up to date."
             exit 0
           fi
-          git commit -m "Generate French page audio recordings"
+          git commit -m "Generate free Piper French page audio"
           git push origin HEAD:main
